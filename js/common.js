@@ -7,7 +7,8 @@ var data = [
     {name: "jquery",url: "http://jquery.cuishifeng.cn/",title: "jQuery API 3.3.1 速查表"},
     {name: "Bootstrap3",url: "https://v3.bootcss.com/css/",title: ""},
     {name: "layui",url: "http://www.layui.com",title: "经典模块化前端UI框架"},
-    {name: "Amaze UI",url: "http://amazeui.org/getting-started?_ver=2.x",title: "框架"},
+    {name: "Amaze UI",url: "http://amazeui.org/getting-started?_ver=2.x",title: "CSS框架"},
+	  {name: "MUI",url: "http://dev.dcloud.net.cn/mui/",title: "最接近原生APP体验的高性能前端框架"},
     {name: "font awesome 4.7.0",url: "https://fontawesome.com/v4.7.0/icons/",title: ""},
     {name: "datatables",url: "http://www.datatables.club/",title: "表格插件"},
     {name: "Echarts",url: "http://echarts.baidu.com/download.html",title: "图表插件"},
@@ -15,18 +16,19 @@ var data = [
     {name: "jQuery UI",url: "http://jqueryui.com/themeroller/",title: ""},
     {name: "百度分享插件",url: "http://share.baidu.com/code",title: ""},
   ],
-  //前端学习
+  //JavaScript进阶
   [
     {name: "javascript入门",url: "https://wangdoc.com/javascript/basic/introduction.html",title: ""},
     {name: "JavaScript 标准参考教程（alpha）",url: "http://javascript.ruanyifeng.com/",title: ""},
     {name: "ECMAScript 6",url: "http://es6.ruanyifeng.com/#docs/intro",title: ""},
     {name: "MDN web docs",url: "https://developer.mozilla.org/zh-CN/",title: ""},
+  ],
+  //前端学习
+  [
     {name: "W3Cschool",url: "https://www.w3cschool.cn/",title: ""},
     {name: "菜鸟教程",url: "http://www.runoob.com/",title: ""},
     {name: "W3school",url: "http://www.w3school.com.cn/index.html",title: ""},
     {name: "CSS3参考手册",url: "http://www.css88.com/book/css/quicksearch.htm",title: ""},
-    {name: "微信小程序",url: "https://mp.weixin.qq.com/cgi-bin/wx",title: ""},
-    {name: "百度小程序",url: "https://smartprogram.baidu.com/mappconsole/main/login",title: ""},
     {name: "Normalize跨浏览器一致性",url: "http://necolas.github.io/normalize.css/",title: ""},
     {name: "高德开发平台",url: "http://lbs.amap.com/api/javascript-api/guide/abc/quickstart",title: ""},
     {name: "Web 前端技术图谱",url: "http://www.runoob.com/w3cnote/webfrontendstack.html",title: ""},
@@ -47,6 +49,14 @@ var data = [
     {name: "CSS3代码生产器",url: "http://www.css3maker.com/index.html#",title: ""},
     {name: "CAN I USE?",url: "https://caniuse.com/",title: ""},
     {name: "jshint语法检查",url: "http://jshint.com/",title: ""},
+
+  ],
+  // 小程序开发
+  [
+    {name: "微信小程序API",url: "https://developers.weixin.qq.com/miniprogram/dev/api/",title: "微信小程序API"},
+    {name: "微信公众平台",url: "https://mp.weixin.qq.com/",title: "服务号，订阅号，小程序等账号管理"},
+    {name: "微信商户平台",url: "https://pay.weixin.qq.com/index.php/core/home/login?return_url=%2F",title: "微信商户平台"},
+    {name: "百度小程序",url: "https://smartprogram.baidu.com/mappconsole/main/login",title: "百度小程序"},
   ],
   // 个人建站
   [
@@ -64,7 +74,7 @@ var data = [
     {name: "Vue.js菜鸟教程",url: "http://www.runoob.com/vue2/vue-tutorial.html",title: ""},
     {name: "Vuex教程",url: "https://vuex.vuejs.org/zh/",title: ""},
     {name: "Vue Router",url: "https://router.vuejs.org/zh/",title: ""},
-    {name: "Axios中文说明",url: "https://www.kancloud.cn/yunye/axios/234845",title: ""},
+    {name: "Axios中文说明",url: "https://www.kancloud.cn/yunye/axios/234845",title: "代替AJAX做http请求，可以用在浏览器和 node.js 中"},
     {name: "Store.js",url: "https://www.bootcdn.cn/store.js/readme/",title: ""},
     {name: "ElementUI教程",url: "http://element-cn.eleme.io/#/zh-CN/component/installation",title: ""},
   ],
