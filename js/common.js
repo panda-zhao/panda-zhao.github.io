@@ -34,7 +34,7 @@ var data = [
     {name: "Web 前端技术图谱",url: "http://www.runoob.com/w3cnote/webfrontendstack.html",title: ""},
     {name: "前端开发面试题",url: "http://www.runoob.com/w3cnote/front-end-developer-questions-and-answers.html",title: ""},
   ],
-  // 管理工具
+  // 项目管理工具
   [
     {name: "GitHub",url: "https://github.com/panda-zhao",title: ""},
     {name: "Git",url: "https://git-scm.com/",title: "目前世界上最先进的分布式版本控制系统（没有之一）。"},
@@ -45,10 +45,7 @@ var data = [
   ],
   // 前端工具
   [
-    {name: "GitHub",url: "https://github.com/panda-zhao",title: ""},
-    {name: "图片压缩",url: "https://tinypng.com/",title: ""},
     {name: "雪碧图合成",url: "https://www.toptal.com/developers/css/sprite-generator",title: ""},
-    {name: "坚果云",url: "https://www.jianguoyun.com/",title: ""},
     {name: "七牛云",url: "https://www.qiniu.com/",title: ""},
     {name: "全聚合",url: "https://www.juhe.cn/",title: "数据接口"},
     {name: "在线文本比较工具",url: "http://www.jq22.com/textDifference",title: ""},
