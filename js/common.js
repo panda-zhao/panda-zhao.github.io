@@ -45,6 +45,7 @@ var data = [
   ],
   // 前端工具
   [
+    {name: "脚本之家在线工具",url: "http://tools.jb51.net/",title: ""},
     {name: "雪碧图合成",url: "https://www.toptal.com/developers/css/sprite-generator",title: ""},
     {name: "七牛云",url: "https://www.qiniu.com/",title: ""},
     {name: "全聚合",url: "https://www.juhe.cn/",title: "数据接口"},
@@ -55,6 +56,8 @@ var data = [
     {name: "CSS3代码生产器",url: "http://www.css3maker.com/index.html#",title: ""},
     {name: "CAN I USE?",url: "https://caniuse.com/",title: ""},
     {name: "jshint语法检查",url: "http://jshint.com/",title: ""},
+    
+    
   ],
   // 小程序开发
   [
