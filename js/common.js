@@ -85,6 +85,8 @@ var data = [
     {name: "Node.js 中文网",url: "http://nodejs.cn/api/",title: ""},
     {name: "node.js教程",url: "http://www.runoob.com/nodejs/nodejs-tutorial.html",title: ""},
     {name: "淘宝npm镜像",url: "http://npm.taobao.org/",title: ""},
+    {name: "nodemailer",url: "https://nodemailer.com/about/",title: "nodeJs发送邮件模块"},
+    {name: "redis",url: "https://redis.io/",title: "key-value存储系统"},
   ],
   // 个人建站
   [
