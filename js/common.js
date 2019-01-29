@@ -90,13 +90,16 @@ var data = [
     {name: "Node.js 中文网",url: "http://nodejs.cn/api/",title: ""},
     {name: "node.js教程",url: "http://www.runoob.com/nodejs/nodejs-tutorial.html",title: ""},
     {name: "淘宝npm镜像",url: "http://npm.taobao.org/",title: ""},
-    
+    {name: "nodemailer",url: "https://nodemailer.com/about/",title: "nodeJs发送邮件模块"},
   ],
   //10 数据库
   [
-    {name: "nodemailer",url: "https://nodemailer.com/about/",title: "nodeJs发送邮件模块"},
+    
+    {name: "mysql",url: "http://www.runoob.com/mysql/mysql-tutorial.html",title: "关系型数据库" },
     {name: "postgresDB",url: "https://node-postgres.com/",title: "关系型数据库" },
     {name: "redis",url: "http://www.redis.cn/download.html",title: "key-value存储系统"},
+    {name: "mongodb",url: "http://www.runoob.com/mongodb/mongodb-update.html",title: "基于分布式文件存储的数据库"},
+    
   ],
   // 11 个人建站
   [
