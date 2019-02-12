@@ -6,6 +6,8 @@ var data = [
     {name: "GitHub",url: "https://github.com/panda-zhao",title: ""},
     {name: "前端之路",url: "http://www.zhaowy.cn",title: ""},
     {name: "博客园",url: "https://www.cnblogs.com/zhaowy/",title: ""},
+    {name: "wordpress",url: "https://cn.wordpress.org/",title: "用PHP语言开发的博客平台"},
+    {name: "阿里云",url: "https://home.console.aliyun.com/new#/",title: ""},
     {name: "Patreon",url: "https://www.patreon.com/",title: ""},
   ],
    // 2 前端学习
@@ -102,8 +104,8 @@ var data = [
     
   ],
   // 11 个人建站
-  [
-    {name: "阿里云",url: "https://home.console.aliyun.com/new#/",title: ""},
+  [ 
+    
     {name: "百度统计",url: "https://tongji.baidu.com/web/25037646/overview/index",title: ""},
     {name: "代码高亮",url: "http://www.592lvyou.com/?page_id=13036",title: ""},
     {name: "制作网站logo",url: "http://www.logomaker.com.cn/",title: ""},
