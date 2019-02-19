@@ -28,6 +28,22 @@ var data = [
     {name: "ECMAScript 6",url: "http://es6.ruanyifeng.com/#docs/intro",title: ""},
     {name: "MDN web docs",url: "https://developer.mozilla.org/zh-CN/",title: ""},
   ],
+  // react项目
+  [
+    {name: "React",url: "https://reactjs.org/",title: "用于创建可重用且有吸引力的UI组件的库"},
+    {name: "React Native中文网",url: "https://reactnative.cn/",title:"使用JavaScript编写移动应用"},
+  ],
+  // 8 vue.js项目
+  [
+    {name: "webpack中文教程",url: "https://doc.webpack-china.org/",title: ""},
+    {name: "Vue.js教程",url: "https://cn.vuejs.org/v2/guide/installation.html",title: ""},
+    {name: "Vue.js菜鸟教程",url: "http://www.runoob.com/vue2/vue-tutorial.html",title: ""},
+    {name: "Vuex教程",url: "https://vuex.vuejs.org/zh/",title: ""},
+    {name: "Vue Router",url: "https://router.vuejs.org/zh/",title: ""},
+    {name: "Axios中文说明",url: "https://www.kancloud.cn/yunye/axios/234845",title: "代替AJAX做http请求，可以用在浏览器和 node.js 中"},
+    {name: "Store.js",url: "https://www.bootcdn.cn/store.js/readme/",title: ""},
+    {name: "ElementUI教程",url: "http://element-cn.eleme.io/#/zh-CN/component/installation",title: ""},
+  ],
   // 4 前端框架
   [
     {name: "BootCDN",url: "http://www.bootcdn.cn",title: "免费的CDN加速服务"},
@@ -75,17 +91,7 @@ var data = [
     {name: "百度小程序",url: "https://smartprogram.baidu.com/mappconsole/main/login",title: "百度小程序"},
   ],
   
-  // 8 vue.js项目
-  [
-    {name: "webpack中文教程",url: "https://doc.webpack-china.org/",title: ""},
-    {name: "Vue.js教程",url: "https://cn.vuejs.org/v2/guide/installation.html",title: ""},
-    {name: "Vue.js菜鸟教程",url: "http://www.runoob.com/vue2/vue-tutorial.html",title: ""},
-    {name: "Vuex教程",url: "https://vuex.vuejs.org/zh/",title: ""},
-    {name: "Vue Router",url: "https://router.vuejs.org/zh/",title: ""},
-    {name: "Axios中文说明",url: "https://www.kancloud.cn/yunye/axios/234845",title: "代替AJAX做http请求，可以用在浏览器和 node.js 中"},
-    {name: "Store.js",url: "https://www.bootcdn.cn/store.js/readme/",title: ""},
-    {name: "ElementUI教程",url: "http://element-cn.eleme.io/#/zh-CN/component/installation",title: ""},
-  ],
+  
   // 9 服务器端
   [
     {name: "Express",url: "http://www.expressjs.com.cn/",title: ""},
@@ -122,7 +128,6 @@ var data = [
   ],
   //13 博客论坛
   [
-    
     {name: "不落阁",url: "http://www.leo96.com/",title: ""},
     {name: "Zblog社区",url: "http://bbs.zblogcn.com/",title: ""},
     {name: "优秀个人博客1",url: "http://www.dpfblog.com/",title: ""},
