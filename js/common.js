@@ -9,7 +9,10 @@ var data = [
     {name: "wordpress",url: "https://cn.wordpress.org/",title: "用PHP语言开发的博客平台"},
     {name: "阿里云",url: "https://home.console.aliyun.com/new#/",title: ""},
     {name: "Patreon",url: "https://www.patreon.com/",title: ""},
+    {name: "星座网",url: "http://www.xzw.com/",title: ""},
+    
   ],
+ 
    // 2 前端学习
    [
     {name: "W3Cschool",url: "https://www.w3cschool.cn/",title: ""},
@@ -112,11 +115,13 @@ var data = [
   // 11 个人建站
   [ 
     
+    {name: "阿里图标库",url: "https://www.iconfont.cn",title: ""},
     {name: "百度统计",url: "https://tongji.baidu.com/web/25037646/overview/index",title: ""},
     {name: "代码高亮",url: "http://www.592lvyou.com/?page_id=13036",title: ""},
     {name: "制作网站logo",url: "http://www.logomaker.com.cn/",title: ""},
     {name: "制作网站ico图标",url: "http://www.bitbug.net/",title: ""},
     {name: "网站素材易企秀",url: "http://www.eqxiu.com/",title: "数据接口"},
+    {name: "千库网",url: "http://588ku.com/ui/0-3-default-26-0-1/",title: ""},
   ],
   // 12 案例网站
   [
