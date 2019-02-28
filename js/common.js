@@ -3,10 +3,12 @@
 var data = [
    // 1 个人收藏
   [
+    {name: "BootCDN",url: "http://www.bootcdn.cn",title: "免费的CDN加速服务"},
     {name: "GitHub",url: "https://github.com/panda-zhao",title: ""},
     {name: "前端之路",url: "http://www.zhaowy.cn",title: ""},
     {name: "博客园",url: "https://www.cnblogs.com/zhaowy/",title: ""},
     {name: "wordpress",url: "https://cn.wordpress.org/",title: "用PHP语言开发的博客平台"},
+    
     {name: "阿里云",url: "https://home.console.aliyun.com/new#/",title: ""},
     {name: "Patreon",url: "https://www.patreon.com/",title: ""},
     {name: "星座网",url: "http://www.xzw.com/",title: ""},
@@ -18,18 +20,19 @@ var data = [
    [
     {name: "W3Cschool",url: "https://www.w3cschool.cn/",title: ""},
     {name: "菜鸟教程",url: "http://www.runoob.com/",title: ""},
-    {name: "W3school",url: "http://www.w3school.com.cn/index.html",title: ""},
     {name: "CSS3参考手册",url: "http://www.css88.com/book/css/quicksearch.htm",title: ""},
     {name: "Normalize跨浏览器一致性",url: "http://necolas.github.io/normalize.css/",title: ""},
     {name: "高德开发平台",url: "http://lbs.amap.com/api/javascript-api/guide/abc/quickstart",title: ""},
     {name: "Web 前端技术图谱",url: "http://www.runoob.com/w3cnote/webfrontendstack.html",title: ""},
     {name: "前端开发面试题",url: "http://www.runoob.com/w3cnote/front-end-developer-questions-and-answers.html",title: ""},
   ],
-  // 3 JavaScript进阶
+  // 3 JavaScript教程
   [
+    {name: "W3school",url: "http://www.w3school.com.cn/index.html",title: ""},
+    {name: "JavaScript教程",url: "https://www.liaoxuefeng.com/",title: "廖雪峰写的JS教程，比较详情"},
+    {name: "ECMAScript 6 入门",url: "http://es6.ruanyifeng.com/",title: "阮一峰写的ES6入门教程"},
     {name: "javascript入门",url: "https://wangdoc.com/javascript/basic/introduction.html",title: ""},
     {name: "JavaScript 标准参考教程（alpha）",url: "http://javascript.ruanyifeng.com/",title: ""},
-    {name: "ECMAScript 6",url: "http://es6.ruanyifeng.com/#docs/intro",title: ""},
     {name: "MDN web docs",url: "https://developer.mozilla.org/zh-CN/",title: ""},
   ],
   // react项目
@@ -48,25 +51,34 @@ var data = [
     {name: "Store.js",url: "https://www.bootcdn.cn/store.js/readme/",title: ""},
     {name: "ElementUI教程",url: "http://element-cn.eleme.io/#/zh-CN/component/installation",title: ""},
   ],
-  // 4 前端框架
+  // 4 前端框架-web端
   [
-    {name: "BootCDN",url: "http://www.bootcdn.cn",title: "免费的CDN加速服务"},
-    {name: "jquery",url: "http://jquery.cuishifeng.cn/",title: "jQuery API 3.3.1 速查表"},
-    {name: "Bootstrap3",url: "https://v3.bootcss.com/css/",title: ""},
-    {name: "layui",url: "http://www.layui.com",title: "经典模块化前端UI框架"},
-    {name: "Amaze UI",url: "http://amazeui.org/getting-started?_ver=2.x",title: "CSS框架"},
-	  {name: "MUI",url: "http://dev.dcloud.net.cn/mui/",title: "最接近原生APP体验的高性能前端框架"},
     {name: "font awesome 4.7.0",url: "https://fontawesome.com/v4.7.0/icons/",title: ""},
+    {name: "jquery",url: "http://jquery.cuishifeng.cn/",title: "jQuery API 3.3.1 速查表"},
+
+    
+    {name: "Bootstrap3",url: "https://v3.bootcss.com/css/",title: "UI库,包含WeUI官方的CSS组件"},
+    {name: "Bootstrap Flat UI",url: "http://www.layui.com",title: "Metro(扁平)风格的UI库"},
+    {name: "layui",url: "http://www.layui.com",title: "经典模块化前端UI框架"},
+    {name: "Amaze UI",url: "http://amazeui.org/getting-started?_ver=2.x",title: "Amaze UI是一个轻量级移动端优先的前端框架"},
+    {name: "MUI",url: "http://dev.dcloud.net.cn/mui/",title: "最接近原生APP体验的高性能前端框架"},
+    
+    {name: "jQuery WeUI",url: "http://jqweui.com/",title: "专为微信公众账号开发而设计的一个简洁而强大的UI库"},
+    {name: "VUX",url: "https://vux.li",title: "一个凑合的 Vue.js 移动端 UI 组件库"},
+    {name: "Framework7",url: "http://framework7.io/",title: "用于构建iOS和Android应用程序的精美的移动端UI框架"},
+
     {name: "datatables",url: "http://www.datatables.club/",title: "表格插件"},
     {name: "Echarts",url: "http://echarts.baidu.com/download.html",title: "图表插件"},
     {name: "swiper4",url: "https://www.swiper.com.cn/",title: "轮播图插件"},
-    {name: "jQuery UI",url: "http://jqueryui.com/themeroller/",title: ""},
     {name: "百度分享插件",url: "http://share.baidu.com/code",title: ""},
   ],
+
+
   // 5 项目管理工具
   [
     {name: "GitHub",url: "https://github.com/panda-zhao",title: ""},
     {name: "Git",url: "https://git-scm.com/",title: "目前世界上最先进的分布式版本控制系统（没有之一）。"},
+
     {name: "TortoiseSVN",url: "https://tortoisesvn.net/downloads.html",title: "一个 Windows 下的版本控制系统 Apache™ Subversion® 的客户端工具。"},
     {name: "Bugclose",url: "https://www.bugclose.com/index.html",title: "项目管理工具"},
     {name: "图片压缩",url: "https://tinypng.com/",title: "tinypng图片压缩"},
@@ -86,12 +98,17 @@ var data = [
     {name: "CAN I USE?",url: "https://caniuse.com/",title: ""},
     {name: "jshint语法检查",url: "http://jshint.com/",title: ""},
   ],
+
+
+
   // 7 小程序开发
   [
     {name: "微信小程序设计规范",url: "https://developers.weixin.qq.com/miniprogram/design/index.html",title: "微信小程序设计规范"},
     {name: "微信小程序API",url: "https://developers.weixin.qq.com/miniprogram/dev/api/",title: "微信小程序API"},
     {name: "微信公众平台",url: "https://mp.weixin.qq.com/",title: "服务号，订阅号，小程序等账号管理"},
     {name: "微信商户平台",url: "https://pay.weixin.qq.com/index.php/core/home/login?return_url=%2F",title: "微信商户平台"},
+    {name: "weui",url: "https://github.com/Tencent/weui",title: "微信基础样式库"},
+    
     {name: "百度小程序",url: "https://smartprogram.baidu.com/mappconsole/main/login",title: "百度小程序"},
   ],
   
@@ -136,6 +153,10 @@ var data = [
   ],
   //13 博客论坛
   [
+    {name: "囧克斯的博客",url: "http://jiongks.name",title: "" },
+    {name: "阮一峰的博客",url: "http://www.ruanyifeng.com",title: "" },
+    {name: "张鑫旭的博客",url: "http://www.zhangxinxu.com/wordpress",title: "" },
+    {name: "前端开发月报",url: "http://jsfront.org/month/2017/201704.htm",title: "" },
     {name: "不落阁",url: "http://www.leo96.com/",title: ""},
     {name: "Zblog社区",url: "http://bbs.zblogcn.com/",title: ""},
     {name: "优秀个人博客1",url: "http://www.dpfblog.com/",title: ""},
