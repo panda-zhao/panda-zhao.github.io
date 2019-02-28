@@ -52,7 +52,8 @@ var data = [
   [
     {name: "BootCDN",url: "http://www.bootcdn.cn",title: "免费的CDN加速服务"},
     {name: "jquery",url: "http://jquery.cuishifeng.cn/",title: "jQuery API 3.3.1 速查表"},
-    {name: "Bootstrap3",url: "https://v3.bootcss.com/css/",title: ""},
+    {name: "jQuery WeUI",url: "http://jqweui.com/",title: "jQuery API 3.3.1 速查表"},
+    {name: "Bootstrap3",url: "https://v3.bootcss.com/css/",title: "UI库,包含WeUI官方的CSS组件"},
     {name: "layui",url: "http://www.layui.com",title: "经典模块化前端UI框架"},
     {name: "Amaze UI",url: "http://amazeui.org/getting-started?_ver=2.x",title: "CSS框架"},
 	  {name: "MUI",url: "http://dev.dcloud.net.cn/mui/",title: "最接近原生APP体验的高性能前端框架"},
@@ -92,6 +93,8 @@ var data = [
     {name: "微信小程序API",url: "https://developers.weixin.qq.com/miniprogram/dev/api/",title: "微信小程序API"},
     {name: "微信公众平台",url: "https://mp.weixin.qq.com/",title: "服务号，订阅号，小程序等账号管理"},
     {name: "微信商户平台",url: "https://pay.weixin.qq.com/index.php/core/home/login?return_url=%2F",title: "微信商户平台"},
+    {name: "weui",url: "https://github.com/Tencent/weui",title: "微信基础样式库"},
+    
     {name: "百度小程序",url: "https://smartprogram.baidu.com/mappconsole/main/login",title: "百度小程序"},
   ],
   
