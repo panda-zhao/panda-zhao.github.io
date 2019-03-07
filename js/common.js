@@ -55,22 +55,13 @@ var data = [
   [
     {name: "font awesome 4.7.0",url: "https://fontawesome.com/v4.7.0/icons/",title: ""},
     {name: "jquery",url: "http://jquery.cuishifeng.cn/",title: "jQuery API 3.3.1 速查表"},
-<<<<<<< HEAD
-
-    
     {name: "Bootstrap3",url: "https://v3.bootcss.com/css/",title: "UI库,包含WeUI官方的CSS组件"},
     {name: "Bootstrap Flat UI",url: "http://www.layui.com",title: "Metro(扁平)风格的UI库"},
-=======
-    {name: "jQuery WeUI",url: "http://jqweui.com/",title: "jQuery API 3.3.1 速查表"},
-    {name: "Bootstrap3",url: "https://v3.bootcss.com/css/",title: "UI库,包含WeUI官方的CSS组件"},
->>>>>>> 154c7588635c1af1b51e85fdf4d6392feeb78af5
     {name: "layui",url: "http://www.layui.com",title: "经典模块化前端UI框架"},
-    {name: "Amaze UI",url: "http://amazeui.org/getting-started?_ver=2.x",title: "Amaze UI是一个轻量级移动端优先的前端框架"},
-    {name: "MUI",url: "http://dev.dcloud.net.cn/mui/",title: "最接近原生APP体验的高性能前端框架"},
-    
+    {name: "Framework7",url: "http://framework7.io/",title: "用于构建iOS和Android应用程序的精美的移动端UI框架"},
     {name: "jQuery WeUI",url: "http://jqweui.com/",title: "专为微信公众账号开发而设计的一个简洁而强大的UI库"},
     {name: "VUX",url: "https://vux.li",title: "一个凑合的 Vue.js 移动端 UI 组件库"},
-    {name: "Framework7",url: "http://framework7.io/",title: "用于构建iOS和Android应用程序的精美的移动端UI框架"},
+    
 
     {name: "datatables",url: "http://www.datatables.club/",title: "表格插件"},
     {name: "Echarts",url: "http://echarts.baidu.com/download.html",title: "图表插件"},
