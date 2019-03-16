@@ -61,7 +61,6 @@ var data = [
     {name: "Framework7",url: "http://framework7.io/",title: "用于构建iOS和Android应用程序的精美的移动端UI框架"},
     {name: "jQuery WeUI",url: "http://jqweui.com/",title: "专为微信公众账号开发而设计的一个简洁而强大的UI库"},
     {name: "VUX",url: "https://vux.li",title: "一个凑合的 Vue.js 移动端 UI 组件库"},
-    
 
     {name: "datatables",url: "http://www.datatables.club/",title: "表格插件"},
     {name: "Echarts",url: "http://echarts.baidu.com/download.html",title: "图表插件"},
