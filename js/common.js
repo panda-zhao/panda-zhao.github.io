@@ -8,7 +8,6 @@ var data = [
     {name: "前端之路",url: "http://www.zhaowy.cn",title: ""},
     {name: "博客园",url: "https://www.cnblogs.com/zhaowy/",title: ""},
     {name: "wordpress",url: "https://cn.wordpress.org/",title: "用PHP语言开发的博客平台"},
-    
     {name: "阿里云",url: "https://home.console.aliyun.com/new#/",title: ""},
     {name: "Patreon",url: "https://www.patreon.com/",title: ""},
     {name: "星座网",url: "http://www.xzw.com/",title: ""},
@@ -18,50 +17,49 @@ var data = [
  
    // 2 前端学习
    [
+    {name: "W3school",url: "http://www.w3school.com.cn/index.html",title: ""},
     {name: "W3Cschool",url: "https://www.w3cschool.cn/",title: ""},
     {name: "菜鸟教程",url: "http://www.runoob.com/",title: ""},
     {name: "CSS3参考手册",url: "http://www.css88.com/book/css/quicksearch.htm",title: ""},
     {name: "Normalize跨浏览器一致性",url: "http://necolas.github.io/normalize.css/",title: ""},
-    {name: "高德开发平台",url: "http://lbs.amap.com/api/javascript-api/guide/abc/quickstart",title: ""},
     {name: "Web 前端技术图谱",url: "http://www.runoob.com/w3cnote/webfrontendstack.html",title: ""},
-    {name: "前端开发面试题",url: "http://www.runoob.com/w3cnote/front-end-developer-questions-and-answers.html",title: ""},
   ],
   // 3 JavaScript教程
   [
-    {name: "W3school",url: "http://www.w3school.com.cn/index.html",title: ""},
     {name: "JavaScript教程",url: "https://www.liaoxuefeng.com/",title: "廖雪峰写的JS教程，比较详情"},
-    {name: "ECMAScript 6 入门",url: "http://es6.ruanyifeng.com/",title: "阮一峰写的ES6入门教程"},
     {name: "javascript入门",url: "https://wangdoc.com/javascript/basic/introduction.html",title: ""},
     {name: "JavaScript 标准参考教程（alpha）",url: "http://javascript.ruanyifeng.com/",title: ""},
+    {name: "jquery",url: "http://jquery.cuishifeng.cn/",title: "jQuery API 3.3.1 速查表"},
+    {name: "zepto.js",url: "https://www.html.cn/doc/zeptojs_api/",title: "移动端jquery"},
+    {name: "ECMAScript 6 入门",url: "http://es6.ruanyifeng.com/",title: "阮一峰写的ES6入门教程"},
     {name: "MDN web docs",url: "https://developer.mozilla.org/zh-CN/",title: ""},
   ],
-  // react项目
+  
+
+  // 4 vue.js项目
+  [
+    {name: "webpack中文教程",url: "https://doc.webpack-china.org/",title: ""},
+    {name: "Vue.js",url: "https://cn.vuejs.org/v2/guide/installation.html",title: ""},
+    {name: "Vue Router",url: "https://router.vuejs.org/zh/",title: ""},
+    {name: "Vuex教程",url: "https://vuex.vuejs.org/zh/",title: ""},
+    {name: "Axios中文说明",url: "https://www.kancloud.cn/yunye/axios/234845",title: "代替AJAX做http请求，可以用在浏览器和 node.js 中"},
+
+    {name: "ElementUI教程",url: "http://element-cn.eleme.io/#/zh-CN/component/installation",title: ""},
+    {name: "VUX",url: "https://vux.li",title: "一个凑合的 Vue.js 移动端 UI 组件库"},
+  ],
+  // 5 react项目
   [
     {name: "React",url: "https://reactjs.org/",title: "用于创建可重用且有吸引力的UI组件的库"},
     {name: "React Native中文网",url: "https://reactnative.cn/",title:"使用JavaScript编写移动应用"},
   ],
-  // 8 vue.js项目
-  [
-    {name: "webpack中文教程",url: "https://doc.webpack-china.org/",title: ""},
-    {name: "Vue.js教程",url: "https://cn.vuejs.org/v2/guide/installation.html",title: ""},
-    {name: "Vue.js菜鸟教程",url: "http://www.runoob.com/vue2/vue-tutorial.html",title: ""},
-    {name: "Vuex教程",url: "https://vuex.vuejs.org/zh/",title: ""},
-    {name: "Vue Router",url: "https://router.vuejs.org/zh/",title: ""},
-    {name: "Axios中文说明",url: "https://www.kancloud.cn/yunye/axios/234845",title: "代替AJAX做http请求，可以用在浏览器和 node.js 中"},
-    {name: "Store.js",url: "https://www.bootcdn.cn/store.js/readme/",title: ""},
-    {name: "ElementUI教程",url: "http://element-cn.eleme.io/#/zh-CN/component/installation",title: ""},
-  ],
-  // 4 前端框架-web端
+  // 6 前端框架-web端
   [
     {name: "font awesome 4.7.0",url: "https://fontawesome.com/v4.7.0/icons/",title: ""},
-    {name: "jquery",url: "http://jquery.cuishifeng.cn/",title: "jQuery API 3.3.1 速查表"},
     {name: "Bootstrap3",url: "https://v3.bootcss.com/css/",title: "UI库,包含WeUI官方的CSS组件"},
     {name: "Bootstrap Flat UI",url: "http://www.layui.com",title: "Metro(扁平)风格的UI库"},
     {name: "layui",url: "http://www.layui.com",title: "经典模块化前端UI框架"},
     {name: "Framework7",url: "http://framework7.io/",title: "用于构建iOS和Android应用程序的精美的移动端UI框架"},
     {name: "jQuery WeUI",url: "http://jqweui.com/",title: "专为微信公众账号开发而设计的一个简洁而强大的UI库"},
-    {name: "VUX",url: "https://vux.li",title: "一个凑合的 Vue.js 移动端 UI 组件库"},
-
     {name: "datatables",url: "http://www.datatables.club/",title: "表格插件"},
     {name: "Echarts",url: "http://echarts.baidu.com/download.html",title: "图表插件"},
     {name: "swiper4",url: "https://www.swiper.com.cn/",title: "轮播图插件"},
@@ -69,31 +67,7 @@ var data = [
   ],
 
 
-  // 5 项目管理工具
-  [
-    {name: "GitHub",url: "https://github.com/panda-zhao",title: ""},
-    {name: "Git",url: "https://git-scm.com/",title: "目前世界上最先进的分布式版本控制系统（没有之一）。"},
-
-    {name: "TortoiseSVN",url: "https://tortoisesvn.net/downloads.html",title: "一个 Windows 下的版本控制系统 Apache™ Subversion® 的客户端工具。"},
-    {name: "Bugclose",url: "https://www.bugclose.com/index.html",title: "项目管理工具"},
-    {name: "图片压缩",url: "https://tinypng.com/",title: "tinypng图片压缩"},
-    {name: "坚果云",url: "https://www.jianguoyun.com/",title: ""},
-  ],
-  // 6 前端工具
-  [
-    {name: "脚本之家在线工具",url: "http://tools.jb51.net/",title: ""},
-    {name: "雪碧图合成",url: "https://www.toptal.com/developers/css/sprite-generator",title: ""},
-    {name: "七牛云",url: "https://www.qiniu.com/",title: ""},
-    {name: "全聚合",url: "https://www.juhe.cn/",title: "数据接口"},
-    {name: "在线文本比较工具",url: "http://www.jq22.com/textDifference",title: ""},
-    {name: "百度思维导图",url: "http://naotu.baidu.com/home",title: ""},
-    {name: "jsfiddle",url: "https://jsfiddle.net/",title: "在线编辑器"},
-    {name: "HTML代码转义和解码",url: "https://c.runoob.com/front-end/691",title: ""},
-    {name: "CSS3代码生产器",url: "http://www.css3maker.com/index.html#",title: ""},
-    {name: "CAN I USE?",url: "https://caniuse.com/",title: ""},
-    {name: "jshint语法检查",url: "http://jshint.com/",title: ""},
-  ],
-
+  
 
 
   // 7 小程序开发
@@ -107,27 +81,51 @@ var data = [
     {name: "百度小程序",url: "https://smartprogram.baidu.com/mappconsole/main/login",title: "百度小程序"},
   ],
   
-  
-  // 9 服务器端
+  // 8 服务器端
   [
-    {name: "Express",url: "http://www.expressjs.com.cn/",title: ""},
     {name: "Node.js 中文网",url: "http://nodejs.cn/api/",title: ""},
     {name: "node.js教程",url: "http://www.runoob.com/nodejs/nodejs-tutorial.html",title: ""},
+    {name: "Express",url: "http://www.expressjs.com.cn/",title: ""},
+
     {name: "淘宝npm镜像",url: "http://npm.taobao.org/",title: ""},
     {name: "nodemailer",url: "https://nodemailer.com/about/",title: "nodeJs发送邮件模块"},
     {name: "multer",url: "https://github.com/expressjs/multer",title: "文件上传模块"},
-    
   ],
-  //10 数据库
+  //9 数据库
   [
-    
     {name: "mysql",url: "http://www.runoob.com/mysql/mysql-tutorial.html",title: "关系型数据库" },
     {name: "postgresDB",url: "https://node-postgres.com/",title: "关系型数据库" },
     {name: "redis",url: "http://www.redis.cn/download.html",title: "key-value存储系统"},
     {name: "mongodb",url: "http://www.runoob.com/mongodb/mongodb-update.html",title: "基于分布式文件存储的数据库"},
     
   ],
-  // 11 个人建站
+
+  // 10 项目管理工具
+  [
+    {name: "GitHub",url: "https://github.com/panda-zhao",title: ""},
+    {name: "Git",url: "https://git-scm.com/",title: "目前世界上最先进的分布式版本控制系统（没有之一）。"},
+    {name: "TortoiseSVN",url: "https://tortoisesvn.net/downloads.html",title: "一个 Windows 下的版本控制系统 Apache™ Subversion® 的客户端工具。"},
+    {name: "Bugclose",url: "https://www.bugclose.com/index.html",title: "项目管理工具"},
+    {name: "图片压缩",url: "https://tinypng.com/",title: "tinypng图片压缩"},
+    {name: "坚果云",url: "https://www.jianguoyun.com/",title: ""},
+  ],
+
+
+  // 1 前端工具
+  [
+    {name: "脚本之家在线工具",url: "http://tools.jb51.net/",title: ""},
+    {name: "雪碧图合成",url: "https://www.toptal.com/developers/css/sprite-generator",title: ""},
+    {name: "七牛云",url: "https://www.qiniu.com/",title: ""},
+    {name: "全聚合",url: "https://www.juhe.cn/",title: "数据接口"},
+    {name: "在线文本比较工具",url: "http://www.jq22.com/textDifference",title: ""},
+    {name: "百度思维导图",url: "http://naotu.baidu.com/home",title: ""},
+    {name: "jsfiddle",url: "https://jsfiddle.net/",title: "在线编辑器"},
+    {name: "HTML代码转义和解码",url: "https://c.runoob.com/front-end/691",title: ""},
+    {name: "CSS3代码生产器",url: "http://www.css3maker.com/index.html#",title: ""},
+    {name: "CAN I USE?",url: "https://caniuse.com/",title: ""},
+    {name: "jshint语法检查",url: "http://jshint.com/",title: ""},
+  ],
+  // 2 个人建站
   [ 
     
     {name: "阿里图标库",url: "https://www.iconfont.cn",title: ""},
@@ -138,7 +136,7 @@ var data = [
     {name: "网站素材易企秀",url: "http://www.eqxiu.com/",title: "数据接口"},
     {name: "千库网",url: "http://588ku.com/ui/0-3-default-26-0-1/",title: ""},
   ],
-  // 12 案例网站
+  // 3 案例网站
   [
     {name: "网易阴阳师官网",url: "https://yys.163.com",title: ""},
     {name: "天猫商城",url: "https://www.tmall.com",title: ""},
@@ -146,7 +144,7 @@ var data = [
     {name: "OPPO锤子官网",url: "http://www.coloros.com/topic/coloros3_1.html",title: ""},
     {name: "阅文集团",url: "https://www.yuewen.com/#&copyright",title: ""},
   ],
-  //13 博客论坛
+  //4 博客论坛
   [
     {name: "囧克斯的博客",url: "http://jiongks.name",title: "" },
     {name: "阮一峰的博客",url: "http://www.ruanyifeng.com",title: "" },
