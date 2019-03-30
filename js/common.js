@@ -54,15 +54,21 @@ var data = [
   ],
   // 6 前端框架-web端
   [
+    {name: "Bootstrap3 教程",url: "http://www.runoob.com/bootstrap/bootstrap-intro.html",title: "响应式开发 Web 应用程序"},
+    {name: "Bootstrap4 教程",url: "http://www.runoob.com/bootstrap4/bootstrap4-tutorial.html",title: "响应式开发 Web 应用程序"},
+    {name: "Bootstrap Flat UI",url: "https://designmodo.github.io/Flat-UI/",title: "Metro(扁平)风格的UI库"},
+    
+    {name: "swiper",url: "http://idangero.us/swiper/api/",title: "轮播图插件"},
+    {name: "swiper4",url: "https://www.swiper.com.cn/",title: "轮播图插件"},
     {name: "font awesome 4.7.0",url: "https://fontawesome.com/v4.7.0/icons/",title: ""},
-    {name: "Bootstrap3",url: "https://v3.bootcss.com/css/",title: "UI库,包含WeUI官方的CSS组件"},
-    {name: "Bootstrap Flat UI",url: "http://www.layui.com",title: "Metro(扁平)风格的UI库"},
+    
+    
     {name: "layui",url: "http://www.layui.com",title: "经典模块化前端UI框架"},
     {name: "Framework7",url: "http://framework7.io/",title: "用于构建iOS和Android应用程序的精美的移动端UI框架"},
     {name: "jQuery WeUI",url: "http://jqweui.com/",title: "专为微信公众账号开发而设计的一个简洁而强大的UI库"},
     {name: "datatables",url: "http://www.datatables.club/",title: "表格插件"},
     {name: "Echarts",url: "http://echarts.baidu.com/download.html",title: "图表插件"},
-    {name: "swiper4",url: "https://www.swiper.com.cn/",title: "轮播图插件"},
+    
     {name: "百度分享插件",url: "http://share.baidu.com/code",title: ""},
   ],
 
