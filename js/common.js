@@ -46,6 +46,9 @@ var data = [
 
     {name: "ElementUI教程",url: "http://element-cn.eleme.io/#/zh-CN/component/installation",title: ""},
     {name: "VUX",url: "https://vux.li",title: "一个凑合的 Vue.js 移动端 UI 组件库"},
+    {name: "vue开源框架",url: "https://juejin.im/post/5cba04bbf265da039444a709"},
+    {name: "构建跨平台移动应用程序",url: "https://vue-native.io/"},
+    
   ],
   // 5 react项目
   [
