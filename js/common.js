@@ -1,6 +1,32 @@
 
 
 var data = [
+   // 4 vue.js项目
+   [
+    {name: "webpack中文教程",url: "https://doc.webpack-china.org/",title: ""},
+    {name: "Vue.js",url: "https://cn.vuejs.org/v2/guide/installation.html",title: ""},
+    {name: "Vue Router",url: "https://router.vuejs.org/zh/",title: ""},
+    {name: "Vuex教程",url: "https://vuex.vuejs.org/zh/",title: ""},
+    {name: "Axios中文说明",url: "https://www.kancloud.cn/yunye/axios/234845",title: "代替AJAX做http请求，可以用在浏览器和 node.js 中"},
+    
+    {name: "ElementUI教程",url: "http://element-cn.eleme.io/#/zh-CN/component/installation",title: ""},
+    {name: "VUX",url: "https://vux.li",title: "一个凑合的 Vue.js 移动端 UI 组件库"},
+    {name: "vue开源框架",url: "https://juejin.im/post/5cba04bbf265da039444a709"},
+    {name: "vue-native",url: "https://vue-native.io/",name:'构建跨平台移动应用程序'},
+    {name: "mpvue",url: "http://mpvue.com/",title: "使用vue开发小程序"},
+    {name: "flyio",url: "https://www.npmjs.com/package/flyio",title: "支持所有JavaScript运行环境的http请求库"},
+    {name: "weixin-js-sdk",url: "https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1421141115",title: "基于微信内的网页开发工具包"},
+  ],
+   // 7 小程序开发
+   [
+    {name: "微信小程序设计规范",url: "https://developers.weixin.qq.com/miniprogram/design/index.html",title: "微信小程序设计规范"},
+    {name: "微信小程序API",url: "https://developers.weixin.qq.com/miniprogram/dev/api/",title: "微信小程序API"},
+    {name: "微信公众平台",url: "https://mp.weixin.qq.com/",title: "服务号，订阅号，小程序等账号管理"},
+    {name: "微信商户平台",url: "https://pay.weixin.qq.com/index.php/core/home/login?return_url=%2F",title: "微信商户平台"},
+    {name: "weui",url: "https://github.com/Tencent/weui",title: "微信基础样式库"},
+    
+    {name: "百度小程序",url: "https://smartprogram.baidu.com/mappconsole/main/login",title: "百度小程序"},
+  ],
    // 1 个人收藏
   [
     {name: "BootCDN",url: "http://www.bootcdn.cn",title: "免费的CDN加速服务"},
@@ -35,21 +61,6 @@ var data = [
     {name: "MDN web docs",url: "https://developer.mozilla.org/zh-CN/",title: ""},
   ],
   
-
-  // 4 vue.js项目
-  [
-    {name: "webpack中文教程",url: "https://doc.webpack-china.org/",title: ""},
-    {name: "Vue.js",url: "https://cn.vuejs.org/v2/guide/installation.html",title: ""},
-    {name: "Vue Router",url: "https://router.vuejs.org/zh/",title: ""},
-    {name: "Vuex教程",url: "https://vuex.vuejs.org/zh/",title: ""},
-    {name: "Axios中文说明",url: "https://www.kancloud.cn/yunye/axios/234845",title: "代替AJAX做http请求，可以用在浏览器和 node.js 中"},
-
-    {name: "ElementUI教程",url: "http://element-cn.eleme.io/#/zh-CN/component/installation",title: ""},
-    {name: "VUX",url: "https://vux.li",title: "一个凑合的 Vue.js 移动端 UI 组件库"},
-    {name: "vue开源框架",url: "https://juejin.im/post/5cba04bbf265da039444a709"},
-    {name: "构建跨平台移动应用程序",url: "https://vue-native.io/"},
-    
-  ],
   // 5 react项目
   [
     {name: "React",url: "https://reactjs.org/",title: "用于创建可重用且有吸引力的UI组件的库"},
@@ -79,16 +90,7 @@ var data = [
   
 
 
-  // 7 小程序开发
-  [
-    {name: "微信小程序设计规范",url: "https://developers.weixin.qq.com/miniprogram/design/index.html",title: "微信小程序设计规范"},
-    {name: "微信小程序API",url: "https://developers.weixin.qq.com/miniprogram/dev/api/",title: "微信小程序API"},
-    {name: "微信公众平台",url: "https://mp.weixin.qq.com/",title: "服务号，订阅号，小程序等账号管理"},
-    {name: "微信商户平台",url: "https://pay.weixin.qq.com/index.php/core/home/login?return_url=%2F",title: "微信商户平台"},
-    {name: "weui",url: "https://github.com/Tencent/weui",title: "微信基础样式库"},
-    
-    {name: "百度小程序",url: "https://smartprogram.baidu.com/mappconsole/main/login",title: "百度小程序"},
-  ],
+ 
   
   // 8 服务器端
   [
