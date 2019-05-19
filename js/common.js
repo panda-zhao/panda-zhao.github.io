@@ -14,7 +14,7 @@ var data = [
     {name: "vue开源框架",url: "https://juejin.im/post/5cba04bbf265da039444a709"},
     {name: "vue-native",url: "https://vue-native.io/",name:'构建跨平台移动应用程序'},
     {name: "mpvue",url: "http://mpvue.com/",title: "使用vue开发小程序"},
-    {name: "flyio",url: "https://www.npmjs.com/package/flyio",title: "支持所有JavaScript运行环境的http请求库"},
+    {name: "flyio",url: "https://wendux.github.io/dist/#/doc/flyio/readme",title: "支持所有JavaScript运行环境的http请求库"},
     {name: "weixin-js-sdk",url: "https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1421141115",title: "基于微信内的网页开发工具包"},
   ],
    // 2 小程序开发
