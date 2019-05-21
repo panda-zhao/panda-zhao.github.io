@@ -12,8 +12,8 @@ var data = [
     {name: "ElementUI教程",url: "http://element-cn.eleme.io/#/zh-CN/component/installation",title: ""},
     {name: "VUX",url: "https://vux.li",title: "一个凑合的 Vue.js 移动端 UI 组件库"},
     {name: "vue开源框架",url: "https://juejin.im/post/5cba04bbf265da039444a709"},
-    {name: "vue-native",url: "https://vue-native.io/",name:'构建跨平台移动应用程序'},
-    {name: "mpvue",url: "http://mpvue.com/",title: "使用vue开发小程序"},
+    {name: "vue-native",url: "https://vue-native.io/",title:'构建跨平台移动应用程序'},
+    
     {name: "flyio",url: "https://wendux.github.io/dist/#/doc/flyio/readme",title: "支持所有JavaScript运行环境的http请求库"},
     {name: "weixin-js-sdk",url: "https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1421141115",title: "基于微信内的网页开发工具包"},
   ],
@@ -25,7 +25,7 @@ var data = [
     {name: "微信商户平台",url: "https://pay.weixin.qq.com/index.php/core/home/login?return_url=%2F",title: "微信商户平台"},
     {name: "小程序组件使用demo",url: "https://github.com/Tencent/weui",title: "微信小程序组件 / API / 云开发示例"},
     {name: "weui",url: "https://github.com/Tencent/weui",title: "微信基础样式库"},
-    
+    {name: "mpvue",url: "https://github.com/Meituan-Dianping/mpvue",title: "使用vue开发小程序"},
     {name: "百度小程序",url: "https://smartprogram.baidu.com/mappconsole/main/login",title: "百度小程序"},
   ],
    // 1 个人收藏
