@@ -19,69 +19,24 @@
 <body>
   <h2>console的使用方法</h2>
   <div class="container">
-    <div class="row">
-      <div class="col-6">console.log</div>
-      <div class="col-6">用于输出普通信息</div>
-    </div>
-    <div class="row">
-      <div class="col-6">console.info</div>
-      <div class="col-6">用于输出提示性信息</div>
-    </div>
-    <div class="row">
-      <div class="col-6">console.error</div>
-      <div class="col-6">用于输出错误信息</div>
-    </div>
-
-    <div class="row">
-      <div class="col-6">console.warn</div>
-      <div class="col-6">用于输出警示信息</div>
-    </div>
-
-    <div class="row">
-      <div class="col-6">console.debug</div>
-      <div class="col-6">用于输出调试信息</div>
-    </div>
-
-    <div class="row">
-      <div class="col-6">console.count</div>
-      <div class="col-6">统计代码被执行的次数</div>
-    </div>
-    <div class="row">
-      <div class="col-6">console.dir</div>
-      <div class="col-6">将对象以DOM树的解构输出</div>
-    </div>
-    <div class="row">
-      <div class="col-6">console.group和console.groupEnd</div>
-      <div class="col-6">输出一组信息的开头和输出结束一组输出信息</div>
-    </div>
+    <div class="row">console.log 用于输出普通信息</div>
+    <div class="row">console.info 用于输出提示性信息</div>
+    <div class="row">console.error 用于输出错误信息</div>
+    <div class="row">console.warn 用于输出警示信息</div>
+    <div class="row">console.debug 用于输出调试信息</div>
+    <div class="row">console.count 统计代码被执行的次数</div>
+    <div class="row">console.dir 将对象以DOM树的解构输出</div>
+    <div class="row">console.group和console.groupEnd 输出一组信息的开头和输出结束一组输出信息</div>
   </div>
 
   <h2>占位符</h2>
   <div class="container">
-    <div class="row">
-      <div class="col-6">%s</div>
-      <div class="col-6">格式化成字符串输出</div>
-    </div>
-    <div class="row">
-      <div class="col-6">%d or %i</div>
-      <div class="col-6">格式化成数值输出</div>
-    </div>
-    <div class="row">
-      <div class="col-6">%f</div>
-      <div class="col-6">格式化成浮点数输出</div>
-    </div>
-    <div class="row">
-      <div class="col-6">%o</div>
-      <div class="col-6">转化成展开的DOM元素输出</div>
-    </div>
-    <div class="row">
-      <div class="col-6">%O</div>
-      <div class="col-6">转化成JavaScript对象输出</div>
-    </div>
-    <div class="row">
-      <div class="col-6">%c</div>
-      <div class="col-6">把字符串按照你提供的样式格式化后输入</div>
-    </div>
+    <div class="row"> %s 格式化成字符串输出 </div>
+    <div class="row"> %d or %i 格式化成数值输出 </div>
+    <div class="row"> %f 格式化成浮点数输出 </div>
+    <div class="row"> %o 转化成展开的DOM元素输出</div>
+    <div class="row"> %O 转化成JavaScript对象输出</div>
+    <div class="row"> %c 把字符串按照你提供的样式格式化后输入</div>
   </div>
   <script>
     console.group('====== 有以下几种打印方法  ======')
