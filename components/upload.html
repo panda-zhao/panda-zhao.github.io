@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>上传文件测试</title>
+  <style>
+    #picture-card {
+      display: block;
+      width: 178px;
+      height: 178px;
+      border: 1px dashed #ccc;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+    #previewImage {
+      display: none;
+      width: 178px;
+      height: 178px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>图片上传</h1>
+  <input type="file" id="fileElem" multiple accept="image/*" style="display:none" onchange="handleFiles(this.files)">
+  <a href="#" id="fileSelect">选择图片</a>
+  <div id="fileList">
+    <p>当前未选择文件</p>
+  </div>
+  <!-- <div>
+
+    <label for="fileElem" id="picture-card">
+      <input type="file" id="fileElem" multiple accept="image/*" onchange="chooseImage()" hidden/>
+      <img src="" alt="暂无图片" id="previewImage">
+    </label>
+  </div> -->
+  <script>
+    const fileSelect = document.getElementById("fileSelect"),
+    fileElem = document.getElementById("fileElem"),
+    fileList = document.getElementById("fileList");
+    fileSelect.addEventListener("click", function (e) {
+      if (fileElem) {
+        fileElem.click();
+      }
+      e.preventDefault(); // prevent navigation to "#"
+    }, false);
+
+    function handleFiles(files) {
+      if (!files.length) {
+        fileList.innerHTML = "<p>当前未选择文件</p>";
+      } else {
+        fileList.innerHTML = "";
+        const list = document.createElement("ul");
+        fileList.appendChild(list);
+        for (let i = 0; i < files.length; i++) {
+          const li = document.createElement("li");
+          list.appendChild(li);
+          
+          const img = document.createElement("img");
+          img.src = window.URL.createObjectURL(files[i]);
+          img.height = 60;
+          img.onload = function() {
+            window.URL.revokeObjectURL(this.src);
+          }
+          li.appendChild(img);
+          const info = document.createElement("span");
+          info.innerHTML = files[i].name + ": " + files[i].size + " bytes";
+          li.appendChild(info);
+        }
+      }
+    }
+    
+    // 使用FileReader转换预览图
+    // function handleFiles(files) {
+    //   for (let i = 0; i < files.length; i++) {
+    //     const file = files[i];
+        
+    //     if (!file.type.startsWith('image/')){ continue }//不是图片 就跳出这一次循环 
+    //     // if (!(/^image\/.*$/i.test(files[i].type))) {
+    //     //   continue; 
+    //     // }
+    //     const img = document.createElement("img");
+    //     img.classList.add("obj");
+    //     img.file = file;
+    //     fileList.appendChild(img); // preview
+        
+    //     const reader = new FileReader();// 将文件转换为base64本地预览
+    //     reader.onload = (function(aImg) { return function(e) { aImg.src = e.target.result; }; })(img);
+    //     reader.readAsDataURL(file);
+    //   }
+
+    //   var files = fileElem.files || []
+    //   console.log('1：上传的文件对象=', files) // 上传的文件对象数组
+
+    //   if (!files.length || !window.FileReader) {
+    //     console.log("您的浏览器不支持图片上传，请升级您的浏览器");
+    //     return
+    //   }
+    // }
+
+    // 上传文件到服务器
+    function upload(files) {
+      var formData = new FormData() // 1-创建formData对象
+      for (var i = 0; i < files.length; i++) {
+        console.log('遍历文件对象')
+        formData.append('file', files[i]) // 2-把文件对象插入formData
+      }
+      console.log('文件对象', formData)
+      // Ajax
+      // var request = new XMLHttpRequest();
+      // request.open("POST", "http://localhost:1000/upload");
+      // request.send(formData);
+      // request.onreadystatechange = function () {
+      //   if (request.readyState === 4 & request.status === 200) {
+      //     console.log("上传成功");
+      //     var response = JSON.parse(request.responseText);
+      //     console.log(response);
+      //   }
+      // }
+    }
+  </script>
+
+</body>
+
+</html>

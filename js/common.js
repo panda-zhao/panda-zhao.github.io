@@ -1,6 +1,7 @@
-
-
 var data = [
+  [
+    {name: "上传图片",url: "./components/upload.html",title: "上传图片"},
+  ],
    // 1 vue.js项目
    [
     {name: "webpack中文教程",url: "https://doc.webpack-china.org/",title: ""},
