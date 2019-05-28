@@ -1,6 +1,7 @@
 var data = [
   [
     {name: "上传图片",url: "./components/upload.html",title: "上传图片"},
+    {name: "console的正确使用",url: "./components/console.html",title: "console的使用"},
   ],
    // 1 vue.js项目
    [

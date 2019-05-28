@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./css/wy.css">
+  <title>测试console使用</title>
+  <style>
+      .col-6{
+        text-align: center;
+        padding: 10px 0;
+        border: 1px solid #ccc;
+      }
+  </style>
+</head>
+
+<body>
+  <h2>console的使用方法</h2>
+  <div class="container">
+    <div class="row">
+      <div class="col-6">console.log</div>
+      <div class="col-6">用于输出普通信息</div>
+    </div>
+    <div class="row">
+      <div class="col-6">console.info</div>
+      <div class="col-6">用于输出提示性信息</div>
+    </div>
+    <div class="row">
+      <div class="col-6">console.error</div>
+      <div class="col-6">用于输出错误信息</div>
+    </div>
+
+    <div class="row">
+      <div class="col-6">console.warn</div>
+      <div class="col-6">用于输出警示信息</div>
+    </div>
+
+    <div class="row">
+      <div class="col-6">console.debug</div>
+      <div class="col-6">用于输出调试信息</div>
+    </div>
+
+    <div class="row">
+      <div class="col-6">console.count</div>
+      <div class="col-6">统计代码被执行的次数</div>
+    </div>
+    <div class="row">
+      <div class="col-6">console.dir</div>
+      <div class="col-6">将对象以DOM树的解构输出</div>
+    </div>
+    <div class="row">
+      <div class="col-6">console.group和console.groupEnd</div>
+      <div class="col-6">输出一组信息的开头和输出结束一组输出信息</div>
+    </div>
+  </div>
+
+  <h2>占位符</h2>
+  <div class="container">
+    <div class="row">
+      <div class="col-6">%s</div>
+      <div class="col-6">格式化成字符串输出</div>
+    </div>
+    <div class="row">
+      <div class="col-6">%d or %i</div>
+      <div class="col-6">格式化成数值输出</div>
+    </div>
+    <div class="row">
+      <div class="col-6">%f</div>
+      <div class="col-6">格式化成浮点数输出</div>
+    </div>
+    <div class="row">
+      <div class="col-6">%o</div>
+      <div class="col-6">转化成展开的DOM元素输出</div>
+    </div>
+    <div class="row">
+      <div class="col-6">%O</div>
+      <div class="col-6">转化成JavaScript对象输出</div>
+    </div>
+    <div class="row">
+      <div class="col-6">%c</div>
+      <div class="col-6">把字符串按照你提供的样式格式化后输入</div>
+    </div>
+  </div>
+  <script>
+    console.group('====== 有以下几种打印方法  ======')
+    console.log('这是log')
+    console.info('这是info', '用于输出提示性信息')
+    console.error('这是error', '用于输出错误信息')
+    console.warn('这是warn', '用于输出警示信息')
+    console.debug('这是debug', '用于输出警示信息')
+    console.count('这是count', '统计代码被执行的次数')
+
+    console.dir('这是dir', '将对象以DOM树的解构输出')
+
+    console.group('====== 这是group  ======')
+
+    console.log("第一组第一条");　　
+    console.log("第一组第二条");
+    console.groupEnd()
+
+    console.group('====== 有以下几种占位符  ======')
+    console.log("%c%s", "color:red", "格式化成字符串输出")
+    console.log("%d年%d月%d日", 2011, 3, 26)
+    console.log(
+      '%c渐变文字',
+      'background-image:-webkit-gradient( linear, left top, right top, color-stop(0, #f22), color-stop(0.15, #f2f), color-stop(0.3, #22f), color-stop(0.45, #2ff), color-stop(0.6, #2f2),color-stop(0.75, #2f2), color-stop(0.9, #ff2), color-stop(1, #f22) );color:transparent;-webkit-background-clip: text;font-size:5em;'
+    );
+    console.groupEnd()
+  </script>
+
+</body>
+
+</html>
