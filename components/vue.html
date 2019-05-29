@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>vue的生命周期</title>
+</head>
+<body>
+  <div id="app">
+    <h1>vue的生命周期</h1>
+    <ul>
+      <li>beforeCreate	创建前	开始监控Data对象数据变化并Vue初始化内部事件</li>
+      <li>created	创建完毕	数据和data属性绑定完成，判断是否有el选项。**如果有的话就编译模板，没有则停止编译**</li>
+      <li>beforeMount	挂载前	把编译的模板内涵替换el属性或vm.$mount指向的DOM对象</li>
+      <li>mounted	挂载完毕	模板挂载完成</li>
+      <li>beforeUpdate	更新数据前	当数据发生变化，准备更新之前的事件钩子</li>
+      <li>updated	更新完成	当数据发生变化，更新完成后的事件钩子</li>
+      <li>beforeDestroy	实例销毁前	实例销毁之前调用。在这一步，实例仍然完全可用。</li>
+      <li>destroyed	销毁完毕	实例已经被销毁</li>
+    </ul>
+    <div>更新数据{{num}}</div>
+  </div>
+  <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        num: 0
+      },
+      beforeCreate(){
+        console.log('beforeCreate', '创建前', this)
+        // 此时还找不到方法
+      },
+      created(){
+        console.log('created', '创建前', this)
+        // 最早在这里可以触发方法
+        this.bindNum()
+      },
+      beforeMount(){
+        console.log('beforeMount', '挂载前', this)
+      },
+      mounted(){
+        console.log('mounted', '挂载完毕', this)
+      },
+      beforeUpdate(){
+        console.log('beforeUpdate', '更新数据前')
+        // 更新视图前触发
+      },
+      updated(){
+        console.log('updated', '更新完成')
+        // 更新完成触发
+      },
+      beforeDestroy(){
+        console.log('beforeDestroy', '实例销毁前')
+      },
+      destroyed(){
+        console.log('destroyed', '销毁完毕')
+      },
+      methods:{
+        bindNum(){
+          var timer = setTimeout( ()=> {
+            // 在视图更新后调用
+            this.$nextTick(function(){
+              // DOM 现在更新了`this` 绑定到当前实例
+              console.log('在视图更新后调用', this.num) // 1
+            })
+          console.log('不使用nextTick时同步执行的快', this.num)// 0
+          this.num++
+          console.log(this.num) // 1
+          }, 1000)
+        }
+      }
+    })
+  </script>
+</body>
+</html>

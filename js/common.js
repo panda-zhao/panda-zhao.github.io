@@ -1,14 +1,29 @@
 var data = [
   [{
-      name: "上传图片",
+      name: "上传图片组件",
       url: "./components/upload.html",
-      title: "上传图片"
+      title: "上传图片组件"
     },
     {
       name: "console的正确使用",
       url: "./components/console.html",
-      title: "console的使用"
+      title: "console的正确使用"
     },
+    {
+      name: "时间常用方法汇总",
+      url: "./components/date.html",
+      title: "时间常用方法汇总"
+    },
+    {
+      name: "vue的生命周期测试",
+      url: "./components/vue.html",
+      title: "vue的生命周期测试"
+    },
+    {
+      name: "动画",
+      url: "./components/animation.html",
+      title: "学习动画"
+    }
   ],
   [{
       name: "蓝湖",
@@ -158,11 +173,6 @@ var data = [
       title: ""
     },
     {
-      name: "Patreon",
-      url: "https://www.patreon.com/",
-      title: ""
-    },
-    {
       name: "星座网",
       url: "http://www.xzw.com/",
       title: ""
@@ -176,7 +186,13 @@ var data = [
   ],
 
   // 2 前端学习
-  [{
+  [
+    {
+      name: "MDN开发者网络",
+      url: "https://developer.mozilla.org/zh-CN/docs/Web",
+      title: "Mozilla开发者网络"
+    },
+    {
       name: "W3school",
       url: "http://www.w3school.com.cn/index.html",
       title: ""
