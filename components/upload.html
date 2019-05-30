@@ -25,13 +25,12 @@
 
 <body>
   <h1>图片上传</h1>
-  <input type="file" id="fileElem" multiple accept="image/*" style="display:none" onchange="handleFiles(this.files)">
+  <input type="file" id="fileElem" name='files' multiple accept="image/*" style="display:none" onchange="upload(this.files)">
   <a href="#" id="fileSelect">选择图片</a>
   <div id="fileList">
     <p>当前未选择文件</p>
   </div>
   <!-- <div>
-
     <label for="fileElem" id="picture-card">
       <input type="file" id="fileElem" multiple accept="image/*" onchange="chooseImage()" hidden/>
       <img src="" alt="暂无图片" id="previewImage">
@@ -106,20 +105,20 @@
       var formData = new FormData() // 1-创建formData对象
       for (var i = 0; i < files.length; i++) {
         console.log('遍历文件对象')
-        formData.append('file', files[i]) // 2-把文件对象插入formData
+        formData.append('files', files[i]) // 2-把文件对象插入formData
       }
       console.log('文件对象', formData)
       // Ajax
-      // var request = new XMLHttpRequest();
-      // request.open("POST", "http://localhost:1000/upload");
-      // request.send(formData);
-      // request.onreadystatechange = function () {
-      //   if (request.readyState === 4 & request.status === 200) {
-      //     console.log("上传成功");
-      //     var response = JSON.parse(request.responseText);
-      //     console.log(response);
-      //   }
-      // }
+      var request = new XMLHttpRequest();
+      request.open("POST", "http://localhost:8888/upload");
+      request.send(formData);
+      request.onreadystatechange = function () {
+        if (request.readyState === 4 & request.status === 200) {
+          console.log("上传成功");
+          var response = JSON.parse(request.responseText);
+          console.log(response);
+        }
+      }
     }
   </script>
 

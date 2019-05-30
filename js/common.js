@@ -43,7 +43,7 @@ var data = [
   [
     {name: "BootCDN",url: "http://www.bootcdn.cn",title: "免费的CDN加速服务"},
     {name: "GitHub",url: "https://github.com/panda-zhao",title: ""},
-    {name: "前端之路",url: "http://www.zhaowy.cn",title: ""},
+    {name: "前端之路",url: "http://page.zhaowy.cn",title: ""},
     {name: "博客园",url: "https://www.cnblogs.com/zhaowy/",title: ""},
     {name: "jquery插件库",url: "http://www.jq22.com/",title: "在线编辑器，文本比较，常用前端库，组件！"},
     {name: "wordpress",url: "https://cn.wordpress.org/",title: "用PHP语言开发的博客平台"},
