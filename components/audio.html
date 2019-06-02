@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./css/wy.css">
+  <title>HTML 音频解决方案</title>
+</head>
+<body>
+  <div class="wy-container">
+      <fieldset>
+        <legend>注意事项</legend>
+        <p>移动端iphone不支持自动播放。必须手动点击播放。</p>
+      </fieldset>
+
+      <h2>使用 HTML5 <audio> 元素</h2>
+      <div class="wy-example">
+
+
+          <audio id="audio1" controls="controls" preload="auto">
+            <source src="../media/festive1.mp3" type="audio/mp3" />
+            <!-- <source src="song.ogg" type="audio/ogg" /> -->
+            <p>您的浏览器不支持这个音频格式！</p>
+          </audio>
+
+      </div>
+      <div class="wy-example">
+          <audio id="audio1" controls="controls" preload="auto">
+            <source src="../media/festive2.mp3" type="audio/mp3" />
+            <!-- <source src="song.ogg" type="audio/ogg" /> -->
+            <p>您的浏览器不支持这个音频格式！</p>
+          </audio>
+      </div>
+      <h2>测试事件</h2>
+      
+      <button onclick="bindPlay()">播放</button>
+      <button onclick="bindPause()">暂停</button>
+      <button onclick="getPlayStatu()">获取播放状态</button>
+      <button onclick="testSupp()">是否支持MP3格式</button>
+      <button onclick="speed()">2x</button>
+  </div>
+  
+
+  <audio id="audio">
+      <source src="../media/festive1.mp3" type="audio/mp3" />
+      <source src="../media/festive2.mp3" type="audio/mp3" />
+  </audio>
+  <button onclick="playSprite('meow1');">Play Meow 1 Sprite</button>
+  <button onclick="playSprite('meow2');">Play Meow 2 Sprite</button>
+  <button onclick="playSprite('whine');">Play Whine Sprite</button>
+  <button onclick="playSprite('purr');">Play Purr Sprite</button>
+  
+  <!-- <script type="text/javascript" src="http://mediaplayer.yahoo.com/js"></script> -->
+  <script>
+    var x = document.getElementById("audio1")
+    
+    
+    // 播放音频
+    function bindPlay(){
+      console.log('开始播放音频')
+      x.play()
+    }
+    // 暂停音频
+    function bindPause(){
+      console.log('暂停音频')
+      x.pause()
+    }
+    // 获取播放状态
+    function getPlayStatu(){
+     
+      console.log('设置或返回音频的默认播放速度',x.defaultPlaybackRate)
+      console.log('设置或返回音频播放的速度',x.playbackRate)// 1.0 正常速度| 0.5 半速|  2.0 倍速 | -1.0 向后正常速度 | -0.5 向后，半速
+      console.log('设置或返回音频的音量',x.volume)
+      
+      console.log('当前播放位置',x.currentTime)//
+      console.log('返回音频的长度(以秒计)',x.duration)//
+      
+      console.log('当目前的播放列表为空时',x.emptied)
+      console.log('返回音频/视频是否已结束。',x.ended)
+      console.log('返回音频的当前网络状态',x.networkState)// 0 未初始化| 1 已选取资源，未使用网络| 2浏览器正在下载| 3未找到音频来源
+      console.log('设置或返回音频preload 属性的值',x.preload)// auto 页面加载时就加载音频 | metadata 页面加载后加载音频元数据 | none 不加载音频
+    }
+    // 测试是否支持mp3格式
+    function testSupp(){
+      // var type = ['audio/ogg','audio/mp3']
+      var isSupp = x.canPlayType('audio/mp3')
+      if(isSupp=="probably"){
+        alert("最有可能支持")
+        return
+      }
+      if(isSupp=="maybe"){
+        alert("可能支持")
+        return
+      }
+      if(isSupp==""){
+        alert("不支持")
+        return
+      }
+    }
+    function speed(){
+      x.play()
+      x.playbackRate = 2
+    }
+
+    var audioSprite = document.getElementById('audio');
+
+// sprite data
+var spriteData = {
+    meow1: {
+        start: 0,
+        length: 1.1
+    },
+    meow2: {
+        start: 1.3,
+        length: 1.1
+    },
+    whine: {
+        start: 2.7,
+        length: 0.8
+    },
+    purr: {
+        start: 5,
+        length: 5
+    }
+};
+
+// current sprite being played
+var currentSprite = {};
+
+// 时间更新处理程序，以确保在sprite完成时停止
+var onTimeUpdate = function() {
+    if (this.currentTime >= currentSprite.start + currentSprite.length) {
+        this.pause();
+    }
+};
+audioSprite.addEventListener('timeupdate', onTimeUpdate, false);
+
+// 在MobileSafari中，第一次调用该命令将加载音频。理想情况下，在执行此操作之前，我们将完全加载音频文件。
+var playSprite = function(id) {
+    if (spriteData[id] && spriteData[id].length) {
+        currentSprite = spriteData[id];
+        audioSprite.currentTime = currentSprite.start;
+        audioSprite.play();
+    }
+};
+  </script>
+</body>
+</html>

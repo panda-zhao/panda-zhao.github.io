@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>rem布局测试</title>
+  <style>
+    html{font-size:62.5%;}
+    body {
+      font-size: 12px; /* 不支持rem时使用绝对单位 */
+      font-size: 1.2rem;/* 默认字体大小 */
+    }
+    p {
+      font-size: 14px;
+      font-size: 1.4rem;
+    }
+
+    @media only screen and (min-width: 320px){
+      html {
+        font-size: 62.5% !important;
+      }
+    }
+    @media only screen and (min-width: 640px){
+      html {
+        font-size: 125% !important;
+      }
+    }
+    @media only screen and (min-width: 750px){
+      html {
+        font-size: 150% !important;
+      }
+    }
+    @media only screen and (min-width: 1242px){
+      html {
+        font-size: 187.5% !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <div>全文默认字体12px</div>
+    <p>设置移动端14px</p>
+    <div>根字体大小 = 浏览器视口宽度/750 * 200 + px</div>
+    <div>比如视口375px,那么根字体就是100px</div>
+    <div>如果现在的设计稿是750px。字体是28px, 那么此时应该是0.14rem</div>
+  </div>
+  <script>
+    
+  </script>
+</body>
+
+</html>

@@ -5,7 +5,9 @@ var data = [
     {name: "console的正确使用",url: "./components/console.html",title: "console的正确使用"},
     {name: "时间常用方法汇总",url: "./components/date.html",title: "时间常用方法汇总"},
     {name: "vue的生命周期测试",url: "./components/vue.html",title: "vue的生命周期测试"},
-    {name: "动画",url: "./components/animation.html",title: "学习动画"}
+    {name: "动画",url: "./components/animation.html",title: "学习动画"},
+    {name: "使用rem",url: "./components/rem.html",title: "使用rem"},
+    {name: "a链接的各种使用",url: "./components/a链接.html",title: "a链接的各种使用"}
   ],
   [
     {name: "蓝湖",url: "https://lanhuapp.com/",title: ""},
