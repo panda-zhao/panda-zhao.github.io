@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <title>正则判断</title>
+</head>
+<body>
+    <div id="app">
+      <h1>浏览器的 UA 字串</h1>
+      <p>判断当前客户端UA：{{ regExp.ua.test(window.navigator.userAgent)? '移动端' : 'pc端'}}</p>
+      <h1>验证电话</h1>
+      <label>
+        <span>请输入电话</span>
+        <input type="text" v-model='tel' @input='verifyTel'>结果：<span style="color:red">{{result1}}</span>
+      </label>
+      <h1>验证url</h1>
+      <label>
+        <span>请输入url</span>
+        <input type="text" v-model='url' @input='verifyUrl'>结果：<span style="color:red">{{result2}}</span>
+      </label>
+      <h1>验证email</h1>
+      <label>
+        <span>请输入email</span>
+        <input type="text" v-model='email' @input='verifyEmail'>结果：<span style="color:red">{{result3}}</span>
+      </label>
+    </div>
+    <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+    <script>
+        var app = new Vue({
+          el: '#app',
+          data: {
+            tel: null,
+            url: null,
+            email: null,
+            result1: '',
+            result2: '',
+            result3: '',
+            regExp:{
+              ua: /(iPhone|iPad|iPod|iOS|Android)/i, // 验证ua
+              tel: /^(0[0-9]{2,3}-)?(\(0[0-9]{2,3}\))?[1-9][0-9]{4,7}(-[1-9][0-9]+)?$/, // 验证电话
+              url: /^([hH][tT]{2}[pP]:\/\/|[hH][tT]{2}[pP][sS]:\/\/)[^\s]*/, // 验证url
+              email: /[\w!#$%&'*+/=?^_`{|}~-]+(?:\.[\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?/ // 验证邮箱
+            }
+          },
+          created(){
+          },
+          methods: {
+            verifyTel(e){
+              this.result1 = this.regExp.tel.test(e.target.value) ? '格式正确' : '格式错误'
+            },
+            verifyUrl(e){
+              this.result2 = this.regExp.url.test(e.target.value) ? '格式正确' : '格式错误'
+            },
+            verifyEmail(e){
+              this.result3 = this.regExp.email.test(e.target.value) ? '格式正确' : '格式错误'
+            }
+          }
+        })
+      </script>
+</body>
+</html>

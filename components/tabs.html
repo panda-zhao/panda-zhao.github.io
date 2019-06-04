@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+  <title>标签页(选项卡)组件</title>
+  <style>
+    *{margin: 0;padding: 0;}
+    #desktops, #phone{display: none}
+    h1{text-align: center;line-height: 100px;}
+    .tab{width: 800px;margin: 50px auto;font-size: 14px;border: 1px solid #ccc;height: 500px;}
+    .bg{color: #f00 #0f0 #00f #ff0 #0ff #f0f #fff #000;}
+    .tab .tab-menu{background: #f2f2f2;line-height: 40px;padding-left:20px; color: #333;}
+    .tab .tab-menu-item{display: inline-block; padding: 0 15px;cursor: pointer;transition: all 1s ease}
+    .tab .tab-menu-item.active{background: #fff;}
+    
+    .tab .tab-content{padding: 15px;font-size: 30px;height: 400px;}
+    .tab .tab-content-item{height: 100%;display: none;transition: all 1s ease;overflow: auto;}
+    .tab .show{display: block;}
+    /* 台式电脑 */
+    @media screen and (min-width: 480px){
+      #desktops{display: block;}
+    }
+    /* 手机 */
+    @media screen and (max-width: 480px) {
+      #phone{display: block;}
+    }
+    .demo,#test{border: 1px solid #ccc;margin: 50px 0;height: 50px;line-height: 50px;text-align: center;}
+    .demo:hover{color: #f00;background: #ff0;}
+    .hover{color: #00f;background: #0ff;}
+  </style>
+</head>
+<body>
+  <div id="desktops">
+    <h1>PC端---标签页(选项卡)组件</h1>
+    <div class="tab">
+      <div class="tab-menu">
+        <span class="tab-menu-item active">导航一</span>
+        <span class="tab-menu-item">导航二</span>
+        <span class="tab-menu-item">导航三</span>
+      </div>
+      <div class="tab-content">
+        <div class="tab-content-item show">
+          <h2>标签页1内容区域</h2>
+          测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏测试超出隐藏
+        </div>
+        <div class="tab-content-item">
+          <h2>标签页2内容区域</h2>
+          标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域标签页2内容区域
+        </div>
+        <div class="tab-content-item">
+          <h2>标签页3内容区域</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="phone">
+    <h1>phone端--- 标签页(选项卡)组件</h1>
+    <div class="demo">我用了hover效果</div>
+    <!-- <div id="test">我使用touchstart效果</div> -->
+    <div id="test" ontouchstart="hover(this)" ontouchend="mouseout(this)">测试hover效果</div>
+  </div>
+  
+  <script>
+    // $('#test').attr('ontouchstart', 'hover(this)')//hover效果
+    // $('#test').attr('ontouchend', 'mouseout(this)');//秒除hover
+    
+
+     function hover(obj) {
+      if (!obj) return;
+      var className = "hover"
+      var _ecname = obj.className;
+      if (_ecname.length == 0) {
+      obj.className = className;return;
+      }
+      if (_ecname == className || _ecname.match(new RegExp("(^|\\s)" + className + "(\\s|$)")))
+      return;
+      obj.className = _ecname + " " + className;
+    }
+ 
+    function mouseout(obj) {
+      var className = "hover";
+      var _ecname = obj.className;
+      if (_ecname.length == 0) return;
+      if (_ecname == className) {
+      obj.className = "";return;
+      }
+      if (_ecname.match(new RegExp("(^|\\s)" + className + "(\\s|$)")))
+      obj.className = _ecname.replace((new RegExp("(^|\\s)" + className + "(\\s|$)")), " ");
+    }
+
+
+
+    // 切换标签页
+    $(".tab-menu-item").each(function(i){
+      $(this).on("click",function(){
+        $(this).addClass("active").siblings().removeClass("active");
+        $(".tab-content-item").eq(i).addClass("show").siblings().removeClass("show");
+      })
+    })
+  </script>
+</body>
+</html>
