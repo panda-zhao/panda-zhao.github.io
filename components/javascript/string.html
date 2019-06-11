@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>字符串方法</title>
+</head>
+<body>
+  <div>
+    <h1>字符串方法</h1>
+  </div>
+  <script>
+    var str = 'hello world'
+    // 【返回指定位置的字符】
+    // 参数：查找位置在字符串中的下标
+    var x = str.charAt(1) // e
+    // 返回指定下标位置字符的Unicode 值
+    var x = str.charCodeAt(1); // 101
+
+    // 【提取/剪切字符串（可以负数）】
+    // 参数1：开始下标;参数2：结束下标
+    var x = str.slice(0, 5) // hello
+    // 【提取两个指定下标之间的字符（不可以负数）】
+    // 参数1：开始下标;参数2：结束下标
+    var x = str.substring(0, 5) // hello
+    // 【从起始下标提取指定长度的子串】
+    // 参数1：开始下标;参数2：要截取的长度
+    var x = str.substr(0, 5) // hello
+    // 【把字符串分割成数组】
+    // 参数1：分割的边界;参数2：数组的最大长度；无参数时将字符串转化成数组
+    var x = str.split('', 10) // ["h", "e", "l", "l", "o", " ", "w", "o", "r", "l"]
+    // 【字符串拼接】
+    // 参数要拼接的字符串
+    var x = str.concat('888') // hello world888
+    // 【把字符串显示为上标】
+    var x = str.sup() // <sup>hello world</sup>
+    // 【把字符串显示为下标】
+    var x = str.sub() // <sub>hello world</sub>
+    // 【把字符串转换为小写】- toLocaleLowerCase()根据主机的语言环境转换为小写
+    var x = str.toLowerCase() // hello world
+    // 【把字符串转换为大写】- toLocaleUpperCase()根据主机的语言环境转换为大写
+    var x = str.toUpperCase() // HELLO WORLD
+    // 【检索与正则表达式相匹配的值】(返回下标)
+    // 找到返回下标，未找到返回-1
+    var x = str.search(/o/) // 4
+    // 【找到一个或多个正则表达式的匹配】（返回数组）
+    // 参数1：要查找的值；参数2：匹配RegExp 对象
+    var x = str.match('o')// ["o", index: 4, input: "hello world", groups: undefined]
+    // 【返回子串在字符串的第一次出现的位置-从前往后查找】
+    // 参数1：要查找的子串 参数2：开始查找的下标
+    // 找到返回下标，未找到返回-1
+    var x = str.indexOf('o', 0) // 4
+    // 【返回子串在字符串最后一次出现的位置-从后往前查找】
+    // 参数1：要查找的子串 参数2：开始查找的下标
+    // 找到返回下标，未找到返回-1
+    var x = str.lastIndexOf('o', 10) // 7
+    // 【替换与正则表达式匹配的子串】
+    // 参数1：需要替换的子串;参数2：替换的子串
+    var x = str.replace(/o/ , 'x')	// hellx world
+    // 【移除字符串首尾的空白】
+    var x = str.trim() // hello world
+    // 【字符串比较】
+    // 小于返回-1，等于返回0，大于返回1
+    var a = 'a'
+    var b = 'b'
+    var x = a.localeCompare(b) // -1
+    console.log(arr)
+  </script>
+</body>
+</html>

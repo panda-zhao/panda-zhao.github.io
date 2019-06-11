@@ -2,12 +2,18 @@ var data = [
   [
     {name: "魔方游戏",url: "./components/thecube/index.html",title: "three.js游戏"},
     {name: "上传图片组件",url: "./components/upload.html",title: "上传图片组件"},
-    {name: "console的正确使用",url: "./components/console.html",title: "console的正确使用"},
-    {name: "时间常用方法汇总",url: "./components/date.html",title: "时间常用方法汇总"},
+
+    {name: "console的正确使用",url: "./components/javascript/console.html",title: "console的正确使用"},
+    {name: "时间常用方法汇总",url: "./components/javascript/date.html",title: "时间常用方法汇总"},
+    {name: "string方法",url: "./components/javascript/string.html",title: "string方法"},
+    {name: "array方法",url: "./components/javascript/array.html",title: "array方法"},
+
     {name: "vue的生命周期测试",url: "./components/vue.html",title: "vue的生命周期测试"},
     {name: "动画",url: "./components/animation.html",title: "学习动画"},
     {name: "使用rem",url: "./components/rem.html",title: "使用rem"},
-    {name: "a链接的各种使用",url: "./components/a链接.html",title: "a链接的各种使用"}
+
+    {name: "a链接的各种使用",url: "./components/html/link.html",title: "a链接的各种使用"},
+    {name: "form表单",url: "./components/html/form.html",title: "form表单"}
   ],
   [
     {name: "蓝湖",url: "https://lanhuapp.com/",title: ""},

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>array方法</title>
+</head>
+<body>
+  <div>
+    <h1>数组方法</h1>
+  </div>
+  <script>
+    var arr = [1, 2, 3, 4, 5]
+    console.log('方法使用前', arr)
+    // 	【判断是不是数组】
+    var x = Array.isArray(arr) // true
+    
+    // 【拼接数组】--- 不改变原数组
+    // 参数是值或者数组对象
+    // 返回拼接后的新数组
+    var x = arr.concat(6) // [5, 4, 3, 2, 1, 6]
+
+    // 【数组转换成字符串】
+    // 参数：要使用的分隔符，省略则使用逗号
+    var x = arr.join() // 5,4,3,2,1
+    
+    // 【查找 元素在数组的下标】
+    // 找到返回下标，未找到返回-1
+    var x = arr.indexOf("a") // -1
+    
+    // 【查找 数组中的指定元素】
+    // 参数1：开始选取的位置；参数2：结束选取的位置
+    var x = arr.slice(0, 2) // [5, 4]
+    
+    // 【在数组尾部插入新元素】---改变原数组
+    // 参数：要插入的新元素
+    // 返回：数组的新长度
+    var x = arr.push('a') // 6
+   
+    // 【在数组头部插入新元素】---改变原数组
+    // 参数：要插入的新元素
+    // 返回：数组的新长度
+    var x = arr.unshift('a') // 6
+
+    // 【删除 数组的第一个元素】 --- 改变了原数组
+    // 返回 原来的第一个元素的值
+    var x = arr.shift() // 1
+
+    // 【删除 数组的最后一个元素】--- 改变了原数组
+    // 返回原来最后一个元素的值
+    var x = arr.pop() // 5
+
+    // 【排序】--- 改变了原数组
+    // 参数：函数，规定排序顺序。
+    function sortNumber(a,b){
+      return b - a // 从大到小排列 
+    }
+    var x = arr.sort(sortNumber)// [5, 4, 3, 2, 1]
+
+    // 【替换/添加/删除项目】---改变了原数组
+    // 参数1：必须，添加/删除的项目下标；参数2： 必需,要删除的项目数量，0不删除；参数3：可选。向数组添加的新项目。
+    // 返回被删除的项目
+    var x = arr.splice(0, 1,'xxx')// 替换时返回被删除的项目 [5]
+    var x = arr.splice(0, 0,'zzz')// 添加时返回 []
+    var x = arr.splice(0, 0,'zzz')// 不删除替换时返回 []，如果第二个参数是1 则返回 [5]
+
+    // 【反转数组中元素的顺序】---改变了原数组
+    // 返回颠倒后的数组
+    var x = arr.reverse() // [1, 2, 3, 4, 5]
+    console.log('方法使用后', arr)
+    console.log(x)
+
+    // 遍历数组
+    var arr = ['a', 'b', 'c', 'd', 'e']
+    // for...in遍历key下标
+    for (const key in arr) {
+      if (arr.hasOwnProperty(key)) {
+        const element = arr[key];
+        console.log(key)// 0, 1, 2, 3, 4
+      }
+    }
+     // for...in遍历 value值
+    for (const value of arr) {
+      console.log(value)// a, b, c, d, e
+    }
+    // forEach遍历
+    arr.forEach( (value,index,array) => {
+      console.log(value,index,array) // a 0 ["a", "b", "c", "d", "e"] ...
+    });
+  </script>
+</body>
+</html>
