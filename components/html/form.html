@@ -5,26 +5,281 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>ajax请求</title>
+  <title>form表单</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    fieldset {
+      padding: 15px 30px;
+    }
+
+    legend {
+      width: 100px;
+      margin-left: 45%;
+      padding: 0 15px;
+      text-align: center
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    li {
+      margin: 15px 0;
+      padding: 5px 15px;
+      border: 1px dashed #00f
+    }
+
+    li label {
+      display: inline-block;
+      min-width: 80px;
+    }
+  </style>
 </head>
 
 <body>
-  <form action="http://localhost:8888/test" method="GET">
-    <div>
-      <label for="">
-        用户名
-        <input type="text" placeholder="请输入名字" name="user">
-      </label>
-    </div>
-    <div>
-      <label for="">
-        密码
-        <input type="password" placeholder="请输入密码" name="password">
-      </label>
-    </div>
-    <button type="submit">提交表单</button>
+  <!-- <form action="http://localhost:8888/test" method="GET" name="form"> -->
+  <form id="myForm">
+    <fieldset>
+      <legend>form表单</legend>
+      <ul>
+        <li>
+          <label for="name">单行文本域</label>
+          <input type="text" name="text" id="name" placeholder="请输入名字">
+        </li>
+        <li>
+          <label for="pwd">密码域</label>
+          <input type="password" name="pwd" id="pwd" placeholder="请输入密码">
+        </li>
+        <li>
+          <span>单选按钮</span>
+          <input type="radio" id='radio1' name="radio" value="male" checked>
+          <label for="radio1">男</label>
+          <input type="radio" id='radio2' name="radio" value="female">
+          <label for="radio2">女</label>
+        </li>
+        <li>
+          <span>复选框</span>
+          <input type="checkbox" id='checkbox1' name="checkbox" value="apple" checked>
+          <label for="checkbox1">苹果</label>
+          <input type="checkbox" id='checkbox2' name="checkbox" value="banana">
+          <label for="checkbox2">香蕉</label>
+          <input type="checkbox" id='checkbox2' name="checkbox" value="pear">
+          <label for="checkbox2">梨</label>
+        </li>
+        <li>
+          <label for="email">email</label>
+          <input type="email" name="email" id="email" multiple>
+        </li>
+        <li>
+          <label for="search">search</label>
+          <input type="search" id="search" name="search">
+        </li>
+        <li>
+          <label for="tel">tel</label>
+          <input type="tel" id="tel" name="tel">
+        </li>
+        <li>
+          <label for="textarea ">多行文本域</label>
+          <textarea id='textarea' name='textarea' cols="20" rows="10" placeholder="当前cols=20&rows=10"></textarea>
+        </li>
+        <li>
+          <label for="select">选择框</label>
+          <select id="select" name="select">
+            <optgroup label="fruits">
+              <option>Banana</option>
+              <option selected>Cherry</option>
+              <option>Lemon</option>
+            </optgroup>
+            <optgroup label="vegetables">
+              <option>Carrot</option>
+              <option>Eggplant</option>
+              <option>Potato</option>
+            </optgroup>
+          </select>
+        </li>
+        <li>
+          <label for="multi">多选选择框</label>
+          <select multiple id="multi" name="multi">
+            <option>Banana</option>
+            <option>Cherry</option>
+            <option>Lemon</option>
+          </select>
+        </li>
+        <li>
+          <label for="autocomplete">自动补全输入框</label>
+          <input type="text" name="autocomplete" id="autocomplete" list="mySuggestion">
+          <datalist id="mySuggestion">
+            <option>Apple</option>
+            <option>Banana</option>
+            <option>Blackberry</option>
+            <option>Blueberry</option>
+            <option>Lemon</option>
+            <option>Lychee</option>
+            <option>Peach</option>
+            <option>Pear</option>
+          </datalist>
+        </li>
+        <!-- 支持<datalist>元素的浏览器将忽略所有不是<option>元素的元素，并按照预期工作。另一方面，不支持<datalist>元素的浏览器将显示标签和选择框。 -->
+        <li>
+          <label for="myFruit">兼容处理补全输入框</label>
+          <input type="text" id="myFruit" name="fruit" list="fruitList">
+          <datalist id="fruitList">
+            <label for="suggestion">or pick a fruit</label>
+            <select id="suggestion" name="altFruit">
+              <option>Apple</option>
+              <option>Banana</option>
+              <option>Blackberry</option>
+              <option>Blueberry</option>
+              <option>Lemon</option>
+              <option>Lychee</option>
+              <option>Peach</option>
+              <option>Pear</option>
+            </select>
+          </datalist>
+        </li>
+        <li>
+          <label for="number">数字</label>
+          <input type="number" name="number" id="number" min="1" max="100" step="2">
+        </li>
+        <li>
+          <label for="range">滑块</label>
+          <input type="range" name="range" id="range" min="0" max="500" step="10">
+          <span class="beancount"></span>
+        </li>
+        <li>
+          <label for="date">日期时间选择器</label>
+          <input type="date" name="date" min="2013-06-01" max="2013-08-31" id="date">
+        </li>
+        <li>
+          <label for="locakTime">本地时间</label>
+          <input type="datetime-local" name="locakTime" id="locakTime">
+        </li>
+        <li>
+          <label for="month">月</label>
+          <input type="month" name="month" id="month">
+        </li>
+        <li>
+          <label for="time">时间</label>
+          <input type="time" name="time" id="time">
+        </li>
+        <li>
+          <label for="week">星期</label>
+          <input type="week" name="week" id="week">
+        </li>
+        <li>
+          <label for="color">拾色器</label>
+          <input type="color" name="color" id="color">
+        </li>
+        <li>
+          <label for="hidden">隐藏内容</label>
+          <input type="hidden" id="hidden" name="timestamp" value="1286705410">
+        </li>
+        <li>
+          <label for="image">图像按钮</label>
+          <input type="image" alt="Click me!" src="../../images/demo.png" width="200" height="200" id="image" name="image" />
+        </li>
+        <li>
+          <label for="progress">进度条</label>
+          <progress max="100" value="75" id="progress">75/100</progress>
+        </li>
+        <li>
+          <label for="meter">进度条</label>
+          <meter min="0" max="100" value="75" low="33" high="66" optimum="50" id="meter">75</meter>
+        </li>
+        <li>
+          <label for="file1">纯input与file</label>
+          <input type="file" name="file1" id="file1">
+        </li>
+        <li>
+          <label for="file2">指明需要图片</label>
+          <input type="file" name="file2" id="file2" accept='image/*'>
+        </li>
+        <li>
+          <label for="file3">指明需要多张图片</label>
+          <input type="file" name="file3" id="file3" multiple accept='image/*'>
+        </li>
+        <li>
+          <label for="file4">指明调用摄像头获取图片</label>
+          <input type="file" name="file4" id="file4" capture='camera' accept='image/*'>
+        </li>
+        <li>
+          <label for="file5">指明调用摄像头并多张图片</label>
+          <!-- multiple 无效 -->
+          <input type="file" name="file5" id="file5" multiple capture='camera' accept='image/*'>
+        </li>
+        <li>
+          <button type="submit">
+            This a
+            <br>
+            <strong>submit button</strong>
+          </button>
+          <button type="reset">
+            This a
+            <br>
+            <strong>reset button</strong>
+          </button>
+          <button type="button">
+            This an
+            <br>
+            <strong>anonymous button</strong>
+          </button>
+        </li>
+      </ul>
+    </fieldset>
   </form>
   <script>
+    var beans = document.querySelector('#range');
+    var count = document.querySelector('.beancount');
+
+    count.textContent = beans.value;
+
+    beans.oninput = function () {
+      count.textContent = beans.value;
+    }
+
+    // function submitForm(params) {
+    //   console.log('params', params)
+    //   return false
+    // }
+    window.addEventListener("load", function () {
+      function sendData() {
+        var XHR = new XMLHttpRequest();
+
+        // 我们把这个 FormData 和表单元素绑定在一起。
+        var FD = new FormData(form);
+        console.log('FormData=', FD);
+        
+        // 我们定义了数据成功发送时会发生的事。
+        XHR.addEventListener("load", function (event) {
+          alert(event.target.responseText);
+        });
+
+        // 我们定义了失败的情形下会发生的事
+        XHR.addEventListener("error", function (event) {
+          alert('哎呀！出了问题。');
+        });
+
+        // 我们设置了我们的请求
+        XHR.open("POST", "http://localhost:8888/test");
+
+        // 发送的数据是由用户在表单中提供的
+        XHR.send(FD);
+      }
+
+      // 我们需要获取表单元素
+      var form = document.getElementById("myForm");
+
+      // 接管表单的提交事件
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        sendData();
+      });
+    });
   </script>
 </body>
 
