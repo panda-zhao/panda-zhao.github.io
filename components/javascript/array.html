@@ -9,6 +9,29 @@
 <body>
   <div>
     <h1>数组方法</h1>
+    <ul>
+      <li>是不是数组 Array.isArray(arr)</li>
+      <li>拼接数组 arr.concat(newArr)</li>
+      <li>数组转换成字符串 arr.join()</li>
+      <li>查找 元素在数组的下标 arr.indexOf(val)</li>
+      <li>查找 数组中的指定元素 arr.slice(start, end)</li>
+      <li>在数组尾部插入新元素 arr.push(val)</li>
+      <li>在数组头部插入新元素 arr.unshift('a')</li>
+      <li>删除 数组的第一个元素 arr.shift()</li>
+      <li>删除 数组的最后一个元素 arr.pop()</li>
+      <li>排序 arr.sort(function)</li>
+      <li>替换/添加/删除项目 arr.splice(index, length, newVal)</li>
+      <li>反转数组中元素的顺序 arr.reverse()</li>
+      <li>
+        <dl>
+          <dt>遍历数组</dt>
+          <dd>for...in遍历 index 下标</dd>
+          <dd>for...of遍历 value 值</dd>
+          <dd>forEach遍历 value 和 index</dd>
+        </dl>
+      </li>
+      <li>数组去重 Array.from(new Set(arr))</li>
+    </ul>
   </div>
   <script>
     var arr = [1, 2, 3, 4, 5]
@@ -73,21 +96,25 @@
 
     // 遍历数组
     var arr = ['a', 'b', 'c', 'd', 'e']
-    // for...in遍历key下标
-    for (const key in arr) {
-      if (arr.hasOwnProperty(key)) {
-        const element = arr[key];
-        console.log(key)// 0, 1, 2, 3, 4
+    // for...in遍历 index 下标
+    for (const index in arr) {
+      if (arr.hasOwnProperty(index)) {
+        const element = arr[index];
+        console.log(index)// 0, 1, 2, 3, 4
       }
     }
-     // for...in遍历 value值
+     // for...of遍历 value 值
     for (const value of arr) {
       console.log(value)// a, b, c, d, e
     }
-    // forEach遍历
+    // forEach遍历 value 和 index
     arr.forEach( (value,index,array) => {
       console.log(value,index,array) // a 0 ["a", "b", "c", "d", "e"] ...
-    });
+    })
+    // 数组去重
+    var arr = [1,3,9,1,8,2,3,3,0,7,5]
+    var newArr = Array.from(new Set(arr)) // 去重
+    console.log(newArr)
   </script>
 </body>
 </html>
