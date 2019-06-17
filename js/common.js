@@ -3,6 +3,7 @@ var data = [
     {name: "魔方游戏",url: "./components/thecube/index.html",title: "three.js游戏"},
     {name: "上传图片组件",url: "./components/upload.html",title: "上传图片组件"},
 
+    {name: "使用jssdk",url: "./components/jssdk.html",title: "使用jssdk"},
     {name: "console的正确使用",url: "./components/javascript/console.html",title: "console的正确使用"},
     {name: "时间常用方法汇总",url: "./components/javascript/date.html",title: "时间常用方法汇总"},
     {name: "string方法",url: "./components/javascript/string.html",title: "string方法"},
