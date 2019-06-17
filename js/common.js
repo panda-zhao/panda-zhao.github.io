@@ -49,6 +49,7 @@ var data = [
   ],
   // 1 个人收藏
   [
+    {name: "常用速查表",url: "https://www.w3cschool.cn/dict/",title: "各大语言速查表"},
     {name: "BootCDN",url: "http://www.bootcdn.cn",title: "免费的CDN加速服务"},
     {name: "GitHub",url: "https://github.com/panda-zhao",title: ""},
     {name: "前端之路",url: "http://page.zhaowy.cn",title: ""},
