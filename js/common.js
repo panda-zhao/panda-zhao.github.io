@@ -15,6 +15,7 @@ var data = [
     {name: "a链接的各种使用",url: "./components/html/link.html",title: "a链接的各种使用"},
     {name: "form表单",url: "./components/html/form.html",title: "form表单"}
   ],
+  // 网融备忘
   [
     {name: "蓝湖",url: "https://lanhuapp.com/",title: ""},
     {name: "阿里企业邮箱",url: "https://qiye.aliyun.com/",title: ""},
@@ -54,6 +55,7 @@ var data = [
     {name: "前端之路",url: "http://page.zhaowy.cn",title: ""},
     {name: "博客园",url: "https://www.cnblogs.com/zhaowy/",title: ""},
     {name: "jquery插件库",url: "http://www.jq22.com/",title: "在线编辑器，文本比较，常用前端库，组件！"},
+    {name: "开发者手册",url: "https://cloud.tencent.com/developer/devdocs",title: ""},
     {name: "wordpress",url: "https://cn.wordpress.org/",title: "用PHP语言开发的博客平台"},
     {name: "阿里云",url: "https://home.console.aliyun.com/new#/",title: ""},
     {name: "星座网",url: "http://www.xzw.com/",title: ""},
