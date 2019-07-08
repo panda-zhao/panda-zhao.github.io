@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>使用jssdk</title>
+</head>
+
+<body>
+  <div id="demo"></div>
+  <button onclick="bindGoWxMinprogress()">点击去原生小程序页面</button>
+  <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
+  <!-- <script src="https://cdn.bootcss.com/jsSHA/2.0.0/sha.js"></script> -->
+  <script src="../js/sha1.js"></script>
+  <script>
+    /*
+     * 获取getAccessToken
+     */
+    const appId = 'wx3c8a36af866326ff' // 小程序ID
+    const AppSecret = '9fede3303c1cf1e5d1c78d9e83324912' // 小程序密钥
+    var getAccessToken = () => {
+      return new Promise((resolve, reject) => {
+        $.ajax({
+          type: "GET",
+          url: `https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=${appId}&secret=${AppSecret}`,
+          timeout: 3000, // 超时时间
+          success: res => {
+            // console.log('请求成功access_token=', res.access_token)
+            resolve(res.access_token)
+          },
+          error: error => {
+            console.log('请求失败', error)
+            reject(error)
+          }
+        })
+      })
+
+    }
+    
+    /*
+     * 获取jsapi_ticket 使用jsapi的门票 
+     * 有效期7200秒 开发者必须在自己的服务全局缓存jsapi_ticket
+     */
+    const getJssdkTicket = (access_token) => {
+      return new Promise((resolve, reject) => {
+        $.ajax({
+          type: "GET",
+          url: `https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=${access_token}&type=jsapi`,
+          timeout: 3000, // 超时时间
+          success: res => {
+            // console.log('请求成功jsapi_ticket=', res.ticket)
+            resolve(res.ticket)
+          },
+          error: error => {
+            console.log('请求失败', error)
+            reject(error)
+          }
+        })
+      })
+    }
+    
+    /*
+    * 签名算法
+    * 规则：
+    * 1 对所有待签名参数按照字段名的ASCII 码从小到大排序（字典序）
+    * 2 使用URL键值对的格式（即key1=value1&key2=value2…）拼接成字符串string。所有参数名均为小写字符
+    * 3 对string1作sha1加密，字段名和字段值都采用原始值，不进行URL 转义。
+    */
+    /*
+    * 生成随机字符串
+    */
+    const createNonceStr = function () {
+      return Math.random().toString(36).substr(2, 15)
+    };
+    /*
+    * 创建时间戳
+    */
+    const createTimestamp = function () {
+      return parseInt(new Date().getTime() / 1000) + ''
+    };
+     /*
+    * 对所有参数排序并拼接成URL键值对格式的字符串。所有参数名均为小写字符
+    */
+    const raw = function (args) {
+      var keys = Object.keys(args);
+      keys = keys.sort()
+      var newArgs = {};
+      keys.forEach(function (key) {
+        newArgs[key.toLowerCase()] = args[key];
+      });
+
+      var string = '';
+      for (var k in newArgs) {
+        string += '&' + k + '=' + newArgs[k];
+      }
+      string = string.substr(1);
+      return string;
+    };
+    /*
+     * 获取使用jssdk的签名
+     */
+    const getSign = function (jsapi_ticket ,url) {
+      return new Promise((resolve, reject) => {
+        var ret = {
+          jsapi_ticket: jsapi_ticket, // 获取的jsapi_ticket
+          nonceStr: createNonceStr(), // 随机字符串
+          timestamp: createTimestamp(), // 时间戳
+          url: url // 当前网页的URL，不包含#及其后面部分
+        }
+        var string = raw(ret); // 获取到的字符串
+        console.log('加密后的字符串=', string)
+        // 对字符进行sha1加密
+        // jsSHA = require('jssha'); // 如果使用模块加载
+        // var shaObj = new jsSHA(string, 'TEXT') 
+        // ret.signature = shaObj.getHash('SHA-1', 'HEX');
+        ret.signature = hex_sha1(string)
+        resolve(ret)
+      })
+    }
+    /*
+     * 使用jssdk
+     */
+     const login = async function () {
+      var access_token = await getAccessToken()
+      console.log('access_token ==========', access_token)
+      var jsapi_ticket = await getJssdkTicket(access_token)
+      console.log('jsapi_ticket ==========', jsapi_ticket)
+      var url = 'https://www.zhaowy.cn/components/jssdk.html'
+      var json = await getSign(jsapi_ticket, url)
+      console.log('json=', json)
+      wx.config({
+        debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+        appId: 'wx3c8a36af866326ff', // 必填，公众号的唯一标识
+        timestamp: json.timestamp, // 必填，生成签名的时间戳
+        nonceStr: json.nonceStr, // 必填，生成签名的随机串
+        signature: json.signature,// 必填，签名
+        jsApiList: ['chooseImage', 'previewImage', 'uploadImage', 'downloadImage' , 'openLocation', 'getLocation'] // 必填，需要使用的JS接口列表
+      });
+      wx.ready(function(options){
+        alert('ready', options)
+        var demo = document.getElementById('demo')
+        var count = 0
+        var timer = setInterval(function(){
+          count++
+          demo.innerHTML += '<br>' + count
+        }, 1000)
+          // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
+      });
+      wx.error(function(res){
+        alert('发生错误！')
+        console.log(res)
+          // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
+      });
+    }
+    login()
+    
+    function bindGoWxMinprogress () {
+      console.log('触发跳转事件！')
+      // wx.miniProgram.navigateBack({delta: 1})
+      wx.miniProgram.navigateTo({url: '/pages/test/test'})
+    }
+  </script>
+</body>
+
+</html>

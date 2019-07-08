@@ -3,6 +3,7 @@ var data = [
     {name: "魔方游戏",url: "./components/thecube/index.html",title: "three.js游戏"},
     {name: "上传图片组件",url: "./components/upload.html",title: "上传图片组件"},
 
+    {name: "使用jssdk",url: "./components/jssdk.html",title: "使用jssdk"},
     {name: "console的正确使用",url: "./components/javascript/console.html",title: "console的正确使用"},
     {name: "时间常用方法汇总",url: "./components/javascript/date.html",title: "时间常用方法汇总"},
     {name: "string方法",url: "./components/javascript/string.html",title: "string方法"},
@@ -50,6 +51,7 @@ var data = [
   ],
   // 1 个人收藏
   [
+    {name: "常用速查表",url: "https://www.w3cschool.cn/dict/",title: "各大语言速查表"},
     {name: "BootCDN",url: "http://www.bootcdn.cn",title: "免费的CDN加速服务"},
     {name: "GitHub",url: "https://github.com/panda-zhao",title: ""},
     {name: "前端之路",url: "http://page.zhaowy.cn",title: ""},

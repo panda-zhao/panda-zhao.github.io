@@ -1,0 +1,138 @@
+*{
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+/*清除body的外边距*/
+body{
+  margin: 0;
+  font-family:  "Microsoft Yahei",sans-serif,cursive;
+  color: #333;
+}
+/*清除标题默认样式*/
+h1,h2,h3,h4,h5,h6{
+  font-weight: normal;/*清除加粗*/
+  font-size:100%;/*字体大小*/
+  margin:0;
+}
+p{
+  margin: 0;
+}
+/*清除链接下划线和默认颜色*/
+a{
+  text-decoration: none;
+  color: inherit;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);/*覆盖点击时显示的高亮颜色*/
+}
+/*a:active,a:focus,a:hover,a:link,a:visited{
+  text-decoration: none;
+  color: inherit;
+}*/
+img{
+  border: 0;/*让链接里的图片无边框*/
+  /*有可能会影响地图API功能*/
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+/*清除列表默认样式 */
+ul,ol{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+dl,dd{
+  margin: 0;
+}
+/*斜体扶正*/
+i, cite, em, var, address, dfn {
+  font-style: normal;
+}
+pre{
+  margin: 0;
+}
+/*清除表单默认样式*/
+input{
+  padding: 0;
+}
+button{
+  padding: 0;
+  box-sizing: content-box;/*默认怪异模式*/
+}
+:focus{
+  outline: 0;/*清除获得焦点是蓝色边框*/
+}
+fieldset{
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+legend{
+  padding: 0;
+}
+button, input, select, textarea { 
+	font-size: 100%; /* 使得表单元素在 ie 下能继承字体大小 */
+} 
+
+/*清除表格默认样式*/
+table{
+  border-collapse:collapse;/*边框合并为单一边框，忽略border-spacing 和 empty-cells 属性。*/
+  border-spacing:0;
+}
+caption{
+  text-align: left;/*默认居中的*/
+}
+th{
+  font-weight: normal;/*默认加粗的*/
+  text-align: left;/*默认居中的*/
+}
+th,td{
+  padding: 0;
+}
+
+strong,b{
+  font-weight: normal;
+}
+small{
+  font-size: 12px;/*小于 12px 的中文很难阅读, 让 small 正常化*/
+}
+/*清除q前后的引号*/
+q:before,q:after {
+  content:'';
+}
+blockquote{
+  margin: 0;
+}
+/*设置等宽字体*/
+code, kbd, pre, samp {
+  font-family: courier new, courier, monospace;
+}
+
+/* 重置 HTML5 元素 */
+article, aside, details, figcaption, figure, footer,header, hgroup, menu, nav, section,
+summary, time, mark, audio, video {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+mark { background: #ff0; }
+.fl{
+    float: left;
+}
+.fr{
+    float: right;
+}
+.clearfix:after{
+  content: "";
+  display: block;
+  clear: both;
+}
+/*小技巧：给需要不能选中的元素添加noselect类，就可以实现清除选中效果*/
+.noselect {
+  -webkit-touch-callout: none;/*ios触摸目标时候,禁用系统默认菜单。*/
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
