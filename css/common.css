@@ -10,8 +10,10 @@ body{
 }
 a{
   text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
 }
 .container {
+  position: relative;
   box-sizing: border-box;
   max-width: 1200px;
   margin: 0 auto;
@@ -22,7 +24,6 @@ a{
 dl{
   background: #f2f2f2;
   margin-bottom: 20px;
-  
 }
 dt {
   font-size: 2em;
@@ -36,7 +37,7 @@ dd{
   display: inline-block;
   padding: 0 10px 10px;
 }
-a {
+.item{
   display: inline-block;
   height: 40px;
   line-height: 40px;
@@ -45,20 +46,133 @@ a {
   color: #fff;
   border: none;
   border-radius: 100px;
-  /* margin: 20px 0 0 20px; */
-  /* color: #01aaed; */
-  /* text-indent: 40px; */
 }
-/* table {
+
+
+/* 判断小于IE9时弹框 */
+#bu-upgrade-bar{
+  position: relative;
+  left: 0;
+  right: 0;
+  top: 0;
+  box-sizing: border-box;
+  height: 48px;
+  line-height: 48px;
+  border: 1px solid #f9d799;
+  background: #fffaf1;
+  font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei UI","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+  font-size: 16px;
+  text-align: center;
+  z-index: 9999;
+}
+#bu-upgrade-bar .bu-upgrade-bar-content{
+  display:inline-block;
+  color: #45484b;
+  padding-left: 30px;
+  background:url('../images/default.png') no-repeat left 12px transparent
+}
+#bu-upgrade-bar .bu-upgrade-bar-download{
+  color: #3e97df;
+  text-decoration: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+#bu-upgrade-bar .close{
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 48px;
+  line-height: 48px;
+  text-align: center;
+  font-size: 18px;
+  color: #777;
+  cursor: pointer;
+}
+/* 判断小于IE9时页面*/
+#bu-upgrade-page{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #fff;
+  z-index: 9999999;
+  text-align: center;
+  overflow: auto;
+}
+#bu-upgrade-page .bu-upgrade-content{
+  width: 680px;
+  padding-top: 30px;
+  line-height: 1.8;
+  margin: 0 auto;
+  font-size: 20px;
+}
+#bu-upgrade-page .bu-upgrade-page-title{
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: #111;
+  padding-top: 110px;
+  background: url(../images/warning.png) no-repeat center top transparent;
+}
+#bu-upgrade-page .bu-typo-para{
+  margin: 15px 0;
+}
+#bu-upgrade-page .bu-typo-h2{
+  font-weight: bold;
+  color: #111;
+}
+#bu-upgrade-page .bu-browser-card{
+  margin: 25px 0;
+  text-align: center;
+}
+#bu-upgrade-page .bu-browser-card .bu-browser-card-item{
+  display: inline-block;
+  margin: 0 20px;
+  width: 180px;
+  *display: inline;
+  *zoom: 1;
+}
+#bu-upgrade-page .bu-browser-card .bu-browser-card-icon{
   width: 100%;
+  height: 120px;
+  display: block;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  background-position: center center;
+  margin-bottom: 15px;
 }
-
-table td {
-  border: 1px solid #333;
-  border-collapse: collapse;
-  width: 50%;
-} */
-
-
-
-
+#bu-upgrade-page .bu-browser-card .bu-browser-card-qq .bu-browser-card-icon{
+  background-image: url(../images/qq-browser.png)
+}
+#bu-upgrade-page .bu-browser-card .bu-browser-card-chrome .bu-browser-card-icon{
+  background-image: url(../images/chrome-browser.png)
+}
+#bu-upgrade-page .bu-browser-card .bu-browser-card-ie .bu-browser-card-icon{
+  background-image: url(../images/ie-browser.png);
+}
+#bu-upgrade-page .bu-browser-card .bu-browser-card-btn{
+  display: block;
+  height: 48px;
+  line-height: 48px;
+  text-align: center;
+  color: #3e97df;
+  background: #ebf4fb;
+  padding: 0 10px;
+  text-decoration: none;
+  margin-right: 5px;
+}
+#bu-upgrade-page .bu-browser-card .bu-browser-card-btn:hover{
+  color: #fff;
+  background: #3e97df;
+}
+#bu-upgrade-page .bu-browser-card .bu-browser-card-qq .bu-browser-card-btn{
+  color: #fff;
+  background: #3e97df;
+}
+#bu-upgrade-page .bu-typo-hint{
+  color: #727475;
+  margin: 15px 0;
+  padding-left: 24px;
+  background: url(../images/info.png) no-repeat left 10px transparent;
+}
