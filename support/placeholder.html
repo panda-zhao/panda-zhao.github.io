@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>解决Placeholder的IE8兼容问题</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .form-item {
+      position: relative;
+      margin: 20px 20px 0;
+    }
+
+    .form-item label {
+      padding: 0 15px;
+    }
+
+    .form-item input {
+      box-sizing: border-box;
+      height: 50px;
+      padding: 10px 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      max-width: 100%;
+    }
+
+    /* 验证码 */
+
+    .form-item-code {
+      position: relative;
+      margin: 20px 20px 0;
+    }
+
+    .form-item-code label {
+      padding: 0 15px;
+    }
+
+    .form-item-code input {
+      box-sizing: border-box;
+      height: 50px;
+      padding: 10px 15px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .code {
+      display: inline-block;
+      box-sizing: border-box;
+      border: 1px dashed #0f88eb;
+      width: 100px;
+      height: 50px;
+      line-height: 28px;
+      padding: 10px;
+      text-align: center;
+      position: relative;
+      top: 2px;
+    }
+
+    .submit-button {
+      box-sizing: border-box;
+      display: block;
+      width: 100%;
+      margin: 0 auto;
+      height: 50px;
+      padding: 10px;
+      font-size: 20px;
+      color: #fff;
+      letter-spacing: 2px;
+      background: #0f88eb;
+      border-radius: 5px;
+      border: 0;
+      outline: 0;
+    }
+
+    .placeholder {
+      position: absolute;
+      top: 0;
+      z-index: 10;
+      color: #888;
+      padding: 10px 15px;
+      height: 30px;
+      line-height: 30px;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <div class="form-item">
+      <!-- <label for="userName">用户名</label> -->
+      <input type="text" name="userName" id="userName" placeholder="请输入用户名">
+    </div>
+    <div class="form-item">
+      <!-- <label for="password">密码域</label> -->
+      <input type="password" name="pwd" id="password" placeholder="请输入密码">
+    </div>
+    <div class="form-item-code">
+      <!-- <label for="password">验证码</label> -->
+      <input type="text" name="verificationCode" id="verificationCode" placeholder="请输入验证码" autocomplete="off">
+      <span id="code" class="code" onclick="generatedCode()" title="验证码"></span>
+    </div>
+    <div class="form-item">
+      <button onclick="submitForm()" class="submit-button">验证</button>
+    </div>
+  </div>
+</body>
+<script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+<script>
+  // 不支持placeholder属性时触发
+  if (!('placeholder' in document.createElement('input'))) {
+    $("[placeholder]").each(function () {
+      $(this).parent().append('<span class="placeholder" data-type="placeholder">' + $(this).attr("placeholder") +
+        '</span>')
+      if ($(this).val() === "") {
+        $(this).parent().find("span.placeholder").show()
+        return
+      }
+      $(this).parent().find("span.placeholder").hide()
+    }).on("focus", function () {
+      $(this).parent().find("span.placeholder").hide()
+    }).on("blur", function () {
+      if ($(this).val() === "") {
+        $(this).parent().find("span.placeholder").show()
+        return
+      } 
+      $(this).parent().find("span.placeholder").hide()
+    })
+    // 点击时触发input点击和焦点事件
+    $("span.placeholder").on("click", function () {
+      $(this).hide()
+      $(this).siblings("[placeholder]").trigger("click")
+      $(this).siblings("[placeholder]").trigger("focus")
+    });
+  }
+  generatedCode()
+  // 随机生成验证码
+  function generatedCode() {
+    var c = ""; //生成的验证码 
+    var array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N',
+      'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
+    ]
+    for (var i = 0; i < 4; i++) {
+      var index = Math.floor(Math.random() * 36) //随机0-35
+      c += array[index]
+      document.getElementById("code").innerHTML = c
+    }
+    // console.log("验证码是：", c)
+  }
+  // 验证用户输入
+  function checkCode() {
+    var a = document.getElementById("code").innerHTML //获取当前生成的验证码
+    var b = document.getElementById("verificationCode").value //客户输入的验证码
+    if (!b) {
+      alert("请输入验证码！")
+      return false
+    }
+    if (a.toUpperCase() !== b.toUpperCase()) {
+      alert("输入的验证码不正确")
+      b = "" //清空用户输入
+      return false
+      // window.open('http://www.baidu.com')
+    }
+    return true
+  }
+
+  function submitForm() {
+    console.log(document.getElementById("userName").value)
+    if (!document.getElementById("userName").value) {
+      alert("请输入用户名")
+      return
+    }
+    if (!document.getElementById("password").value) {
+      alert("请输入密码")
+      return
+    }
+    if (!checkCode()) return
+    alert('登录成功！')
+  }
+</script>
+
+</html>

@@ -1,8 +1,11 @@
 var data = [
   [
-    {name: "魔方游戏",url: "./components/thecube/index.html",title: "three.js游戏"},
+    {name: "魔方游戏",url: "./template/thecube/index.html",title: "three.js游戏"},
+    {name: "CSS3炫彩登录",url: "./template/login.html",title: "CSS3炫彩登录"},
+    {name: "CSS行走的大象",url: "./template/elephant/index.html",title: "CSS行走的大象"},
+  ],
+  [
     {name: "上传图片组件",url: "./components/upload.html",title: "上传图片组件"},
-
     {name: "使用jssdk",url: "./components/jssdk.html",title: "使用jssdk"},
     {name: "console的正确使用",url: "./components/javascript/console.html",title: "console的正确使用"},
     {name: "时间常用方法汇总",url: "./components/javascript/date.html",title: "时间常用方法汇总"},
@@ -14,7 +17,9 @@ var data = [
     {name: "使用rem",url: "./components/rem.html",title: "使用rem"},
 
     {name: "a链接的各种使用",url: "./components/html/link.html",title: "a链接的各种使用"},
-    {name: "form表单",url: "./components/html/form.html",title: "form表单"}
+    {name: "form表单",url: "./components/html/form.html",title: "form表单"},
+    {name: "解决Placeholder的IE8兼容问题",url: "./support/placeholder.html",title: "解决Placeholder的IE8兼容问题"}
+    
   ],
   // 网融备忘
   [
