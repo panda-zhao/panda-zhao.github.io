@@ -3,7 +3,7 @@ var data = [
     {name: "魔方游戏",url: "./template/thecube/index.html",title: "three.js游戏"},
     {name: "CSS3炫彩登录",url: "./template/login.html",title: "CSS3炫彩登录"},
     {name: "CSS行走的大象",url: "./template/elephant/index.html",title: "CSS行走的大象"},
-    {name: "抽奖",url: "./template/luckDraw/index.html",title: "抽奖"},
+    {name: "转盘抽奖",url: "./template/luckDraw/index.html",title: "转盘抽奖"},
   ],
   [
     {name: "上传图片组件",url: "./components/upload.html",title: "上传图片组件"},
