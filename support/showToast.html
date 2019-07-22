@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>自定义弹框</title>
+  <style>
+    blockquote, body, button, dd, div, dl, dt, form, h1, h2, h3, h4, h5, h6, input, li, ol, p, pre, td, textarea, th, ul {
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: rgba(0,0,0,0);
+    }
+    .z-mask{
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgb(0, 0, 0);
+      opacity: 0.3;
+      z-index: 19891015;
+    }
+    .z-dialog{
+      display: none;
+      position: fixed;
+      /* min-width: 260px; */
+      min-width: 460px;
+      max-width: 80%;
+      margin: 0;
+      padding: 0;
+      background: #fff;
+      border-radius: 5px;
+      box-shadow: 1px 1px 50px rgba(0,0,0,.3);
+      z-index: 19891016;
+    }
+    .z-dialog-title{
+      height: 30px;
+      line-height: 30px;
+      padding-top: 30px;
+      text-align: center;
+      color: #3f9df5;
+      font-weight: bold;
+      font-size: 20px;
+    }
+    .z-dialog-content{
+      position: relative;
+      padding: 40px 60px 20px;
+      /* line-height: 24px; */
+      line-height: 30px;
+      word-break: break-all;
+      overflow: hidden;
+      font-size: 16px;
+      text-align: center;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+    .z-dialog-close{
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+    .z-dialog-close:before,.z-dialog-close:after{
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      margin-top: -2px;
+      background: #666;
+      width: 100%;
+      height: 2px;
+    }
+    .z-dialog-close:before{
+      -webkit-transform: rotate(45deg);
+      -moz-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      -o-transform: rotate(45deg);
+      transform: rotate(45deg);
+    }
+    .z-dialog-close:after{
+      -webkit-transform: rotate(-45deg);
+      -moz-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+      -o-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+    }
+    .z-dialog-btn{
+      text-align: center;
+      padding: 40px 60px 40px;
+      pointer-events: auto;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+    .z-dialog-btn a{
+      display: inline-block;
+      *display: inline;
+      *zoom: 1;
+      vertical-align: top;
+      box-sizing: border-box;
+      /* width: 134px; */
+      height: 50px;
+      line-height: 50px;
+      padding: 0 50px;
+      border: 1px solid #dedede;
+      border-radius: 3px;
+      font-size: 16px;
+      font-weight: 400;
+      letter-spacing: 2px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .z-dialog-btn a.z-dialog-btn-confirm{
+      border-color: #1E9FFF;
+      background-color: #1E9FFF;
+      color: #fff;
+    }
+    .z-dialog-btn a.z-dialog-btn-cancel{
+      border-color: #dedede;
+      background-color: #fff;
+      color: #666;
+    }
+    .z-dialog-btn a:last-child{
+      margin-left: 60px;
+    }
+    .z-dialog-btn a:hover{
+      opacity: 0.7;
+    }
+  </style>
+</head>
+<body>
+  <button onclick="showToast()">点击显示弹窗</button>
+  <!-- 遮罩层-->
+  <!-- <div class="z-mask" id="z-mask"></div> -->
+  <!-- 弹窗 -->
+  <!-- <div class="z-dialog" id="z-dialog">
+    <div class="z-dialog-title" id="z-dialog-title"></div>
+    <div class="z-dialog-content" id="z-dialog-content"></div>
+    <div class="z-dialog-close" id="z-dialog-close"></div>
+    <div class="z-dialog-btn">
+      <a href="javascript:void(0)" class="z-dialog-btn-cancel" id="z-dialog-btn-cancel"></a>
+      <a href="javascript:void(0)" class="z-dialog-btn-confirm" id="z-dialog-btn-confirm"></a>
+    </div>
+  </div> -->
+
+  <script src="./js/jquery.min.js"></script>
+  <script>
+    showToast('参数是字符串也可以弹窗！')
+    function showToast (obj) {
+      $('body').append(`<div class="z-mask" id="z-mask"></div>
+        <div class="z-dialog" id="z-dialog">
+            <div class="z-dialog-title" id="z-dialog-title"></div>
+            <div class="z-dialog-content" id="z-dialog-content"></div>
+            <div class="z-dialog-close" id="z-dialog-close"></div>
+            <div class="z-dialog-btn">
+            <a href="javascript:void(0)" class="z-dialog-btn-cancel" id="z-dialog-btn-cancel"></a>
+            <a href="javascript:void(0)" class="z-dialog-btn-confirm" id="z-dialog-btn-confirm"></a>
+            </div>
+        </div>`)
+      var dialog = document.getElementById('z-dialog')
+      var mask = document.getElementById('z-mask')
+      dialog.style.display = 'block'
+      mask.style.display = 'block'
+      // console.log('当前的配置', obj)
+      var w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth
+      var h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
+      dialogWidth = dialog.scrollWidth
+      dialogHeight = dialog.scrollHeight
+      dialog.style.top =  (h - dialogHeight)/2 + "px"
+      dialog.style.left = (w - dialogWidth)/2 + "px"
+      if(!obj) obj = {}
+      if(typeof(obj)  == 'string' && obj.constructor == String){
+        obj = {content: obj}
+      }
+      var options = {
+        title: obj.title || '提示',// 提示的标题,非必填
+        content: obj.content || '提示内容。', // 提示的内容,非必填
+        showCancel: obj.showCancel === false ? false : true, // 是否显示取消按钮
+        cancelText: obj.cancelText || '取消', // 取消按钮的文字，最多 4 个字符
+        confirmText: obj.confirmText || '确定', // 确认按钮的文字，最多 4 个字符
+        // cancelColor: obj.cancelColor || '#000000', // 取消按钮的文字颜色，必须是 16 进制格式的颜色字符串
+        // confirmColor: obj.confirmColor || '#576B95', // 确认按钮的文字颜色，必须是 16 进制格式的颜色字符串
+        handleConfirm: obj.handleConfirm, // 客户点击确定
+        handleCancel: obj.handleCancel // 客户点击取消
+      }
+      document.getElementById('z-dialog-title').innerHTML = options.title
+      document.getElementById('z-dialog-content').innerHTML = options.content
+      if(!options.showCancel)document.getElementById('z-dialog-btn-cancel').style.display = "none"
+      document.getElementById('z-dialog-btn-confirm').innerHTML = options.confirmText
+      document.getElementById('z-dialog-btn-cancel').innerHTML = options.cancelText
+      // document.getElementById('z-dialog-btn-confirm').style.color = options.confirmColor
+      // document.getElementById('z-dialog-btn-cancel').style.color = options.cancelColor
+      document.getElementById('z-dialog-btn-confirm').onclick = function () {
+        console.log('点击确定')
+        if(options.handleConfirm)options.handleConfirm()
+        dialog.style.display = "none"
+        mask.style.display = "none"
+      }
+      document.getElementById('z-dialog-btn-cancel').onclick = function () {
+        console.log('点击取消')
+        if(options.handleCancel)options.handleCancel()
+        dialog.style.display = "none"
+        mask.style.display = "none"
+      }
+      document.getElementById('z-dialog-close').onclick = function () {
+        dialog.style.display = "none"
+        mask.style.display = "none"
+      }
+    }
+  </script>
+</body>
+</html>

@@ -19,7 +19,8 @@ var data = [
 
     {name: "a链接的各种使用",url: "./components/html/link.html",title: "a链接的各种使用"},
     {name: "form表单",url: "./components/html/form.html",title: "form表单"},
-    {name: "解决Placeholder的IE8兼容问题",url: "./support/placeholder.html",title: "解决Placeholder的IE8兼容问题"}
+    {name: "解决Placeholder的IE8兼容问题",url: "./support/placeholder.html",title: "解决Placeholder的IE8兼容问题"},
+    {name: "自定义弹框",url: "./support/showToast.html",title: "自定义弹框"}
     
   ],
   // 网融备忘
