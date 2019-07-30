@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://www.zhaowy.cn/css/reset.css">
+  <title>时间轴</title>
+  <style>
+    body{
+      font-family: "SourceHanSansCN-Regular"
+    }
+    .org_reg_penal_tip{
+      padding-left: 190px;
+    }
+    .org_reg_penal_tip_cert .org_reg_tip{
+      font-size:18px;
+      color: #4097D5;
+      padding-bottom: 30px;
+    }
+    .org_reg_penal_tip_cert .cert p{
+      padding-left: 20px;
+      font-size: 16px;
+      line-height: 20px;
+      color: #9F9F9F;
+      padding-bottom: 15px;
+    }
+
+    .timeline{
+      list-style: none;
+      font-size: 16px;
+      color: #1d1d1d;
+    }
+    .timeline-item{
+      position: relative;
+      padding-bottom: 20px;
+      padding-left: 20px;
+      line-height: 20px;
+    }
+    .timeline-item::before{
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 5px;
+      width: 10px;
+      height: 10px;
+      background: #4097D5;
+      border-radius: 50%;
+    }
+    .timeline-item::after{
+      content: "";
+      position: absolute;
+      left: 4px;
+      top: 15px;
+      width: 1px;
+      height: 100%;
+      background: #4097D5;
+    }
+    .timeline-item:last-child::after{
+      background: transparent;
+    }
+  </style>
+</head>
+<body>
+  <div class="org_reg_penal_tip">
+
+    <div class="org_reg_penal_tip_cert">
+      <div class="org_reg_tip">
+        <img src="/caunion/images/register/tip_2.png" alt="" width="19" height="19">
+        <span>数字证书注册说明</span>
+      </div>
+      <ul class="org_reg_step_cert timeline">
+        <li class="timeline-item">数字证书登录</li>
+        <li class="timeline-item">数字证书身份信息验证</li>
+        <li class="timeline-item">首次使用的数字证书需要填写身份信息（后续使用可以省略此步）首次使用的数字证书需要填写身份信息（后续使用可以省略此步）首次使用的数字证书需要填写身份信息（后续使用可以省略此步）首次使用的数字证书需要填写身份信息（后续使用可以省略此步）首次使用的数字证书需要填写身份信息（后续使用可以省略此步）</li>
+        <li class="timeline-item">进行实名验证</li>
+        <li class="timeline-item">验证成功后填写经办人信息</li>
+        <li class="timeline-item">完成注册</li>
+      </ul>
+      <div class="cert">
+        <p>CA证书支持：GDCA、NETCA、SZCA</p>
+        <p>网银证书支持：中国银行、工商银行、建设银行、农业银行、广州银行</p>
+      </div>
+    </div>
+
+    <div class="org_reg_penal_tip_face" style="display:none;">
+        <div class="org_reg_tip">
+        <img src="/caunion/images/register/tip_2.png" alt=""><span>法人代表刷脸注册说明</span></div>
+        <div class="org_reg_step_face">
+            <div><img src="/caunion/images/register/tip_2_1.png" alt=""><span><strong>温馨提示：</strong>法人刷脸注册<br>只支持广州范围内的企业</span></div>
+            <div><img src="/caunion/images/register/tip_2_2.png" alt=""><span>手机端安装“市民证书app”<br>（已安装略过此步）</span></div>
+            <div><img src="/caunion/images/register/tip_2_3.png" alt=""><span>使用市民证书app“扫一扫”功能<br>扫描电脑上的二维码</span></div>
+            <div><img src="/caunion/images/register/tip_2_4.png" alt=""><span>手机端进行实人认证</span></div>
+            <div><img src="/caunion/images/register/tip_2_5.png" alt=""><span>验证成功后填写经办人信息</span></div>
+            <div><img src="/caunion/images/register/tip_2_6.png" alt=""><span>完成注册</span></div>
+        </div>
+    </div>
+    <div class="org_reg_penal_tip_offline" style="display:none;">
+        <div class="org_reg_tip"><img src="/caunion/images/register/tip_2.png"
+                                      alt=""><span>法人代表刷脸注册说明</span></div>
+        <div class="org_reg_tip_offline">
+            <p>1、法人代表本人携带相关证件（组织机构代码证原件及其复印件或统一社会信用代码原件及其复印件、法人代表身份证原件及复印件）；</p>
+            <p>2、若法人授权代办人办理，由代办人携带法人代表签名的授权书及相关证件（组织机构代码证原件及其复印件或统一社会信用代码原件及其复印件、法人代表身份证原件及复印件、本人身份证原件及复印件）；</p>
+            <p>（以上所有复印资材料均需加盖公章，然后前往广州市天河区龙口西路穗园西街2号E幢一楼广州市信息化公共服务大厅开通市民机构邮箱。业务人员校对证件无误后，录入相关信息，发放统一帐号及初始密码。）</p>
+        </div>
+    </div>
+  </div>
+</body>
+</html>

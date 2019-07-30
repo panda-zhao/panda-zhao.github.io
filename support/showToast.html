@@ -25,11 +25,16 @@
     .z-dialog{
       display: none;
       position: fixed;
-      /* min-width: 260px; */
-      min-width: 460px;
-      max-width: 80%;
+      min-width: 320px;
+      left: 50%;
+      top: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      -moz-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      -o-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
       margin: 0;
-      padding: 0;
+      padding: 30px;
       background: #fff;
       border-radius: 5px;
       box-shadow: 1px 1px 50px rgba(0,0,0,.3);
@@ -38,7 +43,6 @@
     .z-dialog-title{
       height: 30px;
       line-height: 30px;
-      padding-top: 30px;
       text-align: center;
       color: #3f9df5;
       font-weight: bold;
@@ -46,8 +50,7 @@
     }
     .z-dialog-content{
       position: relative;
-      padding: 40px 60px 20px;
-      /* line-height: 24px; */
+      padding: 30px 0;
       line-height: 30px;
       word-break: break-all;
       overflow: hidden;
@@ -92,7 +95,6 @@
     }
     .z-dialog-btn{
       text-align: center;
-      padding: 40px 60px 40px;
       pointer-events: auto;
       user-select: none;
       -webkit-user-select: none;
@@ -103,7 +105,6 @@
       *zoom: 1;
       vertical-align: top;
       box-sizing: border-box;
-      /* width: 134px; */
       height: 50px;
       line-height: 50px;
       padding: 0 50px;
@@ -124,9 +125,7 @@
       border-color: #dedede;
       background-color: #fff;
       color: #666;
-    }
-    .z-dialog-btn a:last-child{
-      margin-left: 60px;
+      margin-right: 60px;
     }
     .z-dialog-btn a:hover{
       opacity: 0.7;
@@ -148,31 +147,17 @@
     </div>
   </div> -->
 
-  <script src="./js/jquery.min.js"></script>
+  <script src="../js/jquery.min.js"></script>
   <script>
-    showToast('参数是字符串也可以弹窗！')
+    // alert("参数是字符串也可以弹窗！")
+    // showToast('中华人民共和国')
+    showToast({title: '警告', content: "警告类型", showCancel: true})
     function showToast (obj) {
-      $('body').append(`<div class="z-mask" id="z-mask"></div>
-        <div class="z-dialog" id="z-dialog">
-            <div class="z-dialog-title" id="z-dialog-title"></div>
-            <div class="z-dialog-content" id="z-dialog-content"></div>
-            <div class="z-dialog-close" id="z-dialog-close"></div>
-            <div class="z-dialog-btn">
-            <a href="javascript:void(0)" class="z-dialog-btn-cancel" id="z-dialog-btn-cancel"></a>
-            <a href="javascript:void(0)" class="z-dialog-btn-confirm" id="z-dialog-btn-confirm"></a>
-            </div>
-        </div>`)
+      $('body').append('<div class="z-mask" id="z-mask"></div><div class="z-dialog" id="z-dialog"><div class="z-dialog-title" id="z-dialog-title"></div><div class="z-dialog-content" id="z-dialog-content"></div><div class="z-dialog-close" id="z-dialog-close"></div><div class="z-dialog-btn"><a href="javascript:void(0)" class="z-dialog-btn-cancel" id="z-dialog-btn-cancel"></a><a href="javascript:void(0)" class="z-dialog-btn-confirm" id="z-dialog-btn-confirm"></a></div></div>')
       var dialog = document.getElementById('z-dialog')
       var mask = document.getElementById('z-mask')
       dialog.style.display = 'block'
       mask.style.display = 'block'
-      // console.log('当前的配置', obj)
-      var w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth
-      var h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
-      dialogWidth = dialog.scrollWidth
-      dialogHeight = dialog.scrollHeight
-      dialog.style.top =  (h - dialogHeight)/2 + "px"
-      dialog.style.left = (w - dialogWidth)/2 + "px"
       if(!obj) obj = {}
       if(typeof(obj)  == 'string' && obj.constructor == String){
         obj = {content: obj}
@@ -180,7 +165,7 @@
       var options = {
         title: obj.title || '提示',// 提示的标题,非必填
         content: obj.content || '提示内容。', // 提示的内容,非必填
-        showCancel: obj.showCancel === false ? false : true, // 是否显示取消按钮
+        showCancel: obj.showCancel ? true : false, // 是否显示取消按钮
         cancelText: obj.cancelText || '取消', // 取消按钮的文字，最多 4 个字符
         confirmText: obj.confirmText || '确定', // 确认按钮的文字，最多 4 个字符
         // cancelColor: obj.cancelColor || '#000000', // 取消按钮的文字颜色，必须是 16 进制格式的颜色字符串
@@ -196,22 +181,23 @@
       // document.getElementById('z-dialog-btn-confirm').style.color = options.confirmColor
       // document.getElementById('z-dialog-btn-cancel').style.color = options.cancelColor
       document.getElementById('z-dialog-btn-confirm').onclick = function () {
-        console.log('点击确定')
+        // console.log('点击确定')
         if(options.handleConfirm)options.handleConfirm()
-        dialog.style.display = "none"
-        mask.style.display = "none"
+        $("#z-dialog").remove()
+        $("#z-mask").remove()
       }
       document.getElementById('z-dialog-btn-cancel').onclick = function () {
-        console.log('点击取消')
+        // console.log('点击取消')
         if(options.handleCancel)options.handleCancel()
-        dialog.style.display = "none"
-        mask.style.display = "none"
+        $("#z-dialog").remove()
+        $("#z-mask").remove()
       }
       document.getElementById('z-dialog-close').onclick = function () {
-        dialog.style.display = "none"
-        mask.style.display = "none"
+        $("#z-dialog").remove()
+        $("#z-mask").remove()
       }
     }
+    
   </script>
 </body>
 </html>

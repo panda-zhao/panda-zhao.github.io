@@ -1,0 +1,575 @@
+<!-- <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> -->
+<!DOCTYPE html>
+<!-- <html xmlns="http://www.w3.org/1999/xhtml" style="width:100%; height:100%; margin:0px "> -->
+<html style="width:100%; height:100%; margin:0px ">
+<head>
+  <title>广州市统一身份认证平台-数字证书认证</title>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+  <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+  <META HTTP-EQUIV="Expires" CONTENT="0">
+  <meta http-equiv="X-UA-Compatible" content="IE=8">
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    .container-fluid{
+      position: relative;
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+    }
+    .container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 70px;
+      background: url(./certunion/bg.png) no-repeat center;
+      background-size: 100% 100%;
+    }
+  .z-header{
+    position: relative;
+  }
+  .z-header-wrap{
+    height: 82px;
+    line-height: 82px;
+    width: 1140px;
+    margin: 0 auto;
+    font-size: 30px;
+    color: #fff;
+  }
+  .z-header-wrap::after{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    content: '';
+    height: 1px;
+    background: #64aade;
+  }
+  .z-header-wrap .log{
+    float: left;
+    margin-top: 20px;
+    width: 44px;
+    height: 42px;
+    margin-right: 15px;
+  }
+  .z-footer{
+      position: fixed;
+      bottom: 0;
+      /* padding-top: 20px; */
+      box-sizing: border-box;
+      width: 100%;
+      font-size: 14px;
+      text-align: center;
+      height: 70px;
+      line-height: 71px;
+      background: #3588d6;
+      color: #9ccbf5;
+      z-index: 2019;
+  }
+  .z-footer .gap{
+      margin-right: 30px;
+  }
+  .z-main{
+    padding: 30px;
+    border-radius: 5px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: "HanSan";
+    background: #fff;
+    color: #000;
+  }
+
+  .login_title {
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      padding-bottom: 20px;
+      color: #3f9df5;
+    }
+  .text{
+    width: 397px;
+  }
+  .text .p1 {
+    font-size: 16px;
+    color: #000;
+    line-height: 25px;
+    padding-bottom: 10px;
+  }
+  .text .p2{
+    font-size: 14px;
+    color: #666;
+    line-height: 20px;
+  }
+  .button_class{
+    display: block;
+    width: 397px;
+    height: 50px;
+    background: #3f9df5;
+    font-size: 16px;
+    text-align: center;
+    color: #fff;
+    border: 0;
+    outline: 0;
+    letter-spacing: 2px;
+    margin-top: 20px;
+  }
+
+  .z-mask{
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgb(0, 0, 0);
+      opacity: 0.3;
+      z-index: 19891015;
+    }
+    .z-dialog{
+      display: none;
+      position: fixed;
+      min-width: 320px;
+      left: 50%;
+      top: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      -moz-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      -o-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      margin: 0;
+      padding: 30px;
+      background: #fff;
+      border-radius: 5px;
+      box-shadow: 1px 1px 50px rgba(0,0,0,.3);
+      z-index: 19891016;
+    }
+    .z-dialog-title{
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      color: #3f9df5;
+      font-weight: bold;
+      font-size: 20px;
+    }
+    .z-dialog-content{
+      position: relative;
+      padding: 30px 0;
+      line-height: 30px;
+      word-break: break-all;
+      overflow: hidden;
+      font-size: 16px;
+      text-align: center;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+    .z-dialog-close{
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+    .z-dialog-close:before,.z-dialog-close:after{
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      margin-top: -2px;
+      background: #666;
+      width: 100%;
+      height: 2px;
+    }
+    .z-dialog-close:before{
+      -webkit-transform: rotate(45deg);
+      -moz-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      -o-transform: rotate(45deg);
+      transform: rotate(45deg);
+    }
+    .z-dialog-close:after{
+      -webkit-transform: rotate(-45deg);
+      -moz-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+      -o-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+    }
+    .z-dialog-btn{
+      text-align: center;
+      pointer-events: auto;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+    .z-dialog-btn a{
+      display: inline-block;
+      *display: inline;
+      *zoom: 1;
+      vertical-align: top;
+      box-sizing: border-box;
+      height: 50px;
+      line-height: 50px;
+      padding: 0 50px;
+      border: 1px solid #dedede;
+      border-radius: 3px;
+      font-size: 16px;
+      font-weight: 400;
+      letter-spacing: 2px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .z-dialog-btn a.z-dialog-btn-confirm{
+      border-color: #1E9FFF;
+      background-color: #1E9FFF;
+      color: #fff;
+    }
+    .z-dialog-btn a.z-dialog-btn-cancel{
+      border-color: #dedede;
+      background-color: #fff;
+      color: #666;
+      margin-right: 60px;
+    }
+    .z-dialog-btn a:hover{
+      opacity: 0.7;
+    }
+  </style>
+</head>
+
+<body style="width:100%; height:100%; margin:0px ">
+
+  <!-- 内容区域 -->
+  <div class="container-fluid">
+    <div class="container">
+        <div class="z-header">
+          <div class="z-header-wrap"><img src="./certunion/logo.png" alt="" class="log">广州市统一身份认证平台</div>
+        </div>
+        <div class="z-main">
+          <div class="login_title">数字证书</div>
+          <div class="text">
+            <p class="p1">① 请使用WIN7操作系统，IE10或以上版本浏览器；</p>
+            <p class="p1">② 请先下载相应的数字证书或网银驱动以及证联客户端：<a href="javascript:void(0)" class="link" id='CADownload'>证联客户端</a></p>
+            
+            <p class="p1">③ 请确认是否运行加载项。查看页面顶部或者底部有无运行加载项的提示栏。若有请选择“允许”。若无显示提示栏请刷新页面。</p>
+            <p class="p1">④ 点击【数字证书登录】输入【PIN码】即可。</p>
+            <div style="position: relative;padding-left: 49px">
+              <span style="position: absolute;left: 20px;top: 0;font-size: 14px">注：</span>
+              <p class="p2">1、目前系统支持支持农业银行、建设银行、中国银行、工商银行、招商银行、广州银行的个人网银；</p>
+              <p class="p2">2、目前系统支持由广州市电子签名中心签发的广东CA[GDCA]、网证通[NETCA]、深圳CA[SZCA]的证书。</p>
+            </div>
+          </div>
+          <input id="login" type="button" class="button_class" onclick="checkRegAndLogin();" value="登录" />
+        </div>
+    </div>
+      
+    <div class="z-footer">
+      <p>
+        <span class="gap">建设单位：广州市信息安全测评中心</span>
+        <span class="gap">技术支持：02038551706</span>
+        <span class="gap">ICP证粤B2-20040244</span>
+        <span>建议使用1366*768分辨率/IE10.0或以上浏览器访问达到最佳效果</span>
+      </p>
+    </div>
+  </div>
+
+</body>
+<script type="text/javascript" src="./js/jquery.min.js"></script>
+<script>
+  $(document).ready(function () {
+    //定位
+    var W = $(".certificate_in").width();
+    $(".certificate_in").css({
+      "margin-left": -W / 2 + "px"
+    });
+    $("#CADownload").click(function(){
+      //证联客户端下载地址
+      window.open("http://static.gdzwfw.gov.cn/ca/CA助手.exe");
+    });
+    //“我知道了”按钮点击关闭右侧提醒框
+    $(".remind .know").click(function (event) {
+      $(".remind").hide();
+    });
+
+    // $("#tipsPanel").hide();
+    checkRegAndLogin();
+  });
+
+  function pxToNum(pxValue) {
+    var num = pxValue.replace(/\s+|px/gi, "");
+
+    //转成真正意义上的数值
+    var toNum;
+    if (!isNaN(num)) {
+      toNum = Number(num);
+    }
+    return toNum;
+  }
+
+  function showMsg2(msg) {
+    // 如果已经有弹窗，则不再显示
+    if (document.getElementById('msg_panel').style.display != 'none') {
+      return;
+    }
+
+    var msgPanelHeight = pxToNum(document.getElementById('msg_panel').style.height);
+    var msgPanelWidth = pxToNum(document.getElementById('msg_panel').style.width);
+    var msgPanelTop = (document.body.clientHeight / 2) - (msgPanelHeight / 2);
+    var msgPanelLeft = (document.body.clientWidth / 2) - (msgPanelWidth / 2);
+    $('#msg_panel').css({ "top": msgPanelTop });
+    $('#msg_panel').css({ "left": msgPanelLeft });
+    $('#msg_panel').show();
+    $('#msg_content').text(msg);
+
+    document.getElementById('msg_panel').focus();
+
+  }
+
+  function checkRegAndLogin() {
+    try {
+      init();
+    } catch (e) {
+      //初始化数字证书客户端出问题时
+      // $("#iconImage").attr('src', './certunion/Tips.png');
+      // $("#msg").text('数字证书客户端初始化失败');// 若您当前使用的不是IE浏览器，请更换至IE浏览器重新访问
+      // $("#tipsPanel").hide();
+      showToast("数字证书客户端初始化失败")
+      return;
+    }
+    var certInfo;
+    var issuer;
+    var signText;
+    var cert_sn;
+    var cert;
+
+    try {
+      //var readerName=getReaderName();
+      certInfo = getCertInfo();
+      issuer = getIssuerJson();
+      cert_sn = getCertSn();
+      cert = getCert();
+    } catch (e) {
+      //检测数字证书出问题时
+      // $("#iconImage").attr('src', './certunion/Tips.png');
+      // $("#msg").text('请插入您的数字证书');
+      // $("#tipsPanel").show();
+      showToast("请插入您的数字证书")
+      return;
+    }
+
+    $.ajax({
+      type: 'POST',
+      url: '/caunion/combinedauth/digcert/checkreg.do',
+      data: {
+        "cert_sn": cert_sn,
+        "issuer": issuer,
+        "cert": cert
+      },
+      success: function (data) {
+        if (data.resultCode == '1') {
+          signText = resolver(issuer);
+          login(signText, cert);
+        } else if (data.resultCode == '2') {
+          window.location = "/caunion/combinedauth/digcert/reg.do?ci=" + cert_sn;
+        } else {
+          // $("#iconImage").attr('src', './certunion/Tips.png');
+          // $("#msg").text(data.msg);
+          // $("#tipsPanel").hide();
+          showToast(data.msg)
+          return;
+        }
+      },
+      error: function (data) {
+        // showMsg2(data);
+        showToast(data)
+        unLockBtn($('#login'));
+        $('#login').html("验证");
+      }
+    });
+  }
+
+  function login(sign_text, sign_cert) {
+    var sign_data;
+    var sign_algo = getSignAlgo(sign_cert);
+    sign_data = getSignDataWithSignAlgo(sign_text, sign_algo);
+
+    if (sign_data == "") {
+      // $("#iconImage").attr('src', './certunion/Tips.png');
+      // $("#msg").text("签名失败");
+      // $("#tipsPanel").hide();
+      showToast("签名失败")
+      return;
+    }
+
+    $.ajax({
+      type: 'POST',
+      url: '/caunion/combinedauth/digcert/login.do',
+      data: {
+        "sign_text": sign_text,
+        "sign_cert": sign_cert,
+        "sign_data": sign_data,
+        "sign_algo": sign_algo
+      },
+      success: function (data) {
+        if (data.resultCode == '1') {
+          $("form[name='Login']").submit();
+        } else {
+          // $("#iconImage").attr('src', './certunion/Tips.png');
+          // $("#msg").text(data.msg);
+          // $("#tipsPanel").hide();
+          showToast(data.msg)
+          return;
+        }
+      },
+      error: function (data) {
+        // alert(data);
+        showToast(data)
+        unLockBtn($('#login'));
+        $('#login').html("验证");
+      }
+    });
+  }
+
+  function isReg2() {
+    var certInfo;
+    var issuer;
+    var signText;
+    var cert_sn;
+    var signData;
+    var cert;
+    try {
+      init();
+      certInfo = getCertInfo();
+      issuer = getIssuerJson();
+      signText = resolver(issuer);
+      cert_sn = getCertSn();
+      cert = getCert();
+      signData = getSignData(signText);
+
+    } catch (e) {
+      showToast(e)
+      return;
+    }
+    ;
+
+    var realm = '<%=session.getAttribute("realm")%>';
+
+    lockBtn($('#login'));
+    $('#login').val("验证中，请稍后......");
+
+    $.ajax({
+      type: 'POST',
+      url: '/caunion/combinedauth/digcert/checkreg.do',
+      data: {
+        signCert: cert,
+        signData: signData,
+        signText: signText,
+        signAlgo: '32772',
+        cert_sn: cert_sn,
+        realm: realm,
+        cert: getCert()
+      },
+      success: function (data) {
+        if (data.resultCode == '1') {
+          $("form[name='Login']").submit();
+        } else if (data.resultCode == '0') {
+          showToast("验证失败");
+        } else if (data.resultCode == '2') {
+  
+        } else {
+          showToast(data.msg);
+        }
+        unLockBtn($('#login'));
+        $('#login').html("验证");
+      },
+      error: function (data) {
+        showToast(data);
+        unLockBtn($('#login'));
+        $('#login').html("验证");
+      }
+    });
+  }
+
+  function resolver(issuer) {
+    var signText;
+    $.ajax({
+      cache: true,
+      type: "POST",
+      url: "/caunion/combinedauth/digcert/signtext.do",
+      data: {
+        "issuer": issuer
+      },
+      async: false,
+      cache: false,
+      error: function (request) {
+        throw "连接失败";
+
+      },
+      success: function (data) {
+        if (data.resultCode == 1) {
+          signText = data.signText;
+        } else {
+          // $("#iconImage").attr('src', './certunion/q.png');
+          // $("#msg").text('暂不支持此数字证书类型，请参考以下内容:');
+          // $("#tipsPanel").show();
+          showToast("暂不支持此数字证书类型，请参考以下内容")
+        }
+
+      }
+    });
+    return signText;
+  }
+  function showToast (obj) {
+      $('body').append('<div class="z-mask" id="z-mask"></div><div class="z-dialog" id="z-dialog"><div class="z-dialog-title" id="z-dialog-title"></div><div class="z-dialog-content" id="z-dialog-content"></div><div class="z-dialog-close" id="z-dialog-close"></div><div class="z-dialog-btn"><a href="javascript:void(0)" class="z-dialog-btn-cancel" id="z-dialog-btn-cancel"></a><a href="javascript:void(0)" class="z-dialog-btn-confirm" id="z-dialog-btn-confirm"></a></div></div>')
+      
+      var dialog = document.getElementById('z-dialog')
+      var mask = document.getElementById('z-mask')
+      dialog.style.display = 'block'
+      mask.style.display = 'block'
+      if(!obj) obj = {}
+      if(typeof(obj)  == 'string' && obj.constructor == String){
+        obj = {content: obj}
+      }
+      var options = {
+        title: obj.title || '提示',// 提示的标题,非必填
+        content: obj.content || '提示内容。', // 提示的内容,非必填
+        showCancel: obj.showCancel ? true : false, // 是否显示取消按钮
+        cancelText: obj.cancelText || '取消', // 取消按钮的文字，最多 4 个字符
+        confirmText: obj.confirmText || '确定', // 确认按钮的文字，最多 4 个字符
+        // cancelColor: obj.cancelColor || '#000000', // 取消按钮的文字颜色，必须是 16 进制格式的颜色字符串
+        // confirmColor: obj.confirmColor || '#576B95', // 确认按钮的文字颜色，必须是 16 进制格式的颜色字符串
+        handleConfirm: obj.handleConfirm, // 客户点击确定
+        handleCancel: obj.handleCancel // 客户点击取消
+      }
+      document.getElementById('z-dialog-title').innerHTML = options.title
+      document.getElementById('z-dialog-content').innerHTML = options.content
+      if(!options.showCancel)document.getElementById('z-dialog-btn-cancel').style.display = "none"
+      document.getElementById('z-dialog-btn-confirm').innerHTML = options.confirmText
+      document.getElementById('z-dialog-btn-cancel').innerHTML = options.cancelText
+      // document.getElementById('z-dialog-btn-confirm').style.color = options.confirmColor
+      // document.getElementById('z-dialog-btn-cancel').style.color = options.cancelColor
+      document.getElementById('z-dialog-btn-confirm').onclick = function () {
+        // console.log('点击确定')
+        if(options.handleConfirm)options.handleConfirm()
+        $("#z-dialog").remove()
+        $("#z-mask").remove()
+      }
+      document.getElementById('z-dialog-btn-cancel').onclick = function () {
+        // console.log('点击取消')
+        if(options.handleCancel)options.handleCancel()
+        $("#z-dialog").remove()
+        $("#z-mask").remove()
+      }
+      document.getElementById('z-dialog-close').onclick = function () {
+        $("#z-dialog").remove()
+        $("#z-mask").remove()
+      }
+    }
+</script>
+
+</html>
