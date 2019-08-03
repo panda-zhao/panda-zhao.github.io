@@ -1,15 +1,16 @@
 var data = [
   // 1 个人收藏
   [
-    {name: "常用速查表",url: "https://www.w3cschool.cn/dict/",title: "各大语言速查表"},
-    {name: "技术支持",url: "./support/index.html",title: "技术支持"},
-    {name: "BootCDN",url: "http://www.bootcdn.cn",title: "免费的CDN加速服务"},
     {name: "GitHub",url: "https://github.com/panda-zhao",title: ""},
-    {name: "前端之路",url: "http://page.zhaowy.cn",title: ""},
-    {name: "博客园",url: "https://www.cnblogs.com/zhaowy/",title: ""},
-    {name: "jquery插件库",url: "http://www.jq22.com/",title: "在线编辑器，文本比较，常用前端库，组件！"},
+    {name: "技术支持",url: "./support/index.html",title: "技术支持"},
+    {name: "常用速查表",url: "https://www.w3cschool.cn/dict/",title: "各大语言速查表"},
     {name: "开发者手册",url: "https://cloud.tencent.com/developer/devdocs",title: ""},
-    {name: "wordpress",url: "https://cn.wordpress.org/",title: "用PHP语言开发的博客平台"},
+    {name: "BootCDN",url: "http://www.bootcdn.cn",title: "免费的CDN加速服务"},
+    {name: "jquery插件库",url: "http://www.jq22.com/",title: "在线编辑器，文本比较，常用前端库，组件！"},
+    {name: "图片压缩",url: "https://tinypng.com/",title: "tinypng图片压缩"},
+    {name: "菜鸟工具",url: "https://c.runoob.com/",title: ""},
+    {name: "坚果云",url: "https://www.jianguoyun.com/",title: ""},
+    {name: "脚本之家在线工具",url: "http://tools.jb51.net/",title: ""},
     {name: "阿里云",url: "https://home.console.aliyun.com/new#/",title: ""},
     {name: "星座网",url: "http://www.xzw.com/",title: ""},
     {name: "电影宝",url: "http://www.dyb365.com",title: ""}
@@ -21,22 +22,8 @@ var data = [
     {name: "转盘抽奖",url: "./template/luckDraw/index.html",title: "转盘抽奖"},
   ],
   [
-    {name: "上传图片组件",url: "./components/upload.html",title: "上传图片组件"},
-    {name: "使用jssdk",url: "./components/jssdk.html",title: "使用jssdk"},
-    {name: "console的正确使用",url: "./components/javascript/console.html",title: "console的正确使用"},
-    {name: "时间常用方法汇总",url: "./components/javascript/date.html",title: "时间常用方法汇总"},
-    {name: "string方法",url: "./components/javascript/string.html",title: "string方法"},
-    {name: "array方法",url: "./components/javascript/array.html",title: "array方法"},
-
-    {name: "vue的生命周期测试",url: "./components/vue.html",title: "vue的生命周期测试"},
-    {name: "动画",url: "./components/animation.html",title: "学习动画"},
-    {name: "使用rem",url: "./components/rem.html",title: "使用rem"},
-
-    {name: "a链接的各种使用",url: "./components/html/link.html",title: "a链接的各种使用"},
-    {name: "form表单",url: "./components/html/form.html",title: "form表单"},
-    {name: "解决Placeholder的IE8兼容问题",url: "./support/placeholder.html",title: "解决Placeholder的IE8兼容问题"},
-    {name: "自定义弹框",url: "./support/showToast.html",title: "自定义弹框"}
-    
+    {name: "自定义弹框组件",url: "./components/showToast.html",title: "自定义弹框组件"},
+    {name: "IE低版本优雅提醒",url: "./components/html-hack.html",title: "使用html-hack做IE低版本优雅提醒"},
   ],
   // 网融备忘
   [
@@ -138,13 +125,10 @@ var data = [
     {name: "Git",url: "https://git-scm.com/",title: "目前世界上最先进的分布式版本控制系统（没有之一）。"},
     {name: "TortoiseSVN",url: "https://tortoisesvn.net/downloads.html",title: "一个 Windows 下的版本控制系统 Apache™ Subversion® 的客户端工具。"},
     {name: "Bugclose",url: "https://www.bugclose.com/index.html",title: "项目管理工具"},
-    {name: "图片压缩",url: "https://tinypng.com/",title: "tinypng图片压缩"},
-    {name: "坚果云",url: "https://www.jianguoyun.com/",title: ""},
   ],
 
   // 1 前端工具
   [
-    {name: "脚本之家在线工具",url: "http://tools.jb51.net/",title: ""},
     {name: "雪碧图合成",url: "https://www.toptal.com/developers/css/sprite-generator",title: ""},
     {name: "七牛云",url: "https://www.qiniu.com/",title: ""},
     {name: "全聚合",url: "https://www.juhe.cn/",title: "数据接口"},
@@ -176,15 +160,16 @@ var data = [
   ],
   //4 博客论坛
   [
+    {name: "wordpress",url: "https://cn.wordpress.org/",title: "用PHP语言开发的博客平台"},
     {name: "囧克斯的博客",url: "http://jiongks.name",title: ""},
     {name: "阮一峰的博客",url: "http://www.ruanyifeng.com",title: ""},
     {name: "张鑫旭的博客",url: "http://www.zhangxinxu.com/wordpress",title: ""},
-    {name: "前端开发月报",url: "http://jsfront.org/month/2017/201704.htm",title: ""},
     {name: "不落阁",url: "http://www.leo96.com/",title: ""},
     {name: "Zblog社区",url: "http://bbs.zblogcn.com/",title: ""},
-    {name: "优秀个人博客1",url: "http://www.dpfblog.com/",title: ""},
     {name: "刘洋博客",url: "https://www.lyblog.net/",title: ""},
     {name: "博客112导航",url: "https://boke112.com/",title: ""},
     {name: "小火柴的前端小册子",url: "https://xiaohuochai.site/",title: ""},
+    {name: "前端之路",url: "http://page.zhaowy.cn",title: ""},
+    {name: "博客园",url: "https://www.cnblogs.com/zhaowy/",title: ""},
   ]
 ]
