@@ -4,28 +4,27 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="../css/z-style.css">
   <title>自定义弹框</title>
   <style>
-    blockquote, body, button, dd, div, dl, dt, form, h1, h2, h3, h4, h5, h6, input, li, ol, p, pre, td, textarea, th, ul {
+    /* blockquote, body, button, dd, div, dl, dt, form, h1, h2, h3, h4, h5, h6, input, li, ol, p, pre, td, textarea, th, ul {
       margin: 0;
       padding: 0;
       -webkit-tap-highlight-color: rgba(0,0,0,0);
-    }
+    } */
     .z-mask{
-      display: none;
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgb(0, 0, 0);
-      opacity: 0.3;
+      background-color: rgba(0, 0, 0, .5);
       z-index: 19891015;
     }
     .z-dialog{
-      display: none;
       position: fixed;
-      min-width: 320px;
+      box-sizing: border-box;
+      min-width: 350px;
       left: 50%;
       top: 50%;
       -webkit-transform: translate(-50%, -50%);
@@ -38,7 +37,6 @@
       background: #fff;
       border-radius: 5px;
       box-shadow: 1px 1px 50px rgba(0,0,0,.3);
-      z-index: 19891016;
     }
     .z-dialog-title{
       height: 30px;
@@ -115,6 +113,7 @@
       letter-spacing: 2px;
       cursor: pointer;
       text-decoration: none;
+      -webkit-tap-highlight-color: rgba(0,0,0,0);
     }
     .z-dialog-btn a.z-dialog-btn-confirm{
       border-color: #1E9FFF;
@@ -127,74 +126,85 @@
       color: #666;
       margin-right: 60px;
     }
-    .z-dialog-btn a:hover{
+    .z-dialog-btn a:hover, .z-dialog-close:hover{
       opacity: 0.7;
     }
   </style>
 </head>
 <body>
-  <button onclick="showToast()">点击显示弹窗</button>
-  <!-- 遮罩层-->
-  <!-- <div class="z-mask" id="z-mask"></div> -->
-  <!-- 弹窗 -->
-  <!-- <div class="z-dialog" id="z-dialog">
-    <div class="z-dialog-title" id="z-dialog-title"></div>
-    <div class="z-dialog-content" id="z-dialog-content"></div>
-    <div class="z-dialog-close" id="z-dialog-close"></div>
-    <div class="z-dialog-btn">
-      <a href="javascript:void(0)" class="z-dialog-btn-cancel" id="z-dialog-btn-cancel"></a>
-      <a href="javascript:void(0)" class="z-dialog-btn-confirm" id="z-dialog-btn-confirm"></a>
-    </div>
-  </div> -->
+  <h1>自定义的原生JavaScript弹框</h1>
+  <button class="z-button" onclick="showToast('普通弹框！')" >普通弹框</button>
+  <button class="z-button" onclick="showToast({title: '恭喜', content: '这个是带取消按钮的弹框！', showCancel: true})">带取消弹框</button>
 
-  <script src="../js/jquery.min.js"></script>
+  
   <script>
-    // alert("参数是字符串也可以弹窗！")
-    // showToast('中华人民共和国')
-    showToast({title: '警告', content: "警告类型", showCancel: true})
     function showToast (obj) {
-      $('body').append('<div class="z-mask" id="z-mask"></div><div class="z-dialog" id="z-dialog"><div class="z-dialog-title" id="z-dialog-title"></div><div class="z-dialog-content" id="z-dialog-content"></div><div class="z-dialog-close" id="z-dialog-close"></div><div class="z-dialog-btn"><a href="javascript:void(0)" class="z-dialog-btn-cancel" id="z-dialog-btn-cancel"></a><a href="javascript:void(0)" class="z-dialog-btn-confirm" id="z-dialog-btn-confirm"></a></div></div>')
-      var dialog = document.getElementById('z-dialog')
-      var mask = document.getElementById('z-mask')
-      dialog.style.display = 'block'
-      mask.style.display = 'block'
+      var title = document.createElement("div")
+      title.setAttribute("class", "z-dialog-title")
+      title.setAttribute("id", "z-dialog-title")
+      var content = document.createElement("div")
+      content.setAttribute("class", "z-dialog-content")
+      content.setAttribute("id", "z-dialog-content")
+      var closeBtn = document.createElement("div")
+      closeBtn.setAttribute("class", "z-dialog-close")
+      closeBtn.setAttribute("id", "z-dialog-close")
+      var cancelBtn = document.createElement("a")
+      cancelBtn.setAttribute("class", "z-dialog-btn-cancel")
+      cancelBtn.setAttribute("id", "z-dialog-btn-cancel")
+      cancelBtn.setAttribute("href", "javascript:void(0)")
+      var confirmBtn = document.createElement("a")
+      confirmBtn.setAttribute("class", "z-dialog-btn-confirm")
+      confirmBtn.setAttribute("id", "z-dialog-btn-confirm")
+      confirmBtn.setAttribute("href", "javascript:void(0)")
+      var buttonGroup = document.createElement("div")
+      buttonGroup.setAttribute("class", "z-dialog-btn")
+      buttonGroup.appendChild(cancelBtn)
+      buttonGroup.appendChild(confirmBtn)
+      var dialog = document.createElement("div")
+      dialog.setAttribute("class", "z-dialog")
+      dialog.setAttribute("id", "z-dialog")
+      dialog.appendChild(title)
+      dialog.appendChild(content)
+      dialog.appendChild(closeBtn)
+      dialog.appendChild(buttonGroup)
+      var mask = document.createElement("div")
+      mask.setAttribute("class", "z-mask")
+      mask.setAttribute("id", "z-mask")
+      mask.appendChild(dialog)
+      document.body.appendChild(mask)
+      console.log(mask)
       if(!obj) obj = {}
       if(typeof(obj)  == 'string' && obj.constructor == String){
         obj = {content: obj}
       }
       var options = {
         title: obj.title || '提示',// 提示的标题,非必填
-        content: obj.content || '提示内容。', // 提示的内容,非必填
-        showCancel: obj.showCancel ? true : false, // 是否显示取消按钮
+        content: obj.content || '暂无内容！', // 提示的内容,非必填
+        showCancel: obj.showCancel ? true : false, // 默认不展示取消按钮
         cancelText: obj.cancelText || '取消', // 取消按钮的文字，最多 4 个字符
         confirmText: obj.confirmText || '确定', // 确认按钮的文字，最多 4 个字符
-        // cancelColor: obj.cancelColor || '#000000', // 取消按钮的文字颜色，必须是 16 进制格式的颜色字符串
-        // confirmColor: obj.confirmColor || '#576B95', // 确认按钮的文字颜色，必须是 16 进制格式的颜色字符串
-        handleConfirm: obj.handleConfirm, // 客户点击确定
-        handleCancel: obj.handleCancel // 客户点击取消
+        // cancelColor: obj.cancelColor || '#000000', // 取消按钮的文字颜色
+        // confirmColor: obj.confirmColor || '#576B95', // 确认按钮的文字颜色
+        handleConfirm: obj.handleConfirm, // 客户点击确定回调
+        handleCancel: obj.handleCancel // 客户点击取消回调
       }
-      document.getElementById('z-dialog-title').innerHTML = options.title
-      document.getElementById('z-dialog-content').innerHTML = options.content
-      if(!options.showCancel)document.getElementById('z-dialog-btn-cancel').style.display = "none"
-      document.getElementById('z-dialog-btn-confirm').innerHTML = options.confirmText
-      document.getElementById('z-dialog-btn-cancel').innerHTML = options.cancelText
-      // document.getElementById('z-dialog-btn-confirm').style.color = options.confirmColor
-      // document.getElementById('z-dialog-btn-cancel').style.color = options.cancelColor
-      document.getElementById('z-dialog-btn-confirm').onclick = function () {
-        // console.log('点击确定')
+      title.innerHTML = options.title
+      content.innerHTML = options.content
+      if(!options.showCancel)cancelBtn.style.display = "none"
+      confirmBtn.innerHTML = options.confirmText
+      cancelBtn.innerHTML = options.cancelText
+      // confirmBtn.style.color = options.confirmColor
+      // cancelBtn.style.color = options.cancelColor
+      confirmBtn.onclick = function () {
         if(options.handleConfirm)options.handleConfirm()
-        $("#z-dialog").remove()
-        $("#z-mask").remove()
+        document.body.removeChild(mask)
       }
-      document.getElementById('z-dialog-btn-cancel').onclick = function () {
-        // console.log('点击取消')
+      cancelBtn.onclick = function () {
         if(options.handleCancel)options.handleCancel()
-        $("#z-dialog").remove()
-        $("#z-mask").remove()
+        document.body.removeChild(mask)
       }
-      document.getElementById('z-dialog-close').onclick = function () {
-        $("#z-dialog").remove()
-        $("#z-mask").remove()
+      closeBtn.onclick = function () {
+        document.body.removeChild(mask)
       }
     }
     

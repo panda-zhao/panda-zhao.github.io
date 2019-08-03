@@ -1,4 +1,19 @@
 var data = [
+  // 1 个人收藏
+  [
+    {name: "常用速查表",url: "https://www.w3cschool.cn/dict/",title: "各大语言速查表"},
+    {name: "技术支持",url: "./support/index.html",title: "技术支持"},
+    {name: "BootCDN",url: "http://www.bootcdn.cn",title: "免费的CDN加速服务"},
+    {name: "GitHub",url: "https://github.com/panda-zhao",title: ""},
+    {name: "前端之路",url: "http://page.zhaowy.cn",title: ""},
+    {name: "博客园",url: "https://www.cnblogs.com/zhaowy/",title: ""},
+    {name: "jquery插件库",url: "http://www.jq22.com/",title: "在线编辑器，文本比较，常用前端库，组件！"},
+    {name: "开发者手册",url: "https://cloud.tencent.com/developer/devdocs",title: ""},
+    {name: "wordpress",url: "https://cn.wordpress.org/",title: "用PHP语言开发的博客平台"},
+    {name: "阿里云",url: "https://home.console.aliyun.com/new#/",title: ""},
+    {name: "星座网",url: "http://www.xzw.com/",title: ""},
+    {name: "电影宝",url: "http://www.dyb365.com",title: ""}
+  ],
   [
     {name: "魔方游戏",url: "./template/thecube/index.html",title: "three.js游戏"},
     {name: "CSS3炫彩登录",url: "./template/login.html",title: "CSS3炫彩登录"},
@@ -56,20 +71,7 @@ var data = [
     {name: "mpvue",url: "https://github.com/Meituan-Dianping/mpvue",title: "使用vue开发小程序"},
     {name: "百度小程序",url: "https://smartprogram.baidu.com/mappconsole/main/login",title: "百度小程序"},
   ],
-  // 1 个人收藏
-  [
-    {name: "常用速查表",url: "https://www.w3cschool.cn/dict/",title: "各大语言速查表"},
-    {name: "BootCDN",url: "http://www.bootcdn.cn",title: "免费的CDN加速服务"},
-    {name: "GitHub",url: "https://github.com/panda-zhao",title: ""},
-    {name: "前端之路",url: "http://page.zhaowy.cn",title: ""},
-    {name: "博客园",url: "https://www.cnblogs.com/zhaowy/",title: ""},
-    {name: "jquery插件库",url: "http://www.jq22.com/",title: "在线编辑器，文本比较，常用前端库，组件！"},
-    {name: "开发者手册",url: "https://cloud.tencent.com/developer/devdocs",title: ""},
-    {name: "wordpress",url: "https://cn.wordpress.org/",title: "用PHP语言开发的博客平台"},
-    {name: "阿里云",url: "https://home.console.aliyun.com/new#/",title: ""},
-    {name: "星座网",url: "http://www.xzw.com/",title: ""},
-    {name: "电影宝",url: "http://www.dyb365.com",title: ""}
-  ],
+  
 
   // 2 前端学习
   [

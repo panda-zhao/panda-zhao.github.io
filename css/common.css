@@ -47,8 +47,40 @@ dd{
   border: none;
   border-radius: 100px;
 }
-
-
+.footer{
+  margin-top: 10px;
+  padding: 15px 0;
+  line-height: 24px;
+  text-align: center;
+  background: #fff;
+  font-size: 14px;
+}
+.footer span,.footer a{
+  margin-right: 5px;
+}
+.footer img{
+  width: 14px;
+  vertical-align: middle;
+  position: relative;
+  top: -1px;
+}
+.footer a{
+  color: #333;
+}
+/* 左边竖线 */
+.z-line-left{
+  position: relative;
+  padding-left: 10px;
+}
+.z-line-left::after{
+  content: '';
+  height:  100%;
+  width: 1px;
+  background: #ccc;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
 /* 判断小于IE9时弹框 */
 #bu-upgrade-bar{
   position: relative;

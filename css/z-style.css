@@ -1,0 +1,202 @@
+/**********
+author: Zhao WeiYang
+time: 2019-08-03
+des: 一般公共样式表
+path: https://www.zhaowy.cn/css/z-style.css
+**********/
+* {
+  /* margin: 0;
+  padding: 0; */
+  -webkit-tap-highlight-color: transparent;
+}
+body{
+  font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+  color: #333;
+  /* font-size: 14px; */
+}
+a{
+  text-decoration: none;
+}
+image{
+  vertical-align: middle;
+}
+/* 默认链接样式 */
+.z-link{
+  padding: 0;
+  text-decoration: none;
+  outline: none;
+  font-size: 14px;
+  font-weight: 500;
+  color: #606266;
+}
+
+/* 默认按钮样式 */
+.z-button{
+  /* display: inline-block; */
+  box-sizing: border-box;
+  line-height: 1;
+  padding: 12px 20px;
+  border-radius: 4px;
+  outline: none;
+  -webkit-appearance: none;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  background: #fff;
+  border: 1px solid #dcdfe6;
+  color: #606266;
+  cursor: pointer;
+}
+.z-button-primary{
+  color: #fff;
+  background-color: #409eff;
+  border-color: #409eff;
+}
+/* 基础投影 */
+.shadow{
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04)
+}
+/* 浅色投影 */
+.shadow-light{
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1)
+}
+
+.bold{
+  font-weight: bold;
+}
+
+/* 向上箭头 */
+.t-arrow{
+  position: relative;
+}
+.t-arrow::after{
+  content: " ";
+  display: inline-block;
+  height: 6px;
+  width: 6px;
+  border-width: 2px 2px 0 0;
+  border-color: #C8C8CD;
+  border-style: solid;
+  transform: matrix(0.71, -0.71, 0.71, 0.71, 0, 0);
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  margin-top: -4px;
+}
+/* 向右箭头 */
+.r-arrow{
+  position: relative;
+}
+.r-arrow::after{
+  content: " ";
+  display: inline-block;
+  height: 6px;
+  width: 6px;
+  border-width: 2px 2px 0 0;
+  border-color: #C8C8CD;
+  border-style: solid;
+  transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  margin-top: -4px;
+}
+/* 向下箭头 */
+.b-arrow{
+  position: relative;
+}
+.b-arrow::after{
+  content: " ";
+  display: inline-block;
+  height: 6px;
+  width: 6px;
+  border-width: 2px 2px 0 0;
+  border-color: #C8C8CD;
+  border-style: solid;
+  transform: matrix(0.71, 0.71, 0.71, -0.71, 0, 0);
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  margin-top: -4px;
+}
+/* 向左箭头 */
+.l-arrow{
+  position: relative;
+}
+.l-arrow::after{
+  content: " ";
+  display: inline-block;
+  height: 6px;
+  width: 6px;
+  border-width: 2px 2px 0 0;
+  border-color: #C8C8CD;
+  border-style: solid;
+  transform: matrix(-0.71, 0.71, 0.71, 0.71, 0, 0);
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  margin-top: -4px;
+}
+/* 左边竖线 */
+.z-line-left{
+  position: relative;
+  padding-left: 10px;
+}
+.l-line-left::after{
+  content: '';
+  height:  80%;
+  width: 1px;
+  background: #ccc;
+  position: absolute;
+  left: 0;
+  top: 10%;
+}
+/* 下方竖线 */
+.b-line{
+  position: relative;
+}
+.b-line::after{
+  content: " ";
+  width: 100%;
+  height: 1px;
+  background: #eee;
+
+  position: absolute;
+  left: 0;
+  bottom: 0
+}
+/* 关闭按钮 */
+.close{
+  position: relative;
+  width: 50px;
+  height: 50px;
+}
+.close:before,.close:after{
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  margin-top: -2px;
+  background: #000;
+  width: 100%;
+  height: 2px;
+}
+.close:before{
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.close:after{
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+.container{
+  max-width: 1140px;
+  margin: 0 auto;
+}
