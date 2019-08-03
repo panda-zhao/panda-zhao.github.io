@@ -1,0 +1,865 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+  
+  <title>Bootstrap 网站</title>
+  
+  <!-- 引入 Bootstrap 核心 CSS 文件 -->
+  <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- HTML5 Shim 和 Respond.js 用于让 IE8 支持 HTML5元素和媒体查询-->
+  <!--注意： 如果通过 file://  引入 Respond.js 文件，则该文件无法起效果-->
+  <!--[if lt IE 9]>
+  <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  
+</head>
+<body data-spy="scroll" data-target="#bs-example-navbar-collapse-1" data-offset="100">
+<div class="container">
+  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Bootstrap3</a>
+      </div>
+  
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#css">CSS全局</a></li>
+          <li><a href="#assembly">组件</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">插件<strong class="caret"></strong></a>
+            <ul class="dropdown-menu">
+              <li><a href="#modal">插件-遮罩窗体</a></li>
+              <li><a href="#tab">插件-选项卡</a></li>
+              <li><a href="#tip">插件-提示框</a></li>
+              <li class="divider"></li>
+              <li><a href="#collapse">插件-手风琴切换</a></li>
+              <li class="divider"></li>
+              <li><a href="#carousel">插件-幻灯片</a></li>
+            </ul>
+          </li>
+        </ul>
+        <form class="navbar-form navbar-left" role="search">
+          <div class="form-group">
+            <label><input type="text" class="form-control"/></label>
+          </div>
+          <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#">Link</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown<strong class="caret"></strong></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li class="divider"></li>
+              <li><a href="#">Separated link</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+  </nav>
+  
+  <div class="row clearfix" id="css">
+    <div class="col-md-12 column">
+      <h3 class="text-info">样式-标题栏.</h3>
+      <h3>
+        h3. 这是一套可视化布局系统.
+      </h3>
+      
+      <h3 class="text-info">样式-段落</h3>
+      <p>
+        <em>Git</em> 是一个分布式的版本控制系统，最初由 <strong>Linus Torvalds</strong> 编写，用作Linux内核代码的管理。在推出后，Git在其它项目中也取得了很大成功，尤其是在 <small>Ruby</small> 社区中。
+      </p>
+      <h3 class="text-info">样式-段落lead</h3>
+      <p class="lead">
+        <em>Git</em> 是一个分布式的版本控制系统，最初由 <strong>Linus Torvalds</strong> 编写，用作Linux内核代码的管理。在推出后，Git在其它项目中也取得了很大成功，尤其是在 <small>Ruby</small> 社区中。
+      </p>
+      
+      <div class="row clearfix">
+        <div class="col-md-6 column">
+          <h3 class="text-info">样式-地址.</h3>
+          <address> <strong>Twitter, Inc.</strong>
+            <br /> 795 Folsom Ave, Suite 600<br />
+            San Francisco, CA 94107<br />
+            <abbr title="Phone">P:</abbr>
+            (123) 456-7890
+          </address>
+        </div>
+        <div class="col-md-6 column">
+          <h3 class="text-info">样式-详细描述</h3>
+          <dl>
+            <dt>
+              Description lists
+            </dt>
+            <dd>
+              A description list is perfect for defining terms.
+            </dd>
+            <dt>
+              Euismod
+            </dt>
+            <dd>
+              Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.
+            </dd>
+            <dd>
+              Donec id elit non mi porta gravida at eget metus.
+            </dd>
+            <dt>
+              Malesuada porta
+            </dt>
+            <dd>
+              Etiam porta sem malesuada magna mollis euismod.
+            </dd>
+            <dt>
+              Felis euismod semper eget lacinia
+            </dt>
+            <dd>
+              Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
+            </dd>
+          </dl>
+        </div>
+      </div>
+      <h3 class="text-info">样式-引用块</h3>
+      <blockquote>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
+        </p> <small>Someone famous <cite>Source Title</cite></small>
+      </blockquote>
+      <blockquote class="pull-right">
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
+        </p> <small>Someone famous <cite>Source Title</cite></small>
+      </blockquote>
+      <div class="row clearfix">
+        <div class="col-md-6 column">
+          <h3 class="text-info">样式-无序列表</h3>
+          <ul>
+            <li>
+              Lorem ipsum dolor sit amet
+            </li>
+            <li>
+              Consectetur adipiscing elit
+            </li>
+            <li>
+              Integer molestie lorem at massa
+            </li>
+            <li>
+              Facilisis in pretium nisl aliquet
+            </li>
+            <li>
+              Nulla volutpat aliquam velit
+            </li>
+            <li>
+              Faucibus porta lacus fringilla vel
+            </li>
+            <li>
+              Aenean sit amet erat nunc
+            </li>
+            <li>
+              Eget porttitor lorem
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-6 column">
+          <h3 class="text-info">样式-有序列表</h3>
+          <ol>
+            <li>
+              Lorem ipsum dolor sit amet
+            </li>
+            <li>
+              Consectetur adipiscing elit
+            </li>
+            <li>
+              Integer molestie lorem at massa
+            </li>
+            <li>
+              Facilisis in pretium nisl aliquet
+            </li>
+            <li>
+              Nulla volutpat aliquam velit
+            </li>
+            <li>
+              Faucibus porta lacus fringilla vel
+            </li>
+            <li>
+              Aenean sit amet erat nunc
+            </li>
+            <li>
+              Eget porttitor lorem
+            </li>
+          </ol>
+        </div>
+      </div>
+      <h3 class="text-info">样式-表格</h3>
+      <table class="table table-striped table-hover">
+        <thead>
+        <tr>
+          <th>
+            编号
+          </th>
+          <th>
+            产品
+          </th>
+          <th>
+            交付时间
+          </th>
+          <th>
+            状态
+          </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>
+            1
+          </td>
+          <td>
+            TB - Monthly
+          </td>
+          <td>
+            01/04/2012
+          </td>
+          <td>
+            Default
+          </td>
+        </tr>
+        <tr class="success">
+          <td>
+            1
+          </td>
+          <td>
+            TB - Monthly
+          </td>
+          <td>
+            01/04/2012
+          </td>
+          <td>
+            Approved
+          </td>
+        </tr>
+        <tr class="error">
+          <td>
+            2
+          </td>
+          <td>
+            TB - Monthly
+          </td>
+          <td>
+            02/04/2012
+          </td>
+          <td>
+            Declined
+          </td>
+        </tr>
+        <tr class="warning">
+          <td>
+            3
+          </td>
+          <td>
+            TB - Monthly
+          </td>
+          <td>
+            03/04/2012
+          </td>
+          <td>
+            Pending
+          </td>
+        </tr>
+        <tr class="info">
+          <td>
+            4
+          </td>
+          <td>
+            TB - Monthly
+          </td>
+          <td>
+            04/04/2012
+          </td>
+          <td>
+            Call in to confirm
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <div class="row clearfix">
+        <div class="col-md-12 column">
+          <div class="row clearfix">
+            <div class="col-md-6 column">
+              <h3 class="text-info">样式-提交表单</h3>
+              <form role="form">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Email address</label><input type="email" class="form-control" id="exampleInputEmail1" />
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Password</label><input type="password" class="form-control" id="exampleInputPassword1" />
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputFile">File input</label><input type="file" id="exampleInputFile" />
+                  <p class="help-block">
+                    Example block-level help text here.
+                  </p>
+                </div>
+                <div class="checkbox">
+                  <label><input type="checkbox" />Check me out</label>
+                </div> <button type="submit" class="btn btn-default">Submit</button>
+              </form>
+            </div>
+            <div class="col-md-6 column">
+              <h3 class="text-info">样式-纵向表单</h3>
+              <form class="form-horizontal" role="form">
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+                  <div class="col-sm-10">
+                    <input type="email" class="form-control" id="inputEmail3" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+                  <div class="col-sm-10">
+                    <input type="password" class="form-control" id="inputPassword3" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-offset-2 col-sm-10">
+                    <div class="checkbox">
+                      <label><input type="checkbox" />Remember me</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-default">Sign in</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row clearfix">
+        <div class="col-md-6 column">
+          <h3 class="text-info">样式-按钮</h3>
+          <button type="button" class="btn btn-block btn-default">普通按钮</button>
+          <button type="button" class="btn btn-default btn-primary btn-block">原生按钮</button>
+          <button type="button" class="btn btn-default btn-info btn-block">信息按钮（大）</button>
+          <button type="button" class="btn btn-success btn-sm btn-block">成功按钮（小）</button>
+          <button type="button" class="btn btn-warning btn-default btn-block">提醒按钮</button>
+          <button type="button" class="btn btn-default btn-danger btn-block">危险按钮</button>
+          <button type="button" class="btn btn-default btn-inverse btn-block">反转按钮</button>
+          <button type="button" class="btn btn-default btn-link btn-block active">链接按钮</button>
+        </div>
+        <div class="col-md-6 column">
+          <h3 class="text-info">样式-图片</h3>
+          <div class="col-md-6 column">
+            <div class="text-center">
+              <img alt="140x140" src="http://www.runoob.com/try/bootstrap/layoutit/v3/default3.jpg" />
+              <div class="well">我是默认样式图片</div>
+            </div>
+          </div>
+          <div class="col-md-6 column">
+            <div class="text-center">
+              <img alt="140x140" src="http://www.runoob.com/try/bootstrap/layoutit/v3/default3.jpg" class="img-rounded" />
+              <div class="well">我是带圆角图片</div>
+            </div>
+          </div>
+          <div class="col-md-6 column">
+            <div class="text-center">
+              <img alt="140x140" src="http://www.runoob.com/try/bootstrap/layoutit/v3/default3.jpg" class="img-circle" />
+              <div class="well">我是圆形图片</div>
+            </div>
+          </div>
+          <div class="col-md-6 column">
+            <div class="text-center">
+              <img alt="140x140" src="http://www.runoob.com/try/bootstrap/layoutit/v3/default3.jpg" class="img-thumbnail" />
+              <div class="well">我是缩略图</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row clearfix" id="assembly">
+    <div class="col-md-12 column">
+      <h3 class="text-info">工具组件-按钮组</h3>
+      <div class="btn-group">
+        <button class="btn btn-default" type="button"><em class="glyphicon glyphicon-align-left"></em> 左</button> <button class="btn btn-default" type="button"><em class="glyphicon glyphicon-align-center"></em> 中</button> <button class="btn btn-default" type="button"><em class="glyphicon glyphicon-align-right"></em> 右</button> <button class="btn btn-default" type="button"><em class="glyphicon glyphicon-align-justify"></em> 全</button>
+      </div>
+      
+      <h3 class="text-info">工具组件-下拉菜单</h3>
+      <div class="btn-group">
+        <button class="btn btn-default">Action</button> <button data-toggle="dropdown" class="btn btn-default dropdown-toggle"><span class="caret"></span></button>
+        <ul class="dropdown-menu">
+          <li>
+            <a href="#">操作</a>
+          </li>
+          <li class="disabled">
+            <a href="#">另一操作</a>
+          </li>
+          <li class="divider">
+          </li>
+          <li>
+            <a href="#">其它</a>
+          </li>
+        </ul>
+      </div>
+      
+      <h3 class="text-info">工具组件-导航</h3>
+      <ul class="nav nav-tabs">
+        <li class="active">
+          <a href="#">首页</a>
+        </li>
+        <li>
+          <a href="#">简介</a>
+        </li>
+        <li class="disabled">
+          <a href="#">信息</a>
+        </li>
+        <li class="dropdown pull-right">
+          <a href="#" data-toggle="dropdown" class="dropdown-toggle">下拉<strong class="caret"></strong></a>
+          <ul class="dropdown-menu">
+            <li>
+              <a href="#">操作</a>
+            </li>
+            <li>
+              <a href="#">设置栏目</a>
+            </li>
+            <li>
+              <a href="#">更多设置</a>
+            </li>
+            <li class="divider">
+            </li>
+            <li>
+              <a href="#">分割线</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      
+      <h3 class="text-info">工具组件-路径导航</h3>
+      <ul class="breadcrumb">
+        <li>
+          <a href="#">Home</a>
+        </li>
+        <li>
+          <a href="#">Library</a>
+        </li>
+        <li class="active">
+          Data
+        </li>
+      </ul>
+      <div class="row clearfix">
+        <div class="col-md-4 column">
+          
+          <h3 class="text-info">工具组件-分页</h3>
+          <ul class="pagination pagination-lg">
+            <li>
+              <a href="#">Prev</a>
+            </li>
+            <li>
+              <a href="#">1</a>
+            </li>
+            <li>
+              <a href="#">2</a>
+            </li>
+            <li>
+              <a href="#">3</a>
+            </li>
+            <li>
+              <a href="#">4</a>
+            </li>
+            <li>
+              <a href="#">5</a>
+            </li>
+            <li>
+              <a href="#">Next</a>
+            </li>
+          </ul>
+          <ul class="pagination">
+            <li>
+              <a href="#">Prev</a>
+            </li>
+            <li>
+              <a href="#">1</a>
+            </li>
+            <li>
+              <a href="#">2</a>
+            </li>
+            <li>
+              <a href="#">3</a>
+            </li>
+            <li>
+              <a href="#">4</a>
+            </li>
+            <li>
+              <a href="#">5</a>
+            </li>
+            <li>
+              <a href="#">Next</a>
+            </li>
+          </ul>
+          <ul class="pagination pagination-sm">
+            <li>
+              <a href="#">Prev</a>
+            </li>
+            <li>
+              <a href="#">1</a>
+            </li>
+            <li>
+              <a href="#">2</a>
+            </li>
+            <li>
+              <a href="#">3</a>
+            </li>
+            <li>
+              <a href="#">4</a>
+            </li>
+            <li>
+              <a href="#">5</a>
+            </li>
+            <li>
+              <a href="#">Next</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-4 column">
+          <h3 class="text-info">工具组件-标签</h3>
+          <span class="label label-default">标签</span>
+          <span class="label label-primary">标签</span>
+          <span class="label label-success">标签</span>
+          <span class="label label-info">标签</span>
+          <span class="label label-warning">标签</span>
+          <span class="label label-danger">标签</span>
+        </div>
+        <div class="col-md-4 column">
+          
+          <h3 class="text-info">工具组件-徽章</h3>
+          <ul class="nav nav-pills">
+            <li class="active">
+              <a href="#"> <span class="badge pull-right">42</span> Home</a>
+            </li>
+            <li>
+              <a href="#"> <span class="badge pull-right">16</span> More</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <h3 class="text-info">工具组件-巨幕</h3>
+      <div class="jumbotron">
+        <h1>
+          Hello, world!
+        </h1>
+        <p>
+          This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.
+        </p>
+        <p>
+          <a class="btn btn-primary btn-large" href="#">Learn more</a>
+        </p>
+      </div>
+      
+      <h3 class="text-info">工具组件-页头</h3>
+      <div class="page-header">
+        <h1>
+          Example page header <small>Subtext for header</small>
+        </h1>
+      </div>
+      
+      <h3 class="text-info">工具组件-缩略图</h3>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="thumbnail">
+            <img alt="300x200" src="http://www.runoob.com/try/bootstrap/layoutit/v3/default4.jpg" />
+            <div class="caption">
+              <h3>
+                Thumbnail label
+              </h3>
+              <p>
+                Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+              </p>
+              <p>
+                <a class="btn btn-primary" href="#">Action</a> <a class="btn" href="#">Action</a>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="thumbnail">
+            <img alt="300x200" src="http://www.runoob.com/try/bootstrap/layoutit/v3/default5.jpg" />
+            <div class="caption">
+              <h3>
+                Thumbnail label
+              </h3>
+              <p>
+                Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+              </p>
+              <p>
+                <a class="btn btn-primary" href="#">Action</a> <a class="btn" href="#">Action</a>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="thumbnail">
+            <img alt="300x200" src="http://www.runoob.com/try/bootstrap/layoutit/v3/default6.jpg" />
+            <div class="caption">
+              <h3>
+                Thumbnail label
+              </h3>
+              <p>
+                Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+              </p>
+              <p>
+                <a class="btn btn-primary" href="#">Action</a> <a class="btn" href="#">Action</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <h3 class="text-info">工具组件-进度条</h3>
+      <div class="progress">
+        <div class="progress-bar" style="width:60%">
+        </div>
+      </div>
+      <div class="progress">
+        <div class="progress-bar progress-bar-success" style="width:60%">
+        </div>
+      </div>
+      <div class="progress progress-striped">
+        <div class="progress-bar progress-bar-info" style="width:60%">
+        </div>
+      </div>
+      <div class="progress active progress-striped">
+        <div class="progress-bar progress-bar-warning" style="width:60%">
+        </div>
+      </div>
+      <div class="progress active progress-striped">
+        <div class="progress-bar progress-bar-danger" style="width:60%">
+        </div>
+      </div>
+      
+      <h3 class="text-info">工具组件-媒体</h3>
+      <div class="media">
+        <a href="#" class="pull-left"><img src="http://www.runoob.com/try/bootstrap/layoutit/v3/default7.jpg" class="media-object" alt='' /></a>
+        <div class="media-body">
+          <h4 class="media-heading">
+            Nested media heading
+          </h4> Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
+          <div class="media">
+            <a href="#" class="pull-left"><img src="http://www.runoob.com/try/bootstrap/layoutit/v3/default8.jpg" class="media-object" alt='' /></a>
+            <div class="media-body">
+              <h4 class="media-heading">
+                Nested media heading
+              </h4> Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+      <h3 class="text-info">工具组件-列表组</h3>
+      <div class="list-group">
+        <a href="#" class="list-group-item active">Home</a>
+        <div class="list-group-item">
+          List header
+        </div>
+        <div class="list-group-item">
+          <h4 class="list-group-item-heading">
+            List group item heading
+          </h4>
+          <p class="list-group-item-text">
+            ...
+          </p>
+        </div>
+        <div class="list-group-item">
+          <span class="badge">14</span> Help
+        </div> <a class="list-group-item active"> <span class="badge">14</span> Help</a>
+      </div>
+      
+      <h3 class="text-info">工具组件-面板</h3>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            Panel title
+          </h3>
+        </div>
+        <div class="panel-body">
+          Panel content
+        </div>
+        <div class="panel-footer">
+          Panel footer
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row clearfix">
+    <div class="col-md-12 column">
+      
+      <h3 class="text-info" id="modal">插件-遮罩窗体</h3>
+      <a id="modal-317511" href="#modal-container-317511" role="button" class="btn" data-toggle="modal">触发遮罩窗体</a>
+      <div class="modal fade" id="modal-container-317511" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+              <h4 class="modal-title" id="myModalLabel">
+                标题
+              </h4>
+            </div>
+            <div class="modal-body">
+              内容...
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button> <button type="button" class="btn btn-primary">保存</button>
+            </div>
+          </div>
+        
+        </div>
+      
+      </div>
+      
+      <h3 class="text-info" id="tab">插件-选项卡</h3>
+      <div class="tabbable" id="tabs-102556">
+        <ul class="nav nav-tabs">
+          <li class="active">
+            <a href="#panel-334092" data-toggle="tab">Section 1</a>
+          </li>
+          <li>
+            <a href="#panel-450671" data-toggle="tab">Section 2</a>
+          </li>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane active" id="panel-334092">
+            <p>
+              I'm in Section 1.
+            </p>
+          </div>
+          <div class="tab-pane" id="panel-450671">
+            <p>
+              Howdy, I'm in Section 2.
+            </p>
+          </div>
+        </div>
+      </div>
+      
+      <h3 class="text-info" id="tip">插件-提示框</h3>
+      <div class="alert alert-success alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <h4>
+          注意!
+        </h4> <strong>Warning!</strong> Best check yo self, you're not looking too good. <a href="#" class="alert-link">alert link</a>
+      </div>
+      
+      <h3 class="text-info" id="collapse">插件-手风琴切换</h3>
+      <div class="panel-group" id="panel-966796">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-966796" href="#panel-element-55756">Collapsible Group Item #1</a>
+          </div>
+          <div id="panel-element-55756" class="panel-collapse collapse">
+            <div class="panel-body">
+              Anim pariatur cliche...
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <a class="panel-title" data-toggle="collapse" data-parent="#panel-966796" href="#panel-element-214342">Collapsible Group Item #2</a>
+          </div>
+          <div id="panel-element-214342" class="panel-collapse in">
+            <div class="panel-body">
+              Anim pariatur cliche...
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <h3 class="text-info" id="carousel">插件-幻灯片</h3>
+      <div class="carousel slide" id="carousel-636517">
+        <ol class="carousel-indicators">
+          <li class="active" data-slide-to="0" data-target="#carousel-636517">
+          </li>
+          <li data-slide-to="1" data-target="#carousel-636517">
+          </li>
+          <li data-slide-to="2" data-target="#carousel-636517">
+          </li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="item active">
+            <img alt="" src="http://www.runoob.com/try/bootstrap/layoutit/v3/default.jpg" />
+            <div class="carousel-caption">
+              <h4>
+                First Thumbnail label
+              </h4>
+              <p>
+                Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+              </p>
+            </div>
+          </div>
+          <div class="item">
+            <img alt="" src="http://www.runoob.com/try/bootstrap/layoutit/v3/default1.jpg" />
+            <div class="carousel-caption">
+              <h4>
+                Second Thumbnail label
+              </h4>
+              <p>
+                Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+              </p>
+            </div>
+          </div>
+          <div class="item">
+            <img alt="" src="http://www.runoob.com/try/bootstrap/layoutit/v3/default2.jpg" />
+            <div class="carousel-caption">
+              <h4>
+                Third Thumbnail label
+              </h4>
+              <p>
+                Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+              </p>
+            </div>
+          </div>
+        </div>
+        <a class="left carousel-control" href="#carousel-636517" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+        <a class="right carousel-control" href="#carousel-636517" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
+      </div>
+    </div>
+  </div>
+  
+  <footer>
+    <div class="row clearfix">
+      <div class="col-md-12 column">
+        <div class="alert alert-dismissable alert-info">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+          <h4>
+            注意!
+          </h4> <strong>Warning!</strong> 未完待续.... <a href="#" class="alert-link">返回顶部</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+</div>
+<!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<!--引入 Bootstrap 核心 JavaScript 文件 -->
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>

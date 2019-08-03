@@ -1,23 +1,103 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+    <meta charset="utf-8">
+    <!--字符编码-->
+    <title>测试浏览器的各种宽高</title>
+    <!--网站标题 重要-->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            position: relative;
+        }
+
+        h1 {
+            text-align: center;
+            color: #fff;
+            background: #000;
+        }
+
+        p {
+            line-height: 30px;
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        #box {
+            margin: 10px auto;
+            padding: 12px;
+            width: 500px;
+            height: 500px;
+            border: 21px solid red;
+            background-color: #0f0;
+            position: absolute;
+            top: 23px;
+            left: 25px;
+        }
+
+        #box ul {
+            background: #ffff00;
+            height: 1000px;
+        }
+
+        #box ul li {
+            list-style: decimal inside;
+            line-height: 30px;
+            border-bottom: 1px solid #999;
+        }
+
+        #box ul li i {
+            color: #ff0000;
+            font-style: normal;
+            font-weight: 700;
+        }
+    </style>
 </head>
+
 <body>
-  <div id="app">
-    <div>{{width}}px</div>
-  </div>
-  <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
-  <script>
-    var app = new Vue({
-      el: '#app',
-      data: {
-        width: 300
-      }
-    })
-  </script>
+    <div id="box">
+        <h1>测试各种宽高</h1>
+        <p>盒子的宽高均为500px;padding:24px;边框42px;top:23px;left:25px;</p>
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <script>
+        var obox = document.getElementById('box');
+        var ali = document.getElementsByTagName('li');
+        ali[0].innerHTML += "浏览器的分辨率是<i>" + window.screen.width + "*" + window.screen.height + "</i>px";
+        ali[1].innerHTML += "浏览器窗口宽度window.outerWidth= <i>" + window.outerWidth + "</i>px";
+        ali[2].innerHTML += "浏览器窗口高度window.outerHeight = <i>" + window.outerHeight + "</i>px";
+
+
+        ali[3].innerHTML += "浏览器窗口文档显示区高度window.innerHeight = <i>" + window.innerHeight + "</i>px";
+        ali[4].innerHTML += "document.documentElement.clientHeight= <i>" + document.documentElement.clientHeight +
+            "</i>px";
+        ali[5].innerHTML += "document.body.clientHeight= <i>" + document.body.clientHeight + "</i>px";
+
+        ali[6].innerHTML += "盒子的clientHeight是height+padding= <i>" + obox.clientHeight + "</i>px";
+        ali[7].innerHTML += "盒子的offsetHeight是height+padding+border= <i>" + obox.offsetHeight + "</i>px";
+        ali[8].innerHTML += "盒子的scrollHeight是height+padding+溢出= <i>" + obox.scrollHeight + "</i>px";
+
+        ali[9].innerHTML += "盒子的offsetTop是= <i>" + obox.offsetTop + "</i>px";
+        ali[10].innerHTML += "盒子的offsetLeft是= <i>" + obox.offsetLeft + "</i>px";
+    </script>
 </body>
+
 </html>

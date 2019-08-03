@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>俄罗斯方块</title>
+  <style>
+    * {margin: 0;padding: 0;}
+    canvas{display: block;background-color: gray;margin: 30px auto;}
+    .tips{width: 500px; margin: 0 auto;}
+    .tips dd{padding-left: 30px;}
+  </style>
+</head>
+
+<body>
+  <canvas width="500" height="500"></canvas>
+  <dl class="tips">
+    <dt>玩法说明：</dt>
+    <dd>方向键上（↑）--- 变形</dd>
+    <dd>方向键下（↓） --- 加速</dd>
+    <dd>方向键左（←） --- 向左移动</dd>
+    <dd>方向键右（→）--- 向右移动</dd>
+  </dl>
+ 
+  <script>
+    var oC = document.querySelector('canvas');
+    var oCG = oC.getContext('2d');
+
+    var data = map(20, 20);
+
+    function map(r, c) {
+      var data = [];
+      for (var i = 0; i < r; i++) {
+        data.push([]);
+        for (var j = 0; j < c; j++) {
+          data[i].push(0);
+        }
+      }
+      return data;
+    }
+
+    var arr = [
+      [
+        [1, 1, 1, 1]
+      ], // 长条
+      [
+        [1, 1],
+        [1, 1]
+      ], // 田
+      [
+        [1, 1, 0],
+        [0, 1, 1]
+      ], // z
+      [
+        [0, 1, 1],
+        [1, 1, 0]
+      ], // Z
+      [
+        [0, 1, 0],
+        [1, 1, 1]
+      ], // t
+      [
+        [1, 0, 0],
+        [1, 1, 1]
+      ], // l
+      [
+        [0, 0, 1],
+        [1, 1, 1]
+      ] // L
+    ];
+
+    //createMap(data);
+    function createMap(data) {
+      var w = 500 / 20;
+      var h = w;
+      var rLen = data.length;
+      var cLen = data[0].length;
+      for (var i = 0; i < rLen; i++) {
+        for (var j = 0; j < cLen; j++) {
+          oCG.beginPath();
+          var color = data[i][j] == 0 ? 'green' : 'red';
+          oCG.fillStyle = color;
+          oCG.rect(j * w, i * h, w, h);
+          oCG.fill();
+          oCG.stroke();
+          oCG.closePath();
+        }
+      }
+    }
+
+    function model() {
+      var num = Math.floor(Math.random() * 7);
+      return arr[num];
+    }
+
+    var x = 8;
+    var y = 0;
+    var matrix = model();
+
+    function updataBlock(arr1) {
+
+      for (var i = 0; i < arr1.length; i++) {
+        for (var j = 0; j < arr1[i].length; j++) {
+          if (!data[i + y][j + x]) {
+            data[i + y][j + x] = arr1[i][j];
+          }
+        }
+      }
+      createMap(data);
+    }
+
+    //向下移动
+    function fall() {
+      if (collisionTest()) {
+        removeLine();
+        y = 0;
+        x = Math.round((data[0].length - matrix[0].length) / 2);
+        matrix = model();
+      }
+      clearTop(matrix);
+      y++;
+      updataBlock(matrix);
+    }
+
+    var n = 800;
+    var timer;
+    var onOff = false;
+    autoPlay(n);
+
+    function autoPlay(t) {
+      timer = setInterval(function () {
+        fall()
+      }, t);
+    }
+
+    function clearTop(arr) {
+      for (var i = 0; i < arr.length; i++) {
+        for (var j = 0; j < arr[i].length; j++) {
+          if (arr[i][j]) {
+            data[i + y][j + x] = 0;
+          }
+        }
+      }
+    }
+
+    // 碰撞检测
+    function collisionTest() {
+      if (y + matrix.length >= data.length) {
+        return true;
+      }
+      for (var i = matrix.length - 1; i < matrix.length; i++) {
+        for (var j = 0; j < matrix[i].length; j++) {
+          if (matrix[i][j] && data[i + y + 1][j + x] == 1) {
+            return true;
+          }
+        }
+
+      }
+      var arr = matrix[matrix.length - 1];
+      var index;
+      for (var i = 0; i < arr.length; i++) {
+        index = matrix.length - 1;
+        while (!matrix[index][i]) {
+          index--;
+        }
+        if (data[y + 1 + index][x + i]) {
+          return true;
+        }
+      }
+
+      return false;
+    }
+
+    // 变形
+    function shape() {
+      var arr = [];
+      var x = matrix[0].length;
+      var y = matrix.length;
+      for (var i = 0; i < x; i++) {
+        arr.push([]);
+      }
+      for (var i = 0; i < y; i++) {
+        for (var j = 0; j < x; j++) {
+          arr[j][y - 1 - i] = matrix[i][j];
+        }
+      }
+      matrix = arr;
+    }
+
+    // 键盘控制
+    playMove();
+
+    function playMove() {
+      document.onkeydown = function (e) {
+        switch (e.keyCode) {
+          case 37: //左
+            clearTop(matrix);
+            /*x--;
+            if (x<=0){
+                x=0;
+            }*/
+            if (!lrTest(-1)) {
+              x--;
+            }
+            updataBlock(matrix);
+            break;
+          case 38: // 变形
+            clearTop(matrix);
+            shape();
+            updataBlock(matrix);
+            break;
+          case 39: //左
+            clearTop(matrix);
+            /*x++;
+            if (x>=data[0].length-matrix[0].length){
+                x=data[0].length-matrix[0].length;
+            }*/
+            if (!lrTest(1)) {
+              x++;
+            }
+            updataBlock(matrix);
+            break;
+          case 40:
+            if (onOff) {
+              return;
+            }
+            onOff = true;
+            clearInterval(timer);
+            autoPlay(100);
+            break;
+        }
+      };
+      document.onkeyup = function (e) {
+        if (e.keyCode == 40) {
+          onOff = false;
+          clearInterval(timer);
+          autoPlay(800);
+        }
+      }
+    }
+
+    var arr2 = [];
+    for (var i = 0; i < data[0].length; i++) {
+      arr2.push(0);
+    }
+    // 清除整行
+    function removeLine() {
+      var x = data[0].length;
+      var y = data.length;
+      var b;
+      for (var i = 0; i < y; i++) {
+        b = true;
+        for (var j = 0; j < x; j++) {
+          if (!data[i][j]) {
+            b = false;
+          }
+        }
+        if (b) {
+          data.splice(i, 1);
+          data.unshift([].concat(arr2));
+        }
+      }
+    }
+
+    /*
+     * 方块达到了边界 返回true 否则false
+     * */
+    function lrTest(n) {
+      var maxX = data[0].length - matrix[0].length;
+      // 范围限制
+      if (x + n < 0 || x + n > maxX) {
+        return true;
+      }
+
+      if (n < 0) {
+        for (var i = 0; i < matrix.length; i++) {
+          var index = 0;
+          while (!matrix[i][index]) {
+            index++;
+          }
+          if (data[y + i][x + index - 1]) {
+            return true;
+          }
+        }
+      } else {
+        for (var i = 0; i < matrix.length; i++) {
+          var index = matrix[0].length;
+          while (!matrix[i][index]) {
+            index--;
+          }
+          if (data[y + i][x + index + 1]) {
+            return true;
+          }
+        }
+      }
+    }
+  </script>
+</body>
+
+</html>

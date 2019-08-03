@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"><!--字符编码-->
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><!--适口-->
+<meta name="description" content="网站介绍">
+<meta name="keywords" content="关键词">
+<meta name="author" content="ZWY">
+<link href=" " rel="stylesheet"  type="text/css"><!--引入外部CSS文件-->
+<title>拖拽效果</title>
+<style>
+    *{margin: 0;padding: 0;}
+    body{color:#fff;}
+    #box{
+        width: 200px;
+        height: 200px;
+        background-color: green;
+        position: absolute;
+        top:0;
+        left:100px;
+        cursor: pointer;/* 鼠标形状 */
+    }
+    #box1{
+        width: 200px;
+        height: 200px;
+        background-color: red;
+        position: absolute;
+        top:400px;
+        left:100px;
+        cursor: pointer;/* 鼠标形状 */
+    }
+</style>
+</head>
+<body>
+    <div id="box">原生JS拖拽</div>
+    <div id="box1">面向对象方法拖拽</div>
+<script>
+    /*============================   原生JS事件 拖拽方法   =====================================*/
+    var obox = document.getElementById("box");
+	
+    obox.onmousedown = function(e){//鼠标按下时
+        e = e || window.event;//Event对象的兼容
+        console.log("e的值",e);
+        var init_X = parseFloat( getStyle(obox,'left') );//获取初始x轴坐标
+        var init_Y = parseFloat( getStyle(obox,'top') );//获取初始y轴坐标
+        var X = e.clientX;//获取鼠标位置
+        var Y = e.clientY;//获取鼠标位置
+        document.onmousemove = function(e){//鼠标移动时
+          e = e || window.event;//Event对象的兼容
+          console.log("e的值",e);
+          var disX = e.clientX-X;//获取鼠标位置
+          var disY = e.clientY-Y;//获取鼠标位置
+          obox.style.left = init_X+disX+'px';//得到当前坐标
+          obox.style.top = init_Y+disY+'px';//得到当前坐标
+
+        }
+        document.onmouseup = function (){//鼠标松开时
+          document.onmousemove = null;
+          document.onmouseup = null;
+
+        }
+    }
+    //getStyle(obj,attr);//获取元素的样式
+    function getStyle(obj,attr){//obj是要获取样式的元素对象,attr是要获取的样式
+        if(window.getComputedStyle){
+            return getComputedStyle(obj)[attr];//针对非ie 5-8!
+        }else{
+            return obj.currentStyle[attr];//兼容ie 5-8!
+        }
+    }
+/*============================   面向对象 拖拽方法   =====================================*/
+	
+    function Drag(name){
+        this.oDrag = document.getElementById(name);//调用需要拖拽的元素
+        var _this = this;
+        this.oDrag.onmousedown = function(e){
+             e = e|| window.event;
+            _this.down(e);
+        };
+    }
+    Drag.prototype ={
+        down:function (e){//鼠标按下时
+            this.X = e.clientX;
+            this.Y = e.clientY;
+            this.initL = this.oDrag.offsetLeft;
+            this.initT = this.oDrag.offsetTop;
+            var _this = this;
+            document.onmousemove = function(e){
+                e = e|| window.event;
+                _this.move(e);
+                return false;
+            }
+            document.onmouseup =function(){
+                _this.up();
+            };
+            return false;
+        },
+        move:function(e){//鼠标移动时
+            this.moveX = e.clientX-this.X;
+            this.moveY = e.clientY-this.Y;
+            this.oDrag.style.left = this.initL + this.moveX+'px';
+            this.oDrag.style.top = this.initT + this.moveY+'px';
+        },
+        up:function(){//鼠标松开时
+            document.onmousemove = null;
+            document.onmouseup = null;
+        }
+
+    }
+    
+	var drag = new Drag('box1');//调用需要拖拽的元素
+</script>
+</body>
+</html>

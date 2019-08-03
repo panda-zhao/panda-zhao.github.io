@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>变换-过渡-动画练习</title>
+    <style>
+        h1{
+            text-align: center;
+        }
+        ul{
+            height: 200px;
+            border: 1px solid #000;
+        }
+        ul li{
+            float: left;
+            width: 200px;
+            height: 200px;
+            margin: 0 20px;
+            list-style: none;
+            line-height: 200px;
+            text-align: center;
+            -webkit-transition:2s linear;
+            -moz-transition:2s linear;
+            transition:2s linear;
+        }
+        .box1{
+            background: #ff0;
+        }
+        .box2{
+            background: #f00;
+        }
+        .box3{
+            background: #00f;
+        }
+        .box4{
+            background: #f0f;
+        }
+        .box5{
+            background: #0f0;
+        }
+        /*平移x轴200px Y轴100px*/
+        .box1:hover{
+            -ms-transform: translate(200px,100px);/*IE9*/
+            -moz-transform: translate(200px,100px);/*FF*/
+            -webkit-transform: translate(200px,100px);
+            transform: translate(200px,100px);
+        }
+        /*2D旋转180deg*/
+        .box2:hover{
+            -ms-transform: rotate(180deg);/*IE9*/
+            -moz-transform: rotate(180deg);/*FF*/
+            -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+        }
+        /*放大1.5倍*/
+        .box3:hover{
+            -ms-transform: scale(1.5);/*IE9*/
+            -moz-transform: scale(1.5);/*FF*/
+            -webkit-transform: scale(1.5);
+            transform: scale(1.5);
+        }
+        /*翻转-180deg*/
+        .box4:hover{
+            -ms-transform: skew(-180deg,90deg);/*IE9*/
+            -moz-transform: skew(-180deg,90deg);/*FF*/
+            -webkit-transform: skew(-180deg,90deg);
+            transform: skew(-180deg,90deg);
+        }
+        /*width:200变为400*/
+        .box5:hover{
+            -webkit-animation: aaa 2s linear forwards;
+            -moz-animation: aaa 2s linear forwards;/*FF*/
+            -o-animation: aaa 2s linear forwards;
+            animation: aaa 2s linear forwards;
+        }
+        @keyframes aaa {
+            from {width: 200px;}
+            to {width: 400px;}
+        }
+
+    </style>
+</head>
+<body>
+    <div>
+        <h1>鼠标放到图像上边看效果</h1>
+        <ul>
+            <li class="box1">平移x轴200px Y轴100px</li>
+            <li class="box2">2D旋转180deg</li>
+            <li class="box3">放大1.5倍</li>
+            <li class="box4">翻转-180deg,90deg</li>
+            <li class="box5">width:200变为400</li>
+        </ul>
+    </div>
+</body>
+</html>

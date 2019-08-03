@@ -20,6 +20,8 @@ var data = [
     {name: "CSS3炫彩登录",url: "./template/login.html",title: "CSS3炫彩登录"},
     {name: "CSS行走的大象",url: "./template/elephant/index.html",title: "CSS行走的大象"},
     {name: "转盘抽奖",url: "./template/luckDraw/index.html",title: "转盘抽奖"},
+    {name: "飞机大战",url: "./template/planeWar/index.html",title: "飞机大战游戏"},
+    {name: "俄罗斯方块",url: "./template/Tetris.html",title: "Tetris - 俄罗斯方块"},
   ],
   [
     {name: "自定义弹框组件",url: "./components/showToast.html",title: "自定义弹框组件"},

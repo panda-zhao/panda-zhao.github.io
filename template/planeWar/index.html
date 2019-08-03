@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <meta name="author" content="zhao weiyang">
+  <title>planeWar</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: #000000;
+    }
+
+    #box {
+      position: relative;
+      margin: 50px auto;
+      width: 300px;
+      height: 500px;
+      border: 10px solid #ffffff;
+      text-align: center;
+    }
+
+    #box h2 {
+      color: #fff;
+      padding-top: 25px;
+    }
+
+    #box p {
+      margin: 65px auto;
+      width: 150px;
+      height: 30px;
+      line-height: 30px;
+      background: #ffffff;
+      font-size: 14px;
+      cursor: pointer;
+      /*鼠标形状 小手*/
+    }
+
+    #box p.surprise {
+      background: #9c4dff;
+      color: #f00;
+      font-weight: bold;
+    }
+
+    #box p:hover {
+      background: #ff707f;
+      color: #fff;
+    }
+
+    #box .feiji,
+    #box .boom2 {
+      position: absolute;
+      width: 60px;
+      height: 36px;
+    }
+
+    #box .zidan {
+      position: absolute;
+      width: 6px;
+      height: 22px;
+    }
+
+    #box .enemy,
+    #box .boom {
+      position: absolute;
+      width: 23px;
+      height: 30px;
+      z-index: 10;
+    }
+
+    #box .boom2,
+    #box .boom {
+      z-index: 5;
+    }
+
+    #box .score {
+      position: absolute;
+      top: 0;
+      left: 10px;
+      z-index: 50;
+      line-height: 25px;
+      color: #FFF;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    #box .gameover {
+      width: 200px;
+      height: 400px;
+      margin: 50px;
+      background: #fff;
+      color: #000;
+    }
+
+    #box .gameover h2 {
+      font-size: 26px;
+      text-align: center;
+      line-height: 60px;
+      color: #000;
+    }
+
+    #box .gameover p {
+      text-align: center;
+      font-size: 14px;
+      line-height: 30px;
+      margin-top: 20px;
+    }
+
+    #box .gameover p span {
+      color: #ff6600;
+      font-weight: bold;
+      margin-left: 10px;
+      font-style: italic;
+    }
+
+    #box .gameover .restart {
+      width: 100px;
+      height: 30px;
+      line-height: 30px;
+      background: pink;
+      font-weight: bold;
+      text-align: center;
+      margin: 50px auto 0;
+      font-size: 12px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="box"></div>
+  <script>
+    ! function () {
+      var oBox = document.getElementById("box");
+      var ifEnd = false; //用来表示是否游戏结束，以使多个动画不再执行
+      init(); //直接执行初始化
+
+      //初始化界面
+      function init() {
+        //清空box内容，分数清0，游戏结束开关变为false
+        oBox.innerHTML = "";
+        score = 0;
+        ifEnd = false;
+
+        var oH = document.createElement("h2");
+        oH.innerHTML = "planeWar V1.0";
+        oBox.appendChild(oH);
+        //生成四个选项
+        for (var i = 0; i < 4; i++) {
+          var oP = document.createElement("p");
+          var html = "";
+          switch (i) {
+            case 0:
+              html = "简单难度";
+              break;
+            case 1:
+              html = "中等难度";
+              break;
+            case 2:
+              html = "困难难度";
+              break;
+            case 3:
+              oP.className = "surprise";
+              html = "春哥附体!";
+              break;
+          }
+          oP.index = i; //自定义属性
+          oP.innerHTML = html;
+          oP.onclick = function (e) { //定义点击事件
+            e = e || window.event;
+            var data = { //鼠标位置
+              x: e.clientX, //当前鼠标坐标 相对于浏览器窗口
+              y: e.clientY //当前鼠标坐标 相对于浏览器窗口
+            };
+            console.log("当前选择的难度是:", this.innerHTML);
+            startGame(this.index, data); //点击任意一个模式开始游戏 传递参数1 选择的难度,参数2当前鼠标坐标
+          };
+          oBox.appendChild(oP);
+        }
+      }
+      /*===========================================      开始游戏      ============================================*/
+      function startGame(index, data) { //参数1 通过不同的序列号实现各种难度
+        oBox.innerHTML = ""; //清空选择界面
+
+        //放置计分器
+        var oS = document.createElement("span");
+        oS.className = "score";
+        oS.innerHTML = score;
+        oBox.appendChild(oS);
+
+        wojun(index, data); //我军生成
+        dijun(index, oS); //敌军生成
+      }
+      /*===========================================      我军      ============================================*/
+      function wojun(index, data) {
+        //制造飞机
+        var feiji = new Image(); //相当于document.creatElement("img");
+        feiji.src = "images/plane.png";
+        feiji.className = "feiji";
+        feiji.width = 60; //合法属性 不需要加style和单位
+        feiji.height = 36;
+        feiji.style.left = data.x - oBox.offsetLeft - 10 - feiji.width / 2 + "px"; //初始位置=鼠标坐标-盒子的left-边框-自身的一半
+        feiji.style.top = data.y - oBox.offsetTop - 10 - feiji.height / 2 + "px"; //初始位置=鼠标坐标-盒子的top-边框-自身的一半
+        oBox.appendChild(feiji);
+
+        //飞机随鼠标移动
+        document.onmousemove = function (e) {
+          e = e || window.event;
+
+          //计算飞机运行范围
+          var leftMin = -feiji.width / 2; //如果为0,最左边子弹打不到
+          var leftMax = oBox.clientWidth - feiji.width / 2; //盒子宽+border-1/2飞机宽
+          var topMin = 0;
+          var topMax = oBox.clientHeight - feiji.height / 2; //盒子高+border-1/2飞机高
+
+          var left = e.clientX - oBox.offsetLeft - 10 - feiji.width / 2; //获取鼠标当前X坐标
+          var top = e.clientY - oBox.offsetTop - 10 - feiji.height / 2; //获取鼠标当前Y坐标
+          left = Math.max(left, leftMin); //最小值不能小于leftMin
+          left = Math.min(left, leftMax); //最大值不能超过leftMax
+          top = Math.max(top, topMin); //最小值不能小于topMin
+          top = Math.min(top, topMax); //最大值不能超过topMax
+          //console.log("飞机的坐标:",left,top);
+          feiji.style.left = left + "px";
+          feiji.style.top = top + "px";
+        };
+        //执行发射子弹
+        fashezidan(feiji, index); //移动中发射子弹
+      };
+      //我军发射子弹
+      function fashezidan(feiji, index) {
+        var speed = 250; //子弹发射速度:一秒钟 1000/speed 发子弹
+        switch (index) {
+          case 0:
+            speed = 200;
+            break;
+          case 1:
+            speed = 250;
+            break;
+          case 2:
+            speed = 250;
+            break;
+          case 3:
+            speed = 20;
+            break;
+        }
+        //制造子弹    定时器设置 speed 毫秒生成一颗子弹 和 子弹的运动距离
+        var timer = setInterval(function () {
+          var zidan = new Image();
+          zidan.className = "zidan";
+          zidan.src = "images/bullet.png";
+          zidan.width = 6;
+          zidan.height = 22;
+          zidan.style.left = feiji.offsetLeft + feiji.width / 2 - zidan.width / 2 + 'px'; //left=飞机的left-飞机的1/2-子弹的1/2
+          zidan.style.top = feiji.offsetTop - zidan.height + 'px'; //top=飞机的top-子弹的height
+          oBox.appendChild(zidan);
+
+          move();
+
+          function move() {
+            if (!ifEnd) {
+              if (zidan.offsetTop <= -zidan.height) {
+                oBox.removeChild(zidan); //子弹和顶部距离小于子弹高 就删除子弹
+                return;
+              }
+              zidan.style.top = zidan.offsetTop - 10 + 'px'; //子弹的运动步幅 每帧运动10像素
+              zidan.timer = requestAnimationFrame(move);
+            }
+          };
+        }, speed);
+        console.log("1秒钟", 1000 / speed, "发子弹:");
+      };
+      /*============================================      敌军     ============================================*/
+      function dijun(index, oS) {
+
+        var speed = 100, //敌军生成速度   1秒生成 1000/speed 个敌军
+          moveS = 2; //敌军下落速度
+        switch (index) {
+          case 0:
+            speed = 500;
+            moveS = 1;
+            break;
+          case 1:
+            speed = 400;
+            moveS = 2.5;
+            break;
+          case 2:
+            speed = 300;
+            moveS = 3;
+            break;
+          case 3:
+            speed = 100;
+            moveS = 7;
+            break;
+        }
+        //生成敌军
+        var timer = setInterval(function () {
+          var enemy = new Image();
+          enemy.className = "enemy";
+          enemy.src = "images/enemy.png";
+          enemy.width = 23;
+          enemy.height = 30;
+          enemy.style.left = Math.random() * oBox.clientWidth - enemy.width / 2 + 'px'; //随机宽-敌军宽度/2
+          enemy.style.top = -enemy.height + 'px';
+          oBox.appendChild(enemy);
+
+          var s = moveS + Math.random() * 2;
+          m();
+
+          function m() {
+            if (!ifEnd) {
+              if (enemy.offsetTop >= oBox.clientHeight) {
+                oBox.removeChild(enemy); //敌军到达底部删除
+                return;
+              }
+              enemy.style.top = enemy.offsetTop + s + 'px'; //敌军的下落步幅
+              enemy.tiemr = requestAnimationFrame(m);
+              pz(enemy, timer, oS); //下落过程碰撞检测
+            }
+          }
+        }, speed);
+        console.log("每秒生成的敌军数量:", 1000 / speed);
+        console.log("敌军每秒的下落速度:", moveS);
+      }
+      /*============================================    碰撞检测    ============================================*/
+      //每个敌军携带的碰撞检测
+      function pz(enemy, timer, oS) {
+        var zidan = oBox.querySelectorAll(".zidan"),
+          feiji = oBox.querySelector(".feiji"),
+          length = zidan.length;
+
+        //敌军和我军的碰撞
+        if (feiji && feiji.parentNode && collision(enemy, feiji)) {
+          clearInterval(feiji.timer); //清除子弹的生产
+          clearInterval(timer); //清除飞机的生产
+          cancelAnimationFrame(enemy.tiemr); //清除敌军的运动
+          var oBoom = new Image(),
+            oBoom2 = new Image();
+          oBoom.className = "boom";
+          oBoom2.className = "boom2";
+          oBoom.src = "images/boom.png";
+          oBoom2.src = "images/boom2.png";
+          oBoom.width = 23;
+          oBoom2.width = 60;
+          oBoom.height = 30;
+          oBoom2.height = 36;
+          oBoom.style.left = enemy.offsetLeft + 'px';
+          oBoom.style.top = enemy.offsetTop + 'px';
+          oBoom2.style.left = feiji.offsetLeft + 'px';
+          oBoom2.style.top = feiji.offsetTop + 'px';
+          oBox.appendChild(oBoom);
+          oBox.appendChild(oBoom2);
+          setTimeout(function () {
+            oBox.removeChild(oBoom);
+            oBox.removeChild(oBoom2);
+            ifEnd = true;
+            gameOver();
+          }, 500);
+          oBox.removeChild(enemy);
+          oBox.removeChild(feiji);
+
+          return;
+        }
+
+        //敌军和子弹的碰撞
+        for (var i = 0; i < length; i++) {
+          //判断1 子弹的父级存不存在（为了避免别的敌军在检测的时候已经清楚了该子弹）
+          //判断2 敌军与子弹有没有撞上
+          if (zidan[i].parentNode && collision(enemy, zidan[i])) {
+            cancelAnimationFrame(zidan[i].timer);
+            cancelAnimationFrame(enemy.tiemr);
+
+            oBoom = new Image();
+            oBoom.className = "boom";
+            oBoom.src = "images/boom.png";
+            oBoom.width = 23;
+            oBoom.height = 30;
+            oBoom.style.left = enemy.offsetLeft + 'px';
+            oBoom.style.top = enemy.offsetTop + 'px';
+            oBox.appendChild(oBoom);
+            setTimeout(function () {
+              oBoom.parentNode && oBox.removeChild(oBoom);
+            }, 500);
+
+            oBox.removeChild(zidan[i]);
+            oBox.removeChild(enemy);
+            score += 10;
+            oS.parentNode && (oS.innerHTML = score);
+            break;
+          }
+        }
+      }
+
+      //两个节点的碰撞检测
+      function collision(obj1, obj2) {
+
+        var T1 = obj1.offsetTop,
+          B1 = T1 + obj1.offsetHeight,
+          L1 = obj1.offsetLeft,
+          R1 = L1 + obj1.offsetWidth,
+
+          T2 = obj2.offsetTop,
+          B2 = T2 + obj2.offsetHeight,
+          L2 = obj2.offsetLeft,
+          R2 = L2 + obj2.offsetWidth;
+
+        return !(B1 < T2 || L1 > R2 || T1 > B2 || R1 < L2);
+
+        //                if ( B1 < T2 || L1 > R2 || T1 > B2 || R1 < L2 ){
+        //                    return false;
+        //                }else{
+        //                    return true;
+        //                }
+      }
+      /*============================================    游戏结束    ============================================*/
+      //游戏结束
+      function gameOver() {
+        oBox.innerHTML = "";
+
+        var oDiv = document.createElement("div"),
+          oH = document.createElement("h2"),
+          oP = document.createElement("p"),
+          oR = document.createElement("div");
+        oDiv.className = "gameover";
+        oH.innerHTML = "Game Over";
+        oP.innerHTML = "您的得分为：<span>" + score + "</span>";
+        oR.className = 'restart';
+        oR.innerHTML = "重新开始";
+        oR.onclick = init;
+        oDiv.appendChild(oH);
+        oDiv.appendChild(oP);
+        oDiv.appendChild(oR);
+        oBox.appendChild(oDiv);
+      }
+    }();
+  </script>
+</body>
+
+</html>

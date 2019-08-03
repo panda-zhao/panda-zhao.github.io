@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>渐变gradient练习</title>
+    <style>
+        div{
+            float: left;
+            width: 200px;
+            height: 200px;
+            margin: 20px;
+            color: #fff;
+        }
+        .box1{
+            /*往右上角的红-黄-蓝线性渐变*/
+            background-image: linear-gradient(to top,#f00 0%,#ff0 50%,#00f 100%);
+        }
+        .box2{
+            /*圆形的红-黄-蓝径向渐变*/
+            background-image: radial-gradient(circle closest-side at center,#f00 0%,#ff0 50%,#00f 100%);
+        }
+        .box3{
+            /*椭圆形的红-黄-蓝径向渐变*/
+            background-image: radial-gradient(ellipse closest-side at center center,#f00 0%,#ff0 50%,#00f 100%);
+        }
+        .box4{
+            /*往上的红-黄-蓝重复的线性渐变*/
+            background-image:repeating-linear-gradient(to top, #f00, #ff0 10%, #00f 15%);
+        }
+        .box5{
+            /*圆形的红-黄-蓝径向渐变*/
+            background-image: repeating-radial-gradient(circle closest-side, #f00, #ff0 10%, #f00 15%);
+        }
+        .box6{
+            /*椭圆形的红-黄-蓝径向渐变*/
+            background-image:repeating-radial-gradient(ellipse closest-side, #f00, #ff0 10%, #f00 15%);
+        }
+        .box7{
+            /*圆形的红-黄-蓝径向渐变*/
+            position: relative;
+            top: 240px;
+            width: 1000px;
+            height: 1000px;
+            float: none;
+            margin: 10px auto;
+            background-image: repeating-radial-gradient(circle, #0f0, #fff 10%);
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">线性渐变</div>
+    <div class="box2">圆形的径向渐变</div>
+    <div class="box3">椭圆的径向渐变</div>
+    <div class="box4">用重复的线性渐变创建图像</div>
+    <div class="box5">用圆形的重复的径性渐变创建图像</div>
+    <div class="box6">用椭圆的重复的径性渐变创建图像</div>
+    <div class="box7"></div>
+    <script>
+        //
+    </script>
+</body>
+</html>
