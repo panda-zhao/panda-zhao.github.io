@@ -8,12 +8,13 @@ var data = [
     {name: "BootCDN",url: "http://www.bootcdn.cn",title: "免费的CDN加速服务"},
     {name: "jquery插件库",url: "http://www.jq22.com/",title: "在线编辑器，文本比较，常用前端库，组件！"},
     {name: "图片压缩",url: "https://tinypng.com/",title: "tinypng图片压缩"},
-    {name: "菜鸟工具",url: "https://c.runoob.com/",title: ""},
+    {name: "菜鸟工具",url: "https://c.runoob.com/",title: "菜鸟工具"},
     {name: "坚果云",url: "https://www.jianguoyun.com/",title: ""},
-    {name: "脚本之家在线工具",url: "http://tools.jb51.net/",title: ""},
+    {name: "百度站长统计",url: "https://tongji.baidu.com/",title: "百度站长统计"},
     {name: "阿里云",url: "https://home.console.aliyun.com/new#/",title: ""},
     {name: "星座网",url: "http://www.xzw.com/",title: ""},
     {name: "电影宝",url: "http://www.dyb365.com",title: ""}
+    
   ],
   [
     {name: "魔方游戏",url: "./template/thecube/index.html",title: "three.js游戏"},
