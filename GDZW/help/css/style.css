@@ -1,0 +1,495 @@
+a,abbr,acronym,address,applet,big,blockquote,body,caption,cite,code,dd,del,dfn,div,dl,dt,em,fieldset,form,h1,h2,h3,h4,h5,h6,html,iframe,img,ins,kbd,label,legend,li,object,ol,p,pre,q,s,samp,small,span,strike,strong,sub,sup,table,tbody,td,tfoot,th,thead,tr,tt,ul,var {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  outline: 0;
+  vertical-align: baseline
+}
+
+ol,ul {
+  list-style: none
+}
+
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  vertical-align: middle
+}
+
+caption,td,th {
+  text-align: left;
+  font-weight: 400;
+  vertical-align: middle
+}
+
+a img {
+  border: none
+}
+
+article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary {
+  display: block;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  outline: 0;
+  vertical-align: baseline
+}
+
+audio,canvas,video {
+  display: inline-block;
+  *display: inline;
+  *zoom:1}
+
+[hidden],audio:not([controls]) {
+  display: none
+}
+
+*,:after,:before {
+  box-sizing: border-box
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-size: inherit
+}
+
+input,textarea {
+  -webkit-appearance: none;
+  border-radius: 0
+}
+
+body,html {
+  height: 100%
+}
+
+body {
+  display: flex;
+  flex-direction: column
+}
+
+.wrapper {
+  min-width: 320px;
+  flex: 1 0 auto
+}
+
+.footer,.footer-tiny {
+  flex-shrink: 0
+}
+
+body {
+  position: relative;
+  background-color: #fff;
+  font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei UI","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+  font-size: .7rem;
+  line-height: 1.6;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  word-break: break-all
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei UI Light","Microsoft YaHei UI","Microsoft YaHei","微软雅黑",Arial,sans-serif
+}
+
+.container {
+  *zoom:1;width: 60rem;
+  margin-left: auto;
+  margin-right: auto
+}
+
+.container:after,.container:before {
+  display: table;
+  content: ""
+}
+
+.container:after {
+  clear: both
+}
+
+.main {
+  position: relative;
+  margin-top: 1.9rem;
+  margin-bottom: 4.9rem
+}
+
+@media screen and (max-width: 767px) {
+  .main {
+      margin-top:1rem;
+      margin-bottom: 2.5rem
+  }
+}
+
+.main>.container:first-child>div:first-child {
+  margin-top: 0
+}
+
+.main>.container:last-child>div:last-child {
+  margin-bottom: 0
+}
+
+.main>.filter-panel:first-child {
+  margin-top: -1.9rem
+}
+
+a {
+  color: #4293f4;
+  text-decoration: none
+}
+
+a:hover {
+  color: #3784c2;
+  cursor: pointer
+}
+
+a:active,a:focus {
+  outline: 0
+}
+
+a,button,input,select,textarea {
+  -webkit-tap-highlight-color: transparent
+}
+
+input {
+  outline: 0
+}
+
+.fl {
+  float: left
+}
+
+.fr {
+  float: right
+}
+
+.link-underline {
+  color: #4293f4;
+  font-weight: 700;
+  text-decoration: underline
+}
+
+.link-underline:hover {
+  color: #3784c2;
+  text-decoration: none
+}
+
+::-ms-clear {
+  display: none
+}
+
+.ms-parent {
+  display: inline-block;
+  position: relative;
+  vertical-align: middle
+}
+
+.ms-choice {
+  display: block;
+  width: 100%;
+  height: 1.3rem;
+  padding: 0;
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid #aaa;
+  text-align: left;
+  white-space: nowrap;
+  line-height: 1.3rem;
+  color: #444;
+  text-decoration: none;
+  background-color: #fff
+}
+
+.ms-choice.disabled {
+  background-color: #f4f4f4;
+  background-image: none;
+  border: 1px solid #ddd;
+  cursor: default
+}
+
+.ms-choice>span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  font-size: .9rem;
+  padding: 0;
+  text-align: left
+}
+
+.ms-choice>span.placeholder {
+  color: #b6babe
+}
+
+.ms-choice>.icon {
+  position: absolute;
+  top: 50%;
+  right: .75rem;
+  margin-top: -.4rem;
+  font-size: 1rem
+}
+
+.ms-drop {
+  width: 100%;
+  overflow: hidden;
+  display: none;
+  margin-top: -.05rem;
+  padding: 0;
+  position: absolute;
+  z-index: 1000;
+  background: #fff;
+  color: #000;
+  border: 1px solid #aaa;
+  border-radius: .2rem
+}
+
+.ms-drop.bottom {
+  top: 100%;
+  box-shadow: 0 .2rem .25rem rgba(0,0,0,.15)
+}
+
+.ms-drop.top {
+  bottom: 100%;
+  box-shadow: 0 -.2rem .25rem rgba(0,0,0,.15)
+}
+
+.ms-search {
+  display: inline-block;
+  margin: 0;
+  min-height: 1.3rem;
+  padding: .2rem;
+  position: relative;
+  white-space: nowrap;
+  width: 100%;
+  z-index: 10000
+}
+
+.ms-search input {
+  width: 100%;
+  height: auto!important;
+  min-height: 1.2rem;
+  padding: 0 1rem 0 .25rem;
+  margin: 0;
+  outline: 0;
+  font-family: sans-serif;
+  border: 1px solid #aaa;
+  border-radius: 0;
+  box-shadow: none;
+  background: url(multiple-select.png) no-repeat 100% -1.1rem,linear-gradient(to bottom,#fff 85%,#eee 99%)
+}
+
+.ms-search,.ms-search input {
+  -khtml-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box
+}
+
+.ms-drop ul {
+  overflow: auto;
+  margin: 0;
+  padding: 0rem .75rem
+}
+
+.ms-drop ul>li {
+  list-style: none;
+  display: list-item;
+  background-image: none;
+  position: static
+}
+
+.ms-drop ul>li .disabled {
+  opacity: .35;
+  filter: alpha(opacity=35)
+}
+
+.ms-drop ul>li.multiple {
+  display: block;
+  float: left
+}
+
+.ms-drop ul>li.group {
+  clear: both
+}
+
+.ms-drop ul>li.multiple label {
+  width: 100%;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis
+}
+
+.ms-drop ul>li label {
+  font-weight: 400;
+  display: block;
+  white-space: nowrap
+}
+
+.ms-drop ul>li label.optgroup {
+  font-weight: 700
+}
+
+.ms-drop input[type=checkbox] {
+  vertical-align: middle
+}
+
+.ms-drop .ms-no-results {
+  display: none
+}
+
+.tiny-font-weight .about-me .item-title,.tiny-font-weight .account-title,.tiny-font-weight .gov-people-interact .item-title,.tiny-font-weight .matters-faq-title,.tiny-font-weight .matters-result-title,.tiny-font-weight .matters-title,.tiny-font-weight .my-title,.tiny-font-weight .recovery-title {
+  font-weight: 400!important
+}
+
+.gd-title-lv1 {
+  font-size: 2.1rem
+}
+
+@media screen and (max-width: 767px) {
+  .gd-title-lv1 {
+      font-size:1.8rem
+  }
+}
+
+.matters-link-disabled {
+  opacity: .2;
+  pointer-events: none
+}
+
+.index-other {
+  margin-top: -1rem;
+  border-top: 1px solid #dfe1e2;
+  padding-top: 1.9rem
+}
+
+.index-other .index-other-title {
+  font-size: .8rem;
+  color: #45484b;
+  line-height: 1.2rem
+}
+
+.index-other .index-other-btns {
+  margin-top: 1.2rem
+}
+
+.index-other .index-other-btns .index-other-btn {
+  display: inline-block;
+  padding: .9rem 0 .9rem .85rem;
+  width: 13.8rem;
+  font-size: .9rem;
+  color: #0d1c28;
+  line-height: 1.2rem;
+  background: #f1f2f3;
+  font-weight: 600;
+  margin-right: 1.2rem;
+  margin-bottom: 1.5rem;
+  cursor: pointer;
+  transition: all .3s ease
+}
+
+.index-other .index-other-btns .index-other-btn:hover {
+  background-color: #4293f4;
+  color: #fff
+}
+
+.index-other .index-other-btns .index-other-btn i {
+  margin-right: .75rem;
+  line-height: 1.2rem;
+  font-size: 1.3rem;
+  font-weight: 400;
+  vertical-align: middle
+}
+
+.index-other .index-other-btns .index-other-btn span {
+  vertical-align: middle
+}
+
+.index-banner {
+  background: linear-gradient(90deg,#0066b9 1%,#4293f4 100%)
+}
+
+.index-banner .banner-bg {
+  height: 14.5rem;
+  position: absolute;
+  right: 0;
+  bottom: 0
+}
+
+.index-banner .container {
+  position: relative;
+  height: 18rem;
+  padding-top: 4.5rem
+}
+
+.index-banner .banner-content {
+  color: #fff;
+  position: relative;
+  z-index: 1
+}
+
+.index-banner .banner-content h3 {
+  font-size: .8rem;
+  margin-bottom: 1.2rem;
+  font-weight: 400
+}
+
+.index-banner .banner-content h1 {
+  font-size: 2.4rem;
+  color: #fff;
+  line-height: 2.4rem;
+  margin-bottom: 1.2rem;
+  font-weight: 400
+}
+
+.index-list .index-img {
+  width: 1.8rem;
+  height: 1.8rem;
+  vertical-align: middle
+}
+
+.index-list h4 {
+  font-size: 1.2rem;
+  color: #0d1c28;
+  line-height: 1.2rem;
+  margin-top: .75rem;
+  margin-bottom: 1.2rem
+}
+
+.index-list>li {
+  margin-bottom: 3rem;
+  min-height: 12.75rem
+}
+
+.index-list .index-sublist {
+  font-size: .8rem;
+  letter-spacing: 0;
+  line-height: .9rem
+}
+
+.index-list .index-sublist>li {
+  margin-bottom: .75rem
+}
+
+.index-list .index-sublist>li:nth-last-child(1) {
+  margin-bottom: 0
+}
+
+.index-list .index-sublist>li>a {
+  display: inline-block;
+  vertical-align: middle;
+  color: #45484b
+}
+
+.index-list .index-sublist>li>a:hover {
+  color: #0d1c28;
+  text-decoration: underline
+}
+
+.index-other {
+  margin-top: 0
+}
+
+.main {
+  margin-top: 3rem!important
+}

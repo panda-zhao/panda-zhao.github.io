@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>获取url的参数</title>
+</head>
+<body>
+  <script>
+    
+// 获取url的参数列表，有返回json对象，没有返回{}
+function getUrlParamsObj () {
+  var url = location.search //获取url中"?"符后的字串
+  var paramsObj = new Object()
+  if (url.indexOf("?") != -1) {
+    var strs = url.substr(1).split("&") // 去掉?号，并以&为分隔符分割为数组
+    console.log('strs', strs)
+    for(var i = 0; i < strs.length; i ++) {
+      // paramsObj[strs[i].split("=")[0]]= unescape(strs[i].split("=")[1])
+      paramsObj[strs[i].split("=")[0]]= decodeURI(strs[i].split("=")[1])
+    }
+  }
+  return paramsObj
+ }
+console.log('获取路径中的参数对象', getUrlParamsObj())
+
+// 获取url指定参数key的值，有则返回，没有返回null
+function getUrlParam(name){ 
+  var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)") // 构造一个含有目标参数的正则表达式对象 
+  var r = window.location.search.substr(1).match(reg) // 匹配目标参数 
+  if (r!=null) return decodeURI(r[2]); 
+  return null; 
+}
+console.log('获取URL中的指定参数', getUrlParam("title"))
+  </script>
+</body>
+</html>
