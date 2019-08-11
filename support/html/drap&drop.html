@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>HTML5 拖放（Drag 和 drop）</title>
+  <style>
+    .drogBox{float:left; width:198px; height:66px; margin:10px;padding:10px;border:1px dashed #aaaaaa;}
+  </style>
+</head>
+<body>
+  <h1>拖放（Drag 和 drop）</h1>
+  <p>Internet Explorer 9、Firefox、Opera 12、Chrome 以及 Safari 5 支持拖放。</p>
+  <ul>
+    <li>首先，为了使元素可拖动，把 draggable 属性设置为 true ：</li>
+    <li>然后，规定当元素被拖动时，会发生什么。ondragstart 和 setData()</li>
+    <li>放到何处 - ondragover</li>
+    <li>进行放置 - ondrop</li>
+  </ul>
+  <hr>
+  
+  <div class="drogBox" ondragover="allowDrop(event)" ondrop="drop(event)">我是放置元素1</div>
+  <div class="drogBox" ondragover="allowDrop(event)" ondrop="drop(event)">我是放置元素2</div>
+  <p id="drag1" draggable="true" ondragstart="drag(event)">我是可拖动的元素</p>
+  <script>
+    // 拖动时，
+    function drag(e){
+      // console.log(e)
+      e.dataTransfer.setData("Text", e.target.id) // 设置被拖数据的数据类型和值
+    }
+    // 规定在何处放置被拖动的数据
+    function allowDrop(e) {
+      e.preventDefault() //默认地，无法将数据/元素放置到其他元素中。如果需要设置允许放置，我们必须阻止对元素的默认处理方式。
+    }
+
+    // 放置时
+    function drop(e) {
+      e.preventDefault()// 避免浏览器对数据的默认处理（drop 事件的默认行为是以链接形式打开）
+      var data = e.dataTransfer.getData("Text") // 获得被拖的数据。返回在 setData() 方法中设置为相同类型的任何数据。被拖数据是被拖元素的 id ("drag1")
+      e.target.appendChild(document.getElementById(data)); // 被拖元素追加到放置元素（目标元素）中
+    }
+  </script>
+</body>
+</html>

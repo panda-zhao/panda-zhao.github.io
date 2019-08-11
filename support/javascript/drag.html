@@ -45,6 +45,7 @@
         var init_Y = parseFloat( getStyle(obox,'top') );//获取初始y轴坐标
         var X = e.clientX;//获取鼠标位置
         var Y = e.clientY;//获取鼠标位置
+        
         document.onmousemove = function(e){//鼠标移动时
           e = e || window.event;//Event对象的兼容
           console.log("e的值",e);
@@ -57,7 +58,6 @@
         document.onmouseup = function (){//鼠标松开时
           document.onmousemove = null;
           document.onmouseup = null;
-
         }
     }
     //getStyle(obj,attr);//获取元素的样式
@@ -69,7 +69,6 @@
         }
     }
 /*============================   面向对象 拖拽方法   =====================================*/
-	
     function Drag(name){
         this.oDrag = document.getElementById(name);//调用需要拖拽的元素
         var _this = this;
