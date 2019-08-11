@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>geolocation</title>
+</head>
+
+<body>
+    <p id="demo">点击这个按钮，获得您的坐标：</p>
+    <button onclick="getLocation()">试一下</button>
+  <script>
+    // getLocation()
+    // console.log(position.coords.latitude)// 十进制数的纬度，一定有，如latitude: 23.1089317
+    // console.log(position.coords.longitude)// 十进制数的经度，一定有，如 longitude: 113.4055882
+    // console.log(position.coords.accuracy)// 位置精度，一定有，如accuracy: 75
+    // console.log(position.timestamp)// 响应的日期/时间 如 1565446406078
+
+    // console.log(position.coords.altitude)// 海拔，海平面以上以米计
+    // console.log(position.coords.heading)// 方向，从正北开始以度计
+    // console.log(position.coords.speed)// 速度，以米/每秒计
+     // 获取当前的位置
+    function getLocation (){
+      if(!navigator.geolocation) throw "浏览器不支持 Geolocation API"
+      navigator.geolocation.getCurrentPosition(function(position){
+        console.log(position)
+      }, function(error) {
+        console.log(error) // 国内https://www.googleapis.com/ 访问失败
+      })
+    }
+    watchPosition()
+    //  - 返回用户的当前位置，并继续返回用户移动时的更新位置（就像汽车上的 GPS）。
+    function watchPosition() {
+      if(!navigator.geolocation) throw "浏览器不支持 Geolocation API"
+      navigator.geolocation.watchPosition(function(position){
+        console.log(position)
+      }, error =>{
+        console.log(error)
+      })
+    }
+    clearWatch()
+    //  - 停止 watchPosition() 方法
+    function clearWatch (){
+      if(!navigator.geolocation) throw "浏览器不支持 Geolocation API"
+      navigator.geolocation.clearWatch(function(res){
+        console.log(res)
+      }, function(error){
+        console.log(error)
+      })
+    }
+  </script>
+</body>
+
+</html>

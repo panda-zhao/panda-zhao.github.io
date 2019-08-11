@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>JavaScript 错误</title>
+</head>
+
+<body>
+  <h1>JavaScript 错误</h1>
+  <table>
+    <tr>
+      <th>错误名</th>
+      <th>描述</th>
+    </tr>
+    <tr>
+      <td>EvalError</td>
+      <td>已在 eval() 函数中发生的错误</td>
+    </tr>
+    <tr>
+      <td>RangeError</td>
+      <td>已发生超出数字范围的错误</td>
+    </tr>
+    <tr>
+      <td>ReferenceError</td>
+      <td>已发生非法引用</td>
+    </tr>
+    <tr>
+      <td>SyntaxError</td>
+      <td>已发生语法错误</td>
+    </tr>
+    <tr>
+      <td>TypeError</td>
+      <td>已发生类型错误</td>
+    </tr>
+    <tr>
+      <td>URIError</td>
+      <td>在 encodeURI() 中已发生的错误</td>
+    </tr>
+
+  </table>
+
+
+  <h2>try 和 catch</h2>
+  <p>try 语句使您能够测试代码块中的错误。catch 语句允许您处理错误。</p>
+
+  <script>
+    error1()
+
+    function error1() {
+      try {
+        console.log('1-先执行try区域供测试的代码块')
+        adddlert("欢迎访问！")
+      } catch (error) {
+        console.log('2-发生错误来到来catch处理错误的代码块！')
+      }
+    }
+  </script>
+  <hr>
+
+  <h2>JavaScript 抛出错误</h2>
+  <p>当发生错误时，JavaScript 通常会停止并产生错误消息。</p>
+  <p>技术术语是这样描述的：JavaScript 将抛出异常（抛出错误）。</p>
+  <p>该异常（err）被 catch 语句捕获并显示一条自定义的错误消息</p>
+  <p>JavaScript 实际上会创建带有两个属性的 Error 对象：name 和 message。</p>
+  <hr>
+  <script>
+    testError()
+
+    function testError() {
+      try {
+        adddlert("欢迎访问！")
+      } catch (error) {
+        console.log("error=", error)
+        console.log('2-发生错误来到来catch处理错误的代码块！')
+      }
+    }
+  </script>
+  <h2>throw 语句</h2>
+  <p>throw 语句允许您创建自定义错误。</p>
+  <p>finally 语句允许您在 try 和 catch 之后执行代码，无论结果：</p>
+  <p>请输入 5 - 10 之间的数字：</p>
+  <input id="demo" type="text">
+  <button type="button" onclick="myFunction()">测试输入</button>
+  <p id="message"></p>
+  <script>
+    function myFunction() {
+      var message, x;
+      message = document.getElementById("message");
+      message.innerHTML = "";
+      x = document.getElementById("demo").value;
+      try {
+        console.log('try')
+        if (x == "") throw "是空的";
+        if (isNaN(x)) throw "不是数字";
+        x = Number(x);
+        if (x > 10) throw "太大";
+        if (x < 5) throw "太小";
+      } catch (error) {
+        console.log('catch')
+        message.innerHTML = "错误：" + error + ".";
+      } finally {
+        console.log('finally')
+        document.getElementById("demo").value = "";
+      }
+    }
+  </script>
+</body>
+
+</html>

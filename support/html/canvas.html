@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>使用canvas</title>
+  <style>
+    canvas {
+      border: 1px solid gray
+    }
+  </style>
+</head>
+
+<body>
+  <h1>什么是 Canvas？</h1>
+  <p>HTML5 的 canvas 元素使用 JavaScript 在网页上绘制图像。</p>
+  <dl>
+    <dt>Canvas</dt>
+    <dd>依赖分辨率</dd>
+    <dd>不支持事件处理器</dd>
+    <dd>弱的文本渲染能力</dd>
+    <dd>能够以 .png 或 .jpg 格式保存结果图像</dd>
+    <dd>最适合图像密集型的游戏，其中的许多对象会被频繁重绘</dd>
+  </dl>
+  <dl>
+      <dt>SVG</dt>
+      <dd>不依赖分辨率</dd>
+      <dd>不支持事件处理器</dd>
+      <dd>支持事件处理器</dd>
+      <dd>最适合带有大型渲染区域的应用程序（比如谷歌地图）</dd>
+      <dd>复杂度高会减慢渲染速度（任何过度使用 DOM 的应用都不快）</dd>
+      <dd>不适合游戏应用</dd>
+    </dl>
+  
+  <canvas id="myCanvas" width="300" height="150"></canvas>
+
+  <script type="text/javascript">
+    var canvas = document.getElementById("myCanvas");
+    var cxt = canvas.getContext("2d"); // CanvasRenderingContext2D 对象
+    console.log("CanvasRenderingContext2D 对象", cxt)
+    cxt.fillStyle = "#FF0000";
+    cxt.fillRect(0, 0, 150, 75);
+  </script>
+</body>
+
+</html>
