@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>父页面</title>
+</head>
+<body>
+  <h1>使用iframe</h1>
+  <!-- <button onclick="bindSwitchSrc">点击使用百度</button> -->
+  <div>我是parent页面</div>
+  <iframe src="./child.html" frameborder="0" id="iframe1" name="iframeName"></iframe>
+  <script>
+    // 设置hash
+    // var hash = window.location.hash
+    // console.log('hash=', hash) // 获取hash
+    // var target = window.location.href // 获取hash
+    // console.log('当前路径=', target) 
+    // window.location.href = target + "#" + 'newHash'; // 设置hash
+
+    // window.onhashchange = function(){
+    //   var message = window.location.hash
+    //   console.log("message", message)
+    // }
+
+    /**
+    * 发送消息
+    */
+    var win = document.getElementsByTagName('iframe')[0].contentWindow;
+    var obj = { name: 'Jack' };
+    // 存入对象
+    win.postMessage(JSON.stringify({key: 'storage', method: 'set', data: obj}), 'http://bbb.com');
+    // 读取对象
+    win.postMessage(JSON.stringify({key: 'storage', method: "get"}), "*");
+    window.onmessage = function(e) {
+      if (e.origin != 'http://aaa.com') return;
+      // "Jack"
+      console.log(JSON.parse(e.data).name);
+    };
+
+    // window.onload = function () {
+    //   var iframe = document.getElementById('iframe1')
+    //   var iframeDocument = iframe.contentWindow.document || iframe.contentDocument// 获取当前页面的iframe的document
+    //   console.log(iframeDocument)
+    //   console.log(iframe.contentWindow.document.documentElement.scrollHeight)
+    // }
+
+    // window.aaaaa = 'parent'
+    // 获取当前页面的iframe
+    // console.log(iframe1)
+    // console.log(window.frames["iframeName"]) // 推荐使用name属性获取
+    // console.log(window.frames[0]) //从左到右从上到下
+    // console.log('【top页面】')
+    // var iframeDocument = iframe.contentWindow.document || iframe.contentDocument// 获取当前页面的iframe的document
+
+
+    // console.log('获取当前页面的iframe', iframeDocument.body.scrollHeight, iframeDocument.body.scrollHeight)
+    // console.log(iframe.attachEvent)
+    // if (iframe.attachEvent) {
+    //     iframe.attachEvent("onload", function () {
+    //         console.log(iframe.contentWindow.document.body.innerHTML);
+    //     });
+    // } else {
+    //     iframe.onload = function () {
+    //         console.log(iframe.contentWindow.document.body.innerHTML);
+    //     };
+    // }
+    // // var iframe = window.frames["iframeName"]// 推荐使用name属性获取当前页面的iframe
+    // // console.log('获取当前页面的iframe', iframe.document)// 获取当前页面的iframe    
+    // function bindSwitchSrc(){
+    //   // ./child.html
+    //   iframe1.setAttribute('src','https://www.baidu.com/')
+
+    // }
+  </script>
+</body>
+</html>
