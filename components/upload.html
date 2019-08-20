@@ -25,7 +25,7 @@
 
 <body>
   <h1>图片上传</h1>
-  <input type="file" id="fileElem" name='files' multiple accept="image/*" style="display:none" onchange="upload(this.files)">
+  <input type="file" id="fileElem" name='files' multiple accept="image/*" style="display:none" onchange="handleFiles(this.files)">
   <a href="#" id="fileSelect">选择图片</a>
   <div id="fileList">
     <p>当前未选择文件</p>
@@ -50,25 +50,26 @@
     function handleFiles(files) {
       if (!files.length) {
         fileList.innerHTML = "<p>当前未选择文件</p>";
-      } else {
-        fileList.innerHTML = "";
-        const list = document.createElement("ul");
-        fileList.appendChild(list);
-        for (let i = 0; i < files.length; i++) {
-          const li = document.createElement("li");
-          list.appendChild(li);
-          
-          const img = document.createElement("img");
-          img.src = window.URL.createObjectURL(files[i]);
-          img.height = 60;
-          img.onload = function() {
-            window.URL.revokeObjectURL(this.src);
-          }
-          li.appendChild(img);
-          const info = document.createElement("span");
-          info.innerHTML = files[i].name + ": " + files[i].size + " bytes";
-          li.appendChild(info);
+        return
+      }
+      console.log("files", files)
+      fileList.innerHTML = "";
+      const list = document.createElement("ul");
+      fileList.appendChild(list);
+      for (let i = 0; i < files.length; i++) {
+        const li = document.createElement("li");
+        list.appendChild(li);
+        
+        const img = document.createElement("img");
+        img.src = window.URL.createObjectURL(files[i]);
+        img.height = 60;
+        img.onload = function() {
+          window.URL.revokeObjectURL(this.src);
         }
+        li.appendChild(img);
+        const info = document.createElement("span");
+        info.innerHTML = files[i].name + ": " + files[i].size + " bytes";
+        li.appendChild(info);
       }
     }
     
@@ -101,25 +102,25 @@
     // }
 
     // 上传文件到服务器
-    function upload(files) {
-      var formData = new FormData() // 1-创建formData对象
-      for (var i = 0; i < files.length; i++) {
-        console.log('遍历文件对象')
-        formData.append('files', files[i]) // 2-把文件对象插入formData
-      }
-      console.log('文件对象', formData)
-      // Ajax
-      var request = new XMLHttpRequest();
-      request.open("POST", "http://localhost:8888/upload");
-      request.send(formData);
-      request.onreadystatechange = function () {
-        if (request.readyState === 4 & request.status === 200) {
-          console.log("上传成功");
-          var response = JSON.parse(request.responseText);
-          console.log(response);
-        }
-      }
-    }
+    // function upload(files) {
+    //   var formData = new FormData() // 1-创建formData对象
+    //   for (var i = 0; i < files.length; i++) {
+    //     console.log('遍历文件对象')
+    //     formData.append('files', files[i]) // 2-把文件对象插入formData
+    //   }
+    //   console.log('文件对象', formData)
+    //   // Ajax
+    //   var request = new XMLHttpRequest();
+    //   request.open("POST", "http://localhost:8888/upload");
+    //   request.send(formData);
+    //   request.onreadystatechange = function () {
+    //     if (request.readyState === 4 & request.status === 200) {
+    //       console.log("上传成功");
+    //       var response = JSON.parse(request.responseText);
+    //       console.log(response);
+    //     }
+    //   }
+    // }
   </script>
 
 </body>

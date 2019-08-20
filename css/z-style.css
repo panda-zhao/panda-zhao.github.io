@@ -4,15 +4,43 @@ time: 2019-08-03
 des: 一般公共样式表
 path: https://www.zhaowy.cn/css/z-style.css
 **********/
-* {
-  /* margin: 0;
-  padding: 0; */
+html{
+  -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: transparent;
+}
+:root {
+  --blue: #007bff;
+  --indigo: #6610f2;
+  --purple: #6f42c1;
+  --pink: #e83e8c;
+  --red: #dc3545;
+  --orange: #fd7e14;
+  --yellow: #ffc107;
+  --green: #28a745;
+  --teal: #20c997;
+  --cyan: #17a2b8;
+  --white: #fff;
+  --gray: #6c757d;
+  --gray-dark: #343a40;
+  --primary: #007bff;
+  --secondary: #6c757d;
+  --success: #28a745;
+  --info: #17a2b8;
+  --warning: #ffc107;
+  --danger: #dc3545;
+  --light: #f8f9fa;
+  --dark: #343a40;
+  --breakpoint-xs: 0;
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+  --font-family-sans-serif: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  --font-family-monospace: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
 }
 body{
   font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
   color: #333;
-  /* font-size: 14px; */
 }
 a{
   text-decoration: none;
@@ -20,6 +48,18 @@ a{
 image{
   vertical-align: middle;
 }
+.fl{
+  float: left;
+}
+.fr{
+  float: right;
+}
+.clearfix:after{
+  content: "";
+  display: block;
+  clear: both;
+}
+.clearfix{zoom:1}
 /* 默认链接样式 */
 .z-link{
   padding: 0;
@@ -31,26 +71,39 @@ image{
 }
 
 /* 默认按钮样式 */
-.z-button{
-  /* display: inline-block; */
-  box-sizing: border-box;
-  line-height: 1;
-  padding: 12px 20px;
-  border-radius: 4px;
-  outline: none;
-  -webkit-appearance: none;
-  font-size: 14px;
-  font-weight: 500;
+.btn{
+  padding: 10px 19px;
+  font-size: 17px;
+  line-height: 1.471;
+  border-radius: 6px;
+  border: none;
+  font-weight: normal;
+  -webkit-font-smoothing: subpixel-antialiased;
+  transition: border .25s linear, color .25s linear, background-color .25s linear;
   text-align: center;
-  background: #fff;
-  border: 1px solid #dcdfe6;
-  color: #606266;
+  vertical-align: middle;
+  white-space: normal;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   cursor: pointer;
 }
-.z-button-primary{
-  color: #fff;
-  background-color: #409eff;
-  border-color: #409eff;
+.btn-info{
+  color: white;
+  background-color: #3498db;
+}
+.btn-info:hover{
+  color: white;
+  background-color: #5dade2;
+  border-color: #5dade2;
+}
+.btn-info:not(:disabled):not(.disabled):active{
+  background: #2c81ba;
+  border-color: #2c81ba;
+}
+.btn-info.focus, .btn-info:focus {
+  box-shadow: 0 0 0 0.2rem rgba(23,162,184,.5);
 }
 /* 基础投影 */
 .shadow{
@@ -195,8 +248,34 @@ image{
   -o-transform: rotate(-45deg);
   transform: rotate(-45deg);
 }
-
-.container{
-  max-width: 1140px;
-  margin: 0 auto;
+@media (min-width: 768px){
+  .container {width: 750px;}
 }
+@media (min-width: 992px){
+  .container {width: 970px;}
+}
+@media (min-width: 1200px){
+  .container {width: 1170px;}
+}
+.container{
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+.z-row::after{content: "";display: block;clear: both;}
+.z-row{zoom: 1}
+.z-col-1,.z-col-2,.z-col-3,.z-col-4,.z-col-5,.z-col-6,.z-col-7,.z-col-8,.z-col-9,.z-col-10,.z-col-11,.z-col-12{
+  float:left
+}
+.z-col-1 {width: 8.33333333%}
+.z-col-2 {width: 16.66666667%}
+.z-col-3 {width: 25%}
+.z-col-4 {width: 33.33333333%}
+.z-col-5 {width: 41.66666667%}
+.z-col-6 {width: 50%}
+.z-col-7 {width: 58.33333333%}
+.z-col-8 {width: 66.66666667%}
+.z-col-9 {width: 75%}
+.z-col-10 {width: 83.33333333%}
+.z-col-11 {width: 91.66666667%}
+.z-col-12 {width: 100%}

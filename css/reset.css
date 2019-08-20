@@ -127,6 +127,7 @@ mark { background: #ff0; }
   display: block;
   clear: both;
 }
+.clearfix{zoom:1}
 /*小技巧：给需要不能选中的元素添加noselect类，就可以实现清除选中效果*/
 .noselect {
   -webkit-touch-callout: none;/*ios触摸目标时候,禁用系统默认菜单。*/
