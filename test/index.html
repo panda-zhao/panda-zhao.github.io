@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>测试页面</title>
+</head>
+
+<body>
+  <input type="file" onchange="handleChange(this)" id="file">
+  <script>
+    // 获取当前日期的三十年之后日期
+    let a = new Date()
+    a.setFullYear(a.getFullYear()+30)
+    let result1 = a.getFullYear() + '-' + (a.getMonth() + 1)  +'-' + a.getDate()
+    console.log(result1)
+
+    // 获取指定日期减一天
+    let b = new Date('2019-03-01')
+    b.setDate(b.getDate() - 1 )
+    let result2 = b.getFullYear() +'-'+ (b.getMonth() + 1)  +'-' + b.getDate()
+    console.log(result2)
+
+    // 获取文件对象
+    function handleChange(e){
+      console.log(e.files[0])
+      console.log(document.getElementById('file').files[0])
+    }
+  </script>
+  
+</body>
+
+</html>

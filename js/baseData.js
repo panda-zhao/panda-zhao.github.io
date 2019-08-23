@@ -61,38 +61,11 @@ const entryConfig = {
   "wholeSetText": "智能办理企业名称自主申报 + 设立登记 + 印章申请 + 银行开户 + 税务登记发票申领",
   "menus": [
     {
-      "page": "/pages/webView/chooseAddress/main",
-      "icon": "https://6563-ec-gov-biz-mp-19a952-1258264808.tcb.qcloud.la/ec/icon/choose-address.png?sign=e3f7ea755cd90b86b4940ec940af8ca7&t=1560766978",
-      "name": "办公选址",
-      "width": 57,
-      "height": 69
-    },
-    {
       "page": "/pages/webView/name/main",
       "icon": "https://6563-ec-gov-biz-mp-19a952-1258264808.tcb.qcloud.la/ec/icon/name.png?sign=c0918a81038a021f6f2acb793c15191a&t=1560766955",
       "name": "智能精算<br>公司起名",
       "width": 65,
       "height": 63
-    },
-    {
-      "code": "WHOLE_SET_APPLY",
-      "icon": "https://6563-ec-gov-biz-mp-19a952-1258264808.tcb.qcloud.la/ec/icon/check-name.png?sign=d5121f32847436bd4a4436a49febe833&t=1560766256",
-      "name": "名称申报<br>设立登记",
-      "belong": [
-        "FOSHAN"
-      ],
-      "width": 74,
-      "height": 65
-    },
-    {
-      "code": "WEIXIN_APPLY",
-      "icon": "https://6563-ec-gov-biz-mp-19a952-1258264808.tcb.qcloud.la/ec/icon/check-name.png?sign=d5121f32847436bd4a4436a49febe833&t=1560766256",
-      "name": "名称申报<br>设立登记",
-      "belong": [
-        "JIANGMEN"
-      ],
-      "width": 74,
-      "height": 65
     },
     {
       "code": "NAME_APPLY",
@@ -128,23 +101,6 @@ const entryConfig = {
       "name": "税务登记<br>发票申领",
       "width": 76,
       "height": 61
-    },
-    {
-      "code": "SOCIAL_SECURITY",
-      "icon": "https://6563-ec-gov-biz-mp-19a952-1258264808.tcb.qcloud.la/ec/icon/protection.png?sign=21b4d9f749144e636193f7d7386b669f&t=1560766348",
-      "name": "社保开户",
-      "belong": [
-        "GUANGZHOU"
-      ],
-      "width": 74,
-      "height": 59
-    },
-    {
-      "icon": "https://6563-ec-gov-biz-mp-19a952-1258264808.tcb.qcloud.la/ec/icon/fund.png?sign=1bcff16e6159874864a82c3f26b1fa24&t=1560766369",
-      "name": "公积金开户",
-      "width": 61,
-      "height": 62
     }
   ]
 }
-
