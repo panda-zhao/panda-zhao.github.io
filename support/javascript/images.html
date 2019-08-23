@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>图片的预览和格式转换</title>
+  <style>
+    .btn{
+      padding: 10px 19px;
+      font-size: 17px;
+      line-height: 1.471;
+      border-radius: 6px;
+      border: none;
+      font-weight: normal;
+      -webkit-font-smoothing: subpixel-antialiased;
+      transition: border .25s linear, color .25s linear, background-color .25s linear;
+      text-align: center;
+      vertical-align: middle;
+      white-space: normal;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      cursor: pointer;
+    }
+    .btn-info{
+      color: white;
+      background-color: #3498db;
+    }
+    .btn-info:hover{
+      color: white;
+      background-color: #5dade2;
+      border-color: #5dade2;
+    }
+    .btn-info:not(:disabled):not(.disabled):active{
+      background: #2c81ba;
+      border-color: #2c81ba;
+    }
+    .btn-info.focus, .btn-info:focus {
+      box-shadow: 0 0 0 0.2rem rgba(23,162,184,.5);
+    }
+  </style>
+</head>
+
+<body>
+  <input type="file" id="uploadImg" multiple accept="image/*" onchange="selectImg(this.files)">
+  <h2>生成base64图片</h2>
+  <img alt="base64图片" width="100" height="100" id="base64Img">
+  <h2>DOMString表示文件对象的url-文档退出后销毁</h2>
+  <img alt="DOMString图片" width="100" height="100" id="DOMStringImg">
+  <h2>把base64转换为文件对象</h2>
+  <button class="btn btn-info" onclick="getFile()">转换base64为文件对象</button>
+  <div id="fileData"></div>
+  <script>
+    // 上传图片
+    function selectImg(files) {
+      if (!files.length) {
+        alert('当前未选择文件')
+        return
+      }
+      console.log("【文件对象】=", files)
+      fileToBase64(files[0])
+      createObjectURL(files[0])
+      formData(files)
+    }
+
+    // 文件对象转base64
+    function fileToBase64(file) {
+      var reader = new FileReader()
+      reader.readAsDataURL(file) // 将文件读取为DataURL
+      reader.onload = function (e){
+        console.log('【file ===> base64成功】base64=', e.target.result)
+        document.getElementById('base64Img').setAttribute('src', e.target.result )
+      }
+      reader.onerror = function (error){
+        console.log('【file转base64时发生错误】', error)
+      }
+    }
+    // DOMString表示文件对象的url
+    // 浏览器会在文档退出的时候自动释放这个对象
+    function createObjectURL(file) {
+      var objectURL= URL.createObjectURL(file) // 将指定的 File 对象或 Blob 对象。
+      console.log('【file ===> DOMStringUrl】objectURL=', objectURL)
+      document.getElementById('DOMStringImg').setAttribute('src', objectURL)
+    }
+
+    function formData (files) {
+      const formData = new FormData() // 1-创建formData对象
+      for (var i = 0; i < files.length; i++) {
+        formData.append('file', files[i]) // 2-把文件对象插入formData
+      }
+      console.log("【formData对象=】", formData)
+    }
+
+    
+
+    function getFile () {
+      var base64URL = document.getElementById('base64Img').src
+      console.log('base64URL', base64URL)
+      document.getElementById('fileData').innerHTML = base64ToFile(base64URL, 'xxxxxx')
+    }
+
+    //将base64编码字符串转换为文件对象
+    function base64ToFile(base64URL, fileName) {
+      // 1先把base64转换成blob对象
+      var arr = base64URL.split(',')// 切割字符串
+      var mime = arr[0].match(/:(.*?);/)[1] // 获取图片类型
+      var bstr = window.atob(arr[1])// 解码使用 base-64 编码的字符串
+      var n = bstr.length
+      var u8arr = new Uint8Array(n)
+      while (n--) {
+        u8arr[n] = bstr.charCodeAt(n)
+      }
+      var blob = new Blob([u8arr], {type: mime})
+      // 2将blob转换为file对象
+      blob.lastModifiedDate = new Date()
+      blob.name = fileName
+      console.log('【base64编码字符串转换的文件对象=】', blob)
+      return blob
+    }
+  </script>
+</body>
+
+</html>
