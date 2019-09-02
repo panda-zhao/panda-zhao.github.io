@@ -5,38 +5,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="../../css/z-style.css">
   <title>form表单</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-    }
-
-    fieldset {
-      padding: 15px 30px;
-    }
-
-    legend {
-      width: 100px;
-      margin-left: 45%;
-      padding: 0 15px;
-      text-align: center
-    }
-
-    ul {
-      list-style: none;
-    }
-
-    li {
-      margin: 15px 0;
-      padding: 5px 15px;
-      border: 1px dashed #00f
-    }
-
-    li label {
-      display: inline-block;
-      min-width: 80px;
-    }
+    /* * {margin: 0;padding: 0;}
+    fieldset {padding: 15px 30px;max-width: 970px; margin: 0 auto;}
+    legend {width: 100px;margin-left: 45%;padding: 0 15px;text-align: center}
+    ul {list-style: none;}
+    li {margin: 15px 0;padding: 5px 15px;border: 1px dashed #00f}
+    li label {display: inline-block;min-width: 80px;} */
   </style>
 </head>
 
@@ -45,50 +22,68 @@
   <form id="myForm">
     <fieldset>
       <legend>form表单</legend>
-      <ul>
-        <li>
-          <label for="name">单行文本域</label>
-          <input type="text" name="text" id="name" placeholder="请输入名字">
-        </li>
-        <li>
-          <label for="pwd">密码域</label>
-          <input type="password" name="pwd" id="pwd" placeholder="请输入密码">
-        </li>
-        <li>
-          <span>单选按钮</span>
+      <!-- 文本框 -->
+      <div class="z-form-item">
+        <label for="name" class="z-form-item__label">单行文本域</label>
+        <div class="z-form-item__content">
+          <input type="text" name="text" id="name" placeholder="请输入名字" autocomplete="off" class="el-input__inner">
+        </div>
+      </div>
+      <div class="z-form-item">
+        <label class="z-form-item__label" for="pwd">密码域</label>
+        <div class="z-form-item__content">
+          <input type="password" name="pwd" id="pwd" placeholder="请输入密码" class="el-input__inner">
+        </div>
+      </div>
+      <div class="z-form-item">
+        <label for="radio" class="z-form-item__label">单选按钮</label>
+        <div class="z-form-item__content">
           <input type="radio" id='radio1' name="radio" value="male" checked>
           <label for="radio1">男</label>
           <input type="radio" id='radio2' name="radio" value="female">
           <label for="radio2">女</label>
-        </li>
-        <li>
-          <span>复选框</span>
+        </div>
+      </div>
+      <div class="z-form-item">
+        <label for="checkbox" class="z-form-item__label">复选按钮</label>
+        <div class="z-form-item__content">
           <input type="checkbox" id='checkbox1' name="checkbox" value="apple" checked>
           <label for="checkbox1">苹果</label>
           <input type="checkbox" id='checkbox2' name="checkbox" value="banana">
           <label for="checkbox2">香蕉</label>
           <input type="checkbox" id='checkbox2' name="checkbox" value="pear">
           <label for="checkbox2">梨</label>
-        </li>
-        <li>
-          <label for="email">email</label>
-          <input type="email" name="email" id="email" multiple>
-        </li>
-        <li>
-          <label for="search">search</label>
-          <input type="search" id="search" name="search">
-        </li>
-        <li>
-          <label for="tel">tel</label>
-          <input type="tel" id="tel" name="tel">
-        </li>
-        <li>
-          <label for="textarea ">多行文本域</label>
-          <textarea id='textarea' name='textarea' cols="20" rows="10" placeholder="当前cols=20&rows=10"></textarea>
-        </li>
-        <li>
-          <label for="select">选择框</label>
-          <select id="select" name="select">
+        </div>
+      </div>
+      <div class="z-form-item">
+        <label for="email" class="z-form-item__label">email</label>
+        <div class="z-form-item__content">
+          <input type="email" name="email" id="email" multiple class="el-input__inner">
+        </div>
+      </div>
+      <div class="z-form-item">
+        <label for="search"  class="z-form-item__label">search</label>
+        <div class="z-form-item__content">
+          <input type="search" id="search" name="search" class="el-input__inner">
+        </div>
+      </div>
+      <div class="z-form-item">
+        <label for="tel"  class="z-form-item__label">tel</label>
+        <div class="z-form-item__content">
+          <input type="tel" id="tel" name="tel" class="el-input__inner">
+        </div>
+      </div>
+      <div class="z-form-item">
+        <label for="textarea"  class="z-form-item__label">多行文本域</label>
+        <div class="z-form-item__content">
+          <textarea id='textarea' name='textarea' cols="20" rows="10" placeholder="当前cols=20&rows=10"  class="el-input__inner"></textarea>
+        </div>
+      </div>
+      <!-- 选择框 -->
+      <div class="z-form-item">
+        <label for="select" class="z-form-item__label">选择框</label>
+        <div class="z-form-item__content">
+          <select id="select" name="select" class="el-input__inner">
             <optgroup label="fruits">
               <option>Banana</option>
               <option selected>Cherry</option>
@@ -100,17 +95,21 @@
               <option>Potato</option>
             </optgroup>
           </select>
-        </li>
-        <li>
-          <label for="multi">多选选择框</label>
-          <select multiple id="multi" name="multi">
+        </div>
+      </div>
+      <div class="z-form-item">
+        <label for="multi" class="z-form-item__label">多选选择框</label>
+        <div class="z-form-item__content">
+          <select multiple id="multi" name="multi" class="el-input__inner">
             <option>Banana</option>
             <option>Cherry</option>
             <option>Lemon</option>
           </select>
-        </li>
-        <li>
-          <label for="autocomplete">自动补全输入框</label>
+        </div>
+      </div>
+      <div class="z-form-item">
+        <label for="autocomplete" class="z-form-item__label">自动补全输入框</label>
+        <div class="z-form-item__content">
           <input type="text" name="autocomplete" id="autocomplete" list="mySuggestion">
           <datalist id="mySuggestion">
             <option>Apple</option>
@@ -122,113 +121,138 @@
             <option>Peach</option>
             <option>Pear</option>
           </datalist>
-        </li>
+        </div>
+        
+      </div>
         <!-- 支持<datalist>元素的浏览器将忽略所有不是<option>元素的元素，并按照预期工作。另一方面，不支持<datalist>元素的浏览器将显示标签和选择框。 -->
-        <li>
-          <label for="myFruit">兼容处理补全输入框</label>
-          <input type="text" id="myFruit" name="fruit" list="fruitList">
-          <datalist id="fruitList">
-            <label for="suggestion">or pick a fruit</label>
-            <select id="suggestion" name="altFruit">
-              <option>Apple</option>
-              <option>Banana</option>
-              <option>Blackberry</option>
-              <option>Blueberry</option>
-              <option>Lemon</option>
-              <option>Lychee</option>
-              <option>Peach</option>
-              <option>Pear</option>
-            </select>
-          </datalist>
-        </li>
-        <li>
-          <label for="number">数字</label>
-          <input type="number" name="number" id="number" min="1" max="100" step="2">
-        </li>
-        <li>
-          <label for="range">滑块</label>
-          <input type="range" name="range" id="range" min="0" max="500" step="10">
-          <span class="beancount"></span>
-        </li>
-        <li>
-          <label for="date">日期时间选择器</label>
-          <input type="date" name="date" min="2013-06-01" max="2013-08-31" id="date">
-        </li>
-        <li>
-          <label for="locakTime">本地时间</label>
-          <input type="datetime-local" name="locakTime" id="locakTime">
-        </li>
-        <li>
-          <label for="month">月</label>
-          <input type="month" name="month" id="month">
-        </li>
-        <li>
-          <label for="time">时间</label>
-          <input type="time" name="time" id="time">
-        </li>
-        <li>
-          <label for="week">星期</label>
-          <input type="week" name="week" id="week">
-        </li>
-        <li>
-          <label for="color">拾色器</label>
-          <input type="color" name="color" id="color">
-        </li>
-        <li>
-          <label for="hidden">隐藏内容</label>
-          <input type="hidden" id="hidden" name="timestamp" value="1286705410">
-        </li>
-        <li>
-          <label for="image">图像按钮</label>
-          <input type="image" alt="Click me!" src="../../images/demo.png" width="200" height="200" id="image" name="image" />
-        </li>
-        <li>
-          <label for="progress">进度条</label>
-          <progress max="100" value="75" id="progress">75/100</progress>
-        </li>
-        <li>
-          <label for="meter">进度条</label>
-          <meter min="0" max="100" value="75" low="33" high="66" optimum="50" id="meter">75</meter>
-        </li>
-        <li>
-          <label for="file1">纯input与file</label>
-          <input type="file" name="file1" id="file1">
-        </li>
-        <li>
-          <label for="file2">指明需要图片</label>
-          <input type="file" name="file2" id="file2" accept='image/*'>
-        </li>
-        <li>
-          <label for="file3">指明需要多张图片</label>
-          <input type="file" name="file3" id="file3" multiple accept='image/*'>
-        </li>
-        <li>
-          <label for="file4">指明调用摄像头获取图片</label>
-          <input type="file" name="file4" id="file4" capture='camera' accept='image/*'>
-        </li>
-        <li>
-          <label for="file5">指明调用摄像头并多张图片</label>
+        <div class="z-form-item">
+          <label for="myFruit" class="z-form-item__label">兼容处理补全输入框</label>
+          <div class="z-form-item__content">
+              <input type="text" id="myFruit" name="fruit" list="fruitList">
+              <datalist id="fruitList">
+                <label for="suggestion">or pick a fruit</label>
+                <select id="suggestion" name="altFruit">
+                  <option>Apple</option>
+                  <option>Banana</option>
+                  <option>Blackberry</option>
+                  <option>Blueberry</option>
+                  <option>Lemon</option>
+                  <option>Lychee</option>
+                  <option>Peach</option>
+                  <option>Pear</option>
+                </select>
+              </datalist>
+          </div>
+          
+        </div>
+        <div class="z-form-item">
+          <label for="number" class="z-form-item__label">数字</label>
+          <div class="z-form-item__content">
+            <input type="number" name="number" id="number" min="1" max="100" step="2">
+          </div>
+        </div>
+        <div class="z-form-item">
+          <label for="range" class="z-form-item__label">滑块</label>
+          <div class="z-form-item__content">
+            <input type="range" name="range" id="range" min="0" max="500" step="10">
+            <span class="beancount"></span>
+          </div>
+        </div>
+        <div class="z-form-item">
+          <label for="date" class="z-form-item__label">日期时间选择器</label>
+          <div class="z-form-item__content">
+            <input type="date" name="date" min="1989-05-06" max="2020-08-31" id="date">
+          </div>
+        </div>
+        <div class="z-form-item">
+          <label for="locakTime" class="z-form-item__label">本地时间</label>
+          <div class="z-form-item__content">
+            <input type="datetime-local" name="locakTime" id="locakTime">
+          </div>
+        </div>
+        <div class="z-form-item">
+          <label for="month" class="z-form-item__label">月</label>
+          <div class="z-form-item__content">
+            <input type="month" name="month" id="month">
+          </div>
+        </div>
+        <div class="z-form-item">
+          <label for="time" class="z-form-item__label">时间</label>
+          <div class="z-form-item__content">
+            <input type="time" name="time" id="time">
+          </div>
+        </div>
+        <div class="z-form-item">
+          <label for="week" class="z-form-item__label">星期</label>
+          <div class="z-form-item__content">
+            <input type="week" name="week" id="week">
+          </div>
+        </div>
+        <div class="z-form-item">
+          <label for="color" class="z-form-item__label">拾色器</label>
+          <div class="z-form-item__content">
+            <input type="color" name="color" id="color">
+          </div>
+        </div>
+        <div class="z-form-item">
+          <label for="hidden" class="z-form-item__label">隐藏内容</label>
+          <div class="z-form-item__content">
+            <input type="hidden" id="hidden" name="timestamp" value="1286705410">
+          </div>
+        </div>
+        <div class="z-form-item">
+          <label for="image" class="z-form-item__label">图像按钮</label>
+          <div class="z-form-item__content">
+            <input type="image" alt="Click me!" src="../../images/demo.png" width="80" height="80" id="image" name="image" />
+          </div>
+        </div>
+        <div class="z-form-item">
+          <label for="progress" class="z-form-item__label">进度条</label>
+          <div class="z-form-item__content">
+            <progress max="100" value="75" id="progress">75/100</progress>
+          </div>
+        </div>
+        <div class="z-form-item">
+          <label for="meter" class="z-form-item__label">进度条</label>
+          <div class="z-form-item__content">
+            <meter min="0" max="100" value="75" low="33" high="66" optimum="50" id="meter">75</meter>
+          </div>
+        </div>
+        <div class="z-form-item">
+          <label for="file1" class="z-form-item__label">纯input与file</label>
+          <div class="z-form-item__content">
+            <input type="file" name="file1" id="file1">
+          </div>
+        </div>
+        <div class="z-form-item">
+          <label for="file2" class="z-form-item__label">指明需要图片</label>
+          <div class="z-form-item__content">
+            <input type="file" name="file2" id="file2" accept='image/*'>
+          </div>
+        </div>
+        <div class="z-form-item">
+          <label for="file3" class="z-form-item__label">指明需要多张图片</label>
+          <div class="z-form-item__content">
+            <input type="file" name="file3" id="file3" multiple accept='image/*'>
+          </div>
+        </div>
+        <div class="z-form-item">
+          <label for="file4" class="z-form-item__label">指明调用摄像头获取图片</label>
+          <div class="z-form-item__content">
+            <input type="file" name="file4" id="file4" capture='camera' accept='image/*'>
+          </div>
+        </div>
+        <div class="z-form-item">
+          <label for="file5" class="z-form-item__label">指明调用摄像头并多张图片</label>
+          <div class="z-form-item__content">
           <!-- multiple 无效 -->
-          <input type="file" name="file5" id="file5" multiple capture='camera' accept='image/*'>
-        </li>
-        <li>
-          <button type="submit">
-            This a
-            <br>
-            <strong>submit button</strong>
-          </button>
-          <button type="reset">
-            This a
-            <br>
-            <strong>reset button</strong>
-          </button>
-          <button type="button">
-            This an
-            <br>
-            <strong>anonymous button</strong>
-          </button>
-        </li>
-      </ul>
+            <input type="file" name="file5" id="file5" multiple capture='camera' accept='image/*'>
+          </div>
+        </div>
+        <div class="z-form-item">
+          <button onclick="alert('重置表单！')">reset button</button>
+          <button onclick="alert('点击提交！')" class="btn-info">submit button</button>
+        </div>
     </fieldset>
   </form>
   <script>
@@ -236,7 +260,7 @@
     var count = document.querySelector('.beancount');
 
     count.textContent = beans.value;
-
+    // 移动滑块时获取值
     beans.oninput = function () {
       count.textContent = beans.value;
     }
