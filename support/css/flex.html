@@ -4,11 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://www.jq22.com/jquery/vue.min.js"></script>
   <title>flex布局</title>
   <style>
     *{margin: 0; padding: 0;}
     /* body{height: 100vh; padding-top: 35px;} */
-    .wrap{
+    .box{
       width: 500px;
       height: 500px;
       margin: 50px auto;
@@ -17,43 +18,64 @@
     .layout{
       display: flex;
       /* 主轴方向 */
-      flex-direction: row;
+      /* flex-direction: row; */
       /* 超出换行方式 */
-      flex-wrap: wrap;
+      /* flex-wrap: wrap; */
       /* 子项在容器里的对齐方式 */
-      justify-content: flex-start;/*默认值，左对齐。*/
+      /* justify-content: flex-start; */
 
     }
   </style>
 </head>
 <body>
-  <div class="wrap layout">
-    <div style="background: #007bff; width: 100px;height:100px">width: 100px;height:100px"</div>
-    <div style="background: #e83e8c; width: 100px;height:100px">width: 100px;height:100px"</div>
-    <div style="background: #ffc107; width: 100px;height:100px">width: 100px;height:100px"</div>
-    <div style="background: #20c997; width: 100px;height:100px">width: 100px;height:100px"</div>
-    <div style="background: #6c757d; width: 100px;height:100px">width: 100px;height:100px"</div>
-    <div style="background: #17a2b8; width: 100px;height:100px">width: 100px;height:100px"</div>
-    <div style="background: #dc3545; width: 100px;height:100px">width: 100px;height:100px"</div>
-    <div style="background: #6610f2; width: 100px;height:100px">width: 100px;height:100px"</div>
-    <div style="background: #17a2b8; width: 100px;height:100px">width: 100px;height:100px"</div>
+  <div id="wrapper">
+    <div class="box layout" ref='box'>
+        <div style="background: #007bff; width: 100px;height:100px">width: 100px;height:100px"</div>
+        <div style="background: #e83e8c; width: 100px;height:100px">width: 100px;height:100px"</div>
+        <div style="background: #ffc107; width: 100px;height:100px">width: 100px;height:100px"</div>
+        <div style="background: #20c997; width: 100px;height:100px">width: 100px;height:100px"</div>
+        <div style="background: #6c757d; width: 100px;height:100px">width: 100px;height:100px"</div>
+        <div style="background: #17a2b8; width: 100px;height:100px">width: 100px;height:100px"</div>
+        <div style="background: #dc3545; width: 100px;height:100px">width: 100px;height:100px"</div>
+        <div style="background: #6610f2; width: 100px;height:100px">width: 100px;height:100px"</div>
+        <div style="background: #17a2b8; width: 100px;height:100px">width: 100px;height:100px"</div>
+      </div>
+      <div>
+        <h1>Flex容器</h1>
+        <h2>【flex-direction】设置主轴方向</h2>
+        <button @click="$refs.box.style= 'flex-direction:row' ">flex-direction: row;</button>
+        <button>flex-direction: row-reverse;</button>
+        <button>flex-direction: column;</button>
+        <button>flex-direction: column-reverse;</button>
+        <h2>【flex-wrap】设置超出换行方式</h2>
+        <button @click="$refs.box.style= 'flex-wrap:nowrap' ">flex-wrap: row;</button>
+        <button @click="$refs.box.style= 'flex-wrap: wrap;' ">flex-wrap: wrap;</button>
+        <button @click="$refs.box.style= 'flex-wrap: wrap-reverse;' ">flex-wrap: wrap-reverse;</button>
+        <h2>【justify-content】设置子项在容器里的对齐方式（假设主轴从左到右）</h2>
+        flex-flow是 flex-direction和 flex-wrap的简写形式
+        <h2>【align-items】设置子项目在交叉轴上对齐方式（假设交叉轴从上到下）</h2>
+        <h2>【align-content】设置多行的flex容器轴线的对齐方式（如果只有一根轴线时无效）</h2>
+    
+        <h1>flex子项属性</h1>
+        <h2>【order】设置flex子项出现的顺序</h2>
+        <h2>【flex】设置弹性盒模型对象的子元素如何分配空间。</h2>
+        <h2>【flex-grow】设置flex子项的扩展比例</h2>
+        <h2>【flex-shrink】设置flex子项的收缩比例</h2>
+        <h2>【flex-basis】设置flex子项伸缩基准值</h2>
+        <h2>【align-self】设置flex子项单独在交叉轴上的对齐方式</h2>
+      </div>
   </div>
-  <div>
-    <h1>Flex容器</h1>
-    <h2>【flex-direction】设置主轴方向</h2>
-    <h2>【flex-wrap】设置超出换行方式</h2>
-    <h2>【justify-content】设置子项在容器里的对齐方式（假设主轴从左到右）</h2>
-    flex-flow是 flex-direction和 flex-wrap的简写形式
-    <h2>【align-items】设置子项目在交叉轴上对齐方式（假设交叉轴从上到下）</h2>
-    <h2>【align-content】设置多行的flex容器轴线的对齐方式（如果只有一根轴线时无效）</h2>
-
-    <h1>flex子项属性</h1>
-    <h2>【order】设置flex子项出现的顺序</h2>
-    <h2>【flex】设置弹性盒模型对象的子元素如何分配空间。</h2>
-    <h2>【flex-grow】设置flex子项的扩展比例</h2>
-    <h2>【flex-shrink】设置flex子项的收缩比例</h2>
-    <h2>【flex-basis】设置flex子项伸缩基准值</h2>
-    <h2>【align-self】设置flex子项单独在交叉轴上的对齐方式</h2>
-  </div>
+  
+  <script>
+    new Vue({
+      el: '#wrapper',
+      created: function(){
+        console.log()
+      },
+      mounted: function(){
+        console.log(this.$refs.box.style)
+      }
+    })
+  </script>
 </body>
 </html>
