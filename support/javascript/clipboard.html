@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>点击复制功能解决方案</title>
+</head>
+<body>
+<!-- 从另一个元素复制文本 -->
+<div id="demo1">复制的模板</div>
+<button class="btn" data-clipboard-target="#demo1" >点击复制</button>
+<hr>
+<!-- 从另一个元素剪切文本 -->
+<input id="demo2" value="https://github.com/zenorocha/clipboard.js.git">
+<!--cut 操作只在input 或者 textarea 元素上生效-->
+<button class="btn" data-clipboard-target="#demo2" data-clipboard-action="cut">点击剪切模板内容</button>
+<hr>
+<!-- 从自身属性复制文本 -->
+<button class="btn" data-clipboard-text="中华人民共和国">
+    点击从属性复制本文
+</button>
+<script src="https://cdn.bootcss.com/clipboard.js/2.0.4/clipboard.js"></script>
+<script>
+  var clipboard = new ClipboardJS('.btn');
+  // 监听事件
+  clipboard.on('success', function(e) {
+      console.info('Action:', e.action);
+      console.info('Text:', e.text);
+      console.info('Trigger:', e.trigger);
+
+      e.clearSelection();
+  });
+
+  clipboard.on('error', function(e) {
+      console.error('Action:', e.action);
+      console.error('Trigger:', e.trigger);
+  });
+
+
+  let data = [
+      { id: 201801, name: '张三', age: 15, },
+			{ id: 201804, name: 'John', age: 18, },
+			{ id: 201802, name: '李四', age: 18, },
+			{ id: 201801, name: '张三', age: 15, },
+			{ id: 201805, name: 'Jack', age: 18, },
+			{ id: 201803, name: '王五', age: 10, },
+			{ id: 201805, name: 'Jack', age: 18, },
+      { id: 201804, name: 'John', age: 18, },
+			{ id: 201805, name: 'Jack', age: 18, },
+ ]
+  let hash = {}; 
+    data = data.reduce((preVal, curVal) => {
+      console.log(preVal)
+    hash[curVal.id] ? '' : hash[curVal.id] = true && preVal.push(curVal); 
+    return preVal 
+  }, [])
+console.log('1111', data, hash)
+</script>
+</body>
+</html>

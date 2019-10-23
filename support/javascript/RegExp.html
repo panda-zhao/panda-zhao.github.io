@@ -9,53 +9,73 @@
 </head>
 <body>
     <div id="app">
+      <h1>验证身份证</h1>
+      <label>
+        <span>请输入身份证</span>
+        <input type="text" @input='verifyIdcNumber'>结果：<span style="color:red">{{IdcNumber}}</span>
+      </label>
+      <h1>验证名字</h1>
+      <label>
+        <span>请输入名字</span>
+        <input type="text" @input='verifyName'>结果：<span style="color:red">{{name}}</span>
+      </label>
+
       <h1>浏览器的 UA 字串</h1>
       <p>判断当前客户端UA：{{ regExp.ua.test(window.navigator.userAgent)? '移动端' : 'pc端'}}</p>
       <h1>验证电话</h1>
       <label>
         <span>请输入电话</span>
-        <input type="text" v-model='tel' @input='verifyTel'>结果：<span style="color:red">{{result1}}</span>
+        <input type="text" v-model='phone' @input='verifyPhone'>结果：<span style="color:red">{{phone}}</span>
       </label>
       <h1>验证url</h1>
       <label>
         <span>请输入url</span>
-        <input type="text" v-model='url' @input='verifyUrl'>结果：<span style="color:red">{{result2}}</span>
+        <input type="text" v-model='url' @input='verifyUrl'>结果：<span style="color:red">{{url}}</span>
       </label>
       <h1>验证email</h1>
       <label>
         <span>请输入email</span>
-        <input type="text" v-model='email' @input='verifyEmail'>结果：<span style="color:red">{{result3}}</span>
+        <input type="text" v-model='email' @input='verifyEmail'>结果：<span style="color:red">{{email}}</span>
       </label>
+      
     </div>
     <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
     <script>
         var app = new Vue({
           el: '#app',
           data: {
-            tel: null,
-            url: null,
-            email: null,
-            result1: '',
-            result2: '',
-            result3: '',
+            IdcNumber: '',
+            name: '',
+            phone: '',
+            url: '',
+            email: '',
             regExp:{
               ua: /(iPhone|iPad|iPod|iOS|Android)/i, // 验证ua
-              tel: /^(0[0-9]{2,3}-)?(\(0[0-9]{2,3}\))?[1-9][0-9]{4,7}(-[1-9][0-9]+)?$/, // 验证电话
-              url: /^([hH][tT]{2}[pP]:\/\/|[hH][tT]{2}[pP][sS]:\/\/)[^\s]*/, // 验证url
-              email: /[\w!#$%&'*+/=?^_`{|}~-]+(?:\.[\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?/ // 验证邮箱
             }
           },
           created(){
           },
           methods: {
-            verifyTel(e){
-              this.result1 = this.regExp.tel.test(e.target.value) ? '格式正确' : '格式错误'
+
+            verifyIdcNumber(e){
+              let regExp = /(^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx])|([1−9]\d5\d2((0[1−9])|(10|11|12))(([0−2][1−9])|10|20|30|31)\d2[0−9Xx])/
+              this.IdcNumber = regExp.test(e.target.value) ? '格式正确' : '格式错误'
+            },
+            verifyName(e){
+              let regExp = /^[\u4E00-\u9FA5\uf900-\ufa2d·s]{2,20}$/
+              this.name = regExp.test(e.target.value) ? '格式正确' : '格式错误'
+            },
+            verifyPhone(e){
+              let regExp = /^1+\d{10}$/
+              this.phone = regExp.test(e.target.value) ? '格式正确' : '格式错误'
             },
             verifyUrl(e){
-              this.result2 = this.regExp.url.test(e.target.value) ? '格式正确' : '格式错误'
+              let regExp = /^([hH][tT]{2}[pP]:\/\/|[hH][tT]{2}[pP][sS]:\/\/)[^\s]*/
+              this.url = this.regExp.test(e.target.value) ? '格式正确' : '格式错误'
             },
             verifyEmail(e){
-              this.result3 = this.regExp.email.test(e.target.value) ? '格式正确' : '格式错误'
+              let regExp = /[\w!#$%&'*+/=?^_`{|}~-]+(?:\.[\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?/
+              this.email = this.regExp.test(e.target.value) ? '格式正确' : '格式错误'
             }
           }
         })
