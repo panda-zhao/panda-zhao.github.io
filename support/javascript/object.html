@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>操作对象</title>
+</head>
+<body>
+  <script>
+    let obj = {
+      "大徒弟": "孙悟空",
+      "二徒弟": "猪悟能",
+      "三徒弟": "沙悟净"
+    }
+    // 复制对象
+    let cloneObj = {...obj}
+    delete cloneObj["二徒弟"]
+    console.log('源对象', obj)
+    console.log('深复制', cloneObj)
+
+    // 复制对象二
+    let cloneObj2 = JSON.parse(JSON.stringify(obj))
+    delete cloneObj2["三徒弟"]
+    console.log('源对象', obj)
+    console.log('深复制', cloneObj2)
+  </script>
+</body>
+</html>
