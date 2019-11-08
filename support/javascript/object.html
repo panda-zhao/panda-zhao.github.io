@@ -13,9 +13,9 @@
       "二徒弟": "猪悟能",
       "三徒弟": "沙悟净"
     }
-    // 复制对象
+    // 1 复制对象
     let cloneObj = {...obj}
-    delete cloneObj["二徒弟"]
+    delete cloneObj["二徒弟"] // 2 删除对象中的一个属性
     console.log('源对象', obj)
     console.log('深复制', cloneObj)
 

@@ -37,11 +37,13 @@ var data = [
     {name: "Vue.js",url: "https://cn.vuejs.org/v2/guide/installation.html",title: ""},
     {name: "Vue Router",url: "https://router.vuejs.org/zh/",title: ""},
     {name: "Vuex教程",url: "https://vuex.vuejs.org/zh/",title: ""},
-    {name: "ElementUI教程",url: "http://element-cn.eleme.io/#/zh-CN/component/installation",title: ""},
+    
     {name: "Axios中文说明",url: "https://www.kancloud.cn/yunye/axios/234845",title: "代替AJAX做http请求，可以用在浏览器和 node.js 中"},
     {name: "flyio",url: "https://wendux.github.io/dist/#/doc/flyio/readme",title: "支持所有JavaScript运行环境的http请求库"},
     {name: "VUX",url: "https://vux.li",title: "一个凑合的 Vue.js 移动端 UI 组件库"},
     {name: "vue开源框架",url: "https://juejin.im/post/5cba04bbf265da039444a709"},
+    {name: "ElementUI教程",url: "http://element-cn.eleme.io/#/zh-CN/component/installation",title: ""},
+    {name: "vue-element-admin",url: "https://panjiachen.github.io/vue-element-admin-site/zh/guide/",title: " 基于vue 和 element-ui实现中后台业务模型"},
     {name: "vue-native",url: "https://vue-native.io/",title: '构建跨平台移动应用程序'}
   ],
   //五、小程序开发
