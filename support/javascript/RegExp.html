@@ -71,11 +71,11 @@
             },
             verifyUrl(e){
               let regExp = /^([hH][tT]{2}[pP]:\/\/|[hH][tT]{2}[pP][sS]:\/\/)[^\s]*/
-              this.url = this.regExp.test(e.target.value) ? '格式正确' : '格式错误'
+              this.url = regExp.test(e.target.value) ? '格式正确' : '格式错误'
             },
             verifyEmail(e){
               let regExp = /[\w!#$%&'*+/=?^_`{|}~-]+(?:\.[\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?/
-              this.email = this.regExp.test(e.target.value) ? '格式正确' : '格式错误'
+              this.email = regExp.test(e.target.value) ? '格式正确' : '格式错误'
             }
           }
         })

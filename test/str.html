@@ -17,13 +17,24 @@
   </div>
 
   <script>
-    var select = document.getElementById('select')
-    console.log(select)
-    // select 删除option 
-    select.remove(select.length - 1) // 删除选项
-    // select 添加 option，第一个参数 选项显示给用户的文本 ,第二个参数是 value属性的值 
-    var option = new Option( "text", select.length-1)
-    select.add(option)
+    // var select = document.getElementById('select')
+    // console.log(select)
+    // // select 删除option 
+    // select.remove(select.length - 1) // 删除选项
+    // // select 添加 option，第一个参数 选项显示给用户的文本 ,第二个参数是 value属性的值 
+    // var option = new Option( "text", select.length-1)
+    // select.add(option)
+
+    // 测试trim
+    let demo1 = '  0 1 2 3 4 56 '
+    demo2 = demo1.trim()
+    console.log(demo2)
+    let inData = {a : 1}
+    let form = {}
+    if(inData){
+      Object.assign(form, inData)
+    }
+    console.log(form)
   </script>
 </body>
 </html>
