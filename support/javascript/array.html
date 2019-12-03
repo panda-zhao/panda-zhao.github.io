@@ -34,6 +34,12 @@
     </ul>
   </div>
   <script>
+    let debugLog = false
+    // console.log = function(){
+    //   // if(debugLog){
+    //   //   console.log.apply(console, arguments)
+    //   // }
+    // }
     var arr = [1, 2, 3, 4, 5]
     console.log('方法使用前', arr)
     // 	【判断是不是数组】
@@ -121,6 +127,19 @@
     const otherBizScopeArr = otherBizScopeStr.split(";")
     const tol = mainBusinessArr.concat(otherBizScopeArr)
     console.log(JSON.stringify(tol))
+
+
+    let test = [{id: 1},{id: 2}]
+    console.log(test.filter(item=>item.id === 1 && item.id=== 2))
+
+    let a = new Date('2049-11-02') // 经营期限
+    let b = new Date('2049-11-1') // 出资日期
+    
+    console.log('经营期限大于出资日期', a>b)
+    console.clear()
+    console.log(document.body)
+    console.log('%o', document.body)
+    console.log('%O', document.body)
   </script>
 </body>
 </html>
