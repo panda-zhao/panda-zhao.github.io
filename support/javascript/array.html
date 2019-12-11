@@ -117,29 +117,106 @@
     arr.forEach( (value,index,array) => {
       console.log(value,index,array) // a 0 ["a", "b", "c", "d", "e"] ...
     })
-    // 数组去重
+
+    // 一维数组去重
     var arr = [1,3,9,1,8,2,3,3,0,7,5]
     var newArr = Array.from(new Set(arr)) // 去重
     console.log(newArr)
+
+    // 多维数组去重
+    let demo6 = [
+      {
+        idcName: '颜武雄',
+        idcGender: '男',
+        idcNumber: "441581199110110075",
+        idcAddress: "广东省陆丰市东海镇柑园巷5号",
+        idcExpiryTime: "2027-03-01"
+      },  
+      {
+        idcName: '李林',
+        idcGender: '女',
+        idcNumber: "43102419900812276X",
+        idcAddress: "湖南省嘉禾县石桥镇石门村4组23号",
+        idcExpiryTime: "2027-03-01"
+      },  
+      {
+        idcName: '李燕芳',
+        idcGender: '女',
+        idcNumber: "450924199609085644",
+        idcAddress: "广西兴业县小平山镇深塘村州垌四队35号",
+        idcExpiryTime: "2027-03-01"
+      },
+      {
+        idcName: '苏海峰',
+        idcGender: '男',
+        idcNumber: "341181198809150011",
+        idcAddress: "安徽省天长市千秋新村三巷10号",
+        idcExpiryTime: "2020-07-15"
+      },
+      {
+        idcName: '黄灼明',
+        idcGender: '男',
+        idcNumber: "44011119881222031X",
+        idcAddress: "广州市白云区大朗桑下榕辉街二巷9号",
+        idcExpiryTime: "2027-03-01"
+      },
+      {
+        idcName: '黄昌文',
+        idcGender: '男',
+        idcNumber: "441284199705025614",
+        idcAddress: "广东省四会市城中街道花街居委会城中路18座49号",
+        idcExpiryTime: ""
+      },
+      {
+        idcName: '黄伟雄',
+        idcGender: '男',
+        idcNumber: "445206199603111014",
+        idcAddress: "广东省揭阳市揭东区蓝城龙尾镇石坑村新寨叁五巷六号",
+        idcExpiryTime: "2026-02-22"
+      },
+      {
+        idcName: '李嘉鑫',
+        idcGender: '男',
+        idcNumber: "440103198809195117",
+        idcAddress: "广州市荔湾区源溪石路边三号大院10幢101房",
+        idcExpiryTime: "2035-07-25"
+      },
+      {
+        idcName: '苏海峰',
+        idcGender: '男',
+        idcNumber: "341181198809150011",
+        idcAddress: "安徽省天长市千秋新村三巷10号",
+        idcExpiryTime: "2020-07-15"
+      },
+    ]
+    console.table(Array.from(new Set(demo6)) )
+
+    // 多维数组去重
+    var hash = {}
+    let demoResult = demo6.reduce((preVal, curVal) => {
+        if (!hash[curVal.idcNumber]) {
+          hash[curVal.idcNumber] = true
+          preVal.push(curVal)
+        }
+        return preVal
+    }, [])
+    console.table(demoResult)
+
+    // 字符串转换数组
     const mainBusinessStr = '集成电路设计;信息技术咨询服务;数据处理和存储服务;计算机房维护服务;信息系统集成服务;软件开发;游戏软件设计制作'
     const otherBizScopeStr = '商品批发贸易（许可审批类商品除外）;互联网商品销售（许可审批类商品除外）;网络技术的研究、开发;计算机技术开发、技术服务;计算机房设计服务;计算机信息安全产品设计;科技信息咨询服务;计算机网络系统工程服务;计算机零配件零售;软件零售;计算机零售;商品零售贸易（许可审批类商品除外）;计算机硬件的研究、开发;信息电子技术服务;计算机批发;软件批发;计算机零配件批发;软件测试服务;软件服务'
     const mainBusinessArr = mainBusinessStr.split(";")
     const otherBizScopeArr = otherBizScopeStr.split(";")
     const tol = mainBusinessArr.concat(otherBizScopeArr)
     console.log(JSON.stringify(tol))
-
-
-    let test = [{id: 1},{id: 2}]
-    console.log(test.filter(item=>item.id === 1 && item.id=== 2))
-
-    let a = new Date('2049-11-02') // 经营期限
-    let b = new Date('2049-11-1') // 出资日期
     
-    console.log('经营期限大于出资日期', a>b)
-    console.clear()
-    console.log(document.body)
-    console.log('%o', document.body)
-    console.log('%O', document.body)
+    // 过滤
+    let demo7 = [{id: 1},{id: 2}]
+    console.log(demo7.filter(item=>item.id === 1 && item.id=== 2))
+
+
+
+
   </script>
 </body>
 </html>
