@@ -8,6 +8,7 @@ var data = [
     {name: "BootCDN",url: "http://www.bootcdn.cn",title: "免费的CDN加速服务"},
     {name: "jquery插件库",url: "http://www.jq22.com/",title: "在线编辑器，文本比较，常用前端库，组件！"},
     {name: "图片压缩",url: "https://tinypng.com/",title: "tinypng图片压缩"},
+    {name: "变量命名神器",url: "https://unbug.github.io/codelf/",title: "变量命名神器"},
     {name: "菜鸟工具",url: "https://c.runoob.com/",title: "菜鸟工具"},
     {name: "坚果云",url: "https://www.jianguoyun.com/",title: ""},
     {name: "百度站长统计",url: "https://tongji.baidu.com/",title: "百度站长统计"},
@@ -68,6 +69,7 @@ var data = [
     {name: "Bugclose",url: "https://www.bugclose.com/index.html",title: "任务管理工具"},
     {name: "蓝湖",url: "https://lanhuapp.com/",title: ""},
     {name: "Axure",url: "https://www.axure.com/",title: "原型设计工具"},
+    {name: "云效",url: "https://my.rdc.aliyun.com/",title: "云效"},
     
   ],
   
