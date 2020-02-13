@@ -70,6 +70,7 @@ var data = [
     {name: "蓝湖",url: "https://lanhuapp.com/",title: ""},
     {name: "Axure",url: "https://www.axure.com/",title: "原型设计工具"},
     {name: "云效",url: "https://my.rdc.aliyun.com/",title: "云效"},
+    {name: "语雀",url: "https://www.yuque.com/dashboard/",title: "语雀"},
     
   ],
   

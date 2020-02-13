@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>监听滚动条到底部</title>
+  <style>
+    .wrap{
+      height: 1000px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+  </div>
+  <script>
+    window.onscroll = function(){
+      //变量scrollTop是滚动条滚动时被卷走的高度
+      var scrollTop = document.documentElement.scrollTop||document.body.scrollTop;
+
+      //变量windowHeight是可视区的高度
+      var windowHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+
+      //变量scrollHeight是总滚动高度
+      var scrollHeight = document.documentElement.scrollHeight||document.body.scrollHeight;
+      console.log("距顶部"+scrollTop + "可视区高度" + windowHeight + "滚动条总高度" + scrollHeight);
+      //滚动条到底部的条件
+      if(scrollTop+windowHeight===scrollHeight){
+        //写后台加载数据的函数
+        console.log("到达底部")
+      }
+    }
+  </script>
+</body>
+</html>
