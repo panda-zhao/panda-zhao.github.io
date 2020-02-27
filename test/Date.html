@@ -10,7 +10,7 @@
   <script>
     let companyEndDate = '2020-04-30' // 经营期限-应该大于出资日期
     let capitalDate = '2050-2-27' //出资日期
-    console.log('出资日期是否大于经营期限', new Date(capitalDate) > new Date(companyEndDate))
+    console.log('出资日期是否大于经营期限', new Date(capitalDate.replace(/-/g, '\/')) > new Date(companyEndDate.replace(/-/g, '\/')))
     alert('2050-2-27' + (new Date(capitalDate) > new Date(companyEndDate) ? '大于': '小于') + '2020-04-30')
   </script>
 </body>
