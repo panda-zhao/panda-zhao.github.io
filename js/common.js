@@ -171,7 +171,8 @@ var data = [
     // {name: "博客园",url: "https://www.cnblogs.com/zhaowy/",title: ""},
   ],
   [
-    {name: "国家社会保险公共服务平台",url: "http://si.12333.gov.cn/index.jhtml",title: "国家社会保险公共服务平台"}
+    {name: "国家社会保险公共服务平台",url: "http://si.12333.gov.cn/index.jhtml",title: "国家社会保险公共服务平台"},
+    {name: "国家企业信用信息公示系统",url: "http://www.gsxt.gov.cn/corp-query-homepage.html",title: "国家社会保险公共服务平台"}
   ]
 ]
 // 百度统计

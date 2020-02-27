@@ -14,8 +14,8 @@
       <option value="02">02</option>
       <option value="03">03</option>
     </select>
+    
   </div>
-
   <script>
     // var select = document.getElementById('select')
     // console.log(select)
@@ -42,6 +42,10 @@
     let arr = ['411324198905063251', '440882199911025040','411324198905063251',]
     newArr = Array.from(new Set(arr)) // 去重
     console.log(Array.from(new Set(arr)) )
+
+    let address = '广州市番禺区广园路府前街一号101室'
+    address = address.replace(/广州市番禺区/, '')
+    console.log(address)
   </script>
 </body>
 </html>
