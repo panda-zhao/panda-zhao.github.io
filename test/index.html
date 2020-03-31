@@ -8,12 +8,23 @@
 <body>
   <div>比较日期</div>
   <script>
-    let companyEndDate = '2020-04-30' // 经营期限-应该大于出资日期
-    let capitalDate = '2050-2-27' //出资日期
-    // console.log('出资日期是否大于经营期限', new Date(capitalDate.replace(/-/g, '\/')) > new Date(companyEndDate.replace(/-/g, '\/')))
-    let small = new Date(companyEndDate.replace(/-/g, '\/'))
-    let big = new Date(capitalDate.replace(/-/g, '\/'))
-    alert('2050-2-27' + (big > small ? '大于': '小于') + '2020-04-30')
+    // let companyEndDate = '2020-04-30' // 经营期限-应该大于出资日期
+    // let capitalDate = '2050-2-27' //出资日期
+    // let small = new Date(companyEndDate.replace(/-/g, '\/'))
+    // let big = new Date(capitalDate.replace(/-/g, '\/'))
+    // alert('2050-2-27' + (big > small ? '大于': '小于') + '2020-04-30')
+
+    let arr = [{capital: 512.820000}, {capital: 5.180001}]
+    let _totalCapital = 0 // 出资总额
+    let m = Math.pow(10, 10)
+    for (const item of arr) {
+      if (item.capital) {
+        _totalCapital = _totalCapital + parseFloat(item.capital)
+      }
+    }
+    console.log('计算结果', _totalCapital)
+    // console.log('最终结果', _totalCapital / m)
+    console.log('目标', 518)
   </script>
 </body>
 </html>

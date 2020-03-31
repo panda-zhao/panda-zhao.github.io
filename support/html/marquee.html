@@ -7,11 +7,25 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>跑马灯marquee</title>
   <style>
+    #board {
+      background-color: #000;
+      font-family: sans-serif;
+      color: #000;
+      font-size: 25px;
+      padding: 10px;
+      display: inline-block;
+    }
+    #board.active {
+      color: red;
+    }
   </style>
 </head>
 
 <body>
-  
+  <div>
+    <div id="board">大吉大利 今晚吃鸡!</div>
+  </div>
+
   <h1>跑马灯效果</h1>
   <marquee direction='left'>向左滚动</marquee>
   <marquee direction="up" scrolldelay='300'>向上滚动</marquee>
@@ -19,6 +33,20 @@
     <marquee behavior="alternate">此文本将反弹</marquee>
   </marquee>
 
+
+
+  <script>
+    console.log(document.getElementById('board'))
+    const toggle = function(){
+      let $board = document.getElementById('board')
+      if($board.className.includes('active')){
+        $board.className = ''
+      }else{
+        $board.className = 'active'
+      }
+    }
+    setInterval(toggle, 300)
+  </script>
 </body>
 
 </html>
