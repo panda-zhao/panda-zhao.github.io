@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let a = 1
+    let b = 0.1
+    let c = 1.1
+    let d = 1.000001
+    let e = 0.2
+    function add(arg1, arg2){
+      return parseFloat(arg1) + parseFloat(arg2)
+    }
+    
+    // 加
+    function accAdd(arg1, arg2){
+      if(typeof(arg1) !== 'number' || typeof(arg2) !== 'number'){
+        console.log('parameter Must be a number')
+        return
+      }
+      let r1 = parseInt(arg1) === arg1 ? 0 : arg1.toString().split(".")[1].length
+      let r2 = parseInt(arg2) === arg2 ? 0 : arg2.toString().split(".")[1].length
+      let m= Math.pow(10, Math.max(r1, r2)) 
+      return (arg1*m + arg2*m)/m 
+    }
+    // 减
+    function accSub(arg1, arg2){
+      if(typeof(arg1) !== 'number' || typeof(arg2) !== 'number'){
+        console.log('parameter Must be a number')
+        return
+      }
+      let r1 = parseInt(arg1) === arg1 ? 0 : arg1.toString().split(".")[1].length
+      let r2 = parseInt(arg2) === arg2 ? 0 : arg2.toString().split(".")[1].length
+      let m= Math.pow(10, Math.max(r1, r2)) 
+      return (arg1*m - arg2*m)/m 
+    }
+    // console.log(accSub(99, 9))
+    // 乘
+    function accMul(arg1, arg2){ 
+      if(typeof(arg1) !== 'number' || typeof(arg2) !== 'number'){
+        console.log('parameter Must be a number')
+        return
+      }
+      var m=0,s1=arg1.toString(),s2=arg2.toString(); 
+      try{m+=s1.split(".")[1].length}catch(e){} 
+      try{m+=s2.split(".")[1].length}catch(e){} 
+      return Number(s1.replace(".",""))*Number(s2.replace(".",""))/Math.pow(10,m) 
+    }
+    console.log(accMul(0.1, 0.01))
+    // 除
+    function accDiv(arg1,arg2){ 
+      if(typeof(arg1) !== 'number' || typeof(arg2) !== 'number'){
+        console.log('parameter Must be a number')
+        return
+      }
+      var t1=0,t2=0,r1,r2; 
+      try{t1=arg1.toString().split(".")[1].length}catch(e){} 
+      try{t2=arg2.toString().split(".")[1].length}catch(e){}
+      with(Math){ 
+        r1=Number(arg1.toString().replace(".", "")) 
+        r2=Number(arg2.toString().replace(".", "")) 
+        return (r1/r2) * pow(10, t2-t1); 
+      } 
+    }
+    console.log(accDiv(0.1, 0.01))
+  </script>
+</body>
+</html>

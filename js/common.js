@@ -34,17 +34,19 @@ var data = [
   
   //四、Vue框架
   [
+    
+    {name: "Vue CLI",url: "https://cli.vuejs.org/zh/",title: "Vue.js 开发的标准工具"},
     {name: "webpack中文教程",url: "https://doc.webpack-china.org/",title: ""},
     {name: "Vue.js",url: "https://cn.vuejs.org/v2/guide/installation.html",title: ""},
     {name: "Vue Router",url: "https://router.vuejs.org/zh/",title: ""},
     {name: "Vuex教程",url: "https://vuex.vuejs.org/zh/",title: ""},
-    
     {name: "Axios中文说明",url: "https://www.kancloud.cn/yunye/axios/234845",title: "代替AJAX做http请求，可以用在浏览器和 node.js 中"},
     {name: "flyio",url: "https://wendux.github.io/dist/#/doc/flyio/readme",title: "支持所有JavaScript运行环境的http请求库"},
     {name: "VUX",url: "https://vux.li",title: "一个凑合的 Vue.js 移动端 UI 组件库"},
     {name: "vue开源框架",url: "https://juejin.im/post/5cba04bbf265da039444a709"},
     {name: "ElementUI教程",url: "http://element-cn.eleme.io/#/zh-CN/component/installation",title: ""},
     {name: "vue-element-admin",url: "https://panjiachen.github.io/vue-element-admin-site/zh/guide/",title: " 基于vue 和 element-ui实现中后台业务模型"},
+    {name: "Vant Weapp",url: "https://youzan.github.io/vant-weapp/#/intro",title: "轻量、可靠的小程序 UI 组件库"},
     {name: "vue-native",url: "https://vue-native.io/",title: '构建跨平台移动应用程序'}
   ],
   //五、小程序开发
@@ -70,12 +72,14 @@ var data = [
     {name: "蓝湖",url: "https://lanhuapp.com/",title: ""},
     {name: "Axure",url: "https://www.axure.com/",title: "原型设计工具"},
     {name: "云效",url: "https://my.rdc.aliyun.com/",title: "云效"},
-    {name: "语雀",url: "https://www.yuque.com/dashboard/",title: "语雀"},
-    
+    {name: "语雀",url: "https://www.yuque.com/dashboard/",title: "语雀"}
   ],
   
    //七、前端框架
    [
+    {name: "Vant Weapp",url: "https://youzan.github.io/vant-weapp/#/intro",title: "轻量、可靠的小程序 UI 组件库"},
+    {name: "Vant",url: "https://youzan.github.io/vant/#/zh-CN/home",title: "轻量、可靠的移动端 Vue 组件库"},
+    {name: "ElementUI教程",url: "http://element-cn.eleme.io/#/zh-CN/component/installation",title: ""},
     {name: "Bootstrap3 教程",url: "http://www.runoob.com/bootstrap/bootstrap-intro.html",title: "响应式开发 Web 应用程序"},
     {name: "Bootstrap4 教程",url: "http://www.runoob.com/bootstrap4/bootstrap4-tutorial.html",title: "响应式开发 Web 应用程序"},
     {name: "Bootstrap Flat UI",url: "https://designmodo.github.io/Flat-UI/",title: "Metro(扁平)风格的UI库"},
@@ -92,7 +96,8 @@ var data = [
 
   //八、前端基础学习
   [
-    {name: "MDN开发者网络",  url: "https://developer.mozilla.org/zh-CN/docs/Web",  title: "Mozilla开发者网络"},
+    {name: "MDN开发者网络",  url: "https://developer.mozilla.org/zh-CN/",  title: "MDN web docs"},
+    {name: "现代 JavaScript 教程",  url: "https://zh.javascript.info/",  title: "JavaScript.info"},
     {name: "W3school",  url: "http://www.w3school.com.cn/index.html",  title: ""},
     {name: "W3Cschool",  url: "https://www.w3cschool.cn/",  title: ""},
     {name: "菜鸟教程",  url: "http://www.runoob.com/",  title: ""},
@@ -104,8 +109,7 @@ var data = [
     {name: "JavaScript 标准参考教程（alpha）",url: "http://javascript.ruanyifeng.com/",title: ""},
     {name: "jquery",url: "http://jquery.cuishifeng.cn/",title: "jQuery API 3.3.1 速查表"},
     {name: "zepto.js",url: "https://www.html.cn/doc/zeptojs_api/",title: "移动端jquery"},
-    {name: "ECMAScript 6 入门",url: "http://es6.ruanyifeng.com/",title: "阮一峰写的ES6入门教程"},
-    {name: "MDN web docs",url: "https://developer.mozilla.org/zh-CN/",title: ""},
+    {name: "ECMAScript 6 入门",url: "http://es6.ruanyifeng.com/",title: "阮一峰写的ES6入门教程"}
   ],
 
   // 九、react框架技术栈
