@@ -71,6 +71,7 @@ var data = [
     {name: "Bugclose",url: "https://www.bugclose.com/index.html",title: "任务管理工具"},
     {name: "蓝湖",url: "https://lanhuapp.com/",title: ""},
     {name: "Axure",url: "https://www.axure.com/",title: "原型设计工具"},
+    {name: "Axure学习",url: "http://www.chanpinban.com/",title: "xure RP 9产品原型设计培训服务"},
     {name: "云效",url: "https://my.rdc.aliyun.com/",title: "云效"},
     {name: "语雀",url: "https://www.yuque.com/dashboard/",title: "语雀"}
   ],
@@ -176,7 +177,9 @@ var data = [
   ],
   [
     {name: "国家社会保险公共服务平台",url: "http://si.12333.gov.cn/index.jhtml",title: "国家社会保险公共服务平台"},
-    {name: "国家企业信用信息公示系统",url: "http://www.gsxt.gov.cn/corp-query-homepage.html",title: "国家社会保险公共服务平台"}
+    {name: "国家企业信用信息公示系统",url: "http://www.gsxt.gov.cn/corp-query-homepage.html",title: "国家社会保险公共服务平台"},
+    {name: "河南省社会保障卡服务网",url: "http://www.ha.12333.gov.cn/",title: "河南省社会保障卡服务网"}
+    
   ]
 ]
 // 百度统计
