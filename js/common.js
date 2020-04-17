@@ -1,6 +1,8 @@
 var data = [
   //一、常用网站
   [
+    {name: "红盾网",url: "http://scjgj.gz.gov.cn/gzaic/WebItem/Index.html",title: "网上办事大厅"},
+    {name: "广东政务网",url: "http://59.41.9.112:90/ewb/login.html",title: "广州市开办企业一网通"},
     {name: "GitHub",url: "https://github.com/panda-zhao",title: ""},
     {name: "技术支持",url: "./support/index.html",title: "技术支持"},
     {name: "常用速查表",url: "https://www.w3cschool.cn/dict/",title: "各大语言速查表"},
