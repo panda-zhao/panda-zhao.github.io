@@ -12,6 +12,9 @@
       <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
       </el-option>
     </el-select>
+    <div @click ='handleClick'>
+      测试跳转外部链接
+    </div>
     <!-- 引入组件库 -->
     <script src="https://www.jq22.com/jquery/vue.min.js"></script>
     <script src="https://unpkg.com/element-ui/lib/index.js"></script>
@@ -44,6 +47,11 @@
             ],
             value: ""
           };
+        },
+        method: {
+          handleClick: function(){
+            location = 'http://gdbw.gdfapiao.com/bwwx/bwfw/etaxInfo.do?qymc=%E5%B9%BF%E5%B7%9E%E7%BD%91%E8%9E%8D%E4%BF%A1%E6%81%AF%E6%8A%80%E6%9C%AF%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8&qysh=91440106788913867A&lxr=%E6%9E%97%E6%98%AD%E9%9C%9E&lxdh=13918233075&frm=%E6%9E%97%E6%98%AD%E9%9C%9E&frhm=13918233075&dzyx=82626363@qq.com&lqfs=2&yjwd=%E5%B9%BF%E5%B7%9E&ejwd=%E7%95%AA%E7%A6%BA%E5%8C%BA'
+          }
         }
       });
     </script>
