@@ -50,23 +50,41 @@
       try{m+=s2.split(".")[1].length}catch(e){} 
       return Number(s1.replace(".",""))*Number(s2.replace(".",""))/Math.pow(10,m) 
     }
-    console.log(accMul(0.1, 0.01))
+    // console.log(accMul(0.1, 0.01))
     // 除
     function accDiv(arg1,arg2){ 
       if(typeof(arg1) !== 'number' || typeof(arg2) !== 'number'){
         console.log('parameter Must be a number')
         return
       }
-      var t1=0,t2=0,r1,r2; 
+      let t1 = 0
+      let t2 = 0
       try{t1=arg1.toString().split(".")[1].length}catch(e){} 
       try{t2=arg2.toString().split(".")[1].length}catch(e){}
-      with(Math){ 
-        r1=Number(arg1.toString().replace(".", "")) 
-        r2=Number(arg2.toString().replace(".", "")) 
-        return (r1/r2) * pow(10, t2-t1); 
-      } 
+      let r1=Number(arg1.toString().replace(".", "")) 
+      let r2=Number(arg2.toString().replace(".", "")) 
+      return (r1/r2) * Math.pow(10, t2-t1); 
     }
-    console.log(accDiv(0.1, 0.01))
+    // console.log(accDiv(0.1, 0.01))
+    // console.log(accDiv(1, 2))
+    // 百分比
+    function percentage (arg1, arg2) {
+      if (typeof (arg1) !== 'number' || typeof (arg2) !== 'number') {
+        console.log('parameter Must be a number')
+        return
+      }
+      let t1 = 0
+      let t2 = 0
+      try { t1 = arg1.toString().split('.')[1].length } catch (e) {}
+      try { t2 = arg2.toString().split('.')[1].length } catch (e) {}
+
+      let r1 = Number(arg1.toString().replace('.', ''))
+      let r2 = Number(arg2.toString().replace('.', ''))
+      let result = (r1 / r2) * Math.pow(10, t2 - t1)
+
+      return result * 10000 / 100
+    }
+    console.log(percentage(1, 3))
   </script>
 </body>
 </html>
