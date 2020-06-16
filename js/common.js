@@ -140,6 +140,12 @@ var data = [
 
   // 十二、前端开发常用工具
   [
+    {name: "在线开发工具",url: "https://codepen.io/",title: "在线体验代码"},
+    {name: "新拟物CSS生成工具",url: "https://neumorphism.io/#2163e0",title: "新拟物（Neumorphism）生成工具"},
+    {name: "3D效果",url: "https://alteredqualia.com/",title: "网页端3D效果合集"},
+    {name: "炫酷背景生成器",url: "https://coolbackgrounds.io/",title: "炫酷背景生成器"},
+    {name: "CSS渐变代码生成器",url: "https://cssgradient.io/",title: "CSS渐变"},
+    
     {name: "雪碧图合成",url: "https://www.toptal.com/developers/css/sprite-generator",title: ""},
     {name: "七牛云",url: "https://www.qiniu.com/",title: ""},
     {name: "全聚合",url: "https://www.juhe.cn/",title: "数据接口"},
@@ -163,17 +169,9 @@ var data = [
   ],
   //十四、博客论坛
   [
-    {name: "阮一峰的博客",url: "http://www.ruanyifeng.com",title: ""},
-    {name: "张鑫旭的博客",url: "http://www.zhangxinxu.com/wordpress",title: ""},
+    
     {name: "wordpress",url: "https://cn.wordpress.org/",title: "用PHP语言开发的博客平台"},
     {name: "Zblog社区",url: "http://bbs.zblogcn.com/",title: ""},
-    // {name: "囧克斯的博客",url: "http://jiongks.name",title: ""},
-    // {name: "不落阁",url: "http://www.leo96.com/",title: ""},
-    // {name: "刘洋博客",url: "https://www.lyblog.net/",title: ""},
-    // {name: "博客112导航",url: "https://boke112.com/",title: ""},
-    // {name: "小火柴的前端小册子",url: "https://xiaohuochai.site/",title: ""},
-    // {name: "前端之路",url: "http://page.zhaowy.cn",title: ""},
-    // {name: "博客园",url: "https://www.cnblogs.com/zhaowy/",title: ""},
   ],
   [
     {name: "红盾网",url: "http://scjgj.gz.gov.cn/gzaic/WebItem/Index.html",title: "网上办事大厅"},
