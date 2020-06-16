@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>日期和时间</title>
+  <title>Date对象</title>
 </head>
 <body>
   <div id="app">
@@ -46,7 +46,8 @@
         this.getLocalDate() // 每一秒更新时间
         this.getTomorrow() // 获取明天
         this.bindCompareDate() // 比较当前日期在20之前还是之后
-        this.bindCountdown('2019/12/31 00:00:00') // 倒计时剩余时间
+        this.bindCountdown('2020/12/31 00:00:00') // 倒计时剩余时间
+        this.handleCompareDate('2020-05-01', '2020-06-01') // 标准本地时间比较大小
       },
       computed: {
         dateFormat: function () {
@@ -90,6 +91,14 @@
         bindCompareDate(){
           var date = new Date().setDate(20) /*设置日期是本月20日*/
           this.compareDate = new Date() < date ? "现在是20号以前" : "现在是20号之后"
+        },
+        // 兼容安卓和ios的时间比较方法
+        handleCompareDate(time1, time2){
+          let _time1 = new Date(time1.replace(/-/g, '/'))
+          let _time2 = new Date(time2.replace(/-/g, '/'))
+          let result = _time1 > _time2
+          console.log('参数一比参数二大？', result)
+          return _time1 > _time2
         },
         // 倒计时 目标时间格式 如 2019/9/5 00:00:00
         bindCountdown(targetTime){

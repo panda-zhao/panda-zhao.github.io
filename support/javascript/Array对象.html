@@ -4,10 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>array方法</title>
+    <title>Array对象</title>
   </head>
   <body>
     <div>
+      <dl>
+        <dt>数组方法</dt>
+        <dd>Array.find()</dd>
+      </dl>
       <!-- <h1>数组方法</h1> -->
       <!-- <ul>
       <li>查找 元素在数组的下标 arr.indexOf(val)</li>
@@ -136,6 +140,34 @@
       // // 过滤
       // let demo7 = [{id: 1},{id: 2}]
       // console.log(demo7.filter(item=>item.id === 1 && item.id=== 2))
+
+      let arr = [
+      {label: '天河区', value: '440106'},
+      {label: '越秀区', value: '440104'},
+      {label: '海珠区', value: '440105'},
+      {label: '荔湾区', value: '440103'},
+      {label: '白云区', value: '440111'},
+      {label: '黄埔区', value: '440112'},
+      {label: '南沙区', value: '440115'},
+      {label: '增城区', value: '440118', message: '440183'},
+      {label: '花都区', value: '440114'},
+      {label: '从化区', value: '440117', message: '440184'},
+      {label: '番禺区', value: '440113'}
+    ]
+    // Array.find简写
+    console.time('Array.find简写的时间')
+    let result = arr.find(item => item.label === '天河区') // 返回 {label: '天河区', value: '440106'}
+    console.log('对应的value', result.value) 
+    console.timeEnd('Array.find简写的时间')
+
+    // 常规操作
+    console.time('forin循环的时间')
+    for (const item of arr) {
+      if(item.label === '天河区'){
+        console.log('对应的value', item.value)
+      }
+    }
+    console.timeEnd('forin循环的时间')
     </script>
   </body>
 </html>

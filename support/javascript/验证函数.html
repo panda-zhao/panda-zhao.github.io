@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <dl>
+    <dt>验证方法</dt>
+    <dd>1、验证是否必填</dd>
+    <dd>2、根据正则规则校验</dd>
+  </dl>
+  <script>
+    // 对象验证规则
+    const schema = {
+      'userName':{
+        required: true,
+        message: '用户名不能为空！',
+        pattern: /^.{2,}$/,
+        tips: '用户名不能少于两个字符'
+      },
+      'password': {
+        required: true,
+        message: '密码不能为空！'
+      }
+    }
+    // 通用函数，验证必填
+    function validate (schema, values){
+      for (const field in schema) {
+        let item = schema[field]
+        if (item.required && !values[field]) {
+          alert(item.message)
+          return false
+        }
+        if(item.pattern && !item.pattern.test(values[field])){
+          alert(item.tips)
+          return false
+        }
+      }
+      return true
+    }
+    console.log(validate(schema, {userName: 'a', password: '123456'}))
+  </script>
+</body>
+</html>
