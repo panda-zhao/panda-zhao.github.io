@@ -20,8 +20,25 @@
     //     console.log(arr[index], newArr[index])
     //   }
     // }
-
-    
+    function draft (){
+      let arr = {}
+      try {
+        for (const item of arr) {
+          console.log(1)
+          if(item.id === 'a'){
+            console.log(2)
+          }
+        }
+        return {
+          arr: []
+        }
+      } catch (error) {
+        console.log(error)
+        alert(error.message)
+      }
+      
+    }
+    draft()
   </script>
 </body>
 </html>

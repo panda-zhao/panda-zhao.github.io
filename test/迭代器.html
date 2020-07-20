@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function Iterator (data) {
+      this.data = data
+    }
+
+    Iterator.prototype.get = function (keyStr, defaultVal = '') {
+      const keys = keyStr.split('.')
+      let i = 0
+      let len = keys.length
+      let data = this.data
+
+      for (; i < len; i++) {
+        let key = keys[i]
+
+        if (data[key] === undefined) {
+          return defaultVal
+        }
+
+        data = data[key]
+      }
+
+      return data
+    }
+    
+  </script>
+</body>
+</html>
+

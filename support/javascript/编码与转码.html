@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    button{
+      display: block;
+      margin: 15px 0;
+      padding: 15px 50px;
+      font-size: 16px;
+      letter-spacing: 1px;
+      color: #fff;
+      background: rgb(33,99,224);
+      background: linear-gradient(90deg, rgba(33,99,224,1) 25%, rgba(253,29,29,0.9920343137254902) 75%);
+      border-radius: 4px;
+      border: 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>url转码-encodeURI</h1>
+  <textarea name="" id="textarea1" cols="30" rows="10"></textarea>
+  <button id="encodeURIBtn">编码</button>
+  <h1>url解码decodeURI</h1>
+  <textarea name="" id="textarea2" cols="30" rows="10"></textarea>
+  <button id="decodeURIBtn">解码</button>
+  <script>
+    let encodeURIBtn = document.getElementById('encodeURIBtn')
+    let decodeURIBtn = document.getElementById('decodeURIBtn')
+    encodeURIBtn.onclick = function(){
+      let val1 = document.getElementById('textarea1').value
+      console.log('val1=', val1)
+      if(val1){
+        document.getElementById('textarea2').value = encodeURI(val1)
+      }else{
+        alert('请先输入要编码的内容！')
+      }
+    }
+    decodeURIBtn.onclick = function(){
+      let val2 = document.getElementById('textarea2').value
+      console.log('val2=', val2)
+      if(val2){
+        document.getElementById('textarea1').value = decodeURI(val2)
+      }else{
+        alert('请先输入要解码的内容！')
+      }
+    }
+  </script>
+</body>
+</html>
