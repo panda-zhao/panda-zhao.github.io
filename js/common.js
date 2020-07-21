@@ -179,7 +179,9 @@ var data = [
     {name: "广东电子税务局",url: "https://www.etax-gd.gov.cn/xxmh/html/index.html",title: "广东电子税务局"},
     {name: "国家社会保险公共服务平台",url: "http://si.12333.gov.cn/index.jhtml",title: "国家社会保险公共服务平台"},
     {name: "国家企业信用信息公示系统",url: "http://www.gsxt.gov.cn/corp-query-homepage.html",title: "国家社会保险公共服务平台"},
-    {name: "河南省社会保障卡服务网",url: "http://www.ha.12333.gov.cn/",title: "河南省社会保障卡服务网"}
+    {name: "河南省社会保障卡服务网",url: "http://www.ha.12333.gov.cn/",title: "河南省社会保障卡服务网"},
+    {name: "中华人民共和国民政部",url: "http://www.mca.gov.cn/article/sj/xzqh/2020/",title: "中华人民共和国民政部"},
+    
     
   ]
 ]
