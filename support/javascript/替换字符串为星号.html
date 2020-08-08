@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>替换字符串为星号</title>
+</head>
+<body>
+  <div>
+    <input type="text" id="input">
+    <button onclick="change">使用</button>
+  </div>
+  <script>
+    function addStar (str) {
+      const start = 4 // 开始保留的位数
+      const end = 4 // 结尾保留的位数
+      const length = str.length - start - end
+      let xing = ''
+      for (let i = 0; i < length; i++) {
+        xing += '*'
+      }
+      const result = str.substring(0, start) + xing + str.substring(str.length - end)
+      console.log('result', result)
+      return result
+    }
+    function change(){
+      let val = document.getElementById('input').value
+      document.write = addStar(val)
+    }
+   
+    
+  </script>
+</body>
+</html>
