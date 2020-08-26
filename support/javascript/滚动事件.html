@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>监听滚动事件--窗口滚动+元素内部滚动</title>
+  <style>
+    .wrap{
+      height: 2000px;
+    }
+    .showWindow{
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 600px;
+      padding: 0 15px;
+      background-color: rgba(0, 0, 0, .3);
+
+    }
+    .text{
+      color: #f00;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .demo-wrap{
+      position: fixed;
+      right: 15px;
+      top: 15px;
+
+      background-color: #f2f2f2;
+      height: 667px;
+      width: 375px;
+      overflow-y: scroll;
+      display: flex;
+      justify-content: center;
+    }
+    .demo-content{
+      /* margin: 0 15px; */
+      width: 200px;
+      height: 2000px;
+      background-color: hotpink;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="showWindow">
+      <h1>滚动监视</h1>
+      <h2>scrollTop滚动条滚动时被卷走的高度===<span class="text" id="v1">初始化</span></h2>
+      <div>【窗口】document.documentElement.scrollTop||document.body.scrollTop</div>
+      <div>【元素】ele.scrollTop</div>
+      
+
+      <h2>windowHeight可视区的高度===<span class="text" id="v2">初始化</span></h2>
+      <div>【窗口】window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight</div>
+      <div>【元素】ele.clientHeight</div>
+      
+
+      <h2>scrollHeight总滚动高度===<span class="text" id="v3">初始化</span></h2>
+      <div>【窗口】document.documentElement.scrollHeight||document.body.scrollHeight</div>
+      <div>【元素】ele.scrollHeight</div>
+      
+
+      
+    </div>
+    <!-- 演示元素滚动 -->
+    <div class="demo-wrap" id="ele">
+      <div class="demo-content">
+        
+      </div>
+    </div>
+  </div>
+  <script>
+    // 监听窗口/文档滚动
+    window.addEventListener("scroll", function(){
+      var scrollTop = document.documentElement.scrollTop||document.body.scrollTop; // 滚动条滚动时被卷走的高度
+      var windowHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight // 可视区的高度
+      var scrollHeight = document.documentElement.scrollHeight||document.body.scrollHeight; // 总滚动高度
+      // console.log("距顶部"+scrollTop + "可视区高度" + windowHeight + "滚动条总高度" + scrollHeight);
+      if(scrollTop === 0){
+        console.log("【窗口/文档】当前位于顶部")
+      }
+      if(scrollTop+windowHeight===scrollHeight){
+        console.log("【窗口/文档】yes,到达底部")
+      }
+      let v1 = document.getElementById('v1')
+      let v2 = document.getElementById('v2')
+      let v3 = document.getElementById('v3')
+      v1.innerHTML = scrollTop
+      v2.innerHTML = windowHeight
+      v3.innerHTML = scrollHeight
+    })
+
+
+    document.getElementById("ele").addEventListener("scroll", function(){
+      let scrollTop = document.getElementById("ele").scrollTop // 被卷走的高度
+      let clientHeight = document.getElementById("ele").clientHeight // 容器元素高度 height + padding
+      // let offsetHeight = document.getElementById("ele").offsetHeight // 容器元素所有高度 height + padding + border + 滚动条
+      let scrollHeight = document.getElementById("ele").scrollHeight // 总滚动高度
+      if(scrollTop === 0){
+        console.log("【元素】当前位于顶部")
+      }
+      if(scrollTop + clientHeight === scrollHeight){
+        console.log("【元素】yes,到达底部")
+      }
+
+      let v1 = document.getElementById('v1')
+      let v2 = document.getElementById('v2')
+      let v3 = document.getElementById('v3')
+      v1.innerHTML = scrollTop
+      v2.innerHTML = clientHeight
+      v3.innerHTML = scrollHeight
+
+      // console.log('被卷走的高度=', document.getElementById("ele").scrollTop)
+      // console.log('容器元素高度=', document.getElementById("ele").clientHeight) // 获取元素可视部分的高度，即 CSS 的 height 和 padding 属性值之和，元素边框和滚动条不包括在内，也不包含任何可能的滚动区域
+      // console.log('容器元素所有高度=', document.getElementById("ele").offsetHeight) // 元素在页面中占据的高度总和，包括 height、padding、border 以及滚动条的宽度
+      // console.log('总滚动高度=', document.getElementById("ele").scrollHeight)
+    });
+  </script>
+</body>
+</html>

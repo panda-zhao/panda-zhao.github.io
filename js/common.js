@@ -34,19 +34,17 @@ var data = [
   
   //四、Vue框架
   [
-    
-    {name: "Vue CLI",url: "https://cli.vuejs.org/zh/",title: "Vue.js 开发的标准工具"},
-    {name: "webpack中文教程",url: "https://doc.webpack-china.org/",title: ""},
     {name: "Vue.js",url: "https://cn.vuejs.org/v2/guide/installation.html",title: ""},
+    {name: "webpack中文教程",url: "https://doc.webpack-china.org/",title: ""},
+    {name: "Vue CLI",url: "https://cli.vuejs.org/zh/",title: "Vue.js 开发的标准工具"},
     {name: "Vue Router",url: "https://router.vuejs.org/zh/",title: ""},
     {name: "Vuex教程",url: "https://vuex.vuejs.org/zh/",title: ""},
     {name: "Axios中文说明",url: "https://www.kancloud.cn/yunye/axios/234845",title: "代替AJAX做http请求，可以用在浏览器和 node.js 中"},
-    {name: "flyio",url: "https://wendux.github.io/dist/#/doc/flyio/readme",title: "支持所有JavaScript运行环境的http请求库"},
+    {name: "flyio",url: "https://github.com/wendux/fly",title: "支持所有JavaScript运行环境的http请求库"},
     {name: "VUX",url: "https://vux.li",title: "一个凑合的 Vue.js 移动端 UI 组件库"},
-    {name: "vue开源框架",url: "https://juejin.im/post/5cba04bbf265da039444a709"},
-    {name: "ElementUI教程",url: "http://element-cn.eleme.io/#/zh-CN/component/installation",title: ""},
+    {name: "Vant",url: "https://github.com/youzan/vant",title: "轻量、可靠的移动端 Vue 组件库"},
+    {name: "ElementUI教程",url: "http://element-cn.eleme.io/#/zh-CN/component/installation",title: "Element，一套为开发者、设计师和产品经理准备的基于 Vue 2.0 的桌面端组件库"},
     {name: "vue-element-admin",url: "https://panjiachen.github.io/vue-element-admin-site/zh/guide/",title: " 基于vue 和 element-ui实现中后台业务模型"},
-    {name: "Vant Weapp",url: "https://youzan.github.io/vant-weapp/#/intro",title: "轻量、可靠的小程序 UI 组件库"},
     {name: "vue-native",url: "https://vue-native.io/",title: '构建跨平台移动应用程序'}
   ],
   //五、小程序开发
@@ -78,18 +76,15 @@ var data = [
   
    //七、前端框架
    [
-    {name: "Vant Weapp",url: "https://youzan.github.io/vant-weapp/#/intro",title: "轻量、可靠的小程序 UI 组件库"},
-    {name: "Vant",url: "https://youzan.github.io/vant/#/zh-CN/home",title: "轻量、可靠的移动端 Vue 组件库"},
-    {name: "ElementUI教程",url: "http://element-cn.eleme.io/#/zh-CN/component/installation",title: ""},
     {name: "Bootstrap3 教程",url: "http://www.runoob.com/bootstrap/bootstrap-intro.html",title: "响应式开发 Web 应用程序"},
     {name: "Bootstrap4 教程",url: "http://www.runoob.com/bootstrap4/bootstrap4-tutorial.html",title: "响应式开发 Web 应用程序"},
-    {name: "Bootstrap Flat UI",url: "https://designmodo.github.io/Flat-UI/",title: "Metro(扁平)风格的UI库"},
+    {name: "Bootstrap Flat UI",url: "https://github.com/designmodo/Flat-UI",title: "Metro(扁平)风格的UI库"},
     {name: "swiper",url: "http://idangero.us/swiper/api/",title: "轮播图插件"},
     {name: "swiper4",url: "https://www.swiper.com.cn/",title: "轮播图插件"},
     {name: "font awesome 4.7.0",url: "https://fontawesome.com/v4.7.0/icons/",title: ""},
     {name: "layui",url: "http://www.layui.com",title: "经典模块化前端UI框架"},
     {name: "Framework7",url: "http://framework7.io/",title: "用于构建iOS和Android应用程序的精美的移动端UI框架"},
-    {name: "jQuery WeUI",url: "http://jqweui.com/",title: "专为微信公众账号开发而设计的一个简洁而强大的UI库"},
+    {name: "jQuery WeUI",url: "https://github.com/lihongxun945/jquery-weui",title: "专为微信公众账号开发而设计的一个简洁而强大的UI库"},
     {name: "datatables",url: "http://www.datatables.club/",title: "表格插件"},
     {name: "Echarts",url: "http://echarts.baidu.com/download.html",title: "图表插件"},
     {name: "百度分享插件",url: "http://share.baidu.com/code",title: ""},

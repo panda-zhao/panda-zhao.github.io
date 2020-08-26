@@ -17,36 +17,129 @@
       border-radius: 4px;
       border: 0;
     }
+    .flex{
+      display: flex;
+    }
+    .flex>div{
+      flex: 1;
+    }
   </style>
 </head>
 <body>
-  <h1>url转码-encodeURI</h1>
-  <textarea name="" id="textarea1" cols="30" rows="10"></textarea>
-  <button id="encodeURIBtn">编码</button>
-  <h1>url解码decodeURI</h1>
-  <textarea name="" id="textarea2" cols="30" rows="10"></textarea>
-  <button id="decodeURIBtn">解码</button>
+  <h1>encodeURIComponent/decodeURIComponent</h1>
+  <div> 传递参数转码时需要使用</div>
+  <div>encodeURIComponent不编码字符有71个：!， '，(，)，*，-，.，_，~，0-9，a-z，A-Z</div>
+  <div class="flex">
+    <div>
+      <textarea name="" id="encodeURIComponenttext" cols="30" rows="10"></textarea>
+      <button id="encodeURIComponentBtn">encodeURIComponent编码</button>
+      <div>【编码】http://www.baidu.cn/path?id=123&name=jack son</div>
+    </div>
+    <div>
+      <textarea name="" id="decodeURIComponenttext" cols="30" rows="10"></textarea>
+      <button id="decodeURIComponentBtn">decodeURIComponent解码</button>
+      <div>【解码】http://www.baidu.cn/path?id=123&name=jack%20son</div>
+    </div>
+  </div>
+  <hr>
+  <h1>encodeURI/decodeURI</h1>
+  <div>编码整个URI</div>
+  <div>encodeURI不编码字符有82个：!，#，$，&，'，(，)，*，+，,，-，.，/，:，;，=，?，@，_，~，0-9，a-z，A-Z</div>
+  <div class="flex">
+    <div>
+      <textarea name="" id="encodeURItext" cols="30" rows="10"></textarea>
+      <button id="encodeURIBtn">encodeURI编码</button>
+      <div>【编码】http://www.baidu.cn/path?id=123&name=jack son</div>
+    </div>
+    <div>
+      <textarea name="" id="decodeURItext" cols="30" rows="10"></textarea>
+      <button id="decodeURIBtn">decodeURI解码</button>
+      <div>【解码】http://www.baidu.cn/path?id=123&name=jack%20son</div>
+    </div>
+  </div>
+  
+  <hr>
+  <h1>escape/unescape</h1>
+  <div>escape不编码字符有69个：*，+，-，.，/，@，_，0-9，a-z，A-Z</div>
+  <div class="flex">
+    <div>
+      <textarea name="" id="escapetext" cols="30" rows="10"></textarea>
+      <button id="escapeBtn">escape编码</button>
+      <div>【编码】http://www.baidu.cn/path?id=123&name=jack son</div>
+    </div>
+    <div>
+      <textarea name="" id="unescapetext" cols="30" rows="10"></textarea>
+      <button id="unescapeBtn">unescape解码</button>
+      <div>【解码】http://www.baidu.cn/path?id=123&name=jack%20son</div>
+    </div>
+  </div>
+  
+  
+  
+
+
   <script>
-    let encodeURIBtn = document.getElementById('encodeURIBtn')
-    let decodeURIBtn = document.getElementById('decodeURIBtn')
-    encodeURIBtn.onclick = function(){
-      let val1 = document.getElementById('textarea1').value
+    // encodeURIComponent/decodeURIComponent
+    document.getElementById('encodeURIComponentBtn').addEventListener('click', function(){
+      let val1 = document.getElementById('encodeURIComponenttext').value
       console.log('val1=', val1)
       if(val1){
-        document.getElementById('textarea2').value = encodeURI(val1)
+        document.getElementById('decodeURIComponenttext').value = encodeURIComponent(val1)
       }else{
         alert('请先输入要编码的内容！')
       }
-    }
-    decodeURIBtn.onclick = function(){
-      let val2 = document.getElementById('textarea2').value
+    })
+    document.getElementById('decodeURIComponentBtn').addEventListener('click', function(){
+      let val2 = document.getElementById('decodeURIComponenttext').value
       console.log('val2=', val2)
       if(val2){
-        document.getElementById('textarea1').value = decodeURI(val2)
+        document.getElementById('encodeURIComponenttext').value = decodeURIComponent(val2)
       }else{
         alert('请先输入要解码的内容！')
       }
-    }
+    })
+
+    // encodeURI/decodeURI
+    document.getElementById('encodeURIBtn').addEventListener('click', function(){
+      let val1 = document.getElementById('encodeURItext').value
+      console.log('val1=', val1)
+      if(val1){
+        document.getElementById('decodeURItext').value = encodeURI(val1)
+      }else{
+        alert('请先输入要编码的内容！')
+      }
+    })
+    document.getElementById('decodeURIBtn').addEventListener('click', function(){
+      let val2 = document.getElementById('decodeURItext').value
+      console.log('val2=', val2)
+      if(val2){
+        document.getElementById('encodeURItext').value = decodeURI(val2)
+      }else{
+        alert('请先输入要解码的内容！')
+      }
+    })
+
+    
+
+    // escape/unescape
+    document.getElementById('escapeBtn').addEventListener('click', function(){
+      let val1 = document.getElementById('escapetext').value
+      console.log('val1=', val1)
+      if(val1){
+        document.getElementById('unescapetext').value = escape(val1)
+      }else{
+        alert('请先输入要编码的内容！')
+      }
+    })
+    document.getElementById('unescapeBtn').addEventListener('click', function(){
+      let val2 = document.getElementById('unescapetext').value
+      console.log('val2=', val2)
+      if(val2){
+        document.getElementById('escapetext').value = unescape(val2)
+      }else{
+        alert('请先输入要解码的内容！')
+      }
+    })
   </script>
 </body>
 </html>

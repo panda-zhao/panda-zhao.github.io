@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>测试图片上传</title>
+  <style>
+    .flex{
+      display: flex;
+    }
+  </style>
+</head>
+<body>
+  <div class="z-form-item">
+    <label for="file2" class="z-form-item__label">指明需要图片</label>
+    <div class="z-form-item__content">
+      <input type="file" name="file2" id="file2" accept='image/*'>
+    </div>
+  </div>
+  <div class="z-form-item">
+    <label for="file4" class="z-form-item__label">指明调用摄像头获取图片</label>
+    <div class="z-form-item__content">
+      <input type="file" name="file4" id="file4" capture='camera' accept='image/*'>
+    </div>
+  </div>
+
+  <div class="z-form-item">
+    <label for="file3" class="z-form-item__label">指明需要多张图片</label>
+    <div class="z-form-item__content">
+      <input type="file" name="file3" id="file3" multiple accept='image/*'>
+    </div>
+  </div>
+
+  <div class="z-form-item">
+    <label for="file5" class="z-form-item__label">指明调用摄像头并多张图片</label>
+    <div class="z-form-item__content">
+    <!-- multiple 无效 -->
+      <input type="file" name="file5" id="file5" multiple capture='camera' accept='image/*'>
+    </div>
+  </div>
+</body>
+</html>
