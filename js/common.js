@@ -62,26 +62,20 @@ var data = [
   // 六、常用工具
   [
     {name: "Git",url: "https://git-scm.com/",title: "目前世界上最先进的分布式版本控制系统（没有之一）。"},
-    {name: "GitHub 官网",url: "https://github.com/panda-zhao",title: "项目版本管理仓库"},
-    {name: "GitLab 官网",url: "https://about.gitlab.com/",title: "项目版本管理仓库"},
-    {name: "码云官网",url: "https://gitee.com/",title: "云端软件开发协作平台"},
-    {name: "Bitbucket 官网",url: "https://bitbucket.org/",title: "Git代码管理"},
-    {name: "Sourcetree",url: "https://www.sourcetreeapp.com/",title: "Git GUI 客户端"},
     {name: "TortoiseSVN",url: "https://tortoisesvn.net/downloads.html",title: "一个 Windows 下的版本控制系统 Apache™ Subversion® 的客户端工具。"},
+    {name: "GitHub",url: "https://github.com/panda-zhao",title: "项目版本管理仓库"},
+    {name: "gitlab",url: "https://about.gitlab.com/",title: "项目版本管理仓库"},
     {name: "阿里企业邮箱",url: "https://qiye.aliyun.com/",title: ""},
     {name: "Bugclose",url: "https://www.bugclose.com/index.html",title: "任务管理工具"},
     {name: "蓝湖",url: "https://lanhuapp.com/",title: ""},
     {name: "Axure",url: "https://www.axure.com/",title: "原型设计工具"},
     {name: "Axure学习",url: "http://www.chanpinban.com/",title: "xure RP 9产品原型设计培训服务"},
     {name: "云效",url: "https://my.rdc.aliyun.com/",title: "云效"},
-    {name: "语雀",url: "https://www.yuque.com/dashboard/",title: "专业的云端知识库"},
-    {name: "postman",url: "https://www.postman.com/",title: "API开发协作平台"},
-    {name: "YApi",url: "https://github.com/YMFE/yapi",title: "可视化的接口管理平台"}
-    
+    {name: "语雀",url: "https://www.yuque.com/dashboard/",title: "语雀"}
   ],
   
    //七、前端框架
-  [
+   [
     {name: "Bootstrap3 教程",url: "http://www.runoob.com/bootstrap/bootstrap-intro.html",title: "响应式开发 Web 应用程序"},
     {name: "Bootstrap4 教程",url: "http://www.runoob.com/bootstrap4/bootstrap4-tutorial.html",title: "响应式开发 Web 应用程序"},
     {name: "Bootstrap Flat UI",url: "https://github.com/designmodo/Flat-UI",title: "Metro(扁平)风格的UI库"},
@@ -119,7 +113,7 @@ var data = [
     {name: "React",url: "https://reactjs.org/",title: "用于创建可重用且有吸引力的UI组件的库"},
     {name: "React Native中文网",url: "https://reactnative.cn/",title: "使用JavaScript编写移动应用"},
   ],
-
+ 
 
   // 十、服务器端
   [
@@ -173,10 +167,7 @@ var data = [
     
     {name: "wordpress",url: "https://cn.wordpress.org/",title: "用PHP语言开发的博客平台"},
     {name: "Zblog社区",url: "http://bbs.zblogcn.com/",title: ""},
-    {name: "DoraCMS",url: "https://github.com/doramart/DoraCMS",title: "Nodejs开发的内容管理系统"},
-    
   ],
-
   [
     {name: "红盾网",url: "http://scjgj.gz.gov.cn/gzaic/WebItem/Index.html",title: "网上办事大厅"},
     {name: "广东政务网",url: "http://59.41.9.112:90/ewb/login.html",title: "广州市开办企业一网通"},
@@ -185,6 +176,8 @@ var data = [
     {name: "国家企业信用信息公示系统",url: "http://www.gsxt.gov.cn/corp-query-homepage.html",title: "国家社会保险公共服务平台"},
     {name: "河南省社会保障卡服务网",url: "http://www.ha.12333.gov.cn/",title: "河南省社会保障卡服务网"},
     {name: "中华人民共和国民政部",url: "http://www.mca.gov.cn/article/sj/xzqh/2020/",title: "中华人民共和国民政部"},
+    
+    
   ]
 ]
 // 百度统计
