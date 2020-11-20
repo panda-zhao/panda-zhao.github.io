@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>公章</title>
+  <style>
+    .form-item{
+      display: flex;
+      padding-bottom: 15px;
+    }
+    .form-item label{
+      width: 100px;
+      text-align: left;
+      line-height: 40px;
+    } 
+    .form-item .form-content{
+      flex: 1;
+      box-sizing: border-box;
+      height: 40px;
+      outline: 0;
+    }
+    .btn{
+      display: block;
+      width: 300px;
+      margin: 30px auto;
+      background: #2163e0;
+      color: #fff;
+      padding: 15px 0;
+      border: 0;
+      border-radius: 5px;
+      outline: 0;
+    }
+    #wrap{
+      padding: 15px;
+    }
+  </style>
+  
+</head>
+
+<body>
+  <div class="form-item">
+    <label for="companyName">企业名称：</label>
+    <input id="companyName" class="form-content"  type="text" value='广州网融信息技术有限公司' />
+  </div>
+  <div class="form-item">
+    <label for="stampType">章类型：</label>
+    <select name="stampType" id="stampType" class="form-content">
+      <!-- <option value="">请选择</option> -->
+      <option value="公司公章">公司公章</option>
+      <option value="财务章">财务章</option>
+      <option value="合同专用章" >合同专用章</option>
+      <option value="发票章">发票章</option>
+      <option value="法人代表人名章" selected>法人代表人名章</option>
+    </select>
+  </div>
+  <div>
+    <button onclick="fn1()" class="btn">生成公章</button>
+    <button onclick="fn2()" class="btn">生成椭圆公章</button>
+  </div>
+  <div id="wrap">
+    <canvas id='canvas' width='300' height='300'></canvas>
+  </div>
+
+  <script>
+    fn2()
+    function fn1 (){
+      let img = createCircularSeal('canvas', document.getElementById("companyName").value, document.getElementById("stampType").value);
+      console.log(img)
+    }
+    function fn2 (){
+      let img = createEllipseSeal('canvas', document.getElementById("companyName").value, document.getElementById("stampType").value);
+      console.log(img)
+    }
+
+    function fn3 (){
+      let img = createRectangleSeal('canvas', '毛泽东');
+      console.log(img)
+    }
+
+    // 圆形章
+    function createCircularSeal(id, company, sealType) {
+      let width = 125
+      let height= 125
+      let sealFont = 'bold 18px SimSun';
+      var canvas = document.getElementById(id);
+
+      var context = canvas.getContext('2d');
+      context.translate(10, 10); //移动坐标原点 
+
+      // 绘制印章边框
+      context.beginPath();
+      context.arc(width, height, 115, 0, Math.PI * 2); // 创建弧/曲线
+      context.strokeStyle = "#f00";
+      context.lineWidth = 4;
+      context.stroke(); // 绘制已定义的路径。
+      context.save(); // 保存当前环境的状态。
+
+      //画五角星
+      create5star(context, width, height, 30, "#f00", 0);
+
+      // 绘制印章名称   
+      context.font = sealFont // 印章类型-公司公章、财务章
+      context.textBaseline = 'middle'; //设置文本的垂直对齐方式
+      context.textAlign = 'center'; //设置文本的水平对对齐方式
+      context.lineWidth = 1;
+      context.fillStyle = '#f00';
+      context.fillText(sealType, width, height * 1.5);
+
+
+      // 绘制印章单位   
+      context.translate(width, height); // 平移到此位置,
+
+      context.font = 'bold 28px SimSun ' // '30px Helvetica'
+      var count = company.length; // 字数   
+      var angle = 4 * Math.PI / (3 * (count - 1)); // 字间角度
+      var chars = company.split("");
+      var c;
+      for (var i = 0; i < count; i++) {
+        c = chars[i]; // 需要绘制的字符
+        context.rotate(i === 0 ? (5 * Math.PI / 6): angle);
+        context.save();
+        context.translate(95, 0); // 平移到此位置,此时字和x轴垂直，第一个参数是与圆外边的距离，越大距离越近   
+        context.rotate(Math.PI / 2); // 旋转90度,让字平行于x轴
+        context.fillText(c, 0, 5); // 此点为字的中心点
+        context.restore();
+      }
+
+      //绘制五角星  
+      /** 
+       * 创建一个五角星形状. 
+       * sx,sy 该五角星的中心坐标为
+       * radius 中心到顶点的距离为,rotate=0时一个顶点在对称轴上 
+       * color: 五角星颜色
+       * rotate:绕对称轴旋转rotate弧度 
+       */
+      function create5star(context, sx, sy, radius, color, rotato) {
+        context.save();
+        context.fillStyle = color;
+        context.translate(sx, sy); //移动坐标原点  
+        context.rotate(Math.PI + rotato); //旋转  
+        context.beginPath(); //创建路径  
+        // var x = Math.sin(0);
+        // var y = Math.cos(0);
+        var dig = Math.PI / 5 * 4;
+        for (var i = 0; i < 5; i++) { //画五角星的五条边  
+          var x = Math.sin(i * dig);
+          var y = Math.cos(i * dig);
+          context.lineTo(x * radius, y * radius);
+        }
+        context.closePath();
+        context.stroke();
+        context.fill();
+        context.restore();
+      }
+      let base64Img = canvas.toDataURL('image/png');
+      console.log('base64Img=', base64Img)
+      return base64Img
+    }
+
+    // 椭圆形章
+    function createEllipseSeal(id, sealCompany, sealType){
+      let width = 125;
+      let height= 125;
+      let sealColor=  "red"// 颜色
+      let canvas = document.getElementById(id);
+      let context = canvas.getContext('2d');
+      
+      
+      context.strokeStyle= sealColor; //设置文本颜色
+      context.textBaseline = 'middle';//设置文本的垂直对齐方式
+      context.textAlign = 'center'; //设置文本的水平对对齐方式
+
+      //3个参数： 左边距、上边距 宽度 椭圆扁度
+      //椭圆1
+      context.lineWidth = 2;
+      BezierEllipse4(context, width+2, height-1, width-4, height-24)
+      // BezierEllipse4(context, width+2, height-1, width-4, height-42);
+
+      //绘制英文
+      var circle={
+          x: width,
+          y: height,
+          radius: width-21
+      };
+      // 公司名
+      var startAngle= 190; //控制字符起始位置度数
+      var endAngle = -10; //首位字符相隔度数
+      var radius=circle.radius - 5 //圆的半径
+      //每个字母占的弧度
+      var angleDecrement = (startAngle-endAngle) / (sealCompany.length - 1)
+      context.font = "18px SimSun"
+      //横轴缩放比率
+      var ratioX = (width - 17) / circle.radius;
+      var ratioY = (height-34) / circle.radius;  // 纵轴缩放比率
+      // var ratioY = (height- 18) / circle.radius;
+      //进行缩放（均匀压缩）
+      context.scale(ratioX, ratioY);
+      context.lineWidth=1;
+      for(var index=0;index<sealCompany.length;index++){
+        context.save()
+        context.beginPath()
+        //绘制点
+        context.translate(circle.x + Math.cos((Math.PI/180) * startAngle) * radius-3,circle.y-Math.sin((Math.PI/180)*startAngle)*radius+24)
+        context.rotate((Math.PI/2) - (Math.PI/180) * startAngle)   //Math.PI/2为旋转90度  Math.PI/180*X为旋转多少度
+        context.fillText(sealCompany.charAt(index),0,0)
+        context.strokeText(sealCompany.charAt(index),0,0)
+        startAngle-=angleDecrement
+        context.restore()
+      }
+
+      
+      context.font = '18px SimSun';// 绘制印章类型- 发票章、合同专用章
+      context.lineWidth= 2;
+      context.fillStyle = sealColor;
+      context.fillText(sealType , width-6, height + 60);
+      context.save();
+
+      function BezierEllipse4(ctx, x, y, a, b){
+        var k = .5522848,
+        ox = a * k, // 水平控制点偏移量
+        oy = b * k; // 垂直控制点偏移量</p> <p>
+        ctx.beginPath();
+        //从椭圆的左端点开始顺时针绘制四条三次贝塞尔曲线
+        ctx.moveTo(x - a, y);
+        ctx.bezierCurveTo(x - a, y - oy, x - ox, y - b, x, y - b);
+        ctx.bezierCurveTo(x + ox, y - b, x + a, y - oy, x + a, y);
+        ctx.bezierCurveTo(x + a, y + oy, x + ox, y + b, x, y + b);
+        ctx.bezierCurveTo(x - ox, y + b, x - a, y + oy, x - a, y);
+        ctx.closePath();
+        ctx.stroke();
+      };
+
+
+      let base64Img = canvas.toDataURL('image/png');
+      // console.log('base64Img=', base64Img)
+      return base64Img
+    }
+    
+    // 正方形章
+    function createRectangleSeal(id, name) {
+      var canvas=document.getElementById(id);
+      var context=canvas.getContext("2d");
+      var width = 125;
+      var height= 125;
+
+      context.textBaseline = "middle";
+      context.textAlign = "center";
+      // 画正方形
+      context.lineWidth = 4;
+      context.strokeStyle = "red";
+      context.strokeRect(1, 1, width, height);
+      // context.save();
+      // 写文字
+      context.font = "30px Arial";
+      context.fillStyle = "red";
+      context.fillText( name, width / 2, height / 2, width);
+      context.restore();
+      let base64Img = canvas.toDataURL('image/png');
+      // console.log('base64Img=', base64Img)
+      return base64Img
+    }
+  </script>
+</body>
+
+</html>

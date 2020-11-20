@@ -17,21 +17,20 @@ var data = [
     {name: "电影宝",url: "http://www.dyb365.com",title: ""}
     
   ],
-  //二、作品欣赏
-  [
-    {name: "魔方游戏",url: "./template/thecube/index.html",title: "three.js游戏"},
-    {name: "CSS3炫彩登录",url: "./template/login.html",title: "CSS3炫彩登录"},
-    {name: "CSS行走的大象",url: "./template/elephant/index.html",title: "CSS行走的大象"},
-    {name: "转盘抽奖",url: "./template/luckDraw/index.html",title: "转盘抽奖"},
-    {name: "飞机大战",url: "./template/planeWar/index.html",title: "飞机大战游戏"},
-    {name: "俄罗斯方块",url: "./template/Tetris.html",title: "Tetris - 俄罗斯方块"},
-  ],
-  //三、自定义组件
-  [
-    {name: "自定义弹框组件",url: "./components/showToast.html",title: "自定义弹框组件"},
-    {name: "IE低版本优雅提醒",url: "./components/html-hack.html",title: "使用html-hack做IE低版本优雅提醒"},
-  ],
   
+  //十四、gitHub工具&包
+  [
+    // {name:"", url:"", title:""},
+    {name: "复制到剪切板", url: "https://github.com/zenorocha/clipboard.js" ,title: "clipboard.js"},
+    {name: "vue.js pdf查看器", url: "https://github.com/FranckFreiburger/vue-pdf" ,title: "vue-pdf"},
+    {name:"AES对称加/解密", url:"https://github.com/brix/crypto-js", title:"crypto-js"},
+    {name:"RSA非对称加/解密", url:"https://github.com/travist/jsencrypt", title:"jsencrypt"},
+    {name: "MD5加密工具1", url: "https://github.com/emn178/js-md5" ,title: "js-md5"},
+    {name: "MD5加密工具2", url: "https://github.com/blueimp/JavaScript-MD5" ,title: "JavaScript-MD5"},
+    {name: "base64转码器", url: "https://github.com/dankogai/js-base64" ,title: "js-base64"},
+    {name: "表单异步验证", url: "https://github.com/tmpfs/async-validate" ,title: ""},
+    {name: "内容管理系统DoraCMS",url: "https://github.com/doramart/DoraCMS",title: "Nodejs开发的内容管理系统DoraCMS"},
+  ],
   //四、Vue框架
   [
     {name: "Vue.js",url: "https://cn.vuejs.org/v2/guide/installation.html",title: ""},
@@ -93,7 +92,7 @@ var data = [
     {name: "jQuery WeUI",url: "https://github.com/lihongxun945/jquery-weui",title: "专为微信公众账号开发而设计的一个简洁而强大的UI库"},
     {name: "datatables",url: "http://www.datatables.club/",title: "表格插件"},
     {name: "Echarts",url: "http://echarts.baidu.com/download.html",title: "图表插件"},
-    {name: "百度分享插件",url: "http://share.baidu.com/code",title: ""},
+    {name: "百度分享插件",url: "http://share.baidu.com/code",title: ""}
   ],
 
   //八、前端基础学习
@@ -168,15 +167,21 @@ var data = [
     {name: "网站素材易企秀",  url: "http://www.eqxiu.com/",  title: "数据接口"},
     {name: "千库网",  url: "http://588ku.com/ui/0-3-default-26-0-1/",  title: ""},
   ],
-  //十四、博客论坛
+  
+  //二、作品欣赏
   [
-    
-    {name: "wordpress",url: "https://cn.wordpress.org/",title: "用PHP语言开发的博客平台"},
-    {name: "Zblog社区",url: "http://bbs.zblogcn.com/",title: ""},
-    {name: "DoraCMS",url: "https://github.com/doramart/DoraCMS",title: "Nodejs开发的内容管理系统"},
-    
+    {name: "魔方游戏",url: "./template/thecube/index.html",title: "three.js游戏"},
+    {name: "CSS3炫彩登录",url: "./template/login.html",title: "CSS3炫彩登录"},
+    {name: "CSS行走的大象",url: "./template/elephant/index.html",title: "CSS行走的大象"},
+    {name: "转盘抽奖",url: "./template/luckDraw/index.html",title: "转盘抽奖"},
+    {name: "飞机大战",url: "./template/planeWar/index.html",title: "飞机大战游戏"},
+    {name: "俄罗斯方块",url: "./template/Tetris.html",title: "Tetris - 俄罗斯方块"},
   ],
-
+  //三、自定义组件
+  [
+    {name: "自定义弹框组件",url: "./components/showToast.html",title: "自定义弹框组件"},
+    {name: "IE低版本优雅提醒",url: "./components/html-hack.html",title: "使用html-hack做IE低版本优雅提醒"},
+  ],
   [
     {name: "红盾网",url: "http://scjgj.gz.gov.cn/gzaic/WebItem/Index.html",title: "网上办事大厅"},
     {name: "广东政务网",url: "http://59.41.9.112:90/ewb/login.html",title: "广州市开办企业一网通"},

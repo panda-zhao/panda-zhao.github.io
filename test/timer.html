@@ -1,21 +1,487 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>定时器</title>
-</head>
-<body>
-  <script>
-    var count = 0
-    var timer = setInterval(function(){
-      document.write(count++)
-      return count
-    }, 5000)
-    
+<html>
+  <head> </head>
+  <body>
+    长(毫米)：<input type="text" id="sealHiegth" value="20" /><br />
+    宽(毫米)：<input type="text" id="sealWidth" value="43" /><br />
+    印章类型：<input type="text" id="sealType" value="公司章" /><br />
+    公司名称：<input
+      type="text"
+      id="sealCompany"
+      value="东方神秘力量有限公司"
+    /><br />
+    公司名称（英）：<input
+      type="text"
+      id="sealECompany"
+      value="EFEFFEEFFDDFEFEFE"
+    /><br />
 
+    <input type="radio" value="red" name="sealColor" checked="checked" />红色
+    <input type="radio" value="blue" name="sealColor" />蓝色<br />
 
-  </script>
-</body>
+    <input type="radio" value="1" name="sealEnglish" checked="checked" />中文
+    <input type="radio" value="2" name="sealEnglish" />中英文<br />
+
+    <input type="radio" value="1" name="sealShape" />圆形
+    <input type="radio" value="2" name="sealShape" />椭圆
+    <input
+      type="radio"
+      value="3"
+      name="sealShape"
+      checked="checked"
+    />长方形<br />
+
+    内外间距(毫米)：<input type="text" id="sealSpacing" value="5" /><br />
+    <button onclick="createSeal();">SHOW</button
+    ><button onclick="toImage();">GO</button><br />
+    展示图：<br />
+    <div id="sealPicMake"></div>
+    <br />
+    效果图片：<br />
+    <img id="sealPic" />
+
+    <!-- <script type="text/javascript" src="jquery.min.js"></script> -->
+    <script src="https://www.jq22.com/jquery/jquery-3.3.1.js"></script>
+    <script type="text/javascript">
+      $(function () {
+        //createSeal();
+        $("input[name='sealShape']").on("click", function () {
+          var value = $(this).val();
+          alert(value);
+        });
+      });
+
+      function toImage() {
+        var img = document.getElementById("sealPic");
+        var data = createSeal().toDataURL("image/png", 1); //1表示质量(无损压缩)
+        img.src = data;
+      }
+
+      function createSeal() {
+        var sealHiegth = $("#sealHiegth").val();
+        var sealWidth = $("#sealWidth").val();
+        var sealType = $("#sealType").val();
+        var sealCompany = $("#sealCompany").val();
+        var sealECompany = $("#sealECompany").val();
+        var sealColor = $("input[name='sealColor']:checked").val();
+        var sealShape = $("input[name='sealShape']:checked").val();
+        var sealSpacing = $("#sealSpacing").val();
+        var sealEnglish = $("input[name='sealEnglish']:checked").val();
+        //长宽 毫米转px
+        var height = (parseFloat(sealHiegth) * 96) / 25.4;
+        var width = (parseFloat(sealWidth) * 96) / 25.4;
+        var spacing = (parseFloat(sealSpacing) * 96) / 25.4;
+        $("#sealPicMake").html(
+          "<canvas id='canvas' width='" +
+            width +
+            "px' height='" +
+            height +
+            "px'></canvas>"
+        );
+        //印章数据
+        var sealData = {
+          sealHiegth: height,
+          sealWidth: width,
+          sealColor: sealColor,
+          sealType: sealType,
+          sealCompany: sealCompany,
+          sealECompany: sealECompany,
+          sealShape: sealShape,
+          sealSpacing: spacing,
+          sealEnglish: sealEnglish,
+        };
+        //html5对象
+        var canvas = document.getElementById("canvas");
+        var context = canvas.getContext("2d");
+        if (sealData.sealShape == "1") {
+          //圆形印章
+          createCircularSeal(context, sealData);
+        } else if (sealData.sealShape == "2") {
+          //椭圆印章
+          createEllipseSeal(context, sealData);
+        } else if (sealData.sealShape == "3") {
+          //方形印章
+          createRectangleSeal(context, sealData);
+        } else {
+          alert("刷新页面重试");
+        }
+        return canvas;
+      }
+      //长方形章
+      function createRectangleSeal(context, sealData) {
+        //设置文本的垂直对齐方式
+        context.textBaseline = "middle";
+        //设置文本的水平对对齐方式
+        context.textAlign = "center";
+        //设置文本颜色
+        context.lineWidth = 2;
+        context.font = "15px Arial";
+        context.strokeStyle = sealData.sealColor;
+        context.strokeRect(1, 1, canvas.width - 5, canvas.height - 5);
+        context.lineWidth = 1;
+        context.strokeRect(4, 4, canvas.width - 11, canvas.height - 11);
+
+        //中文
+        context.save();
+        context.lineWidth = 2;
+        context.fillStyle = sealData.sealColor;
+        context.fillText(
+          sealData.sealCompany,
+          canvas.width / 2,
+          canvas.height / 2 - sealData.sealSpacing
+        );
+        context.restore();
+        //英文
+        context.save();
+        context.font = "12px Arial";
+        context.lineWidth = 2;
+        context.fillStyle = sealData.sealColor;
+        context.fillText(
+          sealData.sealECompany,
+          canvas.width / 2,
+          canvas.height / 2
+        );
+        context.restore();
+        // 绘制印章类型
+        context.save();
+        context.lineWidth = 2;
+        context.fillStyle = sealData.sealColor;
+        context.fillText(
+          sealData.sealType,
+          canvas.width / 2,
+          canvas.height / 2 + sealData.sealSpacing
+        );
+        context.restore();
+      }
+
+      //椭圆印章
+      function createEllipseSeal(context, sealData) {
+        var width = canvas.width / 2;
+        var height = canvas.height / 2;
+        //设置文本颜色
+        context.strokeStyle = sealData.sealColor;
+        //设置文本的垂直对齐方式
+        context.textBaseline = "middle";
+        //设置文本的水平对对齐方式
+        context.textAlign = "center";
+
+        //3个参数： 左边距 上边据 宽度 椭圆扁度
+        //椭圆1
+        context.lineWidth = 2;
+        BezierEllipse4(context, width + 2, height - 1, width - 4, height - 24);
+        //椭圆2
+        context.lineWidth = 1;
+        BezierEllipse4(context, width + 2, height - 1, width - 6, height - 26);
+
+        if (sealData.sealEnglish == "1") {
+          //绘制英文
+          var circle = {
+            x: width,
+            y: height,
+            radius: width - 21,
+          };
+          //控制字符起始位置度数
+          var startAngle = 190;
+          //首位字符相隔度数
+          var endAngle = -10;
+          //圆的半径
+          var radius = circle.radius - sealData.sealSpacing;
+          //每个字母占的弧度
+          var angleDecrement =
+            (startAngle - endAngle) / (sealData.sealCompany.length - 1);
+          context.font = "18px SimSun";
+          //横轴缩放比率
+          var ratioX = (width - 17) / circle.radius;
+          //纵轴缩放比率
+          var ratioY = (height - 34) / circle.radius;
+          //进行缩放（均匀压缩）
+          context.scale(ratioX, ratioY);
+          var index = 0;
+          context.lineWidth = 1;
+          for (var index = 0; index < sealData.sealCompany.length; index++) {
+            context.save();
+            context.beginPath();
+            //绘制点
+            context.translate(
+              circle.x + Math.cos((Math.PI / 180) * startAngle) * radius - 3,
+              circle.y - Math.sin((Math.PI / 180) * startAngle) * radius + 24
+            );
+            context.rotate(Math.PI / 2 - (Math.PI / 180) * startAngle); //Math.PI/2为旋转90度  Math.PI/180*X为旋转多少度
+            context.fillText(sealData.sealCompany.charAt(index), 0, 0);
+            context.strokeText(sealData.sealCompany.charAt(index), 0, 0);
+            startAngle -= angleDecrement;
+            context.restore();
+          }
+
+          // 绘制印章类型
+          context.font = "border 18px SimSun";
+          context.lineWidth = 2;
+          context.fillStyle = sealData.sealColor;
+          context.fillText(sealData.sealType, width - 6, height + 45);
+          context.save();
+        } else if (sealData.sealEnglish == "2") {
+          //椭圆3
+          context.lineWidth = 2;
+          BezierEllipse4(
+            context,
+            width + 2,
+            height - 1,
+            width - 20 - sealData.sealSpacing,
+            height - 40 - sealData.sealSpacing
+          );
+
+          //绘制英文
+          var circle = {
+            x: width,
+            y: height,
+            radius: width - 22,
+          };
+          //控制字符起始位置度数
+          var startAngle = 230;
+          //首位字符相隔度数
+          var endAngle = -40;
+          //圆的半径
+          var radius = circle.radius;
+          //每个字母占的弧度
+          var angleDecrement =
+            (startAngle - endAngle) / (sealData.sealECompany.length - 1);
+          context.font = "10px SimSun";
+          //横轴缩放比率
+          var ratioX = (width - 12.5) / circle.radius;
+          //纵轴缩放比率
+          var ratioY = (height - 34.5) / circle.radius;
+          //进行缩放（均匀压缩）
+          context.scale(ratioX, ratioY);
+          var index = 0;
+          context.lineWidth = 1;
+          for (var index = 0; index < sealData.sealECompany.length; index++) {
+            context.save();
+            context.beginPath();
+            //绘制点
+            context.translate(
+              circle.x + Math.cos((Math.PI / 180) * startAngle) * radius - 10,
+              circle.y - Math.sin((Math.PI / 180) * startAngle) * radius + 19
+            );
+            context.rotate(Math.PI / 2 - (Math.PI / 180) * startAngle); //Math.PI/2为旋转90度  Math.PI/180*X为旋转多少度
+            context.fillText(sealData.sealECompany.charAt(index), 0, 0);
+            context.strokeText(sealData.sealECompany.charAt(index), 0, 0);
+            startAngle -= angleDecrement;
+            context.restore();
+          }
+          // 绘制印章公司
+          context.font = "14px SimSun";
+          context.lineWidth = 1;
+          context.fillStyle = sealData.sealColor;
+          context.fillText(
+            sealData.sealCompany.substring(0, 6),
+            width - 11,
+            height + 6
+          );
+          context.save();
+          context.fillText(
+            sealData.sealCompany.substring(6, 12),
+            width - 12,
+            height + 25
+          );
+          context.save();
+          context.fillText(
+            sealData.sealCompany.substring(12, sealData.sealCompany.length),
+            width - 12,
+            height + 40
+          );
+          context.save();
+
+          // 绘制印章类型
+          context.font = "10px SimSun";
+          context.lineWidth = 1;
+          context.fillStyle = sealData.sealColor;
+          context.fillText(sealData.sealType, width - 10, height + 55);
+          context.save();
+        }
+      }
+
+      //圆形印章
+      function createCircularSeal(context, sealData) {
+        //绘制印章边框1
+        var width = canvas.width / 2;
+        var height = canvas.height / 2;
+        //-------------------最外圈两个圆 开始------------------------------------------------------
+        context.lineWidth = 2;
+        context.strokeStyle = sealData.sealColor;
+        context.beginPath();
+        //arc(x, y, radius, startRad, endRad, anticlockwise)
+        //在canvas画布上绘制以坐标点(x,y)为圆心、
+        //半径为radius的圆上的一段弧线。
+        //起始弧度是startRad.
+        //结束弧度是endRad。
+        //anticlockwise表示是以逆时针方向还是顺时针方向开始绘制，如果为true则表示逆时针，如果为false则表示顺时针。anticlockwise参数是可选的，默认为false，即顺时针。
+        //以方形中心为圆心 画半径为边长一半减2px的园
+        context.arc(width, height, width - 2, 0, Math.PI * 2, false);
+        context.stroke();
+        context.save();
+        //绘制印章边框2
+        context.lineWidth = 1;
+        context.strokeStyle = sealData.sealColor;
+        context.beginPath();
+        //圆的半径在边长一半基础上减去5px
+        context.arc(width, height, width - 5, 0, Math.PI * 2, false);
+        context.stroke();
+        context.save();
+        //-------------------最外圈两个圆 结束-------------------------------------------------------
+
+        if (sealData.sealEnglish == "1") {
+          //只含有中文
+          //-------------------------画中文环绕 开始---------------------------------------------------
+          //控制字符起始位置度数
+          var startAngle = 240;
+          //首位字符相隔度数
+          var endAngle = -40;
+          //圆的半径在边长一半基础上减去23px
+          var radius = width - 25 - sealData.sealSpacing;
+
+          //每个字母占的弧度
+          var angleDecrement =
+            (startAngle - endAngle) / (sealData.sealCompany.length - 1);
+          context.font = "18px SimSun";
+          var index = 0;
+          for (var index = 0; index < sealData.sealECompany.length; index++) {
+            context.save();
+            context.beginPath();
+            //绘制点
+            context.translate(
+              width + Math.cos((Math.PI / 180) * startAngle) * radius,
+              height - Math.sin((Math.PI / 180) * startAngle) * radius
+            );
+            //Math.PI/2为旋转90度  Math.PI/180*X为旋转多少度
+            context.rotate(Math.PI / 2 - (Math.PI / 180) * startAngle);
+            context.fillText(sealData.sealCompany.charAt(index), 0, 0);
+            context.strokeText(sealData.sealCompany.charAt(index), 0, 0);
+            startAngle -= angleDecrement;
+            context.restore();
+          }
+          //-------------------------画中文环绕 结束----------------------------------------------------
+        } else if (sealData.sealEnglish == "2") {
+          //含中英文
+          //-------------------------画英文环绕 开始---------------------------------------------------
+          //控制字符起始位置度数
+          var startAngle = 240;
+          //首位字符相隔度数
+          var endAngle = -40;
+          //圆的半径在边长一半基础上减去16px
+          var radius = width - 16;
+          //每个字母占的弧度
+          var angleDecrement =
+            (startAngle - endAngle) / (sealData.sealECompany.length - 1);
+          context.font = "11px SimSun";
+          var index = 0;
+          for (var index = 0; index < sealData.sealECompany.length; index++) {
+            context.save();
+            context.beginPath();
+            //绘制点
+            context.translate(
+              width + Math.cos((Math.PI / 180) * startAngle) * radius,
+              height - Math.sin((Math.PI / 180) * startAngle) * radius
+            );
+            //Math.PI/2为旋转90度  Math.PI/180*X为旋转多少度
+            context.rotate(Math.PI / 2 - (Math.PI / 180) * startAngle);
+            context.fillText(sealData.sealECompany.charAt(index), 0, 0);
+            context.strokeText(sealData.sealECompany.charAt(index), 0, 0);
+            startAngle -= angleDecrement;
+            context.restore();
+          }
+          //-------------------------画英文环绕 结束----------------------------------------------------
+
+          //-------------------------画内圆 开始--------------------------------------------------------
+          //绘制印章边框3
+          context.lineWidth = 1;
+          context.strokeStyle = sealData.sealColor;
+          context.beginPath();
+          //圆的半径在边长一半基础上减去20px再减去用户设置的内间距
+          context.arc(
+            width,
+            height,
+            width - 20 - sealData.sealSpacing,
+            0,
+            Math.PI * 2,
+            false
+          );
+          context.stroke();
+          context.save();
+          //-------------------------画内圆 结束---------------------------------------------------------
+
+          //-------------------------画中文环绕 开始---------------------------------------------------
+          startAngle = 240;
+          //圆的半径在边长一半基础上减去37px 再减去用户设置的间隔
+          radius = width - 37 - sealData.sealSpacing;
+          //每个字母占的弧度
+          var angleDecrement =
+            (startAngle - endAngle) / (sealData.sealCompany.length - 1);
+          context.font = "15px SimSun";
+          var index = 0;
+          for (var index = 0; index < sealData.sealECompany.length; index++) {
+            context.save();
+            context.beginPath();
+            //绘制点
+            context.translate(
+              width + Math.cos((Math.PI / 180) * startAngle) * radius,
+              height - Math.sin((Math.PI / 180) * startAngle) * radius
+            );
+            //Math.PI/2为旋转90度  Math.PI/180*X为旋转多少度
+            context.rotate(Math.PI / 2 - (Math.PI / 180) * startAngle);
+            context.fillText(sealData.sealCompany.charAt(index), 0, 0);
+            context.strokeText(sealData.sealCompany.charAt(index), 0, 0);
+            startAngle -= angleDecrement;
+            context.restore();
+          }
+          //-------------------------画中文环绕 结束----------------------------------------------------
+        }
+
+        //-----------------画五角星 开始----------------------------------------------------------------
+        context.save();
+        context.fillStyle = sealData.sealColor;
+        //移动坐标圆心原点
+        context.translate(width, height);
+        //旋转
+        context.rotate(Math.PI);
+        //创建路径
+        context.beginPath();
+        //画五角星的五条边
+        for (var i = 0; i < 5; i++) {
+          context.lineTo(
+            Math.sin(i * ((Math.PI / 5) * 4)) * 20,
+            Math.cos(i * ((Math.PI / 5) * 4)) * 20
+          );
+        }
+        context.closePath();
+        context.stroke();
+        context.fill();
+        context.restore();
+        //-----------------画五角星 结束-------------------------------------------------------------------
+
+        //-----------------绘制印章类型 开始----------------------------------------------------------------
+        context.font = "12px SimSun";
+        context.textBaseline = "middle"; //设置文本的垂直对齐方式
+        context.textAlign = "center"; //设置文本的水平对对齐方式
+        context.lineWidth = 1;
+        context.fillStyle = sealData.sealColor;
+        context.fillText(sealData.sealType, width, height + 30);
+        //-----------------绘制印章类型 结束----------------------------------------------------------------
+      }
+
+      function BezierEllipse4(ctx, x, y, a, b) {
+        var k = 0.5522848,
+          ox = a * k, // 水平控制点偏移量
+          oy = b * k; // 垂直控制点偏移量</p> <p>
+        ctx.beginPath();
+        //从椭圆的左端点开始顺时针绘制四条三次贝塞尔曲线
+        ctx.moveTo(x - a, y);
+        ctx.bezierCurveTo(x - a, y - oy, x - ox, y - b, x, y - b);
+        ctx.bezierCurveTo(x + ox, y - b, x + a, y - oy, x + a, y);
+        ctx.bezierCurveTo(x + a, y + oy, x + ox, y + b, x, y + b);
+        ctx.bezierCurveTo(x - ox, y + b, x - a, y + oy, x - a, y);
+        ctx.closePath();
+        ctx.stroke();
+      }
+    </script>
+  </body>
 </html>
