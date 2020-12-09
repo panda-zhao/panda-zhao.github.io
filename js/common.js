@@ -30,6 +30,7 @@ var data = [
     {name: "base64转码器", url: "https://github.com/dankogai/js-base64" ,title: "js-base64"},
     {name: "表单异步验证", url: "https://github.com/tmpfs/async-validate" ,title: ""},
     {name: "内容管理系统DoraCMS",url: "https://github.com/doramart/DoraCMS",title: "Nodejs开发的内容管理系统DoraCMS"},
+    {name: "vue拖动排序",url: "https://github.com/SortableJS/Vue.Draggable",title: "Draggable"}
   ],
   //四、Vue框架
   [
