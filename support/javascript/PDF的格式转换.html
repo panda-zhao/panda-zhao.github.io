@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PDF的格式转换</title>
+  <style>
+    /* *{padding: 0; margin: 0;} */
+    .wrap{
+      box-sizing: border-box;
+      padding: 15px;
+      display: flex;
+      flex-direction: row;
+      text-align: center;
+      height: 100vh;
+    }
+    .wrap .left{
+      border: 1px dashed brown;
+      padding: 15px;
+    }
+    .left #pdf_uploads{
+      opacity: 1
+    }
+    .wrap .right{
+      flex: 1;
+      border: 1px dashed #ccc;
+      margin-left: 15px;
+    }
+    #iframe{
+      flex: 1;
+      display: block;
+      width: 100%;
+      height: 100%;
+      margin: 0 auto;
+      border: 0;
+      max-width: 800px;
+    }
+    .upload-section{
+      width: 300px;
+      height: 250px;
+    }
+    .btn{
+      display: block;
+      margin: 15px auto;
+      padding: 15px 0;
+      width: 100%;
+      font-size: 16px;
+      letter-spacing: 1px;
+      color: #fff;
+      background: rgb(33,99,224);
+      background: linear-gradient(90deg, rgba(33,99,224,1) 25%, rgba(253,29,29,0.9920343137254902) 75%);
+      border-radius: 4px;
+      border: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="left">
+      <div class="row">
+        <h2>上传PDF转base64</h2>
+        <label for="pdf_uploads" class="btn">
+          <!-- <span>选择PDF文件上传(application/pdf)</span> -->
+          上传PDF
+        </label>
+        <input type="file" id="pdf_uploads" multiple accept="application/pdf">
+      </div>
+
+      <div class="row">
+        <h2>base64Url字符串</h2>
+        <textarea name="" id="binaryStream" cols="50" rows="10" placeholder="要处理的url"></textarea>
+        <button id="btn1" class="btn">生成url</button>
+      </div>
+
+      <div class="row">
+        <h2>可在线预览的地址</h2>
+        <textarea name="" id="pdfBase64" cols="50" rows="10" placeholder="浏览器可以直接打开的base64"></textarea>
+        <button id="btn2" class="btn">点击预览</button>
+      </div>
+    </div>
+
+    <div class="right">
+      <h1>预览区</h1>
+      <embed src="" type="application/pdf" id="iframe">
+      <!-- <iframe src="" frameborder="0" id="iframe"></iframe> -->
+    </div>
+    
+  </div>
+
+  
+  
+
+  <script>
+    pdf_uploads.addEventListener("change", function(e){
+      const files = this.files || e.target.files
+      const file = files[0] // 我们只用第一个
+      console.log('file=', file)
+      var reader = new FileReader()
+      reader.readAsDataURL(file) // 将文件读取为DataURL
+      reader.onload = function (e){
+        console.log('【file ===> base64成功】base64=', e.target.result)
+        pdfBase64.value = e.target.result
+      }
+      reader.onerror = function (error){
+        alert(`【file转base64时发生错误】${JSON.stringify(error)}`)
+      }
+    })
+    btn1.onclick = function(){
+      if(!binaryStream.value) return alert('请先输入要处理的内容！')
+      pdfBase64.value = 'data:application/pdf;base64,' + binaryStream.value.replace(/-/g, '+').replace(/_/g, '/')
+    }
+
+    btn2.addEventListener("click", function(e){
+      if(!pdfBase64.value) return alert('地址不能为空')
+      iframe.src = pdfBase64.value
+    })
+  </script>
+</body>
+</html>
