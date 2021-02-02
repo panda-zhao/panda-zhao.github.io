@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.2 数组的增删改查</title>
+</head>
+<body>
+  <script>
+    const arr = [1,3,5,4,2]
+    
+    // 排序1层(改变原数组)
+    const sort = arr.sort((a, b)=> a - b)// 升序排列  [1,2,3,4,5]
+    console.log('sort', arr, sort)
+
+    // 对象数组
+    const ObjArr = [
+      {name:'工作一', createdTime: "2021-02-02 10:57:13"},
+      {name:'工作二', createdTime: "2022-12-03 17:12:22"},
+      {name:'工作三', createdTime: "2020-09-03 19:54:21"}
+    ];
+
+    const sortObjArr = ObjArr.sort((a, b) => {
+      return Date.parse(b['createdTime']) - Date.parse(a['createdTime']) // 倒序排列
+    })
+    console.log('sortObjArr', ObjArr, sortObjArr)
+
+
+  </script>
+</body>
+</html>
