@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>对象的方法</title>
+  </head>
+  <body>
+    Object.is()
+    Object.assign()
+    Object.getOwnPropertyDescriptors()
+    __proto__属性，Object.setPrototypeOf()，Object.getPrototypeOf()
+    Object.keys()，Object.values()，Object.entries()
+    Object.fromEntries()
+    <script>
+      const person = {
+        姓名: "张三",
+        年龄: 18,
+        性别: "男",
+      };
+      // 1 Object.is() 
+      // 相等运算符（==）和严格相等运算符（===）。它们都有缺点，前者会自动转换数据类型，后者的NaN不等于自身，以及+0等于-0。JavaScript 缺乏一种运算，在所有环境中，只要两个值是一样的，它们就应该相等。
+      // ES6 提出“Same-value equality”（同值相等）算法，用来解决这个问题。Object.is就是部署这个算法的新方法。它用来比较两个值是否严格相等，与严格比较运算符（===）的行为基本一致。
+      Object.is('foo', 'foo')// true
+      Object.is({}, {}) // false
+      // 不同之处只有两个：一是+0不等于-0，二是NaN等于自身。
+
+      +0 === -0 //true
+      NaN === NaN // false
+
+      Object.is(+0, -0) // false
+      Object.is(NaN, NaN) // true
+
+
+      // 2 Object.assign()
+      // 方法用于对象的合并，将源对象（source）的所有可枚举属性，复制到目标对象（target）。
+      const assign = Object.assign(person, {'手机号': '13988888888'}) //  {姓名: "张三", 年龄: 18, 性别: "男", 手机号: "13988888888"}
+
+      
+      // 3 Object.getOwnPropertyDescriptor() && Object.getOwnPropertyDescriptors(obj)
+      // ES5 的Object.getOwnPropertyDescriptor()方法会返回某个对象属性的描述对象（descriptor）。
+      // ES2017 引入了Object.getOwnPropertyDescriptors()方法，返回指定对象所有自身属性（非继承属性）的描述对象。
+      
+      const getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor(person, '姓名')
+      console.log("getOwnPropertyDescriptor", getOwnPropertyDescriptor); // {value: "张三", writable: true, enumerable: true, configurable: true}
+      const getOwnPropertyDescriptors = Object.getOwnPropertyDescriptors(person)
+      console.log("getOwnPropertyDescriptors", getOwnPropertyDescriptors); 
+      // [{姓名: {value: "张三", writable: true, enumerable: true, configurable: true}},
+      // {年龄: {value: 18, writable: true, enumerable: true, configurable: true}},
+      // {性别: {value: "男", writable: true, enumerable: true, configurable: true}}]
+
+      // 4 Object.keys(obj)
+      // 返回一个数组，成员是参数对象自身的（不含继承的）所有可遍历（enumerable）属性的键名。
+      const keys = Object.keys(person)
+      console.log("keys", keys); // ["姓名", "年龄", "性别"]
+
+      // 5 Object.values()
+      // 返回一个数组，成员是参数对象自身的（不含继承的）所有可遍历（enumerable）属性的键值。
+      const values = Object.values(person)
+      console.log("values", values); // ["张三", "18", "男"]
+
+      // 6 Object.entries()
+      // 返回一个数组，成员是参数对象自身的（不含继承的）所有可遍历（enumerable）属性的键值对数组。
+      const entries = Object.entries(person)
+      console.log("entries", entries); // [["姓名", "张三"], ["年龄", 18], ["性别", "男"]]
+      
+      // 7 Object.fromEntries()
+      // 是Object.entries()的逆操作，用于将一个键值对数组转为对象。
+      const arr = [["姓名", "张三"], ["年龄", 18], ["性别", "男"]]
+      const fromEntries = Object.fromEntries(arr)
+      console.log("fromEntries", fromEntries); // {姓名: "张三", 年龄: 18, 性别: "男"}
+    </script>
+  </body>
+</html>

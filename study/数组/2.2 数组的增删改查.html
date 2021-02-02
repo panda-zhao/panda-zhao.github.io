@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.2 数组的增删改查</title>
+</head>
+<body>
+  <script>
+    const arr = ['唐僧', '孙悟空', '猪悟能', '沙悟净']
+    console.log('判断是否数组', typeof arr , typeof arr === 'Array')
+    
+    // 删除(改变原数组)
+    // 参数1-起始下标 参数2-删除数量 返回删除的数组，
+    const splice = JSON.parse(JSON.stringify(arr)).splice(1, 1)
+    console.log('splice', arr, splice) // ["孙悟空"]
+
+    // 复制(不改变原数组)
+    // 参数1-开始下标 参数2- 删除的数量
+    const slice = arr.slice(0, 2)
+    console.log('slice', arr, slice) //  ["唐僧", "猪悟能"]
+
+    
+    // 过滤数组(不改变原数组)
+    const filter = arr.filter(item => item.includes('猪'))
+    console.log('filter', arr, filter) // ["猪悟能"]
+  </script>
+</body>
+</html>

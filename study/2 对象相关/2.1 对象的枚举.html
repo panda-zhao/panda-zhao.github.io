@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>对象方法</title>
+</head>
+<body>
+  <script>
+    const person = {
+      '姓名': '张三',
+      '年龄': 18,
+      "性别": '男'
+    }
+    // 获取对象的key
+    const getOwnPropertyNames = Object.getOwnPropertyNames(person)
+    console.log('getOwnPropertyNames', getOwnPropertyNames) // ["姓名", "年龄", "性别"]
+    // 获取该属性的描述对象。
+    const getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor(person, '姓名')
+    console.log('getOwnPropertyDescriptor', getOwnPropertyDescriptor) // {value: "张三", writable: true, enumerable: true, configurable: true}
+  </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    （1）for...in for...in循环遍历对象自身的和继承的可枚举属性（不含 Symbol
+    属性）。 
+    （2）Object.keys(obj)
+    Object.keys返回一个数组，包括对象自身的（不含继承的）所有可枚举属性（不含Symbol 属性）的键名。 
+    （3）Object.getOwnPropertyNames(obj)
+    Object.getOwnPropertyNames返回一个数组，包含对象自身的所有属性（不含 Symbol属性，但是包括不可枚举属性）的键名。 
+    （4）Object.getOwnPropertySymbols(obj)
+    Object.getOwnPropertySymbols返回一个数组，包含对象自身的所有 Symbol
+    属性的键名。 
+    （5）Reflect.ownKeys(obj)
+    Reflect.ownKeys返回一个数组，包含对象自身的（不含继承的）所有键名，不管键名是
+    Symbol 或字符串，也不管是否可枚举。
+    <script>
+      const person = {
+        姓名: "张三",
+        年龄: 18,
+        性别: "男",
+      };
+      // for...in
+      for (const key in person) {
+        if (person.hasOwnProperty.call(person, key)) {
+          const element = person[key];
+          console.log("element", element); // 张三 18 男
+        }
+      }
+      // Object.keys(obj)
+      const keys = Object.keys(person)
+      console.log("keys", keys); // ["姓名", "年龄", "性别"]
+
+      // Object.getOwnPropertyNames(obj)
+      const getOwnPropertyNames = Object.getOwnPropertyNames(person)
+      console.log("getOwnPropertyNames", getOwnPropertyNames); // ["姓名", "年龄", "性别"]
+
+      // Object.getOwnPropertySymbols
+      const getOwnPropertySymbols = Object.getOwnPropertySymbols(person)
+      console.log("getOwnPropertySymbols", getOwnPropertySymbols); // []
+
+      // Reflect.ownKeys
+      const ownKeys = Reflect.ownKeys(person)
+      console.log("ownKeys", ownKeys); //  ["姓名", "年龄", "性别"]
+    </script>
+  </body>
+</html>
