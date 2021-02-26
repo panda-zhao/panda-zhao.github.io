@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>1.1 弹窗</title>
+  </head>
+  <body>
+    <h1>警告框</h1>
+    <button id="btn1">警告框</button>
+    <h1>确认框</h1>
+    <button id="btn2">确认框</button>
+    <p id="confirmText"></p>
+    <h1>提示框</h1>
+    <button id="btn3">提示框</button>
+    <p id="promptText"></p>
+    <script>
+      /**
+       * 警告框经常用于确保用户可以得到某些信息。
+       * 当警告框出现后，用户需要点击确定按钮才能继续进行操作。
+       * */
+      btn1.addEventListener("click", function () {
+        window.alert("警告框")
+      })
+
+      /**
+       * 确认框通常用于验证是否接受用户操作。
+       * 当确认卡弹出时，用户可以点击 "确认" 或者 "取消" 来确定用户操作。
+       * 当你点击 "确认", 确认框返回 true， 如果点击 "取消", 确认框返回 false。
+       * 
+       * */
+      btn2.addEventListener("click", function () {
+        const chunk = window.confirm("警告框")
+        confirmText.innerHTML = chunk
+      })
+      
+      /**
+       * 提示框经常用于提示用户在进入页面前输入某个值。
+       * 当提示框出现后，用户需要输入某个值，然后点击确认或取消按钮才能继续操纵。
+       * 如果用户点击确认，那么返回值为输入的值。如果用户点击取消，那么返回值为 null。
+       * */
+      btn3.addEventListener("click", function () {
+        var chunk = window.prompt("请输入", "_default")
+        promptText.innerHTML = chunk
+      })
+    </script>
+  </body>
+</html>

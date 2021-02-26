@@ -10,3 +10,6 @@ Github Pages 访问地址：http://panda-zhao.github.io
 
 v1.0.1 2021/02/04
 - 新增字符串常用操作。
+
+v1.0.2 2021/02/26
+- 新增wiodow对象-弹窗
