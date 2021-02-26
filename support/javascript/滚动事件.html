@@ -65,7 +65,7 @@
       
     </div>
     <!-- 演示元素滚动 -->
-    <div class="demo-wrap" id="ele">
+    <div class="demo-wrap" id="demo">
       <div class="demo-content">
         
       </div>
@@ -93,11 +93,11 @@
     })
 
 
-    document.getElementById("ele").addEventListener("scroll", function(){
-      let scrollTop = document.getElementById("ele").scrollTop // 被卷走的高度
-      let clientHeight = document.getElementById("ele").clientHeight // 容器元素高度 height + padding
-      // let offsetHeight = document.getElementById("ele").offsetHeight // 容器元素所有高度 height + padding + border + 滚动条
-      let scrollHeight = document.getElementById("ele").scrollHeight // 总滚动高度
+    demo.addEventListener("scroll", function(){
+      let scrollTop = demo.scrollTop // 被卷走的高度
+      let clientHeight = demo.clientHeight // 容器元素高度 height + padding
+      // let offsetHeight = demo.offsetHeight // 容器元素所有高度 height + padding + border + 滚动条
+      let scrollHeight = demo.scrollHeight // 总滚动高度
       if(scrollTop === 0){
         console.log("【元素】当前位于顶部")
       }
@@ -112,10 +112,10 @@
       v2.innerHTML = clientHeight
       v3.innerHTML = scrollHeight
 
-      // console.log('被卷走的高度=', document.getElementById("ele").scrollTop)
-      // console.log('容器元素高度=', document.getElementById("ele").clientHeight) // 获取元素可视部分的高度，即 CSS 的 height 和 padding 属性值之和，元素边框和滚动条不包括在内，也不包含任何可能的滚动区域
-      // console.log('容器元素所有高度=', document.getElementById("ele").offsetHeight) // 元素在页面中占据的高度总和，包括 height、padding、border 以及滚动条的宽度
-      // console.log('总滚动高度=', document.getElementById("ele").scrollHeight)
+      // console.log('被卷走的高度=', demo.scrollTop)
+      // console.log('容器元素高度=', demo.clientHeight) // 获取元素可视部分的高度，即 CSS 的 height 和 padding 属性值之和，元素边框和滚动条不包括在内，也不包含任何可能的滚动区域
+      // console.log('容器元素所有高度=', demo.offsetHeight) // 元素在页面中占据的高度总和，包括 height、padding、border 以及滚动条的宽度
+      // console.log('总滚动高度=', demo.scrollHeight)
     });
   </script>
 </body>
