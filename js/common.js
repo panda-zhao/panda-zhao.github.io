@@ -20,6 +20,7 @@ var data = [
   
   //十四、gitHub工具&包
   [
+    {name:"GitHub 文件加速下载服务", url:"https://ghproxy.com/", title:"GitHub 文件加速下载服务"},
     // {name:"", url:"", title:""},
     {name: "复制到剪切板", url: "https://github.com/zenorocha/clipboard.js" ,title: "clipboard.js"},
     {name: "vue.js pdf查看器", url: "https://github.com/FranckFreiburger/vue-pdf" ,title: "vue-pdf"},
