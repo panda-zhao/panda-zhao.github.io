@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Class类</title>
+</head>
+
+<body>
+  <script>
+    // 构造函数
+    function ConstructorFunction  (name, age){
+      this.name  = name
+      this.age  = age
+    }
+    ConstructorFunction.prototype.say = function(){
+      alert(this.name)
+    }
+
+    // 类
+    class ClassFunction {
+      constructor(name, age){
+        this.name  = name
+        this.age  = age
+      }
+      say(){
+        alert(this.name)
+      }
+    }
+    
+
+    // 类的内部方法不可枚举
+    console.log(Object.keys(ConstructorFunction.prototype)) // 构造函数可以枚举
+    console.log(Object.keys(ClassFunction.prototype)) // 类的内部所有定义的方法，都是不可枚举的（non-enumerable）。
+    
+    // 类的类型和指向
+    console.log(typeof ConstructorFunction)
+    console.log(typeof ClassFunction) // "function"
+    console.log(ConstructorFunction === ConstructorFunction.prototype.constructor) // true
+    console.log(ClassFunction === ClassFunction.prototype.constructor) // true
+     
+    // 类的调用
+    const a = new ConstructorFunction('构造函数')
+    // a.say() // "构造函数"
+    const b = new ClassFunction('类函数')
+    // b.say() // "类函数"
+
+    console.log(ClassFunction.prototype.constructor === ClassFunction) // true
+
+    Object.assign(ClassFunction.prototype, {
+      toString(){},
+      toValue(){}
+    });
+    // extends继承
+    class ExtendsClassFunction extends ClassFunction {
+
+    }
+  </script>
+</body>
+
+</html>

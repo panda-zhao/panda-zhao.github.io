@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>1.3 浏览器对象</title>
+  </head>
+  <body>
+    <div>
+      <label for="userName">姓名</label>
+      <input type="text" name="userName" id="userName">
+    </div>
+    <div>
+      <label for="phone">手机号</label>
+      <input type="phone" name="phone" id="phone">
+    </div>
+    <div>
+      <button onclick="submitForm()">确认提交</button>
+    </div>
+    <div>
+      <a href="https://www.baidu.com/">a链接跳转</a>
+    </div>
+    <div>
+      <button onclick="submitForm()">确认提交2</button>
+    </div>
+
+    <script>
+      function submitForm () {
+        console.log('submitForm')
+        console.log('userName', userName.value)
+        console.log('phone', phone.value)
+        // window.location.href = 'https://www.baidu.com/'
+        window.location = 'https://www.baidu.com/'
+      }
+
+
+      function submitForm2 () {
+        console.log('submitForm')
+        console.log('userName', userName.value)
+        console.log('phone', phone.value)
+        window.open = 'https://www.baidu.com/'
+      }
+    </script>
+  </body>
+</html>

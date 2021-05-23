@@ -5,12 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>父页面</title>
+  <style>
+    #iframe1{
+      width: 100%;
+      height: 500px;
+    }
+  </style>
 </head>
 <body>
   <h1>使用iframe</h1>
   <!-- <button onclick="bindSwitchSrc">点击使用百度</button> -->
   <div>我是parent页面</div>
-  <iframe src="./child.html" frameborder="0" id="iframe1" name="iframeName"></iframe>
+  <!-- <iframe src="./child.html" frameborder="0" id="iframe1" name="iframeName"></iframe> -->
+  <iframe src="https://59.175.169.149:88/SearchCardController.do?goCardList" frameborder="0" id="iframe1" name="iframeName" ></iframe>
+  <!-- <iframe src=" http://scjg.hubei.gov.cn/JR-web/oauth/login_files.html" frameborder="0" id="iframe1" name="iframeName" ></iframe> -->
   <script>
     // 设置hash
     // var hash = window.location.hash
@@ -27,17 +35,17 @@
     /**
     * 发送消息
     */
-    var win = document.getElementsByTagName('iframe')[0].contentWindow;
-    var obj = { name: 'Jack' };
-    // 存入对象
-    win.postMessage(JSON.stringify({key: 'storage', method: 'set', data: obj}), 'http://bbb.com');
-    // 读取对象
-    win.postMessage(JSON.stringify({key: 'storage', method: "get"}), "*");
-    window.onmessage = function(e) {
-      if (e.origin != 'http://aaa.com') return;
-      // "Jack"
-      console.log(JSON.parse(e.data).name);
-    };
+    // var win = document.getElementsByTagName('iframe')[0].contentWindow;
+    // var obj = { name: 'Jack' };
+    // // 存入对象
+    // win.postMessage(JSON.stringify({key: 'storage', method: 'set', data: obj}), 'http://bbb.com');
+    // // 读取对象
+    // win.postMessage(JSON.stringify({key: 'storage', method: "get"}), "*");
+    // window.onmessage = function(e) {
+    //   if (e.origin != 'http://aaa.com') return;
+    //   // "Jack"
+    //   console.log(JSON.parse(e.data).name);
+    // };
 
     // window.onload = function () {
     //   var iframe = document.getElementById('iframe1')

@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="./css/common.css" />
     <base target="_blank" />
     <title>panda的收藏网站</title>
+    <script src="https://unpkg.com/vconsole/dist/vconsole.min.js"></script>
+    <script src="./config.js"></script>
     <script src="./js/jquery.min.js"></script>
     <style>
       body{
@@ -79,8 +81,9 @@
       </a>
     </footer>
     <script src="./js/common.js"></script>
-
     <script>
+      var vConsole = new window.VConsole();
+      console.log("version=", window.$config.version)
       $('.container dl').each(function(i){
         var _dl = $(this);//当前的列表JQuery对象
         $.each( data[i] ,function(index,item){

@@ -12,6 +12,108 @@
     for (const item of arr) {
       console.log('item=', item)// 
     }
+    const data = [
+    {
+      "id": "4806184473e644468eb0a7b56e7c345c",
+      "ou": "法人",
+      "cn": null,
+      "type": "VIRTUAL_DIRECTORY",
+      "base": "ou=法人,ou=海南省"
+    },
+    {
+      "id": null,
+      "ou": "元数据",
+      "cn": "gender2",
+      "type": null,
+      "base": "ou=元数据,ou=海南省"
+    },
+    {
+      "id": "53c7c21ded6a46abaefb69e021e3444e",
+      "ou": "某某县",
+      "cn": "某某县",
+      "type": "COUNTY",
+      "base": "ou=某某县,ou=海南省"
+    },
+    {
+      "id": "da4dc021ee914911aa40aee7db03f50c",
+      "ou": "自然人",
+      "cn": null,
+      "type": "VIRTUAL_DIRECTORY",
+      "base": "ou=自然人,ou=海南省"
+    },
+    {
+      "id": "29cc6f15fcb44425980c3cd5661dec92",
+      "ou": "伟扬的部门",
+      "cn": null,
+      "type": "DEPARTMENT",
+      "base": "ou=伟扬的部门,ou=海南省"
+    },
+    {
+      "id": "7e821775f3534fd3a23913b963f59e6d",
+      "ou": "海南省三亚市",
+      "cn": "海南省三亚市",
+      "type": "CITY",
+      "base": "ou=海南省三亚市,ou=海南省"
+    },
+    {
+      "id": "bfbd742d27164ac983d654df9b5ffe2a",
+      "ou": "海南省三沙市",
+      "cn": "海南省三沙市",
+      "type": "CITY",
+      "base": "ou=海南省三沙市,ou=海南省"
+    },
+    {
+      "id": "ba6d2e6c26e74b4b861f78f7f55b6996",
+      "ou": "海南省定安县",
+      "cn": "海南省定安县",
+      "type": "CITY",
+      "base": "ou=海南省定安县,ou=海南省"
+    },
+    {
+      "id": "c3a8fb4d918641e6b52692edc913fc90",
+      "ou": "海南省海口市",
+      "cn": "海南省海口市",
+      "type": "CITY",
+      "base": "ou=海南省海口市,ou=海南省"
+    },
+    {
+      "id": "b1f5d1d9d3be41859fab2d6b71437a58",
+      "ou": "海南省琼海市",
+      "cn": "海南省琼海市",
+      "type": "CITY",
+      "base": "ou=海南省琼海市,ou=海南省"
+    },
+    {
+      "id": "8d672140d84d4a4e81c5346b912565fd",
+      "ou": "海南省高中部",
+      "cn": null,
+      "type": "DEPARTMENT",
+      "base": "ou=海南省高中部,ou=海南省"
+    },
+    {
+      "id": "619b663a9c35443cbbc721c1190a1db9",
+      "ou": "新增海南省机构2342",
+      "cn": null,
+      "type": "DEPARTMENT",
+      "base": "ou=新增海南省机构2342,ou=海南省"
+    },
+    {
+      "id": "51c1a409817646b88f8bafabeadb4beb",
+      "ou": "海南省大数据管理局",
+      "cn": null,
+      "type": "DEPARTMENT",
+      "base": "ou=海南省大数据管理局,ou=海南省"
+    },
+    {
+      "id": "e9d743129fd548c19c631af388ed50aa",
+      "ou": "海南省发展和改革委员会信息中心",
+      "cn": null,
+      "type": "DEPARTMENT",
+      "base": "ou=海南省发展和改革委员会信息中心,ou=海南省"
+    }
+  ]
+  const chunk = data.filter(item => ['PROVINCE', 'CITY', 'DISTRICT', 'TOWN', 'VILLAGE', 'DEPARTMENT', 'APPLICATION'].includes(item.type))
+  console.log(chunk)
   </script>
 </body>
 </html>
