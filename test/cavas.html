@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>绘制印章</title>
+  </head>
+
+  <body>
+    <script>
+      function creatImg(data) {
+        const canvas = document.createElement("canvas");
+        // document.body.appendChild(canvas) // 打开注释将会插入DOM节点
+        canvas.width = 400;
+        canvas.height = 200;
+
+        var context = canvas.getContext("2d");
+        /**
+         * 打开注释显示边框
+         * */
+        // context.lineWidth = 1
+        // context.strokeStyle = 'red'
+        // context.strokeRect(1, 1, 398, 198)
+
+        context.font = "30px Arial";
+        let baseLine = 50;
+
+        // 处理超出换行
+        if (context.measureText(data.companyName).width > 380) {
+          for (var i = 0; i < data.companyName.length; i++) {
+            if (
+              context.measureText(data.companyName.substring(0, i + 1)).width >
+              380
+            ) {
+              context.fillText(data.companyName.substring(0, i), 10, baseLine);
+              baseLine += 40;
+              context.fillText(data.companyName.substring(i), 10, baseLine);
+              break;
+            }
+          }
+        } else {
+          baseLine += 30;
+          context.fillText(data.companyName, 10, baseLine);
+        }
+
+        context.font = "20px cursive";
+        baseLine += 30;
+        context.fillText(data.name, 10, baseLine);
+        context.font = "15px times";
+        baseLine += 20;
+        context.fillText(data.time, 10, baseLine);
+        context.font = "15px times";
+        baseLine += 20;
+        context.fillText(data.phone, 10, baseLine);
+        // 创建base64
+        const base64Img = canvas.toDataURL("image/png");
+        console.log(base64Img)
+        const previewImg = document.createElement("img");
+        document.body.appendChild(previewImg) // 打开注释将会插入预览图片DOM节点
+        previewImg.src = base64Img;
+      }
+      const data = {
+        name: "曹柯华",
+        companyName: "广州网融信息技术有限公司",
+        time: "2021-05-28",
+        phone: "13918233075",
+      }
+      creatImg(data)
+    </script>
+  </body>
+</html>

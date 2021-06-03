@@ -7,14 +7,42 @@
 </head>
 <body>
   <div>比较日期</div>
+  <video src=""></video>
   <script>
+    // downloadBlob('mp3')
+
+    // 下载blob文件到本地
+    // function downloadBlob (type){
+    //   const blob = "blob:https://www.thumbzilla.com/696e61d9-d57a-403d-bea7-2245ff7488d4"
+    //   const a= document.createElement("a")
+    //   a.href = URL.createObjectURL(blob)
+    //   a.download = 'filename.' + type
+    //   a.click()
+    //   URL.revokeObjectURL(a.href)
+    //   a.remove()
+    // }
+
+    const data = "blob:https://www.thumbzilla.com/696e61d9-d57a-403d-bea7-2245ff7488d4"
+    const name = 'demo'
+    const type = 'video/mp4'
+    let files = new window.File([data], name, {type: type}) // 转换成文件对象
+    console.log('files=', files)
+    
+    const blob = new Blob([files], {type: 'video/mp4'})
+    const a= document.createElement("a")
+    a.href = URL.createObjectURL(files)
+    a.download = name + '.' + type 
+    a.click()
+    URL.revokeObjectURL(a.href)
+    a.remove()
+
     // for (const item of 10) {
     //   console.log(item)
     // }
-    setTimeout(fn('aaa'), 1000)
-    function fn (id){
-      alert(id)
-    }
+    // setTimeout(fn('aaa'), 1000)
+    // function fn (id){
+    //   alert(id)
+    // }
     // let companyEndDate = '2020-04-30' // 经营期限-应该大于出资日期
     // let capitalDate = '2050-2-27' //出资日期
     // let small = new Date(companyEndDate.replace(/-/g, '\/'))
