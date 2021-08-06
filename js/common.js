@@ -4,6 +4,8 @@ var data = [
     
     {name: "GitHub",url: "https://github.com/panda-zhao",title: ""},
     {name: "腾讯开源",url: "https://gitee.com/Tencent",title: ""},
+    {name: "阿里开源",url: "https://opensource.alibaba.com/project",title: ""},
+    {name: "百度开源",url: "https://gitee.com/baidu",title: ""},
     {name: "技术支持",url: "./support/index.html",title: "技术支持"},
     {name: "常用速查表",url: "https://www.w3cschool.cn/dict/",title: "各大语言速查表"},
     {name: "开发者手册",url: "https://cloud.tencent.com/developer/devdocs",title: ""},
