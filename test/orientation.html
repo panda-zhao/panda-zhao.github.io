@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>横竖屏</title>
+</head>
+<body>
+  <script id="scriptFile">
+    alert(`当前是${window.orientation === 0? '竖屏': "横屏"}`  );
+    // console.log(document.getElementById('scriptFile').innerHTML)
+    // document.body.innerHTML = document.getElementById('scriptFile')
+
+    window.addEventListener("orientationchange", function() {
+      console.log("the orientation of the device is now " + screen.orientation.angle);
+    });
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="container">
+    <div id="signatureparent">
+      <div id="signature"></div>
+    </div>
+    <br>
+    <button type="button" class="btn btn-primary btn-block" id="save">保存</button>
+    <button type="button" class="btn btn-default btn-block" id="clear">清除</button>
+  </div>
+  <script>
+    var param = {
+      width: '100%', //签名区域的宽
+      height: '300px', //签名区域的高
+      cssclass: 'zx11', //画布的类 可以写自定义的样式
+      UndoButton: true, //撤销按钮的状态 这个按钮的样式修改要去jSignature.js文件中去找
+      signatureLine: false, //去除默认画布上那条横线
+      lineWidth: '1' //画笔的大小
+    };
+    $("#signature").jSignature(param); // 初始化jSignature窗口
+    //jSignature提供了清除的API reset
+    $('#clear').click(function () {
+      $("#signature").jSignature("reset"); // 清除画布并重新渲染
+    });
+    //提交
+    $('#save').click(function () {
+          //获取签名生成的图片 默认是png的
+          var datapair = $("#signature").jSignature("getData", "image");
+          var i = new Image();
+          i.src = "data:" + datapair[0] + "," + datapair[1];
+          i.image = datapair[1];
+          console.log(i.image);
+        })
+  </script>
+</body>
+
+</html>

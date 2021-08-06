@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function getIPAdress() {
+      let localhost = '';
+    var interfaces = require('os').networkInterfaces();
+    for (var devName in interfaces) {
+      var iface = interfaces[devName];
+      for (var i = 0; i < iface.length; i++) {
+          var alias = iface[i];
+          if (alias.family === 'IPv4' && alias.address !== '127.0.0.1' && !alias.internal) {
+            localhost = alias.address;
+          }
+      }
+    }
+    return localhost
+}
+getIPAdress()
+  </script>
+</body>
+</html>

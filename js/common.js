@@ -174,12 +174,13 @@ var data = [
   
   //二、作品欣赏
   [
+    {name: "手写签名",url: "./template/jsSignature/index.html",title: "手写签名"},
     {name: "魔方游戏",url: "./template/thecube/index.html",title: "three.js游戏"},
     {name: "CSS3炫彩登录",url: "./template/login.html",title: "CSS3炫彩登录"},
     {name: "CSS行走的大象",url: "./template/elephant/index.html",title: "CSS行走的大象"},
     {name: "转盘抽奖",url: "./template/luckDraw/index.html",title: "转盘抽奖"},
     {name: "飞机大战",url: "./template/planeWar/index.html",title: "飞机大战游戏"},
-    {name: "俄罗斯方块",url: "./template/Tetris.html",title: "Tetris - 俄罗斯方块"},
+    {name: "俄罗斯方块",url: "./template/Tetris.html",title: "Tetris - 俄罗斯方块"}
   ],
   //三、自定义组件
   [
