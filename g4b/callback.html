@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="../js/vue.js"></script>
+  <script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
+  <title>批量处理回调问题</title>
+  <style>
+    
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    #app{
+      width: 1200px;
+      margin: 0 auto;
+    }
+    .z-title{
+      text-align: center;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      height: 50px;
+      line-height: 50px;
+    }
+    .z-talbe{
+      border-collapse: collapse;
+    }
+    th, td{
+      border: 1px solid #333;
+      padding: 5px;
+      text-align: center;
+    }
+    td{
+      font-size: 14px;
+      color: #666;
+    }
+    .z-td-1{
+      width: 50px;
+    }
+    .z-td-2{
+      width: 310px;
+    }
+    .z-td-3 p{
+      width: 740px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .z-td-4{
+      width: 100px;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <h1 class="z-title">{{ message }}</h1>
+    <table class="z-talbe">
+      <tr>
+        <th>序号</th>
+        <th>业务流水号</th>
+        <th>回调地址</th>
+        <th>操作</th>
+      </tr>
+      <tr v-for="(item, index) in sites">
+        <td class="z-td-1">{{index + 1 }}</td>
+        <td class="z-td-2">{{item.bizNum}}</td>
+        <td class="z-td-3"><p>{{item.callbackUrl}}</p></td>
+        <td>
+          <span v-if="item.complet" style="color: green;">已完成</span>
+          <button v-else @click="fetchData(item)">开始回调</button>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        message: '批量处理回调问题',
+        sites: [
+          { bizNum: '171c4019-fee2-48f4-b5c6-2607834fcf9c', callbackUrl: "https://sop.gzsi.gov.cn/egrantweb/contract/ctrSignOnlineCallBack?bizNum=171c4019-fee2-48f4-b5c6-2607834fcf9c&opType=YNKKexot2OE%3D", complet: false }
+        ]
+      },
+      computed: {
+        
+      },
+      methods: {
+        // 获取签署情况数据
+        fetchData(item) {
+          axios({
+            method: 'get',
+            url: 'https://szg.gz.gov.cn/kxrz/contract-box/signbox/envelopSign/getByBizNum?bizNum=' + item.bizNum,
+          })
+          .then((res)=>{
+            console.log(res)
+            const chunk = res.data
+            if(chunk && +chunk.code === 200){
+              this.callback(chunk.data, item)
+            }
+            alert("A1-" + chunk.message)
+          })
+          .catch(function (error) { // 请求失败处理
+            alert("A2-" + error)
+          })
+        },
+        // 推送回调
+        callback(data, biz){
+          const _signers =  data.signers
+          let _signState = "1"
+          if(_signers.every((item=>+item.state === 0))){
+            _signState = "0"
+          }
+          if(_signers.every((item=>+item.state === 1))){
+            _signState = "2"
+          }
+          const _list = []
+          for (const iterator of _signers) {
+            const signField = iterator.signFields[0]
+            _list.push({
+              "idcType": iterator.idcType,
+              "idcNum":iterator.idcNum,
+              "idcName":iterator.idcName,
+              "state": iterator.state,
+              "signRequestId": iterator.signRequestId,
+              "signedTime": iterator.signedTime?new Date(iterator.signedTime).getTime()/1000: null,
+              "signFieldId": signField.signFieldId,
+              "signFieldName": signField.signFieldName,
+              "signFieldState": signField.signFieldState,
+              "signWay": signField.signWay,
+              "fieldTextIdcType": signField.fieldTextIdcType,
+              "fieldTextIdcName": signField.fieldTextIdcName,
+              "fieldTextIdcNum": signField.fieldTextIdcNum
+            })
+          }
+          const params = {
+            "boxId": data.boxId,
+            "envelopeId": data.envelopeId,
+            "bizNum": data.bizNum,
+            "fileId": data.fileId,
+            "signState": _signState,
+            "signers": _list
+          }
+          axios({
+            method: 'post',
+            url: biz.callbackUrl,
+            data: params
+          })
+          .then(res => {
+            console.log(res)
+            const chunk = res.data
+            if(+chunk.code === 200){
+              console.log('回调成功')
+              for (const item of this.sites) {
+                if(biz.bizNum ===item.bizNum){
+                  item.complet = true
+                }
+              }
+              return
+            }
+            alert("B1-" + chunk.message)
+          })
+          .catch(function (error) { // 请求失败处理
+            alert("B2-" + error)
+          })
+        }
+      },
+    })
+    </script>
+</body>
+</html>
