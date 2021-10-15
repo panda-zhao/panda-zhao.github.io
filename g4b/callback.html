@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="../js/vue.js"></script>
   <script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
+  <script src="../js/xlsx.full.min.js"></script>
   <title>批量处理回调问题</title>
   <style>
     
@@ -15,8 +16,21 @@
       box-sizing: border-box;
     }
     #app{
-      width: 1200px;
-      margin: 0 auto;
+      padding: 50px;
+    }
+    .btn{
+      display: block;
+      text-align: center;
+      margin: 15px;
+      padding: 15px 0;
+      width: 300px;
+      font-size: 16px;
+      letter-spacing: 1px;
+      color: #fff;
+      background: rgb(33,99,224);
+      background: linear-gradient(90deg, rgba(33,99,224,1) 25%, rgba(253,29,29,0.9920343137254902) 75%);
+      border-radius: 4px;
+      border: 0;
     }
     .z-title{
       text-align: center;
@@ -36,19 +50,22 @@
       font-size: 14px;
       color: #666;
     }
-    .z-td-1{
+    /* .z-td-1{
       width: 50px;
     }
     .z-td-2{
       width: 310px;
     }
     .z-td-3 p{
-      width: 740px;
+      width: 340px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
     .z-td-4{
+      width: 100px;
+    } */
+    .z-btn{
       width: 100px;
     }
   </style>
@@ -56,19 +73,35 @@
 <body>
   <div id="app">
     <h1 class="z-title">{{ message }}</h1>
-    <table class="z-talbe">
+    <dl>
+      <dt>注意事项</dt>
+      <dd>1. 使用批量回调需要开启浏览器允许跨域模式。</dd>
+      <dd>2. 上传的excel文件标题依次是index，docName，companyName，callbackUrl，des</dd>
+    </dl>
+    <label for="file" class="btn">
+      <input type="file" id="file" style="display: none;" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" @change="selectFile"/>
+      点击上传EXCEL文件
+    </label>
+    <button @click="clearLocalStorage" class="btn">清空表格现有数据</button>
+    <table class="z-talbe" v-if="tableData.length > 0">
       <tr>
         <th>序号</th>
         <th>业务流水号</th>
+        <th>合同名称</th>
+        <th>公司名称</th>
+        <th>状态</th>
         <th>回调地址</th>
         <th>操作</th>
       </tr>
-      <tr v-for="(item, index) in sites">
-        <td class="z-td-1">{{index + 1 }}</td>
+      <tr v-for="(item, index) in tableData">
+        <td class="z-td-1">{{item.index}}</td>
         <td class="z-td-2">{{item.bizNum}}</td>
+        <td class="z-td-3"><p>{{item.docName}}</p></td>
+        <td class="z-td-4"><p>{{item.companyName}}</p></td>
+        <td class="z-td-4"><p>{{item.des}}</p></td>
         <td class="z-td-3"><p>{{item.callbackUrl}}</p></td>
-        <td>
-          <span v-if="item.complet" style="color: green;">已完成</span>
+        <td class="z-btn">
+          <span v-if="item.complet" style="color: green;">发送回调成功</span>
           <button v-else @click="fetchData(item)">开始回调</button>
         </td>
       </tr>
@@ -80,14 +113,74 @@
       el: '#app',
       data: {
         message: '批量处理回调问题',
-        sites: [
-          { bizNum: '171c4019-fee2-48f4-b5c6-2607834fcf9c', callbackUrl: "https://sop.gzsi.gov.cn/egrantweb/contract/ctrSignOnlineCallBack?bizNum=171c4019-fee2-48f4-b5c6-2607834fcf9c&opType=YNKKexot2OE%3D", complet: false }
-        ]
+        titles: [],
+        tableData: []
+        // tableData: [
+        //   { 
+        //     bizNum: 'c97d03e6-fe11-4be0-9ec5-a763ac93bddb', 
+        //     companyName: "华南农业大学",
+        //     docName: "辣木叶提高青贮饲料蛋白保存的机制研究",
+        //     callbackUrl: "https://sop.gzsi.gov.cn/egrantweb/contract/ctrSignOnlineCallBack?bizNum=c97d03e6-fe11-4be0-9ec5-a763ac93bddb&opType=YNKKexot2OE%3D",
+        //     des: "合并失败签名不成功",
+        //     complet: false 
+        //   }
+        // ]
       },
-      computed: {
-        
+      mounted () {
+        this.initData()
       },
       methods: {
+        initData(){
+          const tableData = window.localStorage.getItem("tableData")
+          if(!tableData){
+            window.localStorage.setItem("tableData", JSON.stringify([]))
+          }
+          this.tableData = [...JSON.parse(window.localStorage.getItem("tableData"))]
+        },
+        clearLocalStorage(){
+          window.localStorage.setItem("tableData", JSON.stringify([]))
+          this.initData()
+        },
+        selectFile(e){
+          console.log(e)
+          var files = e.target.files;
+          if(files.length == 0) return;
+          var file = files[0];
+          if(!/\.xlsx$/g.test(file.name)) {
+            alert('仅支持读取xlsx格式！');
+            return;
+          }
+          // 读取excel
+          var reader = new FileReader();
+          reader.onload = (e)=> {
+            var data = e.target.result;
+            var workbook = XLSX.read(data, {type: 'binary'});
+            console.log(workbook)
+            var first_worksheet = workbook.Sheets[workbook.SheetNames[0]];
+            var data = XLSX.utils.sheet_to_json(first_worksheet, {header:1});
+            console.log(data)
+
+            // 重组格式
+            this.titles = data[0]
+            const result = []
+            data.forEach((item, index) => {
+              if(index>0){
+                const json = {}
+                for (let i = 0; i < this.titles.length; i++) {
+                  json[this.titles[i]] = item[i]
+                }
+                json["complet"] = false
+                result.push(json)
+              }
+            })
+            window.localStorage.setItem('tableData', JSON.stringify([...this.tableData, ...result]))
+            this.initData()
+          };
+          reader.readAsBinaryString(file);
+        },
+        update(tableData){
+          window.localStorage.setItem('tableData', JSON.stringify(tableData))
+        },
         // 获取签署情况数据
         fetchData(item) {
           axios({
@@ -99,6 +192,7 @@
             const chunk = res.data
             if(chunk && +chunk.code === 200){
               this.callback(chunk.data, item)
+              return
             }
             alert("A1-" + chunk.message)
           })
@@ -109,9 +203,10 @@
         // 推送回调
         callback(data, biz){
           const _signers =  data.signers
-          let _signState = "1"
+          let _signState = "1" // 0 未签名；1部分已签 2全部已签 4 签署失败 5 合并失败
+          // state 0未签名 1已签名 2签名失败
           if(_signers.every((item=>+item.state === 0))){
-            _signState = "0"
+            _signState = "0" // 
           }
           if(_signers.every((item=>+item.state === 1))){
             _signState = "2"
@@ -123,7 +218,7 @@
               "idcType": iterator.idcType,
               "idcNum":iterator.idcNum,
               "idcName":iterator.idcName,
-              "state": iterator.state,
+              "state": "2",
               "signRequestId": iterator.signRequestId,
               "signedTime": iterator.signedTime?new Date(iterator.signedTime).getTime()/1000: null,
               "signFieldId": signField.signFieldId,
@@ -140,7 +235,7 @@
             "envelopeId": data.envelopeId,
             "bizNum": data.bizNum,
             "fileId": data.fileId,
-            "signState": _signState,
+            "signState": "1", //部分已签
             "signers": _list
           }
           axios({
@@ -153,11 +248,14 @@
             const chunk = res.data
             if(+chunk.code === 200){
               console.log('回调成功')
-              for (const item of this.sites) {
-                if(biz.bizNum ===item.bizNum){
+              alert('发送回调成功')
+              for (const item of this.tableData) {
+                if(biz.bizNum === item.bizNum){
                   item.complet = true
                 }
               }
+              window.localStorage.setItem("tableData", JSON.stringify(this.tableData))
+              this.initData()
               return
             }
             alert("B1-" + chunk.message)

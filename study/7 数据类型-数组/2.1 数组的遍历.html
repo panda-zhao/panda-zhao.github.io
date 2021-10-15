@@ -114,6 +114,24 @@
   ]
   const chunk = data.filter(item => ['PROVINCE', 'CITY', 'DISTRICT', 'TOWN', 'VILLAGE', 'DEPARTMENT', 'APPLICATION'].includes(item.type))
   console.log(chunk)
+
+  const arrJson = [ 
+    ['index', 'biz_num', 'doc_name', 'company_name', 'callback', 'des'],
+    [1, 'c97d03e6-fe11-4be0-9ec5-a763ac93bddb', '辣木叶提高青贮饲料蛋白保存的机制研究', '华南农业大学', 'https://sop.gzsi.gov.cn/egrantweb/contract/ctrSign…fe11-4be0-9ec5-a763ac93bddb&opType=YNKKexot2OE%3D', '合并失败签名不成功'],
+    [2, '8f64426b-b8d9-4bb7-8630-cc2cbda692db', '基因靶向识别的分子逻辑门构建及其在晚疫病检测中的应用', '华南农业大学', 'https://sop.gzsi.gov.cn/egrantweb/contract/ctrSign…b8d9-4bb7-8630-cc2cbda692db&opType=YNKKexot2OE%3D', '合并失败签名不成功']
+  ]
+  const titles = arrJson[0]
+  const result = []
+  arrJson.forEach((item, index) => {
+    if(index>0){
+      const json = {}
+      for (let i = 0; i < titles.length; i++) {
+        json[titles[i]] = item[i]
+      }
+      result.push(json)
+    }
+  })
+  console.log(result)
   </script>
 </body>
 </html>

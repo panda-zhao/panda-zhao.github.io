@@ -46,10 +46,16 @@
 
 <body>
   <input type="file" id="uploadImg" multiple accept="image/*" onchange="selectImg(this.files)">
-  <h2>生成base64图片</h2>
-  <img alt="base64图片" width="100" height="100" id="base64Img">
+  
+  <h2>生成base64</h2>
+  <textarea name="textarea" id="base64str" cols="100" rows="30" placeholder="图片的base64路径"></textarea>
+  <img alt="base64图片" width="300" height="300" id="base64Img">
+
+
   <h2>DOMString表示文件对象的url-文档退出后销毁</h2>
-  <img alt="DOMString图片" width="100" height="100" id="DOMStringImg">
+  <textarea name="textarea" id="blobString" cols="100" rows="2" placeholder="文件对象的url的DOMString"></textarea>
+  <img alt="DOMString图片" width="300" height="300" id="DOMStringImg">
+  
   <h2>把base64转换为文件对象</h2>
   <button class="btn btn-info" onclick="getFile()">转换base64为文件对象</button>
   <div id="fileData"></div>
@@ -73,16 +79,19 @@
       reader.onload = function (e){
         console.log('【file ===> base64成功】base64=', e.target.result)
         document.getElementById('base64Img').setAttribute('src', e.target.result )
+        base64str.value = e.target.result
       }
       reader.onerror = function (error){
         console.log('【file转base64时发生错误】', error)
       }
     }
+
     // DOMString表示文件对象的url
     // 浏览器会在文档退出的时候自动释放这个对象
     function createObjectURL(file) {
       var objectURL= URL.createObjectURL(file) // 将指定的 File 对象或 Blob 对象。
       console.log('【file ===> DOMStringUrl】objectURL=', objectURL)
+      blobString.value = objectURL
       document.getElementById('DOMStringImg').setAttribute('src', objectURL)
     }
 
