@@ -1,35 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>读取和导出excel(js-xlsx)</title>
-</head>
-<body>
-  <div class="container">
-		<h1>JavaScript读取和导出excel示例（基于js-xlsx）</h1>
-		<div>
-			<a href="http://oss.sheetjs.com/js-xlsx/">官网演示</a><br>
-			<a href="https://github.com/SheetJS/js-xlsx/">Github</a>
-		</div>
-		<h2>读取excel（仅读取第一个sheet）</h2>
-		<div class="mt-sm">
-			<input type="file" id="file" style="display:none;" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/>
-			<a href="javascript:selectFile()">加载本地excel文件</a>
-			<a href="javascript:loadRemoteFile('./sample/sample.xlsx')">加载远程excel文件</a>
-		</div>
-		
-		<p>结果输出：（下面表格可直接编辑导出）</p>
-		<div id="result" contenteditable></div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>读取和导出excel(js-xlsx)</title>
+    <script src="../../js/xlsx.full.min.js"></script>
+    <style>
+      .container{
+        width: 1200px;
+        margin: 0 auto ;
+        text-align: left;
+        border: 1px solid #ccc;
+        padding: 15px;
+        border-radius: 4px;
+      }
+      .btn {
+        display: block;
+        text-align: center;
+        margin: 15px;
+        padding: 15px 0;
+        width: 300px;
+        font-size: 16px;
+        letter-spacing: 1px;
+        color: #fff;
+        background: rgb(33, 99, 224);
+        background: linear-gradient(
+          90deg,
+          rgba(33, 99, 224, 1) 25%,
+          rgba(253, 29, 29, 0.9920343137254902) 75%
+        );
+        border-radius: 4px;
+        border: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>JavaScript读取和导出excel示例（基于js-xlsx）</h1>
+      <div>
+        <a href="https://github.com/SheetJS/js-xlsx/" target="blank">Github</a>
+      </div>
+      <h2>1. 导入excel（仅读取第一个sheet）</h2>
 
-		<h2>导出excel</h2>
-		<div class="mt-sm" style="padding-bottom:40px;">
-			<input type="button" onclick="exportExcel()" value="保存"/> 上面读取的表格您可以直接编辑，编辑后点击保存即可导出excel文件。
-		</div>
+      <label class="btn">
+        <input
+          type="file"
+          id="file"
+          style="display: none;"
+          accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+          onchange="import_excelToJson(this)"
+        />
+        点击上传EXCEL文件
+      </label>
 
-		<h2>导出带单元格合并的excel</h2>
-		<input type="button" value="导出" onclick="exportSpecialExcel()"/>
-	</div>
-</body>
+      <p>结果输出：</p>
+      <textarea
+        name="jsonStr"
+        id="importDataText"
+        cols="100"
+        rows="10"
+        placeholder="导入的数据展示在这里"
+      /></textarea>
+
+      <h2>2. 导出excel</h2>
+      <textarea
+        name="jsonStr"
+        id="exportDataText"
+        cols="100"
+        rows="10"
+        placeholder="请输入要导出的表格数据"
+      >
+    </textarea>
+    <div>
+      <button onclick="export_jsonToSheet()" class="btn">导出excel</button>
+    </div>
+      
+    </div>
+    <script>
+      const tableDemo = [
+        { name:"张三", sex:"男", birthday:"1990-01-01", phone:"13918233075"},
+        { name:"李四", sex:"男", birthday:"1985-07-13", phone:"15625059625"},
+        { name:"王舞", sex:"女", birthday:"1982-05-05", phone:"18937720480"},
+      ]
+      exportDataText.innerHTML = JSON.stringify(tableDemo)
+
+      // 上传excel读取数据
+      function import_excelToJson(ele) {
+        console.log(ele.files)
+        var files = ele.files
+        if (files.length == 0) return
+        var file = files[0]
+        if (!/\.xlsx$/g.test(file.name)) {
+          alert('仅支持读取xlsx格式！')
+          return
+        }
+        // 读取excel
+        var reader = new FileReader()
+        reader.readAsBinaryString(file)
+        reader.onload = (e) => {
+          var data = e.target.result
+          var workbook = XLSX.read(data, { type: 'binary' })
+          console.log('完整内容', workbook)
+          // 仅读取第一个sheet
+          var first_worksheet = workbook.Sheets[workbook.SheetNames[0]]
+          var data = XLSX.utils.sheet_to_json(first_worksheet, { header: 1 , defval: ''})
+          console.log('第一个shell转数组对象', data)
+
+          // 重组格式,
+          const titles = data[0]
+          const chunk = []
+          data.forEach((item, index) => {
+            if (index > 0) {
+              const json = {}
+              for (let i = 0; i < titles.length; i++) {
+                json[titles[i]] = item[i]
+              }
+              json['complet'] = false
+              chunk.push(json)
+            }
+          })
+          console.log('最终表格数据', chunk)
+          importDataText.innerHTML = JSON.stringify(chunk)
+        }
+        
+      }
+
+      
+
+      const dataSource = JSON.parse(exportDataText.innerHTML)
+      // 点击导出
+      function export_jsonToSheet() {
+        var wopts = {
+          bookType: 'xlsx',
+          bookSST: false,
+          type: 'binary',
+        }
+        var workBook = {
+          SheetNames: ['Sheet1'],
+          Sheets: {},
+          Props: {},
+        }
+        workBook.Sheets['Sheet1'] = XLSX.utils.json_to_sheet(dataSource)
+        saveAs(
+          new Blob([changeData(XLSX.write(workBook, wopts))], {
+            type: 'application/octet-stream',
+          }),
+        )
+      }
+
+      function changeData(s) {
+        if (typeof ArrayBuffer !== 'undefined') {
+          var buf = new ArrayBuffer(s.length)
+          var view = new Uint8Array(buf)
+          for (var i = 0; i != s.length; ++i) view[i] = s.charCodeAt(i) & 0xff
+          return buf
+        } else {
+          var buf = new Array(s.length)
+          for (var i = 0; i != s.length; ++i) buf[i] = s.charCodeAt(i) & 0xff
+          return buf
+        }
+      }
+      // 模拟点击实现下载
+      function saveAs(obj, fileName) {
+        var tmpa = document.createElement('a')
+        tmpa.download = fileName ? fileName + '.xlsx' : new Date().getTime() + '.xlsx'
+        tmpa.href = URL.createObjectURL(obj)
+        tmpa.click() 
+        setTimeout(function () {
+          //延时释放
+          URL.revokeObjectURL(obj) // 用URL.revokeObjectURL()来释放这个object URL
+        }, 100)
+      }
+      
+      
+    </script>
+  </body>
 </html>

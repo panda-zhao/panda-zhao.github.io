@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>随机密码生成器</title>
+    <style>
+      html {
+        font-family: sans-serif;
+      }
+      .label{
+        display: inline-block;
+        width: 200px;
+        color: #333;
+        margin-right: 20px;
+        text-align: right;
+        margin-bottom: 5px;
+      }
+      button {
+        color: white;
+        background-color: black;
+        padding: 5px 10px;
+        border-radius: 0;
+        border: 0;
+        font-size: 14px;
+        margin: 15px 0;
+      }
+
+    </style>
+  </head>
+  <body>
+    <h1>随机密码生成器</h1>
+    <div>
+      <div>
+        <label class="label" for="passwordLength">要生成的密码长度</label>
+        <input type="number" id="passwordLength" name="passwordLength" value="6">
+      </div>
+      
+
+      <div>
+        <span class="label">是否包含小写字母(a..z)</span> 
+        <label>
+          <input type="radio" name="hasLowerCase" value="1" checked>
+          包含
+        </label>
+
+        
+        <label>
+          <input type="radio" name="hasLowerCase" value="2">
+          不包含
+        </label>
+        
+      </div>
+      
+      <div>
+        <span class="label">是否包含大写字母(A..Z)</span> 
+        <label>
+          <input type="radio" name="hasUpperCase" value="1" checked>
+          包含
+        </label>
+
+        <label>
+          <input type="radio" name="hasUpperCase" value="2">
+          不包含
+        </label>
+        
+      </div>
+      
+      <div>
+        <span class="label">是否包含数字(0..9)</span>
+        <label>
+          <input type="radio" name="hasNumber" value="1" checked>
+          包含
+        </label>
+        
+        
+        <label>
+          <input type="radio" name="hasNumber" value="2" >
+          不包含
+        </label>
+        
+      </div>
+
+      <div>
+        <span class="label">是否包含特殊字符</span>
+        
+        <label>
+          <input type="radio" name="hasSpecialCharacter" value="1" checked>
+          包含
+        </label>
+
+        
+        <label >
+          <input type="radio" name="hasSpecialCharacter" value="2" >
+          不包含
+        </label>
+        
+      </div>
+      
+      <button id="submit">生成密码</button>
+      <div>
+        <input type="text" id="result" placeholder="最终结果">
+      </div>
+      
+    </div>
+    <script>
+      submit.addEventListener("click", function(e){
+        console.log(document.querySelector("input[name='hasLowerCase']:checked"))
+        // 获取值
+        const hasLowerCase = document.querySelector("input[name='hasLowerCase']:checked").value
+
+        const hasUpperCase = document.querySelector("input[name='hasUpperCase']:checked").value
+
+        const hasNumber = document.querySelector("input[name='hasNumber']:checked").value
+
+        const hasSpecialCharacter = document.querySelector("input[name='hasSpecialCharacter']:checked").value
+        console.log(passwordLength.value, typeof passwordLength.value)
+        result.value = generatePassword(passwordLength.value, hasLowerCase === '1', hasUpperCase === '1', hasNumber === '1', hasSpecialCharacter === '1')
+      })
+
+
+      /**
+       * @params length {number} 要生成的密码长度
+       * @params hasLowerCase {boolean} 是否包含小写字母(a..z)
+       * @params hasUpperCase {boolean} 是否包含大写字母(A..Z)
+       * @params hasNumber {boolean} 是否包含数字(0..9)
+       * @params hasSpecialCharacter {boolean} 是否包含特殊字符
+       * */
+      function generatePassword(length, hasLowerCase, hasUpperCase, hasNumber, hasSpecialCharacter) {
+        var string = "abcdefghijklmnopqrstuvwxyz";
+        var strUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        var numeric = "0123456789";
+        var punctuation = "!@#$%^&*()_+~`|}{[]\:;?><,./-=";
+        var password = "";
+        while (password.length < length) {
+          entity1 =
+            Math.ceil(string.length * Math.random() * Math.random()) - 1;
+          entity2 =
+            Math.ceil(numeric.length * Math.random() * Math.random()) - 1;
+          entity3 =
+            Math.ceil(punctuation.length * Math.random() * Math.random()) - 1;
+          entity4 =
+            Math.ceil(strUpper.length * Math.random() * Math.random()) - 1;
+          if ( hasLowerCase || hasUpperCase || hasNumber || hasSpecialCharacter ) {
+            if (hasLowerCase && password.length < length) {
+              password += string.charAt(entity1);
+            }
+            if (hasUpperCase && password.length < length) {
+              password += strUpper.charAt(entity4);
+            }
+            if (hasNumber && password.length < length) {
+              password += numeric.charAt(entity2);
+            }
+            if (hasSpecialCharacter && password.length < length) {
+              password += punctuation.charAt(entity3);
+            }
+          } else {
+            alert("至少要选择包含一种字符")
+            break;
+          }
+        }
+        console.log('password', password)
+        return password
+      }
+    </script>
+  </body>
+</html>

@@ -7,6 +7,7 @@
 </head>
 <body>
   <div>比较日期</div>
+  <div id="demo"></div>
   <script>
     // let companyEndDate = '2020-04-30' // 经营期限-应该大于出资日期
     // let capitalDate = '2050-2-27' //出资日期
@@ -22,6 +23,24 @@
     }else{
       console.log('当前是最后三天不可以办理')
     }
+
+    
+
+    const creatUuid = function creatUuid () {
+      const s = []
+      const hexDigits = '0123456789abcdef'
+      for (let i = 0; i < 36; i++) {
+        s[i] = hexDigits.substr(Math.floor(Math.random() * 0x10), 1)
+      }
+      s[14] = '4'
+      s[19] = hexDigits.substr((s[19] & 0x3) | 0x8, 1)
+      s[8] = s[13] = s[18] = s[23] = '-'
+
+      const uuid = s.join('')
+      return uuid
+    }
+     
+     demo.innerHTML = creatUuid()
   </script>
 </body>
 </html>
