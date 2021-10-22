@@ -18,7 +18,7 @@ var data = [
     {name: "百度站长统计",url: "https://tongji.baidu.com/",title: "百度站长统计"},
     {name: "阿里云",url: "https://home.console.aliyun.com/new#/",title: ""},
     {name: "星座网",url: "http://www.xzw.com/",title: ""},
-    {name: "电影宝",url: "http://www.dyb365.com",title: ""}
+    {name: "廖雪峰的官方网站",url: "https://www.liaoxuefeng.com/wiki/1022910821149312/1023025235359040",title: ""}
     
   ],
   

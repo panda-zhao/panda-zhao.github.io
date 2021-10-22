@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>JS加解密</title>
+    <script src="../../js/crypto-js/crypto-js.js"></script>
+    <script src="../../js/jsencrypt.min.js"></script>
+    <link rel="stylesheet" href="../../css/z-style.css" />
+  </head>
+
+  <body>
+    <div class="z-wrap-1200">
+      <h2>base64加解密</h2>
+      <div class="z-flex z-flex-between">
+        <div class="z-mr-15">
+          <p>加密前</p>
+          <textarea
+            id="a1"
+            cols="60"
+            rows="10"
+            placeholder="要加密的文本"
+          ></textarea>
+          <div class="center">
+            <button class="btn" onclick="enc_base64()">base64加密</button>
+          </div>
+        </div>
+        <div>
+          <p>加密后</p>
+          <textarea
+            id="a2"
+            cols="60"
+            rows="10"
+            placeholder="加密后的文本"
+          ></textarea>
+          <div class="center">
+            <button class="btn" onclick="dec_base64()">base64解密</button>
+          </div>
+        </div>
+      </div>
+      <hr />
+
+      <h2>AES加解密</h2>
+      <div class="z-form-item">
+        <span class="z-form-item__label">请输入密钥（secretKey）</span>
+        <div class="z-form-item__content">
+          <input
+            class="secretKey z-input"
+            type="text"
+            placeholder="请输入AES密钥"
+            value="12345abcdefg6"
+          />
+        </div>
+      </div>
+      <div class="z-flex z-flex-between">
+        <div class="z-mr-15">
+          <p>加密前</p>
+          <textarea
+            id="b1"
+            cols="60"
+            rows="10"
+            placeholder="要加密的文本"
+          ></textarea>
+          <div class="center">
+            <button class="btn" onclick="enc_AES()">AES加密</button>
+          </div>
+        </div>
+        <div>
+          <p>加密后</p>
+          <textarea
+            id="b2"
+            cols="60"
+            rows="10"
+            placeholder="加密后的文本"
+          ></textarea>
+          <div class="center">
+            <button class="btn" onclick="dec_AES()">AES解密</button>
+          </div>
+        </div>
+      </div>
+      <hr />
+
+      <h2>MD5加密</h2>
+      <div class="z-flex z-flex-between">
+        <div class="z-mr-15">
+          <p>加密前</p>
+          <textarea
+            id="c1"
+            cols="60"
+            rows="10"
+            placeholder="要加密的文本"
+          ></textarea>
+        </div>
+        <div>
+          <p>加密后</p>
+          <textarea
+            id="c2"
+            cols="60"
+            rows="10"
+            placeholder="加密后的文本"
+          ></textarea>
+        </div>
+      </div>
+      <div class="left">
+        <button class="btn" onclick="enc_md5()">MD5加密</button>
+        <button class="btn" onclick="enc_sha1()">SHA1加密</button>
+        <button class="btn" onclick="enc_sha256()">SHA256加密</button>
+        <button class="btn" onclick="enc_sha512()">SHA512加密</button>
+        <button class="btn" onclick="enc_sha3(256)">Keccak-256加密</button>
+        <button class="btn" onclick="enc_sha3(512)">Keccak-512加密</button>
+      </div>
+      <hr />
+
+      <h2>RSA加解密</h2>
+      <div class="z-flex z-flex-between">
+        <div class="z-mr-15">
+          <p>Private Key</p>
+          <textarea id="privkey" cols="60" rows="10">
+-----BEGIN RSA PRIVATE KEY-----
+    MIICXQIBAAKBgQDlOJu6TyygqxfWT7eLtGDwajtNFOb9I5XRb6khyfD1Yt3YiCgQ
+    WMNW649887VGJiGr/L5i2osbl8C9+WJTeucF+S76xFxdU6jE0NQ+Z+zEdhUTooNR
+    aY5nZiu5PgDB0ED/ZKBUSLKL7eibMxZtMlUDHjm4gwQco1KRMDSmXSMkDwIDAQAB
+    AoGAfY9LpnuWK5Bs50UVep5c93SJdUi82u7yMx4iHFMc/Z2hfenfYEzu+57fI4fv
+    xTQ//5DbzRR/XKb8ulNv6+CHyPF31xk7YOBfkGI8qjLoq06V+FyBfDSwL8KbLyeH
+    m7KUZnLNQbk8yGLzB3iYKkRHlmUanQGaNMIJziWOkN+N9dECQQD0ONYRNZeuM8zd
+    8XJTSdcIX4a3gy3GGCJxOzv16XHxD03GW6UNLmfPwenKu+cdrQeaqEixrCejXdAF
+    z/7+BSMpAkEA8EaSOeP5Xr3ZrbiKzi6TGMwHMvC7HdJxaBJbVRfApFrE0/mPwmP5
+    rN7QwjrMY+0+AbXcm8mRQyQ1+IGEembsdwJBAN6az8Rv7QnD/YBvi52POIlRSSIM
+    V7SwWvSK4WSMnGb1ZBbhgdg57DXaspcwHsFV7hByQ5BvMtIduHcT14ECfcECQATe
+    aTgjFnqE/lQ22Rk0eGaYO80cc643BXVGafNfd9fcvwBMnk0iGX0XRsOozVt5Azil
+    psLBYuApa66NcVHJpCECQQDTjI2AQhFc1yRnCU/YgDnSpJVm1nASoRUnU8Jfm3Oz
+    uku7JUXcVpt08DFSceCEX9unCuMcT72rAQlLpdZir876
+    -----END RSA PRIVATE KEY-----</textarea
+          >
+        </div>
+        <div>
+          <p>Public Key</p>
+          <textarea id="pubkey" cols="60" rows="10">
+-----BEGIN PUBLIC KEY-----
+    MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDlOJu6TyygqxfWT7eLtGDwajtN
+    FOb9I5XRb6khyfD1Yt3YiCgQWMNW649887VGJiGr/L5i2osbl8C9+WJTeucF+S76
+    xFxdU6jE0NQ+Z+zEdhUTooNRaY5nZiu5PgDB0ED/ZKBUSLKL7eibMxZtMlUDHjm4
+    gwQco1KRMDSmXSMkDwIDAQAB
+    -----END PUBLIC KEY-----</textarea
+          >
+        </div>
+      </div>
+      <div class="z-flex z-flex-between">
+        <div class="z-mr-15">
+          <p>加密前</p>
+          <textarea
+            id="d1"
+            cols="60"
+            rows="10"
+            placeholder="要加密的文本"
+          ></textarea>
+          <div class="center">
+            <button class="btn" onclick="enc_rsa_publickey()">公钥加密</button>
+            <button class="btn" onclick="enc_rsa_privkey()">私钥加密</button>
+          </div>
+        </div>
+        <div>
+          <p>加密后</p>
+          <textarea
+            id="d2"
+            cols="60"
+            rows="10"
+            placeholder="加密后的文本"
+          ></textarea>
+          <div class="center">
+            <button class="btn" onclick="dec_rsa_publickey()">公钥解密</button>
+            <button class="btn" onclick="dec_rsa_privkey()">私钥解密</button>
+          </div>
+        </div>
+      </div>
+      <hr />
+    </div>
+
+    <script>
+      // base64加解密
+      const enc_base64 = function () {
+        const enc_str = document.querySelector('#a1').value
+        try {
+          document.querySelector('#a2').value = window.btoa(
+            encodeURIComponent(enc_str),
+          )
+        } catch (error) {
+          alert(error)
+        }
+      }
+      const dec_base64 = function () {
+        const dec_str = document.querySelector('#a2').value
+        try {
+          document.querySelector('#a1').value = decodeURIComponent(
+            window.atob(dec_str),
+          )
+        } catch (error) {
+          alert(error)
+        }
+      }
+      const secretKey = document.querySelector('.secretKey') // 密钥
+
+      // 配置非必填
+      const options = {
+        mode: CryptoJS.mode.CBC, // 模式，CBC默认, CFB CTR OFB ECB
+        padding: CryptoJS.pad.Pkcs7, // 填充方案，Pkcs7默认，Iso97971 AnsiX923 Iso10126 ZeroPadding NoPadding
+      }
+
+      // AES加解密
+      const enc_AES = function () {
+        const enc_str = document.querySelector('#b1').value
+        try {
+          const bytes = CryptoJS.AES.encrypt(enc_str, secretKey, options)
+          console.log('AES加密后', bytes)
+          document.querySelector('#b2').value = bytes.toString()
+        } catch (error) {
+          alert(error)
+        }
+      }
+
+      const dec_AES = function () {
+        const dec_str = document.querySelector('#b2').value
+        try {
+          const bytes = CryptoJS.AES.decrypt(dec_str, secretKey, options)
+          console.log('AES解密后', bytes)
+          document.querySelector('#b1').value = bytes.toString(
+            CryptoJS.enc.Utf8,
+          )
+        } catch (error) {
+          alert(error)
+        }
+      }
+
+      // MD5加密
+      const enc_md5 = function () {
+        const enc_str = document.querySelector('#c1').value
+        document.querySelector('#c2').value = CryptoJS.MD5(enc_str)
+      }
+
+      // SHA1加密
+      const enc_sha1 = function () {
+        const enc_str = document.querySelector('#c1').value
+        document.querySelector('#c2').value = CryptoJS.SHA1(enc_str)
+      }
+
+      // SHA256加密
+      const enc_sha256 = function () {
+        const enc_str = document.querySelector('#c1').value
+        document.querySelector('#c2').value = CryptoJS.SHA256(enc_str)
+      }
+
+      // SHA512加密
+      const enc_sha512 = function () {
+        const enc_str = document.querySelector('#c1').value
+        document.querySelector('#c2').value = CryptoJS.SHA512(enc_str)
+      }
+
+      // SHA3加密
+      const enc_sha3 = function (outputLength) {
+        const enc_str = document.querySelector('#c1').value
+        document.querySelector('#c2').value = CryptoJS.SHA3(enc_str, {
+          outputLength: outputLength || 256, // 默认输出哈希长度
+        })
+      }
+      const pubEncrypt = new JSEncrypt()
+      const pubkey = document.querySelector('#pubkey').value
+      console.log(pubEncrypt, pubkey)
+      pubEncrypt.setPublicKey(pubkey)
+      // 公钥加密
+      const enc_rsa_publickey = function () {
+        const startTime = new Date().getTime()
+        const enc_str = document.querySelector('#d1').value
+        const encrypted = pubEncrypt.encrypt(enc_str)
+        const endTime = new Date().getTime() - startTime
+        console.log('加密', endTime, encrypted)
+        document.querySelector('#d2').value = encrypted
+      }
+
+      // 公钥解密
+      const dec_rsa_publickey = function () {
+        const startTime = new Date().getTime()
+        const dec_str = document.querySelector('#d2').value
+        const decrypted = pubEncrypt.decrypt(dec_str)
+        const endTime = new Date().getTime() - startTime
+        console.log('解密后', endTime, decrypted)
+        document.querySelector('#d1').value = pubEncrypt.decrypt(dec_str)
+      }
+
+      const priEncrypt = new JSEncrypt()
+      const privkey = document.querySelector('#privkey').value
+      pubEncrypt.setPrivateKey(privkey)
+      // 私钥加密
+      const enc_rsa_privkey = function () {
+        const startTime = new Date().getTime()
+        const enc_str = document.querySelector('#d1').value
+        const encrypted = priEncrypt.encrypt(enc_str)
+        const endTime = new Date().getTime() - startTime
+        console.log('加密后', endTime, encrypted)
+        document.querySelector('#d2').value = encrypted
+      }
+
+      // 私钥解密
+      const dec_rsa_privkey = function () {
+        const startTime = new Date().getTime()
+        const dec_str = document.querySelector('#d2').value
+        const decrypted = priEncrypt.decrypt(dec_str)
+        const endTime = new Date().getTime() - startTime
+        console.log('解密后', endTime, decrypted)
+        document.querySelector('#d1').value = decrypted
+      }
+    </script>
+  </body>
+</html>

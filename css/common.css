@@ -25,23 +25,23 @@
   --breakpoint-md: 768px;
   --breakpoint-lg: 992px;
   --breakpoint-xl: 1200px;
-  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol";
+  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol';
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
-    "Liberation Mono", "Courier New", monospace;
+    'Liberation Mono', 'Courier New', monospace;
 }
 * {
   margin: 0;
   padding: 0;
 }
-body{
+body {
   font-size: 14px;
   /* Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif */
-  font-family: PingFang SC,Tahoma,sans-serif;
+  font-family: PingFang SC, Tahoma, sans-serif;
   background: #000;
 }
-a{
+a {
   text-decoration: none;
   -webkit-tap-highlight-color: transparent;
 }
@@ -55,7 +55,7 @@ a{
   box-shadow: 0 0 10px 2px #666;
   border-radius: 10px;
 }
-dl{
+dl {
   background: #f2f2f2;
   margin-bottom: 20px;
   border-radius: 10px;
@@ -69,11 +69,11 @@ dt {
   margin-bottom: 10px;
   border-radius: 10px;
 }
-dd{
+dd {
   display: inline-block;
   padding: 0 10px 10px;
 }
-.item{
+.item {
   display: inline-block;
   height: 40px;
   line-height: 40px;
@@ -83,7 +83,7 @@ dd{
   border: none;
   border-radius: 100px;
 }
-.footer{
+.footer {
   margin-top: 10px;
   padding: 15px 0;
   line-height: 24px;
@@ -92,26 +92,27 @@ dd{
   font-size: 14px;
   border-radius: 10px 10px 0 0;
 }
-.footer span,.footer a{
+.footer span,
+.footer a {
   margin-right: 5px;
 }
-.footer img{
+.footer img {
   width: 14px;
   vertical-align: middle;
   position: relative;
   top: -1px;
 }
-.footer a{
+.footer a {
   color: #333;
 }
 /* 左边竖线 */
-.z-line-left{
+.z-line-left {
   position: relative;
   padding-left: 10px;
 }
-.z-line-left::after{
+.z-line-left::after {
   content: '';
-  height:  100%;
+  height: 100%;
   width: 1px;
   background: #ccc;
   position: absolute;
