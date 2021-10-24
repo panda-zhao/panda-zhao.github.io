@@ -11,8 +11,8 @@
   <meta name="viewport" content="initial-scale=1.0, width=device-height"><!--  mobile Safari, FireFox, Opera Mobile  -->
   <script src="./libs/modernizr.js"></script>
   <!--[if lt IE 9]>
-  <script type="text/javascript" src="../libs/flashcanvas.js"></script>
-  <![endif]-->
+<script type="text/javascript" src="../libs/flashcanvas.js"></script>
+<![endif]-->
   <style type="text/css">
     div {
       margin-top: 1em;
@@ -38,8 +38,6 @@
 
     /*This is the div within which the signature canvas is fitted*/
     #signature {
-      /* width: 100%;
-      height: 100vh; */
       border: 2px dotted black;
       background-color: lightgrey;
     }
@@ -127,7 +125,8 @@
     $(document).ready(function () {
 
       // jSignature初始化
-      var $sigdiv = $("#signature").jSignature({
+      var $sigdiv = $("#signature").jSignature({ 
+        
           'UndoButton': true
         })
 

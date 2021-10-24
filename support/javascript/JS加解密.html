@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>JS加解密</title>
+    <link rel="stylesheet" href="../../css/z-style.css" />
     <script src="../../js/crypto-js/crypto-js.js"></script>
     <script src="../../js/jsencrypt.min.js"></script>
-    <link rel="stylesheet" href="../../css/z-style.css" />
+    <script src="../../js/forge.min.js"></script>
   </head>
 
   <body>
@@ -178,6 +179,7 @@
     </div>
 
     <script>
+      console.log('forge', forge)
       // base64加解密
       const enc_base64 = function () {
         const enc_str = document.querySelector('#a1').value
@@ -263,6 +265,7 @@
           outputLength: outputLength || 256, // 默认输出哈希长度
         })
       }
+
       const pubEncrypt = new JSEncrypt()
       const pubkey = document.querySelector('#pubkey').value
       console.log(pubEncrypt, pubkey)
