@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>仪表盘</title>
+  <style>
+    
+    :root {
+      
+      --arcRadius: 100px;/*半径*/
+      --rectWidth: calc(var(--arcRadius) * 2);
+      --trackWidth: 8px; /*表盘边*/
+      --roundWidth: 10px;
+    }
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    .wrap{
+      background: greenyellow;
+      height: 100vh;
+      width: 100vw;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    
+  </style>
+</head>
+
+<body>
+  <!-- <div class="arc-wrapper">
+    <p class="track-arc"></p>
+    <div class="round-box">
+      <p class="round"></p>
+    </div>
+  </div> -->
+
+
+  <!-- <svg width="40" height="72" viewBox="0 0 40 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M36 68C18.3269 68 4 53.6731 4 36C4 18.3269 18.3269 4 36 4" stroke="url(#paint0_angular_855_224)" stroke-width="8" stroke-linecap="round"/>
+    <defs>
+    <radialGradient id="paint0_angular_855_224" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(36 36) rotate(83.8845) scale(35.5708 35.4288)">
+    <stop offset="0.136248" stop-color="#000AFF" stop-opacity="0.244834"/>
+    <stop offset="0.470862" stop-color="#000AFF"/>
+    <stop offset="0.998199" stop-color="#000AFF" stop-opacity="0"/>
+    </radialGradient>
+    </defs>
+    </svg> -->
+    <div class="wrap">
+      <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="36" cy="36" r="32" stroke="white" stroke-width="8"/>
+      </svg>
+
+      <!-- <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <circle cx="100" cy="50" r="40" stroke="black"
+        stroke-width="2" fill="red"/>
+      </svg> -->
+
+      <svg width="40" height="72" viewBox="0 0 40 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M36 68C18.3269 68 4 53.6731 4 36C4 18.3269 18.3269 4 36 4" stroke="url(#paint0_angular_855_224)" stroke-width="8" stroke-linecap="round"/>
+        <defs>
+          <radialGradient id="paint0_angular_855_224" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(36 36) rotate(83.8845) scale(35.5708 35.4288)">
+          <stop offset="0.136248" stop-color="#000AFF" stop-opacity="0.244834"/>
+          <stop offset="0.470862" stop-color="#000AFF"/>
+          <stop offset="0.998199" stop-color="#000AFF" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+      </svg>
+      <!-- 1. stroke意思是：画短线于，在...上划线
+
+      2. stroke-dasharray:用于创建虚线，之所以后面跟的是array的，是因为值其实是数组。请看下面解释
+      stroke-dasharray为一个参数时： 其实是表示虚线长度和每段虚线之间的间距
+　　  如：stroke-dasharray = '10' 表示：虚线长10，间距10，然后重复 虚线长10，间距10
+
+      两个参数或者多个参数时：一个表示长度，一个表示间距
+      　　如：stroke-dasharray = '10, 5' 表示：虚线长10，间距5，然后重复 虚线长10，间距5
+      　　如：stroke-dasharray = '20, 10, 5' 表示：虚线长20，间距10，虚线长5，接着是间距20，虚线10，间距5，之后开始如此循环
+
+      
+
+      3. stroke-dashoffset： offset：偏移的意思。
+      这个属性是相对于起始点的偏移，正数偏移x值的时候，相当于往左移动了x个长度单位，负数偏移x的时候，相当于往右移动了x个长度单位。
+      需要注意的是，不管偏移的方向是哪边，要记得dasharray 是循环的，也就是 虚线-间隔-虚线-间隔。
+      这个属性要搭配stroke-dashoffset才能看得出来效果，非虚线的话，是无法看出偏移的 -->
+
+      <svg width="72" height="72" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle
+          cx="36"
+          cy="36"
+          r="32"
+          stroke="white"
+          stroke-width="8"
+          stroke-linecap="round"
+        />
+   
+        <circle
+          cx="36"
+          cy="36"
+          r="32"
+          stroke-width="8"
+          fill="none"
+          stroke="red"
+          stroke-dasharray="20 11"
+          stroke-dashoffset="10"
+          stroke-linecap="round"
+        />
+   </svg>
+    </div>
+    
+    
+      
+  
+</body>
+
+</html>

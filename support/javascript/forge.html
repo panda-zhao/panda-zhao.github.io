@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>JS_forge加解密</title>
+
+    <link rel="stylesheet" href="../../css/z-style.css" />
+    <script src="../../js/forge.min.js"></script>
+  </head>
+
+  <body>
+    <div class="z-wrap-1200">
+      <h2>base64加解密</h2>
+      <div class="z-flex z-flex-between">
+        <div class="z-mr-15">
+          <p>加密前</p>
+          <textarea
+            id="a1"
+            cols="60"
+            rows="10"
+            placeholder="要加密的文本"
+          ></textarea>
+          <div class="center">
+            <button class="btn" onclick="enc_base64()">base64加密</button>
+          </div>
+        </div>
+        <div>
+          <p>加密后</p>
+          <textarea
+            id="a2"
+            cols="60"
+            rows="10"
+            placeholder="加密后的文本"
+          ></textarea>
+          <div class="center">
+            <button class="btn" onclick="dec_base64()">base64解密</button>
+          </div>
+        </div>
+      </div>
+      <hr />
+
+      <h2>AES加解密</h2>
+      <div class="z-form-item">
+        <span class="z-form-item__label">请输入密钥（secretKey）</span>
+        <div class="z-form-item__content">
+          <input
+            class="secretKey z-input"
+            type="text"
+            placeholder="请输入AES密钥"
+            value="12345abcdefg6"
+          />
+        </div>
+      </div>
+      <div class="z-flex z-flex-between">
+        <div class="z-mr-15">
+          <p>加密前</p>
+          <textarea
+            id="b1"
+            cols="60"
+            rows="10"
+            placeholder="要加密的文本"
+          ></textarea>
+          <div class="center">
+            <button class="btn" onclick="enc_AES()">AES加密</button>
+          </div>
+        </div>
+        <div>
+          <p>加密后</p>
+          <textarea
+            id="b2"
+            cols="60"
+            rows="10"
+            placeholder="加密后的文本"
+          ></textarea>
+          <div class="center">
+            <button class="btn" onclick="dec_AES()">AES解密</button>
+          </div>
+        </div>
+      </div>
+      <hr />
+
+      <h2>MD5加密</h2>
+      <div class="z-flex z-flex-between">
+        <div class="z-mr-15">
+          <p>加密前</p>
+          <textarea
+            id="c1"
+            cols="60"
+            rows="10"
+            placeholder="要加密的文本"
+          ></textarea>
+        </div>
+        <div>
+          <p>加密后</p>
+          <textarea
+            id="c2"
+            cols="60"
+            rows="10"
+            placeholder="加密后的文本"
+          ></textarea>
+        </div>
+      </div>
+      <div class="left">
+        <button class="btn" onclick="enc_md5()">MD5加密</button>
+        <button class="btn" onclick="enc_sha1()">SHA1加密</button>
+        <button class="btn" onclick="enc_sha256()">SHA256加密</button>
+        <button class="btn" onclick="enc_sha512()">SHA512加密</button>
+        <button class="btn" onclick="enc_sha3(256)">Keccak-256加密</button>
+        <button class="btn" onclick="enc_sha3(512)">Keccak-512加密</button>
+      </div>
+      <hr />
+
+      <h2>RSA加解密</h2>
+      <div class="z-flex z-flex-between">
+        <div class="z-mr-15">
+          <p>Private Key</p>
+          <textarea id="privkey" cols="60" rows="10">
+-----BEGIN RSA PRIVATE KEY-----
+    MIICXQIBAAKBgQDlOJu6TyygqxfWT7eLtGDwajtNFOb9I5XRb6khyfD1Yt3YiCgQ
+    WMNW649887VGJiGr/L5i2osbl8C9+WJTeucF+S76xFxdU6jE0NQ+Z+zEdhUTooNR
+    aY5nZiu5PgDB0ED/ZKBUSLKL7eibMxZtMlUDHjm4gwQco1KRMDSmXSMkDwIDAQAB
+    AoGAfY9LpnuWK5Bs50UVep5c93SJdUi82u7yMx4iHFMc/Z2hfenfYEzu+57fI4fv
+    xTQ//5DbzRR/XKb8ulNv6+CHyPF31xk7YOBfkGI8qjLoq06V+FyBfDSwL8KbLyeH
+    m7KUZnLNQbk8yGLzB3iYKkRHlmUanQGaNMIJziWOkN+N9dECQQD0ONYRNZeuM8zd
+    8XJTSdcIX4a3gy3GGCJxOzv16XHxD03GW6UNLmfPwenKu+cdrQeaqEixrCejXdAF
+    z/7+BSMpAkEA8EaSOeP5Xr3ZrbiKzi6TGMwHMvC7HdJxaBJbVRfApFrE0/mPwmP5
+    rN7QwjrMY+0+AbXcm8mRQyQ1+IGEembsdwJBAN6az8Rv7QnD/YBvi52POIlRSSIM
+    V7SwWvSK4WSMnGb1ZBbhgdg57DXaspcwHsFV7hByQ5BvMtIduHcT14ECfcECQATe
+    aTgjFnqE/lQ22Rk0eGaYO80cc643BXVGafNfd9fcvwBMnk0iGX0XRsOozVt5Azil
+    psLBYuApa66NcVHJpCECQQDTjI2AQhFc1yRnCU/YgDnSpJVm1nASoRUnU8Jfm3Oz
+    uku7JUXcVpt08DFSceCEX9unCuMcT72rAQlLpdZir876
+    -----END RSA PRIVATE KEY-----</textarea
+          >
+        </div>
+        <div>
+          <p>Public Key</p>
+          <textarea id="pubkey" cols="60" rows="10">
+-----BEGIN PUBLIC KEY-----
+    MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDlOJu6TyygqxfWT7eLtGDwajtN
+    FOb9I5XRb6khyfD1Yt3YiCgQWMNW649887VGJiGr/L5i2osbl8C9+WJTeucF+S76
+    xFxdU6jE0NQ+Z+zEdhUTooNRaY5nZiu5PgDB0ED/ZKBUSLKL7eibMxZtMlUDHjm4
+    gwQco1KRMDSmXSMkDwIDAQAB
+    -----END PUBLIC KEY-----</textarea
+          >
+        </div>
+      </div>
+      <div class="z-flex z-flex-between">
+        <div class="z-mr-15">
+          <p>加密前</p>
+          <textarea
+            id="d1"
+            cols="60"
+            rows="10"
+            placeholder="要加密的文本"
+          ></textarea>
+          <div class="center">
+            <button class="btn" onclick="enc_rsa_publickey()">公钥加密</button>
+            <button class="btn" onclick="enc_rsa_privkey()">私钥加密</button>
+          </div>
+        </div>
+        <div>
+          <p>加密后</p>
+          <textarea
+            id="d2"
+            cols="60"
+            rows="10"
+            placeholder="加密后的文本"
+          ></textarea>
+          <div class="center">
+            <button class="btn" onclick="dec_rsa_publickey()">公钥解密</button>
+            <button class="btn" onclick="dec_rsa_privkey()">私钥解密</button>
+          </div>
+        </div>
+      </div>
+      <hr />
+    </div>
+
+    <script>
+      console.log('forge', forge)
+      // var rsa = forge.pki.rsa
+
+      // const PUBLIC_KEY = `-----BEGIN CERTIFICATE-----\r\n${KEY}\r\n-----END CERTIFICATE-----\r\n`
+      
+      const name = '赵伟扬'
+      var pki = forge.pki
+      const key =
+          'MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAL6quUQTRBbwdj7rI4y0aOei/4oF7UadY6j05kFDIZ/AA7BiilVgMT49Yea65BIO4n/zMLikHMAtaGtTaRLt29rwuIYrkChdouS7q2FrhGY26GjoBlPW0iSjXUlReQv5ACMxImm6/PXkgBeP9/mOiJ/Tpzob2Y6BhC5l8eC+sBxbAgMBAAECgYEAkN5g5AOLca6E+atpmGgfaRik9rcoIMZHScHCDYY3TwzzAJrupo3u/G5hK5GG5t2eZT9fHnu7SJ13wExhArvtli36YHWg6ZyfHN3Xt+w5jIwZER9Rcf8Inh70k94yO5MmYNC3HRDkQq6C5VH5BTjN0XgeFpbBcZoa+dgF02zJ6MkCQQDj2yAo0Kyvn2i1K1duXNpmLrxnqdmUhu6CGUjmaptwb4UFNnNGxIvORM108XPpOa9sPiPjwKTu3GFiCuO8WXivAkEA1jerHfkk69oXVRv//rMTgXEKH6T0cxw949jCeCfFVrZNWSNMGWQpeua25tjPzTKhgmCytD5wv+OLqsCndVuqFQJAYmDR2c1/QbSJ+O7lqPjeMxAquHdVQhOgFvvjxdhxlHIR9NY1n3BtDHoYW02ExkXpv8p0pHkgvSDZywL4oPHgcQJAAbZ4O8keLnST8y5CIbs00LgiqJYdDj6PkB7Pjz5iKYtTmv7ZQOq4Gi92Dup03uMkv3Iee6p0JFShbUAVFq8g8QJACwy7IPOOXiDVF1BZSz2ogpFJsDlmw9KO4/O7KTh8w1bfr8Je2eHdK4+ldoDz3ZbqKeXqcBlVqEYGa/8TYx3ivg=='
+
+      function decrypt(param) {
+        
+        // 将PEM格式的私钥转换为伪造私钥
+        var privateKey = pki.privateKeyFromPem(
+          '-----BEGIN RSA PRIVATE KEY-----\n' +
+            key +
+            '\n-----END RSA PRIVATE KEY-----',
+        )
+        console.log(privateKey)
+        var data = forge.util.encode64(param)
+        const cryptoed = privateKey.decrypt(data)
+        console.log('结果', cryptoed)
+        return cryptoed
+      }
+      decrypt(str)
+      /*
+      // 将PEM格式的私钥转换为伪造私钥
+      var privateKey = pki.privateKeyFromPem(pen)
+
+      // 将伪造私钥转换为PEM格式
+      var pem = pki.privateKeyToPem(privateKey)
+
+      // 将ASN.1 PrivateKeyInfo或RSAPrivateKey转换为伪造私钥
+      var privateKey = pki.privateKeyFromAsn1(rsaPrivateKey)
+
+      // 将伪造私钥转换为ASN.1 RSA私钥
+      var rsaPrivateKey = pki.privateKeyToAsn1(privateKey)
+
+      // 将RSAPrivateKey ASN.1对象包装在PKCS#8 ASN.1 PrivateKeyInfo中
+      var privateKeyInfo = pki.wrapRsaPrivateKey(rsaPrivateKey)
+
+      // 转换PKCS#8 ASN.1私钥为PEM格式
+      var pem = pki.privateKeyInfoToPem(privateKeyInfo)
+
+      //使用自定义密码和密码加密PrivateKeyInfo
+      //输出加密的PrivateKeyInfo
+      var encryptedPrivateKeyInfo = pki.encryptPrivateKeyInfo(
+        privateKeyInfo,
+        'myCustomPasswordHere',
+        {
+          algorithm: 'aes256', // 'aes128', 'aes192', 'aes256', '3des'
+        },
+      )
+
+      //解密已加密的ASN.1 EncryptedPrivateKeyInfo
+      //使用自定义密码
+      var privateKeyInfo = pki.decryptPrivateKeyInfo(
+        encryptedPrivateKeyInfo,
+        'myCustomPasswordHere',
+      )
+
+      //将加密的PrivateKeyInfo转换为PEM
+      var pem = pki.encryptedPrivateKeyToPem(encryptedPrivateKeyInfo)
+
+      // 将PEM编码的EncryptedPrivateKeyInfo转换为ASN.1格式
+      var encryptedPrivateKeyInfo = pki.encryptedPrivateKeyFromPem(pem)
+
+      // 包装和加密伪造私钥，并以PEM格式输出
+      var pem = pki.encryptRsaPrivateKey(privateKey, 'password')
+
+      // 加密伪造私钥，并使用OpenSSL的
+      // 专有传统格式+封装的PEM标头（DEK信息）
+      var pem = pki.encryptRsaPrivateKey(privateKey, 'password', {
+        legacy: true,
+      })
+
+      // 解密PEM格式的加密私钥
+      var privateKey = pki.decryptRsaPrivateKey(pem, 'password')
+
+      // 从私钥设置RSA公钥
+      var publicKey = pki.setRsaPublicKey(privateKey.n, privateKey.e)
+      console.log('window', window)
+
+      // function decrypt (key, data){
+      //   data = '-----BEGIN PKCS7-----' + data + '-----END PKCS7-----'
+      //   const serP7 = forge.pkcs7.messageFromPem(data)
+      //   const recipient = serP7.findRecipient(cert)
+      //   serP7.decrypt(recipient, pri)
+      // }
+
+      const decrypted = privateKey.decrypt(str)
+      /*
+      // 同步生成 RSA 密钥对
+      // *不推荐*：可能比异步慢得多，并且可能会阻止
+      // JavaScript 执行。如果可能，将使用原生 Node.js 10.12.0+ API。
+      var keypair = rsa.generateKeyPair({ bits: 2048, e: 0x10001 })
+      console.log('同步生成密钥对')
+      console.log('keypair', keypair)
+
+      // 异步生成 RSA 密钥对（如果可用，则使用网络工作者）
+      // 使用工作者：-1 运行快速核心估算器以优化工作者数量
+      // *推荐*：可以比同步快得多。将使用本机// Node.js 10.12.0+ 或 WebCrypto API
+      // rsa.generateKeyPair({ bits: 2048, workers: 2 }, function (err, keypair) {
+      //   // keypair.privateKey,
+      //   console.log('异步生成密钥对')
+      //   console.log('keypair', keypair.privateKey)
+      //   console.log('keypair', keypair.publicKey)
+      // })
+
+
+      // 分步骤生成一个 RSA 密钥对，尝试在主 JS 线程上运行指定的时间段
+      // 时间
+      var state = rsa.createKeyPairGenerationState(2048, 0x10001)
+      var step = function () {
+        // 运行 100 ms
+        if (!rsa.stepKeyPairGenerationState(state, 100)) {
+          setTimeout(step, 1)
+        } else {
+          // 完成，关闭进度指示器，使用 state.keys
+          // done, turn off progress indicator, use state.keys
+        }
+      }
+      // 打开进度指示器，安排生成运行
+      setTimeout(step)
+
+      //用私有密钥和输出DigestInfo DER编码的字节符号数据
+      //（默认为RSASSA PKCS＃1 V1.5）
+      var md = forge.md.sha1.create()
+      md.update('sign this', 'utf8')
+      var signature = privateKey.sign(md)
+
+      //用公共密钥验证数据
+      //（默认为RSASSA PKCS＃1 V1.5）
+      var verified = publicKey.verify(md.digest().bytes(), signature)
+
+      // 使用 RSASSA-PSS 对数据进行签名，其中 PSS 使用 SHA-1 哈希、基于 SHA-1 的
+      // 屏蔽函数 MGF1 和 20 字节的 salt
+
+      var md = forge.md.sha1.create()
+      md.update('sign this', 'utf8')
+      var pss = forge.pss.create({
+        md: forge.md.sha1.create(),
+        mgf: forge.mgf.mgf1.create(forge.md.sha1.create()),
+        saltLength: 20,
+        //任选通过与自定义PRNG执行'PRNG'
+        // optionalls传递'盐'与forge.util.ByteBuffer瓦特/定制盐
+      })
+      var signature = privateKey.sign(md, pss)
+
+      //验证RSASSA-PSS签名
+      var pss = forge.pss.create({
+        md: forge.md.sha1.create(),
+        mgf: forge.mgf.mgf1.create(forge.md.sha1.create()),
+        saltLength: 20,
+        //任选通过与自定义PRNG 'PRNG'实现
+      })
+      var md = forge.md.sha1.create()
+      md.update('sign this', 'utf8')
+      publicKey.verify(md.digest().getBytes(), signature, pss)
+
+      // 使用公钥加密数据（默认为 RSAES PKCS#1 v1.5）
+      var encrypted = publicKey.encrypt(bytes)
+
+      //用私钥（默认为RSAES PKCS＃1 V1.5）解密数据
+      var decrypted = privateKey.decrypt(encrypted)
+
+      // 使用 RSAES PKCS#1 v1.5
+      var encrypted = publicKey.encrypt(bytes, 'RSAES-PKCS1-V1_5')
+
+      //使用RSAES PKCS＃1 V1.5的私钥解密数据
+      var decrypted = privateKey.decrypt(encrypted, 'RSAES-PKCS1-V1_5')
+
+      // 使用 RSAES-OAEP 使用公钥加密数据
+      var encrypted = publicKey.encrypt(bytes, 'RSA-OAEP')
+
+      //使用RSAES-OAEP的私钥解密数据
+      var decrypted = privateKey.decrypt(encrypted, 'RSA-OAEP')
+
+      // 使用 RSAES-OAEP/SHA-256 的公钥加密数据
+      var encrypted = publicKey.encrypt(bytes, 'RSA-OAEP', {
+        md: forge.md.sha256.create(),
+      })
+
+      // 使用RSAES-OAEP / SHA-256的私有密钥解密数据
+      var decrypted = privateKey.decrypt(encrypted, 'RSA-OAEP', {
+        md: forge.md.sha256.create(),
+      })
+
+      // 使用 RSAES-OAEP/SHA-256/MGF1-SHA-1 使用公钥加密数据
+      // 与 Java 的 RSA/ECB/OAEPWithSHA-256AndMGF1Padding
+      var encrypted = publicKey.encrypt(bytes, 'RSA-OAEP', {
+        md: forge.md.sha256.create(),
+        mgf1: {
+          md: forge.md.sha1.create(),
+        },
+      })
+
+      //使用私有密钥解密数据RSAES-OAEP / SHA-256 / MGF1-SHA-1
+      //使用Java的RSA / ECB / OAEPWithSHA-256AndMGF1Padding兼容
+      var decrypted = privateKey.decrypt(encrypted, 'RSA-OAEP', {
+        md: forge.md.sha256.create(),
+        mgf1: {
+          md: forge.md.sha1.create(),
+        },
+      })
+      */
+    </script>
+  </body>
+</html>

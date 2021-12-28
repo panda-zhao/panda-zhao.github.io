@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>股票模拟盘</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <style>
+    *{margin: 0; padding: 0;}
+    body{
+      background: #f7f8fa;
+    }
+    .header{
+      padding: 0 15px;
+      background: #fff;
+      margin-bottom: 20px;
+      
+    }
+    .header .form{
+      margin-bottom: 10px;
+    }
+    .header .label{
+      display: inline-block;
+      text-align: right;
+      width: 80px;
+      margin-right: 10px;
+    }
+    .header input{
+      height: 30px;
+      padding-left: 5px;
+    }
+    .wrap{
+      background: #ffffff;
+      padding: 0 10px 0;
+    }
+    .title{
+      border-bottom: 1px solid #eee;
+      height: 36px;
+      line-height: 36px;
+      display: flex;
+      font-size: 13px;
+      color: #929292;
+      /* margin-bottom: 10px; */
+    }
+    .title .flex-item{
+      width: 20%;
+      text-align: right;
+      padding: 0 10px;
+    }
+    .title .item1{
+      text-align: left;
+      box-sizing: border-box;
+      width: 34%;
+    }
+
+    .main{
+      padding: 10px 0;
+    }
+    .main .row{
+      display: flex;
+      font-size: 15px;
+      color: #000;
+    }
+    .main .row div{
+      line-height: 20px;
+      width: 20%;
+      text-align: right;
+      padding: 0 10px;
+    }
+    .main .row .text1{
+      text-align: left;
+      box-sizing: border-box;
+      width: 34%;
+    }
+    .main .row2{
+      margin-top: 3px;
+    }
+    .text4{
+      color: #3d8a23
+    }
+    .icon{
+      margin: 0 2px;
+    }
+    .footer{
+      text-align: center;
+      margin: 20px 0;
+      font-size: 13px;
+      color: #949597;
+      letter-spacing: 1px;
+    }
+    .active{
+      color: red!important;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <div class="header">
+      <h2 style="margin-bottom: 20px;">请保留两位小数</h2>
+      <div class="form">
+        <span class="label">股票名称: </span>
+        <input type="text" placeholder="请输入名称" v-model="name">
+      </div>
+      <div class="form">
+        <span class="label">成本价: </span>
+        <input type="number" placeholder="请输入价格" v-model="startPrice">
+      </div>
+      <div class="form">
+        <span class="label">现价: </span>
+        <input type="number" placeholder="请输入价格" v-model="currentPrice">
+      </div>
+      <div class="form">
+        <span class="label">数量:</span>
+        <input type="number" placeholder="请输入股票数量" v-model="quantity">
+      </div>
+    </div>
+    <div class="wrap">
+      <div class="title">
+        <div class="flex-item item1"><span style="color: #191919">证券</span><span class="icon">/</span>市值</div>
+        <div class="flex-item">持仓<span class="icon">/</span>可用</div>
+        <div class="flex-item">现价<span class="icon">/</span>成本</div>
+        <div class="flex-item">持仓盈亏</div>
+      </div>
+      <div class="main">
+        <div class="row">
+          <div class="text1">{{name}}</div>
+          <div class="text2">{{quantity}}</div>
+          <div class="text3">{{currentPrice}}</div>
+          <div class="text4" :class="{active: isprofit}">{{profitAndLoss}}</div>
+        </div>
+        <div class="row row2">
+          <div class="text1">{{ total }}</div>
+          <div class="text2">{{ quantity }}</div>
+          <div class="text3">{{ startPrice }}</div>
+          <div class="text4" :class="{active: isprofit}">{{profitAndLossRatio}}%</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer">共有1条持仓数据</div>
+  </div>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        name: "ST中昌",
+        startPrice: 2.90,
+        currentPrice: 2.73,
+        quantity: 29300
+      },
+      computed: {
+        isprofit(){
+          console.log(this.profitAndLoss)
+          return Number(this.profitAndLoss) > 0
+        },
+        // 持仓金额 现价 * 实际持有数量
+        total () {
+          return (this.currentPrice * this.quantity).toFixed(2)
+        },
+        // 持仓盈亏=（现价-成本价）*实际持有数量
+        profitAndLoss(){
+          return ((this.currentPrice - this.startPrice) * this.quantity).toFixed(2)
+        },
+        // 盈亏比例=（现价-成本价）/成本价×100%
+        profitAndLossRatio(){
+          return (((this.currentPrice - this.startPrice) / this.startPrice) * 100 ).toFixed(2)
+        }
+      },
+    })
+  </script>
+</body>
+</html>

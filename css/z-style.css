@@ -437,3 +437,8 @@ textarea {
   width: 1200px;
   margin: 0 auto;
 }
+
+aside {
+  padding-right: 15px;
+  border-right: 1px solid #ccc;
+}

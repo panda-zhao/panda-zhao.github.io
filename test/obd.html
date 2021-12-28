@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /* 
+    * 7E8 -> ECU 控制器ID 可作为数据切分使用
+    * 10第一帧 21第二帧 22第3帧 23第4帧 24第5帧 有10开始的代表为多帧数据，后续用7E8分割
+    * 02/04/06/08/0A 16进制 代表后续有效数据长度，0A = 10，每两个字符为1位(0xFF为一位)
+    * 43 -> 代表03模式的响应，有效数据第1位
+    * 00/01/02/03/04 -> 代表故障码数量 04代表有4个故障码，有效数据第2位
+    */
+    // 无故障码  指令:03 回复：7E8    02 43 00>
+    // 1个故障码 指令:03 回复：7E8    04 43 01 1024>  有效数据长度4 有效数据 2-3
+    // 2个故障码 指令:03 回复：7E8    06 43 02 1024 1025> 有效数据长度6 有效数据  2-3 4-5
+    // 3个故障码 指令:03 回复: 7E8 10 08 43 03 1024 1025 7E8 21 1026 0000000000> 有效数据长度8 有效数据  2-3 4-5 7-8
+    // 4个故障码 指令:03 回复: 7E8 10 0A 43 04 1024 1025 7E8 21 1026 1027 000000> 10 2-3 4-5 7-8 9-10 12-13 14-15 
+    // 指令04           回复: 7E8 01 44
+
+    
+
+    // 指令:010C        回复：7E8 07 410C 4A98000000>
+    // 指令:010D        回复：7E8 07 410D 8B00000000>
+    // 指令:015E        回复：7E8 07 415E 0000000000>
+    // 指令:0104        回复：7E8 07 4104 DC00000000>
+    // 指令:0110        回复：7E8 07 4110 BAAA000000>
+    // 指令:0105        回复：7E8 07 4105 7300000000>
+    // 指令:010B        回复：7E8 07 410B 6F00000000>
+    // 指令:010F        回复：7E8 07 410F 7A00000000>
+
+    
+    // 7E8024300> 无故障码
+    // 7E80443011024> 故障码 P1024 
+    // 7E806430210241025>故障码 P1024 P1025
+    // 7E810084303102410257E82110260000000000
+    // 7E8100A4304102410257E82110261027000000
+    // 7E8 10 0A 43 04 1024 1025 7E8 21 1026 1027 000000
+    get03Val('7E8024300>')
+    get03Val('7E80443011024>')
+    get03Val('7E806430210241025>')
+    get03Val('7E810084303102410257E82110260000000000>')
+    get03Val('7E8100A4304102410257E82110261027000000>')
+function get03Val(msg){
+  var result = []
+  if (msg.indexOf(">") > -1) {
+    msg = msg.slice(0, msg.indexOf(">")).trim()
+  }
+  try {
+    // 43代表03模式的响应
+    var index = msg.indexOf('43')
+    // var validBit = parseInt(msg.substring(index-2, index), 16) // 获取有效数据长度
+    // console.log('故障码的有效长度=', validBit)
+    msg = msg.substring(index + '43'.length).trim() // 43后边的有效数据
+    // 43后边两位代表故障码数量
+    var troubleCodeLength = parseInt(msg.substring(0, 2), 16)
+    console.log('故障码的数量', troubleCodeLength)
+    // 故障码超过两个多帧数据过滤
+    if(troubleCodeLength > 2){
+      msg = msg.replace(/7E8/g, '')
+    }
+    if(troubleCodeLength > 0){
+      for (let index = 0; index < troubleCodeLength; index++) {
+        var start = ( index % 2) === 0 ? (5 * index + 2) : (5*index + 1)
+        result.push(msg.substring(start, start + 4))
+      }
+    }
+    
+    var hexDigitReplace = {"0":"P0","1":"P1","2":"P2","3":"P3","4":"C0","5":"C1","6":"C2","7":"C3","8":"B0","9":"B1","A":"B2","B":"B3","C":"U0","D":"U1","E":"U2","F":"U3"}
+    result.forEach((item, index) => {
+      const _item = hexDigitReplace[item[0]] + item.substring(1)
+      result.splice(index, 1, _item)
+    });
+    console.log('故障码=', result)
+    return result 
+  } catch (error) {
+    console.error(error)
+  }
+ 
+
+}
+
+    // 响应值 分割命令 有效字符长度
+    function getValue(msg, cmd, length) {
+      var index = msg.indexOf(">");
+      if (index != -1) {
+        msg = msg.slice(0, index).trim();
+      }
+      var startIndex = msg.indexOf(cmd);
+      if (startIndex >= 0) {
+        msg = msg.substring(startIndex + cmd.length).trim();
+      } else {
+        console.log("cmd error");
+        return null;
+      }
+      length = length * 2;
+      if (msg.length >= length) {
+        return msg.substring(0, length);
+      } else {
+        console.log("length error");
+        return null;
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>浏览器数据库</title>
+  </head>
+  <body>
+    <div>
+      <button onclick="add()">新增</button>
+    </div>
+    <script>
+      var request = window.indexedDB.open('test', 1)
+      var db
+      request.onerror = function (event) {
+        console.log('数据库打开失败')
+      }
+
+      request.onsuccess = function (event) {
+        db = request.result // 数据库对象
+        console.log('数据库打开成功', db)
+      }
+
+      request.onupgradeneeded = function (event) {
+        db = event.target.result // 数据库实例
+        console.log('数据库版本号大于实际版本号', db)
+        var objectStore
+        if (!db.objectStoreNames.contains('person')) {
+          objectStore = db.createObjectStore('person', {
+            keyPath: 'userId',
+            autoIncrement: true,
+          })
+        }
+      }
+
+      function add() {
+        var request = db
+          .transaction(['person'], 'readwrite')
+          .objectStore('person')
+          .add({ id: 1, name: '张三', age: 24, email: 'zhangsan@example.com' })
+
+        request.onsuccess = function (event) {
+          console.log('数据写入成功')
+        }
+
+        request.onerror = function (event) {
+          console.log('数据写入失败')
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="../js/echarts.js"></script>
+  <title>仪表盘展示</title>
+  <style>
+    #main{
+      width: 500px;
+      height: 500px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <div id="main"></div>
+  <script>
+    var chartDom = document.getElementById('main');
+    var myChart = echarts.init(chartDom);
+    var option;
+
+    option = {
+      series: [
+        {
+          type: 'gauge',
+          radius: '78%',
+          startAngle: 225,
+          endAngle: -45,
+          min: 0,
+          max: 36000,
+          splitNumber: 10,
+          silent: true,
+          animation: true,
+          animationThreshold: 2000,
+          itemStyle: { color: '#ff9900' },
+          progress: { show: true, width: 8 },
+          axisLine: { lineStyle: { width: 8 } },
+          splitLine: { show: false },
+          axisTick: {
+            distance: -18,
+            splitNumber: 3,
+            lineStyle: {
+              width: 1,
+              color: '#8E93FF'
+            }
+          },
+          axisLabel: { show: false },
+          anchor: { show: false },
+          title: {
+            show: true,
+            offsetCenter: [0, '50%'],
+            color: 'rgba(0, 0, 0, 1)',
+            fontWeight: 600,
+            fontSize: 14,
+            lineHeight: 14
+          },
+          detail: {
+            valueAnimation: true,
+            formatter: 'r/min',
+            rich: {
+              value: {
+                fontSize: 18,
+                color: '#000',
+                fontWeight: 600,
+                lineHeight: 24
+              }
+            },
+            show: true,
+            color: '#999',
+            fontWeight: 'normal',
+            fontSize: 10,
+            height: 12,
+            lineHeight: 12,
+            offsetCenter: ['0', '90%']
+          },
+          data: [
+            {
+              name: '12000',
+              value: 13000
+            }
+          ]
+        }
+      ]
+    };
+
+    option && myChart.setOption(option);
+    setInterval(()=>{
+      var num =  (Math.random() * 36000).toFixed(0)
+      // console.log('num=', num);
+      // const data = [{
+      //   name: num,
+      //   value: num
+      // }]
+      // const _option = {
+      //   series: [{
+      //     data: data
+      //   }]
+      // }
+      option.series[0].data[0].value = num
+      console.log('option', option)
+      myChart.setOption(option)
+      // myChart.setOption(_option, {
+      //   noMerge: true,
+      //   lazyDate: false
+      // })
+    }, 3000)
+
+  </script>
+</body>
+</html>

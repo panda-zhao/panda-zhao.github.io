@@ -50,7 +50,7 @@
             class="secretKey z-input"
             type="text"
             placeholder="请输入AES密钥"
-            value="12345abcdefg6"
+            value="865CCAC4BC1FF58E21D626C5C932A41E388855E7FCF35FC18E7FDE9F7188522F"
           />
         </div>
       </div>
@@ -117,34 +117,11 @@
       <div class="z-flex z-flex-between">
         <div class="z-mr-15">
           <p>Private Key</p>
-          <textarea id="privkey" cols="60" rows="10">
------BEGIN RSA PRIVATE KEY-----
-    MIICXQIBAAKBgQDlOJu6TyygqxfWT7eLtGDwajtNFOb9I5XRb6khyfD1Yt3YiCgQ
-    WMNW649887VGJiGr/L5i2osbl8C9+WJTeucF+S76xFxdU6jE0NQ+Z+zEdhUTooNR
-    aY5nZiu5PgDB0ED/ZKBUSLKL7eibMxZtMlUDHjm4gwQco1KRMDSmXSMkDwIDAQAB
-    AoGAfY9LpnuWK5Bs50UVep5c93SJdUi82u7yMx4iHFMc/Z2hfenfYEzu+57fI4fv
-    xTQ//5DbzRR/XKb8ulNv6+CHyPF31xk7YOBfkGI8qjLoq06V+FyBfDSwL8KbLyeH
-    m7KUZnLNQbk8yGLzB3iYKkRHlmUanQGaNMIJziWOkN+N9dECQQD0ONYRNZeuM8zd
-    8XJTSdcIX4a3gy3GGCJxOzv16XHxD03GW6UNLmfPwenKu+cdrQeaqEixrCejXdAF
-    z/7+BSMpAkEA8EaSOeP5Xr3ZrbiKzi6TGMwHMvC7HdJxaBJbVRfApFrE0/mPwmP5
-    rN7QwjrMY+0+AbXcm8mRQyQ1+IGEembsdwJBAN6az8Rv7QnD/YBvi52POIlRSSIM
-    V7SwWvSK4WSMnGb1ZBbhgdg57DXaspcwHsFV7hByQ5BvMtIduHcT14ECfcECQATe
-    aTgjFnqE/lQ22Rk0eGaYO80cc643BXVGafNfd9fcvwBMnk0iGX0XRsOozVt5Azil
-    psLBYuApa66NcVHJpCECQQDTjI2AQhFc1yRnCU/YgDnSpJVm1nASoRUnU8Jfm3Oz
-    uku7JUXcVpt08DFSceCEX9unCuMcT72rAQlLpdZir876
-    -----END RSA PRIVATE KEY-----</textarea
-          >
+          <textarea id="privkey" cols="60" rows="10"></textarea>
         </div>
         <div>
           <p>Public Key</p>
-          <textarea id="pubkey" cols="60" rows="10">
------BEGIN PUBLIC KEY-----
-    MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDlOJu6TyygqxfWT7eLtGDwajtN
-    FOb9I5XRb6khyfD1Yt3YiCgQWMNW649887VGJiGr/L5i2osbl8C9+WJTeucF+S76
-    xFxdU6jE0NQ+Z+zEdhUTooNRaY5nZiu5PgDB0ED/ZKBUSLKL7eibMxZtMlUDHjm4
-    gwQco1KRMDSmXSMkDwIDAQAB
-    -----END PUBLIC KEY-----</textarea
-          >
+          <textarea id="pubkey" cols="60" rows="10"></textarea>
         </div>
       </div>
       <div class="z-flex z-flex-between">
@@ -179,7 +156,33 @@
     </div>
 
     <script>
-      console.log('forge', forge)
+      var key =
+        '865CCAC4BC1FF58E21D626C5C932A41E388855E7FCF35FC18E7FDE9F7188522F'
+      var iv = ''
+
+      function encrypt(text) {
+        return CryptoJS.AES.encrypt(text, CryptoJS.enc.Utf8.parse(key), {
+          iv: CryptoJS.enc.Utf8.parse(iv),
+          mode: CryptoJS.mode.CBC,
+          padding: CryptoJS.pad.Pkcs7,
+        })
+      }
+
+      function decrypt(text) {
+        var result = CryptoJS.AES.decrypt(text, CryptoJS.enc.Utf8.parse(key), {
+          iv: CryptoJS.enc.Utf8.parse(iv),
+          mode: CryptoJS.mode.CBC,
+          padding: CryptoJS.pad.Pkcs7,
+        })
+        return result.toString(CryptoJS.enc.Utf8)
+      }
+
+      var text = 'admin'
+      var encoded = encrypt(text)
+      console.log('加密', encoded.toString())
+      console.log('解密', decrypt(encoded))
+
+      // console.log('forge', forge)
       // base64加解密
       const enc_base64 = function () {
         const enc_str = document.querySelector('#a1').value
@@ -201,7 +204,7 @@
           alert(error)
         }
       }
-      const secretKey = document.querySelector('.secretKey') // 密钥
+      const secretKey = document.querySelector('.secretKey').value // 密钥
 
       // 配置非必填
       const options = {
@@ -212,6 +215,8 @@
       // AES加解密
       const enc_AES = function () {
         const enc_str = document.querySelector('#b1').value
+        console.log(enc_str)
+        console.log(secretKey)
         try {
           const bytes = CryptoJS.AES.encrypt(enc_str, secretKey, options)
           console.log('AES加密后', bytes)
@@ -266,12 +271,12 @@
         })
       }
 
-      const pubEncrypt = new JSEncrypt()
-      const pubkey = document.querySelector('#pubkey').value
-      console.log(pubEncrypt, pubkey)
-      pubEncrypt.setPublicKey(pubkey)
       // 公钥加密
       const enc_rsa_publickey = function () {
+        const pubEncrypt = new JSEncrypt()
+        const pubkey = document.querySelector('#pubkey').value
+        console.log(pubEncrypt, pubkey)
+        pubEncrypt.setPublicKey(pubkey)
         const startTime = new Date().getTime()
         const enc_str = document.querySelector('#d1').value
         const encrypted = pubEncrypt.encrypt(enc_str)
@@ -282,6 +287,10 @@
 
       // 公钥解密
       const dec_rsa_publickey = function () {
+        const pubEncrypt = new JSEncrypt()
+        const pubkey = document.querySelector('#pubkey').value
+        console.log(pubEncrypt, pubkey)
+        pubEncrypt.setPublicKey(pubkey)
         const startTime = new Date().getTime()
         const dec_str = document.querySelector('#d2').value
         const decrypted = pubEncrypt.decrypt(dec_str)
@@ -290,11 +299,12 @@
         document.querySelector('#d1').value = pubEncrypt.decrypt(dec_str)
       }
 
-      const priEncrypt = new JSEncrypt()
-      const privkey = document.querySelector('#privkey').value
-      pubEncrypt.setPrivateKey(privkey)
       // 私钥加密
       const enc_rsa_privkey = function () {
+        const priEncrypt = new JSEncrypt()
+        const privkey = document.querySelector('#privkey').value
+        console.log('privkey', privkey)
+        priEncrypt.setPrivateKey(privkey)
         const startTime = new Date().getTime()
         const enc_str = document.querySelector('#d1').value
         const encrypted = priEncrypt.encrypt(enc_str)
@@ -305,6 +315,10 @@
 
       // 私钥解密
       const dec_rsa_privkey = function () {
+        const priEncrypt = new JSEncrypt()
+        const privkey = document.querySelector('#privkey').value
+        console.log('privkey', privkey)
+        priEncrypt.setPrivateKey(privkey)
         const startTime = new Date().getTime()
         const dec_str = document.querySelector('#d2').value
         const decrypted = priEncrypt.decrypt(dec_str)
