@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>新版特性</title>
+  <style>
+    *{
+      padding: 0;
+      margin: 0;
+    }
+    :root {
+      --color: #007bff;
+      --bgColor: #f2f2f2;
+      --tabBar: 60px;
+      --h1Size: 32px;
+    }
+    .header{
+      font-size: var(--h1Size);
+      font-weight: bold;
+      height: var(--tabBar);
+      line-height: var(--tabBar);
+      text-align: center;
+    }
+    .main{
+      background-color: var(--bgColor);
+      color: var(--color);
+      height: calc(100vh - var(--tabBar));
+    }
+  </style>
+</head>
+<body>
+  <header class="header">新版特性</header>
+  <main class="main">
+    测试root
+  </main>
+</body>
+</html>

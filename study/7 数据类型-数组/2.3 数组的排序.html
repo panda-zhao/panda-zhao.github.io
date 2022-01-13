@@ -25,7 +25,42 @@
     })
     console.log('sortObjArr', ObjArr, sortObjArr)
 
-
+    const bleList = [
+      {
+        "deviceId": "DD:7D:F2:6E:E6:04",
+        "name": "OBDII",
+        "RSSI": -71,
+        "localName": "OBDII",
+        "advertisServiceUUIDs": ["0000FFF0-0000-1000-8000-00805F9B34FB"],
+        "advertisData": {}
+      },
+      {
+        "deviceId": "DD:7D:F2:6E:E6:01",
+        "name": "OBDII",
+        "RSSI": -69,
+        "localName": "device1",
+        "advertisServiceUUIDs": ["0000FFF0-0000-1000-8000-00805F9B34FB"],
+        "advertisData": {}
+      },
+      {
+        "deviceId": "DD:7D:F2:6E:E6:03",
+        "name": "OBDII",
+        "RSSI": -50,
+        "localName": "device3",
+        "advertisServiceUUIDs": ["0000FFF0-0000-1000-8000-00805F9B34FB"],
+        "advertisData": {}
+      },
+      {
+        "deviceId": "DD:7D:F2:6E:E6:02",
+        "name": "OBDII",
+        "RSSI": -100,
+        "localName": "device4",
+        "advertisServiceUUIDs": ["0000FFF0-0000-1000-8000-00805F9B34FB"],
+        "advertisData": {}
+      },
+    ]
+    const result = bleList.sort((a, b)=> b['RSSI'] - a['RSSI'])
+    console.log(result)
   </script>
 </body>
 </html>

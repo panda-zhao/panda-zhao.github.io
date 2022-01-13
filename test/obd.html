@@ -8,6 +8,50 @@
 </head>
 <body>
   <script>
+    zget_Version('Shenzhen Yuming Electronics Co., Ltd.version:V1.0.8>')
+    function zget_Version(msg){
+      if(msg.includes('NO DATA')) return ''
+      msg = msg.replace(/[ ]|[\r]|[\n]|[\r\n]|[>]/g, "")
+      try {
+        var result = msg.substring(msg.indexOf('version:') + 8) // 有效数据
+        console.log('版本号', result)
+        return result
+      } catch (error) {
+        console.error(error)
+        return ''
+      }
+    }
+    get_support('7E8 06 4140 FF FE D3 84 01>')
+    function get_support(msg){
+    if(msg === 'NO DATA') return null
+      msg = msg.replace(/[ ]|[\r]|[\n]|[\r\n]|[>]/g, "")
+      try {
+        msg = msg.slice(-8) // 有效数据后8位
+        // 16进制转10进制再转2进制
+        var a = parseInt(msg.substring(0, 2), 16).toString(2)
+        while (a.length < 8) {
+          a = 0 + a
+        }
+        var b = parseInt(msg.substring(2, 4), 16).toString(2)
+        while (b.length < 8) {
+          b = 0 + b
+        }
+        var c = parseInt(msg.substring(4, 6), 16).toString(2)
+        while (c.length < 8) {
+          c = 0 + c
+        }
+        var d = parseInt(msg.substring(6, 8), 16).toString(2)
+        while(d.length < 8){
+          d = 0 + d
+        }
+        let result = a + b + c + d
+        console.log('PID支持情况', a, b, c, d, result.length)
+        return result
+      } catch (error) {
+        console.error(error)
+        return null
+      }
+    }
     /* 
     * 7E8 -> ECU 控制器ID 可作为数据切分使用
     * 10第一帧 21第二帧 22第3帧 23第4帧 24第5帧 有10开始的代表为多帧数据，后续用7E8分割
@@ -33,29 +77,21 @@
     // 指令:010B        回复：7E8 07 410B 6F00000000>
     // 指令:010F        回复：7E8 07 410F 7A00000000>
 
-    
-    // 7E8024300> 无故障码
-    // 7E80443011024> 故障码 P1024 
-    // 7E806430210241025>故障码 P1024 P1025
-    // 7E810084303102410257E82110260000000000
-    // 7E8100A4304102410257E82110261027000000
-    // 7E8 10 0A 43 04 1024 1025 7E8 21 1026 1027 000000
-    get03Val('7E8024300>')
-    get03Val('7E80443011024>')
-    get03Val('7E806430210241025>')
-    get03Val('7E810084303102410257E82110260000000000>')
-    get03Val('7E8100A4304102410257E82110261027000000>')
+get03Val('7E8 02 43 00>')
+get03Val('7E8 04 43 01 1024 >')
+get03Val('7E8 06 43 02 1024 1025>')
+get03Val('7E8 10 08 43 03 1024 1025 7E8 21 1026 0000000000> ')
+get03Val('7E8 10 0A 43 04 1024 1025 7E8 21 1026 1027 000000> ')
 function get03Val(msg){
   var result = []
-  if (msg.indexOf(">") > -1) {
-    msg = msg.slice(0, msg.indexOf(">")).trim()
-  }
+  msg = msg.replace(/[ ]|[\r]|[\n]|[\r\n]|[>]/g, "")
   try {
+    const cmd = '43'
     // 43代表03模式的响应
-    var index = msg.indexOf('43')
+    var index = msg.indexOf(cmd)
     // var validBit = parseInt(msg.substring(index-2, index), 16) // 获取有效数据长度
     // console.log('故障码的有效长度=', validBit)
-    msg = msg.substring(index + '43'.length).trim() // 43后边的有效数据
+    msg = msg.substring(index + cmd.length).trim() // 43后边的有效数据
     // 43后边两位代表故障码数量
     var troubleCodeLength = parseInt(msg.substring(0, 2), 16)
     console.log('故障码的数量', troubleCodeLength)
@@ -80,31 +116,203 @@ function get03Val(msg){
   } catch (error) {
     console.error(error)
   }
- 
-
 }
 
-    // 响应值 分割命令 有效字符长度
-    function getValue(msg, cmd, length) {
-      var index = msg.indexOf(">");
-      if (index != -1) {
-        msg = msg.slice(0, index).trim();
-      }
-      var startIndex = msg.indexOf(cmd);
-      if (startIndex >= 0) {
-        msg = msg.substring(startIndex + cmd.length).trim();
-      } else {
-        console.log("cmd error");
-        return null;
-      }
-      length = length * 2;
-      if (msg.length >= length) {
-        return msg.substring(0, length);
-      } else {
-        console.log("length error");
-        return null;
-      }
+zget_010B('7E8 07 410B AA 00000000 >')
+// 油箱压力绝对值 kPa
+function zget_010B(msg) {
+  if(msg === 'NO DATA') return null
+  const cmd = '410B' // 命令
+  const effectiveLength = 1 // 约定的数据数量
+  msg = msg.replace(/[ ]|[\r]|[\n]|[\r\n]|[>]/g, "") // 去除空格，换行符\r \n,和>
+  try{
+    msg = msg.substring(msg.indexOf(cmd) + cmd.length) // 有效数据
+    msg = msg.substring(0, effectiveLength*2) // 数据一般是2个十六进制字节
+    const A = parseInt(msg.substring(0, 2), 16)
+    console.log('A=', A)
+    let result = A
+    if(result < 0 || result > 255){
+      result  = null
     }
+    console.log('油箱压力绝对值=', result)
+    return result
+  }catch(e){
+    console.error(error)
+    return null
+  }
+}
+
+zget_010D('NO DATA>')
+zget_010D('7E8 07 410D 4A 00000000 >')
+// 速度
+function zget_010D(msg) {
+  if(msg === 'NO DATA') return null
+  const cmd = '410D' // 命令
+  const effectiveLength = 1 // 约定的数据数量
+  msg = msg.replace(/[ ]|[\r]|[\n]|[\r\n]|[>]/g, "") // 去除空格，换行符\r \n,和>
+  try{
+    msg = msg.substring(msg.indexOf(cmd) + cmd.length) // 有效数据
+    msg = msg.substring(0, effectiveLength*2) // 数据一般是2个十六进制字节
+    const A = parseInt(msg.substring(0, 2), 16)
+    console.log('A=', A)
+    let result = A
+    if(result < 0 || result > 255){
+      result  = null
+    }
+    console.log('速度=', result)
+    return result
+  }catch(e){
+    console.error(error)
+    return null
+  }
+}
+zget_010F('7E8 07 410F 80 00000000 >')
+// 油箱空气温度 ℃
+function zget_010F(msg) {
+  if(msg === 'NO DATA') return null
+  const cmd = '410F' // 命令
+  const effectiveLength = 1 // 约定的数据数量
+  msg = msg.replace(/[ ]|[\r]|[\n]|[\r\n]|[>]/g, "") // 去除空格，换行符\r \n,和>
+  try{
+    msg = msg.substring(msg.indexOf(cmd) + cmd.length) // 有效数据
+    msg = msg.substring(0, effectiveLength*2) // 数据一般是2个十六进制字节
+    const A = parseInt(msg.substring(0, 2), 16)
+    console.log('A=', A)
+    let result = +(A - 40).toFixed(2)
+    if(result < -40 || result > 215){
+      result  = null
+    }
+    console.log('油箱空气温度=', result)
+    return result
+  }catch(e){
+    console.error(error)
+    return null
+  }
+}
+
+zget_0105('7E8 07 4105 A0 00000000 >')
+// 引擎冷却液温度
+function zget_0105(msg) {
+  if(msg === 'NO DATA') return null
+  const cmd = '4105' // 命令
+  const effectiveLength = 1 // 约定的数据数量
+  msg = msg.replace(/[ ]|[\r]|[\n]|[\r\n]|[>]/g, "") // 去除空格，换行符\r \n,和>
+  try{
+    msg = msg.substring(msg.indexOf(cmd) + cmd.length) // 有效数据
+    msg = msg.substring(0, effectiveLength*2) // 数据一般是2个十六进制字节
+    const A = parseInt(msg.substring(0, 2), 16)
+    console.log('A=', A)
+    let result = +(A - 40).toFixed(2)
+    if( result < -40 || result > 215){
+      result  = null
+    }
+    console.log('引擎冷却液温度=', result)
+    return result
+  }catch(e){
+    console.error(error)
+    return null
+  }
+}
+
+zget_0104('7E8 07 4104 DD 00000000 >')
+// 引擎计算负荷
+function zget_0104(msg){
+  if(msg === 'NO DATA') return null
+  const cmd = '4104' // 命令
+  const effectiveLength = 1 // 约定的数据数量
+  msg = msg.replace(/[ ]|[\r]|[\n]|[\r\n]|[>]/g, "") // 去除空格，换行符\r \n,和>
+  try{
+    msg = msg.substring(msg.indexOf(cmd) + cmd.length) // 有效数据
+    msg = msg.substring(0, effectiveLength*2) // 数据一般是2个十六进制字节
+    const A = parseInt(msg.substring(0, 2), 16)
+    console.log('A=', A)
+    let result = +(A*100/255).toFixed(2)
+    if(result<0 || result >100){
+      result  = null
+    }
+    console.log('引擎计算负荷=', result)
+    return result
+  }catch(e){
+    console.error(error)
+    return null
+  }
+}
+
+// 7E807410C6A74000000 >
+zget_010C('7E8 07 410C 6A 74 000000 >')
+// 转速rpm
+function zget_010C(msg) {
+  if(msg === 'NO DATA') return null
+  const cmd = '410C' // 命令
+  const effectiveLength = 2 // 约定的数据数量
+  msg = msg.replace(/[ ]|[\r]|[\n]|[\r\n]|[>]/g, "") // 去除空格，换行符\r \n,和>
+  try{
+    msg = msg.substring(msg.indexOf(cmd) + cmd.length) // 有效数据
+    msg = msg.substring(0, effectiveLength*2) // 数据一般是2个十六进制字节
+    const A = parseInt(msg.substring(0, 2), 16)
+    const B = parseInt(msg.substring(2, 4), 16)
+    console.log('A=', A, 'B=', B)
+    let result = +(((A*256)+B)/4).toFixed(2)
+    if(result<0 || result >16383.75){
+      result  = null
+    }
+    console.log('引擎转速=', result)
+    return result
+  }catch(e){
+    console.error(error)
+    return null
+  }
+}
+zget_0110('7E8 07 4110 D8 7C 000000 >')
+// 空气流量速率 grams/sec  
+function zget_0110(msg) {
+  if(msg === 'NO DATA') return null
+  const cmd = '4110' // 命令
+  const effectiveLength = 2 // 约定的数据数量
+  msg = msg.replace(/[ ]|[\r]|[\n]|[\r\n]|[>]/g, "") // 去除空格，换行符\r \n,和>
+  try{
+    msg = msg.substring(msg.indexOf(cmd) + cmd.length) // 有效数据
+    msg = msg.substring(0, effectiveLength*2) // 数据一般是2个十六进制字节
+    const A = parseInt(msg.substring(0, 2), 16)
+    const B = parseInt(msg.substring(2, 4), 16)
+    console.log('A=', A, 'B=', B)
+    let result = +(((A*256)+B) /100).toFixed(2)
+    if( result < 0 || result > 655.35){
+      result  = null
+    }
+    console.log('空气流量速率=', result)
+    return result
+  }catch(e){
+    console.error(error)
+    return null
+  }
+}
+
+zget_015E('7E8 07 415E 0000000000>')
+zget_015E('NO DATA')
+// 引擎油量消耗速率
+function zget_015E(msg){
+  if(msg === 'NO DATA') return null
+  const cmd = '415E' // 命令
+  const effectiveLength = 2 // 约定的数据数量
+  msg = msg.replace(/[ ]|[\r]|[\n]|[\r\n]|[>]/g, "") // 去除空格，换行符\r \n,和>
+  try{
+    msg = msg.substring(msg.indexOf(cmd) + cmd.length) // 有效数据
+    msg = msg.substring(0, effectiveLength*2) // 数据一般是2个十六进制字节
+    const A = parseInt(msg.substring(0, 2), 16)
+    const B = parseInt(msg.substring(2, 4), 16)
+    console.log('A=', A, 'B=', B)
+    let result = +(((A*256)+B)*0.05).toFixed(2)
+    if(result<0 || result >3212.75){
+      result  = null
+    }
+    console.log('引擎油量消耗速率=', result)
+    return result
+  }catch(e){
+    console.error(error)
+    return null
+  }
+}
   </script>
 </body>
 </html>
