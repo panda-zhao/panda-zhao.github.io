@@ -44,16 +44,63 @@
 
       <h2>AES加解密</h2>
       <div class="z-form-item">
+        <span class="z-form-item__label">模式</span>
+        <div class="z-form-item__content">
+          <select id="select_mode" class="z-selcet" onchange="enc_AES()">
+            <option value="CBC">CBC</option>
+            <option value="ECB">ECB</option>
+            <option value="CFB">CFB</option>
+            <option value="CTR">CTR</option>
+            <option value="OFB">OFB</option>
+          </select>
+        </div>
+        <span class="z-form-item__label">填充</span>
+        <div class="z-form-item__content">
+          <select id="select_pad" class="z-selcet" onchange="enc_AES()">
+            <option value="Pkcs7">Pkcs7</option>
+            <option value="Iso97971">Iso97971</option>
+            <option value="AnsiX923">AnsiX923</option>
+            <option value="Iso10126">Iso10126</option>
+            <option value="ZeroPadding">ZeroPadding</option>
+            <option value="NoPadding">NoPadding</option>
+          </select>
+        </div>
+        <span class="z-form-item__label">密文编码</span>
+        <div class="z-form-item__content">
+          <select
+            id="select_output_encode"
+            class="z-selcet"
+            onchange="enc_AES()"
+          >
+            <option value="Base64">Base64</option>
+            <option value="HEX">HEX</option>
+          </select>
+        </div>
+      </div>
+      <div class="z-form-item">
         <span class="z-form-item__label">请输入密钥（secretKey）</span>
         <div class="z-form-item__content">
           <input
             class="secretKey z-input"
             type="text"
             placeholder="请输入AES密钥"
-            value="865CCAC4BC1FF58E21D626C5C932A41E388855E7FCF35FC18E7FDE9F7188522F"
+            value="UBDUXS5VPHKDKB284D7NKJFONCKWBUKA"
           />
         </div>
       </div>
+      <div class="z-form-item">
+        <span class="z-form-item__label">偏移量</span>
+        <div class="z-form-item__content">
+          <input
+            class="z-input"
+            id="input_iv"
+            type="text"
+            placeholder="ECB模式不需要"
+            value="UBDUXS5VPHKDKB28"
+          />
+        </div>
+      </div>
+
       <div class="z-flex z-flex-between">
         <div class="z-mr-15">
           <p>加密前</p>
@@ -156,33 +203,6 @@
     </div>
 
     <script>
-      var key =
-        '865CCAC4BC1FF58E21D626C5C932A41E388855E7FCF35FC18E7FDE9F7188522F'
-      var iv = ''
-
-      function encrypt(text) {
-        return CryptoJS.AES.encrypt(text, CryptoJS.enc.Utf8.parse(key), {
-          iv: CryptoJS.enc.Utf8.parse(iv),
-          mode: CryptoJS.mode.CBC,
-          padding: CryptoJS.pad.Pkcs7,
-        })
-      }
-
-      function decrypt(text) {
-        var result = CryptoJS.AES.decrypt(text, CryptoJS.enc.Utf8.parse(key), {
-          iv: CryptoJS.enc.Utf8.parse(iv),
-          mode: CryptoJS.mode.CBC,
-          padding: CryptoJS.pad.Pkcs7,
-        })
-        return result.toString(CryptoJS.enc.Utf8)
-      }
-
-      var text = 'admin'
-      var encoded = encrypt(text)
-      console.log('加密', encoded.toString())
-      console.log('解密', decrypt(encoded))
-
-      // console.log('forge', forge)
       // base64加解密
       const enc_base64 = function () {
         const enc_str = document.querySelector('#a1').value
@@ -204,38 +224,111 @@
           alert(error)
         }
       }
-      const secretKey = document.querySelector('.secretKey').value // 密钥
 
-      // 配置非必填
-      const options = {
-        mode: CryptoJS.mode.CBC, // 模式，CBC默认, CFB CTR OFB ECB
-        padding: CryptoJS.pad.Pkcs7, // 填充方案，Pkcs7默认，Iso97971 AnsiX923 Iso10126 ZeroPadding NoPadding
+      function buildConfig() {
+        let mode = document.getElementById('select_mode').value
+        let pad = document.getElementById('select_pad').value
+        let iv = document.getElementById('input_iv').value
+        console.log('mode=', mode)
+        console.log('pad=', pad)
+        console.log('iv=', iv)
+        let conf = {}
+        switch (mode) {
+          case 'CBC':
+            conf.mode = CryptoJS.mode.CBC
+            break
+          case 'CFB':
+            conf.mode = CryptoJS.mode.CFB
+            break
+          case 'CTR':
+            conf.mode = CryptoJS.mode.CTR
+            break
+          case 'OFB':
+            conf.mode = CryptoJS.mode.OFB
+            break
+          case 'ECB':
+            conf.mode = CryptoJS.mode.ECB
+            break
+        }
+        switch (pad) {
+          case 'Pkcs7':
+            conf.padding = CryptoJS.pad.Pkcs7
+            break
+          case 'Iso97971':
+            conf.padding = CryptoJS.pad.Iso97971
+            break
+          case 'AnsiX923':
+            conf.padding = CryptoJS.pad.AnsiX923
+            break
+          case 'Iso10126':
+            conf.padding = CryptoJS.pad.Iso10126
+            break
+          case 'ZeroPadding':
+            conf.padding = CryptoJS.pad.ZeroPadding
+            break
+          case 'NoPadding':
+            conf.padding = CryptoJS.pad.NoPadding
+            break
+        }
+        conf.iv = CryptoJS.enc.Utf8.parse(iv)
+        return conf
       }
-
       // AES加解密
       const enc_AES = function () {
-        const enc_str = document.querySelector('#b1').value
-        console.log(enc_str)
-        console.log(secretKey)
-        try {
-          const bytes = CryptoJS.AES.encrypt(enc_str, secretKey, options)
-          console.log('AES加密后', bytes)
-          document.querySelector('#b2').value = bytes.toString()
-        } catch (error) {
-          alert(error)
+        const text = document.querySelector('#b1').value
+        const encode = document.getElementById('select_output_encode').value
+        const secretKey = document.querySelector('.secretKey').value
+        console.group('本次加密信息')
+        console.log('待加密数据', text)
+        console.log('密钥', secretKey)
+        console.log('密文编码', encode)
+        console.groupEnd()
+        if (text) {
+          let key = CryptoJS.enc.Utf8.parse(secretKey)
+          try {
+            let encrypted = CryptoJS.AES.encrypt(text, key, buildConfig())
+            let cipherText = encrypted.toString()
+            if (encode === 'HEX') {
+              cipherText = CryptoJS.enc.Hex.stringify(
+                CryptoJS.enc.Base64.parse(cipherText),
+              )
+            }
+            document.querySelector('#b2').value = cipherText
+          } catch (error) {
+            alert(error)
+          }
         }
       }
 
       const dec_AES = function () {
-        const dec_str = document.querySelector('#b2').value
-        try {
-          const bytes = CryptoJS.AES.decrypt(dec_str, secretKey, options)
-          console.log('AES解密后', bytes)
-          document.querySelector('#b1').value = bytes.toString(
-            CryptoJS.enc.Utf8,
-          )
-        } catch (error) {
-          alert(error)
+        const text = document.querySelector('#b2').value
+        const encode = document.getElementById('select_output_encode').value
+        const secretKey = document.querySelector('.secretKey').value
+        console.group('本次解密密信息')
+        console.log('待加密数据', text)
+        console.log('密钥', secretKey)
+        console.log('密文编码', encode)
+        console.groupEnd()
+        if (text) {
+          let cipherText
+          if (encode === 'Base64') {
+            cipherText = CryptoJS.enc.Base64.parse(text)
+          } else if (encode === 'HEX') {
+            cipherText = CryptoJS.enc.Hex.parse(text)
+          }
+          let key = CryptoJS.enc.Utf8.parse(secretKey)
+          try {
+            let decrypted = CryptoJS.AES.decrypt(
+              { ciphertext: cipherText },
+              key,
+              buildConfig(),
+            )
+            document.querySelector('#b1').value = decrypted.toString(
+              CryptoJS.enc.Utf8,
+            )
+          } catch (e) {
+            alert(e)
+          }
         }
       }
 

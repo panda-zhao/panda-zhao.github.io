@@ -39,7 +39,38 @@
   </div>
   <script>
 
-    
+    const logDebug = true;
+    if(!logDebug){
+      console.assert = ()=>{}
+      // console.clear()
+      console.count = ()=>{}
+      console.countReset= ()=>{}
+      console.debug = ()=>{}
+      console.dir = ()=>{}
+      console.dirxml = ()=>{}
+      console.error = ()=>{}
+      console.group = ()=>{}
+      console.groupCollapsed = ()=>{}
+      console.groupEnd = ()=>{}
+      console.info = ()=>{}
+      console.log = ()=>{}
+      console.table = ()=>{}
+      console.time = ()=>{}
+      console.timeEnd = ()=>{}
+      console.timeLog = ()=>{}
+      console.timeStamp = ()=>{}
+      console.trace = ()=>{}
+      console.warn = ()=>{}
+    }
+    // console.log = (function (oriLogFunc) {
+    //   console.log('oriLogFunc',oriLogFunc)
+    //   return function () {
+    //     if (logDebug) {
+    //       oriLogFunc.apply(this, arguments);
+    //     }
+    //   }
+    // })(console.log);
+
      /**
     * 分类输出
     */
@@ -91,7 +122,6 @@
     */
     console.dir(obj)
     console.dirxml(obj) // 查看节点
-
     /**
     * 条件输出
     */
@@ -113,10 +143,11 @@
     /**
     * 计时输出
     */
-    console.time('chrome中循环1000次的时间')
-    for (let i = 0; i < 1000; i++) {
-    }
-    console.timeEnd('chrome中循环1000次的时间')
+    console.time("answer time");
+    alert("Click to continue");
+    console.timeLog("answer time");
+    alert("Do a bunch of other stuff...");
+    console.timeEnd("answer time");
 
     
      /**
@@ -143,17 +174,19 @@
     /**
     * 富文本输出
     */
-    console.log('开始\n打印')
+    for (var i=0; i<5; i++) {
+      console.log("Hello, %s. You've called me %d times.", "Bob", i+1);
+    }
     console.log('%s', '格式化成字符串输出') // 占位符 %s 格式化成字符串输出
-    console.log('%d', 100.123) // // 占位符 %d或者%i 格式化成整数输出
+    console.log('%d', 100.123) // 占位符 %d或者%i 格式化成整数输出
     console.log('%d + %d = %d', 1, 1 , 2) // 占位符 %d或者%i 格式化成整数输出
-    console.log('%f', 100.123) // 占位符 %d 格式化成浮点数输出
+    console.log('%f', 100.123) 
 
     console.log(document.body)
     console.log('%o', document.body) // 占位符 %o 转化成展开的DOM元素输出
     console.log('%O', document.body) // 占位符 %O 转化成JavaScript对象输出
-
-    console.log('%c富样式输出', 'font-size: 20px;color: red')// 占位符 %c 把字符串按照你提供的样式格式化后输入
+    // 占位符 %c 把字符串按照你提供的样式格式化后输入
+    console.log('%c富样式输出', 'font-size: 20px;color: red')
     console.log('%c文字样式的%c单独处理', 'font-size: 20px;color: red', 'color: blue') 
     console.log('%c图片输出', "background: url(https://www.zhaowy.cn/images/demo.png) np-repeat; padding: 50px 50px; height: 1px; line-height:100px")
     console.log("%c%s", "color:red", "格式化成字符串输出")
