@@ -190,7 +190,7 @@
             placeholder="要加密的文本"
           ></textarea>
           <div class="center">
-            <button class="btn" onclick="encrypt()">公钥加密</button>
+            <button class="btn" onclick="encrypt()">加密</button>
             <!-- <button class="btn" onclick="enc_rsa_privkey()">私钥加密</button> -->
           </div>
         </div>
@@ -204,7 +204,7 @@
           ></textarea>
           <div class="center">
             <!-- <button class="btn" onclick="dec_rsa_publickey()">公钥解密</button> -->
-            <button class="btn" onclick="decrypt()">私钥解密</button>
+            <button class="btn" onclick="decrypt()">解密</button>
           </div>
         </div>
       </div>
@@ -371,21 +371,21 @@
       }
       function generateKey(btn) {
         if (btn) { 
-          btn.stopPropatation = true; 
-          btn.cancelBubble = true; 
+          btn.stopPropatation = true;
+          btn.cancelBubble = true;
         }
         let keySize = parseInt(document.getElementById('select_key_size').value); 
         let crypt = new JSEncrypt({ default_key_size: keySize }); 
         if (btn) btn.innerText = '正在生成...'; 
-        new Promise(function (resolve) { 
-          setTimeout(function () { 
-          resolve([crypt.getPrivateKey(), crypt.getPublicKey()]); 
-        }, 50); 
-      }).then(function (e) { 
-        document.getElementById('privkey').value = e[0]; 
-        document.getElementById('pubkey').value = e[1]; 
-        if (btn) btn.innerText = '生成密钥'; 
-      });
+        new Promise(function (resolve) {
+          setTimeout(function () {
+            resolve([crypt.getPrivateKey(), crypt.getPublicKey()]); 
+          }, 50); 
+        }).then(function (e) {
+          document.getElementById('privkey').value = e[0]; 
+          document.getElementById('pubkey').value = e[1]; 
+          if (btn) btn.innerText = '生成密钥'; 
+        });
       }
       generateKey();
       function getCrypt() { 
@@ -413,61 +413,6 @@
         }
         document.getElementById('d1').value = original_text
       }
-      // // 公钥加密
-      // const enc_rsa_publickey = function () {
-      //   const pubEncrypt = new JSEncrypt()
-      //   const pubkey = document.querySelector('#pubkey').value
-      //   console.log(pubEncrypt, pubkey)
-      //   pubEncrypt.setPublicKey(pubkey)
-      //   const startTime = new Date().getTime()
-      //   const enc_str = document.querySelector('#d1').value
-      //   const encrypted = pubEncrypt.encrypt(enc_str)
-      //   const endTime = new Date().getTime() - startTime
-      //   console.log('加密', endTime, encrypted)
-      //   document.querySelector('#d2').value = encrypted
-      // }
-
-      // // 公钥解密
-      // const dec_rsa_publickey = function () {
-      //   const pubEncrypt = new JSEncrypt()
-      //   const pubkey = document.querySelector('#pubkey').value
-      //   console.log(pubEncrypt, pubkey)
-      //   pubEncrypt.setPublicKey(pubkey)
-      //   const startTime = new Date().getTime()
-      //   const dec_str = document.querySelector('#d2').value
-      //   const decrypted = pubEncrypt.decrypt(dec_str)
-      //   const endTime = new Date().getTime() - startTime
-      //   console.log('解密后', endTime, decrypted)
-      //   document.querySelector('#d1').value = pubEncrypt.decrypt(dec_str)
-      // }
-
-      // // 私钥加密
-      // const enc_rsa_privkey = function () {
-      //   const priEncrypt = new JSEncrypt()
-      //   const privkey = document.querySelector('#privkey').value
-      //   console.log('privkey', privkey)
-      //   priEncrypt.setPrivateKey(privkey)
-      //   const startTime = new Date().getTime()
-      //   const enc_str = document.querySelector('#d1').value
-      //   const encrypted = priEncrypt.encrypt(enc_str)
-      //   const endTime = new Date().getTime() - startTime
-      //   console.log('加密后', endTime, encrypted)
-      //   document.querySelector('#d2').value = encrypted
-      // }
-
-      // // 私钥解密
-      // const dec_rsa_privkey = function () {
-      //   const priEncrypt = new JSEncrypt()
-      //   const privkey = document.querySelector('#privkey').value
-      //   console.log('privkey', privkey)
-      //   priEncrypt.setPrivateKey(privkey)
-      //   const startTime = new Date().getTime()
-      //   const dec_str = document.querySelector('#d2').value
-      //   const decrypted = priEncrypt.decrypt(dec_str)
-      //   const endTime = new Date().getTime() - startTime
-      //   console.log('解密后', endTime, decrypted)
-      //   document.querySelector('#d1').value = decrypted
-      // }
     </script>
   </body>
 </html>
