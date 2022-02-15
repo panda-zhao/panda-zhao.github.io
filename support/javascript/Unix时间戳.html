@@ -1,0 +1,181 @@
+<!--
+ * @Author: zhaowy
+ * @Date: 2020-05-10 09:37:50
+ * @LastEditors: zhaowy
+ * @LastEditTime: 2022-02-15 11:34:42
+ * @FilePath: \panda-zhao.github.io\support\javascript\Unix时间戳.html
+ * @Description: Unix时间戳
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./static/css/style.css">
+  <title>Unix时间戳</title>
+</head>
+
+<body>
+  <main>
+    <div class="container">
+      <h1>Unix时间戳</h1>
+      <div class="flex mt-2">
+        <div class="group" style="margin-right:1em;flex-shrink:2">
+          <span class="static">当前时间</span>
+          <input id="time_now" class="input text-info">
+          <select id="select_now_unit" class="select" onchange="updateTime()">
+            <option value="s">秒
+            <option value="ms">毫秒
+          </select>
+        </div>
+        <div class="group">
+          <button class="button primary" onclick="startUpdate(this)">开始</button>
+          <button class="button" onclick=stopUpdate(this)>停止</button>
+          <button class="button" onclick=updateTime()>刷新</button>
+        </div>
+      </div>
+      <div class="group mt-2"><span class="static">Unix时间戳</span>
+        <input id="input_time" class="input inline" onpaste="setTimeout(timeToDate,1)">
+        <select id="select_input_unit" class="select" onchange="timeToDate()">
+          <option value="s">秒</option>
+          <option value="ms">毫秒</option>
+        </select>
+        <button class="button primary" onclick="timeToDate()">转换</button>
+        <input id="output_date" class="input inline">
+      </div><br>
+      <div class="group mt-2">
+        <span class="static">北京时间</span>
+        <input id="input_date" class="input inline" onpaste="setTimeout(dateToTime,1)">
+        <button class="button primary" onclick="dateToTime()">转换</button>
+        <input id="output_time" class="input inline">
+        <select id="select_output_unit" class="select" onchange="dateToTime()">
+          <option value="s">秒</option>
+          <option value="ms">毫秒</option>
+        </select>
+      </div>
+      <h3 class="mt-2">在编程语言中获取Unix时间戳：</h3>
+      <table class="table striped fullwidth mt-2">
+        <thead>
+          <tr>
+            <th>语言</th>
+            <th>秒</th>
+            <th>毫秒</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>JavaScript</td>
+            <td>Math.round(new Date() / 1000)</td>
+            <td>new Date().getTime()</td>
+          </tr>
+          <tr>
+            <td>Java
+            </td>
+            <td>System.currentTimeMillis() / 1000
+            </td>
+            <td>System.currentTimeMillis()
+            </td>
+          </tr>
+          <tr>
+            <td>Python</td>
+            <td>int(time.time())</td>
+            <td>int(time.time() * 1000)
+            </td>
+          </tr>
+          <tr>
+            <td>Go</td>
+            <td>time.Now().Unix()</td>
+            <td>time.Now().UnixNano() / 1e6</td>
+          </tr>
+          <tr>
+            <td>PHP</td>
+            <td>time()</td>
+            <td>(int)(microtime(true) * 1000)</td>
+          </tr>
+          <tr>
+            <td>Ruby</td>
+            <td>Time.now.to_i</td>
+            <td>(Time.now.to_f * 1000).to_i</td>
+          </tr>
+          <tr>
+            <td>C#</td>
+            <td>DateTimeOffset.UtcNow.ToUnixTimeSeconds()</td>
+            <td>DateTimeOffset.UtcNow.ToUnixTimeMilliseconds()</td>
+          </tr>
+          <tr>
+            <td>Swift</td>
+            <td>NSDate().timeIntervalSince1970</td>
+            <td>NSDate().timeIntervalSince1970 * 1000</td>
+          </tr>
+          <tr>
+            <td>Objective-C</td>
+            <td>[[NSDate date] timeIntervalSince1970]</td>
+            <td>[[NSDate date] timeIntervalSince1970] * 1000</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+  <script>
+    const dateFormat = 'yyyy-MM-dd hh:mm:ss';
+    Date.prototype.format = function (fmt) {
+      let o = { "M+": this.getMonth() + 1, "d+": this.getDate(), "h+": this.getHours(), "m+": this.getMinutes(), "s+": this.getSeconds(), "q+": Math.floor((this.getMonth() + 3) / 3), "s": this.getMilliseconds() };
+      if (/(y+)/.test(fmt)) {
+        fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+      }
+      for (let k in o) {
+        if (new RegExp("(" + k + ")").test(fmt)) {
+          fmt = fmt.replace(RegExp.$1, (RegExp.$1.length === 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+        }
+      }
+      return fmt;
+    };
+    let date = new Date();
+    let time_now = document.getElementById('time_now');
+    time_now.value = Math.round(date / 1000).toString();
+    document.getElementById('input_time').value = Math.round(date / 1000);
+    document.getElementById('input_date').value = date.format(dateFormat);
+    function updateTime() {
+      let unit = document.getElementById('select_now_unit').value;
+      if (unit === 's') {
+        time_now.value = Math.round(new Date() / 1000).toString();
+      } else if (unit === 'ms') {
+        time_now.value = new Date().getTime().toString();
+      }
+    }
+    let handle = setInterval(updateTime, 1000);
+    function startUpdate(e) {
+      window.clearInterval(handle);
+      handle = setInterval(updateTime, 1000);
+      e.classList.add('primary')
+    }
+    function stopUpdate(e) {
+      window.clearInterval(handle);
+      e.parentElement.firstElementChild.classList.remove('primary')
+    }
+    function timeToDate() {
+      let input = document.getElementById('input_time').value;
+      let unit = document.getElementById('select_input_unit').value;
+      let output_date = document.getElementById('output_date');
+      if (unit === 's') {
+        output_date.value = new Date(input * 1000).format(dateFormat);
+      } else if (unit === 'ms') {
+        output_date.value = new Date(parseInt(input)).format(dateFormat);
+      }
+    }
+    function dateToTime() {
+      let input = document.getElementById('input_date').value.replace(/-/g, "/");
+      let unit = document.getElementById('select_output_unit').value;
+      let output_time = document.getElementById('output_time');
+      if (unit === 's') {
+        output_time.value = new Date(input).getTime() / 1000;
+      } else if (unit === 'ms') {
+        output_time.value = new Date(input).getTime();
+      }
+    }
+  </script>
+</body>
+
+</html>
