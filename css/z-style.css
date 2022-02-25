@@ -19,7 +19,7 @@ html {
   --green: #28a745;
   --teal: #20c997;
   --cyan: #17a2b8;
-  --white: #fff;
+  --white: var(--white);
   --gray: #6c757d;
   --gray-dark: #343a40;
   --primary: #007bff;
@@ -57,12 +57,67 @@ textarea {
   padding: 5px;
   border-radius: 5px;
 }
+
+fieldset {
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+
+legend, button {
+  color: var(--light);
+  background-color: var(--dark);
+  padding: 5px 10px;
+  border-radius: 0;
+  border: 0;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+button, html [type="button"], [type="reset"], [type="submit"] {
+  -webkit-appearance: button;
+}
+
+.btn-primary {
+  color: var(--white);
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+
+.table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 1rem;
+  border-collapse: collapse;
+  background-color: transparent;
+}
+.table-bordered {
+  border: 1px solid #eceeef;
+}
+.table-bordered th, .table-bordered td {
+  border: 1px solid #eceeef;
+}
+.table-bordered thead th, .table-bordered thead td {
+  border-bottom-width: 2px;
+}
+
+.table thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #eceeef;
+}
+.table th, .table td{
+  padding: 0.75rem;
+  text-align: center;
+  vertical-align: middle!important;
+}
 .fl {
   float: left;
 }
 .fr {
   float: right;
 }
+
 .clearfix:after {
   content: '';
   display: block;
@@ -71,6 +126,8 @@ textarea {
 .clearfix {
   zoom: 1;
 }
+
+
 /* 默认链接样式 */
 .z-link {
   padding: 0;
@@ -83,9 +140,9 @@ textarea {
 
 /* 默认按钮样式 */
 .btn {
-  padding: 10px 19px;
-  font-size: 17px;
-  line-height: 1.471;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
   border-radius: 6px;
   border: none;
   font-weight: normal;
@@ -136,6 +193,7 @@ textarea {
   box-shadow: 0px 0px 10px 6px rgba(0, 0, 0, 0.1);
 }
 
+
 .bold {
   font-weight: bold;
 }
@@ -145,6 +203,12 @@ textarea {
 .left {
   text-align: left;
 }
+.right{
+  text-align: right;
+}
+
+
+
 /* 向上箭头 */
 .t-arrow {
   position: relative;
@@ -360,10 +424,13 @@ textarea {
 .z-form-item {
   position: relative;
   display: flex;
+  align-items: center;
+  
   margin-bottom: 20px;
 }
 .z-form-item__label {
   box-sizing: border-box;
+  min-width: 120px;
   font-size: 14px;
   color: #606266;
   line-height: 40px;
@@ -376,7 +443,7 @@ textarea {
 .el-input__inner,
 .z-input {
   -webkit-appearance: none;
-  background-color: #fff;
+  background-color: var(--white);
   background-image: none;
   border-radius: 4px;
   border: 1px solid #dcdfe6;
@@ -449,3 +516,5 @@ aside {
   padding: 0 5px;
   border-radius: 5px;
 }
+
+

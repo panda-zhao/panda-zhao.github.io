@@ -1,0 +1,286 @@
+<!--
+ * @Author: zhaowy
+ * @Date: 2022-02-23 14:09:10
+ * @LastEditors: zhaowy
+ * @LastEditTime: 2022-02-25 17:43:04
+ * @FilePath: \panda-zhao.github.io\support\javascript\身份证工具.html
+ * @Description: 身份证工具
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../css/z-style.css">
+  <script src="../../js/province-city-district.js"></script>
+  <title>身份证工具</title>
+  <style>
+    .container{
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <fieldset>
+      <legend>随机身份证号码生成</legend>
+      <div class="z-form-item">
+        <div class="z-form-item__label">户籍地址</div>
+        <select name="province" id="province" class="z-input">
+          <option value="">请选择省</option>
+        </select>
+        <select name="city" id="city" class="z-input">
+          <option value="">请选择市</option>
+        </select>
+        <select name="district" id="district" class="z-input">
+          <option value="">请选择区</option>
+        </select>
+      </div>
+      <div class="z-form-item" class="z-input">
+        <div class="z-form-item__label">出生日期</div>
+        <input type="date" id="birthday" class="z-input" min="1900-01-01" value="1990-01-01" required>
+      </div>
+      <div class="z-form-item">
+        <div class="z-form-item__label">性别</div>
+        <label>
+          <input type="radio" name="gender" value="man" checked>
+          男
+        </label>
+        <label style="margin-left: 50px;">
+          <input type="radio" name="gender" value="women">女
+        </label>
+  
+      </div>
+      <div class="z-form-item">
+        <div class="z-form-item__label">生产个数</div>
+        <input type="number" id="quantity" class="z-input" value="5">
+      </div>
+      <div>
+        <button class="button" id="submitForm">开始生成</button>
+      </div>
+    </fieldset>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>序号</th>
+          <th>身份证号</th>
+        </tr>
+      </thead>
+      <tbody id="tbody">
+      </tbody>
+    </table>
+    <fieldset>
+      <legend>身份证号解析</legend>
+
+      <div class="center">
+        <input type="number" id="idCard" class="z-input" style="width: 50%;" placeholder="请填写第二代身份证号" value="">
+      </div>
+      <div class="center">
+        <button class="btn" id="submitCheck">开始解析</button>
+      </div>
+
+    </fieldset>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>项目</th>
+          <th>值</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>省</td><td id="td1">待读取</td></tr>
+        <tr><td>市</td><td id="td2">待读取</td></tr>
+        <tr><td>县</td><td id="td3">待读取</td></tr>
+        <tr><td>出生日期</td><td id="td4">待读取</td></tr>
+        <tr><td>性别</td><td id="td5">待读取</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    let provinceDom = document.getElementById('province')
+    let cityDom = document.getElementById('city')
+    let districtDom = document.getElementById('district')
+    let birthdayDom = document.getElementById('birthday')
+    let genderDom = document.getElementsByName('gender')
+    let quantityDom = document.getElementById('quantity')
+    let submitFormBtn = document.getElementById('submitForm')
+    let provincList = data // 省展示数据
+    let cityList = [] // 市展示数据
+    let districtList = [] // 区展示数据
+    init() // 初始化数据
+
+    // 渲染省列表
+    function renderProvinceData() {
+      provincList.length === 0 && console.error("省列表异常")
+      for (let i = 0; i < provincList.length; i++) {
+        let chunk = provincList[i];
+        provinceDom.options.add(new Option(chunk.name, chunk.code));//动态添加option
+      }
+    }
+    // 渲染市列表 
+    function renderCityData() {
+      cityList.length === 0 && console.error("市列表异常")
+      for (let i = 0; i < cityList.length; i++) {
+        let chunk = cityList[i];
+        cityDom.options.add(new Option(chunk.name, chunk.code));//动态添加option
+      }
+    }
+    // 渲染市列表 
+    function renderDistrictData() {
+      districtList.length === 0 && console.error("区列表异常")
+      for (let i = 0; i < districtList.length; i++) {
+        let chunk = districtList[i];
+        districtDom.options.add(new Option(chunk.name, chunk.code));//动态添加option
+      }
+    }
+    // 省变化
+    provinceDom.addEventListener('change', e => {
+      cityDom.options.length = 0 // .删除市所有<option>标签
+      cityDom.options.add(new Option('请选择市', ''))
+      districtDom.options.length = 0 // 删除区所有<option>标签
+      districtDom.options.add(new Option("请选择区", ''))
+      const provinceCode = e.target.value
+      const _result = data.filter(item => item.code === provinceCode)
+      cityList = _result[0].children
+      renderCityData()
+    });
+    // 市变化
+    cityDom.addEventListener('change', e => {
+      districtDom.options.length = 0 // 删除区所有<option>标签
+      districtDom.options.add(new Option("请选择区", ''))
+      const cityCode = e.target.value
+      const _result = cityList.filter(item => item.code === cityCode)
+      districtList = _result[0].children
+      renderDistrictData()
+    });
+
+    function init() {
+      renderProvinceData()
+      const defaultProvince = '440000' // 广东省
+      const defaultCity = '440100' // 广州市
+      const defaultDistrict = '440103' // 荔湾区
+      !provinceDom.value && (provinceDom.value = defaultProvince) // 默认省
+      const _result = data.filter(item => item.code === defaultProvince)
+      cityList = _result[0].children
+      renderCityData()
+      !cityDom.value && (cityDom.value = defaultCity) // 默认市
+      const _result2 = cityList.filter(item => item.code === defaultCity)
+      districtList = _result2[0].children
+      renderDistrictData()
+      !districtDom.value && (districtDom.value = defaultDistrict) // 默认区
+
+    }
+
+    // 生成号码
+    submitFormBtn.addEventListener("click", () => {
+      const addressNumber = districtDom.value.toString()// 六位数字地址码
+      const birthdayNumber = birthdayDom.value.replace(/-/g, "")// 八位数字出生日期码
+
+      // const checkeNumber = 1// 一位数字校验码
+      let quantity = quantityDom.value // 生成个数
+      let genderVal = null
+      // 获取性别
+      for (let i = 0; i < genderDom.length; i++) {
+        genderDom[i].checked && (genderVal = genderDom[i].value)
+      }
+      // console.group("最终参数")
+      // console.log("性别", genderVal);
+      // console.log("六位数字地址码", addressNumber);
+      // console.log("八位数字出生日期码", birthdayNumber);
+      // console.log("生成证件号码数量", quantity);
+      // console.groupEnd()
+      if (!addressNumber) {
+        return alert('请选择户籍地址')
+      }
+      if (!birthdayNumber) {
+        return alert('请选择出生日期')
+      }
+      // 三位数字顺序码
+      const coefficientArray = ["7", "9", "10", "5", "8", "4", "2", "1", "6", "3", "7", "9", "10", "5", "8", "4", "2"];// 加权因子
+      const lastNumberArray = ["1", "0", "X", "9", "8", "7", "6", "5", "4", "3", "2"];// 校验码
+      let sequenceNumberArray = [];
+      while (quantity--) {
+        let r = parseInt(Math.random() * 900 + 100)
+        if (genderVal === 'man' && r % 2 === 0) r += 1; // 生成奇数三位数字顺序码
+        if (genderVal === 'women' && r % 2 === 1) r += 1; // 生成偶数三位数字顺序码
+        // 证件号前17位数字
+        const chunk = addressNumber + birthdayNumber + r
+        // console.log('证件号前17位数字', chunk)
+        let total = 0;
+        for (i in chunk) {
+          total += parseInt(chunk[i]) * parseInt(coefficientArray[i]);
+        }
+        const checkeNumber = lastNumberArray[parseInt(total % 11)];
+        const citizenIdNumber = chunk + checkeNumber
+        // console.log('证件号', citizenIdNumber)
+        sequenceNumberArray.push(citizenIdNumber);
+      }
+      // console.log('证件号码数组', sequenceNumberArray)
+
+      let html = ''
+      for (let i = 0; i < sequenceNumberArray.length; i++) {
+        const element = sequenceNumberArray[i];
+        html += `<tr><td>${i + 1}</td><td>${element}</td></tr>`
+      }
+      document.getElementById("tbody").innerHTML = html
+    })
+    // 校验身份证
+    document.getElementById('submitCheck').addEventListener('click', e=>{
+      
+      const idCard = document.getElementById('idCard').value
+      if(idCard.length !== 18){
+        return alert('请输入18位身份证号')
+      }
+      const regexp = new RegExp(/^(\d{6})(\d{4})(\d{2})(\d{2})(\d{3})([0-9]|X|x)$/);
+      const resultArray = idCard.match(regexp);
+      // ['411324198905063251', '411324', '1989', '05', '06', '325', '1']
+      // console.log('resultArray==', resultArray)
+      //检查生日日期是否正确 
+      var dtmBirth = new Date(resultArray[2] + "/" + resultArray[3] + "/" + resultArray[4]);
+      // console.log('dtmBirth==', dtmBirth)
+      const bGoodDay = dtmBirth.getFullYear() == Number(resultArray[2]) && (dtmBirth.getMonth() + 1) == Number(resultArray[3]) && dtmBirth.getDate() == Number(resultArray[4]);
+      if (!bGoodDay) {
+        alert('输入的身份证号里出生日期不对！');
+        return false;
+      }
+      
+      const coefficientArray = ["7", "9", "10", "5", "8", "4", "2", "1", "6", "3", "7", "9", "10", "5", "8", "4", "2"];// 加权因子
+      const lastNumberArray = ["1", "0", "X", "9", "8", "7", "6", "5", "4", "3", "2"];// 校验码
+      let chunk = idCard.substr(0, 17)
+      let total = 0
+      for (i in chunk) {
+        total += parseInt(chunk[i]) * parseInt(coefficientArray[i]);
+      }
+      const checkeNumber = lastNumberArray[parseInt(total % 11)];
+      if (checkeNumber !== idCard.substr(17, 1)) {
+        alert('18位身份证的校验码不正确！应该为： '+ checkeNumber)
+        return
+      }
+      // console.log('恭喜验证通过')
+      // 不一定能找到
+      const defaultProvince = idCard.substr(0, 2) + '0000' // 省
+      const defaultCity = idCard.substr(0, 4) + '00' // 市
+      const defaultDistrict = idCard.substr(0, 6) // 区
+      const _result = data.filter(item => item.code === defaultProvince)
+      document.getElementById('td1').innerHTML = _result[0].name
+
+      const _result2 = _result[0].children.filter(item => item.code === defaultCity)
+      document.getElementById('td2').innerHTML = _result2[0].name
+
+      const _result3 = _result2[0].children.filter(item => item.code === defaultDistrict)
+      document.getElementById('td3').innerHTML = _result3[0].name
+
+      const birthday = idCard.substr(6, 4) + '-' + idCard.substr(10, 2) + '-' + idCard.substr(12, 2)
+      document.getElementById('td4').innerHTML = birthday
+
+      document.getElementById('td5').innerHTML = Number(idCard.substr(16, 17)) %2 === 0 ? '女' : '男'
+    })
+  </script>
+</body>
+
+</html>
