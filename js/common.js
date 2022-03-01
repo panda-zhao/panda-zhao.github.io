@@ -3,30 +3,56 @@ var data = [
   [
 
     { name: "GitHub", url: "https://github.com/panda-zhao", title: "" },
-    { name: "ZHAOTools", url: "./tools/index.html", title: "" },
+    { name: "技术支持", url: "./support/index.html", title: "技术支持" },
     { name: "腾讯开源", url: "https://gitee.com/Tencent", title: "" },
     { name: "阿里开源", url: "https://opensource.alibaba.com/project", title: "" },
     { name: "百度开源", url: "https://gitee.com/baidu", title: "" },
-    { name: "技术支持", url: "./support/index.html", title: "技术支持" },
     { name: "常用速查表", url: "https://www.w3cschool.cn/dict/", title: "各大语言速查表" },
-    { name: "开发者手册", url: "https://cloud.tencent.com/developer/devdocs", title: "" },
-    { name: "BootCDN", url: "http://www.bootcdn.cn", title: "免费的CDN加速服务" },
-    { name: "jquery插件库", url: "http://www.jq22.com/", title: "在线编辑器，文本比较，常用前端库，组件！" },
     { name: "图片压缩", url: "https://tinypng.com/", title: "tinypng图片压缩" },
-    { name: "变量命名神器", url: "https://unbug.github.io/codelf/", title: "变量命名神器" },
     { name: "菜鸟工具", url: "https://c.runoob.com/", title: "菜鸟工具" },
     { name: "坚果云", url: "https://www.jianguoyun.com/", title: "" },
-    { name: "百度站长统计", url: "https://tongji.baidu.com/", title: "百度站长统计" },
-    { name: "阿里云", url: "https://home.console.aliyun.com/new#/", title: "" },
-    { name: "星座网", url: "http://www.xzw.com/", title: "" },
-    { name: "廖雪峰的官方网站", url: "https://www.liaoxuefeng.com/wiki/1022910821149312/1023025235359040", title: "" }
-
+    { name: "BootCDN", url: "http://www.bootcdn.cn", title: "免费的CDN加速服务" },
   ],
 
-  //十四、gitHub工具&包
+  
+ 
+  
+ 
+  // 框架
   [
+    { name: "jquery", url: "http://jquery.cuishifeng.cn/", title: "jQuery API 3.3.1 速查表" },
+    { name: "Vue.js", url: "https://cn.vuejs.org/v2/guide/installation.html", title: "" },
+    { name: "webpack中文教程", url: "https://doc.webpack-china.org/", title: "" },
+    { name: "Vue CLI", url: "https://cli.vuejs.org/zh/", title: "Vue.js 开发的标准工具" },
+    { name: "Vue Router", url: "https://router.vuejs.org/zh/", title: "" },
+    { name: "Vuex教程", url: "https://vuex.vuejs.org/zh/", title: "" },
+    { name: "React", url: "https://reactjs.org/", title: "用于创建可重用且有吸引力的UI组件的库" },
+  ],
+
+  // UI框架
+  [
+    { name: "VUX", url: "https://vux.li", title: "一个凑合的 Vue.js 移动端 UI 组件库" },
+    { name: "Vant", url: "https://github.com/youzan/vant", title: "轻量、可靠的移动端 Vue 组件库" },
+    { name: "ElementUI教程", url: "http://element-cn.eleme.io/#/zh-CN/component/installation", title: "Element，一套为开发者、设计师和产品经理准备的基于 Vue 2.0 的桌面端组件库" },
+    { name: "vue-element-admin", url: "https://panjiachen.github.io/vue-element-admin-site/zh/guide/", title: " 基于vue 和 element-ui实现中后台业务模型" },
+    { name: "vue-native", url: "https://vue-native.io/", title: '构建跨平台移动应用程序' },
+    { name: "Bootstrap4 教程", url: "http://www.runoob.com/bootstrap4/bootstrap4-tutorial.html", title: "响应式开发 Web 应用程序" },
+    { name: "Bootstrap Flat UI", url: "https://github.com/designmodo/Flat-UI", title: "Metro(扁平)风格的UI库" },
+    { name: "layui", url: "http://www.layui.com", title: "经典模块化前端UI框架" },
+    { name: "Framework7", url: "http://framework7.io/", title: "用于构建iOS和Android应用程序的精美的移动端UI框架" },
+    { name: "jQuery WeUI", url: "https://github.com/lihongxun945/jquery-weui", title: "专为微信公众账号开发而设计的一个简洁而强大的UI库" },
+    { name: "font awesome 4.7.0", url: "https://fontawesome.com/v4.7.0/icons/", title: "" },
+  ],
+  // 插件/组件库
+  [
+    { name: "Axios中文说明", url: "https://www.kancloud.cn/yunye/axios/234845", title: "代替AJAX做http请求，可以用在浏览器和 node.js 中" },
+    { name: "flyio", url: "https://github.com/wendux/fly", title: "支持所有JavaScript运行环境的http请求库" },
+    { name: "datatables", url: "http://www.datatables.club/", title: "表格插件" },
+    { name: "Echarts", url: "http://echarts.baidu.com/download.html", title: "图表插件" },
+    { name: "百度分享插件", url: "http://share.baidu.com/code", title: "" },
+    { name: "swiper", url: "http://idangero.us/swiper/api/", title: "轮播图插件" },
+    { name: "swiper4", url: "https://www.swiper.com.cn/", title: "轮播图插件" },
     { name: "GitHub 文件加速下载服务", url: "https://ghproxy.com/", title: "GitHub 文件加速下载服务" },
-    // {name:"", url:"", title:""},
     { name: "复制到剪切板", url: "https://github.com/zenorocha/clipboard.js", title: "clipboard.js" },
     { name: "vue.js pdf查看器", url: "https://github.com/FranckFreiburger/vue-pdf", title: "vue-pdf" },
     { name: "AES对称加/解密", url: "https://github.com/brix/crypto-js", title: "crypto-js" },
@@ -38,20 +64,36 @@ var data = [
     { name: "内容管理系统DoraCMS", url: "https://github.com/doramart/DoraCMS", title: "Nodejs开发的内容管理系统DoraCMS" },
     { name: "vue拖动排序", url: "https://github.com/SortableJS/Vue.Draggable", title: "Draggable" }
   ],
-  //四、Vue框架
+
+
+  // 十、服务端
   [
-    { name: "Vue.js", url: "https://cn.vuejs.org/v2/guide/installation.html", title: "" },
-    { name: "webpack中文教程", url: "https://doc.webpack-china.org/", title: "" },
-    { name: "Vue CLI", url: "https://cli.vuejs.org/zh/", title: "Vue.js 开发的标准工具" },
-    { name: "Vue Router", url: "https://router.vuejs.org/zh/", title: "" },
-    { name: "Vuex教程", url: "https://vuex.vuejs.org/zh/", title: "" },
-    { name: "Axios中文说明", url: "https://www.kancloud.cn/yunye/axios/234845", title: "代替AJAX做http请求，可以用在浏览器和 node.js 中" },
-    { name: "flyio", url: "https://github.com/wendux/fly", title: "支持所有JavaScript运行环境的http请求库" },
-    { name: "VUX", url: "https://vux.li", title: "一个凑合的 Vue.js 移动端 UI 组件库" },
-    { name: "Vant", url: "https://github.com/youzan/vant", title: "轻量、可靠的移动端 Vue 组件库" },
-    { name: "ElementUI教程", url: "http://element-cn.eleme.io/#/zh-CN/component/installation", title: "Element，一套为开发者、设计师和产品经理准备的基于 Vue 2.0 的桌面端组件库" },
-    { name: "vue-element-admin", url: "https://panjiachen.github.io/vue-element-admin-site/zh/guide/", title: " 基于vue 和 element-ui实现中后台业务模型" },
-    { name: "vue-native", url: "https://vue-native.io/", title: '构建跨平台移动应用程序' }
+    { name: "Node.js 中文网", url: "http://nodejs.cn/api/", title: "" },
+    { name: "node.js教程", url: "http://www.runoob.com/nodejs/nodejs-tutorial.html", title: "" },
+    { name: "Express", url: "http://www.expressjs.com.cn/", title: "" },
+    { name: "淘宝npm镜像", url: "http://npm.taobao.org/", title: "" },
+    { name: "nodemailer", url: "https://nodemailer.com/about/", title: "nodeJs发送邮件模块" },
+    { name: "multer", url: "https://github.com/expressjs/multer", title: "文件上传模块" },
+  ],
+
+  //数据存储
+  [
+    { name: "mysql", url: "http://www.runoob.com/mysql/mysql-tutorial.html", title: "关系型数据库" },
+    { name: "postgresDB", url: "https://node-postgres.com/", title: "关系型数据库" },
+    { name: "redis", url: "http://www.redis.cn/download.html", title: "key-value存储系统" },
+    { name: "mongodb", url: "http://www.runoob.com/mongodb/mongodb-update.html", title: "基于分布式文件存储的数据库" },
+    { name: "kafka", url: "https://kafka.apache.org/", title: "处理大量数据的分布式消息系统" },
+  ],
+
+   // 跨平台开发
+   [
+    { name: "iOS", url: "https://developer.apple.com/library/ios/navigation/", title: "iOS 官方在线文档" },
+    { name: "Android", url: "https://developer.android.com/reference/packages.html", title: "Android 官方在线文档" },
+    { name: "Uni-APP", url: "https://uniapp.dcloud.io/", title: "使用 Vue.js 开发所有前端应用的框架" },
+    { name: "React Native", url: "https://reactnative.cn/", title: "Facebook使用React开源的跨平台移动应用开发框架" },
+    { name: "flutter", url: "https://flutter.cn/", title: "谷歌使用Dart构建跨平台应用开发框架" },
+    { name: "Weex(不推荐)", url: "http://doc.weex.io/zh/", title: "阿里使用vue跨平台开发框架" },
+    { name: "Hippy", url: "https://cn.hippyjs.org/#/", title: "腾讯新生的一个跨端开发框架" },
   ],
   //五、小程序开发
   [
@@ -65,8 +107,26 @@ var data = [
     { name: "mpvue", url: "https://github.com/Meituan-Dianping/mpvue", title: "使用vue开发小程序" },
     { name: "百度小程序", url: "https://smartprogram.baidu.com/mappconsole/main/login", title: "百度小程序" },
   ],
-  // 六、常用工具
+  // 学习
   [
+    { name: "开发者手册", url: "https://cloud.tencent.com/developer/devdocs", title: "" },
+    { name: "MDN开发者网络", url: "https://developer.mozilla.org/zh-CN/", title: "MDN web docs" },
+    { name: "现代 JavaScript 教程", url: "https://zh.javascript.info/", title: "JavaScript.info" },
+    { name: "W3school", url: "http://www.w3school.com.cn/index.html", title: "" },
+    { name: "W3Cschool", url: "https://www.w3cschool.cn/", title: "" },
+    { name: "菜鸟教程", url: "http://www.runoob.com/", title: "" },
+    { name: "CSS3参考手册", url: "http://www.css88.com/book/css/quicksearch.htm", title: "" },
+    { name: "Normalize跨浏览器一致性", url: "http://necolas.github.io/normalize.css/", title: "" },
+    { name: "Web 前端技术图谱", url: "http://www.runoob.com/w3cnote/webfrontendstack.html", title: "" },
+    { name: "JavaScript教程", url: "https://www.liaoxuefeng.com/", title: "廖雪峰写的JS教程，比较详情" },
+    { name: "javascript入门", url: "https://wangdoc.com/javascript/basic/introduction.html", title: "" },
+    { name: "JavaScript 标准参考教程（alpha）", url: "http://javascript.ruanyifeng.com/", title: "" },
+    { name: "zepto.js", url: "https://www.html.cn/doc/zeptojs_api/", title: "移动端jquery" },
+    { name: "ECMAScript 6 入门", url: "http://es6.ruanyifeng.com/", title: "阮一峰写的ES6入门教程" },
+    { name: "廖雪峰的官方网站", url: "https://www.liaoxuefeng.com/wiki/1022910821149312/1023025235359040", title: "" }
+  ],
+   // 常用版本控制和项目工具
+   [
     { name: "Git", url: "https://git-scm.com/", title: "目前世界上最先进的分布式版本控制系统（没有之一）。" },
     { name: "GitHub 官网", url: "https://github.com/panda-zhao", title: "项目版本管理仓库" },
     { name: "GitLab 官网", url: "https://about.gitlab.com/", title: "项目版本管理仓库" },
@@ -79,82 +139,24 @@ var data = [
     { name: "蓝湖", url: "https://lanhuapp.com/", title: "" },
     { name: "Axure", url: "https://www.axure.com/", title: "原型设计工具" },
     { name: "Axure学习", url: "http://www.chanpinban.com/", title: "xure RP 9产品原型设计培训服务" },
+    { name: "墨刀", url: "https://modao.cc/brand", title: "在线一体化产品设计协作平台" },
+    { name: "figma", url: "https://www.figma.com/", title: "谷歌是一个基于浏览器的协作式 UI 设计工具" },
     { name: "云效", url: "https://my.rdc.aliyun.com/", title: "云效" },
     { name: "语雀", url: "https://www.yuque.com/dashboard/", title: "专业的云端知识库" },
     { name: "postman", url: "https://www.postman.com/", title: "API开发协作平台" },
     { name: "YApi", url: "https://github.com/YMFE/yapi", title: "可视化的接口管理平台" }
-
   ],
 
-  //七、前端框架
+  // 其他工具
   [
-    { name: "Bootstrap3 教程", url: "http://www.runoob.com/bootstrap/bootstrap-intro.html", title: "响应式开发 Web 应用程序" },
-    { name: "Bootstrap4 教程", url: "http://www.runoob.com/bootstrap4/bootstrap4-tutorial.html", title: "响应式开发 Web 应用程序" },
-    { name: "Bootstrap Flat UI", url: "https://github.com/designmodo/Flat-UI", title: "Metro(扁平)风格的UI库" },
-    { name: "swiper", url: "http://idangero.us/swiper/api/", title: "轮播图插件" },
-    { name: "swiper4", url: "https://www.swiper.com.cn/", title: "轮播图插件" },
-    { name: "font awesome 4.7.0", url: "https://fontawesome.com/v4.7.0/icons/", title: "" },
-    { name: "layui", url: "http://www.layui.com", title: "经典模块化前端UI框架" },
-    { name: "Framework7", url: "http://framework7.io/", title: "用于构建iOS和Android应用程序的精美的移动端UI框架" },
-    { name: "jQuery WeUI", url: "https://github.com/lihongxun945/jquery-weui", title: "专为微信公众账号开发而设计的一个简洁而强大的UI库" },
-    { name: "datatables", url: "http://www.datatables.club/", title: "表格插件" },
-    { name: "Echarts", url: "http://echarts.baidu.com/download.html", title: "图表插件" },
-    { name: "百度分享插件", url: "http://share.baidu.com/code", title: "" }
-  ],
-
-  //八、前端基础学习
-  [
-    { name: "MDN开发者网络", url: "https://developer.mozilla.org/zh-CN/", title: "MDN web docs" },
-    { name: "现代 JavaScript 教程", url: "https://zh.javascript.info/", title: "JavaScript.info" },
-    { name: "W3school", url: "http://www.w3school.com.cn/index.html", title: "" },
-    { name: "W3Cschool", url: "https://www.w3cschool.cn/", title: "" },
-    { name: "菜鸟教程", url: "http://www.runoob.com/", title: "" },
-    { name: "CSS3参考手册", url: "http://www.css88.com/book/css/quicksearch.htm", title: "" },
-    { name: "Normalize跨浏览器一致性", url: "http://necolas.github.io/normalize.css/", title: "" },
-    { name: "Web 前端技术图谱", url: "http://www.runoob.com/w3cnote/webfrontendstack.html", title: "" },
-    { name: "JavaScript教程", url: "https://www.liaoxuefeng.com/", title: "廖雪峰写的JS教程，比较详情" },
-    { name: "javascript入门", url: "https://wangdoc.com/javascript/basic/introduction.html", title: "" },
-    { name: "JavaScript 标准参考教程（alpha）", url: "http://javascript.ruanyifeng.com/", title: "" },
-    { name: "jquery", url: "http://jquery.cuishifeng.cn/", title: "jQuery API 3.3.1 速查表" },
-    { name: "zepto.js", url: "https://www.html.cn/doc/zeptojs_api/", title: "移动端jquery" },
-    { name: "ECMAScript 6 入门", url: "http://es6.ruanyifeng.com/", title: "阮一峰写的ES6入门教程" }
-  ],
-
-  // 九、react框架技术栈
-  [
-    { name: "React", url: "https://reactjs.org/", title: "用于创建可重用且有吸引力的UI组件的库" },
-    { name: "React Native中文网", url: "https://reactnative.cn/", title: "使用JavaScript编写移动应用" },
-  ],
-
-
-  // 十、服务器端
-  [
-    { name: "Node.js 中文网", url: "http://nodejs.cn/api/", title: "" },
-    { name: "node.js教程", url: "http://www.runoob.com/nodejs/nodejs-tutorial.html", title: "" },
-    { name: "Express", url: "http://www.expressjs.com.cn/", title: "" },
-    { name: "淘宝npm镜像", url: "http://npm.taobao.org/", title: "" },
-    { name: "nodemailer", url: "https://nodemailer.com/about/", title: "nodeJs发送邮件模块" },
-    { name: "multer", url: "https://github.com/expressjs/multer", title: "文件上传模块" },
-  ],
-  //9 十一、数据库
-  [
-    { name: "mysql", url: "http://www.runoob.com/mysql/mysql-tutorial.html", title: "关系型数据库" },
-    { name: "postgresDB", url: "https://node-postgres.com/", title: "关系型数据库" },
-    { name: "redis", url: "http://www.redis.cn/download.html", title: "key-value存储系统" },
-    { name: "mongodb", url: "http://www.runoob.com/mongodb/mongodb-update.html", title: "基于分布式文件存储的数据库" },
-  ],
-
-
-  // 十二、前端开发常用工具
-  [
-    { name: "在线开发工具", url: "https://codepen.io/", title: "在线体验代码" },
+    { name: "codepen", url: "https://codepen.io/", title: "在线体验代码" },
+    { name: "百度站长统计", url: "https://tongji.baidu.com/", title: "百度站长统计" },
     { name: "新拟物CSS生成工具", url: "https://neumorphism.io/#2163e0", title: "新拟物（Neumorphism）生成工具" },
     { name: "3D效果", url: "https://alteredqualia.com/", title: "网页端3D效果合集" },
     { name: "炫酷背景生成器", url: "https://coolbackgrounds.io/", title: "炫酷背景生成器" },
-    { name: "CSS渐变代码生成器", url: "https://cssgradient.io/", title: "CSS渐变" },
-
+    { name: "CSS 渐变生成器", url: "https://cssgradient.io/", title: "CSS渐变" },
     { name: "雪碧图合成", url: "https://www.toptal.com/developers/css/sprite-generator", title: "" },
-    { name: "七牛云", url: "https://www.qiniu.com/", title: "" },
+    { name: "jquery插件库", url: "http://www.jq22.com/", title: "在线编辑器，文本比较，常用前端库，组件！" },
     { name: "全聚合", url: "https://www.juhe.cn/", title: "数据接口" },
     { name: "在线文本比较工具", url: "http://www.jq22.com/textDifference", title: "" },
     { name: "百度思维导图", url: "http://naotu.baidu.com/home", title: "" },
@@ -164,18 +166,34 @@ var data = [
     { name: "CAN I USE?", url: "https://caniuse.com/", title: "" },
     { name: "jshint语法检查", url: "http://jshint.com/", title: "" },
   ],
-  // 十三、个人建站
+  // 个人建站
   [
-    { name: "阿里图标库", url: "https://www.iconfont.cn", title: "" },
-    { name: "百度统计", url: "https://tongji.baidu.com/web/25037646/overview/index", title: "" },
-    { name: "代码高亮", url: "http://www.592lvyou.com/?page_id=13036", title: "" },
-    { name: "制作网站logo", url: "http://www.logomaker.com.cn/", title: "" },
-    { name: "制作网站ico图标", url: "http://www.bitbug.net/", title: "" },
-    { name: "网站素材易企秀", url: "http://www.eqxiu.com/", title: "数据接口" },
-    { name: "千库网", url: "http://588ku.com/ui/0-3-default-26-0-1/", title: "" },
+    { name: "GitBook", url: "https://docs.gitbook.com/", title: "一个现代的文档平台" },
+    { name: "VuePress", url: "https://vuepress.vuejs.org/zh/", title: "Vue 驱动的静态网站生成器" },
+    { name: "wordpress", url: "https://cn.wordpress.org/", title: "WordPress是一款能让您建立出色网站、博客或应用程序的开源软件。" },
+    { name: "Nuxt", url: "https://nuxtjs.org/", title: "基于 Vue.js 的通用应用框架" },
+    { name: "Hexo", url: "https://hexo.io/zh-cn/docs/ ", title: "一个快速、简洁且高效的博客框架" },
+    { name: "Docsify", url: "https://docsify.js.org/#/zh-cn/", title: "一个动态生成文档网站的工具" },
+    { name: "Docute", url: "https://docute.org/zh/", title: "一种轻松创建文档的方式。" },
+    // { name: "阿里图标库", url: "https://www.iconfont.cn", title: "" },
+    // { name: "百度统计", url: "https://tongji.baidu.com/web/25037646/overview/index", title: "" },
+    // { name: "代码高亮", url: "http://www.592lvyou.com/?page_id=13036", title: "" },
+    // { name: "制作网站logo", url: "http://www.logomaker.com.cn/", title: "" },
+    // { name: "制作网站ico图标", url: "http://www.bitbug.net/", title: "" },
+    // { name: "网站素材易企秀", url: "http://www.eqxiu.com/", title: "数据接口" },
+    // { name: "千库网", url: "http://588ku.com/ui/0-3-default-26-0-1/", title: "" },
   ],
 
-  //二、作品欣赏
+  // 在线政务
+  [
+    { name: "中华人民共和国民政部", url: "http://www.mca.gov.cn/article/sj/xzqh/2020/", title: "中华人民共和国民政部" },
+    { name: "国家企业信用信息公示系统", url: "http://www.gsxt.gov.cn/corp-query-homepage.html", title: "国家社会保险公共服务平台" },
+    { name: "国家社会保险公共服务平台", url: "http://si.12333.gov.cn/index.jhtml", title: "国家社会保险公共服务平台" },
+    { name: "广东省人力资源和社会保障厅", url: "http://hrss.gd.gov.cn/gdsbfw/", title: "广东省人力资源和社会保障厅" },
+    { name: "河南省社会保障卡服务网", url: "http://www.ha.12333.gov.cn/", title: "河南省社会保障卡服务网" },
+    { name: "国家标准全文公开系统", url: "http://openstd.samr.gov.cn/bzgk/gb/index", title: "国家标准委发布" },
+  ],
+  // 作品欣赏
   [
     { name: "手写签名", url: "./template/jsSignature/index.html", title: "手写签名" },
     { name: "魔方游戏", url: "./template/thecube/index.html", title: "three.js游戏" },
@@ -184,20 +202,6 @@ var data = [
     { name: "转盘抽奖", url: "./template/luckDraw/index.html", title: "转盘抽奖" },
     { name: "飞机大战", url: "./template/planeWar/index.html", title: "飞机大战游戏" },
     { name: "俄罗斯方块", url: "./template/Tetris.html", title: "Tetris - 俄罗斯方块" }
-  ],
-  //三、自定义组件
-  [
-    { name: "自定义弹框组件", url: "./components/showToast.html", title: "自定义弹框组件" },
-    { name: "IE低版本优雅提醒", url: "./components/html-hack.html", title: "使用html-hack做IE低版本优雅提醒" },
-  ],
-  [
-    { name: "红盾网", url: "http://scjgj.gz.gov.cn/gzaic/WebItem/Index.html", title: "网上办事大厅" },
-    { name: "广东政务网", url: "http://59.41.9.112:90/ewb/login.html", title: "广州市开办企业一网通" },
-    { name: "广东电子税务局", url: "https://www.etax-gd.gov.cn/xxmh/html/index.html", title: "广东电子税务局" },
-    { name: "国家社会保险公共服务平台", url: "http://si.12333.gov.cn/index.jhtml", title: "国家社会保险公共服务平台" },
-    { name: "国家企业信用信息公示系统", url: "http://www.gsxt.gov.cn/corp-query-homepage.html", title: "国家社会保险公共服务平台" },
-    { name: "河南省社会保障卡服务网", url: "http://www.ha.12333.gov.cn/", title: "河南省社会保障卡服务网" },
-    { name: "中华人民共和国民政部", url: "http://www.mca.gov.cn/article/sj/xzqh/2020/", title: "中华人民共和国民政部" },
   ]
 ]
 // 百度统计

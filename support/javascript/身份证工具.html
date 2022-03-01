@@ -2,9 +2,10 @@
  * @Author: zhaowy
  * @Date: 2022-02-23 14:09:10
  * @LastEditors: zhaowy
- * @LastEditTime: 2022-02-25 17:43:04
+ * @LastEditTime: 2022-03-01 14:45:13
  * @FilePath: \panda-zhao.github.io\support\javascript\身份证工具.html
  * @Description: 身份证工具
+ * 问题： 因中华人民共和国行政区划代码并不完整，某些缺少某些地区的代码，比如海南（469023200210104129 ） 东莞 湖北 待完善
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -15,6 +16,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../../css/z-style.css">
   <script src="../../js/province-city-district.js"></script>
+  <meta itemprop="name" content="身份证工具"/>
+  <meta name="description" itemprop="description" content="在线生成，身份证解析" />
   <title>身份证工具</title>
   <style>
     .container{
@@ -278,7 +281,7 @@
       const birthday = idCard.substr(6, 4) + '-' + idCard.substr(10, 2) + '-' + idCard.substr(12, 2)
       document.getElementById('td4').innerHTML = birthday
 
-      document.getElementById('td5').innerHTML = Number(idCard.substr(16, 17)) %2 === 0 ? '女' : '男'
+      document.getElementById('td5').innerHTML = Number(idCard.substr(16, 1)) %2 === 0 ? '女' : '男'
     })
   </script>
 </body>
