@@ -87,8 +87,8 @@ var data = [
 
    // 跨平台开发
    [
-    { name: "iOS", url: "https://developer.apple.com/library/ios/navigation/", title: "iOS 官方在线文档" },
-    { name: "Android", url: "https://developer.android.com/reference/packages.html", title: "Android 官方在线文档" },
+    { name: "iOS", url: "https://developer.apple.com/cn/develop/", title: "iOS 官方在线文档" },
+    { name: "Android", url: "https://developer.android.google.cn/reference/packages?hl=zh-cn", title: "Android 官方在线文档" },
     { name: "Uni-APP", url: "https://uniapp.dcloud.io/", title: "使用 Vue.js 开发所有前端应用的框架" },
     { name: "React Native", url: "https://reactnative.cn/", title: "Facebook使用React开源的跨平台移动应用开发框架" },
     { name: "flutter", url: "https://flutter.cn/", title: "谷歌使用Dart构建跨平台应用开发框架" },
@@ -133,6 +133,7 @@ var data = [
     { name: "码云官网", url: "https://gitee.com/", title: "云端软件开发协作平台" },
     { name: "Bitbucket 官网", url: "https://bitbucket.org/", title: "Git代码管理" },
     { name: "Sourcetree", url: "https://www.sourcetreeapp.com/", title: "Git GUI 客户端" },
+    { name: "Tortoisegit", url: "https://tortoisegit.org/", title: "Git 的 Windows Shell 接口，基于 TortoiseSVN。" },
     { name: "TortoiseSVN", url: "https://tortoisesvn.net/downloads.html", title: "一个 Windows 下的版本控制系统 Apache™ Subversion® 的客户端工具。" },
     { name: "阿里企业邮箱", url: "https://qiye.aliyun.com/", title: "" },
     { name: "Bugclose", url: "https://www.bugclose.com/index.html", title: "任务管理工具" },

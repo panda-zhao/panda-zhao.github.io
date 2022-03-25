@@ -9,6 +9,14 @@
   <div>比较日期</div>
   <video src=""></video>
   <script>
+    try {
+      let e = 'license2'
+      if ((e === 'license')) alert(1)
+      else alert(2)
+    } catch (error) {
+      console.log(error)
+    }
+
     // downloadBlob('mp3')
 
     // 下载blob文件到本地
@@ -22,19 +30,19 @@
     //   a.remove()
     // }
 
-    const data = "blob:https://www.thumbzilla.com/696e61d9-d57a-403d-bea7-2245ff7488d4"
-    const name = 'demo'
-    const type = 'video/mp4'
-    let files = new window.File([data], name, {type: type}) // 转换成文件对象
-    console.log('files=', files)
+    // const data = "blob:https://www.thumbzilla.com/696e61d9-d57a-403d-bea7-2245ff7488d4"
+    // const name = 'demo'
+    // const type = 'video/mp4'
+    // let files = new window.File([data], name, {type: type}) // 转换成文件对象
+    // console.log('files=', files)
     
-    const blob = new Blob([files], {type: 'video/mp4'})
-    const a= document.createElement("a")
-    a.href = URL.createObjectURL(files)
-    a.download = name + '.' + type 
-    a.click()
-    URL.revokeObjectURL(a.href)
-    a.remove()
+    // const blob = new Blob([files], {type: 'video/mp4'})
+    // const a= document.createElement("a")
+    // a.href = URL.createObjectURL(files)
+    // a.download = name + '.' + type 
+    // a.click()
+    // URL.revokeObjectURL(a.href)
+    // a.remove()
 
     // for (const item of 10) {
     //   console.log(item)
