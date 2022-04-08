@@ -1,0 +1,1922 @@
+<!--
+ * @Author: your name
+ * @Date: 2022-04-05 23:16:50
+ * @LastEditTime: 2022-04-05 23:16:50
+ * @LastEditors: Please set LastEditors
+ * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @FilePath: \panda-zhao.github.io\test\pid.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pid解析</title>
+  </head>
+
+  <body>
+    <script>
+      // zget_Version('Shenzhen Yuming Electronics Co., Ltd.version:V1.0.8>')
+      function zget_Version(msg) {
+        if (msg.includes('NO DATA')) return ''
+        msg = msg.replace(/[ ]|[\r]|[\n]|[\r\n]|[>]/g, '')
+        try {
+          var result = msg.substring(msg.indexOf('version:') + 8) // 有效数据
+          console.log('版本号', result)
+          return result
+        } catch (error) {
+          console.error(error)
+          return ''
+        }
+      }
+
+      // get_support('7E8 06 4140 FF FE D3 84 01>')
+      function get_support(msg) {
+        if (msg === 'NO DATA') return null
+        msg = msg.replace(/[ ]|[\r]|[\n]|[\r\n]|[>]/g, '')
+        try {
+          msg = msg.slice(-8) // 有效数据后8位
+          // 16进制转10进制再转2进制
+          var a = parseInt(msg.substring(0, 2), 16).toString(2)
+          while (a.length < 8) {
+            a = 0 + a
+          }
+          var b = parseInt(msg.substring(2, 4), 16).toString(2)
+          while (b.length < 8) {
+            b = 0 + b
+          }
+          var c = parseInt(msg.substring(4, 6), 16).toString(2)
+          while (c.length < 8) {
+            c = 0 + c
+          }
+          var d = parseInt(msg.substring(6, 8), 16).toString(2)
+          while (d.length < 8) {
+            d = 0 + d
+          }
+          let result = a + b + c + d
+          console.log('PID支持情况', a, b, c, d, result.length)
+          return result
+        } catch (error) {
+          console.error(error)
+          return null
+        }
+      }
+      /*
+       * 7E8 -> ECU 控制器ID 可作为数据切分使用
+       * 10第一帧 21第二帧 22第3帧 23第4帧 24第5帧 有10开始的代表为多帧数据，后续用7E8分割
+       * 02/04/06/08/0A 16进制 代表后续有效数据长度，0A = 10，每两个字符为1位(0xFF为一位)
+       * 43 -> 代表03模式的响应，有效数据第1位
+       * 00/01/02/03/04 -> 代表故障码数量 04代表有4个故障码，有效数据第2位
+       */
+      // 无故障码  指令:03 回复：7E8    02 43 00>
+      // 1个故障码 指令:03 回复：7E8    04 43 01 1024>  有效数据长度4 有效数据 2-3
+      // 2个故障码 指令:03 回复：7E8    06 43 02 1024 1025> 有效数据长度6 有效数据  2-3 4-5
+      // 3个故障码 指令:03 回复: 7E8 10 08 43 03 1024 1025 7E8 21 1026 0000000000> 有效数据长度8 有效数据  2-3 4-5 7-8
+      // 4个故障码 指令:03 回复: 7E8 10 0A 43 04 1024 1025 7E8 21 1026 1027 000000> 10 2-3 4-5 7-8 9-10 12-13 14-15
+      // 指令04  回复: 7E8 01 44
+
+      // get_trouble_code('03', '7E8 02 43 00>')
+      // get_trouble_code('03', '7E8 04 43 01 1024 >')
+      // get_trouble_code('03', '7E8 06 43 02 1024 1025>')
+      // get_trouble_code(
+      //   '03',
+      //   '7E8 10 08 43 03 1024 1025 7E8 21 1026 0000000000> ',
+      // )
+      // get_trouble_code(
+      //   '03',
+      //   '7E8 10 0A 43 04 1024 1025 7E8 21 1026 1027 000000> ',
+      // )
+      function get_trouble_code(code, msg) {
+        let result = []
+        let separator = code.replace('0', '4') // 分隔符
+        msg = msg.replace(/[ ]|[\r]|[\n]|[\r\n]|[>]/g, '')
+        try {
+          let index = msg.indexOf(separator) // 43代表03模式的响应
+          msg = msg.substring(index + separator.length) // 43后边的有效数据
+          let troubleCodeLength = parseInt(msg.substring(0, 2), 16) // // 43后边两位代表故障码数量
+          console.log(`故障码的数量：${troubleCodeLength}，有效数据：${msg}`)
+          // 故障码超过两个多帧数据过滤
+          if (troubleCodeLength > 2) {
+            msg = msg.replace(/7E8/g, '')
+          }
+          if (troubleCodeLength > 0) {
+            for (let index = 0; index < troubleCodeLength; index++) {
+              let start = index % 2 === 0 ? 5 * index + 2 : 5 * index + 1
+              result.push(msg.substring(start, start + 4))
+            }
+          }
+          const hexDigitReplace = {
+            '0': 'P0',
+            '1': 'P1',
+            '2': 'P2',
+            '3': 'P3',
+            '4': 'C0',
+            '5': 'C1',
+            '6': 'C2',
+            '7': 'C3',
+            '8': 'B0',
+            '9': 'B1',
+            A: 'B2',
+            B: 'B3',
+            C: 'U0',
+            D: 'U1',
+            E: 'U2',
+            F: 'U3',
+          }
+          result.forEach((item, index) => {
+            const _item = hexDigitReplace[item[0]] + item.substring(1)
+            result.splice(index, 1, _item)
+          })
+          console.log('故障码=', result)
+          return result
+        } catch (error) {
+          console.error(error)
+        }
+      }
+
+      // zget_010B('7E8 07 410B AA 00000000 >')
+
+      // 7E8 10 14 49 02 01 4C 44 43
+      // 7E8 21 31 32 33 34 35 36 37
+      // 7E8 22 38 39 30 31 32 33 34
+      // const value =
+      //   '7E810144902014C4443\r7E82131323334353637\r7E82238393031323334 >'
+      // const value2 =
+      //   '7E81014490400534E30 \r7E82131323334353637 \r7E82238393031323334 >'
+      // const value3 =
+      //   '7E81014490600534E30 \r7E82131323334353637 \r7E82238393031323334 >'
+
+      // get_0902(value)
+      // zget_0904(value2)
+      // zget_0906(value3)
+      function zget_0906(msg) {
+        msg = msg.replace(/[ ]|[>]/g, '')
+        console.log('1', msg)
+        var result = ''
+        var msgArray = msg.split('\r')
+        console.log('2', msgArray)
+        for (var i = 0; i < msgArray.length; i++) {
+          var s = msgArray[i]
+          if (s.length == 19) {
+            result += s.includes('4906')
+              ? s.substring(s.indexOf('4906') + 6)
+              : s.substring(5)
+          }
+          if (s.length == 24) {
+            result += s.includes('490601') ? s.substring(18) : s.substring(10)
+          }
+          if (s.length == 22) {
+            result += s.substring(12, 20)
+          }
+        }
+        console.log('3', result)
+        result = result.replace(/00/g, '')
+        console.log('4', result)
+        if (result.length < 34) return 'NODATA'
+
+        var res = new Array(17)
+        for (var i = 0; i < 17; i++) {
+          var start = i * 2
+          res[i] = parseInt(result.substring(start, start + 2), 16)
+        }
+        console.log('5', res)
+        var CVN = ''
+        for (var i = 0; i < res.length; i++) {
+          CVN += String.fromCharCode(res[i])
+        }
+        console.log('6CVN=', CVN)
+        return CVN
+      }
+
+      function zget_0904(msg) {
+        msg = msg.replace(/[ ]|[>]/g, '')
+        console.log('1', msg)
+        var result = ''
+        var msgArray = msg.split('\r')
+        console.log('2', msgArray)
+        for (var i = 0; i < msgArray.length; i++) {
+          var s = msgArray[i]
+          if (s.length == 19) {
+            result += s.includes('4904')
+              ? s.substring(s.indexOf('4904') + 6)
+              : s.substring(5)
+          }
+          if (s.length == 24) {
+            result += s.includes('490401') ? s.substring(18) : s.substring(10)
+          }
+          if (s.length == 22) {
+            result += s.substring(12, 20)
+          }
+        }
+        console.log('3', result)
+        result = result.replace(/00/g, '')
+        console.log('4', result)
+        if (result.length < 34) return 'NODATA'
+
+        var res = new Array(17)
+        for (var i = 0; i < 17; i++) {
+          var start = i * 2
+          res[i] = parseInt(result.substring(start, start + 2), 16)
+        }
+        console.log('5', res)
+        var CID = ''
+        for (var i = 0; i < res.length; i++) {
+          CID += String.fromCharCode(res[i])
+        }
+        console.log('CID=', CID)
+        return CID
+      }
+      function get_0902(msg) {
+        //        7E8 10 14 49 02 01 31 41 31
+        //        7E8 21 4A 43 35 34 34 34 52
+        //        7E8 22 37 32 35 32 33 36 37
+        //测试箱不一样
+        //        7E8 07 49 02 01 00 00 00 33
+        //        7E8 07 49 02 02 47 31 4A 43
+        //        7E8 07 49 02 03 35 34 34 34
+        //        7E8 07 49 02 04 52 37 32 35
+        //        7E8 07 49 02 05 32 33 36 37
+        //        7E8 07 49 02 06 01 4A 4D 42
+
+        //        18 DA F1 11 10 14 49 02 01 31 41 31
+        //        18 DA F1 11 21 4A 43 35 34 34 34 52
+        //        18 DA F1 11 22 37 32 35 32 33 36 37
+
+        //        87 F1 11 49 02 01 00 00 00 31 06
+        //        87 F1 11 49 02 02 41 31 4A 43 D5
+        //        87 F1 11 49 02 03 35 34 34 34 A8
+        //        87 F1 11 49 02 04 52 37 32 35 C8
+        //        87 F1 11 49 02 05 32 33 36 37 AB
+
+        var index = msg.indexOf('>')
+        if (index != -1) {
+          msg = msg.slice(0, index).trim()
+        }
+        console.log('1', msg)
+        var result = ''
+        var msgArray = msg.split('\r')
+        console.log('2', msgArray)
+        for (var i = 0; i < msgArray.length; i++) {
+          var s = msgArray[i]
+          if (s.length == 19) {
+            result += s.includes('4902')
+              ? s.substring(s.indexOf('4902') + 6)
+              : s.substring(5)
+          }
+          if (s.length == 24) {
+            result += s.includes('490201') ? s.substring(18) : s.substring(10)
+          }
+          if (s.length == 22) {
+            result += s.substring(12, 20)
+          }
+        }
+        console.log('3', result)
+        result = result.replace(/00/g, '')
+        console.log('4', result)
+        if (result.length < 34) return 'NODATA'
+
+        var res = new Array(17)
+        for (var i = 0; i < 17; i++) {
+          var start = i * 2
+          res[i] = parseInt(result.substring(start, start + 2), 16)
+        }
+        console.log('5', res)
+        var vin = ''
+        for (var i = 0; i < res.length; i++) {
+          vin += String.fromCharCode(res[i])
+        }
+        console.log('6vin=', vin)
+        return vin
+      }
+      var pidInfo = {
+        // "0100": {
+        // 	"pid": "0100",
+        // 	"chinese": "PID 支持情况（01-20）",
+        // 	"english": "",
+        // 	"resId": "",
+        // 	"imperial": "", // 英制
+        // 	"metric": "", // 公制
+        // 	"remark": "PID 支持情况（01-20）",
+        // 	"min": "",
+        // 	"max": "",
+        // 	"effectiveLength": 4,
+        // 	"formula": function(A, B, C, D) {
+        // 		return A + B + C + D
+        // 	}
+        // },
+        // 不解析
+        // "0101": {
+        // 	"pid": "0101",
+        // 	"chinese": "故障情况指示",
+        // 	"english": "",
+        // 	"resId": "",
+        // 	"imperial": "",
+        // 	"metric": "",
+        // 	"remark": "",
+        // 	"min": "",
+        // 	"max": "",
+        // 	"effectiveLength": 4,
+        // 	"formula": function() {
+        // 		return null
+        // 	}
+        // },
+        // 不解析
+        // "0102": {
+        // 	"pid": "0102",
+        // 	"chinese": "冻结帧故障码",
+        // 	"english": "DTCFRZF",
+        // 	"resId": "DTCFRZF",
+        // 	"imperial": "",
+        // 	"metric": "",
+        // 	"remark": "",
+        // 	"min": "",
+        // 	"max": "",
+        // 	"effectiveLength": 2,
+        // 	"formula": function() {
+        // 		return null
+        // 	}
+        // },
+        // 不解析
+        // "0103": {
+        // 	"pid": "0103",
+        // 	"chinese": "燃油系统状态",
+        // 	"english": "FUELSYS2",
+        // 	"resId": "FUELSYS2",
+        // 	"imperial": "",
+        // 	"metric": "",
+        // 	"remark": "",
+        // 	"min": "",
+        // 	"max": "",
+        // 	"effectiveLength": 2,
+        // 	"formula": function() {
+        // 		// 0x01:OL
+        // 		// 0x02:CL
+        // 		// 0x04:OL-Drive
+        // 		// 0x08:OL-Fault
+        // 		// 0x10:CL-Fault
+        // 		// else:---
+        // 		return null
+        // 	}
+        // },
+        // 已验证
+        '0104': {
+          pid: '0104',
+          chinese: '发动机负荷(%)',
+          english: 'LOAD_PCT(%)',
+          resId: 'LOAD_PCT',
+          unit: '%',
+          imperial: '%',
+          metric: '%',
+          remark: '引擎计算负载 保留1位小数',
+          min: 0,
+          max: 100,
+          effectiveLength: 1,
+          formula: function (A) {
+            return ((A * 100) / 255).toFixed(1)
+          },
+        },
+        // 已验证
+        '0105': {
+          pid: '0105',
+          chinese: '冷却液温度(℃)',
+          english: 'ECT(℃)',
+          resId: 'ECT',
+          imperial: '℉',
+          metric: '℃',
+          remark: '取整数,℉ = ( 9 / 5 ) * ℃ + 32',
+          min: -40,
+          max: 245,
+          effectiveLength: 1,
+          formula: function (A) {
+            return (A - 40).toFixed(0)
+          },
+        },
+        '0106': {
+          pid: '0106',
+          chinese: '短期燃油修正（通道1）',
+          english: 'SHRTFT3(%)',
+          resId: 'SHRTFT3',
+          imperial: '%',
+          metric: '%',
+          remark: '保留1位小数',
+          min: -100,
+          max: 99.2,
+          effectiveLength: 1,
+          formula: function (A) {
+            return (((A - 128) * 100) / 128).toFixed(1)
+          },
+        },
+        '0107': {
+          pid: '0107',
+          chinese: '长期燃油修正（通道1）',
+          english: 'LONGFT3(%)',
+          resId: 'LONGFT3',
+          imperial: '%',
+          metric: '%',
+          remark: '保留1位小数',
+          min: -100,
+          max: 99.2,
+          effectiveLength: 1,
+          formula: function (A) {
+            return (((A - 128) * 100) / 128).toFixed(1)
+          },
+        },
+        '0108': {
+          pid: '0108',
+          chinese: '短期燃油修正（通道2）',
+          english: 'SHRTFT4(%)',
+          resId: 'SHRTFT4',
+          imperial: '%',
+          metric: '%',
+          remark: '保留1位小数',
+          min: -100,
+          max: 99.2,
+          effectiveLength: 1,
+          formula: function (A) {
+            return (((A - 128) * 100) / 128).toFixed(1)
+          },
+        },
+        '0109': {
+          pid: '0109',
+          chinese: '长期燃油修正（通道2）',
+          english: 'LONGFT4(%)',
+          resId: 'LONGFT4',
+          imperial: '%',
+          metric: '%',
+          remark: '保留1位小数',
+          min: -100,
+          max: 99.2,
+          effectiveLength: 1,
+          formula: function (A) {
+            return (((A - 128) * 100) / 128).toFixed(1)
+          },
+        },
+        // 多配置 无结果
+        '010A': {
+          pid: '010A',
+          chinese: '燃油压力(kPa)',
+          english: 'FRP(kPa)',
+          resId: 'FRP',
+          imperial: 'PSI',
+          metric: 'kPa',
+          remark: 'PSI保留1位小数,1kPa约等于0.145032PSI',
+          min: 0,
+          max: 765,
+          effectiveLength: 1,
+          formula: function (A) {
+            return (A * 3).toFixed(1)
+          },
+        },
+        // 已验证
+        '010B': {
+          pid: '010B',
+          chinese: '进气歧管压力(kPa)',
+          english: 'MAP(kPa)',
+          resId: 'MAP',
+          imperial: 'inHg',
+          metric: 'kPa',
+          remark: '油箱压力绝对值 1kPa约等于0.2953inHg',
+          min: 0,
+          max: 255,
+          effectiveLength: 1,
+          formula: function (A) {
+            return A.toFixed(0)
+          },
+        },
+        // 已验证
+        '010C': {
+          pid: '010C',
+          chinese: '发动机转数',
+          english: 'RPM',
+          resId: 'RPM',
+          imperial: 'rpm',
+          metric: 'rpm',
+          remark: '引擎转速 取整数',
+          min: 0,
+          max: 16383,
+          effectiveLength: 2,
+          formula: function (A, B) {
+            return ((A * 256 + B) / 4).toFixed(0)
+          },
+        },
+        // 已验证
+        '010D': {
+          pid: '010D',
+          chinese: '车辆速度(km/h)',
+          english: 'VSS(km/h)',
+          resId: 'VSS',
+          imperial: 'mph',
+          metric: 'km/h',
+          remark: '英制 0 - 158mph 取整数,1km/h=0.62mph',
+          min: 0,
+          max: 255,
+          effectiveLength: 1,
+          formula: function (A) {
+            return A.toFixed(0)
+          },
+        },
+        '010E': {
+          pid: '010E',
+          chinese: '点火提前角(°)',
+          english: 'SPARKADV(°)',
+          resId: 'SPARKADV',
+          imperial: '°',
+          metric: '°',
+          remark: '保留1位小数',
+          min: -64,
+          max: 63.5,
+          effectiveLength: 1,
+          formula: function (A) {
+            return ((A - 128) / 2).toFixed(1)
+          },
+        },
+        // 已验证
+        '010F': {
+          pid: '010F',
+          chinese: '进气温度(℃)',
+          english: 'IAT(℃)',
+          resId: 'IAT',
+          imperial: '℉',
+          metric: '℃',
+          remark: '油箱空气温度，取整数,℉ = ( 9 / 5 ) * ℃ + 32',
+          min: -40,
+          max: 215,
+          effectiveLength: 1,
+          formula: function (A) {
+            return (A - 40).toFixed(0)
+          },
+        },
+        // 已验证
+        '0110': {
+          pid: '0110',
+          chinese: '空气流量(g/s)',
+          english: 'MAF(g/s)',
+          resId: 'MAF',
+          imperial: 'lb/min',
+          metric: 'g/s',
+          remark: '保留2位小数,1g/s=0.132277lb/min',
+          min: 0,
+          max: 655.35,
+          effectiveLength: 2,
+          formula: function (A, B) {
+            return ((A * 256 + B) / 100).toFixed(2)
+          },
+        },
+        '0111': {
+          pid: '0111',
+          chinese: '节气门位置绝对值(%)',
+          english: 'TP(%)',
+          resId: 'TP',
+          imperial: '%',
+          metric: '%',
+          remark: '保留1位小数',
+          min: 0,
+          max: 100,
+          effectiveLength: 1,
+          formula: function (A) {
+            return ((A * 100) / 255).toFixed(1)
+          },
+        },
+        // 不解析
+        // "0112": {
+        // 	"pid": "0112",
+        // 	"chinese": "空气状态",
+        // 	"english": "AIR_STAT",
+        // 	"resId": "AIR_STAT",
+        // 	"imperial": "",
+        // 	"metric": "",
+        // 	"remark": "二次空气状态,公式不确认",
+        // 	"min": "",
+        // 	"max": "",
+        // 	"effectiveLength": 1,
+        // 	"formula": function(A) {
+        // 		// 0x01:UPS 0x02:DNS 0x04:OFF else:---
+        // 		return A
+        // 	}
+        // },
+        // 不解析
+        // "0113": {
+        // 	"pid": "0113",
+        // 	"chinese": "氧传感器存在情况",
+        // 	"english": "O2SLOC",
+        // 	"resId": "O2SLOC",
+        // 	"imperial": "",
+        // 	"metric": "",
+        // 	"remark": "公式不确认",
+        // 	"min": "",
+        // 	"max": "",
+        // 	"effectiveLength": 1,
+        // 	"formula": function(A) {
+        // 		// [A0..A3] == Bank 1, Sensors 1-4. [A4..A7] == Bank 2...
+        // 		// 0x00:S---- 0x01:S1--- 0x02:S-2-- 0x03:S12-- 0x04:S--3- 0x05:S1-3- 0x06:S-23- 0x07:S123-
+        // 		// 0x08:S---4 0x09:S1--4 0x0A:S-2-4 0x0B:S12-4 0x0C:S--34 0x0D:S1-34 0x0E:S-234 0x0F:S1234
+        // 		return A
+        // 	}
+        // },
+        '0114': {
+          pid: '0114',
+          chinese: '氧传感器（通道1，传感器1）',
+          english: 'O2B1S1(V)',
+          resId: 'O2B1S1',
+          imperial: 'V',
+          metric: 'V',
+          remark: '第二个参数未用到 保留3位小数',
+          min: 0,
+          max: 1.275,
+          effectiveLength: 2,
+          formula: function (A, B) {
+            return (A / 200).toFixed(3)
+          },
+        },
+        '0115': {
+          pid: '0115',
+          chinese: '氧传感器（通道1，传感器2）',
+          english: 'O2B1S2(V)',
+          resId: 'O2B1S2',
+          imperial: 'V',
+          metric: 'V',
+          remark: '第二个参数未用到 保留3位小数',
+          min: 0,
+          max: 1.275,
+          effectiveLength: 2,
+          formula: function (A, B) {
+            return (A / 200).toFixed(3)
+          },
+        },
+        '0116': {
+          pid: '0116',
+          chinese: '氧传感器（通道1，传感器3）',
+          english: 'O2B2S1(V)',
+          resId: 'O2B2S1',
+          imperial: 'V',
+          metric: 'V',
+          remark: '第二个参数未用到 保留3位小数',
+          min: 0,
+          max: 1.275,
+          effectiveLength: 2,
+          formula: function (A, B) {
+            return (A / 200).toFixed(3)
+          },
+        },
+        '0117': {
+          pid: '0117',
+          chinese: '氧传感器（通道1，传感器4）',
+          english: 'O2B2S2(V)',
+          resId: 'O2B2S2',
+          imperial: 'V',
+          metric: 'V',
+          remark: '第二个参数未用到 保留3位小数',
+          min: 0,
+          max: 1.275,
+          effectiveLength: 2,
+          formula: function (A, B) {
+            return (A / 200).toFixed(3)
+          },
+        },
+        '0118': {
+          pid: '0118',
+          chinese: '氧传感器（通道2，传感器1）',
+          english: 'O2B3S1(V)',
+          resId: 'O2B3S1',
+          imperial: 'V',
+          metric: 'V',
+          remark: '第二个参数未用到 保留3位小数',
+          min: 0,
+          max: 1.275,
+          effectiveLength: 2,
+          formula: function (A, B) {
+            return (A / 200).toFixed(3)
+          },
+        },
+        '0119': {
+          pid: '0119',
+          chinese: '氧传感器通道2，传感器2）',
+          english: 'O2B3S2(V)',
+          resId: 'O2B3S2',
+          imperial: 'V',
+          metric: 'V',
+          remark: '第二个参数未用到 保留3位小数',
+          min: 0,
+          max: 1.275,
+          effectiveLength: 2,
+          formula: function (A, B) {
+            return (A / 200).toFixed(3)
+          },
+        },
+        '011A': {
+          pid: '011A',
+          chinese: '氧传感器（通道2，传感器3）',
+          english: 'O2B4S1(V)',
+          resId: 'O2B4S1',
+          imperial: 'V',
+          metric: 'V',
+          remark: '第二个参数未用到 保留3位小数',
+          min: 0,
+          max: 1.275,
+          effectiveLength: 2,
+          formula: function (A, B) {
+            return (A / 200).toFixed(3)
+          },
+        },
+        '011B': {
+          pid: '011B',
+          chinese: '氧传感器（通道2，传感器4）',
+          english: 'O2B4S2(V)',
+          resId: 'O2B4S2',
+          imperial: 'V',
+          metric: 'V',
+          remark: '第二个参数未用到 保留3位小数',
+          min: 0,
+          max: 1.275,
+          effectiveLength: 2,
+          formula: function (A, B) {
+            return (A / 200).toFixed(3)
+          },
+        },
+        // 不解析
+        // "011C": {
+        // 	"pid": "011C",
+        // 	"chinese": "OBD标准",
+        // 	"english": "OBDSUP",
+        // 	"resId": "OBDSUP",
+        // 	"imperial": "",
+        // 	"metric": "",
+        // 	"remark": "当前车辆OBD 标准指示",
+        // 	"min": "",
+        // 	"max": "",
+        // 	"effectiveLength": 1,
+        // 	"formula": function(A) {
+        // 		// 0:--- 1:OBDII 2:OBD 3:OBD and OBDII 4:OBD I 5:Not OBD 6:EOBD 7:EOBD & OBDII
+        // 		// 8:EOBD & OBD 9:EOBD,OBD&OBDII 10:JOBD 11:JOBD and OBDII
+        // 		// 12:JOBD and EOBD 13:JOBD,EOBD&BDII else:---
+        // 		return A
+        // 	}
+        // },
+        // 不解析
+        // "011D": {
+        // 	"pid": "011D",
+        // 	"chinese": "氧传感器存在情况",
+        // 	"english": "O2SLOC",
+        // 	"resId": "O2SLOC",
+        // 	"imperial": "",
+        // 	"metric": "",
+        // 	"remark": "类似PID 0113",
+        // 	"min": "",
+        // 	"max": "",
+        // 	"effectiveLength": 1,
+        // 	"formula": function(A) {
+        // 		// [A0..A7] == [B1S1, B1S2, B2S1, B2S2, B3S1, B3S2, B4S1, B4S2]
+        // 		return A
+        // 	}
+        // },
+        // 不解析
+        // "011E": {
+        // 	"pid": "011E",
+        // 	"chinese": "动力输出状态",
+        // 	"english": "PTO_STAT",
+        // 	"resId": "PTO_STAT",
+        // 	"imperial": "",
+        // 	"metric": "",
+        // 	"remark": "",
+        // 	"min": "",
+        // 	"max": "",
+        // 	"effectiveLength": 1,
+        // 	"formula": function(A) {
+        // 		// A0=0:OFF, A0=1:ON
+        // 		return A
+        // 	}
+        // },
+        '011F': {
+          pid: '011F',
+          chinese: '引擎启动后运行时间(秒)',
+          english: 'RUNTM(second)',
+          resId: 'RUNTM',
+          imperial: 'second',
+          metric: 'second',
+          remark: '单位：秒',
+          min: 0,
+          max: 65535,
+          effectiveLength: 2,
+          formula: function (A, B) {
+            return (A * 256 + B).toFixed(0)
+          },
+        },
+
+        // "0120": {
+        // 	"pid": "0120",
+        // 	"chinese": "PID 支持情况（21-40）",
+        // 	"english": "",
+        // 	"resId": "",
+        // 	"imperial": "",
+        // 	"metric": "",
+        // 	"remark": "PID 支持情况（21-40）",
+        // 	"min": "",
+        // 	"max": "",
+        // 	"effectiveLength": 4,
+        // 	"formula": function(A, B, C, D) {
+        // 		return A + B + C + D
+        // 	}
+        // },
+        // 多配置
+        '0121': {
+          pid: '0121',
+          chinese: 'MIL 灯点亮后车辆行驶里程',
+          english: 'MIL_DIST(Km)',
+          resId: 'MIL_DIST',
+          imperial: 'mile',
+          metric: 'KM',
+          remark: '取整数,1km=0.62mile',
+          min: 0,
+          max: 65535,
+          effectiveLength: 2,
+          formula: function (A, B) {
+            return (A * 256 + B).toFixed(0)
+          },
+        },
+        // 多配置
+        '0122': {
+          pid: '0122',
+          chinese: '燃油压力（相对于歧管真空度）',
+          english: 'FRP(kPa)',
+          resId: 'FRP',
+          imperial: 'PSI',
+          metric: 'kPa',
+          remark: '保留1位小数,1kPa约等于0.145032PSI',
+          min: 0,
+          max: 5177.265,
+          effectiveLength: 2,
+          formula: function (A, B) {
+            return (0.079 * (256 * A + B)).toFixed(1)
+          },
+        },
+        // 多配置
+        '0123': {
+          pid: '0123',
+          chinese: '燃油压力（柴油或汽油直喷）',
+          english: 'FRP(kPa)',
+          resId: 'FRP',
+          imperial: 'PSI',
+          metric: 'kPa',
+          remark: '取整数,1kPa约等于0.145032PSI',
+          min: 0,
+          max: 655350,
+          effectiveLength: 2,
+          formula: function (A, B) {
+            return ((A * 256 + B) * 10).toFixed(0)
+          },
+        },
+        '0124': {
+          pid: '0124',
+          chinese: '电压当量比（B1S1）',
+          english: 'EQ_RATB1S1',
+          resId: 'EQ_RATB1S1',
+          imperial: '',
+          metric: '',
+          remark: '',
+          min: 0,
+          max: 1.999,
+          effectiveLength: 4,
+          formula: function (A, B, C, D) {
+            // ((A*256)+B)*2/65535 or
+            // ((A*256)+B)/32768
+            // ((C*256)+D)*8/65535 or
+            // ((C*256)+D)/8192
+            return (((A * 256 + B) * 2) / 65535).toFixed(3)
+          },
+        },
+        '0125': {
+          pid: '0125',
+          chinese: '电压当量比（B1S2）',
+          english: 'EQ_RATB1S2',
+          resId: 'EQ_RATB1S2',
+          imperial: '',
+          metric: '',
+          remark: '保留3位小数',
+          min: 0,
+          max: 1.999,
+          effectiveLength: 4,
+          formula: function (A, B, C, D) {
+            // ((A*256)+B)*2/65535 or
+            // ((A*256)+B)/32768
+            // ((C*256)+D)*8/65535 or
+            // ((C*256)+D)/8192
+            return (((A * 256 + B) * 2) / 65535).toFixed(3)
+          },
+        },
+        '0126': {
+          pid: '0126',
+          chinese: '电压当量比（B2S1）',
+          english: 'EQ_RATB2S1',
+          resId: 'EQ_RATB2S1',
+          imperial: '',
+          metric: '',
+          remark: '保留3位小数',
+          min: 0,
+          max: 1.999,
+          effectiveLength: 4,
+          formula: function (A, B, C, D) {
+            // ((A*256)+B)*2/65535 or
+            // ((A*256)+B)/32768
+            // ((C*256)+D)*8/65535 or
+            // ((C*256)+D)/8192
+            return (((A * 256 + B) * 2) / 65535).toFixed(3)
+          },
+        },
+        '0127': {
+          pid: '0127',
+          chinese: '电压当量比（B2S2）',
+          english: 'EQ_RATB2S2',
+          resId: 'EQ_RATB2S2',
+          imperial: '',
+          metric: '',
+          remark: '保留3位小数',
+          min: 0,
+          max: 1.999,
+          effectiveLength: 4,
+          formula: function (A, B, C, D) {
+            // ((A*256)+B)*2/65535 or
+            // ((A*256)+B)/32768
+            // ((C*256)+D)*8/65535 or
+            // ((C*256)+D)/8192
+            return (((A * 256 + B) * 2) / 65535).toFixed(3)
+          },
+        },
+        '0128': {
+          pid: '0128',
+          chinese: '电压当量比（B3S1）',
+          english: 'EQ_RATB3S1',
+          resId: 'EQ_RATB3S1',
+          imperial: '',
+          metric: '',
+          remark: '保留3位小数',
+          min: 0,
+          max: 1.999,
+          effectiveLength: 4,
+          formula: function (A, B, C, D) {
+            // ((A*256)+B)*2/65535 or
+            // ((A*256)+B)/32768
+            // ((C*256)+D)*8/65535 or
+            // ((C*256)+D)/8192
+            return (((A * 256 + B) * 2) / 65535).toFixed(3)
+          },
+        },
+        '0129': {
+          pid: '0129',
+          chinese: '电压当量比（B3S2）',
+          english: 'EQ_RATB3S2',
+          resId: 'EQ_RATB3S2',
+          imperial: '',
+          metric: '',
+          remark: '保留3位小数',
+          min: 0,
+          max: 1.999,
+          effectiveLength: 4,
+          formula: function (A, B, C, D) {
+            // ((A*256)+B)*2/65535 or
+            // ((A*256)+B)/32768
+            // ((C*256)+D)*8/65535 or
+            // ((C*256)+D)/8192
+            return (((A * 256 + B) * 2) / 65535).toFixed(3)
+          },
+        },
+        '012A': {
+          pid: '012A',
+          chinese: '电压当量比（B4S1）',
+          english: 'EQ_RATB4S1',
+          resId: 'EQ_RATB4S1',
+          imperial: '',
+          metric: '',
+          remark: '保留3位小数',
+          min: 0,
+          max: 1.999,
+          effectiveLength: 4,
+          formula: function (A, B, C, D) {
+            // ((A*256)+B)*2/65535 or
+            // ((A*256)+B)/32768
+            // ((C*256)+D)*8/65535 or
+            // ((C*256)+D)/8192
+            return (((A * 256 + B) * 2) / 65535).toFixed(3)
+          },
+        },
+        '012B': {
+          pid: '012B',
+          chinese: '电压当量比（B4S2）',
+          english: 'EQ_RATB4S2',
+          resId: 'EQ_RATB4S2',
+          imperial: '',
+          metric: '',
+          remark: '保留3位小数',
+          min: 0,
+          max: 1.999,
+          effectiveLength: 4,
+          formula: function (A, B, C, D) {
+            // ((A*256)+B)*2/65535 or
+            // ((A*256)+B)/32768
+            // ((C*256)+D)*8/65535 or
+            // ((C*256)+D)/8192
+            return (((A * 256 + B) * 2) / 65535).toFixed(3)
+          },
+        },
+        '012C': {
+          pid: '012C',
+          chinese: '废弃循环(%)',
+          english: 'EGR_PTC(%)',
+          resId: 'EGR_PTC',
+          imperial: '%',
+          metric: '%',
+          remark: '保留1位小数',
+          min: 0,
+          max: 100,
+          effectiveLength: 1,
+          formula: function (A) {
+            return ((A * 100) / 255).toFixed(1)
+          },
+        },
+        '012D': {
+          pid: '012D',
+          chinese: '废气循环错误(%)',
+          english: 'EGR_ERR(%)',
+          resId: 'EGR_ERR',
+          imperial: '',
+          metric: '',
+          remark: '保留1位小数',
+          min: -100,
+          max: 99.2,
+          effectiveLength: 1,
+          formula: function (A) {
+            return (((A - 128) * 100) / 128).toFixed(1)
+          },
+        },
+        '012E': {
+          pid: '012E',
+          chinese: '蒸发净化',
+          english: 'EVAP_PCT(%)',
+          resId: 'EVAP_PCT',
+          imperial: '%',
+          metric: '%',
+          remark: '保留1位小数',
+          min: 0,
+          max: 100,
+          effectiveLength: 1,
+          formula: function (A) {
+            return ((A * 100) / 255).toFixed(1)
+          },
+        },
+        '012F': {
+          pid: '012F',
+          chinese: '油量液位情况',
+          english: 'FLI(%)',
+          resId: 'FLI',
+          imperial: '%',
+          metric: '%',
+          remark: '保留1位小数',
+          min: 0,
+          max: 100,
+          effectiveLength: 1,
+          formula: function (A) {
+            return ((A * 100) / 255).toFixed(1)
+          },
+        },
+        '0130': {
+          pid: '0130',
+          chinese: '故障码清除后热车次数',
+          english: 'WARM_UPS',
+          resId: 'WARM_UPS',
+          imperial: '',
+          metric: '',
+          remark: '次数',
+          min: 0,
+          max: 255,
+          effectiveLength: 1,
+          formula: function (A) {
+            return A
+          },
+        },
+        // 多配置
+        '0131': {
+          pid: '0131',
+          chinese: '故障码清除后后行驶里程(km)',
+          english: 'CLR_DIST(km)',
+          resId: 'CLR_DIST',
+          imperial: 'mile',
+          metric: 'KM',
+          remark: '取整数,1km=0.62mile',
+          min: 0,
+          max: 65535,
+          effectiveLength: 2,
+          formula: function (A, B) {
+            return (A * 256 + B).toFixed(0)
+          },
+        },
+        '0132': {
+          pid: '0132',
+          chinese: '系统蒸汽压力',
+          english: 'EVAP_VP(Pa)',
+          resId: 'EVAP_VP',
+          imperial: 'inH2O',
+          metric: 'Pa',
+          remark: 'inH2O保留1位小数,1kPa=4.0145inH2O',
+          min: -8192,
+          max: 8192,
+          effectiveLength: 2,
+          formula: function (A, B) {
+            // (((A*256)+B)-32768)/4
+            return ((A * 256 + B) / 4).toFixed(1)
+          },
+        },
+        // 多配置
+        '0133': {
+          pid: '0133',
+          chinese: '大气压',
+          english: 'BARO(kPa)',
+          resId: 'BARO',
+          imperial: 'inHg',
+          metric: 'kPa',
+          remark: 'inHg保留1位小数,1kPa约等于0.2953inHg',
+          min: 0,
+          max: 255,
+          effectiveLength: 1,
+          formula: function (A) {
+            return A.toFixed(1)
+          },
+        },
+        '0134': {
+          pid: '0134',
+          chinese: '当前当量比11',
+          english: 'EQ_RAT11',
+          resId: 'EQ_RAT11',
+          imperial: '',
+          metric: '',
+          remark: '保留3位小数',
+          min: 0,
+          max: 2,
+          effectiveLength: 4,
+          formula: function (A, B, C, D) {
+            // ((A*256)+B)/32,768
+            // ((C*256)+D)/256 - 128
+            return (((A * 256 + B) * 2) / 65535).toFixed(3)
+          },
+        },
+        '0135': {
+          pid: '0135',
+          chinese: '当前当量比12',
+          english: 'EQ_RAT12',
+          resId: 'EQ_RAT12',
+          imperial: '',
+          metric: '',
+          remark: '保留3位小数',
+          min: 0,
+          max: 2,
+          effectiveLength: 4,
+          formula: function (A, B, C, D) {
+            // ((A*256)+B)/32,768
+            // ((C*256)+D)/256 - 128
+            return (((A * 256 + B) * 2) / 65535).toFixed(3)
+          },
+        },
+        '0136': {
+          pid: '0136',
+          chinese: '当前当量比21',
+          english: 'EQ_RAT21',
+          resId: 'EQ_RAT21',
+          imperial: '',
+          metric: '',
+          remark: '保留3位小数',
+          min: 0,
+          max: 2,
+          effectiveLength: 4,
+          formula: function (A, B, C, D) {
+            // ((A*256)+B)/32,768
+            // ((C*256)+D)/256 - 128
+            return (((A * 256 + B) * 2) / 65535).toFixed(3)
+          },
+        },
+        '0137': {
+          pid: '0137',
+          chinese: '当前当量比22',
+          english: 'EQ_RAT22',
+          resId: 'EQ_RAT22',
+          imperial: '',
+          metric: '',
+          remark: '保留3位小数',
+          min: 0,
+          max: 2,
+          effectiveLength: 4,
+          formula: function (A, B, C, D) {
+            // ((A*256)+B)/32,768
+            // ((C*256)+D)/256 - 128
+            return (((A * 256 + B) * 2) / 65535).toFixed(3)
+          },
+        },
+        '0138': {
+          pid: '0138',
+          chinese: '当前当量比31',
+          english: 'EQ_RAT31',
+          resId: 'EQ_RAT31',
+          imperial: '',
+          metric: '',
+          remark: '保留3位小数',
+          min: 0,
+          max: 2,
+          effectiveLength: 4,
+          formula: function (A, B, C, D) {
+            // ((A*256)+B)/32,768
+            // ((C*256)+D)/256 - 128
+            return (((A * 256 + B) * 2) / 65535).toFixed(3)
+          },
+        },
+        '0139': {
+          pid: '0139',
+          chinese: '当前当量比32',
+          english: 'EQ_RAT32',
+          resId: 'EQ_RAT32',
+          imperial: '',
+          metric: '',
+          remark: '保留3位小数',
+          min: 0,
+          max: 2,
+          effectiveLength: 4,
+          formula: function (A, B, C, D) {
+            // ((A*256)+B)/32,768
+            // ((C*256)+D)/256 - 128
+            return (((A * 256 + B) * 2) / 65535).toFixed(3)
+          },
+        },
+        '013A': {
+          pid: '013A',
+          chinese: '当前当量比41',
+          english: 'EQ_RAT41',
+          resId: 'EQ_RAT41',
+          imperial: '',
+          metric: '',
+          remark: '保留3位小数',
+          min: 0,
+          max: 2,
+          effectiveLength: 4,
+          formula: function (A, B, C, D) {
+            // ((A*256)+B)/32,768
+            // ((C*256)+D)/256 - 128
+            return (((A * 256 + B) * 2) / 65535).toFixed(3)
+          },
+        },
+        '013B': {
+          pid: '013B',
+          chinese: '当前当量比42',
+          english: 'EQ_RAT42',
+          resId: 'EQ_RAT42',
+          imperial: '',
+          metric: '',
+          remark: '保留3位小数',
+          min: 0,
+          max: 2,
+          effectiveLength: 4,
+          formula: function (A, B, C, D) {
+            // ((A*256)+B)/32,768
+            // ((C*256)+D)/256 - 128
+            return (((A * 256 + B) * 2) / 65535).toFixed(3)
+          },
+        },
+        // 多单位
+        '013C': {
+          pid: '013C',
+          chinese: '催化剂温度（通道1，传感器1）',
+          english: 'CATEMP11',
+          resId: 'CATEMP11',
+          imperial: '℉',
+          metric: '℃',
+          remark: '取整数,℉ = ( 9 / 5 ) * ℃ + 32',
+          min: -40,
+          max: 6513.5,
+          effectiveLength: 2,
+          formula: function (A, B) {
+            return ((A * 256 + B) / 10 - 40).toFixed(0)
+          },
+        },
+        // 多单位
+        '013D': {
+          pid: '013D',
+          chinese: '催化剂温度（通道2，传感器1）',
+          english: 'CATEMP21',
+          resId: 'CATEMP21',
+          imperial: '℉',
+          metric: '℃',
+          remark: '℉ = ( 9 / 5 ) * ℃ + 32',
+          min: -40,
+          max: 6513.5,
+          effectiveLength: 2,
+          formula: function (A, B) {
+            return ((A * 256 + B) / 10 - 40).toFixed(0)
+          },
+        },
+        // 多单位
+        '013E': {
+          pid: '013E',
+          chinese: '催化剂温度（通道1，传感器2）',
+          english: 'CATEMP12',
+          resId: 'CATEMP12',
+          imperial: '℉',
+          metric: '℃',
+          remark: '取整数,℉ = ( 9 / 5 ) * ℃ + 32',
+          min: -40,
+          max: 6513.5,
+          effectiveLength: 2,
+          formula: function (A, B) {
+            return ((A * 256 + B) / 10 - 40).toFixed(0)
+          },
+        },
+        // 多单位
+        '013F': {
+          pid: '013F',
+          chinese: '催化剂温度（通道2，传感器2）',
+          english: 'CATEMP22',
+          resId: 'CATEMP22',
+          imperial: '℉',
+          metric: '℃',
+          remark: '取整数,℉ = ( 9 / 5 ) * ℃ + 32',
+          min: -40,
+          max: 6513.5,
+          effectiveLength: 2,
+          formula: function (A, B) {
+            return ((A * 256 + B) / 10 - 40).toFixed(0)
+          },
+        },
+        // "0140": {
+        // 	"pid": "0140",
+        // 	"chinese": "PID 支持情况（41-60）",
+        // 	"english": "英文",
+        // 	"resId": "",
+        // 	"imperial": "",
+        // 	"metric": "",
+        // 	"remark": "PID 支持情况（41-60）",
+        // 	"min": "",
+        // 	"max": "",
+        // 	"effectiveLength": 4,
+        // 	"formula": function(A, B, C, D) {
+        // 		return A + B + C + D
+        // 	}
+        // },
+        // 待确认
+        // "0141": {
+        // 	"pid": "0141",
+        // 	"chinese": "本次行程监控状态",
+        // 	"english": "",
+        // 	"resId": "",
+        // 	"imperial": "",
+        // 	"metric": "",
+        // 	"remark": "无解析规则",
+        // 	"min": "",
+        // 	"max": "",
+        // 	"effectiveLength": 4,
+        // 	"formula": function(A, B, C, D) {
+        // 		return null
+        // 	}
+        // },
+        '0142': {
+          pid: '0142',
+          chinese: '控制模块电压(V)',
+          english: 'VPWR(V)',
+          resId: 'VPWR',
+          imperial: 'V',
+          metric: 'V',
+          remark: '保留2位小数',
+          min: '',
+          max: 65.54,
+          effectiveLength: 2,
+          formula: function (A, B) {
+            return ((A * 256 + B) / 1000).toFixed(2)
+          },
+        },
+        '0143': {
+          pid: '0143',
+          chinese: '载荷绝对值',
+          english: 'LOAD_ABS(%)',
+          resId: 'LOAD_ABS',
+          imperial: '%',
+          metric: '%',
+          remark: '负荷绝对值',
+          min: 0,
+          max: 25700,
+          effectiveLength: 2,
+          formula: function (A, B) {
+            return (((A * 256 + B) * 100) / 255).toFixed(0)
+          },
+        },
+        '0144': {
+          pid: '0144',
+          chinese: '燃空比',
+          english: 'EQ_RAT',
+          resId: '',
+          imperial: '',
+          metric: '',
+          remark: '保留3位小数',
+          min: 0,
+          max: 2,
+          effectiveLength: 2,
+          formula: function (A, B) {
+            return ((A * 256 + B) / 32768).toFixed(3)
+          },
+        },
+        '0145': {
+          pid: '0145',
+          chinese: '相对节气门位置',
+          english: 'TP_R(%)',
+          resId: 'TP_R',
+          imperial: '%',
+          metric: '%',
+          remark: '保留1位小数',
+          min: 0,
+          max: 100,
+          effectiveLength: 1,
+          formula: function (A) {
+            return ((A * 100) / 255).toFixed(1)
+          },
+        },
+        // 多单位
+        '0146': {
+          pid: '0146',
+          chinese: '环境空气温度',
+          english: 'AAT',
+          resId: 'AAT',
+          imperial: '℉',
+          metric: '℃',
+          remark: '取整数,℉ = ( 9 / 5 ) * ℃ + 32',
+          min: -40,
+          max: 215,
+          effectiveLength: 1,
+          formula: function (A) {
+            return (A - 40).toFixed(0)
+          },
+        },
+        '0147': {
+          pid: '0147',
+          chinese: '节气门位置绝对值B',
+          english: 'TP_B(%)',
+          resId: 'TP_B',
+          imperial: '%',
+          metric: '%',
+          remark: '保留1位小数',
+          min: 0,
+          max: 100,
+          effectiveLength: 1,
+          formula: function (A) {
+            return ((A * 100) / 255).toFixed(1)
+          },
+        },
+        '0148': {
+          pid: '0148',
+          chinese: '节气门位置绝对值C',
+          english: 'TP_C(%)',
+          resId: 'TP_C',
+          imperial: '%',
+          metric: '%',
+          remark: '保留1位小数',
+          min: 0,
+          max: 100,
+          effectiveLength: 1,
+          formula: function (A) {
+            return ((A * 100) / 255).toFixed(1)
+          },
+        },
+        '0149': {
+          pid: '0149',
+          chinese: '油门踏板位置D',
+          english: 'APP_D(%)',
+          resId: 'APP_D',
+          imperial: '%',
+          metric: '%',
+          remark: '保留1位小数',
+          min: 0,
+          max: 100,
+          effectiveLength: 1,
+          formula: function (A) {
+            return ((A * 100) / 255).toFixed(1)
+          },
+        },
+        '014A': {
+          pid: '014A',
+          chinese: '油门踏板位置E',
+          english: 'APP_E(%)',
+          resId: 'APP_E',
+          imperial: '%',
+          metric: '%',
+          remark: '保留1位小数',
+          min: 0,
+          max: 100,
+          effectiveLength: 1,
+          formula: function (A) {
+            return ((A * 100) / 255).toFixed(1)
+          },
+        },
+        '014B': {
+          pid: '014B',
+          chinese: '油门踏板位置F',
+          english: 'APP_F(%)',
+          resId: 'APP_F',
+          imperial: '%',
+          metric: '%',
+          remark: '保留1位小数',
+          min: 0,
+          max: 100,
+          effectiveLength: 1,
+          formula: function (A) {
+            return ((A * 100) / 255).toFixed(1)
+          },
+        },
+        '014C': {
+          pid: '014C',
+          chinese: '油门执行器控制值',
+          english: 'TAC_PCT(%)',
+          resId: 'TAC_PCT',
+          imperial: '%',
+          metric: '%',
+          remark: '节气门控制。保留1位小数',
+          min: 0,
+          max: 100,
+          effectiveLength: 1,
+          formula: function (A) {
+            return ((A * 100) / 255).toFixed(1)
+          },
+        },
+        // 待确认
+        '014D': {
+          pid: '014D',
+          chinese: 'MIL灯亮之后行驶时间',
+          english: 'MIL_TIME',
+          resId: 'MIL_TIME',
+          imperial: 'minute',
+          metric: 'minute',
+          remark: '4h:16m',
+          min: 0,
+          max: 65535,
+          effectiveLength: 2,
+          formula: function (A, B) {
+            return (A * 256 + B).toFixed(0)
+          },
+        },
+        // 待确认
+        '014E': {
+          pid: '014E',
+          chinese: '故障码清除后时间',
+          english: 'CLR_TIME',
+          resId: 'CLR_TIME',
+          imperial: 'minute',
+          metric: 'minute',
+          remark: '4h:16m',
+          min: 0,
+          max: 65535,
+          effectiveLength: 2,
+          formula: function (A, B) {
+            return (A * 256 + B).toFixed(0)
+          },
+        },
+        // 无
+        // "014F": {
+        //   "pid": "014F",
+        //   "chinese": "对于当量比",
+        //   "english": "",
+        //   "resId": "",
+        //   "imperial": "",
+        //   "metric": ", V, mA, kPa",
+        // "remark": "对于当量比，氧传感器电压，氧传感器电流和进气歧管绝对压力最大值",
+        // "min": "0, 0, 0, 0",
+        // "max": "255, 255, 255, 2550",
+        // "effectiveLength": 4,
+        // "formula": function(A, B, C, D){
+        // 	return A, B, C, D*10
+        // }
+        // },
+        // 无
+        // "0150": {
+        //   "pid": "0150",
+        //   "chinese": "空气流量传感器最大值",
+        //   "english": "",
+        //   "resId": "",
+        //   "imperial": "",
+        //   "metric": "g/s",
+        // "remark": "A*10, B, C, and D are reserved for future use",
+        // "min": 0,
+        // "max": 2550,
+        // "effectiveLength": 4,
+        // "formula": function(A, B, C, D){
+        // 	return A*10, B, C, and D
+        // }
+        // },
+        // 不解析
+        // "0151": {
+        // 	"pid": "0151",
+        // 	"chinese": "燃油类型",
+        // 	"english": "FUEL_TYP",
+        // 	"resId": "FUEL_TYP",
+        // 	"imperial": "",
+        // 	"metric": "",
+        // 	"remark": "油料类型",
+        // 	"min": "",
+        // 	"max": "",
+        // 	"effectiveLength": 1,
+        // 	"formula": function(A) {
+        // 		// 0x01:GAS
+        // 		// 0x02:METH
+        // 		// 0x03:ETH
+        // 		// 0x04:DSL
+        // 		// 0x05:LPG
+        // 		// 0x06:CNG
+        // 		// 0x07:PROP
+        // 		// 0x08:ELEC
+        // 		// 0x09:BI_GAS
+        // 		// 0x0A:BI_METH
+        // 		// 0x0B:BI_ETH
+        // 		// 0x0C:BI_LPG
+        // 		// 0x0D:BI_CNG
+        // 		// 0x0E:BI_PROP
+        // 		// 0x0F:BI_ELEC
+        // 		// else:---
+        // 		return A
+        // 	}
+        // },
+        '0152': {
+          pid: '0152',
+          chinese: '乙醇百分比',
+          english: 'ALCH_PCT(%)',
+          resId: 'ALCH_PCT',
+          imperial: '%',
+          metric: '%',
+          remark: '保留1位小数',
+          min: 0,
+          max: 100,
+          effectiveLength: 1,
+          formula: function (A) {
+            return ((A * 100) / 255).toFixed(1)
+          },
+        },
+        // 多单位
+        '0153': {
+          pid: '0153',
+          chinese: '蒸汽系统绝对值',
+          english: 'EVAP_VPA',
+          resId: 'EVAP_VPA',
+          imperial: 'inH2O',
+          metric: 'kPa',
+          remark: 'kPa保留1位小数,1kPa=4.0145inH2O',
+          min: 0,
+          max: 327.7,
+          effectiveLength: 2,
+          formula: function (A, B) {
+            return ((A * 256 + B) / 200).toFixed(1)
+          },
+        },
+        '0154': {
+          pid: '0154',
+          chinese: '蒸汽系统压力',
+          english: 'EVAP_VP',
+          resId: 'EVAP_VP',
+          imperial: 'inH2O',
+          metric: 'Pa',
+          remark: 'inH2O保留1位小数,1kPa=4.0145inH2O',
+          min: -32767,
+          max: 32767,
+          effectiveLength: 2,
+          formula: function (A, B) {
+            return (A * 256 + B - 32767).toFixed(1)
+          },
+        },
+
+        // 多配置
+        '0155': {
+          pid: '0155',
+          chinese: '短期二次氧传感器微调组1和组3',
+          english: 'STSO2FT3(%)',
+          resId: 'STSO2FT3',
+          imperial: '%',
+          metric: '%',
+          remark: '保留1位小数',
+          min: -100,
+          max: 99.2,
+          effectiveLength: 2,
+          formula: function (A, B) {
+            // (A-128)*100/128
+            // (B-128)*100/128
+            return (((B - 128) * 100) / 128).toFixed(1)
+          },
+        },
+        // 多配置
+        '0156': {
+          pid: '0156',
+          chinese: '长期二次氧传感器微调组1和组3',
+          english: 'LGSO2FT3(%)',
+          resId: 'LGSO2FT3',
+          imperial: '%',
+          metric: '%',
+          remark: '保留1位小数',
+          min: -100,
+          max: 99.2,
+          effectiveLength: 2,
+          formula: function (A, B) {
+            // (A-128)*100/128
+            // (B-128)*100/128
+            return (((B - 128) * 100) / 128).toFixed(1)
+          },
+        },
+        // 多配置
+        '0157': {
+          pid: '0157',
+          chinese: '短期二次氧传感器微调组2和组4',
+          english: 'STSO2FT4(%)',
+          resId: 'STSO2FT4',
+          imperial: '%',
+          metric: '%',
+          remark: '保留1位小数',
+          min: -100,
+          max: 99.2,
+          effectiveLength: 2,
+          formula: function (A, B) {
+            // (A-128)*100/128
+            // (B-128)*100/128
+            return (((B - 128) * 100) / 128).toFixed(1)
+          },
+        },
+        // 多配置
+        '0158': {
+          pid: '0158',
+          chinese: '长期二次氧传感器微调组2和组4',
+          english: 'LGSO2FT4(%)',
+          resId: 'LGSO2FT4',
+          imperial: '%',
+          metric: '%',
+          remark: '保留1位小数',
+          min: -100,
+          max: 99.2,
+          effectiveLength: 2,
+          formula: function (A, B) {
+            // (A-128)*100/128
+            // (B-128)*100/128
+            return (((B - 128) * 100) / 128).toFixed(1)
+          },
+        },
+        // 多单位
+        '0159': {
+          pid: '0159',
+          chinese: '油轨压力绝对值',
+          english: 'FRP',
+          resId: 'FRP',
+          imperial: 'PSI',
+          metric: 'kPa',
+          remark: '取整数,1kpa约等于0.145032PSI',
+          min: 0,
+          max: 655.35,
+          effectiveLength: 2,
+          formula: function (A, B) {
+            return ((A * 256 + B) * 10).toFixed(0)
+          },
+        },
+        '015A': {
+          pid: '015A',
+          chinese: '油门相对位置',
+          english: 'APP_R(%)',
+          resId: 'APP_R',
+          imperial: '%',
+          metric: '%',
+          remark: '相对加速踏板位置,保留1位小数',
+          min: 0,
+          max: 100,
+          effectiveLength: 1,
+          formula: function (A) {
+            return ((A * 100) / 255).toFixed(1)
+          },
+        },
+        '015B': {
+          pid: '015B',
+          chinese: '混合动力电池剩余',
+          english: 'APP_R(%)',
+          resId: 'APP_R',
+          imperial: '%',
+          metric: '%',
+          remark: '保留1位小数',
+          min: 0,
+          max: 100,
+          effectiveLength: 1,
+          formula: function (A) {
+            return ((A * 100) / 255).toFixed(1)
+          },
+        },
+        '015C': {
+          pid: '015C',
+          chinese: '发动机机油温度',
+          english: 'EOT',
+          resId: 'EOT',
+          imperial: '℉',
+          metric: '℃',
+          remark: '取整数°F = ( 9 / 5 ) * °C + 32',
+          min: -40,
+          max: 210,
+          effectiveLength: 1,
+          formula: function (A) {
+            return (A - 40).toFixed(0)
+          },
+        },
+        '015D': {
+          pid: '015D',
+          chinese: '油料注入时序', // 喷油正时(°)
+          english: 'FIT(°)',
+          resId: 'FIT',
+          imperial: '°',
+          metric: '°',
+          remark: '保留一位小数',
+          min: -210,
+          max: 301.992,
+          effectiveLength: 2,
+          formula: function (A, B) {
+            return ((A * 256 + B - 26, 880) / 128).toFixed(1)
+          },
+        },
+        // 已验证
+        '015E': {
+          pid: '015E',
+          chinese: '引擎油量消耗速率', // 燃油消耗率(L/h)
+          english: 'EFR(L/h)',
+          resId: 'EFR',
+          imperial: 'L/h',
+          metric: 'L/h',
+          remark: '保留1位小数',
+          min: 0,
+          max: 3212.75,
+          effectiveLength: 2,
+          formula: function (A, B) {
+            return ((A * 256 + B) * 0.05).toFixed(1)
+          },
+        },
+        '015F': {
+          pid: '015F',
+          chinese: '设计排放要求',
+          english: '',
+          resId: '',
+          imperial: '',
+          metric: '',
+          remark: '无解析规则',
+          min: '',
+          max: '',
+          effectiveLength: 4,
+          formula: function () {
+            return null
+          },
+        },
+      }
+
+      /**
+       * 解析PID
+       *
+       * @params pid {String} 指令
+       * @params msg {String} 源数据
+       *
+       **/
+      // getPidResult('013C', '7E804413C0190')
+      function getPidResult(pid, data) {
+        const _data = data
+        if (data.includes('NODATA') || data.includes('NO DATA')) {
+          console.log('getPidResult 1= 无数据')
+          return null
+        }
+        let result = null // 最终结果
+        let separator = pid.replace('0', '4') // 分隔符
+        let { min, max, effectiveLength, formula } = pidInfo[pid]
+        try {
+          // 去除空格，换行符\r \n,和>
+          data = data.replace(/[ ]|[\r]|[\n]|[\r\n]|[>]/g, '')
+          // 2 获取有效数据
+          data = data.substring(data.indexOf(separator) + separator.length) // 有效数据
+          // 3 根据有效长度获取最终结果
+          data = data.substring(0, effectiveLength * 2) // 数据一般是2个十六进制字节
+          let A = parseInt(data.substring(0, 2), 16),
+            B,
+            C,
+            D
+          if (effectiveLength > 1) {
+            B = parseInt(data.substring(2, 4), 16)
+          }
+          if (effectiveLength > 2) {
+            C = parseInt(data.substring(4, 6), 16)
+          }
+          if (effectiveLength > 3) {
+            D = parseInt(data.substring(6, 8), 16)
+          }
+          console.log('getPidResult 2>>>>>', A, B, C, D)
+          result = formula(A, B, C, D) // 计算公式
+          result = +result === 0 ? 0 : result // 如果0.00这种变成0
+          console.log('getPidResult 3>>>>>公式计算后=', result)
+          // 判断边界
+          if (result < min || result > max) {
+            console.log('getPidResult 4>>>>>计算结果不符合标准', result)
+            result = null
+          }
+        } catch (error) {
+          console.error('getPidResult 5>>>>>', error)
+          result = null
+        }
+        console.log(
+          `getPidResult 6= ${pid}的响应：${_data}，计算结果：${result}`,
+        )
+        return result
+      }
+    </script>
+  </body>
+</html>

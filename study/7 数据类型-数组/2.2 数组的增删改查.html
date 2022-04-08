@@ -1,3 +1,11 @@
+<!--
+ * @Author: your name
+ * @Date: 2022-03-12 22:42:30
+ * @LastEditTime: 2022-04-03 18:25:05
+ * @LastEditors: Please set LastEditors
+ * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @FilePath: \panda-zhao.github.io\study\7 数据类型-数组\2.2 数组的增删改查.html
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,6 +32,35 @@
     // 过滤数组(不改变原数组)
     const filter = arr.filter(item => item.includes('猪'))
     console.log('filter', arr, filter) // ["猪悟能"]
+
+    // 添加元素到数组的头部
+    let unshift = arr.unshift('新增到头部') 
+    console.log('unshift', arr, unshift) // ['新增到头部', '唐僧', '孙悟空', '猪悟能', '沙悟净']
+
+    // 添加元素到数组的末尾
+    let push = arr.push('新增到末尾')
+    console.log('push', arr, push) // ['新增到头部', '唐僧', '孙悟空', '猪悟能', '沙悟净', '新增到末尾']
+
+    // 删除数组头部元素
+    let shift = arr.shift()
+    console.log('shift', arr, shift) // ['唐僧', '孙悟空', '猪悟能', '沙悟净', '新增到未部']
+    
+    // 删除数组末尾的元素
+    let pop = arr.pop() 
+    console.log('pop', arr, pop) // ['唐僧', '孙悟空', '猪悟能', '沙悟净']
+    
+    // array.splice(index,howmany,item) 通过索引添加或删除数组中的元素
+    // index 必需。开始插入和（或）删除的数组元素的下标，必须是数字
+    // howmany 可选。规定应该删除多少元素。必须是数字，但可以是 "0",如果未规定此参数，则删除从 index 开始到原数组结尾的所有元素。
+    // item 可选。要添加到数组的新元素
+    let splice_del = arr.splice(arr.indexOf('猪悟能'), 1) // ['唐僧', '孙悟空', '沙悟净']
+    console.log('splice_del', arr, splice_del)
+    let splice_add = arr.splice(2, 0, '猪悟能')
+    console.log('splice_del', arr, splice_add) // ['唐僧', '孙悟空', '猪悟能', '沙悟净']
+
+    // 找出某个元素在数组中的索引
+    let indexOf = arr.indexOf('孙悟空')
+    console.log('indexOf', indexOf) // 1
   </script>
 </body>
 </html>

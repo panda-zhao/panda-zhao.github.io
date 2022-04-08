@@ -1,3 +1,11 @@
+<!--
+ * @Author: your name
+ * @Date: 2022-03-12 22:42:43
+ * @LastEditTime: 2022-04-05 21:20:45
+ * @LastEditors: Please set LastEditors
+ * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @FilePath: \panda-zhao.github.io\study\4 数据类型 - 字符串\1.1 字符串的常用操作.html
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,12 +15,25 @@
 </head>
 <body>
   <script>
-    const str = '猜你可能需要（模块一）'
+    let str = 'hello world'
+    let repeat = str.repeat(2)
+    console.log('repeat', repeat, str)
 
-    // 切割字符串
-    const split = str.split('（')
-    console.log(str , split) // ["猜你可能需要", "模块一）"]
+    let replaceAll = str.replaceAll('world', 'me')
+    console.log('replaceAll', replaceAll) // hello me
 
+    const regex = /e/g;
+    let search = str.search(regex)
+    console.log('search', search) // 1
+
+    let split = str.split(' ')
+    console.log('split', split) // hello
+
+    let substr = str.substr(0, 5)
+    console.log('substr', substr) // hello
+
+    let substring = str.substring(0, 5)
+    console.log('substring', substring) // hello
   </script>
 </body>
 </html>

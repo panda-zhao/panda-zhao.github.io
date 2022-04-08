@@ -1,0 +1,54 @@
+<!--
+ * @Author: your name
+ * @Date: 2022-04-03 17:48:15
+ * @LastEditTime: 2022-04-03 23:38:48
+ * @LastEditors: Please set LastEditors
+ * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @FilePath: \panda-zhao.github.io\test\while.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>测试while</title>
+</head>
+
+<body>
+  <script>
+    
+    let json = {}
+    let busy_flg = 0
+    let queue = ['ATE0', 'ATL0', 'ATH1', 'ATS0', 'AT+VERSION', 'ATI',
+      'ATDP', 'AT+CRYPT', '0100', '0120', '1040', '0902', '0906']
+    let i = 0
+    function createJobQueue(){
+      if( i< queue.length){
+        send(queue[i])
+        i++
+      }else{
+        alert('执行完成')
+      }
+    }
+    function send(cmd) {
+      setTimeout(() => {
+        json[cmd] = parseInt(Math.random()*100)
+        console.log(json)
+        createJobQueue()
+      }, 1000);
+    }
+    createJobQueue()
+
+    let num = 1
+    // num++
+    num--
+    console.log("num", num)
+
+    console.log('0100===', parseInt('0100'.substr(2), 16))
+    console.log('0101===', parseInt('0101'.substr(2), 16))
+  </script>
+</body>
+
+</html>

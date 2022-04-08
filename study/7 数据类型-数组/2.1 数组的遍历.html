@@ -1,137 +1,163 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>数组的遍历</title>
 </head>
+
 <body>
   <script>
     const arr = ['唐僧', '孙悟空', '猪悟能', '沙悟净']
-    console.log('判断是否数组', typeof arr , typeof arr === 'Array')
+    console.log('判断是否数组', Array.isArray(arr), typeof arr) // true object
     for (const item of arr) {
       console.log('item=', item)// 
     }
     const data = [
-    {
-      "id": "4806184473e644468eb0a7b56e7c345c",
-      "ou": "法人",
-      "cn": null,
-      "type": "VIRTUAL_DIRECTORY",
-      "base": "ou=法人,ou=海南省"
-    },
-    {
-      "id": null,
-      "ou": "元数据",
-      "cn": "gender2",
-      "type": null,
-      "base": "ou=元数据,ou=海南省"
-    },
-    {
-      "id": "53c7c21ded6a46abaefb69e021e3444e",
-      "ou": "某某县",
-      "cn": "某某县",
-      "type": "COUNTY",
-      "base": "ou=某某县,ou=海南省"
-    },
-    {
-      "id": "da4dc021ee914911aa40aee7db03f50c",
-      "ou": "自然人",
-      "cn": null,
-      "type": "VIRTUAL_DIRECTORY",
-      "base": "ou=自然人,ou=海南省"
-    },
-    {
-      "id": "29cc6f15fcb44425980c3cd5661dec92",
-      "ou": "伟扬的部门",
-      "cn": null,
-      "type": "DEPARTMENT",
-      "base": "ou=伟扬的部门,ou=海南省"
-    },
-    {
-      "id": "7e821775f3534fd3a23913b963f59e6d",
-      "ou": "海南省三亚市",
-      "cn": "海南省三亚市",
-      "type": "CITY",
-      "base": "ou=海南省三亚市,ou=海南省"
-    },
-    {
-      "id": "bfbd742d27164ac983d654df9b5ffe2a",
-      "ou": "海南省三沙市",
-      "cn": "海南省三沙市",
-      "type": "CITY",
-      "base": "ou=海南省三沙市,ou=海南省"
-    },
-    {
-      "id": "ba6d2e6c26e74b4b861f78f7f55b6996",
-      "ou": "海南省定安县",
-      "cn": "海南省定安县",
-      "type": "CITY",
-      "base": "ou=海南省定安县,ou=海南省"
-    },
-    {
-      "id": "c3a8fb4d918641e6b52692edc913fc90",
-      "ou": "海南省海口市",
-      "cn": "海南省海口市",
-      "type": "CITY",
-      "base": "ou=海南省海口市,ou=海南省"
-    },
-    {
-      "id": "b1f5d1d9d3be41859fab2d6b71437a58",
-      "ou": "海南省琼海市",
-      "cn": "海南省琼海市",
-      "type": "CITY",
-      "base": "ou=海南省琼海市,ou=海南省"
-    },
-    {
-      "id": "8d672140d84d4a4e81c5346b912565fd",
-      "ou": "海南省高中部",
-      "cn": null,
-      "type": "DEPARTMENT",
-      "base": "ou=海南省高中部,ou=海南省"
-    },
-    {
-      "id": "619b663a9c35443cbbc721c1190a1db9",
-      "ou": "新增海南省机构2342",
-      "cn": null,
-      "type": "DEPARTMENT",
-      "base": "ou=新增海南省机构2342,ou=海南省"
-    },
-    {
-      "id": "51c1a409817646b88f8bafabeadb4beb",
-      "ou": "海南省大数据管理局",
-      "cn": null,
-      "type": "DEPARTMENT",
-      "base": "ou=海南省大数据管理局,ou=海南省"
-    },
-    {
-      "id": "e9d743129fd548c19c631af388ed50aa",
-      "ou": "海南省发展和改革委员会信息中心",
-      "cn": null,
-      "type": "DEPARTMENT",
-      "base": "ou=海南省发展和改革委员会信息中心,ou=海南省"
-    }
-  ]
-  const chunk = data.filter(item => ['PROVINCE', 'CITY', 'DISTRICT', 'TOWN', 'VILLAGE', 'DEPARTMENT', 'APPLICATION'].includes(item.type))
-  console.log(chunk)
-
-  const arrJson = [ 
-    ['index', 'biz_num', 'doc_name', 'company_name', 'callback', 'des'],
-    [1, 'c97d03e6-fe11-4be0-9ec5-a763ac93bddb', '辣木叶提高青贮饲料蛋白保存的机制研究', '华南农业大学', 'https://sop.gzsi.gov.cn/egrantweb/contract/ctrSign…fe11-4be0-9ec5-a763ac93bddb&opType=YNKKexot2OE%3D', '合并失败签名不成功'],
-    [2, '8f64426b-b8d9-4bb7-8630-cc2cbda692db', '基因靶向识别的分子逻辑门构建及其在晚疫病检测中的应用', '华南农业大学', 'https://sop.gzsi.gov.cn/egrantweb/contract/ctrSign…b8d9-4bb7-8630-cc2cbda692db&opType=YNKKexot2OE%3D', '合并失败签名不成功']
-  ]
-  const titles = arrJson[0]
-  const result = []
-  arrJson.forEach((item, index) => {
-    if(index>0){
-      const json = {}
-      for (let i = 0; i < titles.length; i++) {
-        json[titles[i]] = item[i]
+      {
+        "id": "4806184473e644468eb0a7b56e7c345c",
+        "ou": "法人",
+        "cn": null,
+        "type": "VIRTUAL_DIRECTORY",
+        "base": "ou=法人,ou=海南省"
+      },
+      {
+        "id": null,
+        "ou": "元数据",
+        "cn": "gender2",
+        "type": null,
+        "base": "ou=元数据,ou=海南省"
+      },
+      {
+        "id": "53c7c21ded6a46abaefb69e021e3444e",
+        "ou": "某某县",
+        "cn": "某某县",
+        "type": "COUNTY",
+        "base": "ou=某某县,ou=海南省"
+      },
+      {
+        "id": "da4dc021ee914911aa40aee7db03f50c",
+        "ou": "自然人",
+        "cn": null,
+        "type": "VIRTUAL_DIRECTORY",
+        "base": "ou=自然人,ou=海南省"
+      },
+      {
+        "id": "29cc6f15fcb44425980c3cd5661dec92",
+        "ou": "伟扬的部门",
+        "cn": null,
+        "type": "DEPARTMENT",
+        "base": "ou=伟扬的部门,ou=海南省"
+      },
+      {
+        "id": "7e821775f3534fd3a23913b963f59e6d",
+        "ou": "海南省三亚市",
+        "cn": "海南省三亚市",
+        "type": "CITY",
+        "base": "ou=海南省三亚市,ou=海南省"
+      },
+      {
+        "id": "bfbd742d27164ac983d654df9b5ffe2a",
+        "ou": "海南省三沙市",
+        "cn": "海南省三沙市",
+        "type": "CITY",
+        "base": "ou=海南省三沙市,ou=海南省"
+      },
+      {
+        "id": "ba6d2e6c26e74b4b861f78f7f55b6996",
+        "ou": "海南省定安县",
+        "cn": "海南省定安县",
+        "type": "CITY",
+        "base": "ou=海南省定安县,ou=海南省"
+      },
+      {
+        "id": "c3a8fb4d918641e6b52692edc913fc90",
+        "ou": "海南省海口市",
+        "cn": "海南省海口市",
+        "type": "CITY",
+        "base": "ou=海南省海口市,ou=海南省"
+      },
+      {
+        "id": "b1f5d1d9d3be41859fab2d6b71437a58",
+        "ou": "海南省琼海市",
+        "cn": "海南省琼海市",
+        "type": "CITY",
+        "base": "ou=海南省琼海市,ou=海南省"
+      },
+      {
+        "id": "8d672140d84d4a4e81c5346b912565fd",
+        "ou": "海南省高中部",
+        "cn": null,
+        "type": "DEPARTMENT",
+        "base": "ou=海南省高中部,ou=海南省"
+      },
+      {
+        "id": "619b663a9c35443cbbc721c1190a1db9",
+        "ou": "新增海南省机构2342",
+        "cn": null,
+        "type": "DEPARTMENT",
+        "base": "ou=新增海南省机构2342,ou=海南省"
+      },
+      {
+        "id": "51c1a409817646b88f8bafabeadb4beb",
+        "ou": "海南省大数据管理局",
+        "cn": null,
+        "type": "DEPARTMENT",
+        "base": "ou=海南省大数据管理局,ou=海南省"
+      },
+      {
+        "id": "e9d743129fd548c19c631af388ed50aa",
+        "ou": "海南省发展和改革委员会信息中心",
+        "cn": null,
+        "type": "DEPARTMENT",
+        "base": "ou=海南省发展和改革委员会信息中心,ou=海南省"
       }
-      result.push(json)
-    }
-  })
-  console.log(result)
+    ]
+    const chunk = data.filter(item => ['PROVINCE', 'CITY', 'DISTRICT', 'TOWN', 'VILLAGE', 'DEPARTMENT', 'APPLICATION'].includes(item.type))
+    console.log(chunk)
+
+    const arrJson = [
+      ['index', 'biz_num', 'doc_name', 'company_name', 'callback', 'des'],
+      [1, 'c97d03e6-fe11-4be0-9ec5-a763ac93bddb', '辣木叶提高青贮饲料蛋白保存的机制研究', '华南农业大学', 'https://sop.gzsi.gov.cn/egrantweb/contract/ctrSign…fe11-4be0-9ec5-a763ac93bddb&opType=YNKKexot2OE%3D', '合并失败签名不成功'],
+      [2, '8f64426b-b8d9-4bb7-8630-cc2cbda692db', '基因靶向识别的分子逻辑门构建及其在晚疫病检测中的应用', '华南农业大学', 'https://sop.gzsi.gov.cn/egrantweb/contract/ctrSign…b8d9-4bb7-8630-cc2cbda692db&opType=YNKKexot2OE%3D', '合并失败签名不成功']
+    ]
+    const titles = arrJson[0]
+    const result = []
+    arrJson.forEach((item, index) => {
+      if (index > 0) {
+        const json = {}
+        for (let i = 0; i < titles.length; i++) {
+          json[titles[i]] = item[i]
+        }
+        result.push(json)
+      }
+    })
+    console.log(result)
+
+
+    let demo = [
+      {id: 1, name: "张三", score: 80, gender: 1},
+      {id: 2, name: "李四", score: 72, gender: 1},
+      {id: 3, name: "王五", score: 66, gender: 2},
+      {id: 4, name: "麻六", score: 85, gender: 1},
+      {id: 5, name: "赵七", score: 100, gender: 2},
+    ]
+    const filter = demo.filter(item=>item.score>80 && item.gender === 2) //  返回值 [{id: 5, name: '赵七', score: 100, gender: 2}]
+    console.log("filter=", filter)
+    const find = demo.find(item=>item.score>80) //  返回值 {id: 5, name: '赵七', score: 100, gender: 2}
+    console.log("find=", find)
+    const some = demo.some(item=>item.score>80 && item.gender === 2) //  true
+    console.log("some=", some)
+    const every = demo.every(item=>item.score>80 && item.gender === 2) //  false
+    console.log("every=", every)
+    const map = demo.map(item=>item.score>80 && item.gender === 2) // [false, false, false, false, true]
+    console.log("map=", map) 
+
+    const join = arr.join() // 唐僧,孙悟空,猪悟能,沙悟净
+    console.log("join=", join) 
+    
   </script>
 </body>
+
 </html>
