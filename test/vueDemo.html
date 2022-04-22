@@ -1,0 +1,85 @@
+<!--
+ * @Author: your name
+ * @Date: 2022-04-22 21:46:31
+ * @LastEditTime: 2022-04-22 22:41:30
+ * @LastEditors: Please set LastEditors
+ * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @FilePath: \panda-zhao.github.io\test\vueDemo.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{ message }}</h1>
+        <table>
+            <tr>
+                <th>变量1</th>
+                <th>变量2</th>
+            </tr>
+            <tr>
+                <td v-html="second"></td>
+                <td v-html="milliseconds"></td>
+            </tr>
+        </table>
+
+        <ol>
+            <li v-for="item in list" :key="item.id" >
+                <div v-html="item.name"></div>
+                <div v-html="item.value"></div>
+            </li>
+        </ol>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'vue使用数组渲染列表中的变量',
+                second: 0,
+                milliseconds: 0,
+                list: [
+                    { id: 1, name: '变量1=', value: this.second },
+                    { id: 1, name: '变量2=', value: this.milliseconds }
+                ]
+            },
+            created() {
+                setInterval(() => {
+                    const date = new Date()
+                    this.second = date.getSeconds()
+                    this.milliseconds = date.getMilliseconds()
+                    // this.time = this.formatTime(new Date())
+                    // console.log(this.time)
+                }, 1000);
+            },
+            couputed() {
+
+            },
+            methods: {
+                formatTime(date) {
+                    const year = date.getFullYear()
+                    const month = date.getMonth() + 1
+                    const day = date.getDate()
+                    const hour = date.getHours()
+                    const minute = date.getMinutes()
+                    const second = date.getSeconds()
+                    const milliseconds = date.getMilliseconds()
+                    const formatNumber = n => {
+                        n = n.toString()
+                        return n[1] ? n : '0' + n
+                    }
+                    return [year, month, day].map(formatNumber).join('-') + ' ' + [hour, minute, second].map(formatNumber).join(':') + ':' + milliseconds
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

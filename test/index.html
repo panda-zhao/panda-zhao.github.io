@@ -1,164 +1,57 @@
 <!--
  * @Author: your name
  * @Date: 2020-05-10 09:37:50
- * @LastEditTime: 2022-03-29 17:05:52
+ * @LastEditTime: 2022-04-12 20:53:17
  * @LastEditors: Please set LastEditors
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  * @FilePath: \panda-zhao.github.io\test\index.html
 -->
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>测试</title>
-</head>
-<body>
-  <div>比较日期</div>
-  <video src=""></video>
-  <script>
-    // 7E8 10 14 49 02 01 4C 44 43
-    // 7E8 21 31 32 33 34 35 36 37
-    // 7E8 22 38 39 30 31 32 33 34
-    const value = "7E810144902014C4443\r7E82131323334353637\r7E82238393031323334 >"
-    const value2 = "7E81014490400534E30 \r7E82131323334353637 \r7E82238393031323334 >"
-    const value3 = "7E81014490600534E30 \r7E82131323334353637 \r7E82238393031323334 >"
-    // get_0902(value)
-    // zget_0904(value2)
-    zget_0906(value3)
-    function zget_0906(msg){
-      msg = msg.replace(/[ ]|[>]/g, "")
-      console.log('1', msg)
-      var result = "";
-      var msgArray = msg.split("\r");
-      console.log('2', msgArray)
-      for (var i = 0; i < msgArray.length; i++) {
-        var s = msgArray[i];
-        if(s.length == 19){
-          result += s.includes("4906") ? s.substring(s.indexOf("4906") + 6) : s.substring(5)
-        }
-        if(s.length == 24){
-          result += s.includes("490601")? s.substring(18) : s.substring(10)
-        }
-        if (s.length == 22) {
-          result += s.substring(12, 20);
-        }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>测试</title>
+    <style>
+      .button {
+        user-select: none;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 160px;
+        height: 40px;
+        color: black;
+        background: white;
+        border-radius: 10px;
+        margin: 0 15px;
+        font-size: 18px;
+        text-decoration: none;
+        overflow: hidden;
       }
-      console.log('3', result)
-      result = result.replace(/00/g, "");
-      console.log("4", result);
-      if (result.length < 34) return "NODATA"
+    </style>
+  </head>
+  <body>
+    <div class="button">
+      <span class="text">download</span>
+    </div>
+    <script>
+      let str = 'v1.0.9'
+      let result = str.replace(/[.]|[v]/g, '')
+      console.log(result)
 
-      var res = new Array(17);
-      for (var i = 0; i < 17; i++) {
-        var start = i * 2;
-        res[i] = parseInt(result.substring(start, start + 2), 16);
-      }
-      console.log("5", res);
-      var CVN = "";
-      for (var i = 0; i < res.length; i++) {
-        CVN += String.fromCharCode(res[i]);
-      }
-      console.log("6CVN=",  CVN);
-      return CVN;
-    }
-
-    function zget_0904(msg){
-      msg = msg.replace(/[ ]|[>]/g, "")
-      console.log('1', msg)
-      var result = "";
-      var msgArray = msg.split("\r");
-      console.log('2', msgArray)
-      for (var i = 0; i < msgArray.length; i++) {
-        var s = msgArray[i];
-        if(s.length == 19){
-          result += s.includes("4904") ? s.substring(s.indexOf("4904") + 6) : s.substring(5)
+      let _carPID = {}
+      for (var i = 0; i < 96; i++) {
+        let pid = i.toString(16).toUpperCase()
+        if (pid.length < 2) {
+          pid = '0' + pid
         }
-        if(s.length == 24){
-          result += s.includes("490401")? s.substring(18) : s.substring(10)
-        }
-        if (s.length == 22) {
-          result += s.substring(12, 20);
-        }
+        _carPID['01' + pid] = 1
       }
-      console.log('3', result)
-      result = result.replace(/00/g, "");
-      console.log("4", result);
-      if (result.length < 34) return "NODATA"
+      console.log('_carPID', _carPID)
 
-      var res = new Array(17);
-      for (var i = 0; i < 17; i++) {
-        var start = i * 2;
-        res[i] = parseInt(result.substring(start, start + 2), 16);
-      }
-      console.log("5", res);
-      var CID = "";
-      for (var i = 0; i < res.length; i++) {
-        CID += String.fromCharCode(res[i]);
-      }
-      console.log("CID=",  CID);
-      return CID;
-    }
-    function get_0902(msg) {
-  //        7E8 10 14 49 02 01 31 41 31
-  //        7E8 21 4A 43 35 34 34 34 52
-  //        7E8 22 37 32 35 32 33 36 37
-  //测试箱不一样
-  //        7E8 07 49 02 01 00 00 00 33
-  //        7E8 07 49 02 02 47 31 4A 43
-  //        7E8 07 49 02 03 35 34 34 34
-  //        7E8 07 49 02 04 52 37 32 35
-  //        7E8 07 49 02 05 32 33 36 37
-  //        7E8 07 49 02 06 01 4A 4D 42
-
-  //        18 DA F1 11 10 14 49 02 01 31 41 31
-  //        18 DA F1 11 21 4A 43 35 34 34 34 52
-  //        18 DA F1 11 22 37 32 35 32 33 36 37
-
-  //        87 F1 11 49 02 01 00 00 00 31 06
-  //        87 F1 11 49 02 02 41 31 4A 43 D5
-  //        87 F1 11 49 02 03 35 34 34 34 A8
-  //        87 F1 11 49 02 04 52 37 32 35 C8
-  //        87 F1 11 49 02 05 32 33 36 37 AB
-
-  var index = msg.indexOf(">");
-  if (index != -1) {
-    msg = msg.slice(0, index).trim();
-  }
-  console.log('1', msg)
-  var result = "";
-  var msgArray = msg.split("\r");
-  console.log('2', msgArray)
-  for (var i = 0; i < msgArray.length; i++) {
-    var s = msgArray[i];
-    if(s.length == 19){
-      result += s.includes("4902") ? s.substring(s.indexOf("4902") + 6) : s.substring(5)
-    }
-    if(s.length == 24){
-      result += s.includes("490201")? s.substring(18) : s.substring(10)
-    }
-    if (s.length == 22) {
-      result += s.substring(12, 20);
-    }
-  }
-  console.log('3', result)
-  result = result.replace(/00/g, "");
-  console.log("4", result);
-  if (result.length < 34) return "NODATA"
-
-  var res = new Array(17);
-  for (var i = 0; i < 17; i++) {
-    var start = i * 2;
-    res[i] = parseInt(result.substring(start, start + 2), 16);
-  }
-  console.log("5", res);
-  var vin = "";
-  for (var i = 0; i < res.length; i++) {
-    vin += String.fromCharCode(res[i]);
-  }
-  console.log("6vin=",  vin);
-  return vin;
-}
-  </script>
-</body>
+      let index = parseInt('0160'.substring(2), 16)
+      console.log('index', index)
+    </script>
+  </body>
 </html>

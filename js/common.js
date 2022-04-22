@@ -150,7 +150,9 @@ var data = [
 
   // 其他工具
   [
+    { name: "animpen", url: "https://animpen.com/", title: "在线体验代码" },
     { name: "codepen", url: "https://codepen.io/", title: "在线体验代码" },
+    { name: "jsrun", url: "https://jsrun.net/", title: "在线体验代码" },
     { name: "百度站长统计", url: "https://tongji.baidu.com/", title: "百度站长统计" },
     { name: "新拟物CSS生成工具", url: "https://neumorphism.io/#2163e0", title: "新拟物（Neumorphism）生成工具" },
     { name: "3D效果", url: "https://alteredqualia.com/", title: "网页端3D效果合集" },
