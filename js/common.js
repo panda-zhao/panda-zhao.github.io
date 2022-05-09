@@ -12,12 +12,14 @@ var data = [
     { name: "菜鸟工具", url: "https://c.runoob.com/", title: "菜鸟工具" },
     { name: "坚果云", url: "https://www.jianguoyun.com/", title: "" },
     { name: "BootCDN", url: "http://www.bootcdn.cn", title: "免费的CDN加速服务" },
+    { name: "reshot", url: "https://www.reshot.com/", title: "免费图标图片库" },
+    { name: "mixkit", url: "https://mixkit.co/", title: "免费视频音频库" },
   ],
 
-  
- 
-  
- 
+
+
+
+
   // 框架
   [
     { name: "jquery", url: "http://jquery.cuishifeng.cn/", title: "jQuery API 3.3.1 速查表" },
@@ -85,8 +87,8 @@ var data = [
     { name: "kafka", url: "https://kafka.apache.org/", title: "处理大量数据的分布式消息系统" },
   ],
 
-   // 跨平台开发
-   [
+  // 跨平台开发
+  [
     { name: "iOS", url: "https://developer.apple.com/cn/develop/", title: "iOS 官方在线文档" },
     { name: "Android", url: "https://developer.android.google.cn/reference/packages?hl=zh-cn", title: "Android 官方在线文档" },
     { name: "Uni-APP", url: "https://uniapp.dcloud.io/", title: "使用 Vue.js 开发所有前端应用的框架" },
@@ -125,8 +127,8 @@ var data = [
     { name: "ECMAScript 6 入门", url: "http://es6.ruanyifeng.com/", title: "阮一峰写的ES6入门教程" },
     { name: "廖雪峰的官方网站", url: "https://www.liaoxuefeng.com/wiki/1022910821149312/1023025235359040", title: "" }
   ],
-   // 常用版本控制和项目工具
-   [
+  // 常用版本控制和项目工具
+  [
     { name: "Git", url: "https://git-scm.com/", title: "目前世界上最先进的分布式版本控制系统（没有之一）。" },
     { name: "GitHub 官网", url: "https://github.com/panda-zhao", title: "项目版本管理仓库" },
     { name: "GitLab 官网", url: "https://about.gitlab.com/", title: "项目版本管理仓库" },

@@ -1,241 +1,129 @@
-let params = {
-  "job": "GZ_AIC_SUBMIS_TRANSACT_DATA2_TF",
-  "inData": {
-    "inData": {
-      "zcEntityAgent": {
-        "name": "赵伟扬",
-        "mobtel": "13918233075",
-        "certype": "10",
-        "cerno": "411324198905063251",
-        "certypename": "身份证"
-      },
-      "zcCompanyBaseinfo": {
-        "businessid": "a743faa380d94a10a8ae6d93e695e7e3",
-        "nameid": "28af2465-acb9-443b-98f1-6df6859e21ac",
-        "entname": "三测（广州）红宝石设计有限公司",
-        "enttype": "1100",
-        "entclass": "001",
-        "industryphy": "A01",
-        "industryco": "A01001001001",
-        "industryphycountry": "A",
-        "industrycocountry": "0111",
-        "abultemco": "",
-        "cbultem": "地震服务；测绘服务",
-        "estdirector": "0",
-        "estsupervisor": "0",
-        "holdtimes": 2,
-        "directorterm": 3,
-        "regdistrict": "001019001004",
-        "regcap": "2",
-        "congrocur": "156",
-        "liccopynum": "1",
-        "limitstr": "2020-05-18",
-        "limitend": "",
-        "number": 1,
-        "phone": "82626363",
-        "nameacceptno": "",
-        "insform": "01",
-        "namesource": "2",
-        "cepa": 0,
-        "mergecode": "1",
-        "calculationmethod": "1",
-        "exaauth": "",
-        "sandate": "",
-        "reccap": "",
-        "forcapindcode": "",
-        "protype": "",
-        "depinchatype": "",
-        "depincha": "",
-        "opeacttype": "",
-        "temofoporcprol": "",
-        "conofcontrpro": "",
-        "congro": ""
-      },
-      "zcEntityBulteminfo": [
-        {
-          "bultemcode": "M01074002000",
-          "bultemname": "地震服务",
-          "bultemtypecode": "0",
-          "bbranch": "1"
-        },
-        {
-          "bultemcode": "M01074004000",
-          "bultemname": "测绘服务",
-          "bultemtypecode": "0",
-          "bbranch": "1"
-        }
-      ],
-      "ZcEntityDocrecipient": [],
-      "zcEntityDominfo": [
-        {
-          "district": "越秀区",
-          "street": "洪桥街道",
-          "districtcode": 440104,
-          "domextend": "",
-          "addresstype": "1",
-          "policeaddid": "",
-          "proright": "02",
-          "rightpeople": "张三",
-          "rightpeopletel": "13918233075",
-          "isdeclare": "1",
-          "promiseuse": "商业",
-          "dom": "广州市越秀区淘金路100号101房",
-          "postcode": "510000",
-          "notstandard": "",
-          "nationality": "",
-          "nszm": ""
-        }
-      ],
-      "tb_zc_entity_financechief": {
-        "name": "苏海峰",
-        "certype": "10",
-        "cerno": "341181198809150011",
-        "tel": "",
-        "mobtel": "13918233075",
-        "email": "82626363@qq.com"
-      },
-      "tb_zc_entity_invinfo": [
-        {
-          "invid": "2baa17f8-44fe-4e3a-8493-32defcf93d3d",
-          "invname": "苏海峰",
-          "invtype": "20",
-          "invcountrycode": "156",
-          "certype": "10",
-          "cerno": "341181198809150011",
-          "mobiletel": "13918233075",
-          "tel": "",
-          "email": "82626363@qq.com",
-          "expirationdate": "",
-          "birthday": "1988-09-15",
-          "invamount": "1",
-          "subconprop": "0.500000",
-          "currency": "156",
-          "dom": "安徽省天长市千秋新村三巷10号",
-          "invdate": "2050-05-18",
-          "conform": "1;2;3;6;9",
-          "enttype": "",
-          "partertype": "",
-          "exeaffsign": "0",
-          "respondmode": "",
-          "baldeper": "",
-          "conformname": "货币;实物;知识产权;土地使用权;其他"
-        },
-        {
-          "invid": "afeade76-f11d-4620-8f17-c9462a400da7",
-          "invname": "广州网融信息技术有限公司",
-          "invtype": "10",
-          "invcountrycode": "156",
-          "certype": "14",
-          "cerno": "91440106788913867A",
-          "mobiletel": "13918233075",
-          "tel": "",
-          "email": "82626363@qq.com",
-          "expirationdate": "",
-          "birthday": "1989-05-23",
-          "invamount": "1",
-          "subconprop": "0.500000",
-          "currency": "156",
-          "dom": "广州五山路",
-          "invdate": "2050-05-18",
-          "conform": "1;2;3",
-          "enttype": "内资公司",
-          "partertype": "",
-          "exeaffsign": "0",
-          "respondmode": "",
-          "delegatename": "",
-          "delegatecerno": "",
-          "delegatemobile": "",
-          "delegateemail": "",
-          "delegatesex": "1",
-          "delegatenation": null,
-          "delegatecounyry": "",
-          "delegatebirdate": "",
-          "delegatedom": "",
-          "delegateaccdside": "法人",
-          "baldeper": "",
-          "conformname": "货币;实物;知识产权",
-          "legalname": "张闻天",
-          "legalcertype": "10",
-          "legalcerno": "440181198905238112",
-          "legalmobiletel": "13918233075"
-        }
-      ],
-      "tb_zc_entity_liaisonman": {
-        "name": "苏海峰",
-        "dom": "安徽省天长市千秋新村三巷10号",
-        "certype": "10",
-        "cerno": "341181198809150011",
-        "tel": "",
-        "mobtel": "13918233075",
-        "email": "82626363@qq.com",
-        "orgorperson": "1"
-      },
-      "tb_zc_entity_person": [
-        {
-          "name": "苏海峰",
-          "isorg": "1",
-          "natdate": "1988-09-15",
-          "certype": "10",
-          "cerno": "341181198809150011",
-          "position": "013",
-          "zwcsfs": "01",
-          "lerepsiign": "0",
-          "sex": "1",
-          "nationality": "156",
-          "birthday": "1988-09-15",
-          "mobile": "13918233075",
-          "fixed": "",
-          "email": "82626363@qq.com",
-          "address": "安徽省天长市千秋新村三巷10号",
-          "rmjg": "执行董事",
-          "organizationtype": "1",
-          "houaddinchina": "安徽省天长市千秋新村三巷10号",
-          "accdside": ""
-        },
-        {
-          "name": "苏海峰",
-          "isorg": "1",
-          "natdate": "1988-09-15",
-          "certype": "10",
-          "cerno": "341181198809150011",
-          "position": "005",
-          "zwcsfs": "01",
-          "lerepsiign": "1",
-          "sex": "1",
-          "nationality": "156",
-          "birthday": "1988-09-15",
-          "mobile": "13918233075",
-          "email": "82626363@qq.com",
-          "address": "安徽省天长市千秋新村三巷10号",
-          "rmjg": "股东会",
-          "organizationtype": "1",
-          "houaddinchina": "安徽省天长市千秋新村三巷10号",
-          "accdside": ""
-        },
-        {
-          "name": "张闻天",
-          "isorg": "1",
-          "natdate": "1989-05-23",
-          "certype": "10",
-          "cerno": "440181198905238112",
-          "position": "006",
-          "zwcsfs": "01",
-          "lerepsiign": "0",
-          "sex": "1",
-          "nationality": "156",
-          "birthday": "1989-05-23",
-          "mobile": "13918233075",
-          "email": "82626363@qq.com",
-          "address": "广州市番禺区康乐路康裕园五街二座602房",
-          "rmjg": "股东会",
-          "organizationtype": "2",
-          "houaddinchina": "广州市番禺区康乐路康裕园五街二座602房",
-          "accdside": ""
-        }
-      ],
-      "stampRequired": true,
-      "deliveryCode": "",
-      "channelType": ""
+// 处理 placeholder ie10以下不兼容 
+$(function () {
+  if (!placeholderSupport()) {
+    $('[placeholder]').focus(function () {
+      var input = $(this);
+      if (input.val() == input.attr('placeholder')) {
+        input.val(''); input.removeClass('placeholder');
+      }
+      input.css("color", "black");
+    }).blur(function () {
+      var input = $(this);
+      if (input.val() == '' || input.val() == input.attr('placeholder')) {
+        input.addClass('placeholder');
+        input.val(input.attr('placeholder'));
+        input.css("color", "grey");
+      } else {
+        input.css("color", "black");
+      }
+    }).blur();
+  };
+})
+$(function () { $("#tiShi").hide(); });
+function placeholderSupport() {
+  return 'placeholder' in document.createElement('input');
+}
+//只能录入数字 
+function onlyNum(obj, msg) {
+  if (obj.value != $(obj).attr('placeholder')) {
+    if (obj.value.match(/\D/) != null) {
+      var d = dialog({ title: '提示', content: msg + "不是有效整数！", okValue: '确定', ok: function () { } }).width(320).focus();
+      d.showModal(); obj.value = '';
     }
   }
 }
+//弹出提醒 
+function showTip(obj) { }
+//表单提交 
+function doSubmit() {
+  var tel = $("#tel").val();
+  var emp = $("#empNum").val();
+  var email = $("#email").val();
+  var code = $("#postalCode").val();
+  if ($("#addr").val() == "请输入企业通讯地址" || $("#addr").val() == "" || $("#addr").val() == null) {
+    //alert("请输入企业通讯地址！"); 
+    var d = dialog({ title: '提示', content: "请输入企业通讯地址！", okValue: '确定', ok: function () { } }).width(320).focus();
+    d.showModal();
+    return false;
+  }
+  if (code == null || code == "" || code == "请输入企业邮政编码") {
+    //alert("邮政编码不可为空！"); 
+    var d = dialog({ title: '提示', content: "邮政编码不可为空！", okValue: '确定', ok: function () { } }).width(320).focus();
+    d.showModal();
+    return false;
+  }
+  if (!/^[0-9]\d{5}$/.test(code)) {
+    if (code != "无") {
+      var d = dialog({ title: '提示', content: "邮政编码格式不正确！", okValue: '确定', ok: function () { } }).width(320).focus();
+      d.showModal();
+      return false;
+    }
+  }
+  //校验手机号 
+  if (tel == null || tel == "" || tel == "请输入企业联系电话") {
+    //alert("联系电话不可为空！"); 
+    var d = dialog({ title: '提示', content: "联系电话不可为空！", okValue: '确定', ok: function () { } }).width(320).focus();
+    d.showModal();
+    return false;
+  }
+  if (!(/^1\d{10}$/.test(tel)) && !(/^((0\d{2,3})-)(\d{7,8})(-(\d{3,}))?$/.test(tel)) && !(/^\d{7,8}$/.test(tel)) && !(/^400\d{7}$/.test(tel))) {
+    if (tel != "无") {
+      var d = dialog({ title: '提示', content: "联系电话格式不正确！", okValue: '确定', ok: function () { } }).width(320).focus();
+      d.showModal(); return false;
+    }
+  }
+  //校验邮箱
+  if (email == null || email == "" || email == "请输入企业电子邮箱") {
+    var d = dialog({ title: '提示', content: "电子邮箱不可为空！", okValue: '确定', ok: function () { } }).width(320).focus();
+    d.showModal(); return false;
+  } if (email.match(/^[-\w]+(\.[-\w]*\w+)*@([-\w]+)+((\.\w+)+)$/) == null) {
+    if (email != "无") {
+      var d = dialog({ title: '提示', content: "电子邮箱格式不正确！", okValue: '确定', ok: function () { } }).width(320).focus();
+      d.showModal(); return false;
+    }
+  }
+  //校验主营业务活动 
+  var act = $("#entMainActivity").val();
+  if (act == null || act == "" || act == "请输入企业主营业务活动") {
+    //alert("请填写企业主营业务活动！") 
+    var d = dialog({ title: '提示', content: "请填写企业主营业务活动！", okValue: '确定', ok: function () { } }).width(320).focus();
+    d.showModal(); return false;
+  }
+  if (emp == null || emp == "" || emp == "请输入企业从业人数") {
+    //alert("请输入企业从业人数！"); 
+    var d = dialog({ title: '提示', content: "请输入企业从业人数！", okValue: '确定', ok: function () { } }).width(320).focus();
+    d.showModal(); return false;
+  } if ($("#femailNum").val() == null || $("#femailNum").val() == "" || $("#femailNum").val() == "请输入企业女性从业人数") {
+    //alert("请输入企业女性从业人数！"); 
+    var d = dialog({ title: '提示', content: "请输入企业女性从业人数！", okValue: '确定', ok: function () { } }).width(320).focus();
+    d.showModal(); return false;
+  }
+  if (!checkPerNum($("#femailNum").val(), $("#empNum").val(), "其中女性从业人数")) return false;
+  //比较人数多少 
+  function checkPerNum(perNum1, perNum2, tipInfo) {
+    if (parseInt(perNum1) > parseInt(perNum2)) {
+      //alert(tipInfo+"大于从业人数，请查证！"); 
+      var d = dialog({ title: '提示', content: tipInfo + "大于从业人数，请查证！", okValue: '确定', ok: function () { } }).width(320).focus();
+      d.showModal();
+      return false;
+    } else {
+      return true;
+    }
+  }
+  debugger;
+  $("#tb-form").submit();
+}
+function onHover() { $("#tiShi").show(); };
+function outHover() { $("#tiShi").hide(); };
+//沿用上一年的年度报告,增加配置项看是否影藏该功能 
+function yanyong() {
+  var d = dialog({
+    title: '提示', content: "是否下载沿用上一年年报信息(年度报告发生变化不大时建议下载沿用)", okValue: '确定', ok: function () { guideToPage_yanyong("jbxx", "yanyong"); }, cancelValue: '取消',
+    cancel: function () { }
+  }).width(320).focus(); d.showModal();
+}
+$(function () {
+  $('[title]').each(function (index, item) {
+    $(item).jcTitle({ content: $(item).attr('title'), 'background-color': '#fad67a', 'border': '1px solid #000', 'opacity': '1', 'max-width': '400px' });
+  })
+});
