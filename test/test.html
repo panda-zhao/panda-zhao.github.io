@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2022-05-02 20:26:23
- * @LastEditTime: 2022-05-05 20:53:16
+ * @LastEditTime: 2022-05-29 20:21:01
  * @LastEditors: zhaowy 82626363@qq.com
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  * @FilePath: \panda-zhao.github.io\test\test.html
@@ -18,13 +18,34 @@
 
 <body>
 	<script>
-		// 'AD2E5FDB-B7E2-CB79-6E31-56AA0A4A4C2C'
-		console.log(getUniqueId())
-		function getUniqueId(bf) {
-			let buffer = bf.slice(4, 10);
-			let mac = Array.prototype.map.call(new Uint8Array(buffer), x => ('00' + x.toString(16)).slice(-2)).join('');
-			return mac.toUpperCase()
+		// 'AD2E5FDB-B7E2-CB79-6E31-56AA0A4A4C2C' 
+		// console.log(getUniqueId())
+		// function getUniqueId(bf) {
+		// 	let buffer = bf.slice(4, 10);
+		// 	let mac = Array.prototype.map.call(new Uint8Array(buffer), x => ('00' + x.toString(16)).slice(-2)).join('');
+		// 	return mac.toUpperCase()
+		// }
+
+		let a = null || '不会展示null'
+		let b = undefined || '不会展示undefined'
+		let c = 0 || '不会展示0'
+		let d = '' || '不会展示空字符串'
+		let e = false || '不会展示false'
+		console.log(a, b, c, d, e)
+
+		// let result = "DD:7D:F2:6E:E6:0C"
+		// console.log(result.length === 17 && result.includes(':'))
+		let _carPID = {}
+		let supportPid = '123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456'
+		for (var i = 0; i < 96; i++) {
+			let id = i + 1
+			let pid = id.toString(16).toUpperCase()
+			if (pid.length < 2) {
+				pid = '0' + pid
+			}
+			_carPID['01' + pid] = +supportPid[i]
 		}
+	console.log(JSON.stringify(_carPID))
 	</script>
 </body>
 
