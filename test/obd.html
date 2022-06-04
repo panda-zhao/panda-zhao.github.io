@@ -1,160 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>OBD故障码解析</title>
-    <script src="https://unpkg.com/vue@2.6.14/dist/vue.min.js"></script>
-    <style>
-      body{
-        margin: 0;
-        padding: 0
-      }
-      #app{
-        padding: 15px;
-        max-width: 800px;
-        margin: 0 auto;
-      }
-      .form-item{
-        display: flex;
-        align-items: center;
-        /* width: 80%; */
-        margin: 16px auto 0;
-      }
-      .label{
-        /* margin-right: 16px; */
-        position: relative;
-        font-size: 14px;
-        width: 90px;
-        text-align: left;
-        margin-right: 10px;
-      }
-      .required::after{
-        content: '*';
-        color: red;
-        position: absolute;
-        left: -8px;
-        top: 3px;
-      }
-      .btn{
-        font-family: "Lato", Helvetica, Arial, sans-serif;
-        box-sizing: border-box;
-        outline: none !important;
-        text-decoration: none;
-        text-align: center;
-        /* vertical-align: middle; */
-        user-select: none;
-        display: block;
-        width: 100%;
-        border: none;
-        font-weight: normal;
-        -webkit-font-smoothing: subpixel-antialiased;
-        transition: border .25s linear, color .25s linear, background-color .25s linear;
-        color: #fff;
-        background: #3498db;
-        margin-top: 16px;
-        padding: 10px 19px;
-        font-size: 17px;
-        line-height: 1.471;
-        border-radius: 6px;
-        white-space: normal;
-        cursor: pointer;
-      }
-      .content{
-        flex: 1;
-      }
-      .select{
-        height: 40px;
-        min-width: 220px;
-        font-weight: 400;
-        text-align: left;
-        box-sizing: border-box;
-        /* outline: none !important; */
-        background-color: #fff;
-        background-clip: padding-box;
-        color: #000;
-        font-family: "Lato", Helvetica, Arial, sans-serif;
-        font-size: 14px;
-        line-height: 1.467;
-        border-radius: 6px;
-        box-shadow: none;
-        transition: border .25s linear, color .25s linear, background-color .25s linear;
-        position: relative;
-        display: inline-block;
-        vertical-align: top;
-      }
-      option{
-        height: 40px;
-      }
-      /* 未访问和已访问 */
-      /* .btn:link, .btn:visited{
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OBD故障码解析</title>
+  <script src="https://unpkg.com/vue@2.6.14/dist/vue.min.js"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0
+    }
+
+    #app {
+      padding: 15px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .form-item {
+      display: flex;
+      align-items: center;
+      /* width: 80%; */
+      margin: 16px auto 0;
+    }
+
+    .label {
+      /* margin-right: 16px; */
+      position: relative;
+      font-size: 14px;
+      width: 90px;
+      text-align: left;
+      margin-right: 10px;
+    }
+
+    .required::after {
+      content: '*';
+      color: red;
+      position: absolute;
+      left: -8px;
+      top: 3px;
+    }
+
+    .btn {
+      font-family: "Lato", Helvetica, Arial, sans-serif;
+      box-sizing: border-box;
+      outline: none !important;
+      text-decoration: none;
+      text-align: center;
+      /* vertical-align: middle; */
+      user-select: none;
+      display: block;
+      width: 100%;
+      border: none;
+      font-weight: normal;
+      -webkit-font-smoothing: subpixel-antialiased;
+      transition: border .25s linear, color .25s linear, background-color .25s linear;
+      color: #fff;
+      background: #3498db;
+      margin-top: 16px;
+      padding: 10px 19px;
+      font-size: 17px;
+      line-height: 1.471;
+      border-radius: 6px;
+      white-space: normal;
+      cursor: pointer;
+    }
+
+    .content {
+      flex: 1;
+    }
+
+    .select {
+      height: 40px;
+      min-width: 220px;
+      font-weight: 400;
+      text-align: left;
+      box-sizing: border-box;
+      /* outline: none !important; */
+      background-color: #fff;
+      background-clip: padding-box;
+      color: #000;
+      font-family: "Lato", Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.467;
+      border-radius: 6px;
+      box-shadow: none;
+      transition: border .25s linear, color .25s linear, background-color .25s linear;
+      position: relative;
+      display: inline-block;
+      vertical-align: top;
+    }
+
+    option {
+      height: 40px;
+    }
+
+    /* 未访问和已访问 */
+    /* .btn:link, .btn:visited{
         background: #3498db;
         border-color: #3498db;
       } */
-      /* 悬浮和活动链接 */
-      /* .btn:hover, .btn:active{
+    /* 悬浮和活动链接 */
+    /* .btn:hover, .btn:active{
         background-color: #5dade2;
         border-color: #5dade2;
       } */
-      .title{
-        color: #f00;
-        margin-top: 15px;
-        font-size: 20px;
-      }
-      .list{
-        font-size: 12px;
-      }
-      .list li{
-          margin-left: 15px;
-          margin-top: 10px;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="app">
-      <div class="form-item">
-        <label class="label required">协议类型</label>
-        <select v-model="ATDP" class="content select">
-          <optgroup label="CAN协议"></optgroup>
-            <option value="ISO 15765-4 (CAN 11/500)">ISO 15765-4 (CAN 11/500)</option>
-            <option value="ISO 15765-4 (CAN 29/500)">ISO 15765-4 (CAN 29/500)</option>
-            <option value="ISO 15765-4 (CAN 11/250)">ISO 15765-4 (CAN 11/250)</option>
-            <option value="ISO 15765-4 (CAN 29/250)">ISO 15765-4 (CAN 29/250)</option>
-          </optgroup>
-          <optgroup label="其他协议"></optgroup>
-            <option value="ISO 14230-4 (KWP FAST)">ISO 14230-4 (KWP FAST)</option>
-            <option value="ISO 14230-4 (KWP 5BAUD)">ISO 14230-4 (KWP 5BAUD)</option>
-            <option value="ISO 14230-4 (KWP 5BAUD)">ISO 9141-2</option>
-            <option value="SAE J1850 PWM">SAE J1850 PWM</option>
-            <option value="SAE J1850 VPW">SAE J1850 VPW</option>
-          </optgroup>
-        </select>
-      </div>
-      <div class="form-item">
-        <label class="label">模式（Hex）</label>
-        <select v-model="cmd" class="content select" required>
-          <option value="03">显示存储的诊断故障码（03）</option>
-          <option value="07">显示最近诊断故障码（07）</option>
-          <option value="0A">永久性的诊断故障码（0A）</option>
-        </select>
-      </div>
-      <div class="form-item">
-        <label class="label required">返回结果</label>
-        <textarea  v-model.trim="msg" rows="10" resize class="content" placeholder="注意：换行符请直接换行"></textarea>
-      </div>
-      <div class="form-item">
-        <label class="label">故障码数量</label>
-        <input  v-model.number="troubleCodeLength" disabled class="content"></input>
-      </div>
-      <div class="form-item">
-        <label class="label">解析结果</label>
-        <input v-model="troubleCodeList" disabled class="content"></input>
-      </div>
-      <div class="form-item">
-        <button @click="format" class="btn">解析</button>
-      </div>
-    
+    .title {
+      color: #f00;
+      margin-top: 15px;
+      font-size: 20px;
+    }
+
+    .list {
+      font-size: 12px;
+    }
+
+    .list li {
+      margin-left: 15px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div class="form-item">
+      <label class="label required">协议类型</label>
+      <select v-model="ATDP" class="content select">
+        <optgroup label="CAN协议"></optgroup>
+        <option value="ISO 15765-4 (CAN 11/500)">ISO 15765-4 (CAN 11/500)</option>
+        <option value="ISO 15765-4 (CAN 29/500)">ISO 15765-4 (CAN 29/500)</option>
+        <option value="ISO 15765-4 (CAN 11/250)">ISO 15765-4 (CAN 11/250)</option>
+        <option value="ISO 15765-4 (CAN 29/250)">ISO 15765-4 (CAN 29/250)</option>
+        </optgroup>
+        <optgroup label="其他协议"></optgroup>
+        <option value="ISO 14230-4 (KWP FAST)">ISO 14230-4 (KWP FAST)</option>
+        <option value="ISO 14230-4 (KWP 5BAUD)">ISO 14230-4 (KWP 5BAUD)</option>
+        <option value="ISO 14230-4 (KWP 5BAUD)">ISO 9141-2</option>
+        <option value="SAE J1850 PWM">SAE J1850 PWM</option>
+        <option value="SAE J1850 VPW">SAE J1850 VPW</option>
+        </optgroup>
+      </select>
+    </div>
+    <div class="form-item">
+      <label class="label">模式（Hex）</label>
+      <select v-model="cmd" class="content select" required>
+        <option value="03">显示存储的诊断故障码（03）</option>
+        <option value="07">显示最近诊断故障码（07）</option>
+        <option value="0A">永久性的诊断故障码（0A）</option>
+      </select>
+    </div>
+    <div class="form-item">
+      <label class="label required">返回结果</label>
+      <textarea v-model.trim="msg" rows="10" resize class="content" placeholder="注意：换行符请直接换行"></textarea>
+    </div>
+    <div class="form-item">
+      <label class="label">解析结果</label>
+      <input v-model="troubleCodeList" disabled class="content"></input>
+    </div>
+    <div class="form-item">
+      <button @click="format" class="btn">解析</button>
+    </div>
+
     <div class="title">注意事项：</div>
     <ul class="list">
       <li>CAN 11/500, CAN 11/250 11位ID的，前面3个字符是CAN ID</li>
@@ -164,7 +173,7 @@
     <hr>
     <dl>
       <dt>CAN协议测试数据</dt>
-      <dd>唯一CANID单帧 - 0个故障码  协议类型：ISO 15765-4 (CAN 11/500)
+      <dd>唯一CANID单帧 - 0个故障码 协议类型：ISO 15765-4 (CAN 11/500)
         <pre>7E8    02 43 00></pre>
       </dd>
       <dd>唯一CANID单帧 - 1个故障码 协议类型：ISO 15765-4 (CAN 11/500)
@@ -220,7 +229,7 @@
       <dd>唯一CANID单帧 - 2个故障码 协议类型：ISO 14230-4 (KWP 5BAUD)
         <pre>87F111 4A 222A 9171 0000 21</pre>
       </dd>
-      
+
       <dd>唯一CANID多帧 - 5个故障码 协议类型：ISO 9141-2
         <pre>486B11 43 CFCD EDD3 2786 10
 486B11 43 B874 6D99 0000 39 ></pre>
@@ -232,7 +241,7 @@
 87F112 43 C024 C025 8020 36
 87F112 43 8021 1381 4040 82></pre>
       </dd>
-      
+
       <dd>多CANID - 0个故障码
         <pre>87F112 43 0000 0000 0000 CD
 87F118 43 0000 0000 0000 CD></pre>
@@ -248,9 +257,9 @@
 87F118 43 8090 0000 0000 DD></pre>
       </dd>
     </dl>
-    </div>
-    
-    <script>
+  </div>
+
+  <script>
     new Vue({
       el: '#app',
       computed: {
@@ -263,36 +272,35 @@
         ATDP: '', // ISO 15765-4 (CAN 11/250)
         cmd: '03',
         msg: '',
-        troubleCodeList: '',
-        troubleCodeLength: 0
+        troubleCodeList: ''
       },
       methods: {
-        format(){
+        format() {
           let msg = this.msg
           msg = msg.replace(/[\r]|[\n]|[\r\n]/g, '\r')
           console.log('当前输入的结果=\n', JSON.stringify(msg))
-          if(!this.ATDP){
+          if (!this.ATDP) {
             alert('协议类型不能为空')
             return
           }
-          if(!this.msg){
+          if (!this.msg) {
             alert('返回结果不能为空')
             return
           }
           // console.log('format', cmd, msg)
           msg = msg.replace(/[ ]|[>]/g, '')
-          if(this.ATDP.includes('CAN')){
+          if (this.ATDP.includes('CAN')) {
             // 检测故障码模式
             let canId_length = this.ATDP.includes('29/') ? 8 : 3
             let canId = msg.substring(0, canId_length)
             let mode = '03'
             // 如果只有一帧
-            if(msg.split(canId).length - 1 === 1){
-              mode = msg.substring(canId_length+2, canId_length+4).replace('4', '0')
-            }else{
-              mode = msg.substring(canId_length+4, canId_length+6).replace('4', '0')
+            if (msg.split(canId).length - 1 === 1) {
+              mode = msg.substring(canId_length + 2, canId_length + 4).replace('4', '0')
+            } else {
+              mode = msg.substring(canId_length + 4, canId_length + 6).replace('4', '0')
             }
-            console.log(mode)
+            // console.log(mode)
             this.cmd = mode
             this.get_trouble_code_CAN(this.cmd, msg)
             return
@@ -301,18 +309,14 @@
           this.cmd = msg.substring(6, 8).replace('4', '0')
           this.get_trouble_code(this.cmd, msg)
         },
-        get_trouble_code(cmd, msg){
+        get_trouble_code(cmd, msg) {
           if (msg.includes('NODATA') || msg.includes('NO DATA')) {
             return []
           }
           try {
             msg = msg.replace(/[ ]|[>]/g, '')
             let result = []
-            let separator = cmd.replace('0', '4') // 分隔符43 47 4A
-            let canId = msg.substring(0, 6) // 获取canId
             let data = msg.split('\r')
-            let isOnlyID = data.every(item => item.includes(canId)) // 判断是否唯一CANId
-            console.log(`是否唯一CANId = ${isOnlyID}`, data)
             for (let item of data) {
               item = item.substring(8)
               let length = parseInt(item.length / 4)
@@ -325,9 +329,10 @@
                 }
               }
             }
-            // console.log('获取的指令', result)
-            const hexDigitReplace = { '0': 'P0', '1': 'P1', '2': 'P2', '3': 'P3', '4': 'C0', '5': 'C1', '6': 'C2', '7': 'C3', '8': 'B0',
-                '9': 'B1', 'A': 'B2', 'B': 'B3', 'C': 'U0', 'D': 'U1', 'E': 'U2', 'F': 'U3'}
+            const hexDigitReplace = {
+              '0': 'P0', '1': 'P1', '2': 'P2', '3': 'P3', '4': 'C0', '5': 'C1', '6': 'C2', '7': 'C3', '8': 'B0',
+              '9': 'B1', 'A': 'B2', 'B': 'B3', 'C': 'U0', 'D': 'U1', 'E': 'U2', 'F': 'U3'
+            }
             result.forEach((item, index) => {
               const _item = hexDigitReplace[item[0]] + item.substring(1)
               result.splice(index, 1, _item)
@@ -337,7 +342,6 @@
             协议类型：其他类型
             当前模式=${cmd},
             故障码回复数据=${data},
-            canId = ${canId},
             CAN模式故障码== ${JSON.stringify(result)}
             `)
             this.troubleCodeList = result.length === 0 ? '无故障码' : result.join('/')
@@ -347,7 +351,7 @@
             alert('其他模式发生错误' + error)
           }
         },
-        get_trouble_code_CAN(cmd, msg){
+        get_trouble_code_CAN(cmd, msg) {
           if (msg.includes('NODATA') || msg.includes('NO DATA')) {
             return []
           }
@@ -356,97 +360,65 @@
             msg = msg.replace(/[ ]|[>]/g, '')
             let separator = cmd.replace('0', '4') // 分隔符43 47 4A
             let result = []
-            const index = msg.indexOf(separator) // 查找模式代码所在下标
-            let troubleCodeLength = parseInt(msg.substring(index+2, index+4), 16) // 故障码的数量在模式代码后边
-            this.troubleCodeLength = troubleCodeLength
-            let canId = msg.substring(0, canId_length)
-            console.log(`canId = ${canId}`)
-            if(troubleCodeLength > 0){
-              let data = msg.split('\r')
-              let isOnlyID = data.every(item => item.includes(canId)) // 判断是否唯一CANId
-              console.log(`是否唯一CANId = ${isOnlyID}`, data)
-
-              if(isOnlyID){
-                data.forEach((item, index)=>{
-                  if(index === 0){
-                    item = item.substring(item.indexOf(separator)+4)
-                    console.log('每一帧有效数据', item)
-                  }else{
-                    item = item.substring(canId_length + 2)
-                    console.log('每一帧有效数据', item)
-                  }
-                  let length = parseInt(item.length / 4)
-                  for (let subIndex = 0; subIndex < length; subIndex++) {
-                    let start = subIndex * 4
-                    let code = item.substring(start, start + 4)
-                    // 0000不是故障码
-                    if (code !== '0000' && !result.includes(code)){
-                      result.push(code)
-                    }
-                  }
-                })
-              }else{
-                let json = {}
-                let arr = []
-                for (const item of data) {
-                  let can = item.substring(0, canId_length)
-                  if(!json[can]){
-                    json[can] = []
-                  }
-                  json[can].push(item)
-                }
-                console.log('分割数组', json)
-                for (const key in json) {
-                  let subData = json[key]
-                  subData.forEach((item, index)=>{
-                   
-                    if(index === 0){
-                      item = item.substring(item.indexOf(separator)+4)
-                    }else{
-                      // 其他帧去掉前两位 每一帧开始标识
-                      item = item.substring(canId_length + 2)
-                    }
-                    
-                    let length = parseInt(item.length / 4)
-                    for (let subIndex = 0; subIndex < length; subIndex++) {
-                      let start = subIndex * 4
-                      let code = item.substring(start, start + 4)
-                      // console.log('每一帧有效数据', item, code)
-                      // 0000不是故障码
-                      if (code !== '0000' && !result.includes(code)) {
-                        result.push(code)
-                      }
-                    }
-                  })
-                }
+            let data = msg.split('\r')
+            let json = {}
+            for (const item of data) {
+              let can = item.substring(0, canId_length)
+              if (!json[can]) {
+                json[can] = []
               }
+              json[can].push(item)
+            }
+            for (const key in json) {
+              let subData = json[key]
+              subData.forEach((item, index) => {
 
-              const hexDigitReplace = { '0': 'P0', '1': 'P1', '2': 'P2', '3': 'P3', '4': 'C0', '5': 'C1', '6': 'C2', '7': 'C3', '8': 'B0',
-              '9': 'B1', 'A': 'B2', 'B': 'B3', 'C': 'U0', 'D': 'U1', 'E': 'U2', 'F': 'U3'}
-              result.forEach((item, index) => {
-                const _item = hexDigitReplace[item[0]] + item.substring(1)
-                result.splice(index, 1, _item)
+                if (index === 0) {
+                  item = item.substring(item.indexOf(separator) + 4)
+                } else {
+                  // 其他帧去掉前两位 每一帧开始标识
+                  item = item.substring(canId_length + 2)
+                }
+
+                let length = parseInt(item.length / 4)
+                for (let subIndex = 0; subIndex < length; subIndex++) {
+                  let start = subIndex * 4
+                  let code = item.substring(start, start + 4)
+                  // console.log('每一帧有效数据', item, code)
+                  // 0000不是故障码
+                  if (code !== '0000' && !result.includes(code)) {
+                    result.push(code)
+                  }
+                }
               })
             }
+
+            const hexDigitReplace = {
+              '0': 'P0', '1': 'P1', '2': 'P2', '3': 'P3', '4': 'C0', '5': 'C1', '6': 'C2', '7': 'C3', '8': 'B0',
+              '9': 'B1', 'A': 'B2', 'B': 'B3', 'C': 'U0', 'D': 'U1', 'E': 'U2', 'F': 'U3'
+            }
+            result.forEach((item, index) => {
+              const _item = hexDigitReplace[item[0]] + item.substring(1)
+              result.splice(index, 1, _item)
+            })
             console.log(`
             协议类型：CAN类型
             当前模式=${cmd},
             故障码回复数据=${msg},
-            canId = ${canId},
-            故障码个数= ${troubleCodeLength},
             CAN模式故障码== ${JSON.stringify(result)}
             `)
-            this.troubleCodeList = result.length === 0 ? '无故障码' : result.join('/') 
+            this.troubleCodeList = result.length === 0 ? '无故障码' : result.join('/')
             return result
           } catch (error) {
             alert('CAN模式发生错误' + error)
           }
-          
+
 
         }
       }
     })
-    </script>
-   
-  </body>
+  </script>
+
+</body>
+
 </html>
