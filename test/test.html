@@ -8,45 +8,47 @@
 -->
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
 
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
-</head>
+  <body>
+    <script>
+      let result = ['P0A11', 'P0127']
+      result = result.filter((item) => !['P0A11'].includes(item))
+      console.log('---------------', result)
+      // 'AD2E5FDB-B7E2-CB79-6E31-56AA0A4A4C2C'
+      // console.log(getUniqueId())
+      // function getUniqueId(bf) {
+      // 	let buffer = bf.slice(4, 10);
+      // 	let mac = Array.prototype.map.call(new Uint8Array(buffer), x => ('00' + x.toString(16)).slice(-2)).join('');
+      // 	return mac.toUpperCase()
+      // }
 
-<body>
-	<script>
-		// 'AD2E5FDB-B7E2-CB79-6E31-56AA0A4A4C2C' 
-		// console.log(getUniqueId())
-		// function getUniqueId(bf) {
-		// 	let buffer = bf.slice(4, 10);
-		// 	let mac = Array.prototype.map.call(new Uint8Array(buffer), x => ('00' + x.toString(16)).slice(-2)).join('');
-		// 	return mac.toUpperCase()
-		// }
+      let a = null || '不会展示null'
+      let b = undefined || '不会展示undefined'
+      let c = 0 || '不会展示0'
+      let d = '' || '不会展示空字符串'
+      let e = false || '不会展示false'
+      console.log(a, b, c, d, e)
 
-		let a = null || '不会展示null'
-		let b = undefined || '不会展示undefined'
-		let c = 0 || '不会展示0'
-		let d = '' || '不会展示空字符串'
-		let e = false || '不会展示false'
-		console.log(a, b, c, d, e)
-
-		// let result = "DD:7D:F2:6E:E6:0C"
-		// console.log(result.length === 17 && result.includes(':'))
-		let _carPID = {}
-		let supportPid = '123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456'
-		for (var i = 0; i < 96; i++) {
-			let id = i + 1
-			let pid = id.toString(16).toUpperCase()
-			if (pid.length < 2) {
-				pid = '0' + pid
-			}
-			_carPID['01' + pid] = +supportPid[i]
-		}
-	console.log(JSON.stringify(_carPID))
-	</script>
-</body>
-
+      // let result = "DD:7D:F2:6E:E6:0C"
+      // console.log(result.length === 17 && result.includes(':'))
+      let _carPID = {}
+      let supportPid =
+        '123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456'
+      for (var i = 0; i < 96; i++) {
+        let id = i + 1
+        let pid = id.toString(16).toUpperCase()
+        if (pid.length < 2) {
+          pid = '0' + pid
+        }
+        _carPID['01' + pid] = +supportPid[i]
+      }
+      console.log(JSON.stringify(_carPID))
+    </script>
+  </body>
 </html>

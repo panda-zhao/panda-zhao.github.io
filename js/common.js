@@ -47,6 +47,8 @@ var data = [
   ],
   // 插件/组件库
   [
+    
+    { name: "谷歌跨域插件", url: "https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf", title: "需要翻墙" },
     { name: "Axios中文说明", url: "https://www.kancloud.cn/yunye/axios/234845", title: "代替AJAX做http请求，可以用在浏览器和 node.js 中" },
     { name: "flyio", url: "https://github.com/wendux/fly", title: "支持所有JavaScript运行环境的http请求库" },
     { name: "datatables", url: "http://www.datatables.club/", title: "表格插件" },

@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2022-04-05 23:16:50
- * @LastEditTime: 2022-06-04 01:11:18
+ * @LastEditTime: 2022-06-27 23:32:35
  * @LastEditors: zhaowy 82626363@qq.com
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  * @FilePath: \panda-zhao.github.io\test\pid.html
@@ -18,48 +18,68 @@
   <body>
     <div id="main"></div>
     <script>
+      document.write(String.fromCharCode(12))
+      document.write('<br />')
+
       function get_trouble_code(cmd, msg) {
-          try {
-            let data = msg.replace(/[ ]|[\r]|[\n]|[\r\n]|[>]/g, '')
-            let result = []
-            let separator = cmd.replace('0', '4') // 分隔符43 47 4A
-            let canId = data.substring(0, data.indexOf(separator)) // 获取canId
-            let arr = data.split(canId) // canId分割结果
-            for (let item of arr) {
-              if (item.includes(separator)) {
-                item = item.replace(separator, '')
-                let length = parseInt(item.length / 4)
-                for (let subIndex = 0; subIndex < length; subIndex++) {
-                  let start = subIndex * 4
-                  let code = item.substring(start, start + 4)
-                  // 0000不是故障码
-                  if (code !== '0000') {
-                    result.push(code)
-                  }
+        try {
+          let data = msg.replace(/[ ]|[\r]|[\n]|[\r\n]|[>]/g, '')
+          let result = []
+          let separator = cmd.replace('0', '4') // 分隔符43 47 4A
+          let canId = data.substring(0, data.indexOf(separator)) // 获取canId
+          let arr = data.split(canId) // canId分割结果
+          for (let item of arr) {
+            if (item.includes(separator)) {
+              item = item.replace(separator, '')
+              let length = parseInt(item.length / 4)
+              for (let subIndex = 0; subIndex < length; subIndex++) {
+                let start = subIndex * 4
+                let code = item.substring(start, start + 4)
+                // 0000不是故障码
+                if (code !== '0000') {
+                  result.push(code)
                 }
               }
             }
-            // console.log('获取的指令', result)
-            const hexDigitReplace = { '0': 'P0', '1': 'P1', '2': 'P2', '3': 'P3', '4': 'C0', '5': 'C1', '6': 'C2', '7': 'C3', '8': 'B0',
-                '9': 'B1', 'A': 'B2', 'B': 'B3', 'C': 'U0', 'D': 'U1', 'E': 'U2', 'F': 'U3'}
-            result.forEach((item, index) => {
-              const _item = hexDigitReplace[item[0]] + item.substring(1)
-              result.splice(index, 1, _item)
-            })
+          }
+          // console.log('获取的指令', result)
+          const hexDigitReplace = {
+            '0': 'P0',
+            '1': 'P1',
+            '2': 'P2',
+            '3': 'P3',
+            '4': 'C0',
+            '5': 'C1',
+            '6': 'C2',
+            '7': 'C3',
+            '8': 'B0',
+            '9': 'B1',
+            A: 'B2',
+            B: 'B3',
+            C: 'U0',
+            D: 'U1',
+            E: 'U2',
+            F: 'U3',
+          }
+          result.forEach((item, index) => {
+            const _item = hexDigitReplace[item[0]] + item.substring(1)
+            result.splice(index, 1, _item)
+          })
 
-            console.log(`
+          console.log(`
             协议类型：其他类型
             当前模式=${cmd},
             故障码回复数据=${data},
             canId = ${canId},
             CAN模式故障码== ${JSON.stringify(result)}
             `)
-            this.troubleCodeList = result.length === 0 ? '' : JSON.stringify(result) 
-            return result
-          } catch (error) {
-            console.error(error)
-          }
+          this.troubleCodeList =
+            result.length === 0 ? '' : JSON.stringify(result)
+          return result
+        } catch (error) {
+          console.error(error)
         }
+      }
 
       // 其他协议
       // get_trouble_code('03', '87F112 43 0000 0000 0000 CD>')
@@ -67,7 +87,7 @@
       // get_trouble_code('03', `87F112 43 0006 0007 1233 1F \r 87F112 43 0009 C022 C023 9B \r 87F112 43 C024 C025 8020 36 \r 87F112 43 8021 1381 4040 82>`)
 
       // 0个故障码
-      
+
       // 1个故障码
       // 87F1124320290000000016
       // 87F1184320290000000016>
@@ -99,9 +119,6 @@
       // 3个故障码 指令:03 回复: 7E8 10 08 43 03 1024 1025 7E8 21 1026 0000000000> 有效数据长度8 有效数据  2-3 4-5 7-8
       // 4个故障码 指令:03 回复: 7E8 10 0A 43 04 1024 1025 7E8 21 1026 1027 000000> 10 2-3 4-5 7-8 9-10 12-13 14-15
       // 指令04  回复: 7E8 01 44
-
-  
-
 
       // 当前协议 ISO 14230-4 (KWP FAST)
       // '87F111 43 CFCD EDD3 2786 D5 \r 87F111 43 B874 6D99 0000 FE >' // 03 故障码 ["U0FCD","U2DD3","P2786","B3874","C2D99"]
@@ -137,38 +154,41 @@
       // '18DAF111 10 0C 43 05 CFCD EDD3 \r 18DAF111 21 2786 B874 6D99 00 >' // 03 故障码 ["U0FCD","U2DD3","P2786","B3874","C2D99"]
       // '18DAF111    04 47 01 6878 >' // 07 故障码 ["C2878"]
       // '18DAF111    06 4A 02 222A 9171 >' // 0A 故障码 ["P222A","B1171"]
-       
+
       // get_trouble_code_CAN('03', '7E9 02 43 00 \r 7E8 02 43 00>')
-      function get_trouble_code_CAN(cmd, msg){
+      function get_trouble_code_CAN(cmd, msg) {
         let ATDP = 'ISO 15765-4 (CAN 11/500)' // CAN 11/500, CAN 11/250  CAN 29/500, CAN 29/250
         let canId_length = ATDP.includes('29/') ? 8 : 3 // 29位CAN ID是8位，11位CAN ID是3位
-        
+
         try {
           let data = msg.replace(/[ ]|[\r]|[\n]|[\r\n]|[>]/g, '')
           let result = []
           let separator = cmd.replace('0', '4') // 分隔符43 47 4A
           let index = data.indexOf(separator) // 查找模式代码所在下标
-          let troubleCodeLength = parseInt(data.substring(index+2, index+4), 16) // 故障码的数量在模式代码后边
+          let troubleCodeLength = parseInt(
+            data.substring(index + 2, index + 4),
+            16,
+          ) // 故障码的数量在模式代码后边
           let canId = data.substring(0, canId_length)
           let isMultipleID = false
-          if(troubleCodeLength !== 0){
+          if (troubleCodeLength !== 0) {
             // if(troubleCodeLength > 2){
             //   canId = data.substring(0, index-4) // 多帧时要处理掉每一帧开始标识
             // }else{
             //   canId = data.substring(0, index-2) // 只有一帧的时没有10
             // }
-            let arr = data.split(canId)     
+            let arr = data.split(canId)
             arr.shift() // 删除切割导致的第一个空白项
             for (let i = 0; i < arr.length; i++) {
-              let item = arr[i];
-              if(i === 0){
-                item = item.substring(item.indexOf(separator)+4)
+              let item = arr[i]
+              if (i === 0) {
+                item = item.substring(item.indexOf(separator) + 4)
                 console.log('每一帧有效数据', item)
-              }else{
+              } else {
                 // 其他帧去掉前两位 每一帧开始标识
                 item = item.substring(2)
               }
-              
+
               // 拿到每一帧的故障码
               let length = parseInt(item.length / 4)
               for (let subIndex = 0; subIndex < length; subIndex++) {
@@ -180,15 +200,31 @@
                 }
               }
             }
-            
-            const hexDigitReplace = { '0': 'P0', '1': 'P1', '2': 'P2', '3': 'P3', '4': 'C0', '5': 'C1', '6': 'C2', '7': 'C3', '8': 'B0',
-              '9': 'B1', 'A': 'B2', 'B': 'B3', 'C': 'U0', 'D': 'U1', 'E': 'U2', 'F': 'U3'}
+
+            const hexDigitReplace = {
+              '0': 'P0',
+              '1': 'P1',
+              '2': 'P2',
+              '3': 'P3',
+              '4': 'C0',
+              '5': 'C1',
+              '6': 'C2',
+              '7': 'C3',
+              '8': 'B0',
+              '9': 'B1',
+              A: 'B2',
+              B: 'B3',
+              C: 'U0',
+              D: 'U1',
+              E: 'U2',
+              F: 'U3',
+            }
             result.forEach((item, index) => {
               const _item = hexDigitReplace[item[0]] + item.substring(1)
               result.splice(index, 1, _item)
             })
           }
-          
+
           console.log(`
           协议类型：CAN类型
           当前模式=${cmd},
@@ -240,7 +276,6 @@
       //   '18DAF110 10 10 43 07 2029 0082 \r 18DAF110 21 C021 8090 4032 00 \r 18DAF110 22 0600 0700 0000 00>',
       // )
 
-    
       // 03 07 0A
       // console.log('0个故障码：')
       // get_trouble_code_CAN('03', '7E8 02 43 00>')
@@ -266,7 +301,6 @@
       // )
     </script>
     <script>
-      
       // 获取PID
       // let queue = []
       // for (let index = 0; index < 96; index++) {
@@ -304,6 +338,8 @@
       7ED 06 41 00 BE 3E A8 13 \r
       7EE 06 41 00 98 18 00 01 \r
       7EF 06 41 00 BE 3E A8 13 > `
+
+      // get_support('7E8 07 4100 00 FF FF FF FF>', '0100')
       // get_support(result0100, '0100')
       function get_support(msg, code) {
         if (msg === 'NO DATA') return null
@@ -363,6 +399,85 @@
       // const value3 =
       //   '7E81014490600534E30 \r7E82131323334353637 \r7E82238393031323334 >'
 
+      // zget_0902(`7E8 10 14 49 02 01 31 41 31\r7E8 21 4A 43 35 34 34 34 52\r7E8 22 37 32 35 32 33 36 37 >`)
+      zget_0902(
+        '87F111490201000000FFD4\r87F111490202FFFFFFFFD2\r87F111490203FFFFFFFFD3\r87F111490204FFFFFFFFD4\r87F111490205FFFFFFFFD5\r\r>',
+      )
+
+      // 结果17位
+      function zget_0902(msg) {
+        // CAN模式
+        // CAN 11/500, CAN 11/250 11位ID的，前面3个字符是CAN ID  3 + 16 = 19
+        // CAN 29/500, CAN 29/250 29位ID的，前面8个字符是CAN ID  8 + 16 = 24
+
+        // 其他协议
+        // 其他协议前六个字符是CANId  6 + 16 * 22
+        try {
+          var result = ''
+          msg = msg.replace(/[ ]|[>]/g, '')
+          var msgArray = msg.split('\r')
+          console.log('1', msgArray)
+          msgArray = msgArray.filter((item) => item !== '') // 过滤空数组
+          // // CAN协议第一个帧包含“4902”且必须是3个帧
+          // if(!msgArray[0].includes('4902') || msgArray.length !== 3){
+          //   return ''
+          // }
+          console.log('111', msgArray)
+          for (var i = 0; i < msgArray.length; i++) {
+            var s = msgArray[i]
+            if (s.length == 19) {
+              //CAN 11bit
+              if (s.indexOf('4902') >= 0) {
+                var index = s.indexOf('4902') + 6
+                if (index < 19) {
+                  result += s.substring(index)
+                }
+              } else {
+                result += s.substring(5)
+              }
+            } else if (s.length == 24) {
+              // CAN 29bit
+              if (s.indexOf('490201') >= 0) {
+                result += s.substring(18)
+              } else {
+                result += s.substring(10)
+              }
+            } else if (s.length == 22) {
+              result += s.substring(12, 20)
+            }
+          }
+          result = result.replace(/00/g, '')
+          console.log('2=' + result)
+          if (result.length < 34) {
+            console.log('length error')
+            return ''
+          }
+
+          var res = new Array(17)
+          for (var i = 0; i < 17; i++) {
+            var start = i * 2
+            res[i] = parseInt(result.substring(start, start + 2), 16)
+          }
+          console.log('3=', res)
+          var vin = ''
+          for (var i = 0; i < res.length; i++) {
+            vin += String.fromCharCode(res[i])
+          }
+          console.log('vin=' + vin)
+          return vin
+        } catch (error) {
+          //TODO handle the exception
+          // console.error('获取故障码错误', error)
+          const _tips = uni.getSystemInfoSync().language.includes('CN')
+            ? '温馨提示'
+            : 'Tips'
+          uni.showModal({
+            title: _tips,
+            content: 'error：0902\r\n' + error,
+          })
+          return null
+        }
+      }
       // get_0902(value)
       // function get_0902(msg) {
       //   //        7E8 10 14 49 02 01 31 41 31
@@ -426,9 +541,6 @@
       //   console.log('6vin=', vin)
       //   return vin
       // }
-
-     
-
     </script>
   </body>
 </html>
