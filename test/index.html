@@ -8,50 +8,61 @@
 -->
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>测试</title>
-    <style>
-      .button {
-        user-select: none;
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 160px;
-        height: 40px;
-        color: black;
-        background: white;
-        border-radius: 10px;
-        margin: 0 15px;
-        font-size: 18px;
-        text-decoration: none;
-        overflow: hidden;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="button">
-      <span class="text">download</span>
-    </div>
-    <script>
-      let str = 'v1.0.9'
-      let result = str.replace(/[.]|[v]/g, '')
-      console.log(result)
 
-      let _carPID = {}
-      for (var i = 0; i < 96; i++) {
-        let pid = i.toString(16).toUpperCase()
-        if (pid.length < 2) {
-          pid = '0' + pid
-        }
-        _carPID['01' + pid] = 1
-      }
-      console.log('_carPID', _carPID)
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>测试</title>
+  <style>
+    .button {
+      user-select: none;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 160px;
+      height: 40px;
+      color: black;
+      background: white;
+      border-radius: 10px;
+      margin: 0 15px;
+      font-size: 18px;
+      text-decoration: none;
+      overflow: hidden;
+    }
+  </style>
+</head>
 
-      let index = parseInt('0160'.substring(2), 16)
-      console.log('index', index)
-    </script>
-  </body>
+<body>
+  <div class="button">
+    <span class="text">download</span>
+  </div>
+  <script>
+    let cars = [
+      { type: "BMW", year: 2017 },
+      { type: "Audi", year: 2019 },
+      { type: "porsche", year: 2018 }
+    ];
+    cars.sort(function (a, b) { return a.year - b.year });
+    console.log(JSON.stringify(cars))
+
+    let str = 'v1.0.9'
+    let result = str.replace(/[.]|[v]/g, '')
+    console.log(result)
+
+    let _carPID = {}
+    for (var i = 0; i < 96; i++) {
+      let pid = i.toString(16).toUpperCase()
+      if (pid.length < 2) {
+        pid = '0' + pid
+      }
+      _carPID['01' + pid] = 1
+    }
+    console.log('_carPID', _carPID)
+
+    let index = parseInt('0160'.substring(2), 16)
+    console.log('index', index)
+  </script>
+</body>
+
 </html>
