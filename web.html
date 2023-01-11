@@ -23,7 +23,7 @@
   <div class="container" id="app">
 		
 		<dl>
-		  <dt>全世界都说中华话</dt>
+		  <dt>全世界都说中国话</dt>
 		  <dd v-for="item in list1" :key="'A' + item.id">
 		    <a :href="item.url" :title="item.des" class="item">{{item.name}}</a>
 		  </dd>
@@ -67,18 +67,24 @@
     el: '#app',
     data: {
 			list1: [
+				{id: 11, name: "91porn", url: "https://e1015.91p01.com", des: "货真价实的91网站,我们目前国产视频最大的网站了。"},
+				{id: 5, name: "theavPorn-国产", url: "https://theav104.com/", des: "发布地址：https://theavporn.github.io/theavporn/"},
+				{id: 6, name: "AVJB-付费", url: "https://bbav117.com", des: "发布地址：https://avjb.github.io/"},
+				{id: 7, name: "小仓鼠-台湾", url: "https://zh.xhamster.com/", des: "台湾費色情影片分享網站"},
+				{id: 10, name: "免费高清日本 AV 在线看", url: "https://missav888.com/cn", des: ""},
+				
 				{id: 1, name: "芒果哥-导航", url: "https://mangotporn.com/", des: "芒果哥将全世界的色情网站进行整理，归纳到这小小的黄网成人导航之中，这里有几千个色情网站供你选择，几近精竭的芒果哥，倾尽全力试图打造。"},
 				{id: 2, name: "爱撸啪-导航", url: "https://ailupa.cc/", des: "导航"},
 				{id: 3, name: "随机撸-国产", url: "http://suijilu.com/", des: "随机内容网站，无需翻墙"},
 				{id: 4, name: "猫咪-国内", url: "https://www.b3c6r.com/", des: "发布地址：https://www.maomiav.com/"},
-				{id: 5, name: "theavPorn-国产", url: "https://theav104.com/", des: "发布地址：https://theavporn.github.io/theavporn/"},
-				{id: 6, name: "AVJB-付费", url: "https://bbav117.com", des: "发布地址：https://avjb.github.io/"},
-				{id: 7, name: "小仓鼠", url: "https://zh.xhamster.com/", des: "台湾費色情影片分享網站"},
+				
+				
+				
 				{id: 8, name: "绅士风度-国产", url: "https://qvb333.xyz/", des: "绅士风度"},
-				{id: 9, name: "女人创作的影片", url: "ttps://www.bellesa.co/", des: ""},
-				{id: 10, name: "免费高清日本 AV 在线看", url: "https://missav888.com/cn", des: ""},
+				{id: 9, name: "女人创作的影片", url: "https://www.bellesa.com/", des: ""},
+				
 				{id: 11, name: "福利猫-导航", url: "https://flmdh.com/", des: ""},
-				{id: 11, name: "91porn", url: "https://e1015.91p01.com", des: "货真价实的91网站哦，相信猫友们经常听到91大神的新闻吧！哈哈哈哈哈！这福利猫觉得是我们目前国产视频最大的网站了。"},
+				
 			  {id: 0, name: "桃花堂", url: "https://www.thtmod7.pw/", des: "为您提供免的成人内容，包括免费国产自拍视频，免费日本高清av"},
 				{id: 0, name: "草榴社区", url: "http://t66y.com", des: "传说中的1024网站，福利网名常用暗语"},
 				{id: 56, name: "第一会所-广告", url: "http://sis001.com", des: "第一会所"},
@@ -94,25 +100,22 @@
         {id: 11, name: "XVideos(可下载)", url: "https://www.xvideos.com/", des: "国际知名成人福利网站，网站速度很快，多国语言版本。比较大的缺点是亚洲地区资源比较少，欧美资源比较多，并且中文搜素很垃圾"},
 				{id: 12, name: "PornHub-翻墙", url: "https://cn.pornhub.com/categories/teen", des: "当下宇宙第一成人福利视频网站"},
 				{id: 12, name: "YouPorn-翻墙", url: "https://www.youporn.com", des: "成人视频网站"},
-				{id: 13, name: "Beeg", url: "https://beeg.com", des: "新兴欧美成人视频站"},
-				{id: 14, name: "sex", url: "http://sex.com", des: "国际成人短视频网站"},
-				{id: 15, name: "pornhd", url: "http://pornhd.com", des: "国际知名成人福利网站，需要翻墙，主打高清视频"},
-				{id: 16, name: "HQporner", url: "https://hqporner.com", des: "欧美视频高清无广告，免费观看，真是良心的网站了！"},
-				{id: 17, name: "eporner", url: "http://eporner.com", des: "国际知名成人网站"},
-				{id: 18, name: "TNAFlix", url: "https://www.tnaflix.com/", des: "色情欧美视频网站"},
-				{id: 19, name: "porngo", url: "https://www.porngo.com", des: "一个专门搬运付费色情网站上资源的免费色情网站，不用花一分钱就能享受这个星球上最顶级的色情工作室带来的顶级色情影片"},
-				{id: 20, name: "SpankBang-推荐", url: "https://spankbang.com", des: "免费高清色情网站"},
+				{id: 20, name: "SpankBang-下载推荐", url: "https://spankbang.com", des: "免费高清色情网站"},
 				{id: 21, name: "redtube-推荐", url: "https://redtube.com", des: "redtube是一个能够为你提供免费色情内容的，历史悠久的色情网站，影片制作非常精良，而且有一定的更新。"},
-				{id: 22, name: "xhamster", url: "https://xhamster.com", des: "欧美成人福利网站，就是对中文搜素支持不太好"},
-				{id: 22, name: "xmoviesforyou", url: "https://xmoviesforyou.com", des: "这里有很多的免费高清版且剧情完整的色情视频，不过会在这碰到大量的广告，这里没有主题分类，也没有关键词"},
-				{id: 22, name: "SexyPorn", url: "https://sxyprn.com", des: "老牌欧美视频网站"},
-				{id: 22, name: "Youjizz", url: "https://www.youjizz.com", des: "动作、冒险、Adriana Chechik、飞走、成人玩具、Acrobats、3P、棕眼、商务女性、金发女郎、打屁股、笼子、摄像头、邻家女孩等等，并且你还有可能找到一些你从前没有想过的东西。"},
-				
-        {id: 52, name: "汤不热-翻墙", url: "https://www.thumbzilla.com/tags/chinese", des: "汤不热"},
+				{id: 22, name: "汤不热-高清", url: "https://www.thumbzilla.com/tags/chinese", des: "全网最佳高清色情片"},
+				{id: 23, name: "tube8", url: "https://www.tube8.com/", des: "tube8"},
+				{id: 13, name: "Beeg-高清以明星检索", url: "https://beeg.com", des: "新兴欧美成人视频站"},
+				{id: 14, name: "sex-短视频", url: "http://sex.com", des: "国际成人短视频网站"},
+				{id: 15, name: "pornhd-广告高清", url: "https://www.pornhd.com/category/chinese-teen-18-19", des: "国际知名成人福利网站，需要翻墙，主打高清视频"},
+				{id: 16, name: "HQporner-欧美", url: "https://hqporner.com", des: "欧美视频高清无广告，免费观看，真是良心的网站了！"},
+				{id: 17, name: "eporner-欧美大站有广告", url: "http://eporner.com", des: "国际知名成人网站"},
+				{id: 18, name: "TNAFlix-一般", url: "https://www.tnaflix.com/", des: "色情欧美视频网站"},
+				{id: 19, name: "porngo-广告太多", url: "https://www.porngo.com", des: "一个专门搬运付费色情网站上资源的免费色情网站，不用花一分钱就能享受这个星球上最顶级的色情工作室带来的顶级色情影片"},
+				{id: 22, name: "xmoviesforyou-无搜索", url: "https://xmoviesforyou.com", des: "这里有很多的免费高清版且剧情完整的色情视频，不过会在这碰到大量的广告，这里没有主题分类，也没有关键词"},
+				{id: 22, name: "SexyPorn-广告太多", url: "https://sxyprn.com", des: "老牌欧美视频网站"},
+				{id: 22, name: "Youjizz-不清晰", url: "https://www.youjizz.com", des: "动作、冒险、Adriana Chechik、飞走、成人玩具、Acrobats、3P、棕眼、商务女性、金发女郎、打屁股、笼子、摄像头、邻家女孩等等，并且你还有可能找到一些你从前没有想过的东西。"},
         {id: 53, name: "猫咪-翻墙", url: "https://www.maomiav.com/", des: "猫咪"},
-        {id: 54, name: "tube8", url: "https://www.tube8.com/", des: "tube8"},
         {id: 55, name: "keensex", url: "http://tn.keensex.com", des: "keensex"},
-       
       ],
 			
 			
