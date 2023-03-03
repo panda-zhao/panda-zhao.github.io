@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>保时捷源文件故障码处理工具</title>
+</head>
+
+<body>
+  <div>
+    <ol>
+      <li>key的后6位为故障码</li>
+    </ol>
+  </div>
+	<script src="./源数据.js"></script>
+  <script>
+    console.time("计时")
+    // 对源数据转换为需要的格式
+    let json = {}
+    let result = []
+    for (const key in data) {
+      const element = data[key];
+      /* if(!Array.isArray(element) || !element[0] || !element[1]){
+         console.log(key)
+       } */
+      const hexDigitReplace = { "0": "P0", "1": "P1", "2": "P2", "3": "P3", "4": "C0", "5": "C1", "6": "C2", "7": "C3", "8": "B0", "9": "B1", "A": "B2", "B": "B3", "C": "U0", "D": "U1", "E": "U2", "F": "U3" }
+      if (Array.isArray(element)) {
+        let code = key.substring(key.length - 6)
+        code = hexDigitReplace[code.charAt(0)] + code.substring(1)
+        if (code.substring(5) === '00') {
+          code = code.substring(0, 5)
+        }
+        if (!json[code]) {
+          json[code] = element[1]
+          result.push({ "code": code, "describe": element[1], lang: 2 })
+        }
+      }
+    }
+    
+    console.timeEnd("计时")
+    console.log(JSON.stringify(result))
+    console.log(result.length) // 18780
+  </script>
+</body>
+
+</html>

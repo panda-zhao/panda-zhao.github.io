@@ -91,6 +91,15 @@
     <!-- 一个基于 html5 canvas 绘制的网页背景效果。 -->
     <script src="./js/canvas-nets.js"></script>
     <script>
+      // 百度统计
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?fbf179bf245cf0fec59ec7178485cea0";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+      })();
+      
       var vConsole = new window.VConsole();
       console.log("version=", window.$config.version)
       $('.container dl').each(function(i){
@@ -99,6 +108,8 @@
           _dl.append("<dd><a href='"+ item.url +"' title='" + item.title + "' class='item'>"+item.name + "</a></dd>")
         })
       })
+      
+
     </script>
   </body>
 </html>
