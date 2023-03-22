@@ -1,4 +1,4 @@
-const _resource = {
+const _cn_text = {
 	"foxwell_local_lang": "cn",
 	"321621FE4C00": "丰田 Allex",
 	"321621FE4C01": "丰田 Corolla spacio",

@@ -8356,7 +8356,7 @@
   },
   {
     "code": "U1110",
-    "describe": "故障---与直观驻车辅助模块失去通信",
+    "describe": "故障---与示宽声纳模块失去通信",
     "lang": 1
   },
   {
@@ -28476,7 +28476,7 @@
   },
   {
     "code": "C1624",
-    "describe": "故障---先进停车导引系统故障",
+    "describe": "故障---IPA系统故障",
     "lang": 1
   },
   {
@@ -28596,7 +28596,7 @@
   },
   {
     "code": "C1AF8",
-    "describe": "故障---后APGS传感器通信电路",
+    "describe": "故障---后IPA传感器通信电路",
     "lang": 1
   },
   {
@@ -34822,6 +34822,3001 @@
   {
     "code": "U0075",
     "describe": "故障---控制模块通信总线'C'",
+    "lang": 1
+  },
+  {
+    "code": "C1321",
+    "describe": "故障---储能器行程开关 1 / 2",
+    "lang": 1
+  },
+  {
+    "code": "C1324",
+    "describe": "故障---初始化异常",
+    "lang": 1
+  },
+  {
+    "code": "C1397",
+    "describe": "故障---怠速开关信号",
+    "lang": 1
+  },
+  {
+    "code": "C1398",
+    "describe": "故障---NE 信号",
+    "lang": 1
+  },
+  {
+    "code": "B2422",
+    "describe": "故障---中间指速灯继电器电路",
+    "lang": 1
+  },
+  {
+    "code": "B0119",
+    "describe": "故障---电源 IG1 开路",
+    "lang": 1
+  },
+  {
+    "code": "B0120",
+    "describe": "故障---电源 IG2 开路",
+    "lang": 1
+  },
+  {
+    "code": "B1101",
+    "describe": "故障---前碰撞安全传感器短路",
+    "lang": 1
+  },
+  {
+    "code": "B1103",
+    "describe": "故障---前碰撞安全传感器开路",
+    "lang": 1
+  },
+  {
+    "code": "B1111",
+    "describe": "故障---警告灯驱动电路故障",
+    "lang": 1
+  },
+  {
+    "code": "B1112",
+    "describe": "故障---引爆装置驱动电路故障",
+    "lang": 1
+  },
+  {
+    "code": "B1115",
+    "describe": "故障---正面碰撞方向 G 传感器故障",
+    "lang": 1
+  },
+  {
+    "code": "B1116",
+    "describe": "故障---正面碰撞方向 G 传感器 H 故障",
+    "lang": 1
+  },
+  {
+    "code": "B1117",
+    "describe": "故障---正面碰撞方向 G 传感器 L 故障",
+    "lang": 1
+  },
+  {
+    "code": "B1118",
+    "describe": "故障---横向方向 G 传感器故障",
+    "lang": 1
+  },
+  {
+    "code": "B1119",
+    "describe": "故障---横向方向 G 传感器 H、L 故障",
+    "lang": 1
+  },
+  {
+    "code": "B1121",
+    "describe": "故障---DC/DC 转换器故障",
+    "lang": 1
+  },
+  {
+    "code": "B1122",
+    "describe": "故障---备用电容器容量下降",
+    "lang": 1
+  },
+  {
+    "code": "B1124",
+    "describe": "故障---监视器电流限制电路故障",
+    "lang": 1
+  },
+  {
+    "code": "B1125",
+    "describe": "故障---CPU 监视器故障",
+    "lang": 1
+  },
+  {
+    "code": "B1131",
+    "describe": "故障---ROM、RAM 故障",
+    "lang": 1
+  },
+  {
+    "code": "B1132",
+    "describe": "故障---EEPROM 故障",
+    "lang": 1
+  },
+  {
+    "code": "B1146",
+    "describe": "故障---右侧 B 柱安全传感器短路",
+    "lang": 1
+  },
+  {
+    "code": "B1147",
+    "describe": "故障---左侧 B 柱安全传感器短路",
+    "lang": 1
+  },
+  {
+    "code": "B1915",
+    "describe": "故障---左前座椅侧膝部外侧预张紧器短路",
+    "lang": 1
+  },
+  {
+    "code": "B1916",
+    "describe": "故障---左前座椅侧膝部外侧预张紧器开路",
+    "lang": 1
+  },
+  {
+    "code": "B1917",
+    "describe": "故障---左前座椅侧膝部外侧预张紧器接地短路",
+    "lang": 1
+  },
+  {
+    "code": "B1918",
+    "describe": "故障---左前座椅侧膝部外侧预张紧器 BATT 短路",
+    "lang": 1
+  },
+  {
+    "code": "B1246",
+    "describe": "故障---可调踏板ECU通信终止",
+    "lang": 1
+  },
+  {
+    "code": "P018A",
+    "describe": "故障---2压力传感器系统",
+    "lang": 1
+  },
+  {
+    "code": "P018C",
+    "describe": "故障---2燃油压力系统故障（低）",
+    "lang": 1
+  },
+  {
+    "code": "P018D",
+    "describe": "故障---2燃油压力系统故障（高）",
+    "lang": 1
+  },
+  {
+    "code": "P047F",
+    "describe": "故障---排气节流阀卡住打开位置上",
+    "lang": 1
+  },
+  {
+    "code": "P048A",
+    "describe": "故障---排气节流阀卡滞关闭",
+    "lang": 1
+  },
+  {
+    "code": "P1587",
+    "describe": "故障---加速传感器系统（低）",
+    "lang": 1
+  },
+  {
+    "code": "P1671",
+    "describe": "故障---VNT电路(E-VRV 类型)",
+    "lang": 1
+  },
+  {
+    "code": "P2632",
+    "describe": "故障---子燃油泵控制阀异常（断开）",
+    "lang": 1
+  },
+  {
+    "code": "P1175",
+    "describe": "故障---油管关闭阀系统通信",
+    "lang": 1
+  },
+  {
+    "code": "P1191",
+    "describe": "故障---低压侧气压传感器超出范围",
+    "lang": 1
+  },
+  {
+    "code": "P1202",
+    "describe": "故障---燃油泵系统2",
+    "lang": 1
+  },
+  {
+    "code": "P1237",
+    "describe": "故障---泵阀异常（高共轨压力）",
+    "lang": 1
+  },
+  {
+    "code": "P1301",
+    "describe": "故障---失火检测（#1气缸）",
+    "lang": 1
+  },
+  {
+    "code": "P1302",
+    "describe": "故障---失火检测（气缸#2）",
+    "lang": 1
+  },
+  {
+    "code": "P1303",
+    "describe": "故障---失火检测（气缸#3）",
+    "lang": 1
+  },
+  {
+    "code": "P1304",
+    "describe": "故障---失火检测（气缸#4）",
+    "lang": 1
+  },
+  {
+    "code": "P1306",
+    "describe": "故障---2点火断开检测",
+    "lang": 1
+  },
+  {
+    "code": "P1311",
+    "describe": "故障---3点火断开检测",
+    "lang": 1
+  },
+  {
+    "code": "P1316",
+    "describe": "故障---4点火断开检测",
+    "lang": 1
+  },
+  {
+    "code": "P1370",
+    "describe": "故障---滞后阴燃（＃1缸）",
+    "lang": 1
+  },
+  {
+    "code": "P1371",
+    "describe": "故障---滞后阴燃（＃2缸）",
+    "lang": 1
+  },
+  {
+    "code": "P1372",
+    "describe": "故障---滞后阴燃（＃3缸）",
+    "lang": 1
+  },
+  {
+    "code": "P1373",
+    "describe": "故障---滞后阴燃（＃4缸）",
+    "lang": 1
+  },
+  {
+    "code": "P1374",
+    "describe": "故障---滞后阴燃（＃5缸）",
+    "lang": 1
+  },
+  {
+    "code": "P1375",
+    "describe": "故障---滞后阴燃（＃6缸）",
+    "lang": 1
+  },
+  {
+    "code": "P1376",
+    "describe": "故障---滞后阴燃（＃7缸）",
+    "lang": 1
+  },
+  {
+    "code": "P1377",
+    "describe": "故障---滞后阴燃（＃8缸）",
+    "lang": 1
+  },
+  {
+    "code": "P1412",
+    "describe": "故障---废气再循环提升传感器系统（全闭以外指示时）",
+    "lang": 1
+  },
+  {
+    "code": "P1413",
+    "describe": "故障---EGR提升传感器系统（全闭指示时）",
+    "lang": 1
+  },
+  {
+    "code": "P1675",
+    "describe": "故障---PCSVSV系统",
+    "lang": 1
+  },
+  {
+    "code": "P1676",
+    "describe": "故障---PCS",
+    "lang": 1
+  },
+  {
+    "code": "P1677",
+    "describe": "故障---ECU错误总成",
+    "lang": 1
+  },
+  {
+    "code": "P3200",
+    "describe": "故障---（EFI-CNG）ECU通讯错误",
+    "lang": 1
+  },
+  {
+    "code": "P1911",
+    "describe": "故障---PTO 电磁线圈控制电路中存在接地短路",
+    "lang": 1
+  },
+  {
+    "code": "P3150",
+    "describe": "故障---变速驱动器2号系统异常",
+    "lang": 1
+  },
+  {
+    "code": "P3155",
+    "describe": "故障---AT油泵电机系统异常",
+    "lang": 1
+  },
+  {
+    "code": "P3160",
+    "describe": "故障---起动机电机系统异常",
+    "lang": 1
+  },
+  {
+    "code": "C1685",
+    "describe": "故障---摄像头开关输入历史",
+    "lang": 1
+  },
+  {
+    "code": "C1699",
+    "describe": "故障---2WD/4WD 未定义",
+    "lang": 1
+  },
+  {
+    "code": "C1A9A",
+    "describe": "故障---右前电容式传感器",
+    "lang": 1
+  },
+  {
+    "code": "C1A9B",
+    "describe": "故障---右前马达线路开路",
+    "lang": 1
+  },
+  {
+    "code": "C1A9C",
+    "describe": "故障---右前 ECU 故障",
+    "lang": 1
+  },
+  {
+    "code": "C1A9D",
+    "describe": "故障---左前电容式传感器",
+    "lang": 1
+  },
+  {
+    "code": "C1A9E",
+    "describe": "故障---左前马达线路开路",
+    "lang": 1
+  },
+  {
+    "code": "C1A9F",
+    "describe": "故障---左前 ECU 故障",
+    "lang": 1
+  },
+  {
+    "code": "B1588",
+    "describe": "故障---DSSS 单元故障（路侧）",
+    "lang": 1
+  },
+  {
+    "code": "B1589",
+    "describe": "故障---DSSS 接收数据故障",
+    "lang": 1
+  },
+  {
+    "code": "U010F",
+    "describe": "故障---与空调控制模块失去通信",
+    "lang": 1
+  },
+  {
+    "code": "B2037",
+    "describe": "故障---看门狗内部控制模块监控处理器输出异常",
+    "lang": 1
+  },
+  {
+    "code": "B2038",
+    "describe": "故障---蓄电池正电压低",
+    "lang": 1
+  },
+  {
+    "code": "B2039",
+    "describe": "故障---电池正极电压高",
+    "lang": 1
+  },
+  {
+    "code": "B2042",
+    "describe": "故障---低电压下降",
+    "lang": 1
+  },
+  {
+    "code": "B2044",
+    "describe": "故障---电瓶电源电压",
+    "lang": 1
+  },
+  {
+    "code": "B2053",
+    "describe": "故障---巡航控制模块到PCS ECU通信错误",
+    "lang": 1
+  },
+  {
+    "code": "B2054",
+    "describe": "故障---与激光传感器失去通信",
+    "lang": 1
+  },
+  {
+    "code": "B2062",
+    "describe": "故障---PCS ECU故障",
+    "lang": 1
+  },
+  {
+    "code": "B2066",
+    "describe": "故障---距离控制ECU到PCS ECU通信错误",
+    "lang": 1
+  },
+  {
+    "code": "C194D",
+    "describe": "故障---测试模式操作故障",
+    "lang": 1
+  },
+  {
+    "code": "P152F",
+    "describe": "故障---与 Welcab 失去通信",
+    "lang": 1
+  },
+  {
+    "code": "P1538",
+    "describe": "故障---CVT 油泵和启停 ECU 之间电路故障",
+    "lang": 1
+  },
+  {
+    "code": "P1539",
+    "describe": "故障---CVT 油泵",
+    "lang": 1
+  },
+  {
+    "code": "P1540",
+    "describe": "故障---制动助力传感器电路（开路或短路）",
+    "lang": 1
+  },
+  {
+    "code": "P1541",
+    "describe": "故障---制动助力传感器电路",
+    "lang": 1
+  },
+  {
+    "code": "P1548",
+    "describe": "故障---发动机起动机相关部件磨损限制",
+    "lang": 1
+  },
+  {
+    "code": "P1643",
+    "describe": "故障---稳压电源范围 / 性能",
+    "lang": 1
+  },
+  {
+    "code": "P1862",
+    "describe": "故障---离合器控制系统 2",
+    "lang": 1
+  },
+  {
+    "code": "P257D",
+    "describe": "故障---发动机盖开关电路范围 / 故障",
+    "lang": 1
+  },
+  {
+    "code": "B22C0",
+    "describe": "故障---BBC 过流",
+    "lang": 1
+  },
+  {
+    "code": "U111A",
+    "describe": "故障---与 ECM / PCM'A'（传动系总线）失去通信",
+    "lang": 1
+  },
+  {
+    "code": "C2156",
+    "describe": "故障---发射器ID 1 电池正电压低",
+    "lang": 1
+  },
+  {
+    "code": "C2157",
+    "describe": "故障---发射器ID 2 电池正电压低",
+    "lang": 1
+  },
+  {
+    "code": "C2158",
+    "describe": "故障---发射器ID 3 电池正电压低",
+    "lang": 1
+  },
+  {
+    "code": "C2159",
+    "describe": "故障---发射器ID 4 电池正电压低",
+    "lang": 1
+  },
+  {
+    "code": "P1649",
+    "describe": "故障---驻车制动开关",
+    "lang": 1
+  },
+  {
+    "code": "P165A",
+    "describe": "故障---电动真空泵超激活",
+    "lang": 1
+  },
+  {
+    "code": "P165B",
+    "describe": "故障---电动真空泵继电器超激活",
+    "lang": 1
+  },
+  {
+    "code": "P17F0",
+    "describe": "故障---制动器锁止阀继电器电路 1 / 开路",
+    "lang": 1
+  },
+  {
+    "code": "P17F1",
+    "describe": "故障---制动器锁止阀继电器电路 1 低",
+    "lang": 1
+  },
+  {
+    "code": "P17F2",
+    "describe": "故障---制动器锁止阀继电器电路 1 高",
+    "lang": 1
+  },
+  {
+    "code": "P17F5",
+    "describe": "故障---制动器锁止阀继电器电路 2 / 开路",
+    "lang": 1
+  },
+  {
+    "code": "P17F6",
+    "describe": "故障---制动器锁止阀继电器电路 2 低",
+    "lang": 1
+  },
+  {
+    "code": "P17F7",
+    "describe": "故障---制动器锁止阀继电器电路 2 高",
+    "lang": 1
+  },
+  {
+    "code": "P258C",
+    "describe": "故障---电动真空泵继电器触点 OFF 固定",
+    "lang": 1
+  },
+  {
+    "code": "P258D",
+    "describe": "故障---电动真空泵继电器触点 ON 固定",
+    "lang": 1
+  },
+  {
+    "code": "C1488",
+    "describe": "故障---电控机械式变速器（AMT） ECU",
+    "lang": 1
+  },
+  {
+    "code": "C1491",
+    "describe": "故障---ABS电脑",
+    "lang": 1
+  },
+  {
+    "code": "U1136",
+    "describe": "故障---与离合器 ECU 失去通信",
+    "lang": 1
+  },
+  {
+    "code": "P080A",
+    "describe": "故障---离合器位置未学习",
+    "lang": 1
+  },
+  {
+    "code": "P1806",
+    "describe": "故障---ACU 行程传感器电路范围/性能",
+    "lang": 1
+  },
+  {
+    "code": "P188A",
+    "describe": "故障---门选择控制错误",
+    "lang": 1
+  },
+  {
+    "code": "P188C",
+    "describe": "故障---换挡位置控制错误",
+    "lang": 1
+  },
+  {
+    "code": "P191A",
+    "describe": "故障---ACU 电机劣化",
+    "lang": 1
+  },
+  {
+    "code": "P191C",
+    "describe": "故障---ACU 电机电路",
+    "lang": 1
+  },
+  {
+    "code": "C1596",
+    "describe": "故障---速度传感器输入检查未完成",
+    "lang": 1
+  },
+  {
+    "code": "C1598",
+    "describe": "故障---左前轮速输入检查未完成",
+    "lang": 1
+  },
+  {
+    "code": "P1721",
+    "describe": "故障---扭矩控制信号系统错误",
+    "lang": 1
+  },
+  {
+    "code": "U0116",
+    "describe": "故障---与冷却液温度控制模块失去通信",
+    "lang": 1
+  },
+  {
+    "code": "C2500",
+    "describe": "故障---混合动力电池受阻电压检测",
+    "lang": 1
+  },
+  {
+    "code": "C2501",
+    "describe": "故障---混合动力电池总电压",
+    "lang": 1
+  },
+  {
+    "code": "C2502",
+    "describe": "故障---混合动力电池总电压检测",
+    "lang": 1
+  },
+  {
+    "code": "C2510",
+    "describe": "故障---混合动力电池组电流传感器",
+    "lang": 1
+  },
+  {
+    "code": "C2512",
+    "describe": "故障---混合动力电池组电流传感器连接",
+    "lang": 1
+  },
+  {
+    "code": "C2513",
+    "describe": "故障---进气温度传感器相关性",
+    "lang": 1
+  },
+  {
+    "code": "C2515",
+    "describe": "故障---温度开关传感器",
+    "lang": 1
+  },
+  {
+    "code": "C2520",
+    "describe": "故障---电流传感器",
+    "lang": 1
+  },
+  {
+    "code": "C2526",
+    "describe": "故障---电流传感器2",
+    "lang": 1
+  },
+  {
+    "code": "C2530",
+    "describe": "故障---阻尼器",
+    "lang": 1
+  },
+  {
+    "code": "C2531",
+    "describe": "故障---风扇电机电路",
+    "lang": 1
+  },
+  {
+    "code": "C2533",
+    "describe": "故障---A/C信号",
+    "lang": 1
+  },
+  {
+    "code": "C2540",
+    "describe": "故障---混合动力电池单元电压",
+    "lang": 1
+  },
+  {
+    "code": "C2542",
+    "describe": "故障---混合动力电池单元高温",
+    "lang": 1
+  },
+  {
+    "code": "C2543",
+    "describe": "故障---混合动力电池单元电压相关性",
+    "lang": 1
+  },
+  {
+    "code": "C2544",
+    "describe": "故障---混合动力电池单元电流相关性",
+    "lang": 1
+  },
+  {
+    "code": "C2550",
+    "describe": "故障---混合动力系统（THS）充电器充电时间超时",
+    "lang": 1
+  },
+  {
+    "code": "C2551",
+    "describe": "故障---混合动力系统（THS）充电器断开连接",
+    "lang": 1
+  },
+  {
+    "code": "C2560",
+    "describe": "故障---电池充电器充电时间超时",
+    "lang": 1
+  },
+  {
+    "code": "C2561",
+    "describe": "故障---电池充电器电流故障",
+    "lang": 1
+  },
+  {
+    "code": "C2562",
+    "describe": "故障---辅助电池电压低（电池充电器充电）",
+    "lang": 1
+  },
+  {
+    "code": "C2570",
+    "describe": "故障---混合动力电池高温",
+    "lang": 1
+  },
+  {
+    "code": "C2571",
+    "describe": "故障---混合动力电池温度差异",
+    "lang": 1
+  },
+  {
+    "code": "C2572",
+    "describe": "故障---电源电路",
+    "lang": 1
+  },
+  {
+    "code": "C2573",
+    "describe": "故障---高电压电源电压低",
+    "lang": 1
+  },
+  {
+    "code": "C2575",
+    "describe": "故障---充电禁止控制故障",
+    "lang": 1
+  },
+  {
+    "code": "C2576",
+    "describe": "故障---放电禁止控制故障",
+    "lang": 1
+  },
+  {
+    "code": "C2577",
+    "describe": "故障---高电压电源短路",
+    "lang": 1
+  },
+  {
+    "code": "C2578",
+    "describe": "故障---混合型蓄电池电压隔离传感器电路",
+    "lang": 1
+  },
+  {
+    "code": "C2579",
+    "describe": "故障---等量充电请求",
+    "lang": 1
+  },
+  {
+    "code": "C2580",
+    "describe": "故障---过度放电",
+    "lang": 1
+  },
+  {
+    "code": "C2581",
+    "describe": "故障---系统电压",
+    "lang": 1
+  },
+  {
+    "code": "C2582",
+    "describe": "故障---蓄电池劣化",
+    "lang": 1
+  },
+  {
+    "code": "C2600",
+    "describe": "故障---输出限制警告灯",
+    "lang": 1
+  },
+  {
+    "code": "C2601",
+    "describe": "故障---电机温度传感器电路开路",
+    "lang": 1
+  },
+  {
+    "code": "C2602",
+    "describe": "故障---电机温度传感器电路短路",
+    "lang": 1
+  },
+  {
+    "code": "C2603",
+    "describe": "故障---电机位置传感器信号",
+    "lang": 1
+  },
+  {
+    "code": "C2604",
+    "describe": "故障---电机位置传感器相关性",
+    "lang": 1
+  },
+  {
+    "code": "C2605",
+    "describe": "故障---电机逆变器电路",
+    "lang": 1
+  },
+  {
+    "code": "C2606",
+    "describe": "故障---电机逆变器温度传感器电路对电池正极短路",
+    "lang": 1
+  },
+  {
+    "code": "C2607",
+    "describe": "故障---电机逆变器温度传感器电路开路或短路",
+    "lang": 1
+  },
+  {
+    "code": "C2608",
+    "describe": "故障---电机电流传感器电路",
+    "lang": 1
+  },
+  {
+    "code": "C2609",
+    "describe": "故障---电机逆变器停止（对电池正极短路）",
+    "lang": 1
+  },
+  {
+    "code": "C2610",
+    "describe": "故障---电机逆变器停止（开路或对地短路）",
+    "lang": 1
+  },
+  {
+    "code": "C2611",
+    "describe": "故障---电机逆变器停止 1",
+    "lang": 1
+  },
+  {
+    "code": "C2612",
+    "describe": "故障---电机逆变器停止（超温）",
+    "lang": 1
+  },
+  {
+    "code": "C2613",
+    "describe": "故障---电机逆变器停止 2",
+    "lang": 1
+  },
+  {
+    "code": "C2614",
+    "describe": "故障---电机逆变器驱动禁止（对电池正极短路）",
+    "lang": 1
+  },
+  {
+    "code": "C2615",
+    "describe": "故障---电机逆变器驱动禁止（开路或对地短路）",
+    "lang": 1
+  },
+  {
+    "code": "C2616",
+    "describe": "故障---电机逆变器驱动禁止（超温）",
+    "lang": 1
+  },
+  {
+    "code": "C2617",
+    "describe": "故障---电机逆变器驱动禁止（内部电路）",
+    "lang": 1
+  },
+  {
+    "code": "C2618",
+    "describe": "故障---电机逆变器驱动禁止（超载）",
+    "lang": 1
+  },
+  {
+    "code": "C2619",
+    "describe": "故障---电机逆变器驱动信号电路开路或对电池正极短路",
+    "lang": 1
+  },
+  {
+    "code": "C2620",
+    "describe": "故障---电机逆变器驱动信号电路对地短路",
+    "lang": 1
+  },
+  {
+    "code": "C2621",
+    "describe": "故障---电机控制内部电路",
+    "lang": 1
+  },
+  {
+    "code": "C2631",
+    "describe": "故障---发电机温度传感器电路开路",
+    "lang": 1
+  },
+  {
+    "code": "C2632",
+    "describe": "故障---发电机温度传感器电路短路",
+    "lang": 1
+  },
+  {
+    "code": "C2633",
+    "describe": "故障---发电机位置传感器信号",
+    "lang": 1
+  },
+  {
+    "code": "C2634",
+    "describe": "故障---发电机位置传感器相关性",
+    "lang": 1
+  },
+  {
+    "code": "C2635",
+    "describe": "故障---发电机逆变器电路",
+    "lang": 1
+  },
+  {
+    "code": "C2636",
+    "describe": "故障---发电机逆变器温度传感器电路对电池正极短路",
+    "lang": 1
+  },
+  {
+    "code": "C2637",
+    "describe": "故障---发电机逆变器温度传感器电路开路或短路",
+    "lang": 1
+  },
+  {
+    "code": "C2638",
+    "describe": "故障---发电机电流传感器电路",
+    "lang": 1
+  },
+  {
+    "code": "C2639",
+    "describe": "故障---发电机逆变器停止（对电池正极短路）",
+    "lang": 1
+  },
+  {
+    "code": "C2640",
+    "describe": "故障---发电机逆变器停止（开路或对地短路）",
+    "lang": 1
+  },
+  {
+    "code": "C2641",
+    "describe": "故障---发电机逆变器停止 1",
+    "lang": 1
+  },
+  {
+    "code": "C2642",
+    "describe": "故障---发电机逆变器停止（超温）",
+    "lang": 1
+  },
+  {
+    "code": "C2643",
+    "describe": "故障---发电机逆变器停止 2",
+    "lang": 1
+  },
+  {
+    "code": "C2644",
+    "describe": "故障---发电机逆变器驱动禁止（对电池正极短路）",
+    "lang": 1
+  },
+  {
+    "code": "C2645",
+    "describe": "故障---发电机逆变器驱动禁止（开路或对地短路）",
+    "lang": 1
+  },
+  {
+    "code": "C2646",
+    "describe": "故障---发电机逆变器驱动禁止（OVT）",
+    "lang": 1
+  },
+  {
+    "code": "C2647",
+    "describe": "故障---发电机逆变器驱动禁止（内部电路）",
+    "lang": 1
+  },
+  {
+    "code": "C2648",
+    "describe": "故障---发电机逆变器驱动禁止（过载）",
+    "lang": 1
+  },
+  {
+    "code": "C2649",
+    "describe": "故障---发电机逆变器驱动信号电路开路或对电池正极短路",
+    "lang": 1
+  },
+  {
+    "code": "C2650",
+    "describe": "故障---发电机逆变器驱动信号电路对地短路",
+    "lang": 1
+  },
+  {
+    "code": "C2651",
+    "describe": "故障---发电机控制内部电路",
+    "lang": 1
+  },
+  {
+    "code": "C2661",
+    "describe": "故障---高电压电源电压（开路或短路到地）",
+    "lang": 1
+  },
+  {
+    "code": "C2662",
+    "describe": "故障---高电压电源电压（短路到+B）",
+    "lang": 1
+  },
+  {
+    "code": "C2663",
+    "describe": "故障---高电压电源电流（开路或短路到地）",
+    "lang": 1
+  },
+  {
+    "code": "C2664",
+    "describe": "故障---高电压电源电流（短路到+B）",
+    "lang": 1
+  },
+  {
+    "code": "C2665",
+    "describe": "故障---DC/DC转换器电路对电池正极短路",
+    "lang": 1
+  },
+  {
+    "code": "C2666",
+    "describe": "故障---DC/DC转换器电路开路或对地短路",
+    "lang": 1
+  },
+  {
+    "code": "C2667",
+    "describe": "故障---DC/DC转换器电路",
+    "lang": 1
+  },
+  {
+    "code": "C2668",
+    "describe": "故障---高电压电源短路",
+    "lang": 1
+  },
+  {
+    "code": "C2669",
+    "describe": "故障---第二系统主继电器（SMR ）卡在关闭位置",
+    "lang": 1
+  },
+  {
+    "code": "C2670",
+    "describe": "故障---第三系统主继电器（SMR ）卡在关闭位置",
+    "lang": 1
+  },
+  {
+    "code": "C2671",
+    "describe": "故障---CONT1 信号故障（短路）",
+    "lang": 1
+  },
+  {
+    "code": "C2672",
+    "describe": "故障---CONT1 信号故障（开路）",
+    "lang": 1
+  },
+  {
+    "code": "C2673",
+    "describe": "故障---CONT2 信号故障（短路）",
+    "lang": 1
+  },
+  {
+    "code": "C2674",
+    "describe": "故障---CONT2 信号故障（开路）",
+    "lang": 1
+  },
+  {
+    "code": "C2675",
+    "describe": "故障---CONT3 信号故障（短路）",
+    "lang": 1
+  },
+  {
+    "code": "C2676",
+    "describe": "故障---CONT3 信号故障（开路）",
+    "lang": 1
+  },
+  {
+    "code": "C2677",
+    "describe": "故障---高电压电源",
+    "lang": 1
+  },
+  {
+    "code": "C2678",
+    "describe": "故障---混合动力电池控制系统",
+    "lang": 1
+  },
+  {
+    "code": "C2679",
+    "describe": "故障---混合动力电池故障",
+    "lang": 1
+  },
+  {
+    "code": "C2680",
+    "describe": "故障---ILK 电路低（互锁）",
+    "lang": 1
+  },
+  {
+    "code": "C2681",
+    "describe": "故障---ILK 电路低2（互锁）",
+    "lang": 1
+  },
+  {
+    "code": "C2682",
+    "describe": "故障---安全气囊信号开路或对电池正极短路",
+    "lang": 1
+  },
+  {
+    "code": "C2683",
+    "describe": "故障---安全气囊信号对地短路",
+    "lang": 1
+  },
+  {
+    "code": "C2684",
+    "describe": "故障---断路器传感器开路或对电池正极短路",
+    "lang": 1
+  },
+  {
+    "code": "C2685",
+    "describe": "故障---断路器传感器对地短路",
+    "lang": 1
+  },
+  {
+    "code": "C2688",
+    "describe": "故障---校验检测",
+    "lang": 1
+  },
+  {
+    "code": "C2689",
+    "describe": "故障---驱动电机输出故障",
+    "lang": 1
+  },
+  {
+    "code": "C2690",
+    "describe": "故障---发电机输出故障",
+    "lang": 1
+  },
+  {
+    "code": "C2691",
+    "describe": "故障---高电压电源电路",
+    "lang": 1
+  },
+  {
+    "code": "C2701",
+    "describe": "故障---内部控制模块A/D处理性能 1",
+    "lang": 1
+  },
+  {
+    "code": "C2702",
+    "describe": "故障---内部控制模块A/D处理性能 2",
+    "lang": 1
+  },
+  {
+    "code": "C2703",
+    "describe": "故障---内部控制模块A/D处理性能 3",
+    "lang": 1
+  },
+  {
+    "code": "C2704",
+    "describe": "故障---内部控制模块A/D处理性能 4",
+    "lang": 1
+  },
+  {
+    "code": "C2709",
+    "describe": "故障---与制动系统控制模块1失去通信",
+    "lang": 1
+  },
+  {
+    "code": "C2710",
+    "describe": "故障---与制动系统控制模块2失去通信",
+    "lang": 1
+  },
+  {
+    "code": "C2711",
+    "describe": "故障---与制动系统控制模块3失去通信",
+    "lang": 1
+  },
+  {
+    "code": "C2712",
+    "describe": "故障---与制动系统控制模块4失去通信",
+    "lang": 1
+  },
+  {
+    "code": "C2713",
+    "describe": "故障---与ECM/PCM 1失去通信",
+    "lang": 1
+  },
+  {
+    "code": "C2714",
+    "describe": "故障---与ECM/PCM 2失去通信",
+    "lang": 1
+  },
+  {
+    "code": "C2715",
+    "describe": "故障---与ECM/PCM 3失去通信",
+    "lang": 1
+  },
+  {
+    "code": "C2716",
+    "describe": "故障---与ECM/PCM 4失去通信",
+    "lang": 1
+  },
+  {
+    "code": "C2717",
+    "describe": "故障---与电池能量控制模块1失去通信",
+    "lang": 1
+  },
+  {
+    "code": "C2718",
+    "describe": "故障---与电池能量控制模块2失去通信",
+    "lang": 1
+  },
+  {
+    "code": "C2719",
+    "describe": "故障---与电池能量控制模块3失去通信",
+    "lang": 1
+  },
+  {
+    "code": "C2720",
+    "describe": "故障---与电池能量控制模块4失去通信",
+    "lang": 1
+  },
+  {
+    "code": "C2721",
+    "describe": "故障---主节气门/踏板位置传感器开路或对地短路",
+    "lang": 1
+  },
+  {
+    "code": "C2722",
+    "describe": "故障---主节气门/踏板位置传感器对电池正极短路",
+    "lang": 1
+  },
+  {
+    "code": "C2723",
+    "describe": "故障---子节气门/踏板位置传感器开路或对地短路",
+    "lang": 1
+  },
+  {
+    "code": "C2724",
+    "describe": "故障---子节气门/踏板位置传感器对电池正极短路",
+    "lang": 1
+  },
+  {
+    "code": "C2725",
+    "describe": "故障---节气门/踏板位置传感器相关性",
+    "lang": 1
+  },
+  {
+    "code": "C2726",
+    "describe": "故障---节气门/踏板位置传感器（IDL）开路或对电池正极短路",
+    "lang": 1
+  },
+  {
+    "code": "C2727",
+    "describe": "故障---节气门/踏板位置传感器（IDL）对地短路",
+    "lang": 1
+  },
+  {
+    "code": "C2728",
+    "describe": "故障---节气门/踏板位置开关开路或对电池正极短路",
+    "lang": 1
+  },
+  {
+    "code": "C2729",
+    "describe": "故障---节气门/踏板位置开关对地短路",
+    "lang": 1
+  },
+  {
+    "code": "C2731",
+    "describe": "故障---ST信号故障",
+    "lang": 1
+  },
+  {
+    "code": "C2732",
+    "describe": "故障---NEO信号开路",
+    "lang": 1
+  },
+  {
+    "code": "C2733",
+    "describe": "故障---NEO信号短路",
+    "lang": 1
+  },
+  {
+    "code": "C2734",
+    "describe": "故障---NEO信号故障（无连接）",
+    "lang": 1
+  },
+  {
+    "code": "C2735",
+    "describe": "故障---SPDI信号开路",
+    "lang": 1
+  },
+  {
+    "code": "C2736",
+    "describe": "故障---SPDI信号短路",
+    "lang": 1
+  },
+  {
+    "code": "C2737",
+    "describe": "故障---发动机摩擦故障",
+    "lang": 1
+  },
+  {
+    "code": "C2738",
+    "describe": "故障---发动机转速信号电路",
+    "lang": 1
+  },
+  {
+    "code": "C2739",
+    "describe": "故障---发动机功率不良",
+    "lang": 1
+  },
+  {
+    "code": "C2740",
+    "describe": "故障---内部控制模块随即存取记忆 (RAM) 错误",
+    "lang": 1
+  },
+  {
+    "code": "C2741",
+    "describe": "故障---内部控制模块只读记忆 (ROM) 错误",
+    "lang": 1
+  },
+  {
+    "code": "C2742",
+    "describe": "故障---与制动系统控制模块5失去通信",
+    "lang": 1
+  },
+  {
+    "code": "C2743",
+    "describe": "故障---安全气囊信号故障",
+    "lang": 1
+  },
+  {
+    "code": "C2744",
+    "describe": "故障---驱动电机逆变器驱动禁止",
+    "lang": 1
+  },
+  {
+    "code": "C2745",
+    "describe": "故障---驱动电机系统故障",
+    "lang": 1
+  },
+  {
+    "code": "C2746",
+    "describe": "故障---驱动电机逆变器电流故障",
+    "lang": 1
+  },
+  {
+    "code": "C2747",
+    "describe": "故障---驱动电机电流故障",
+    "lang": 1
+  },
+  {
+    "code": "C2748",
+    "describe": "故障---发电机逆变器驱动禁止",
+    "lang": 1
+  },
+  {
+    "code": "C2749",
+    "describe": "故障---发电机系统故障",
+    "lang": 1
+  },
+  {
+    "code": "C2750",
+    "describe": "故障---发电机逆变器电流故障",
+    "lang": 1
+  },
+  {
+    "code": "C2751",
+    "describe": "故障---发电机电流故障",
+    "lang": 1
+  },
+  {
+    "code": "C2752",
+    "describe": "故障---高电压电源电压",
+    "lang": 1
+  },
+  {
+    "code": "C2753",
+    "describe": "故障---主换挡位置传感器短路",
+    "lang": 1
+  },
+  {
+    "code": "C2754",
+    "describe": "故障---主换挡位置传感器开路",
+    "lang": 1
+  },
+  {
+    "code": "C2755",
+    "describe": "故障---子换挡位置传感器开路或短路",
+    "lang": 1
+  },
+  {
+    "code": "C2756",
+    "describe": "故障---换挡位置传感器电路",
+    "lang": 1
+  },
+  {
+    "code": "C2757",
+    "describe": "故障---发动机ECU故障检测",
+    "lang": 1
+  },
+  {
+    "code": "C2758",
+    "describe": "故障---发动机ECU故障",
+    "lang": 1
+  },
+  {
+    "code": "C2759",
+    "describe": "故障---发动机不能起动",
+    "lang": 1
+  },
+  {
+    "code": "C2760",
+    "describe": "故障---驱动电机逆变器停止信号电路",
+    "lang": 1
+  },
+  {
+    "code": "C2761",
+    "describe": "故障---发电机逆变器停止信号电路",
+    "lang": 1
+  },
+  {
+    "code": "C2762",
+    "describe": "故障---发动机熄火（限制运行）",
+    "lang": 1
+  },
+  {
+    "code": "B1553",
+    "describe": "故障---蓝牙控制开关电路",
+    "lang": 1
+  },
+  {
+    "code": "B1554",
+    "describe": "故障---蓝牙 LED 电路",
+    "lang": 1
+  },
+  {
+    "code": "B1555",
+    "describe": "故障---蓝牙模块内部通信",
+    "lang": 1
+  },
+  {
+    "code": "P07CB",
+    "describe": "故障---液体恒温器性能异常",
+    "lang": 1
+  },
+  {
+    "code": "P1124",
+    "describe": "故障---节气门/踏板位置传感器",
+    "lang": 1
+  },
+  {
+    "code": "P1712",
+    "describe": "故障---发动机冷却温度",
+    "lang": 1
+  },
+  {
+    "code": "P1297",
+    "describe": "故障---A/F 调节器",
+    "lang": 1
+  },
+  {
+    "code": "P1402",
+    "describe": "故障---离子电流系统（3 号气缸）",
+    "lang": 1
+  },
+  {
+    "code": "P1403",
+    "describe": "故障---离子电流系统（4缸）",
+    "lang": 1
+  },
+  {
+    "code": "U1642",
+    "describe": "故障---与 ERS 通信（接收）",
+    "lang": 1
+  },
+  {
+    "code": "P1535",
+    "describe": "故障---ISG 启动故障",
+    "lang": 1
+  },
+  {
+    "code": "P1543",
+    "describe": "故障---发动机罩开关电路",
+    "lang": 1
+  },
+  {
+    "code": "P1544",
+    "describe": "故障---怠速停止取消开关电路",
+    "lang": 1
+  },
+  {
+    "code": "P1549",
+    "describe": "故障---起动机输出电路电源故障",
+    "lang": 1
+  },
+  {
+    "code": "P3052",
+    "describe": "故障---子电池组故障",
+    "lang": 1
+  },
+  {
+    "code": "P3053",
+    "describe": "故障---子电池端子不良",
+    "lang": 1
+  },
+  {
+    "code": "C2330",
+    "describe": "故障---坡道起步电磁阀电路",
+    "lang": 1
+  },
+  {
+    "code": "B24D0",
+    "describe": "故障---加速传感器故障",
+    "lang": 1
+  },
+  {
+    "code": "B24D1",
+    "describe": "故障---车速故障",
+    "lang": 1
+  },
+  {
+    "code": "B24D2",
+    "describe": "故障---车轮转速传感器故障",
+    "lang": 1
+  },
+  {
+    "code": "B24D3",
+    "describe": "故障---初始化习得故障",
+    "lang": 1
+  },
+  {
+    "code": "B24D4",
+    "describe": "故障---调平器马达控制信号故障",
+    "lang": 1
+  },
+  {
+    "code": "B24D5",
+    "describe": "故障---调平器马达控制电路高",
+    "lang": 1
+  },
+  {
+    "code": "C2705",
+    "describe": "故障---与发电机ECU（超限/帧）失去通信",
+    "lang": 1
+  },
+  {
+    "code": "C2706",
+    "describe": "故障---与发电机ECU（Sum/后视镜）失去通信",
+    "lang": 1
+  },
+  {
+    "code": "C2707",
+    "describe": "故障---与发电机ECU（无接收中断）失去通信",
+    "lang": 1
+  },
+  {
+    "code": "C2708",
+    "describe": "故障---与发电机ECU（错误数据）失去通信",
+    "lang": 1
+  },
+  {
+    "code": "C2763",
+    "describe": "故障---HV ECU",
+    "lang": 1
+  },
+  {
+    "code": "C2764",
+    "describe": "故障---发动机到HV通信错误",
+    "lang": 1
+  },
+  {
+    "code": "C2765",
+    "describe": "故障---高电压电源",
+    "lang": 1
+  },
+  {
+    "code": "C2766",
+    "describe": "故障---HV变速驱动桥测验",
+    "lang": 1
+  },
+  {
+    "code": "C1A79",
+    "describe": "故障---间隙声纳系统",
+    "lang": 1
+  },
+  {
+    "code": "B2011",
+    "describe": "故障---与 LIN 失去通信",
+    "lang": 1
+  },
+  {
+    "code": "B2022",
+    "describe": "故障---左转向器限流器操作",
+    "lang": 1
+  },
+  {
+    "code": "B2023",
+    "describe": "故障---右转向器烧坏",
+    "lang": 1
+  },
+  {
+    "code": "B2024",
+    "describe": "故障---左转向器烧坏",
+    "lang": 1
+  },
+  {
+    "code": "B2899",
+    "describe": "故障---与电子钥匙振荡器和电子天线失去通信",
+    "lang": 1
+  },
+  {
+    "code": "B2898",
+    "describe": "故障---与多路传输失去通信",
+    "lang": 1
+  },
+  {
+    "code": "P1580",
+    "describe": "故障---车道识别摄像头",
+    "lang": 1
+  },
+  {
+    "code": "P1582",
+    "describe": "故障---车道识别摄像头光轴故障",
+    "lang": 1
+  },
+  {
+    "code": "P1621",
+    "describe": "故障---距离控制ECU到车道识别摄像头通信错误",
+    "lang": 1
+  },
+  {
+    "code": "C16A0",
+    "describe": "故障---高速CAN通信总线停止",
+    "lang": 1
+  },
+  {
+    "code": "C16A1",
+    "describe": "故障---距离控制 ECU",
+    "lang": 1
+  },
+  {
+    "code": "C16B0",
+    "describe": "故障---EPS 系统故障",
+    "lang": 1
+  },
+  {
+    "code": "C16B1",
+    "describe": "故障---动力转向控制扭矩",
+    "lang": 1
+  },
+  {
+    "code": "C16C0",
+    "describe": "故障---轮速传感器电路",
+    "lang": 1
+  },
+  {
+    "code": "C16C1",
+    "describe": "故障---停止灯开关电路",
+    "lang": 1
+  },
+  {
+    "code": "C16CA",
+    "describe": "故障---防滑控制蜂鸣器电路",
+    "lang": 1
+  },
+  {
+    "code": "C16CB",
+    "describe": "故障---从横摆率传感器接收到无效数据",
+    "lang": 1
+  },
+  {
+    "code": "P1875",
+    "describe": "故障---蜂鸣器故障",
+    "lang": 1
+  },
+  {
+    "code": "P3008",
+    "describe": "故障---发动机加注实测MAF过高可信度",
+    "lang": 1
+  },
+  {
+    "code": "P3061",
+    "describe": "故障---36V电池温度传感器开路或短路",
+    "lang": 1
+  },
+  {
+    "code": "P3156",
+    "describe": "故障---霍尔传感器输出间隔/组合故障",
+    "lang": 1
+  },
+  {
+    "code": "P3165",
+    "describe": "故障---发电机传动带/动力转向泵故障",
+    "lang": 1
+  },
+  {
+    "code": "P3166",
+    "describe": "故障---电磁离合器关闭故障",
+    "lang": 1
+  },
+  {
+    "code": "P3167",
+    "describe": "故障---电磁离合器接合故障",
+    "lang": 1
+  },
+  {
+    "code": "P3170",
+    "describe": "故障---离合器阻尼器温度传感器短路",
+    "lang": 1
+  },
+  {
+    "code": "P3171",
+    "describe": "故障---DC/DC信号故障",
+    "lang": 1
+  },
+  {
+    "code": "P3172",
+    "describe": "故障---DC/DC转换器开路或短路",
+    "lang": 1
+  },
+  {
+    "code": "P3192",
+    "describe": "故障---36V电池接地故障",
+    "lang": 1
+  },
+  {
+    "code": "P0A5D",
+    "describe": "故障---驱动电机 'A' 相位 U 电流",
+    "lang": 1
+  },
+  {
+    "code": "B3014",
+    "describe": "故障---识别摄像头ECU故障",
+    "lang": 1
+  },
+  {
+    "code": "B3100",
+    "describe": "故障---CVT 系统",
+    "lang": 1
+  },
+  {
+    "code": "B3105",
+    "describe": "故障---车身 ECU",
+    "lang": 1
+  },
+  {
+    "code": "B20A0",
+    "describe": "故障---乘客座椅倾斜脉冲传感器故障",
+    "lang": 1
+  },
+  {
+    "code": "B20A1",
+    "describe": "故障---右后座椅倾斜脉冲传感器故障",
+    "lang": 1
+  },
+  {
+    "code": "B20A2",
+    "describe": "故障---左后座椅倾斜脉冲传感器故障",
+    "lang": 1
+  },
+  {
+    "code": "B20A3",
+    "describe": "故障---乘客座椅倾斜电机故障",
+    "lang": 1
+  },
+  {
+    "code": "B20A4",
+    "describe": "故障---右后座椅倾斜电机故障",
+    "lang": 1
+  },
+  {
+    "code": "B20A5",
+    "describe": "故障---左后座椅倾斜电机故障",
+    "lang": 1
+  },
+  {
+    "code": "B20A6",
+    "describe": "故障---乘客座椅控制模块性能",
+    "lang": 1
+  },
+  {
+    "code": "B20A7",
+    "describe": "故障---右后座椅控制模块性能",
+    "lang": 1
+  },
+  {
+    "code": "B20A8",
+    "describe": "故障---左后座椅控制模块性能",
+    "lang": 1
+  },
+  {
+    "code": "B20A9",
+    "describe": "故障---乘客座椅倾斜初始化故障",
+    "lang": 1
+  },
+  {
+    "code": "B20AA",
+    "describe": "故障---右后座椅倾斜初始化故障",
+    "lang": 1
+  },
+  {
+    "code": "B20AB",
+    "describe": "故障---左后座椅倾斜初始化故障",
+    "lang": 1
+  },
+  {
+    "code": "C19A0",
+    "describe": "故障---右后电容传感器",
+    "lang": 1
+  },
+  {
+    "code": "C19A1",
+    "describe": "故障---右后电机电路开路",
+    "lang": 1
+  },
+  {
+    "code": "C19A2",
+    "describe": "故障---右后ECU故障",
+    "lang": 1
+  },
+  {
+    "code": "C19A3",
+    "describe": "故障---左后电容传感器",
+    "lang": 1
+  },
+  {
+    "code": "C19A4",
+    "describe": "故障---左后电机电路开路",
+    "lang": 1
+  },
+  {
+    "code": "C19A5",
+    "describe": "故障---左后ECU故障",
+    "lang": 1
+  },
+  {
+    "code": "B2836",
+    "describe": "故障---ID-BOX 进入故障",
+    "lang": 1
+  },
+  {
+    "code": "P1542",
+    "describe": "故障---电瓶电流传感器线路故障",
+    "lang": 1
+  },
+  {
+    "code": "P1547",
+    "describe": "故障---动力转向控制模块负荷信号故障",
+    "lang": 1
+  },
+  {
+    "code": "P1681",
+    "describe": "故障---与蓄电池能量控制模块 'A' 失去通信",
+    "lang": 1
+  },
+  {
+    "code": "P1682",
+    "describe": "故障---与ABS控制模块失去通信",
+    "lang": 1
+  },
+  {
+    "code": "B1123",
+    "describe": "故障---引爆管电压检测电路",
+    "lang": 1
+  },
+  {
+    "code": "B1133",
+    "describe": "故障---常数错误",
+    "lang": 1
+  },
+  {
+    "code": "B1113",
+    "describe": "故障---点火电路（打开）",
+    "lang": 1
+  },
+  {
+    "code": "B1136",
+    "describe": "故障---指示器/关闭电路开路（倒车）",
+    "lang": 1
+  },
+  {
+    "code": "B1137",
+    "describe": "故障---GSW1电路开路",
+    "lang": 1
+  },
+  {
+    "code": "B1138",
+    "describe": "故障---GSW2电路开路",
+    "lang": 1
+  },
+  {
+    "code": "C1537",
+    "describe": "故障---ECU 故障",
+    "lang": 1
+  },
+  {
+    "code": "C1574",
+    "describe": "故障---ABC 车速传感器",
+    "lang": 1
+  },
+  {
+    "code": "P1564",
+    "describe": "故障---电磁离合器电路",
+    "lang": 1
+  },
+  {
+    "code": "P1567",
+    "describe": "故障---怠速信号电路",
+    "lang": 1
+  },
+  {
+    "code": "P1568",
+    "describe": "故障---执行器故障（电源电压低）",
+    "lang": 1
+  },
+  {
+    "code": "P1569",
+    "describe": "故障---电机电路（连续电流）",
+    "lang": 1
+  },
+  {
+    "code": "P1574",
+    "describe": "故障---马达电路",
+    "lang": 1
+  },
+  {
+    "code": "P1579",
+    "describe": "故障---执行器故障",
+    "lang": 1
+  },
+  {
+    "code": "B1B00",
+    "describe": "故障---ITS ECU天线开路",
+    "lang": 1
+  },
+  {
+    "code": "B1B01",
+    "describe": "故障---ITS ECU天线短路",
+    "lang": 1
+  },
+  {
+    "code": "B1B02",
+    "describe": "故障---ITS ECU GPS天线开路",
+    "lang": 1
+  },
+  {
+    "code": "B1B03",
+    "describe": "故障---ITS ECU GPS天线短路",
+    "lang": 1
+  },
+  {
+    "code": "B1B04",
+    "describe": "故障---ECU 故障",
+    "lang": 1
+  },
+  {
+    "code": "B1B05",
+    "describe": "故障---ITS ECU 基础结构异常",
+    "lang": 1
+  },
+  {
+    "code": "B27B1",
+    "describe": "故障---DC-DC 变换器",
+    "lang": 1
+  },
+  {
+    "code": "P06B3",
+    "describe": "故障---驱动马达'B'控制模块位置传感器参考电源",
+    "lang": 1
+  },
+  {
+    "code": "P0AF2",
+    "describe": "故障---驱动马达变换器温度传感器'B'",
+    "lang": 1
+  },
+  {
+    "code": "P0BD1",
+    "describe": "故障---驱动马达变换器温度传感器'C'电路",
+    "lang": 1
+  },
+  {
+    "code": "P0BF5",
+    "describe": "故障---驱动马达'B'V 相位电流传感器",
+    "lang": 1
+  },
+  {
+    "code": "P0BF9",
+    "describe": "故障---驱动马达'B'W 相位电流传感器",
+    "lang": 1
+  },
+  {
+    "code": "P0C02",
+    "describe": "故障---驱动马达'B'系统",
+    "lang": 1
+  },
+  {
+    "code": "P0C31",
+    "describe": "故障---驱动马达变换器温度传感器'C'电路",
+    "lang": 1
+  },
+  {
+    "code": "P0C55",
+    "describe": "故障---驱动马达'B'位置传感器电路'A'",
+    "lang": 1
+  },
+  {
+    "code": "P0C5F",
+    "describe": "故障---驱动马达'B'位置传感器电路'B'",
+    "lang": 1
+  },
+  {
+    "code": "P0C7A",
+    "describe": "故障---驱动马达'B'变换器电压传感器'A'",
+    "lang": 1
+  },
+  {
+    "code": "P1C5E",
+    "describe": "故障---驱动马达'B'变换器",
+    "lang": 1
+  },
+  {
+    "code": "P1C61",
+    "describe": "故障---驱动马达'B'控制模块位置传感器参考电源",
+    "lang": 1
+  },
+  {
+    "code": "P1C63",
+    "describe": "故障---驱动马达'B'控制模块补偿电源",
+    "lang": 1
+  },
+  {
+    "code": "P1C66",
+    "describe": "故障---驱动马达'B'控制模块",
+    "lang": 1
+  },
+  {
+    "code": "P1CE4",
+    "describe": "故障---驱动马达'B'变换器电压传感器'A'",
+    "lang": 1
+  },
+  {
+    "code": "P262C",
+    "describe": "故障---驱动马达'B'控制模块补偿电源",
+    "lang": 1
+  },
+  {
+    "code": "P3104",
+    "describe": "故障---驱动马达变换器温度传感器'B'",
+    "lang": 1
+  },
+  {
+    "code": "P3149",
+    "describe": "故障---驱动马达'A'和'B'失去通信",
+    "lang": 1
+  },
+  {
+    "code": "P31E4",
+    "describe": "故障---驱动马达'B'V 相位电流传感器",
+    "lang": 1
+  },
+  {
+    "code": "P31E5",
+    "describe": "故障---驱动马达'B'W 相位电流传感器",
+    "lang": 1
+  },
+  {
+    "code": "P33C0",
+    "describe": "故障---驱动马达'B'V 相位电流传感器（辅）",
+    "lang": 1
+  },
+  {
+    "code": "P33C5",
+    "describe": "故障---驱动马达'B'W 相位电流传感器（辅）",
+    "lang": 1
+  },
+  {
+    "code": "P1EAB",
+    "describe": "故障---太阳能充电蓄电池温度传感器 1",
+    "lang": 1
+  },
+  {
+    "code": "P1EB0",
+    "describe": "故障---太阳能充电蓄电池温度传感器 2",
+    "lang": 1
+  },
+  {
+    "code": "P1EB5",
+    "describe": "故障---太阳能充电蓄电池温度传感器 3",
+    "lang": 1
+  },
+  {
+    "code": "P1EBA",
+    "describe": "故障---太阳能充电电压",
+    "lang": 1
+  },
+  {
+    "code": "P1EC0",
+    "describe": "故障---太阳能充电蓄电池单元 1 电路电阻超出范围（极大）",
+    "lang": 1
+  },
+  {
+    "code": "P1EC1",
+    "describe": "故障---太阳能充电蓄电池单元 1 压差",
+    "lang": 1
+  },
+  {
+    "code": "P1EC2",
+    "describe": "故障---太阳能充电蓄电池单元 2 电路电阻超出范围（极大）",
+    "lang": 1
+  },
+  {
+    "code": "P1EC3",
+    "describe": "故障---太阳能充电蓄电池单元 2 压差",
+    "lang": 1
+  },
+  {
+    "code": "P1EC4",
+    "describe": "故障---太阳能充电蓄电池单元 3 电路电阻超出范围（极大）",
+    "lang": 1
+  },
+  {
+    "code": "P1EC5",
+    "describe": "故障---太阳能充电蓄电池单元 3 压差",
+    "lang": 1
+  },
+  {
+    "code": "P1EC6",
+    "describe": "故障---太阳能充电蓄电池组 1 Delta SOC 高",
+    "lang": 1
+  },
+  {
+    "code": "P1EC7",
+    "describe": "故障---太阳能充电蓄电池单元低电压",
+    "lang": 1
+  },
+  {
+    "code": "P1EC8",
+    "describe": "故障---太阳能充电蓄电池单元",
+    "lang": 1
+  },
+  {
+    "code": "P1ECC",
+    "describe": "故障---太阳能充电蓄电池充电高状态",
+    "lang": 1
+  },
+  {
+    "code": "P1ECD",
+    "describe": "故障---太阳能充电蓄电池放电控制故障",
+    "lang": 1
+  },
+  {
+    "code": "P1ECE",
+    "describe": "故障---太阳能充电蓄电池控制系统",
+    "lang": 1
+  },
+  {
+    "code": "P1ECF",
+    "describe": "故障---内部控制模块太阳能充电器蓄电池监视器 A/D 处理中",
+    "lang": 1
+  },
+  {
+    "code": "P1ED0",
+    "describe": "故障---太阳能充电蓄电池充电电流不均衡",
+    "lang": 1
+  },
+  {
+    "code": "P1ED1",
+    "describe": "故障---太阳能充电辅助蓄电池 DC/DC 转换器",
+    "lang": 1
+  },
+  {
+    "code": "P1ED2",
+    "describe": "故障---太阳能充电蓄电池电流传感器",
+    "lang": 1
+  },
+  {
+    "code": "P1ED3",
+    "describe": "故障---太阳能充电蓄电池温度传感器",
+    "lang": 1
+  },
+  {
+    "code": "P1ED4",
+    "describe": "故障---太阳能充电蓄电池电压传感器",
+    "lang": 1
+  },
+  {
+    "code": "P1ED5",
+    "describe": "故障---太阳能充电蓄电池电压传感器",
+    "lang": 1
+  },
+  {
+    "code": "P1EDA",
+    "describe": "故障---太阳能充电器控制模块 EEPROM",
+    "lang": 1
+  },
+  {
+    "code": "P1EDB",
+    "describe": "故障---太阳能充电器控制模块 A/D 处理中",
+    "lang": 1
+  },
+  {
+    "code": "P1EDC",
+    "describe": "故障---太阳能充电混合动力蓄电池 DC/DC 转换器",
+    "lang": 1
+  },
+  {
+    "code": "P1EDD",
+    "describe": "故障---太阳能充电蓄电池电压传感器 1",
+    "lang": 1
+  },
+  {
+    "code": "P1EE2",
+    "describe": "故障---太阳能充电蓄电池电压传感器 2",
+    "lang": 1
+  },
+  {
+    "code": "P1EE7",
+    "describe": "故障---太阳能充电蓄电池电压传感器 3",
+    "lang": 1
+  },
+  {
+    "code": "P1CF8",
+    "describe": "故障---DC 快速充电控制模块处理器（自监控处理器）",
+    "lang": 1
+  },
+  {
+    "code": "P1CF9",
+    "describe": "故障---DC 快速充电控制模块监控处理器 A/D 处理中",
+    "lang": 1
+  },
+  {
+    "code": "P1E95",
+    "describe": "故障---DC 快速充电正极入口温度",
+    "lang": 1
+  },
+  {
+    "code": "P1E9A",
+    "describe": "故障---DC 快速充电负极入口温度",
+    "lang": 1
+  },
+  {
+    "code": "P30C8",
+    "describe": "故障---DC 快速充电继电器（正极）",
+    "lang": 1
+  },
+  {
+    "code": "P313F",
+    "describe": "故障---DC 快速充电继电器（负极）",
+    "lang": 1
+  },
+  {
+    "code": "P31DC",
+    "describe": "故障---DC 快速充电连接器连接时电压低",
+    "lang": 1
+  },
+  {
+    "code": "P31E0",
+    "describe": "故障---DC 快速充电进气输入电压传感器",
+    "lang": 1
+  },
+  {
+    "code": "C1329",
+    "describe": "故障---下坡辅助控制操作开关",
+    "lang": 1
+  },
+  {
+    "code": "P1648",
+    "describe": "故障---TOYOTA Free-Tronic ECU 故障",
+    "lang": 1
+  },
+  {
+    "code": "P1811",
+    "describe": "故障---串行通信（开路或通信）",
+    "lang": 1
+  },
+  {
+    "code": "P1850",
+    "describe": "故障---PSW 高电压（短路）",
+    "lang": 1
+  },
+  {
+    "code": "P1852",
+    "describe": "故障---漏液或者油液蓄积或释放阀工作压力不良",
+    "lang": 1
+  },
+  {
+    "code": "P1858",
+    "describe": "故障---VCRC 过渡值（开放区域）锁止或电磁阀",
+    "lang": 1
+  },
+  {
+    "code": "P1864",
+    "describe": "故障---离合器扭矩能力",
+    "lang": 1
+  },
+  {
+    "code": "P1865",
+    "describe": "故障---SRS 挡块寿命限制",
+    "lang": 1
+  },
+  {
+    "code": "P1871",
+    "describe": "故障---TMREV（开路或短路）",
+    "lang": 1
+  },
+  {
+    "code": "P1872",
+    "describe": "故障---FSW（开路或短路）",
+    "lang": 1
+  },
+  {
+    "code": "P008F",
+    "describe": "故障---发动机冷却液温度/燃油温度相互关系",
+    "lang": 1
+  },
+  {
+    "code": "P00BC",
+    "describe": "故障---气流质量或体积 'A' 电路范围/性能 - 气流过低",
+    "lang": 1
+  },
+  {
+    "code": "P00BD",
+    "describe": "故障---气流质量或体积 'A' 电路范围/性能 - 气流过高",
+    "lang": 1
+  },
+  {
+    "code": "P01C5",
+    "describe": "故障---信号范围检查低",
+    "lang": 1
+  },
+  {
+    "code": "P01C6",
+    "describe": "故障---信号范围检查高",
+    "lang": 1
+  },
+  {
+    "code": "P042F",
+    "describe": "故障---排气再循环'A'控制固定关闭",
+    "lang": 1
+  },
+  {
+    "code": "P046C",
+    "describe": "故障---排气再循环传感器'A'电路范围 / 故障",
+    "lang": 1
+  },
+  {
+    "code": "P060C",
+    "describe": "故障---内部控制模块主处理器性能",
+    "lang": 1
+  },
+  {
+    "code": "P06B9",
+    "describe": "故障---气缸 1 电热塞电路范围 / 故障",
+    "lang": 1
+  },
+  {
+    "code": "P06BA",
+    "describe": "故障---气缸 2 电热塞电路范围 / 故障",
+    "lang": 1
+  },
+  {
+    "code": "P06BB",
+    "describe": "故障---气缸 3 电热塞电路范围 / 故障",
+    "lang": 1
+  },
+  {
+    "code": "P06BC",
+    "describe": "故障---气缸 4 电热塞电路范围 / 故障",
+    "lang": 1
+  },
+  {
+    "code": "P06C5",
+    "describe": "故障---气缸 1 电热塞错误",
+    "lang": 1
+  },
+  {
+    "code": "P06DF",
+    "describe": "故障---电热塞控制模块 1 记忆检查和错误",
+    "lang": 1
+  },
+  {
+    "code": "P06E5",
+    "describe": "故障---电热塞控制模块 1 故障",
+    "lang": 1
+  },
+  {
+    "code": "P1000",
+    "describe": "故障---低怠速校正超过最大位移限制",
+    "lang": 1
+  },
+  {
+    "code": "P1013",
+    "describe": "故障---冷起动时用其他的温度传感器进行的排气温度传感器至低压 EGR 冷却器可信性检查",
+    "lang": 1
+  },
+  {
+    "code": "P1016",
+    "describe": "故障---空气温度传感器之一",
+    "lang": 1
+  },
+  {
+    "code": "P1017",
+    "describe": "故障---空气温度传感器物理范围高错误",
+    "lang": 1
+  },
+  {
+    "code": "P1030",
+    "describe": "故障---检测到排气再循环冷却器流量不足",
+    "lang": 1
+  },
+  {
+    "code": "P1033",
+    "describe": "故障---发动机关闭期间的节气门错误",
+    "lang": 1
+  },
+  {
+    "code": "P1034",
+    "describe": "故障---节气门调速器永久正偏差",
+    "lang": 1
+  },
+  {
+    "code": "P1040",
+    "describe": "故障---偏置习得过程中节气门阀长时间位移路径故障",
+    "lang": 1
+  },
+  {
+    "code": "P1042",
+    "describe": "故障---偏置习得过程中节气门阀可信性路径故障",
+    "lang": 1
+  },
+  {
+    "code": "P1044",
+    "describe": "故障---偏置习得过程中节气门阀短时间位移路径故障",
+    "lang": 1
+  },
+  {
+    "code": "P1061",
+    "describe": "故障---进气冷却器效率",
+    "lang": 1
+  },
+  {
+    "code": "P1070",
+    "describe": "故障---涡轮增压器恒闭管理偏差",
+    "lang": 1
+  },
+  {
+    "code": "P1071",
+    "describe": "故障---涡轮增压器恒开管理偏差",
+    "lang": 1
+  },
+  {
+    "code": "P1072",
+    "describe": "故障---环境压力可信度测试",
+    "lang": 1
+  },
+  {
+    "code": "P1090",
+    "describe": "故障---检查最小油轨压力",
+    "lang": 1
+  },
+  {
+    "code": "P1091",
+    "describe": "故障---油轨压力控制的发动机测试指令已激活",
+    "lang": 1
+  },
+  {
+    "code": "P1092",
+    "describe": "故障---设置燃油流量时超出油轨压力最大正偏差",
+    "lang": 1
+  },
+  {
+    "code": "P1093",
+    "describe": "故障---油轨压力原始值为周期性",
+    "lang": 1
+  },
+  {
+    "code": "P1094",
+    "describe": "故障---起动过程中油轨压力低于门限值",
+    "lang": 1
+  },
+  {
+    "code": "P1095",
+    "describe": "故障---油轨压力故障",
+    "lang": 1
+  },
+  {
+    "code": "P1096",
+    "describe": "故障---指示两种控制模式之间的切换",
+    "lang": 1
+  },
+  {
+    "code": "P1097",
+    "describe": "故障---超过最小轨压",
+    "lang": 1
+  },
+  {
+    "code": "P1098",
+    "describe": "故障---超过最大轨压",
+    "lang": 1
+  },
+  {
+    "code": "P1099",
+    "describe": "故障---轨压最大正偏差超出相关设定值PCV",
+    "lang": 1
+  },
+  {
+    "code": "P1142",
+    "describe": "故障---用于对颗粒滤清器上游压力传感器进行物理范围检查",
+    "lang": 1
+  },
+  {
+    "code": "P1144",
+    "describe": "故障---颗粒滤清器压力传感器冻结",
+    "lang": 1
+  },
+  {
+    "code": "P115C",
+    "describe": "故障---正压力高于限制的状态（EGR管路堵塞）",
+    "lang": 1
+  },
+  {
+    "code": "P1162",
+    "describe": "故障---氧浓度异常高（满负荷时）",
+    "lang": 1
+  },
+  {
+    "code": "P1163",
+    "describe": "故障---氧浓度异常高（超速模式时）",
+    "lang": 1
+  },
+  {
+    "code": "P1164",
+    "describe": "故障---氧浓度异常高（部分负荷时）",
+    "lang": 1
+  },
+  {
+    "code": "P1165",
+    "describe": "故障---氧浓度异常低（满负荷时）",
+    "lang": 1
+  },
+  {
+    "code": "P1166",
+    "describe": "故障---氧浓度异常低（超速模式时）",
+    "lang": 1
+  },
+  {
+    "code": "P1167",
+    "describe": "故障---氧浓度异常低（部分负荷时）",
+    "lang": 1
+  },
+  {
+    "code": "P1168",
+    "describe": "故障---加热器氧传感器（LSU）故障（传感器 1 气缸列 1）",
+    "lang": 1
+  },
+  {
+    "code": "P1169",
+    "describe": "故障---错误下游氧传感器故障检查路径",
+    "lang": 1
+  },
+  {
+    "code": "P116A",
+    "describe": "故障---错误上游氧传感器故障检查路径",
+    "lang": 1
+  },
+  {
+    "code": "P116B",
+    "describe": "故障---减速时氧传感器超出范围 缸组 1 传感器2",
+    "lang": 1
+  },
+  {
+    "code": "P116C",
+    "describe": "故障---氧传感器电路范围/性能 缸组 1 传感器 2",
+    "lang": 1
+  },
+  {
+    "code": "P1201",
+    "describe": "故障---用于对燃油温度高进行物理范围检查",
+    "lang": 1
+  },
+  {
+    "code": "P1203",
+    "describe": "故障---燃油温度可靠性检查功能",
+    "lang": 1
+  },
+  {
+    "code": "P1212",
+    "describe": "故障---蓄电池短路故障",
+    "lang": 1
+  },
+  {
+    "code": "P1213",
+    "describe": "故障---接地短路故障",
+    "lang": 1
+  },
+  {
+    "code": "P1432",
+    "describe": "故障---颗粒滤清器效率",
+    "lang": 1
+  },
+  {
+    "code": "P1433",
+    "describe": "故障---SRC 流阻高",
+    "lang": 1
+  },
+  {
+    "code": "P1434",
+    "describe": "故障---颗粒滤清器再生时发动机保护",
+    "lang": 1
+  },
+  {
+    "code": "P1439",
+    "describe": "故障---颗粒滤清器再生未完成",
+    "lang": 1
+  },
+  {
+    "code": "P1460",
+    "describe": "故障---废气再循环冷却器下游温度物理范围检查为高",
+    "lang": 1
+  },
+  {
+    "code": "P1470",
+    "describe": "故障---调速器永久正偏差",
+    "lang": 1
+  },
+  {
+    "code": "P1471",
+    "describe": "故障---调速器永久负偏差",
+    "lang": 1
+  },
+  {
+    "code": "P1472",
+    "describe": "故障---阻塞阀",
+    "lang": 1
+  },
+  {
+    "code": "P1473",
+    "describe": "故障---长期漂移故障路径",
+    "lang": 1
+  },
+  {
+    "code": "P1474",
+    "describe": "故障---偏移量学习期间阻塞阀",
+    "lang": 1
+  },
+  {
+    "code": "P1475",
+    "describe": "故障---短期漂移故障路径",
+    "lang": 1
+  },
+  {
+    "code": "P1476",
+    "describe": "故障---涡流阀断杆检测",
+    "lang": 1
+  },
+  {
+    "code": "P1477",
+    "describe": "故障---涡流阀电路错误",
+    "lang": 1
+  },
+  {
+    "code": "P1478",
+    "describe": "故障---涡流阀欠压错误",
+    "lang": 1
+  },
+  {
+    "code": "P14A0",
+    "describe": "故障---排气背压传感器电路低",
+    "lang": 1
+  },
+  {
+    "code": "P14A1",
+    "describe": "故障---排气背压传感器电路高",
+    "lang": 1
+  },
+  {
+    "code": "P14A3",
+    "describe": "故障---颗粒滤清器压力传感器合理性",
+    "lang": 1
+  },
+  {
+    "code": "P1632",
+    "describe": "故障---更换喷油器后重置消耗的提示错误",
+    "lang": 1
+  },
+  {
+    "code": "P200A",
+    "describe": "故障---进气歧管管道性能 组1",
+    "lang": 1
+  },
+  {
+    "code": "P22AC",
+    "describe": "故障---氧传感器正向电流控制电路低 组 1 传感器 2",
+    "lang": 1
+  },
+  {
+    "code": "P22AD",
+    "describe": "故障---氧传感器正向电流控制电路高 组 1 传感器 2",
+    "lang": 1
+  },
+  {
+    "code": "P22AE",
+    "describe": "故障---氧传感器参考电压电路/开路 缸组 1 传感器 2",
+    "lang": 1
+  },
+  {
+    "code": "P245B",
+    "describe": "故障---排气再循环冷却器旁通控制电路范围 / 故障 气缸列 1",
+    "lang": 1
+  },
+  {
+    "code": "P263E",
+    "describe": "故障---高温故障",
+    "lang": 1
+  },
+  {
+    "code": "P3151",
+    "describe": "故障---气缸 2 高压喷油器高压侧电路对线圈短路",
+    "lang": 1
+  },
+  {
+    "code": "P3157",
+    "describe": "故障---气缸 4 高压喷油器高压侧电路对线圈短路",
+    "lang": 1
+  },
+  {
+    "code": "P3280",
+    "describe": "故障---FBC 校正数量限制",
+    "lang": 1
+  },
+  {
+    "code": "U0307",
+    "describe": "故障---软件与电热塞控制模块 1 不兼容",
+    "lang": 1
+  },
+  {
+    "code": "U1500",
+    "describe": "故障---OMI未初始化",
+    "lang": 1
+  },
+  {
+    "code": "P1523",
+    "describe": "故障---DSWD（开路或短路）",
+    "lang": 1
+  },
+  {
+    "code": "B1586",
+    "describe": "故障---停机器通信电路中存在开路",
+    "lang": 1
+  },
+  {
+    "code": "B1587",
+    "describe": "故障---与停机器电路失去通信",
+    "lang": 1
+  },
+  {
+    "code": "B15F0",
+    "describe": "故障---VIN 未编程或不匹配 - DCM",
+    "lang": 1
+  },
+  {
+    "code": "P1002",
+    "describe": "故障---调谐器故障",
+    "lang": 1
+  },
+  {
+    "code": "P1003",
+    "describe": "故障---CD 读取装置故障",
+    "lang": 1
+  },
+  {
+    "code": "P1004",
+    "describe": "故障---USB 故障",
+    "lang": 1
+  },
+  {
+    "code": "P1006",
+    "describe": "故障---显示故障",
+    "lang": 1
+  },
+  {
+    "code": "P1009",
+    "describe": "故障---校准下载错误",
+    "lang": 1
+  },
+  {
+    "code": "P100A",
+    "describe": "故障---遥控编码故障",
+    "lang": 1
+  },
+  {
+    "code": "P1801",
+    "describe": "故障---左前音响输出故障 - 开路",
+    "lang": 1
+  },
+  {
+    "code": "P1802",
+    "describe": "故障---右前音响输出故障 - 开路",
+    "lang": 1
+  },
+  {
+    "code": "P1803",
+    "describe": "故障---左后音响输出故障 - 开路",
+    "lang": 1
+  },
+  {
+    "code": "P1804",
+    "describe": "故障---右后音响输出故障 - 开路",
+    "lang": 1
+  },
+  {
+    "code": "P1C01",
+    "describe": "故障---阻断按钮故障（30 秒内按下按钮）",
+    "lang": 1
+  },
+  {
+    "code": "P1C02",
+    "describe": "故障---音响系统放大器过热",
+    "lang": 1
+  },
+  {
+    "code": "P1C03",
+    "describe": "故障---CD 播放器过热",
+    "lang": 1
+  },
+  {
+    "code": "P1C04",
+    "describe": "故障---音响系统电源故障",
+    "lang": 1
+  },
+  {
+    "code": "P1E01",
+    "describe": "故障---左前音响输出故障 - 销+ 短路",
+    "lang": 1
+  },
+  {
+    "code": "P1E04",
+    "describe": "故障---右后音响输出故障 - 销+ 短路",
+    "lang": 1
+  },
+  {
+    "code": "P1E05",
+    "describe": "故障---USB 数据线故障 - 短路",
+    "lang": 1
+  },
+  {
+    "code": "P2801",
+    "describe": "故障---左前音响输出故障 - 开路",
+    "lang": 1
+  },
+  {
+    "code": "P2802",
+    "describe": "故障---右前音响输出故障 - 开路",
+    "lang": 1
+  },
+  {
+    "code": "P2803",
+    "describe": "故障---左后音响输出故障 - 开路",
+    "lang": 1
+  },
+  {
+    "code": "P2804",
+    "describe": "故障---右后音响输出故障 - 开路",
+    "lang": 1
+  },
+  {
+    "code": "P2C01",
+    "describe": "故障---阻断按钮故障（30 秒内按下按钮）",
+    "lang": 1
+  },
+  {
+    "code": "P2C02",
+    "describe": "故障---音响系统放大器过热",
+    "lang": 1
+  },
+  {
+    "code": "P2C03",
+    "describe": "故障---CD 播放器过热",
+    "lang": 1
+  },
+  {
+    "code": "P2C04",
+    "describe": "故障---音响系统电源故障",
+    "lang": 1
+  },
+  {
+    "code": "P2E01",
+    "describe": "故障---左前音响输出故障 - 销+ 短路",
+    "lang": 1
+  },
+  {
+    "code": "P2E02",
+    "describe": "故障---右前音响输出故障 - 销+ 短路",
+    "lang": 1
+  },
+  {
+    "code": "P2E03",
+    "describe": "故障---左后音响输出故障 - 销+ 短路",
+    "lang": 1
+  },
+  {
+    "code": "P2E04",
+    "describe": "故障---右后音响输出故障 - 销+ 短路",
+    "lang": 1
+  },
+  {
+    "code": "P2E05",
+    "describe": "故障---USB 数据线故障 - 短路",
+    "lang": 1
+  },
+  {
+    "code": "P1008",
+    "describe": "故障---加热系统内部故障（历史）",
+    "lang": 1
+  },
+  {
+    "code": "P160B",
+    "describe": "故障---水泵电路 CC 故障 -（历史）",
+    "lang": 1
+  },
+  {
+    "code": "P160C",
+    "describe": "故障---车辆推进器 CC-（历史）",
+    "lang": 1
+  },
+  {
+    "code": "P1819",
+    "describe": "故障---加热系统内部故障（历史）",
+    "lang": 1
+  },
+  {
+    "code": "P1C07",
+    "describe": "故障---过热故障（历史）",
+    "lang": 1
+  },
+  {
+    "code": "P260A",
+    "describe": "故障---加热系统内部故障（当前）",
+    "lang": 1
+  },
+  {
+    "code": "P260B",
+    "describe": "故障---水泵电路 CC 故障 -（当前）",
+    "lang": 1
+  },
+  {
+    "code": "P260C",
+    "describe": "故障---车辆推进器 CC-（当前）",
+    "lang": 1
+  },
+  {
+    "code": "P2818",
+    "describe": "故障---输油泵电路 CO、CC+ 故障（当前）",
+    "lang": 1
+  },
+  {
+    "code": "P281A",
+    "describe": "故障---加热系统内部故障（当前）",
+    "lang": 1
+  },
+  {
+    "code": "P281B",
+    "describe": "故障---水泵电路 CO、CC+ 故障（当前）",
+    "lang": 1
+  },
+  {
+    "code": "P281E",
+    "describe": "故障---计算机接地电路故障（当前）",
+    "lang": 1
+  },
+  {
+    "code": "P2A05",
+    "describe": "故障---计算机电源电压开机故障（当前）",
+    "lang": 1
+  },
+  {
+    "code": "P2C07",
+    "describe": "故障---过热故障（当前）",
     "lang": 1
   }
 ]

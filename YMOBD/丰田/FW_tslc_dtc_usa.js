@@ -1,4 +1,4 @@
-const _data = {
+const _usa = {
 	"320001520C00": [
 		"0x01",
 		"327B21FE510C"
