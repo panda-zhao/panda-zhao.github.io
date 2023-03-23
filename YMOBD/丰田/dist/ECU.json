@@ -1,0 +1,236 @@
+[{
+  "req_id": "7E0",
+  "res_id": "7E8",
+  "ecu_name": "引擎控制单元#1"
+},
+{
+  "req_id": "7E1",
+  "res_id": "7E9",
+  "ecu_name": "变速箱控制单元#1"
+},
+{
+  "req_id": "700",
+  "res_id": "708",
+  "ecu_name": "引擎控制单元#2"
+},
+{
+  "req_id": "701",
+  "res_id": "709",
+  "ecu_name": "变速箱控制单元#2"
+},
+{
+  "req_id": "760",
+  "res_id": "768",
+  "ecu_name": "ABS控制单元#1"
+},
+{
+  "req_id": "7B0",
+  "res_id": "7B8",
+  "ecu_name": "ABS控制单元#2"
+},
+{
+  "req_id": "780",
+  "res_id": "788",
+  "ecu_name": "SRS/Airbag#1"
+},
+{
+  "req_id": "737",
+  "res_id": "73F",
+  "ecu_name": "SRS/Airbag#2"
+},
+{
+  "req_id": "7E2",
+  "res_id": "7EA",
+  "ecu_name": "Hybrreq_id engine system"
+},
+{
+  "req_id": "7E3",
+  "res_id": "7EB",
+  "ecu_name": "HV battery"
+},
+{
+  "req_id": "7E7",
+  "res_id": "7EF",
+  "ecu_name": "Plug-in control"
+},
+{
+  "req_id": "703",
+  "res_id": "70B",
+  "ecu_name": "Solar Charging Control"
+},
+{
+  "req_id": "705",
+  "res_id": "70D",
+  "ecu_name": "Rear motor generator"
+},
+{
+  "req_id": "723",
+  "res_id": "72B",
+  "ecu_name": "Active engine mount"
+},
+{
+  "req_id": "724",
+  "res_id": "72C",
+  "ecu_name": "Motor generator"
+},
+{
+  "req_id": "726",
+  "res_id": "72E",
+  "ecu_name": "Start and stop/BCM"
+},
+{
+  "req_id": "727",
+  "res_id": "72F",
+  "ecu_name": "Gear selector switch"
+},
+{
+  "req_id": "730",
+  "res_id": "738",
+  "ecu_name": "Power steering"
+},
+{
+  "req_id": "731",
+  "res_id": "739",
+  "ecu_name": "Smart start"
+},
+{
+  "req_id": "733",
+  "res_id": "73B",
+  "ecu_name": "Electronic air temperature control"
+},
+{
+  "req_id": "734",
+  "res_id": "73C",
+  "ecu_name": "Air suspension/Auto-leveling suspension"
+},
+{
+  "req_id": "741",
+  "res_id": "749",
+  "ecu_name": "4WD"
+},
+{
+  "req_id": "744",
+  "res_id": "74C",
+  "ecu_name": "Dynamic rear steering"
+},
+{
+  "req_id": "745",
+  "res_id": "74D",
+  "ecu_name": "Plug-in Control"
+},
+{
+  "req_id": "746",
+  "res_id": "74E",
+  "ecu_name": "Diagnostic recorder"
+},
+{
+  "req_id": "747",
+  "res_id": "74F",
+  "ecu_name": "HV Battery"
+},
+{
+  "req_id": "750",
+  "res_id": "758",
+  "ecu_name": "Gateway"
+},
+{
+  "req_id": "781",
+  "res_id": "789",
+  "ecu_name": "Pre-collision safety"
+},
+{
+  "req_id": "784",
+  "res_id": "78C",
+  "ecu_name": "Telematics"
+},
+{
+  "req_id": "790",
+  "res_id": "798",
+  "ecu_name": "Adaptive cruise contro"
+},
+{
+  "req_id": "791",
+  "res_id": "799",
+  "ecu_name": "Radar cruise control/Pre-collision safety"
+},
+{
+  "req_id": "792",
+  "res_id": "79A",
+  "ecu_name": "LKA/LDA"
+},
+{
+  "req_id": "793",
+  "res_id": "79B",
+  "ecu_name": "Smart city brake support"
+},
+{
+  "req_id": "7A1",
+  "res_id": "7A9",
+  "ecu_name": "Steering(EMPS/EHPS/PPS)"
+},
+{
+  "req_id": "7A2",
+  "res_id": "7AA",
+  "ecu_name": "Self-parking system"
+},
+{
+  "req_id": "7A3",
+  "res_id": "7AB",
+  "ecu_name": "Steering (VGRS)"
+},
+{
+  "req_id": "7AA",
+  "res_id": "7B2",
+  "ecu_name": "Parking assist"
+},
+{
+  "req_id": "7B1",
+  "res_id": "7B9",
+  "ecu_name": "4WD"
+},
+{
+  "req_id": "7B2",
+  "res_id": "7BA",
+  "ecu_name": "Charging control"
+},
+{
+  "req_id": "7B3",
+  "res_id": "7BB",
+  "ecu_name": "Steering angle"
+},
+{
+  "req_id": "7B4",
+  "res_id": "7BC",
+  "ecu_name": "Starter electronics"
+},
+{
+  "req_id": "7B7",
+  "res_id": "7BF",
+  "ecu_name": "Electric supply"
+},
+{
+  "req_id": "7C0",
+  "res_id": "7C8",
+  "ecu_name": "Dashboard/Instrument cluster #1"
+},
+{
+  "req_id": "7C1",
+  "res_id": "7C9",
+  "ecu_name": "Electric power control"
+},
+{
+  "req_id": "7C4",
+  "res_id": "7CC",
+  "ecu_name": "Climate/Heater"
+},
+{
+  "req_id": "7D0",
+  "res_id": "7D8",
+  "ecu_name": "Multimedia/Navigation"
+},
+{
+  "req_id": "7D2",
+  "res_id": "7DA",
+  "ecu_name": "Electric propulsion control"
+}
+]
