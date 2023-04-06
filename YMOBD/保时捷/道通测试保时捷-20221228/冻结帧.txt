@@ -1,0 +1,44 @@
+1004ms
+  
+710 8 02 3E 00 FF FF FF FF FF         6ms
+77A 8 02 7E 00 5A 8C 7D 30 3A        16ms
+
+  
+710 8 03 19 02 08 FF FF FF FF        14ms
+77A 8 07 59 02 19 00 06 03 08       940ms
+  
+710 8 06 19 06 00 06 03 FF FF        10ms
+77A 8 10 14 59 06 00 06 03 08         1ms
+710 8 30 10 05 FF FF FF FF FF         9ms
+77A 8 21 01 03 43 02 00 E7 71        10ms
+77A 8 22 7F 00 5A 8C 7D 30 3A      1006ms
+  
+710 8 02 3E 00 FF FF FF FF FF         4ms
+77A 8 02 7E 00 5A 8C 7D 30 3A      1003ms
+  
+710 8 02 3E 00 FF FF FF FF FF         7ms
+77A 8 02 7E 00 5A 8C 7D 30 3A      1023ms
+  
+710 8 02 3E 00 FF FF FF FF FF         7ms
+77A 8 02 7E 00 5A 8C 7D 30 3A      1003ms
+  
+710 8 02 3E 00 FF FF FF FF FF         7ms
+77A 8 02 7E 00 5A 8C 7D 30 3A      1003ms
+  
+710 8 02 3E 00 FF FF FF FF FF         7ms
+77A 8 02 7E 00 5A 8C 7D 30 3A      1003ms
+  
+710 8 02 3E 00 FF FF FF FF FF         7ms
+77A 8 02 7E 00 5A 8C 7D 30 3A      1003ms
+  
+710 8 02 3E 00 FF FF FF FF FF         7ms
+77A 8 02 7E 00 5A 8C 7D 30 3A      1004ms
+  
+710 8 02 3E 00 FF FF FF FF FF         6ms
+77A 8 02 7E 00 5A 8C 7D 30 3A      1003ms
+  
+710 8 02 3E 00 FF FF FF FF FF         7ms
+77A 8 02 7E 00 5A 8C 7D 30 3A      1004ms
+  
+710 8 02 3E 00 FF FF FF FF FF         6ms
+77A 8 02 7E 00 5A 8C 7D 30 3A 

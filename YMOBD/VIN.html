@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <script src="https://cdn.staticfile.org/vue/2.4.2/vue.min.js"></script>
+  <base target="_blank" />
+  <title>VIN车辆识别代码解析</title>
+  <style>
+    header{
+      padding: 30px;
+      text-align: center;
+    }
+    header .title{
+      font-size: 30px;
+      font-weight: 600;
+      font-family: 'Courier New', Courier, monospace;
+    }
+    header .btnTest {
+      width: 250px;
+      height: 50px;
+      background: #3498db;
+      border-radius: 25px;
+      font-size: 20px;
+      border: 0;
+      background-image: linear-gradient(to bottom, #3498db, #2980b9);
+      font-family: Arial;
+      color: white;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    header  .btnTest:hover {
+      background: #3cb0fd;
+      background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+      text-decoration: none;
+    }
+
+    header .input-text {
+      height: 50px;
+      width: 300px;
+      padding: 0 15px;
+      margin: 30px 0;
+      font-size: 18px;
+    }
+
+    header .info {
+      font-size: 20px;
+      padding-top: 30px;
+    }
+
+    footer {
+      display: flex;
+      /* align-items: center; */
+      justify-content: space-around;
+    }
+
+    footer aside {
+      width: 45%;
+    }
+
+    footer aside div {
+      text-align: center;
+      padding: 16px;
+    }
+
+    footer aside img {
+      width: 500px;
+      user-select: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+
+    <header>
+      <div class="title">请输入17位VIN，然后点击检测</div>
+      <div>
+        <input type="text" v-model="vin" placeholder="请输入17位VIN" class="input-text">
+      </div>
+      <button @click="getCarYearFromVIN" class="btnTest">检测</button>
+      <div class="info"> 解析结果为：<span style="color: green">{{yearCode}} - {{result}}</span></div>
+    </header>
+    <hr>
+    <footer>
+      <aside>
+        <div>VIN码识别代码表</div>
+        <img src="./images/vin-des.png" alt="" onselectstart="return false;">
+      </aside>
+      <aside>
+        <div>VIN码年份代码表</div>
+        <img src="./images/vin-year.png" alt="" onselectstart="return false;">
+      </aside>
+    </footer>
+
+
+
+  </div>
+</body>
+<script type="text/javascript">
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      vin: "LFPH3ACCX91E48682",
+      yearCode: "9",
+      result: "2009"
+    },
+    computed() {
+
+    },
+    watch: {
+
+    },
+    methods: {
+      // 数字不能为0，字母不能为O、Q、I、Z
+      getCarYearFromVIN() {
+        let vin = this.vin
+        if (vin.length !== 17) {
+          alert('请检查你输入VIN是否正确')
+          return
+        }
+        var yearCode = vin.charAt(9);
+        this.yearCode = yearCode
+        var year;
+
+        switch (yearCode) {
+          // case 'A': year = 1980; break;
+          // case 'B': year = 1981; break;
+          // case 'C': year = 1982; break;
+          // case 'D': year = 1983; break;
+          // case 'E': year = 1984; break;
+          // case 'F': year = 1985; break;
+          // case 'G': year = 1986; break;
+          // case 'H': year = 1987; break;
+          // case 'J': year = 1988; break;
+          // case 'K': year = 1989; break;
+          // case 'L': year = 1990; break;
+          // case 'M': year = 1991; break;
+          // case 'N': year = 1992; break;
+          // case 'P': year = 1993; break;
+          case 'R': year = 1994; break;
+          case 'S': year = 1995; break;
+          case 'T': year = 1996; break;
+          case 'V': year = 1997; break;
+          case 'W': year = 1998; break;
+          case 'X': year = 1999; break;
+          case 'Y': year = 2000; break;
+          case '1': year = 2001; break;
+          case '2': year = 2002; break;
+          case '3': year = 2003; break;
+          case '4': year = 2004; break;
+          case '5': year = 2005; break;
+          case '6': year = 2006; break;
+          case '7': year = 2007; break;
+          case '8': year = 2008; break;
+          case '9': year = 2009; break;
+          case 'A': year = 2010; break;
+          case 'B': year = 2011; break;
+          case 'C': year = 2012; break;
+          case 'D': year = 2013; break;
+          case 'E': year = 2014; break;
+          case 'F': year = 2015; break;
+          case 'G': year = 2016; break;
+          case 'H': year = 2017; break;
+          case 'J': year = 2018; break;
+          case 'K': year = 2019; break;
+          case 'L': year = 2020; break;
+          case 'M': year = 2021; break;
+          case 'N': year = 2022; break;
+          case 'P': year = 2023; break;
+          // case 'R': year = 2024; break;
+          // case 'S': year = 2025; break;
+          // case 'T': year = 2026; break;
+          // case 'V': year = 2027; break;
+          // case 'W': year = 2028; break;
+          // case 'X': year = 2029; break;
+          // case 'Y': year = 2030; break;
+          default: year = null; break;
+        }
+        this.result = year
+        console.log('解析结果', year)
+        return year;
+      }
+    }
+  })
+</script>
+
+</html>

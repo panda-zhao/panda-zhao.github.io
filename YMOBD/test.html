@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let address = "中国"
+    let pattern = /[\u4e00-\u9fa5]/
+    try {
+      const condition1 = address && pattern.test(address) && !address.includes('台湾') && !address.includes('台灣')
+
+      console.log(condition1 ? "使用标准17位" : "使用非标准")
+      // console.log(address && pattern.test(address) && (!address.includes('台湾') || !address.includes('台灣')))
+    } catch (error) {
+      console.error(error)
+    }
+  </script>
+</body>
+</html>

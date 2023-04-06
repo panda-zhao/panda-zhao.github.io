@@ -1,0 +1,1493 @@
+1.710 网关控制系统  
+33483ms         
+710 8 02 3E 00 FF FF FF FF FF         6ms # 3E待机握手
+77A 8 02 7E 00 86 00 01 08 00      1113ms
+
+710 8 03 22 F1 9E FF FF FF FF         7ms # 22 F1 9E 通过DID读数据
+77A 8 10 13 62 F1 9E 43 41 4E         1ms # 62 F1 9E 43 41 4E 
+710 8 30 10 05 FF FF FF FF FF         9ms 
+77A 8 21 2F 43 41 4E 20 47 61        10ms 
+77A 8 22 74 65 77 61 79 00 61        10ms
+
+710 8 03 22 F1 A2 FF FF FF FF        10ms
+77A 8 10 09 62 F1 A2 41 37 2E         1ms
+710 8 30 10 05 FF FF FF FF FF         9ms
+77A 8 21 31 20 20 A2 41 37 2E        12ms
+    
+710 8 03 22 F1 DF FF FF FF FF         8ms
+77A 8 04 62 F1 DF 40 41 37 2E       108ms
+    
+710 8 03 22 06 06 FF FF FF FF         2ms
+77A 8 07 62 06 06 80 00 25 36         6ms
+    
+710 8 03 22 06 06 FF FF FF FF         4ms
+77A 8 07 62 06 06 80 00 25 36         4ms
+    
+710 8 03 22 06 06 FF FF FF FF         6ms
+77A 8 07 62 06 06 80 00 25 36        55ms
+    
+710 8 02 10 03 FF FF FF FF FF         5ms
+77A 8 06 50 03 00 32 01 F4 36        19ms
+    
+710 8 02 27 03 FF FF FF FF FF         1ms
+77A 8 06 67 03 59 09 1C CA 36         8ms
+    
+710 8 06 27 04 5D 05 8A 8F FF         2ms 
+77A 8 02 67 04 59 09 1C CA 36        10ms
+    
+710 8 02 10 4F FF FF FF FF FF        10ms
+77A 8 06 50 4F 00 32 01 F4 36         5ms
+    
+710 8 02 27 03 FF FF FF FF FF         5ms
+77A 8 06 67 03 B1 6B A2 43 36         3ms
+    
+710 8 06 27 04 86 57 BC B1 FF         7ms
+77A 8 02 67 04 B1 6B A2 43 36         6ms
+    
+710 8 03 22 00 07 FF FF FF FF        34ms
+77A 8 03 7F 22 78 6B A2 43 36       181ms
+77A 8 11 F7 62 00 07 01 20 20         1ms
+    
+710 8 30 10 05 FF FF FF FF FF         8ms
+77A 8 21 4C 44 30 31 35 38 31        10ms
+77A 8 22 38 20 20 41 35 42 30        10ms
+77A 8 23 33 06 18 10 13 20 20        10ms
+77A 8 24 20 20 20 20 20 20 20        10ms
+77A 8 25 20 20 43 33 33 20 20        10ms
+77A 8 26 20 20 20 20 20 20 20        10ms
+77A 8 27 20 20 20 20 20 20 20        10ms
+77A 8 28 20 20 20 20 20 20 20        10ms
+77A 8 29 20 20 20 20 20 20 20        10ms
+77A 8 2A 20 46 4A 32 43 41 39        10ms
+77A 8 2B 35 42 41 47 31 4D 30        10ms
+77A 8 2C 36 4C 44 20 20 20 20        10ms
+77A 8 2D 20 20 20 20 20 20 20        10ms
+77A 8 2E 20 20 20 20 20 20 00        10ms
+77A 8 2F 00 00 AA 55 01 B8 00        10ms
+77A 8 20 BE 01 73 02 B7 02 D0         1ms
+
+710 8 30 10 05 FF FF FF FF FF         9ms
+77A 8 21 02 DA 02 FE 03 1A 03        10ms
+77A 8 22 47 03 84 03 EF 04 06        10ms
+77A 8 23 04 21 04 42 04 66 04        10ms
+77A 8 24 CA 04 D5 06 7A 06 95        10ms
+77A 8 25 06 AD 06 E4 07 09 07        10ms
+77A 8 26 23 07 51 07 ED 08 05        10ms
+77A 8 27 08 12 08 4F 08 5A 08        10ms
+77A 8 28 A0 09 0A 09 27 09 D8        10ms
+77A 8 29 0A 01 0B AD 0B D5 0B        10ms
+77A 8 2A F4 0C 67 0C 8E 0C EA        10ms
+77A 8 2B 0D A6 0E 80 0E A0 0E        10ms
+77A 8 2C AA 0E C6 0F 22 10 C0        10ms
+77A 8 2D 10 EA 11 0D 11 6A 11        10ms
+77A 8 2E 7A 11 E0 12 28 12 48        10ms
+77A 8 2F 12 56 12 F5 13 20 13        10ms
+77A 8 20 B4 13 F8 14 3A 15 AB         1ms
+    
+710 8 30 10 05 FF FF FF FF FF         9ms
+77A 8 21 15 C1 16 14 16 3F 16        10ms
+77A 8 22 5E 16 8C 17 36 17 5B        10ms
+77A 8 23 17 85 18 86 18 E8 19        10ms
+77A 8 24 7E 1B 06 1B 2C 1C 20        10ms
+77A 8 25 1C 2A 1C 72 1D 36 1D        10ms
+77A 8 26 55 1F C8 20 4E 20 75        10ms
+77A 8 27 20 7C 20 8C 20 AA 20        10ms
+77A 8 28 C4 21 19 21 30 21 3A        10ms
+77A 8 29 21 AF 21 E9 22 0A 22        10ms
+77A 8 2A 38 22 E7 23 1E 23 2C        10ms
+77A 8 2B 24 E4 24 FF 25 36 25        10ms
+77A 8 2C 68 25 B0 26 43 26 6C        10ms
+77A 8 2D 26 88 27 B8 27 CC 28        10ms
+77A 8 2E 1C 28 3A 28 70 2A 9E        10ms
+77A 8 2F 2A C0 2A DF 2B 25 2B        10ms
+77A 8 20 58 2B 7A 2B 82 2B C3         1ms
+    
+710 8 30 10 05 FF FF FF FF FF         9ms
+77A 8 21 2C 2A 2C 35 2C 7A 2C        10ms
+77A 8 22 9A 2D 0B 2D 4A 2D 72        10ms
+77A 8 23 30 47 30 A8 30 B2 31        10ms
+77A 8 24 1A 31 A4 31 B3 32 00        10ms
+77A 8 25 32 1C 32 90 33 CC 36        10ms
+77A 8 26 FD 37 8C 37 ED 38 22        10ms
+77A 8 27 3C C0 3D 83 45 7D 46        10ms
+77A 8 28 EA 48 48 49 D9 4A 66        10ms
+77A 8 29 4A B2 4B FA 4D A0 4E        10ms
+77A 8 2A 9D 50 71 50 DC 51 31        10ms
+77A 8 2B 52 8C 53 AC 54 85 55        10ms
+77A 8 2C C9 56 91 5C 55 5F E9        10ms
+77A 8 2D 60 3B 65 E1 67 38 67        10ms
+77A 8 2E AB 68 11 6A 65 75 55        10ms
+77A 8 2F 79 5C 83 D4 85 99 85        10ms
+77A 8 20 E0 86 05 86 4E 87 74         1ms
+    
+710 8 30 10 05 FF FF FF FF FF         9ms
+77A 8 21 87 FC 8E 3A 90 DE 93        10ms
+77A 8 22 28 98 9E 9B 66 9B 8F        10ms
+77A 8 23 9C 8A 9C FA 9E A0 A0        10ms
+77A 8 24 BC A1 71 00 00 00 00        10ms
+77A 8 25 00 00 00 00 00 00 00        10ms
+77A 8 26 00 00 00 00 00 00 00        10ms
+77A 8 27 00 00 00 00 00 00 00       183ms
+  
+2.70E 前端电子设备控制系统 
+70E 8 02 3E 00 FF FF FF FF FF         1ms
+778 8 02 7E 00 1B 88 07 0F 2F       656ms
+    
+70E 8 03 22 F1 A2 FF FF FF FF         5ms
+778 8 10 09 62 F1 A2 30 32 35         1ms
+70E 8 30 10 05 FF FF FF FF FF         9ms
+778 8 21 30 33 31 A2 30 32 35       330ms
+    
+70E 8 03 22 06 06 FF FF FF FF        41ms
+778 8 03 7F 22 78 A2 30 32 35       480ms
+778 8 10 0A 62 06 06 03 01 02         1ms
+70E 8 30 10 05 FF FF FF FF FF         9ms
+778 8 21 03 00 00 00 03 01 02        20ms
+    
+70E 8 03 22 06 06 FF FF FF FF        41ms
+778 8 03 7F 22 78 00 03 01 02       480ms
+778 8 10 0A 62 06 06 03 01 02         1ms
+70E 8 30 10 05 FF FF FF FF FF         9ms
+778 8 21 03 00 00 00 03 01 02         8ms
+    
+70E 8 03 22 06 06 FF FF FF FF        32ms
+778 8 03 7F 22 78 00 03 01 02       481ms
+778 8 10 0A 62 06 06 03 01 02         1ms 
+70E 8 30 10 05 FF FF FF FF FF         9ms
+778 8 21 03 00 00 00 03 01 02        10ms
+    
+70E 8 03 22 06 06 FF FF FF FF        41ms
+778 8 03 7F 22 78 00 03 01 02       481ms
+778 8 10 0A 62 06 06 03 01 02         1ms
+70E 8 30 10 05 FF FF FF FF FF         8ms
+778 8 21 03 00 00 00 03 01 02        39ms
+    
+70E 8 02 10 03 FF FF FF FF FF         2ms
+778 8 06 50 03 00 32 01 F4 02         6ms
+    
+70E 8 02 27 03 FF FF FF FF FF         3ms
+778 8 06 67 03 5F AD A1 86 02         4ms
+    
+70E 8 06 27 04 30 C4 15 5B FF         6ms
+778 8 02 67 04 5F AD A1 86 02         6ms
+    
+70E 8 02 10 4F FF FF FF FF FF         4ms
+778 8 06 50 4F 00 32 01 F4 02         4ms
+    
+70E 8 02 27 03 FF FF FF FF FF         6ms
+778 8 06 67 03 CE 75 C7 38 02         3ms
+    
+70E 8 06 27 04 FF 45 77 67 FF         9ms
+778 8 02 67 04 CE 75 C7 38 02         5ms
+    
+70E 8 03 22 F1 90 FF FF FF FF         3ms
+778 8 10 14 62 F1 90 57 50 31         1ms  
+70E 8 30 10 05 FF FF FF FF FF         9ms
+778 8 21 41 41 32 39 35 39 4B        10ms
+778 8 22 4C 42 30 39 39 37 33        36ms
+
+已切换
+70E 8 02 3E 00 FF FF FF FF FF        12ms
+7E8 8 02 7E 00 AA AA AA AA AA      1306ms
+    
+70E 8 02 3E 00 FF FF FF FF FF         4ms
+7E8 8 02 7E 00 AA AA AA AA AA      1003ms
+    
+70E 8 02 3E 00 FF FF FF FF FF         9ms
+7E8 8 02 7E 00 AA AA AA AA AA       563ms
+    
+70E 8 03 22 F1 A2 FF FF FF FF         5ms
+7E8 8 10 09 62 F1 A2 30 30 31         1ms
+    
+70E 8 30 10 05 FF FF FF FF FF         1ms
+7E8 8 21 30 31 32 AA AA AA AA        81ms
+    
+70E 8 02 10 03 FF FF FF FF FF         9ms
+7E8 8 06 50 03 00 32 01 F4 AA        24ms
+    
+70E 8 02 3E 00 FF FF FF FF FF         5ms
+7E8 8 02 7E 00 AA AA AA AA AA      1306ms
+    
+70E 8 02 3E 00 FF FF FF FF FF         5ms
+7E8 8 02 7E 00 AA AA AA AA AA      1003ms
+    
+70E 8 02 3E 00 FF FF FF FF FF         7ms
+7E8 8 02 7E 00 AA AA AA AA AA       192ms
+    
+70E 8 03 22 F1 9E FF FF FF FF         9ms
+7E8 8 10 1C 62 F1 9E 45 56 5F         1ms
+    
+70E 8 30 10 05 FF FF FF FF FF         2ms
+7E8 8 21 45 43 4D 32 30 54 46         9ms
+7E8 8 22 53 30 32 30 39 35 42         8ms
+7E8 8 23 39 30 36 32 35 39 47         6ms
+7E8 8 24 00 AA AA AA AA AA AA        14ms
+    
+70E 8 03 22 F1 A2 FF FF FF FF        11ms
+7E8 8 10 09 62 F1 A2 30 30 31         1ms  
+70E 8 30 10 05 FF FF FF FF FF         2ms
+7E8 8 21 30 31 32 AA AA AA AA        55ms
+    
+70E 8 02 10 03 FF FF FF FF FF        11ms
+7E8 8 06 50 03 00 32 01 F4 AA        18ms
+    
+70E 8 02 3E 00 FF FF FF FF FF         2ms
+7E8 8 02 7E 00 AA AA AA AA AA      1306ms
+    
+70E 8 02 3E 00 FF FF FF FF FF         5ms
+7E8 8 02 7E 00 AA AA AA AA AA      1003ms
+    
+70E 8 02 3E 00 FF FF FF FF FF         6ms
+7E8 8 02 7E 00 AA AA AA AA AA       935ms
+    
+70E 8 03 22 F1 9E FF FF FF FF         5ms
+7E8 8 10 1C 62 F1 9E 45 56 5F         1ms
+    
+70E 8 30 10 05 FF FF FF FF FF         2ms
+7E8 8 21 45 43 4D 32 30 54 46         9ms
+7E8 8 22 53 30 32 30 39 35 42         6ms
+7E8 8 23 39 30 36 32 35 39 47         6ms
+7E8 8 24 00 AA AA AA AA AA AA        10ms
+    
+70E 8 03 22 F1 A2 FF FF FF FF         6ms
+7E8 8 10 09 62 F1 A2 30 30 31         1ms
+    
+70E 8 30 10 05 FF FF FF FF FF         2ms
+7E8 8 21 30 31 32 AA AA AA AA        82ms
+    
+70E 8 02 10 03 FF FF FF FF FF         7ms
+7E8 8 06 50 03 00 32 01 F4 AA        18ms
+    
+70E 8 02 3E 00 FF FF FF FF FF        10ms
+7E8 8 02 7E 00 AA AA AA AA AA       310ms
+    
+70E 8 03 22 F1 A2 FF FF FF FF        10ms
+7E8 8 10 09 62 F1 A2 30 30 31         1ms
+    
+70E 8 30 10 05 FF FF FF FF FF         2ms
+7E8 8 21 30 31 32 AA AA AA AA        16ms
+    
+70E 8 02 10 03 FF FF FF FF FF        12ms
+7E8 8 06 50 03 00 32 01 F4 AA        20ms
+    
+70E 8 02 27 03 FF FF FF FF FF        20ms
+7E8 8 06 67 03 8D C6 03 FC AA         9ms
+    
+70E 8 06 27 04 72 39 FC 03 FF        11ms
+7E8 8 03 7F 27 35 AA AA AA AA       720ms
+    
+70E 8 02 10 4F FF FF FF FF FF        10ms
+7E8 8 06 50 4F 00 32 01 F4 AA        10ms
+    
+70E 8 02 27 03 FF FF FF FF FF        10ms
+7E8 8 03 7F 27 37 AA AA AA AA        39ms
+    
+70E 8 03 19 02 2C FF FF FF FF        41ms
+7E8 8 03 7F 19 78 AA AA AA AA       580ms 
+7E8 8 03 59 02 FF AA AA AA AA      1003ms
+    
+70E 8 02 3E 00 FF FF FF FF FF         7ms
+7E8 8 02 7E 00 AA AA AA AA AA       503ms
+
+
+
+
+
+
+
+3.7E1 变速器控制系统     
+7E1 8 02 3E 00 FF FF FF FF FF         3ms
+7E9 8 02 7E 00 AA AA AA AA AA       656ms
+    
+7E1 8 03 22 F1 9E FF FF FF FF         4ms
+7E9 8 10 12 62 F1 9E 45 56 5F         1ms
+    
+7E1 8 30 10 05 FF FF FF FF FF         9ms
+7E9 8 21 54 43 4D 44 4C 35 30        10ms
+7E9 8 22 31 30 32 31 00 AA AA         6ms
+    
+7E1 8 03 22 F1 A2 FF FF FF FF         3ms
+7E9 8 10 09 62 F1 A2 30 30 31         1ms
+    
+7E1 8 30 10 05 FF FF FF FF FF         9ms
+7E9 8 21 30 32 38 AA AA AA AA       564ms
+    
+7E1 8 02 10 03 FF FF FF FF FF         6ms
+7E9 8 06 50 03 00 32 01 F4 AA         4ms
+    
+7E1 8 02 10 4F FF FF FF FF FF         7ms
+7E9 8 06 50 4F 00 32 01 F4 AA        31ms
+    
+7E1 8 03 19 02 2C FF FF FF FF        28ms
+7E9 8 03 7F 19 78 AA AA AA AA       330ms
+7E9 8 03 59 02 FF AA AA AA AA       317ms
+
+
+
+
+
+
+
+
+
+
+
+4.713 车身稳定管理系统(PSM)控制系统      
+713 8 02 3E 00 FF FF FF FF FF        17ms
+77D 8 02 7E 00 E8 08 00 47 73       463ms
+    
+713 8 03 22 F1 9E FF FF FF FF        16ms
+77D 8 10 0E 62 F1 9E 45 56 5F         1ms
+    
+713 8 30 10 05 FF FF FF FF FF         9ms
+77D 8 21 4D 4B 32 35 41 58 54        11ms
+77D 8 22 00 7F E8 00 00 01 BE         5ms
+    
+713 8 03 22 F1 A2 FF FF FF FF        44ms
+77D 8 10 09 62 F1 A2 30 31 31         1ms
+    
+713 8 30 10 05 FF FF FF FF FF        10ms
+77D 8 21 30 30 31 08 00 23 84        20ms
+    
+713 8 03 22 F1 DF FF FF FF FF        21ms
+77D 8 04 62 F1 DF 40 00 47 73        86ms
+    
+713 8 02 10 03 FF FF FF FF FF        53ms
+77D 8 03 7F 10 78 08 00 06 E4         9ms
+77D 8 06 50 03 00 28 01 90 BE         5ms
+    
+713 8 02 27 03 FF FF FF FF FF        15ms
+77D 8 06 67 03 45 DE 3E 7C BE         4ms
+    
+713 8 06 27 04 45 DE 44 A7 FF        17ms
+77D 8 02 67 04 E8 08 00 47 73         7ms
+    
+713 8 02 10 4F FF FF FF FF FF        22ms
+77D 8 06 50 4F 00 28 01 90 73         4ms
+    
+713 8 02 27 03 FF FF FF FF FF        17ms
+77D 8 06 67 03 95 DE EE 77 2F         3ms
+    
+713 8 06 27 04 95 DE F4 A2 FF        17ms
+77D 8 02 67 04 5C 41 00 B0 00        15ms
+    
+713 8 03 19 02 08 FF FF FF FF        15ms
+77D 8 03 59 02 D9 00 00 00 01       215ms
+
+5.715安全气囊控制系统      
+715 8 02 3E 00 FF FF FF FF FF        33ms
+77F 8 02 7E 00 AA AA AA AA AA       844ms
+    
+715 8 03 22 F1 9E FF FF FF FF        58ms
+77F 8 10 18 62 F1 9E 45 56 5F         1ms
+715 8 30 10 05 FF FF FF FF FF         7ms
+77F 8 21 41 69 72 62 61 56 57        10ms
+77F 8 22 31 30 42 50 41 56 57        10ms
+77F 8 23 35 32 36 00 AA AA AA        17ms
+    
+715 8 03 22 F1 A2 FF FF FF FF        33ms
+77F 8 10 09 62 F1 A2 30 30 32         1ms
+715 8 30 10 05 FF FF FF FF FF        15ms
+77F 8 21 31 32 38 AA AA AA AA       127ms
+    
+715 8 02 10 03 FF FF FF FF FF        48ms
+77F 8 06 50 03 00 4B 00 FA AA         6ms
+    
+715 8 02 27 03 FF FF FF FF FF        34ms
+77F 8 06 67 03 3A 03 55 71 AA         4ms
+    
+715 8 06 27 04 3A 03 61 B3 FF        46ms
+77F 8 02 67 04 AA AA AA AA AA         9ms
+    
+715 8 02 10 4F FF FF FF FF FF        41ms
+77F 8 06 50 4F 00 4B 00 FA AA         8ms
+    
+715 8 02 27 03 FF FF FF FF FF        32ms
+77F 8 06 67 03 3A 05 79 E7 AA        13ms
+    
+715 8 06 27 04 3A 05 86 29 FF        47ms
+77F 8 02 67 04 AA AA AA AA AA        30ms
+    
+715 8 03 19 02 0C FF FF FF FF        74ms
+77F 8 03 7F 19 78 AA AA AA AA       616ms
+77F 8 03 59 02 99 AA AA AA AA       386ms
+6.714 仪表控制系统
+714 8 02 3E 00 FF FF FF FF FF         7ms
+77E 8 02 7E 00 A2 21 2E A0 00       452ms
+    
+714 8 03 22 F1 9E FF FF FF FF         7ms
+77E 8 10 1D 62 F1 9E 4B 6F 6D         1ms
+714 8 30 10 05 FF FF FF FF FF         9ms
+77E 8 21 62 69 69 6E 73 74 72        10ms
+77E 8 22 75 6D 65 6E 74 5F 47        11ms
+77E 8 23 65 6E 32 5F 41 34 2E         9ms
+77E 8 24 32 00 32 5F 41 34 2E         5ms
+    
+714 8 03 22 F1 A2 FF FF FF FF         4ms
+77E 8 10 09 62 F1 A2 30 30 30         1ms
+714 8 30 10 05 FF FF FF FF FF        10ms
+77E 8 21 30 34 31 A2 30 30 30         7ms
+    
+714 8 03 22 F1 DF FF FF FF FF         3ms
+77E 8 04 62 F1 DF 40 30 30 30        95ms
+    
+714 8 02 10 03 FF FF FF FF FF         5ms
+77E 8 06 50 03 00 32 01 F4 30         6ms
+    
+714 8 02 27 03 FF FF FF FF FF         6ms
+77E 8 06 67 03 24 44 59 56 30         5ms
+    
+714 8 06 27 04 5A A6 6F C8 FF         3ms
+77E 8 02 67 04 24 44 59 56 30         4ms
+    
+714 8 02 10 4F FF FF FF FF FF         6ms
+77E 8 06 50 4F 00 32 01 F4 30         4ms
+    
+714 8 02 27 03 FF FF FF FF FF         6ms
+77E 8 06 67 03 32 8B 69 08 30         3ms
+    
+714 8 06 27 04 42 F4 03 E2 FF         8ms
+77E 8 02 67 04 32 8B 69 08 30        11ms
+    
+714 8 03 19 02 08 FF FF FF FF         9ms
+77E 8 10 0B 59 02 99 00 A0 00         1ms
+714 8 30 10 05 FF FF FF FF FF         8ms
+77E 8 21 2F 00 A2 21 2E A0 00       187ms
+
+7.752驻车制动器控制系统  
+752 8 02 3E 00 FF FF FF FF FF         6ms
+7BC 8 02 7E 00 AA AA AA AA AA       601ms
+    
+752 8 03 22 F1 9E FF FF FF FF        10ms
+7BC 8 10 11 62 F1 9E 45 56 5F         1ms     
+752 8 30 10 05 FF FF FF FF FF         9ms
+7BC 8 21 50 61 72 6B 69 42 72        11ms
+7BC 8 22 61 6B 65 00 AA AA AA         6ms
+    
+752 8 03 22 F1 A2 FF FF FF FF         4ms
+7BC 8 10 09 62 F1 A2 30 30 32         1ms
+752 8 30 10 05 FF FF FF FF FF        10ms
+7BC 8 21 30 30 32 AA AA AA AA        70ms
+    
+752 8 02 10 03 FF FF FF FF FF        10ms
+7BC 8 06 50 03 00 32 01 F4 AA        26ms
+    
+752 8 02 27 03 FF FF FF FF FF         4ms
+7BC 8 06 67 03 71 7D 3A 03 AA       192ms
+    
+752 8 06 27 04 D5 46 51 3C FF         8ms
+7BC 8 02 67 04 AA AA AA AA AA        14ms
+    
+752 8 02 10 4F FF FF FF FF FF         6ms
+7BC 8 06 50 4F 00 32 01 F4 AA        10ms
+    
+752 8 02 27 03 FF FF FF FF FF        10ms
+7BC 8 06 67 03 3B B6 A7 21 AA         4ms
+    
+752 8 06 27 04 68 49 93 BC FF         6ms
+7BC 8 02 67 04 AA AA AA AA AA        16ms
+    
+752 8 03 19 02 0C FF FF FF FF        35ms
+7BC 8 03 59 02 99 AA AA AA AA       265ms
+8.70B轮胎气压监控控制系统      
+70B 8 02 3E 00 FF FF FF FF FF        13ms
+775 8 02 7E 00 AA AA AA AA AA       429ms
+    
+70B 8 03 22 F1 9E FF FF FF FF         9ms
+775 8 10 10 62 F1 9E 45 56 5F         1ms
+    
+70B 8 30 10 05 FF FF FF FF FF         9ms
+775 8 21 52 44 4B 42 45 52 55        10ms
+775 8 22 33 30 00 AA AA AA AA         5ms
+    
+70B 8 03 22 F1 A2 FF FF FF FF        15ms
+775 8 10 09 62 F1 A2 30 30 37         1ms
+    
+70B 8 30 10 05 FF FF FF FF FF         9ms
+775 8 21 30 30 31 AA AA AA AA         7ms
+    
+70B 8 03 22 F1 DF FF FF FF FF        13ms
+775 8 04 62 F1 DF 40 AA AA AA        66ms
+    
+70B 8 02 10 03 FF FF FF FF FF        14ms
+775 8 06 50 03 00 32 01 F4 AA        24ms
+    
+70B 8 02 27 03 FF FF FF FF FF        16ms
+775 8 06 67 03 19 F0 94 D1 AA         4ms
+    
+70B 8 06 27 04 20 77 47 37 FF        16ms
+775 8 02 67 04 AA AA AA AA AA         5ms
+    
+70B 8 02 10 4F FF FF FF FF FF        15ms
+775 8 06 50 4F 00 32 01 F4 AA         4ms
+    
+70B 8 02 27 03 FF FF FF FF FF        16ms
+775 8 06 67 03 A3 90 BB B1 AA         3ms
+    
+70B 8 06 27 04 F8 C0 AD FF FF        17ms
+775 8 02 67 04 AA AA AA AA AA        26ms
+    
+70B 8 03 19 02 08 FF FF FF FF        14ms
+775 8 03 59 02 19 AA AA AA AA       179ms
+9.757 自适应巡航控制(ACC)控制系统 -无    
+757 8 02 3E 00 FF FF FF FF FF       304ms
+    
+757 8 02 3E 00 FF FF FF FF FF       315ms
+    
+757 8 02 3E 00 FF FF FF FF FF       441ms
+10.70F全轮驱动控制系统    
+70F 8 02 3E 00 FF FF FF FF FF        13ms # 会话保持
+779 8 02 7E 00 FF 81 48 1F 30       461ms
+    
+70F 8 03 22 F1 9E FF FF FF FF        18ms
+779 8 10 0A 62 F1 9E 41 6C 6C         1ms    
+70F 8 30 10 05 FF FF FF FF FF         9ms
+779 8 21 72 61 64 00 41 6C 6C         5ms
+    
+70F 8 03 22 F1 A2 FF FF FF FF        15ms
+779 8 10 09 62 F1 A2 30 30 30         1ms 
+70F 8 30 10 05 FF FF FF FF FF        10ms
+779 8 21 30 30 35 A2 30 30 30         6ms
+    
+70F 8 03 22 F1 DF FF FF FF FF        14ms
+779 8 04 62 F1 DF 40 30 30 30        50ms
+    
+70F 8 02 10 03 FF FF FF FF FF        20ms
+779 8 06 50 03 00 32 01 F4 30         5ms
+    
+70F 8 02 27 03 FF FF FF FF FF        15ms
+779 8 06 67 03 69 D9 33 4D 30         4ms
+    
+70F 8 02 10 4F FF FF FF FF FF        16ms # 104F未知
+779 8 06 50 4F 00 32 01 F4 30         4ms
+    
+70F 8 02 27 03 FF FF FF FF FF        16ms
+779 8 06 67 03 29 DA 37 DC 30         8ms
+    
+70F 8 03 19 02 08 FF FF FF FF        12ms
+779 8 03 59 02 FF DA 37 DC 30       175ms
+11.747 拖车钩控制系统 - 无  
+747 8 02 3E 00 FF FF FF FF FF       304ms
+    
+747 8 02 3E 00 FF FF FF FF FF       315ms
+    
+747 8 02 3E 00 FF FF FF FF FF       428ms
+12.770 DVD换片机控制系统 - 无   
+770 8 02 3E 00 FF FF FF FF FF       315ms
+    
+770 8 02 3E 00 FF FF FF FF FF       303ms
+    
+770 8 02 3E 00 FF FF FF FF FF       439ms
+
+13.74F前部摄像机控制系统   
+74F 8 02 3E 00 FF FF FF FF FF        10ms
+7B9 8 02 7E 00 AA AA AA AA AA       802ms
+    
+74F 8 03 22 F1 9E FF FF FF FF        18ms
+7B9 8 10 14 62 F1 9E 45 56 5F         1ms
+    
+74F 8 30 10 05 FF FF FF FF FF         4ms
+7B9 8 21 4D 46 4B 42 6F 73 63        10ms
+7B9 8 22 68 50 4F 34 31 36 00        10ms
+    
+74F 8 03 22 F1 A2 FF FF FF FF        15ms
+7B9 8 10 09 62 F1 A2 30 30 31         1ms    
+74F 8 30 10 05 FF FF FF FF FF         4ms
+7B9 8 21 30 30 32 AA AA AA AA        10ms
+    
+74F 8 03 22 F1 89 FF FF FF FF        15ms
+7B9 8 07 62 F1 89 30 32 31 30        13ms
+    
+74F 8 03 22 F1 DF FF FF FF FF        17ms
+7B9 8 04 62 F1 DF 40 AA AA AA       102ms
+    
+74F 8 02 10 03 FF FF FF FF FF         7ms
+7B9 8 06 50 03 00 32 01 F4 AA        18ms
+    
+74F 8 02 3E 00 FF FF FF FF FF         2ms
+7B9 8 02 7E 00 AA AA AA AA AA       326ms
+    
+74F 8 02 27 03 FF FF FF FF FF        15ms
+7B9 8 06 67 03 78 A8 C1 FD AA         4ms
+    
+74F 8 06 27 04 89 62 56 8A FF        35ms
+7B9 8 03 7F 27 78 AA AA AA AA       120ms
+7B9 8 03 7F 27 35 AA AA AA AA         6ms
+    
+74F 8 02 10 4F FF FF FF FF FF         4ms
+7B9 8 06 50 4F 00 32 01 F4 AA         5ms
+    
+74F 8 02 27 03 FF FF FF FF FF        20ms
+7B9 8 03 7F 27 37 AA AA AA AA        12ms
+    
+74F 8 03 19 02 08 FF FF FF FF        34ms
+7B9 8 03 7F 19 78 AA AA AA AA      1400ms
+7B9 8 03 59 02 19 AA AA AA AA       223ms
+14.710网关控制系统  
+710 8 02 3E 00 FF FF FF FF FF         3ms
+77A 8 02 7E 00 00 00 00 00 00       366ms
+    
+710 8 03 22 F1 9E FF FF FF FF         4ms
+77A 8 10 13 62 F1 9E 43 41 4E         1ms 
+710 8 30 10 05 FF FF FF FF FF         9ms
+77A 8 21 2F 43 41 4E 20 47 61        10ms
+77A 8 22 74 65 77 61 79 00 61         4ms
+    
+710 8 03 22 F1 A2 FF FF FF FF         6ms
+77A 8 10 09 62 F1 A2 41 37 2E         1ms
+    
+710 8 30 10 05 FF FF FF FF FF         9ms
+77A 8 21 31 20 20 A2 41 37 2E         4ms
+    
+710 8 03 22 F1 DF FF FF FF FF         6ms
+77A 8 04 62 F1 DF 40 41 37 2E        30ms
+    
+710 8 03 22 06 06 FF FF FF FF        10ms
+77A 8 07 62 06 06 80 00 25 36         5ms
+    
+710 8 03 22 06 06 FF FF FF FF         5ms
+77A 8 07 62 06 06 80 00 25 36         4ms
+    
+710 8 03 22 06 06 FF FF FF FF         6ms
+77A 8 07 62 06 06 80 00 25 36         4ms
+    
+710 8 02 10 03 FF FF FF FF FF         6ms
+77A 8 06 50 03 00 32 01 F4 36         4ms
+    
+710 8 02 27 03 FF FF FF FF FF         6ms
+77A 8 06 67 03 E7 CC D7 68 36         4ms
+    
+710 8 06 27 04 AE 80 D6 6B FF         6ms
+77A 8 02 67 04 E7 CC D7 68 36         4ms
+    
+710 8 02 10 4F FF FF FF FF FF         6ms
+77A 8 06 50 4F 00 32 01 F4 36         4ms
+    
+710 8 02 27 03 FF FF FF FF FF         6ms
+77A 8 06 67 03 B8 F4 20 49 36         3ms
+    
+710 8 06 27 04 56 C9 68 DD FF         7ms
+77A 8 02 67 04 B8 F4 20 49 36         8ms
+    
+710 8 03 19 02 08 FF FF FF FF        12ms
+77A 8 07 59 02 19 00 06 03 08       201ms
+15.723后盖控制系统   
+723 8 02 3E 00 FF FF FF FF FF         9ms
+78D 8 02 7E 00 AA AA AA AA AA       524ms
+    
+723 8 03 22 F1 A2 FF FF FF FF         5ms
+78D 8 10 09 62 F1 A2 31 30 31         1ms
+    
+723 8 30 10 05 FF FF FF FF FF         9ms
+78D 8 21 31 37 30 AA AA AA AA         7ms
+    
+723 8 03 22 F1 DF FF FF FF FF         2ms
+78D 8 04 62 F1 DF 40 AA AA AA       317ms
+    
+723 8 02 10 03 FF FF FF FF FF         3ms
+78D 8 06 50 03 00 32 01 F4 AA         5ms
+    
+723 8 02 27 03 FF FF FF FF FF         6ms
+78D 8 06 67 03 C8 90 20 40 AA         4ms
+    
+723 8 06 27 04 C8 90 6E C7 FF         5ms
+78D 8 02 67 04 AA AA AA AA AA         4ms
+    
+723 8 02 10 4F FF FF FF FF FF         7ms
+78D 8 06 50 4F 00 32 01 F4 AA         4ms
+    
+723 8 02 27 03 FF FF FF FF FF         5ms
+78D 8 06 67 03 94 28 50 A0 AA         3ms
+    
+723 8 06 27 04 94 28 9F 27 FF         8ms
+78D 8 02 67 04 AA AA AA AA AA        10ms
+    
+723 8 03 19 02 08 FF FF FF FF        10ms
+78D 8 03 59 02 19 AA AA AA AA       200ms
+16.746空调控制系统
+746 8 02 3E 00 FF FF FF FF FF         7ms
+7B0 8 02 7E 00 08 06 01 F4 30       658ms
+    
+746 8 03 22 F1 9E FF FF FF FF         2ms
+7B0 8 10 09 62 F1 9E 42 4B 45         1ms
+    
+746 8 30 10 05 FF FF FF FF FF         9ms
+7B0 8 21 5F 5F 00 9E 42 4B 45         6ms
+    
+746 8 03 22 F1 A2 FF FF FF FF         4ms
+7B0 8 10 09 62 F1 A2 30 34 30         1ms
+    
+746 8 30 10 05 FF FF FF FF FF         9ms
+7B0 8 21 30 30 36 A2 30 34 30         7ms
+    
+746 8 03 22 F1 DF FF FF FF FF         3ms
+7B0 8 04 62 F1 DF 40 30 34 30        60ms
+    
+746 8 02 10 03 FF FF FF FF FF        10ms
+7B0 8 06 50 03 00 32 01 F4 30         5ms
+    
+746 8 02 27 03 FF FF FF FF FF         5ms
+7B0 8 04 67 03 8A 4B 01 F4 30         4ms
+    
+746 8 04 27 04 8A 4B FF FF FF         6ms
+7B0 8 02 67 04 8A 4B 01 F4 30         4ms
+    
+746 8 02 10 4F FF FF FF FF FF         6ms
+7B0 8 06 50 4F 00 32 01 F4 30         4ms
+    
+746 8 02 27 03 FF FF FF FF FF         6ms
+7B0 8 04 67 03 8A 46 01 F4 30         3ms
+    
+746 8 04 27 04 EA E6 FF FF FF         7ms
+7B0 8 02 67 04 8A 46 01 F4 30        13ms
+    
+746 8 03 19 02 08 FF FF FF FF         7ms
+7B0 8 03 59 02 08 46 01 F4 30       224ms
+17.70C方向盘电子元件控制系统    
+70C 8 02 3E 00 FF FF FF FF FF        11ms
+776 8 02 7E 00 19 E4 46 AF 32       455ms
+    
+70C 8 03 22 F1 A2 FF FF FF FF         4ms
+776 8 10 09 62 F1 A2 30 30 32         1ms
+    
+70C 8 30 10 05 FF FF FF FF FF         9ms
+776 8 21 30 30 31 A2 30 30 32         7ms
+    
+70C 8 03 22 F1 DF FF FF FF FF         3ms
+776 8 04 62 F1 DF 40 30 30 32        73ms
+    
+70C 8 02 10 03 FF FF FF FF FF         7ms
+776 8 06 50 03 00 32 01 F4 32        19ms
+    
+70C 8 02 3E 00 FF FF FF FF FF        11ms
+776 8 02 7E 00 00 32 01 F4 32       319ms
+    
+70C 8 02 27 03 FF FF FF FF FF        11ms
+776 8 06 67 03 2A 01 67 32 32        11ms
+    
+70C 8 06 27 04 1E E6 13 17 FF         9ms
+776 8 02 67 04 2A 01 67 32 32        10ms
+    
+70C 8 02 10 4F FF FF FF FF FF        10ms
+776 8 06 50 4F 00 32 01 F4 32         8ms
+    
+70C 8 02 27 03 FF FF FF FF FF         2ms
+776 8 06 67 03 A0 9C EC F9 32         5ms
+    
+70C 8 06 27 04 89 C8 A5 75 FF         5ms
+776 8 02 67 04 A0 9C EC F9 32        30ms
+    
+70C 8 03 19 02 08 FF FF FF FF        10ms
+776 8 03 59 02 19 9C EC F9 32       227ms
+
+18.755水平控制/活动悬架管理系统(PASM)控制系统     
+755 8 02 3E 00 FF FF FF FF FF         8ms
+7BF 8 02 7E 00 08 82 E3 A7 31       389ms
+    
+755 8 03 22 06 00 FF FF FF FF        11ms
+7BF 8 07 62 06 00 22 11 00 00        32ms
+    
+755 8 03 22 F1 A2 FF FF FF FF         8ms
+7BF 8 10 09 62 F1 A2 30 30 31         1ms
+    
+755 8 30 10 05 FF FF FF FF FF         9ms
+7BF 8 21 30 30 34 A2 30 30 31       190ms
+    
+755 8 02 10 03 FF FF FF FF FF        10ms
+7BF 8 06 50 03 00 32 01 F4 31         8ms
+    
+755 8 02 27 03 FF FF FF FF FF        12ms
+7BF 8 06 67 03 32 45 86 A0 31         4ms
+    
+755 8 06 27 04 32 48 BD 91 FF         6ms
+7BF 8 02 67 04 32 45 86 A0 31         6ms
+    
+755 8 02 10 4F FF FF FF FF FF         4ms
+7BF 8 06 50 4F 00 32 01 F4 31         4ms
+    
+755 8 02 27 03 FF FF FF FF FF         7ms
+7BF 8 06 67 03 2D F8 BD 69 31         3ms
+    
+755 8 06 27 04 2D FB F4 5A FF         6ms
+7BF 8 02 67 04 2D F8 BD 69 31         9ms
+    
+755 8 03 19 02 08 FF FF FF FF        12ms
+7BF 8 03 59 02 08 F8 BD 69 31       176ms
+
+
+
+
+19.70D后端电子设备控制系统   
+70D 8 02 3E 00 FF FF FF FF FF         9ms
+777 8 02 7E 00 1B A0 A1 F4 00       540ms
+    
+70D 8 03 22 F1 A2 FF FF FF FF        11ms
+777 8 10 09 62 F1 A2 30 32 30         1ms
+    
+70D 8 30 10 05 FF FF FF FF FF         9ms
+777 8 21 30 33 31 A2 30 32 30       268ms
+    
+70D 8 03 22 06 00 FF FF FF FF         3ms
+777 8 10 10 62 06 00 02 02 00         1ms
+    
+70D 8 30 10 05 FF FF FF FF FF         9ms
+777 8 21 60 C0 48 6D FC 02 87        10ms
+777 8 22 01 77 05 6D FC 02 87       203ms
+    
+70D 8 03 22 06 06 FF FF FF FF        37ms
+777 8 03 7F 22 78 6D FC 02 87       471ms
+777 8 10 0D 62 06 06 03 32 00         1ms
+    
+70D 8 30 10 05 FF FF FF FF FF         9ms
+777 8 21 00 14 00 26 00 00 00        42ms
+    
+70D 8 03 22 06 06 FF FF FF FF        38ms
+777 8 03 7F 22 78 26 00 00 00       470ms
+777 8 10 0D 62 06 06 03 32 00         1ms
+    
+70D 8 30 10 05 FF FF FF FF FF         9ms
+777 8 21 00 14 00 26 00 00 00        14ms
+    
+70D 8 03 22 06 06 FF FF FF FF        36ms
+777 8 03 7F 22 78 26 00 00 00       471ms
+777 8 10 0D 62 06 06 03 32 00         1ms
+    
+70D 8 30 10 05 FF FF FF FF FF         9ms
+777 8 21 00 14 00 26 00 00 00         9ms
+    
+70D 8 03 22 06 00 FF FF FF FF         1ms
+777 8 10 10 62 06 00 02 02 00         1ms
+    
+70D 8 30 10 05 FF FF FF FF FF         9ms
+777 8 21 60 C0 48 6D FC 02 87        10ms
+777 8 22 01 77 05 6D FC 02 87        34ms
+    
+70D 8 03 22 06 00 FF FF FF FF         6ms
+777 8 10 10 62 06 00 02 02 00         1ms
+    
+70D 8 30 10 05 FF FF FF FF FF         9ms
+777 8 21 60 C0 48 6D FC 02 87        10ms
+777 8 22 01 77 05 6D FC 02 87        33ms
+    
+70D 8 03 22 06 06 FF FF FF FF        37ms
+777 8 03 7F 22 78 6D FC 02 87       471ms
+777 8 10 0D 62 06 06 03 32 00         1ms
+    
+70D 8 30 10 05 FF FF FF FF FF        10ms
+777 8 21 00 14 00 26 00 00 00        11ms
+    
+70D 8 03 22 06 00 FF FF FF FF         9ms
+777 8 10 10 62 06 00 02 02 00         1ms
+    
+70D 8 30 10 05 FF FF FF FF FF         9ms
+777 8 21 60 C0 48 6D FC 02 87        10ms
+777 8 22 01 77 05 6D FC 02 87        56ms
+    
+70D 8 03 22 06 06 FF FF FF FF        34ms
+777 8 03 7F 22 78 6D FC 02 87       471ms
+777 8 10 0D 62 06 06 03 32 00         1ms
+    
+70D 8 30 10 05 FF FF FF FF FF         9ms
+777 8 21 00 14 00 26 00 00 00        10ms
+    
+70D 8 03 22 06 06 FF FF FF FF        41ms
+777 8 03 7F 22 78 26 00 00 00       470ms
+777 8 10 0D 62 06 06 03 32 00         1ms
+    
+70D 8 30 10 05 FF FF FF FF FF        10ms
+777 8 21 00 14 00 26 00 00 00        52ms
+    
+70D 8 02 10 03 FF FF FF FF FF         8ms
+777 8 06 50 03 00 32 01 F4 00         5ms
+    
+70D 8 02 27 03 FF FF FF FF FF         5ms
+777 8 06 67 03 B4 33 C9 48 00         4ms
+    
+70D 8 06 27 04 EC 3F 5B 07 FF         6ms
+777 8 02 67 04 B4 33 C9 48 00         4ms
+    
+70D 8 02 10 4F FF FF FF FF FF         6ms
+777 8 06 50 4F 00 32 01 F4 00         4ms
+    
+70D 8 02 27 03 FF FF FF FF FF         6ms
+777 8 06 67 03 1C 9D FD 92 00         3ms
+    
+70D 8 06 27 04 10 2A CD B3 FF         7ms
+777 8 02 67 04 1C 9D FD 92 00         9ms
+    
+70D 8 03 19 02 08 FF FF FF FF         1ms
+777 8 03 59 02 1B 9D FD 92 00       224ms
+
+
+20.767 紧急呼叫控制系统 - 无     
+767 8 02 3E 00 FF FF FF FF FF       304ms
+    
+767 8 02 3E 00 FF FF FF FF FF       315ms
+    
+767 8 02 3E 00 FF FF FF FF FF       410ms
+21.700 - 缺少
+700 8 02 3E 80 FF FF FF FF FF       315ms
+
+700 8 02 3E 80 FF FF FF FF FF       305ms
+
+700 8 02 3E 80 FF FF FF FF FF      1038ms
+
+
+22.773- 通讯管理系统(PCM/CDR)控制系统   
+773 8 01 3E FF FF FF FF FF FF         8ms
+7DD 8 03 7F 3E 13 AA AA AA AA       540ms
+    
+773 8 02 1A 9F FF FF FF FF FF        10ms
+7DD 8 03 7F 1A 11 AA AA AA AA        30ms
+
+773 8 03 22 F1 9E FF FF FF FF         2ms
+7DD 8 10 15 62 F1 9E 45 56 5F         1ms
+773 8 30 10 05 FF FF FF FF FF         9ms
+7DD 8 21 4D 55 48 69 67 47 65        20ms
+7DD 8 22 6E 32 70 41 4C 50 49        20ms
+7DD 8 23 00 AA AA AA AA AA AA        20ms
+    
+773 8 03 22 F1 A2 FF FF FF FF        10ms
+7DD 8 10 09 62 F1 A2 30 30 31         1ms
+773 8 30 10 05 FF FF FF FF FF         9ms
+7DD 8 21 30 30 31 AA AA AA AA        85ms
+    
+773 8 02 10 03 FF FF FF FF FF         6ms
+7DD 8 06 50 03 00 32 01 F4 AA        24ms
+700 8 02 3E 80 FF FF FF FF FF       315ms
+700 8 02 3E 80 FF FF FF FF FF       303ms
+700 8 02 3E 80 FF FF FF FF FF       326ms
+    
+773 8 02 27 03 FF FF FF FF FF        10ms
+7DD 8 06 67 03 02 0E 49 19 AA         4ms
+    
+773 8 06 27 04 02 0E 97 A0 FF         6ms
+7DD 8 02 67 04 AA AA AA AA AA         6ms
+    
+773 8 02 10 4F FF FF FF FF FF         4ms
+7DD 8 06 50 4F 00 32 01 F4 AA         6ms
+    
+773 8 02 27 03 FF FF FF FF FF         4ms
+7DD 8 06 67 03 02 0E 4C F1 AA         4ms
+    
+773 8 06 27 04 02 0E 9B 78 FF         6ms
+7DD 8 02 67 04 AA AA AA AA AA        14ms
+    
+773 8 03 19 02 08 FF FF FF FF         6ms
+7DD 8 10 13 59 02 19 00 00 07         1ms
+773 8 30 10 05 FF FF FF FF FF         9ms
+7DD 8 21 09 00 06 13 09 00 02        20ms
+7DD 8 22 00 09 00 02 0F 09 AA       378ms
+23.70A-停车辅助控制系统
+    
+70A 8 02 3E 00 FF FF FF FF FF         3ms
+774 8 02 7E 00 AA AA AA AA AA       410ms
+    
+70A 8 03 22 F1 A2 FF FF FF FF        10ms
+774 8 10 09 62 F1 A2 30 38 30         1ms
+    
+70A 8 30 10 05 FF FF FF FF FF         9ms
+774 8 21 30 30 37 AA AA AA AA         6ms
+    
+70A 8 03 22 F1 DF FF FF FF FF         4ms
+774 8 04 62 F1 DF 40 AA AA AA       115ms
+    
+70A 8 02 10 03 FF FF FF FF FF         5ms
+774 8 06 50 03 00 32 01 F4 AA         6ms
+    
+70A 8 02 27 03 FF FF FF FF FF         4ms
+774 8 06 67 03 77 BF 97 56 AA         4ms
+    
+70A 8 06 27 04 77 C0 AD CD FF        17ms
+774 8 02 67 04 AA AA AA AA AA        59ms
+    
+70A 8 02 10 4F FF FF FF FF FF        10ms
+774 8 06 50 4F 00 32 01 F4 AA         4ms
+    
+70A 8 02 27 03 FF FF FF FF FF         6ms
+774 8 06 67 03 6B 7E 5B 19 AA         3ms
+    
+70A 8 06 27 04 6B 7F 71 90 FF        18ms
+774 8 02 67 04 AA AA AA AA AA         8ms
+    
+70A 8 03 19 02 08 FF FF FF FF         3ms
+774 8 03 59 02 19 AA AA AA AA       488ms
+200 - 异常
+200 7 18 C0 00 10 01 03 01          210ms
+200 7 18 C0 00 10 01 03 01          209ms
+200 7 18 C0 00 10 01 03 01          567ms
+24.72A 还原剂控制系统 - 无
+72A 8 02 3E 00 FF FF FF FF FF       315ms
+72A 8 02 3E 00 FF FF FF FF FF       303ms
+72A 8 02 3E 00 FF FF FF FF FF       435ms
+25.769 - 倒车摄像头控制系统
+    
+769 8 02 3E 00 FF FF FF FF FF        11ms
+7D3 8 02 7E 00 AA AA AA AA AA       500ms
+    
+769 8 03 22 F1 9E FF FF FF FF        11ms
+7D3 8 10 16 62 F1 9E 45 56 5F         1ms
+    
+769 8 30 10 05 FF FF FF FF FF         9ms
+7D3 8 21 52 65 61 72 76 43 6F        10ms
+7D3 8 22 6D 70 61 43 61 6D 65        10ms
+7D3 8 23 72 00 AA AA AA AA AA         6ms
+    
+769 8 03 22 F1 A2 FF FF FF FF         4ms
+7D3 8 10 09 62 F1 A2 30 30 32         1ms
+    
+769 8 30 10 05 FF FF FF FF FF         9ms
+7D3 8 21 30 30 31 AA AA AA AA        97ms
+    
+769 8 02 10 03 FF FF FF FF FF         3ms
+7D3 8 06 50 03 00 32 01 F4 AA        18ms
+    
+769 8 02 3E 00 FF FF FF FF FF         2ms
+7D3 8 02 7E 00 AA AA AA AA AA       316ms
+    
+769 8 02 10 4F FF FF FF FF FF         4ms
+7D3 8 06 50 4F 00 32 01 F4 AA        13ms
+    
+769 8 03 19 02 08 FF FF FF FF         7ms
+7D3 8 03 59 02 19 AA AA AA AA       164ms
+26.754 - 中央前照灯控制系统
+754 8 55 02 3E 00 FF FF FF FF       306ms
+754 8 55 02 3E 00 FF FF FF FF       315ms
+754 8 55 02 3E 00 FF FF FF FF       412ms
+27.712 - 动力转向控制系统
+    
+712 8 02 3E 00 FF FF FF FF FF        11ms
+77C 8 02 7E 00 AA AA AA AA AA       420ms
+    
+712 8 03 22 F1 9E FF FF FF FF         9ms
+77C 8 10 11 62 F1 9E 45 56 5F         1ms
+    
+712 8 30 10 05 FF FF FF FF FF        10ms
+77C 8 21 52 43 45 50 53 41 55         9ms
+77C 8 22 34 38 58 00 AA AA AA         6ms
+    
+712 8 03 22 F1 A2 FF FF FF FF         4ms
+77C 8 10 09 62 F1 A2 31 30 34         1ms
+    
+712 8 30 10 05 FF FF FF FF FF         9ms
+77C 8 21 30 30 32 AA AA AA AA       170ms
+    
+712 8 02 10 03 FF FF FF FF FF        10ms
+77C 8 06 50 03 00 32 01 F4 AA        23ms
+    
+712 8 02 27 03 FF FF FF FF FF         8ms
+77C 8 06 67 03 00 0C CA F9 AA         4ms
+    
+712 8 06 27 04 00 0C F1 1B FF         5ms
+77C 8 02 67 04 AA AA AA AA AA         5ms
+    
+712 8 02 10 4F FF FF FF FF FF         5ms
+77C 8 06 50 4F 00 32 01 F4 AA         4ms
+    
+712 8 02 27 03 FF FF FF FF FF         6ms
+77C 8 06 67 03 00 0C CB 12 AA         3ms
+    
+712 8 06 27 04 00 0C F1 34 FF         7ms
+77C 8 02 67 04 AA AA AA AA AA        10ms
+    
+712 8 03 19 02 0C FF FF FF FF        11ms
+77C 8 03 59 02 19 AA AA AA AA       525ms
+
+200 7 35 C0 00 10 07 03 01          209ms
+200 7 35 C0 00 10 07 03 01          209ms
+200 7 35 C0 00 10 07 03 01          641ms
+200 7 26 C0 00 10 06 03 01           10ms
+226 7 00 D0 06 03 C6 04 01            0ms
+28.4C6- 缺少
+4C6 6 A0 0F 8A FF 00 FF              10ms
+306 6 A1 0F 8A FF 4A FF             257ms
+
+4C6 6 10 00 03 22 F1 A2               2ms
+306 1 B1                             10ms
+306 8 20 00 09 62 F1 A2 30 32        10ms
+306 5 11 30 30 30 37                  1ms
+
+4C6 1 B2                             34ms
+4C6 6 11 00 03 22 F1 89               4ms
+306 1 B2                             10ms
+306 8 22 00 07 62 F1 89 32 35        10ms
+306 3 13 30 30                        1ms
+
+4C6 1 B4                             34ms
+4C6 6 12 00 03 22 F1 DF               5ms
+306 1 B3                             10ms
+306 7 14 00 04 62 F1 DF 40            1ms
+
+4C6 1 B5                             97ms
+4C6 5 13 00 02 10 89                  2ms
+306 1 B4                             10ms
+306 5 15 00 02 50 89                  1ms
+
+4C6 1 B6                             37ms
+4C6 5 14 00 02 27 03                  2ms
+306 1 B5                             10ms
+306 8 26 00 06 67 03 AE AF 37        10ms
+306 2 17 5B                           1ms
+4C6 1 B8                             37ms
+4C6 8 25 00 06 27 04 AE AF 68        10ms
+4C6 2 16 32                           2ms
+306 1 B7                             10ms
+306 6 18 00 03 67 04 34               1ms
+4C6 1 B9                             36ms
+4C6 5 17 00 02 10 86                  3ms
+306 1 B8                             10ms
+306 5 19 00 02 50 86                  1ms
+4C6 1 BA                             33ms
+4C6 5 18 00 02 27 03                  6ms
+306 1 B9                             10ms
+306 8 2A 00 06 67 03 16 4B D0        10ms
+306 2 1B E3                           1ms
+4C6 1 BC                             31ms
+4C6 8 29 00 06 27 04 16 4C 01        10ms
+4C6 2 1A BA                           8ms
+306 1 BB                             10ms
+306 6 1C 00 03 67 04 34               1ms
+4C6 1 BD                             46ms
+4C6 7 1B 00 04 18 02 FF 00            3ms
+306 1 BC                             10ms
+306 5 1D 00 02 58 00                  1ms
+4C6 1 BE                            114ms
+4C6 1 A8                              6ms
+306 1 A8                            817ms
+29.71C 调音器控制系统 - 无
+71C 8 02 3E 00 FF FF FF FF FF       304ms
+71C 8 02 3E 00 FF FF FF FF FF       315ms
+71C 8 02 3E 00 FF FF FF FF FF       442ms
+30.764 外扩音器控制系统 -无
+764 8 02 3E 00 FF FF FF FF FF       317ms
+764 8 02 3E 00 FF FF FF FF FF       304ms
+764 8 02 3E 00 FF FF FF FF FF       428ms
+31.74E 车道变换辅助系统(LCA)控制系统 - 无
+74E 8 02 3E 00 FF FF FF FF FF       304ms
+74E 8 02 3E 00 FF FF FF FF FF       315ms
+74E 8 02 3E 00 FF FF FF FF FF       412ms
+32.76D 电视调谐器控制系统 - 无
+
+76D 8 01 3E FF FF FF FF FF FF       315ms
+76D 8 01 3E FF FF FF FF FF FF       303ms
+76D 8 01 3E FF FF FF FF FF FF       321ms
+76D 8 02 3E 00 FF FF FF FF FF       306ms
+76D 8 02 3E 00 FF FF FF FF FF       315ms
+76D 8 02 3E 00 FF FF FF FF FF       738ms
+
+异常
+200 7 23 C0 00 10 03 03 01           10ms
+223 7 00 D0 03 03 C3 04 01            0ms
+
+33.4C3 - 缺少
+4C3 6 A0 0F 8A FF 00 FF              10ms
+303 6 A1 0F 8A FF 4A FF             157ms
+4C3 6 10 00 03 22 F1 A2               3ms
+303 1 B1                             10ms
+303 8 20 00 09 62 F1 A2 53 30        10ms
+303 5 11 30 30 30 32                  1ms
+4C3 1 B2                             34ms
+4C3 6 11 00 03 22 F1 89               5ms
+303 1 B2                             10ms
+303 8 22 00 07 62 F1 89 30 33        10ms
+303 3 13 30 36                        1ms
+4C3 1 B4                             43ms
+4C3 6 12 00 03 22 F1 DF               6ms
+303 1 B3                             10ms
+303 7 14 00 04 62 F1 DF 40            1ms
+4C3 1 B5                            121ms
+4C3 5 13 00 02 10 89                  8ms
+303 1 B4                             10ms
+303 5 15 00 02 50 89                  1ms
+4C3 1 B6                             34ms
+4C3 5 14 00 02 27 03                  5ms
+303 1 B5                             10ms
+303 8 26 00 06 67 03 7F DA C1        10ms
+303 2 17 45                           1ms
+4C3 1 B8                             33ms
+4C3 8 25 00 06 27 04 7F DA F2        10ms
+4C3 2 16 1C                           6ms
+303 1 B7                             10ms
+303 6 18 00 03 67 04 34               1ms
+4C3 1 B9                             35ms
+4C3 5 17 00 02 10 86                  4ms
+303 1 B8                             10ms
+303 5 19 00 02 50 86                  1ms
+4C3 1 BA                             32ms
+4C3 5 18 00 02 27 03                  7ms
+303 1 B9                             10ms
+303 8 2A 00 06 67 03 00 00 00        10ms
+303 2 1B 00                           1ms
+4C3 1 BC                             38ms
+4C3 7 19 00 04 18 02 FF 00            1ms
+303 1 BA                             10ms
+303 5 1C 00 02 58 00                  1ms
+4C3 1 BD                             92ms
+4C3 1 A8                              7ms
+303 1 A8                            907ms
+
+200 7 22 C0 00 10 02 03 01            5ms
+222 7 00 D0 02 03 C2 04 01            0ms
+34.4C2-缺少
+4C2 6 A0 0F 8A FF 00 FF              10ms
+302 6 A1 0F 8A FF 4A FF              64ms
+4C2 6 10 00 03 22 F1 A2               6ms
+302 1 B1                             10ms
+302 8 20 00 09 62 F1 A2 53 30        10ms
+302 5 11 30 30 30 32                  1ms
+4C2 1 B2                             33ms
+4C2 6 11 00 03 22 F1 89               6ms
+302 1 B2                             10ms
+302 8 22 00 07 62 F1 89 30 33        10ms
+302 3 13 30 36                        1ms
+4C2 1 B4                             33ms
+4C2 6 12 00 03 22 F1 DF               6ms
+302 1 B3                             10ms
+302 7 14 00 04 62 F1 DF 40            1ms
+4C2 1 B5                             54ms
+4C2 5 13 00 02 10 89                  5ms
+302 1 B4                             10ms
+302 5 15 00 02 50 89                  1ms
+4C2 1 B6                             33ms
+4C2 5 14 00 02 27 03                  6ms
+302 1 B5                             10ms
+302 8 26 00 06 67 03 6F 03 4D        10ms
+302 2 17 09                           1ms
+4C2 1 B8                             32ms
+4C2 8 25 00 06 27 04 6F 03 7D        10ms
+4C2 2 16 E0                           7ms
+302 1 B7                             10ms
+302 6 18 00 03 67 04 34               1ms
+4C2 1 B9                             33ms
+4C2 5 17 00 02 10 86                  6ms
+302 1 B8                             10ms
+302 5 19 00 02 50 86                  1ms
+4C2 1 BA                             32ms
+4C2 5 18 00 02 27 03                  7ms
+302 1 B9                             10ms
+302 8 2A 00 06 67 03 00 00 00        10ms
+302 2 1B 00                           1ms
+4C2 1 BC                             36ms
+4C2 7 19 00 04 18 02 FF 00            3ms
+302 1 BA                             10ms
+302 8 1C 00 05 58 01 08 47 6C         1ms
+4C2 1 BD                             80ms
+4C2 1 A8                              9ms
+302 1 A8                            912ms
+200 7 24 C0 00 10 04 03 01            8ms
+224 7 00 D0 04 03 C4 04 01            0ms
+
+35.4C4-缺少 
+4C4 6 A0 0F 8A FF 00 FF              10ms
+304 6 A1 0F 8A FF 4A FF             101ms
+4C4 6 10 00 03 22 F1 A2               9ms
+304 1 B1                            290ms
+304 8 20 00 09 62 F1 A2 53 30        10ms
+304 5 11 30 30 30 32                  1ms
+4C4 1 B2                             34ms
+4C4 6 11 00 03 22 F1 89               5ms
+304 1 B2                            190ms
+304 8 22 00 07 62 F1 89 30 33        10ms
+304 3 13 30 36                        1ms
+4C4 1 B4                             35ms
+4C4 6 12 00 03 22 F1 DF               4ms
+304 1 B3                            190ms
+304 7 14 00 04 62 F1 DF 40            1ms
+4C4 1 B5                             91ms
+4C4 5 13 00 02 10 89                  7ms
+304 1 B4                             23ms
+4C4 1 A3                              8ms
+304 6 A1 0F 8A FF 4A FF             110ms
+304 5 15 00 02 50 89                  1ms
+4C4 1 B6                             34ms
+4C4 5 14 00 02 27 03                  5ms
+304 1 B5                            200ms
+304 8 26 00 06 67 03 26 7B 2F        10ms
+304 2 17 31                           1ms
+4C4 1 B8                             42ms
+4C4 8 25 00 06 27 04 26 7B 60        10ms
+4C4 2 16 08                           7ms
+304 1 B7                            250ms
+304 6 18 00 03 67 04 34               1ms
+4C4 1 B9                             37ms
+4C4 5 17 00 02 10 86                  2ms
+304 1 B8                            120ms
+304 5 19 00 02 50 86                  1ms
+4C4 1 BA                             32ms
+4C4 5 18 00 02 27 03                  7ms
+304 1 B9                            125ms
+4C4 1 A3                              5ms
+304 6 A1 0F 8A FF 4A FF              70ms
+304 8 2A 00 06 67 03 00 00 00        10ms
+304 2 1B 00                           1ms
+4C4 1 BC                             37ms
+4C4 7 19 00 04 18 02 FF 00            2ms
+304 1 BA                            190ms
+304 5 1C 00 02 58 00                  1ms
+4C4 1 BD                             97ms
+4C4 1 A8                              2ms
+304 1 A8                            895ms
+异常
+200 7 25 C0 00 10 05 03 01            4ms
+225 7 00 D0 05 03 C5 04 01            0ms
+36.4C5-缺少 
+4C5 6 A0 0F 8A FF 00 FF              10ms
+305 6 A1 0F 8A FF 4A FF              80ms
+4C5 6 10 00 03 22 F1 A2              10ms
+305 1 B1                            340ms
+305 8 20 00 09 62 F1 A2 53 30        10ms
+305 5 11 30 30 30 32                  1ms
+4C5 1 B2                             33ms
+4C5 6 11 00 03 22 F1 89               7ms
+305 1 B2                            191ms
+305 8 22 00 07 62 F1 89 30 33        10ms
+305 3 13 30 36                        1ms
+4C5 1 B4                             35ms
+4C5 6 12 00 03 22 F1 DF               5ms
+305 1 B3                            190ms
+305 7 14 00 04 62 F1 DF 40            1ms
+4C5 1 B5                             66ms
+4C5 5 13 00 02 10 89                  3ms
+305 1 B4                             22ms
+4C5 1 A3                              8ms
+305 6 A1 0F 8A FF 4A FF             140ms
+305 5 15 00 02 50 89                  1ms
+4C5 1 B6                             33ms
+4C5 5 14 00 02 27 03                  6ms
+305 1 B5                            200ms
+305 8 26 00 06 67 03 5D F9 6F        10ms
+305 2 17 E1                           1ms
+4C5 1 B8                             32ms
+4C5 8 25 00 06 27 04 5D F9 A0        10ms
+4C5 2 16 B8                           6ms
+305 1 B7                            260ms
+305 6 18 00 03 67 04 34               1ms
+4C5 1 B9                             42ms
+4C5 5 17 00 02 10 86                  7ms
+305 1 B8                            110ms
+305 5 19 00 02 50 86                  1ms
+4C5 1 BA                             32ms
+4C5 5 18 00 02 27 03                  7ms
+305 1 B9                             95ms
+4C5 1 A3                              6ms
+305 6 A1 0F 8A FF 4A FF             100ms
+305 8 2A 00 06 67 03 00 00 00        10ms
+305 2 1B 00                           1ms
+4C5 1 BC                             38ms
+4C5 7 19 00 04 18 02 FF 00            1ms
+305 1 BA                            190ms
+305 5 1C 00 02 58 00                  1ms
+4C5 1 BD                             66ms
+4C5 1 A8                              3ms
+305 1 A8                            823ms
+37.76F外部放大器控制系统 - 无
+
+76F 8 01 3E FF FF FF FF FF FF       306ms
+76F 8 01 3E FF FF FF FF FF FF       315ms
+76F 8 01 3E FF FF FF FF FF FF       334ms
+76F 8 02 3E 00 FF FF FF FF FF       315ms
+76F 8 02 3E 00 FF FF FF FF FF       303ms
+76F 8 02 3E 00 FF FF FF FF FF       419ms
+38.70E 前端电子设备控制系统      
+70E 8 02 3E 00 FF FF FF FF FF         4ms
+778 8 02 7E 00 30 39 39 37 33       387ms
+    
+70E 8 03 22 F1 A2 FF FF FF FF         4ms
+778 8 10 09 62 F1 A2 30 32 35         1ms
+70E 8 30 10 05 FF FF FF FF FF         9ms
+778 8 21 30 33 31 A2 30 32 35       136ms
+    
+70E 8 03 22 06 06 FF FF FF FF        35ms
+778 8 03 7F 22 78 A2 30 32 35       481ms
+778 8 10 0A 62 06 06 03 01 02         1ms
+70E 8 30 10 05 FF FF FF FF FF        10ms
+778 8 21 03 00 00 00 03 01 02        32ms
+    
+70E 8 03 22 06 06 FF FF FF FF        37ms
+778 8 03 7F 22 78 00 03 01 02       481ms
+778 8 10 0A 62 06 06 03 01 02         1ms
+70E 8 30 10 05 FF FF FF FF FF         8ms
+778 8 21 03 00 00 00 03 01 02        10ms
+    
+70E 8 03 22 06 06 FF FF FF FF        40ms
+778 8 03 7F 22 78 00 03 01 02       481ms
+778 8 10 0A 62 06 06 03 01 02         1ms
+70E 8 30 10 05 FF FF FF FF FF        10ms
+778 8 21 03 00 00 00 03 01 02        20ms
+    
+70E 8 03 22 06 06 FF FF FF FF        39ms
+778 8 03 7F 22 78 00 03 01 02       481ms
+778 8 10 0A 62 06 06 03 01 02         1ms
+70E 8 30 10 05 FF FF FF FF FF        10ms
+778 8 21 03 00 00 00 03 01 02         9ms
+    
+70E 8 02 10 03 FF FF FF FF FF        11ms
+778 8 06 50 03 00 32 01 F4 02         4ms
+    
+70E 8 02 27 03 FF FF FF FF FF         6ms
+778 8 06 67 03 0B 5D 37 EF 02         4ms
+    
+70E 8 06 27 04 39 31 C7 DD FF         6ms
+778 8 02 67 04 0B 5D 37 EF 02         9ms
+    
+70E 8 02 10 4F FF FF FF FF FF         2ms
+778 8 06 50 4F 00 32 01 F4 02         6ms
+    
+70E 8 02 27 03 FF FF FF FF FF         2ms
+778 8 06 67 03 4B DA 93 58 02         5ms
+    
+70E 8 06 27 04 68 9A 12 27 FF         6ms
+778 8 02 67 04 4B DA 93 58 02        21ms
+    
+70E 8 03 19 02 08 FF FF FF FF        10ms
+778 8 07 59 02 1B 88 07 0F 2F       581ms
+异常
+200 7 2F C0 00 10 00 03 01          209ms
+200 7 2F C0 00 10 00 03 01          209ms
+200 7 2F C0 00 10 00 03 01          570ms
+
+
+
+39.750 辅助罗盘仪表控制系统 
+750 8 02 3E 00 FF FF FF FF FF         5ms
+7BA 8 02 7E 00 08 65 06 35 32       398ms
+    
+750 8 03 22 F1 9E FF FF FF FF        13ms
+7BA 8 10 0E 62 F1 9E 4B 6F 6D         1ms
+    
+750 8 30 10 05 FF FF FF FF FF         9ms
+7BA 8 21 70 61 73 73 20 45 32        10ms
+7BA 8 22 00 61 73 73 20 45 32         6ms
+    
+750 8 03 22 F1 A2 FF FF FF FF         4ms
+7BA 8 10 09 62 F1 A2 20 41 32         1ms
+750 8 30 10 05 FF FF FF FF FF         9ms
+7BA 8 21 20 30 32 A2 20 41 32         6ms
+
+750 8 03 22 F1 DF FF FF FF FF         4ms
+7BA 8 04 62 F1 DF 40 20 41 32        49ms
+    
+750 8 02 10 03 FF FF FF FF FF        11ms
+7BA 8 06 50 03 00 32 01 F4 32         5ms
+    
+750 8 02 27 03 FF FF FF FF FF         5ms
+7BA 8 06 67 03 11 62 06 3C 32         4ms
+    
+750 8 06 27 04 EE 9D F9 C3 FF         6ms
+7BA 8 02 67 04 11 62 06 3C 32         4ms
+    
+750 8 02 10 4F FF FF FF FF FF         6ms
+7BA 8 06 50 4F 00 32 01 F4 32         4ms
+    
+750 8 02 27 03 FF FF FF FF FF         6ms
+7BA 8 06 67 03 2F 65 06 35 32         3ms
+    
+750 8 06 27 04 D0 9A F9 CA FF         7ms
+7BA 8 02 67 04 2F 65 06 35 32         9ms
+    
+750 8 03 19 02 08 FF FF FF FF        11ms
+7BA 8 03 59 02 08 65 06 35 32       138ms
+
+729 8 02 3E 00 FF FF FF FF FF       315ms
+729 8 02 3E 00 FF FF FF FF FF       303ms
+729 8 02 3E 00 FF FF FF FF FF 
