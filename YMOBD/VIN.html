@@ -10,15 +10,17 @@
   <base target="_blank" />
   <title>VIN车辆识别代码解析</title>
   <style>
-    header{
+    header {
       padding: 30px;
       text-align: center;
     }
-    header .title{
+
+    header .title {
       font-size: 30px;
       font-weight: 600;
       font-family: 'Courier New', Courier, monospace;
     }
+
     header .btnTest {
       width: 250px;
       height: 50px;
@@ -33,7 +35,7 @@
       cursor: pointer;
     }
 
-    header  .btnTest:hover {
+    header .btnTest:hover {
       background: #3cb0fd;
       background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
       text-decoration: none;
@@ -103,7 +105,7 @@
   </div>
 </body>
 <script type="text/javascript">
-  var vm = new Vue({
+  const vm = new Vue({
     el: '#app',
     data: {
       vin: "LFPH3ACCX91E48682",
@@ -120,13 +122,12 @@
       // 数字不能为0，字母不能为O、Q、I、Z
       getCarYearFromVIN() {
         let vin = this.vin
-        if (vin.length !== 17) {
-          alert('请检查你输入VIN是否正确')
+        if(!this.checkVin(vin)){
           return
         }
-        var yearCode = vin.charAt(9);
+        let yearCode = vin.charAt(9);
         this.yearCode = yearCode
-        var year;
+        let year;
 
         switch (yearCode) {
           // case 'A': year = 1980; break;
@@ -185,6 +186,80 @@
         this.result = year
         console.log('解析结果', year)
         return year;
+      },
+      checkVin(vin) {
+        console.log('vin=', vin)
+        if (vin.length !== 17) {
+          console.log('VIN不通过：长度不是17位')
+          return false
+        }
+        if ((/^\d{17}$/).test(vin)) {
+          console.log('VIN不通过：不能全是数字')
+          return false
+        }
+        if ((/^[A-Za-z]{17}$/).test(vin)) {
+          console.log('VIN不通过：不能全是字母')
+          return false
+        }
+        let upperCaseVin = vin.toUpperCase()
+        let arr = upperCaseVin.split('')
+        // 字母I、O和Q不能使用
+        if (!arr.every(item => ["A", "B", "C", "D", "E", "F", "G", "H", "J", "K", "L", "M", "N", "P", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"].includes(item))) {
+          console.log('VIN不通过：字母I、O和Q不能使用')
+          return false
+        }
+        let distinguishNum = upperCaseVin.substring(8, 9)
+        console.log('开始校验校验位：', distinguishNum)
+        // VIN码从从第一位开始，码数字的对应值×该位的加权值，计算全部17位的乘积值相加除以11，所得的余数，即为第九位校验值
+        let mapObj = {
+          "A": 1,
+          "B": 2,
+          "C": 3,
+          "D": 4,
+          "E": 5,
+          "F": 6,
+          "G": 7,
+          "H": 8,
+          "J": 1,
+          "K": 2,
+          "L": 3,
+          "M": 4,
+          "N": 5,
+          "P": 7,
+          "R": 9,
+          "S": 2,
+          "T": 3,
+          "U": 4,
+          "V": 5,
+          "W": 6,
+          "X": 7,
+          "Y": 8,
+          "Z": 9,
+        }
+        arr.forEach((element, index) => {
+          for (let ltem in mapObj) {
+            if (element == ltem) {
+              arr[index] = mapObj[ltem]
+            }
+          }
+        });
+        let weightedArr = [8, 7, 6, 5, 4, 3, 2, 10, 0, 9, 8, 7, 6, 5, 4, 3, 2]
+        let num = 0;
+        let newArr = [];
+        arr.forEach((element, index) => {
+          let _chunk = Number(arr[index]) * Number(weightedArr[index])
+          newArr.push(_chunk)
+        })
+        newArr.forEach(element => {
+          num += element
+        })
+        let checkNum = num % 11
+        console.log('余数', checkNum)
+        if (checkNum === 10) {
+          checkNum = 'X'
+        }
+        console.log(`校验位校验：校验位：${distinguishNum}, 计算结果：${checkNum}`)
+        return String(checkNum) === distinguishNum
       }
     }
   })
