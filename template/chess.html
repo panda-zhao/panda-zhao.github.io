@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>中国象棋</title>
+    <style>
+      td {
+        border: 1px solid #333;
+        text-align: center;
+        font-size: 30px;
+        width: 50px;
+        height: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <!-- 此处省略了盘面代码，可参考其他在线象棋游戏，实现横纵坐标 -->
+      <tr>
+        <td id="0_0"></td>
+        <td id="0_1"></td>
+        <td id="0_2"></td>
+        <td id="0_3"></td>
+        <td id="0_4"></td>
+        <td id="0_5"></td>
+        <td id="0_6"></td>
+        <td id="0_7"></td>
+        <td id="0_8"></td>
+        <td id="0_9"></td>
+      </tr>
+      <tr>
+        <td id="1_0"></td>
+        <td id="1_1"></td>
+        <td id="1_2"></td>
+        <td id="1_3"></td>
+        <td id="1_4"></td>
+        <td id="1_5"></td>
+        <td id="1_6"></td>
+        <td id="1_7"></td>
+        <td id="1_8"></td>
+        <td id="1_9"></td>
+      </tr>
+      <!-- 以下省略战斗单元 -->
+    </table>
+    <button onclick="regret()">悔棋</button>
+    <script>
+      var chessBoard = []; // 存储所有棋子的位置
+      var isBlack = true; // 黑方先手
+      var regretStack = []; // 存储悔棋栈
+
+      // 初始化棋盘
+      for (var i = 0; i < 10; i++) {
+        chessBoard[i] = [];
+        for (var j = 0; j < 9; j++) {
+          chessBoard[i][j] = "";
+        }
+      }
+
+      // 悔棋函数
+      function regret() {
+        if (regretStack.length > 0) {
+          var prevRegret = regretStack.pop();
+          var prevX = prevRegret.prevX,
+            prevY = prevRegret.prevY,
+            nextX = prevRegret.nextX,
+            nextY = prevRegret.nextY;
+          chessBoard[prevX][prevY] = chessBoard[nextX][nextY];
+          chessBoard[nextX][nextY] = "";
+          renderBoard();
+          isBlack = !isBlack;
+        } else {
+          alert("已经不能再悔棋啦！");
+        }
+      }
+
+      // 获取棋子位置
+      function getPosition(dom) {
+        var id = dom.getAttribute("id");
+        var idArray = id.split("_");
+        var x = parseInt(idArray[0]);
+        var y = parseInt(idArray[1]);
+        return { x: x, y: y };
+      }
+
+      // 落子函数
+      function dropChess(dom) {
+        var { x: x, y: y } = getPosition(dom);
+        if (!chessBoard[x][y]) {
+          if (isBlack) {
+            chessBoard[x][y] = "B";
+            isBlack = false;
+          } else {
+            chessBoard[x][y] = "W";
+            isBlack = true;
+          }
+          regretStack.push({
+            prevX: x,
+            prevY: y,
+            nextX: x,
+            nextY: y,
+          });
+          renderBoard();
+        } else {
+          alert("请选择空闲的位置！");
+        }
+      }
+
+      // 渲染棋盘
+      function renderBoard() {
+        var table = document.getElementsByTagName("table")[0];
+        for (var i = 0; i < 10; i++) {
+          for (var j = 0; j < 9; j++) {
+            document.getElementById(i + "_" + j).innerHTML = chessBoard[i][j];
+          }
+        }
+      }
+
+      // 添加事件监听
+      var tds = document.getElementsByTagName("td");
+      for (var i = 0; i < tds.length; i++) {
+        tds[i].addEventListener("click", function () {
+          dropChess(this);
+        });
+      }
+
+      // 初始化棋盘
+      renderBoard();
+    </script>
+  </body>
+</html>

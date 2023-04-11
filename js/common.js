@@ -1,7 +1,12 @@
 var data = [
   //一、常用网站
   [
-
+    { name: "网速测试", url: "https://www.speedtest.net/zh-Hans", title: "" },
+    { name: "IP查询-站长工具", url: "https://ip.chinaz.com/", title: "" },
+    { name: "IP测速-站长工具", url: "https://tool.chinaz.com/speedtest/", title: "" },
+    { name: "IP出口探测-入", url: "https://ip.skk.moe/", title: "" },
+    { name: "ping测试-出", url: "https://tcp.ping.pe/", title: "" },
+    { name: "cloudflare测速", url: "https://speed.cloudflare.com", title: "测试与 Cloudflare 服务器的连接速度" },
     { name: "GitHub", url: "https://github.com/panda-zhao", title: "" },
     { name: "技术支持", url: "./support/index.html", title: "技术支持" },
     { name: "腾讯开源", url: "https://gitee.com/Tencent", title: "" },

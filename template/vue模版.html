@@ -1,39 +1,33 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <link rel="shortcut icon" type="image/x-icon" href="./images/favicon.ico" />
-  <link rel="stylesheet" href="./css/common.css" />
-  <script src="https://cdn.staticfile.org/vue/2.4.2/vue.min.js"></script>
-  <base target="_blank" />
-  <title>vue模版</title>
-  <style>
-
-  </style>
+	<meta charset="utf-8">
+	<title>Vue.js Template</title>
+	<!-- 引入 Vue.js 库 -->
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
-
 <body>
-  <div id="#app"></div>
+	<div id="app">
+		<h1>{{ message }}</h1>
+		<!-- 双向绑定 input 元素 -->
+		<input v-model="userInput" type="text">
+		<p>{{ processedInput }}</p>
+	</div>
+	<!-- 加载 Vue 实例 -->
+	<script>
+		var app = new Vue({
+			el: "#app",
+			data: {
+				message: "Welcome to my website!",
+				userInput: ""
+			},
+			computed: {
+				processedInput: function () {
+					// 返回处理后的 input，并实现实时更新
+					return this.userInput.toUpperCase();
+				}
+			}
+		})
+	</script>
 </body>
-<script type="text/javascript">
-  var vm = new Vue({
-    el: '#app',
-    data: {
-    },
-    computed(){
-    
-    },
-    watch : {
-               
-    },
-    methods: {
-      test: function() {
-        console.log('1.0.1')
-      }
-    }
-  })
-</script>
 </html>
