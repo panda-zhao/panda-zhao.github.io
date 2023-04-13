@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>验证故障码数据是否正确</title>
+</head>
+
+<body>
+  <!-- <script src="./保时捷故障码-1中文.js"></script> -->
+  <!-- <script src="./保时捷故障码-2英文.js"></script> -->
+  <!-- <script src="./保时捷故障码-3韩语.js"></script> -->
+  <!-- <script src="./保时捷故障码-4西班牙语.js"></script> -->
+  <!-- <script src="./保时捷故障码-5俄语.js"></script> -->
+  <!-- <script src="./保时捷故障码-6日本语.js"></script> -->
+  <!-- <script src="./保时捷故障码-7意大利语.js"></script> -->
+  <!-- <script src="./保时捷故障码-8印地语.js"></script> -->
+  <script>
+    // 总数量17872
+    console.log(data)
+    let length = 0
+    data.forEach(item => {
+      if (!item.code || !item.describe || !item.lang) {
+        length++
+        console.log(JSON.stringify(item))
+      }
+    })
+    console.log("错误的数量=", length)
+  </script>
+</body>
+
+</html>

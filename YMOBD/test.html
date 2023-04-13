@@ -7,7 +7,34 @@
   <title>Document</title>
 </head>
 <body>
+  <div id="container"></div>
   <script>
+    /**
+      ios
+      ru-RU 俄罗斯
+      da-DK 丹麦
+      zh-Hans-CN 中国
+      zh-Hant-HK 香港
+      zh-Hant-TW 台湾
+
+      安卓
+      en-US 美国
+      en-IN  印度
+      zh-CN 中国
+      nl-NL 荷兰
+      zh-HK 香港
+      zh-TW 台湾
+     * */
+    // const osLanguage = "zh-Hans-CN"
+    // const osLanguage = "zh-Hant-HK"
+    // const osLanguage = "en-US"
+    // const osLanguage = "en-IN"
+    let _language = osLanguage.substring(0, osLanguage.lastIndexOf('-')) // 小写
+    let _region = osLanguage.substring(osLanguage.lastIndexOf('-')+1) // 大写
+    document.getElementById('container').innerHTML = `<div>语言代码：${_language},</div> <div>地区代码： ${_region}</div>`
+
+
+
     let address = "中国"
     let pattern = /[\u4e00-\u9fa5]/
     try {

@@ -1,4 +1,13 @@
 var data = [
+  // 重要
+  [
+    { name: "nodejs", url: "https://nodejs.org/zh-cn", title: "" },
+    { name: "npm", url: "https://docs.npmjs.com/", title: "" },
+    { name: "CommonJS", url: "https://nodejs.org/docs/latest/api/modules.html#modules_modules_commonjs_modules", title: "" },
+    { name: "electronjs", url: "https://www.electronjs.org/zh/", title: "" },
+    
+  ],
+
   //一、常用网站
   [
     { name: "网速测试", url: "https://www.speedtest.net/zh-Hans", title: "" },
