@@ -1,4 +1,4 @@
-const i18n = {
+var i18n = {
 	"P018C": {
 		"zzs": "Toți producătorii de mașini",
 		"dm": "P018C",
