@@ -1,4 +1,5 @@
-const i18n = {
+// 西班牙语
+var i18n = {
 	"mt": "día",
 	"xs": "Horas",
 	"fz": "Minutos",
@@ -8,7 +9,7 @@ const i18n = {
 	"jchj" :"Espere por favor",
 	"ckfw": "Rango de referencia",
 	"bbgl": {
-		"remind": "Recordatorio de actualización de versión",
+		"bbts": "Recordatorio de actualización de versión",
 		"official": "Se han lanzado nuevas funciones, vaya al sitio web oficial para descargar y actualizar la última versión.",
 		"apple": "Se lanzaron nuevas funciones, vaya a la App Store para descargar la versión actualizada.",
 		"google": "Hay nuevas funciones lanzadas, vaya a Google Play para descargar la versión actualizada.",
@@ -231,13 +232,29 @@ const i18n = {
 		"label": "Sigue el sistema",
 		"des": "Cuando se enciende, sigue la configuración automática del idioma del sistema",
 		"en": "Inglés",
-		"zh": "Chino simplificado",
+		"zh": "chino simplificado",
+		"zwft": "Chino tradicional",
 		"es": "español",
 		"kr": "coreano",
 		"ru": "Rusa",
 		"ja": "Japonés",
 		"it": "Italiano",
-		"hi": "hindi"
+		"hi": "hindi",
+		"pt": "portugués",
+		"de": "alemán",
+		"fr": "francés",
+		"nl": "holandés",
+		"fi": "finlandés",
+		"pl": "polaco",
+		"bn": "bengalí",
+		"hu": "húngaro",
+		"cs": "checo",
+		"th": "tailandés",
+		"tr": "turco",
+		"ms": "malayo",
+		"ro": "rumano",
+		"sv": "sueco",
+		"da": "danés"
 	},
 
 	
@@ -362,7 +379,7 @@ const i18n = {
 		'des1': 'Gama de pruebas de velocidad',
 		'des2': 'Velocidad al inicio de la frenada',
 		'des3': 'Distancia de la prueba',
-		'warning': 'La prueba es un peligro para la seguridad, ¡por favor, conduzca con cuidado!',
+		'aqtx': 'La prueba es un peligro para la seguridad, ¡por favor, conduzca con cuidado!',
 		'kscs': 'Inicio de la prueba',
 		'cxcs': 'Repetición de la prueba',
 		'tz': 'Stop',

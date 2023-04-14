@@ -1,4 +1,5 @@
-const i18n = {
+// 芬兰语
+var i18n = {
 	"mt": "Päivä",
 	"xs": "Tunnit",
 	"fz": "Minuutit",
@@ -239,6 +240,7 @@ const i18n = {
 		"des": "Kun se on kytketty päälle, se asetetaan automaattisesti järjestelmän kielen mukaan",
 		"en": "englanti",
 		"zh": "yksinkertaistettu kiina",
+		"zwft": "perinteinen kiina",
 		"es": "espanja",
 		"kr": "korea",
 		"ru": "venäläinen",
@@ -252,7 +254,14 @@ const i18n = {
 		"fi": "suomi",
 		"pl": "puolalainen",
 		"bn": "bengali",
-		"ar": "arabia"
+		"hu": "Unkari",
+		"cs": "tsekki",
+		"th": "thai",
+		"tr": "turkki",
+		"ms": "malaiji",
+		"ro": "romania",
+		"sv": "ruotsalainen",
+		"da": "tanska"
 	},
 
 	

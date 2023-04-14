@@ -1,4 +1,5 @@
-const i18n = {
+// 波兰语
+var i18n = {
 	"mt": "Dzień",
 	"xs": "Godziny",
 	"fz": "Minuty",
@@ -252,7 +253,15 @@ const i18n = {
 		"nl": "holenderski",
 		"fi": "fiński",
 		"pl": "polski",
-		"bn": "bengalski"
+		"bn": "bengalski",
+		"hu": "węgierski",
+		"cs": "czeski",
+		"th": "tajski",
+		"tr": "turecki",
+		"ms": "Malajski",
+		"ro": "rumuński",
+		"sv": "szwedzki",
+		"da": "duński"
 	},
 
 	

@@ -1,4 +1,5 @@
-const i18n = {
+// 法语
+var i18n = {
 	"mt": "Jour",
 	"xs": "Heures",
 	"fz": "Minutes",
@@ -239,6 +240,7 @@ const i18n = {
 		"des": "Une fois allumé, il sera automatiquement défini en fonction de la langue du système",
 		"en": "Anglais",
 		"zh": "Chinois simplifié",
+		"zwft": "Chinois traditionnel",
 		"es": "Espagnol",
 		"kr": "Coréen",
 		"ru": "russe",
@@ -252,7 +254,14 @@ const i18n = {
 		"fi": "finnois",
 		"pl": "polonais",
 		"bn": "bengali",
-		"ar": "arabe"
+		"hu": "hongrois",
+		"cs": "Tchèque",
+		"th": "thaï",
+		"tr": "Turc",
+		"ms": "Malais",
+		"ro": "roumain",
+		"sv": "Suédois",
+		"da": "danois"
 	},
 
 	

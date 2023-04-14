@@ -1,11 +1,12 @@
-const i18n = {
+// 德语
+var i18n = {
 	"mt": "Tag",
 	"xs": "Stunden",
 	"fz": "Minuten",
 	"wxts": "Tipps",
 	"zzjz": "Laden...",
 	"noData": "KEINE DATEN",
-	"jchj" :"Überprüfe die Anmeldeumgebung",
+	"jchj": "Überprüfe die Anmeldeumgebung",
 	"ckfw": "Referenzbereich",
 	"bbgl": {
 		"bbts": "Erinnerung an Versionsaktualisierung",
@@ -14,13 +15,13 @@ const i18n = {
 		"google": "Es wurden neue Funktionen veröffentlicht, bitte gehen Sie zu Google Play, um die aktualisierte Version herunterzuladen."
 	},
 	"uds": {
-	"uds0001": "Modul auswählen",
-	"uds0002": "Modul zum Lesen auswählen",
-	"uds0003": "Die Liste enthält alle unterstützten Module der ausgewählten Marke, es wird empfohlen, nur die bereits im Fahrzeug vorhandenen Module auszuwählen. Es können jedoch alle Module ausgewählt werden. Das System erkennt automatisch die tatsächlich im Fahrzeug vorhandenen Einheiten .",
-	"uds0004": "Alle auswählen",
-	"uds0005": "Alle auswählen abbrechen",
-	"uds0006": "Diagnose starten",
-	"uds0007": "Verkäufer-Benutzerdefiniert"
+		"uds0001": "Modul auswählen",
+		"uds0002": "Modul zum Lesen auswählen",
+		"uds0003": "Die Liste enthält alle unterstützten Module der ausgewählten Marke, es wird empfohlen, nur die bereits im Fahrzeug vorhandenen Module auszuwählen. Es können jedoch alle Module ausgewählt werden. Das System erkennt automatisch die tatsächlich im Fahrzeug vorhandenen Einheiten .",
+		"uds0004": "Alle auswählen",
+		"uds0005": "Alle auswählen abbrechen",
+		"uds0006": "Diagnose starten",
+		"uds0007": "Verkäufer-Benutzerdefiniert"
 	},
 	"yjdl": {
 		"yxdl": "E-Mail-Anmeldung",
@@ -51,7 +52,7 @@ const i18n = {
 		"wdl": "Nicht eingeloggt",
 		"cl": "Fahrzeug"
 	},
-	
+
 	"OBDxncs": {
 		"bt": "Adaptervergleich",
 		"fbt": "größer bedeutet schneller",
@@ -63,7 +64,7 @@ const i18n = {
 		"sec_dd2": "(2) Alle getesteten Adapter sind Standard-Bluetooth, es sei denn, 'WiFi', 'USB' oder 'BLE' ist Teil ihres Namens",
 		"text2": "Vergleich von OBD"
 	},
-	
+
 	"tsxx": {
 		"qxz": "wählen",
 		"qsr": "Bitte eingeben",
@@ -93,7 +94,7 @@ const i18n = {
 		"fgf": "Diese Funktion ist exklusiv für offizielle Produkte, bitte verwenden Sie sie nach dem Kauf!",
 		"b25": "Diese Funktion ist exklusiv für B25, bitte verwenden Sie sie nach dem Kauf!"
 	},
-	
+
 	"pid": {
 		"dsyh": "Kraftstoffverbrauch im Leerlauf",
 		"xsyh": "Kraftstoffverbrauch",
@@ -102,14 +103,14 @@ const i18n = {
 		"cqyh": "Langfristiger Kraftstoffverbrauch",
 		"pjsd": "Durchschnittsgeschwindigkeit",
 		"xslc": "gefahrene Strecke",
-		"DTC_legnth":"# der in diesem Steuergerät gespeicherten DTCs",
-		"MIL":"Störungsanzeigelampenstatus",
+		"DTC_legnth": "# der in diesem Steuergerät gespeicherten DTCs",
+		"MIL": "Störungsanzeigelampenstatus",
 		"mil_0": "Licht aus",
 		"mil_1": "Licht an",
 		"shxt": "Aussetzerüberwachung",
 		"ryxt": "Kraftstoffsystemüberwachung",
 		"zhzj": "Umfassende Komponentenüberwachung",
-		
+
 		"fdjlx": "Motortyp",
 		"ysfdj": "Kompressionszündung",
 		"dhfdj": "Funkenzündung",
@@ -139,13 +140,13 @@ const i18n = {
 		"tips6": "Kostengünstige Version",
 		"sdlj": "Verbindung manuell auswählen"
 	},
-	
+
 	"djz": {
 		"noData": "Derzeit sind keine Standbilddaten vorhanden",
 		"previousFrame": "Vorheriger Rahmen",
 		"nextFrame": "Nächster Frame"
 	},
-	
+
 	"fwgl": {
 		"ybp": "Dashboard",
 		"UDS": "Einheitlicher Diagnosedienst (Test)",
@@ -160,7 +161,7 @@ const i18n = {
 		"sssjl_des": "Aktuelle Antriebsstrang-Diagnosedaten anfordern",
 		"gzzsd": "Fehleranzeigeerkennung",
 		"gzzsd_des": "Liefert Informationen zum Fahrzeugbetrieb, nachdem die Fehlerleuchte ein- oder ausgeschaltet ist",
-		
+
 		"pid0141": "Status Diagnose bereit",
 		"pid0141_des": "Liefert den Status der Fahrzeugüberwachung seit dem Löschen des Fehlercodes und den aktuellen Betriebsstatus der Fahrzyklusüberwachung",
 		"$05": "Ergebnisse der Überwachung des Sauerstoffsensors",
@@ -169,10 +170,10 @@ const i18n = {
 		"$06_des": "Zugriff auf die Ergebnisse der On-Board-Diagnose-Überwachungstests für bestimmte Komponenten/Systeme zulassen.",
 		"$09": "Fahrzeuginformationen",
 		"$09_des": "Fahrzeugspezifische Fahrzeuginformationen und -infos lesen",
-		
+
 		"clnj": "",
 		"clnj_des": "",
-		
+
 		"obdTest": "OBD-Leistungstest",
 		"obdTest_des": "Testen Sie verschiedene Leistungsindikatoren von OBD durch automatisierte Testwerkzeuge.",
 		"djz": "Standbild",
@@ -180,7 +181,7 @@ const i18n = {
 		"yjjc": "Vollständige Fahrzeugerkennung mit einem Klick",
 		"yjjc_des": "Umfassende Erfassung aller Fahrzeugsensordaten, Fahrzeuginformationen, Fehlercodes, Standbilder und Fahrzeugüberwachungsinformationen."
 	},
-	
+
 	"yjjc": {
 		"cljkxx": "Informationen zur Fahrzeugüberwachung",
 		"xx_09": "Erkennen von Fahrzeuginformationen",
@@ -190,8 +191,8 @@ const i18n = {
 		"xx_05": "Erkennen von Sauerstoffsensorinformationen",
 		"xx_06": "Lesen spezifischer Überwachungsergebnisinformationen"
 	},
-	
-	"ybpgl":{
+
+	"ybpgl": {
 		"dcdy": "Batteriespannung",
 		"xhyb": "Geschwindigkeitsmesser",
 		"yhyb": "Kraftstoffverbrauchsmesser",
@@ -201,8 +202,8 @@ const i18n = {
 		"sc": "Dashboard löschen",
 		"delete_tips": "Möchten Sie das Dashboard wirklich löschen?"
 	},
-	
-		
+
+
 	"status": {
 		"1000": "Bluetooth ist nicht eingeschaltet",
 		"1001": "Bluetooth ist aus",
@@ -216,7 +217,7 @@ const i18n = {
 		"1009": "Kein Gerät gefunden"
 	},
 
-  
+
 	"szgl": {
 		"bt": "Einstellung",
 		"label1": "Sprache",
@@ -237,8 +238,9 @@ const i18n = {
 	"yygl": {
 		"label": "System folgen",
 		"des": "Nach dem Einschalten wird es automatisch entsprechend der Systemsprache eingestellt",
-		"de": "Englisch",
-		"zh": "Chinesisch vereinfacht",
+		"en": "Englisch",
+		"zh": "Vereinfachtes Chinesisch",
+		"zwft": "Traditionelles Chinesisch",
 		"es": "Spanisch",
 		"kr": "Koreanisch",
 		"ru": "Russisch",
@@ -252,10 +254,17 @@ const i18n = {
 		"fi": "Finnisch",
 		"pl": "Polnisch",
 		"bn": "Bengalisch",
-		"ar": "Arabisch"
+		"hu": "Ungarisch",
+		"cs": "Tschechisch",
+		"th": "thailändisch",
+		"tr": "Türkisch",
+		"ms": "Malaiisch",
+		"ro": "Rumänisch",
+		"sv": "Schwedisch",
+		"da": "dänisch"
 	},
 
-	
+
 	"obdManage": {
 		"bt": "OBD-Verwaltung",
 		"search_tip": "Bitte suchen Sie erneut oder kaufen Sie unsere Produkte",
@@ -271,8 +280,8 @@ const i18n = {
 		"searchAgain_message": "Möchtest du wirklich erneut nach Geräten in der Nähe suchen?"
 	},
 
-	
-"gzjc": {
+
+	"gzjc": {
 		"bt": "Diagnose",
 		"btn": "Test starten",
 		"des": "Starte einen vollständigen Scan deines Fahrzeugs",
@@ -294,7 +303,7 @@ const i18n = {
 		"definition_07": "Diagnosefehlercodes ausstehend",
 		"definition_0A": "Permanente Diagnose-Fehlercodes",
 		"03_des": "Wenn eine Anomalie von der ECU (Vehicle Control Unit) erkannt wird, wird ein Fehlercode im Speicher gespeichert. Dieser Fehlercode bezieht sich auf eine abnormale Situation, die während des letzten Fahrvorgangs festgestellt wurde. Diese Fehlercodes werden im Speicher gehalten für einen bestimmten Zeitraum, wenn der Fehlercode erneut gefunden wird, aktualisieren Sie die Aufbewahrungsfrist.",
-		"07_des": "Dies ist eine unbestätigte Anomalie während der Fahrt. Wenn die Anomalie wiederholt und identifiziert wird, wird der temporäre Fehlercode als bestätigter Fehlercode klassifiziert. Wenn er nicht gespeichert wird, wird er gelöscht, wenn der Motor abgestellt wird." ,
+		"07_des": "Dies ist eine unbestätigte Anomalie während der Fahrt. Wenn die Anomalie wiederholt und identifiziert wird, wird der temporäre Fehlercode als bestätigter Fehlercode klassifiziert. Wenn er nicht gespeichert wird, wird er gelöscht, wenn der Motor abgestellt wird.",
 		"0A_des": "Da es einen Verlauf vergangener DTCs anzeigt, stellt es nicht den aktuellen Fahrzeugstatus dar. Es ist möglicherweise nicht möglich, die entsprechenden DTCs programmgesteuert zu löschen.",
 		"sys_P": "Antriebssystem (vom Hersteller definiert)",
 		"sys_B": "Karosseriesystem (vom Hersteller definiert)",
@@ -319,7 +328,7 @@ const i18n = {
 		"ecu": "Elektronische Steuereinheit",
 		"ESN": "Motorseriennummer",
 		"EROTAN": "Abgasverordnung oder Typgenehmigungsnummer",
-		"FEOCNTR":"Zündzykluszähler für Betrieb des betankten Motors",
+		"FEOCNTR": "Zündzykluszähler für Betrieb des betankten Motors",
 		"obd": "OBDSUP"
 	},
 
@@ -408,7 +417,7 @@ const i18n = {
 		"text5": "Nachdem Sie die obigen Schritte ausgeführt haben, rufen Sie die APP auf. Die APP scannt automatisch das OBD-Gerät und fragt Sie, ob Sie das Gerät verbinden möchten. Das iOS-Gerät fragt, ob Sie den Zugriff auf die Adresse zulassen möchten. Klicken Sie auf Zulassen.",
 		"text6": "Wählen Sie das zu verbindende Gerät aus und klicken Sie, um es zu verbinden. Nachdem die Verbindung erfolgreich war, zeigt die Startseite der APP den OBD-Gerätenamen und die Bluetooth-Adresse an, und auf dem Dashboard erscheint ein Messwert."
 	},
-	
+
 	"06fw": {
 		"MID": "Monitorname",
 		"TID": "Testname",
@@ -418,7 +427,7 @@ const i18n = {
 		"MAX": "Maximalgrenze",
 		"CURRENT": "Testwert"
 	},
-	
+
 	"09fw": {
 		"ipt": "In-use Performance Tracking",
 		"IPT_08_1": "Anzahl der aufgetretenen OBD-Überwachungsbedingungen",
@@ -441,7 +450,7 @@ const i18n = {
 		"IPT_08_18": "Überwachungsbedingungen des sekundären O2-Sensors, die Bank 1 zählen",
 		"IPT_08_19": "Überwachung des sekundären O2-Sensors zählt Bank 2",
 		"IPT_08_20": "Überwachungsbedingungen des sekundären O2-Sensors, die Bank 2 zählen",
-		
+
 		"IPT_08_des_1": "zeigt an, wie oft das Fahrzeug unter den angegebenen OBD-Überwachungsbedingungen betrieben wurde (allgemeiner Nenner).",
 		"IPT_08_des_2": "Zeigt an, wie oft der Motor gestartet wurde.",
 		"IPT_08_des_3": "Zeigt an, wie oft alle Bedingungen aufgetreten sind, die zum Erkennen einer Fehlfunktion der Katalysatorsystembank 1 erforderlich sind (Zähler).",
@@ -456,13 +465,13 @@ const i18n = {
 		"IPT_08_des_12": "zeigt an, wie oft das Fahrzeug unter den angegebenen AGR/VVT-Systemüberwachungsbedingungen betrieben wurde (Nenner).",
 		"IPT_08_des_13": "Zeigt an, wie oft alle zum Erkennen einer Fehlfunktion des AIR-Systems erforderlichen Bedingungen aufgetreten sind (Zähler).",
 		"IPT_08_des_14": "Zeigt an, wie oft das Fahrzeug unter den angegebenen Überwachungsbedingungen des AIR-Systems betrieben wurde (Nenner).",
-		"IPT_08_des_15": "zeigt an, wie oft alle zum Erkennen einer 0,020 Zoll (oder 0,040 Zoll) EVAP-Systemleckage erforderlichen Bedingungen aufgetreten sind (Zähler).",
+		"IPT_08_des_15": "zeigt an, wie oft alle zum Erkennen einer 0,020” (oder 0,040”) EVAP-Systemleckage erforderlichen Bedingungen aufgetreten sind (Zähler).",
 		"IPT_08_des_16": "Zeigt an, wie oft das Fahrzeug unter den angegebenen Überwachungsbedingungen für Lecks im EVAP-System betrieben wurde (Nenner).",
 		"IPT_08_des_17": "Zeigt an, wie oft alle Bedingungen aufgetreten sind, die zum Erkennen einer Fehlfunktion der sekundären Sauerstoffsensorbank 1 erforderlich sind (Zähler).",
 		"IPT_08_des_18": "Zeigt an, wie oft das Fahrzeug unter den angegebenen Überwachungsbedingungen des sekundären Sauerstoffsensors betrieben wurde (Nenner).",
 		"IPT_08_des_19": "Zeigt an, wie oft alle Bedingungen aufgetreten sind, die zum Erkennen einer Fehlfunktion der sekundären Sauerstoffsensorbank 2 erforderlich sind (Zähler).",
 		"IPT_08_des_20": "Zeigt an, wie oft das Fahrzeug unter den angegebenen Überwachungsbedingungen des sekundären Sauerstoffsensors betrieben wurde (Nenner).",
-		
+
 		"IPT_0B_1": "Anzahl der aufgetretenen OBD-Überwachungsbedingungen",
 		"IPT_0B_2": "Zündzykluszähler",
 		"IPT_0B_3": "NMHC-Katalysatormonitor-Abschlussbedingungszähler",
@@ -481,7 +490,7 @@ const i18n = {
 		"IPT_0B_16": "Aufgetretene Zustände der Ladedrucküberwachung zählen",
 		"IPT_0B_17": "Zählung der Abschlussbedingung für die Kraftstoffüberwachung",
 		"IPT_0B_18": "Aufgetretene Kraftstoffüberwachungsbedingungen zählen",
-		
+
 		"IPT_0B_des_1": "zeigt an, wie oft das Fahrzeug unter den angegebenen OBD-Überwachungsbedingungen betrieben wurde (allgemeiner Nenner).",
 		"IPT_0B_des_2": "Zeigt an, wie oft der Motor gestartet wurde.",
 		"IPT_0B_des_3": "Zeigt an, wie oft alle zum Erkennen einer Fehlfunktion des NMHC-Katalysatorsystems erforderlichen Bedingungen aufgetreten sind (Zähler).",

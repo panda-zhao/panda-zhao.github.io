@@ -1,4 +1,5 @@
-const i18n = {
+// 荷兰语
+var i18n = {
   "mt": "Dag",
   "xs": "Uren",
   "fz": "Minuten",
@@ -239,6 +240,7 @@ const i18n = {
     "des": "Nadat het is ingeschakeld, wordt het automatisch ingesteld volgens de systeemtaal",
     "en": "Engels",
     "zh": "Vereenvoudigd Chinees",
+    "zwft": "Traditioneel Chinees",
     "es": "Spaans",
     "kr": "Koreaans",
     "ru": "Russisch",
@@ -252,7 +254,14 @@ const i18n = {
     "fi": "Fins",
     "pl": "Pools",
     "bn": "Bengaals",
-    "ar": "Arabisch"
+		"hu": "Hongaars",
+		"cs": "Tsjechisch",
+		"th": "Thais",
+		"tr": "Turks",
+		"ms": "Maleis",
+		"ro": "Roemeens",
+		"sv": "Zweeds",
+		"da": "Deens"
   },
 
 

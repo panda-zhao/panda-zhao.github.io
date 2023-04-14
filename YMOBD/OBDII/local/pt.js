@@ -1,4 +1,5 @@
-const i18n = {
+// 葡萄牙语
+var i18n =  {
   "mt": "Dia",
   "xs": "Horas",
   "fz": "Minutos",
@@ -225,7 +226,7 @@ const i18n = {
     "label3": "Ajuda para conexão",
     "label4": "Sobre",
     "label5": "Shopping oficial",
-    "label5": "Shopping 1688",
+    "value5": "Shopping 1688",
     "label6": "Versão",
     "cjwt": "Problema comum",
     "unittitle": "Unidade",
@@ -239,12 +240,28 @@ const i18n = {
     "des": "Depois de ligado, será configurado automaticamente de acordo com o idioma do sistema",
     "en": "Inglês",
     "zh": "Chinês Simplificado",
+    "zwft": "chinês tradicional",
     "es": "espanhol",
     "kr": "coreano",
     "ru": "Russo",
     "ja": "Japonês",
     "it": "italiano",
-    "hi": "Hindi"
+    "hi": "Hindi",
+		"pt": "Português",
+		"de": "alemão",
+		"fr": "Francês",
+		"nl": "holandês",
+		"fi": "finlandês",
+		"pl": "polonês",
+		"bn": "Bengali",
+		"hu": "Húngaro",
+		"cs": "Tcheco",
+		"th": "Tailandês",
+		"tr": "turco",
+		"ms": "Malaio",
+		"ro": "romeno",
+		"sv": "sueco",
+		"da": "dinamarquês"
   },
 
 
