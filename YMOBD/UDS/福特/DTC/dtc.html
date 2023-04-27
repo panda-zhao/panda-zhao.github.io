@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>福特故障码解析</title>
+</head>
+
+<body>
+  <div id="container"></div>
+  <!-- <script src="./en_dtc.js"></script> -->
+  <script src="./CN_TEXT.js"></script>
+  <script src="./EN_TEXT.js"></script>
+  <script src="./key.js"></script>
+  <script>
+    
+    window.onload = function () {
+      // console.log(key, result)
+      console.log('加载完成')
+      getDTCs()
+
+
+
+      // format3340C1DA('0x3340C1DA E354')
+      // format3340C1DA('0x3340C1DAE355')
+
+      // format3340C1DA('0x3340C1DA A3BC')
+
+     
+
+      // let length = 0
+      // data.forEach(item => {
+      //   if (!item.code || !item.describe || !item.lang) {
+      //     length++
+      //     console.log(JSON.stringify(item))
+      //   }
+      // })
+      // console.log("错误的数量=", length)
+    }
+
+    function getDTCs(){
+      /**
+       * 福特故障码解析：
+       * 0x4681连接上FOXWELL_15中第一列数值，得到的ID在CN_TEXT中查找故障解析
+       */
+      let _data = en  // 中文是cn 英文是en
+      let length = 0 // key未去重前40206个, 去重后 22086
+      let errLength = 0
+      let json = {}
+      // console.log(result["0x46810001c939"])
+      key.forEach(element => {
+        element = '0x'+ element.toUpperCase().substring(2)
+        if (!json[element]) {
+          if (!_data[element]) {
+            errLength++
+            console.log(errLength + ':无此项', element, _data[element])
+          } else {
+            length++
+            json[element] = _data[element]
+          }
+        }
+      });
+      document.getElementById('container').innerHTML = `处理完成，总数${length}<br>`
+      document.getElementById('container').innerHTML += `${JSON.stringify(json)}`
+    }
+
+     /**
+       * 格式化首字母为PBCU, 标准码为5位
+       * 原始码为4位或者6位16进制字符
+       * */
+      
+       function format_first(code) {
+        let result = null
+        if (code.length < 4) {
+          console.error('错误的代码')
+          return result
+        }
+        const hexDigitReplace = { '0': 'P0', '1': 'P1', '2': 'P2', '3': 'P3', '4': 'C0', '5': 'C1', '6': 'C2', '7': 'C3', '8': 'B0', '9': 'B1', "A": 'B2', "B": 'B3', "C": 'U0', "D": 'U1', "E": 'U2', "F": 'U3' }
+        result = hexDigitReplace[code.charAt(0)] + code.substring(1)
+        if (result.substring(5) === '00') {
+          result = result.substring(0, 5)
+        }
+        return result
+      }
+
+  </script>
+</body>
+
+</html>
