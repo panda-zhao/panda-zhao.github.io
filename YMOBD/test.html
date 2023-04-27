@@ -8,7 +8,17 @@
 </head>
 <body>
   <div id="container"></div>
-  <script>
+  <script type="module">
+
+    try {
+      import('./demo').then((module)=>{
+        console.log(module)
+      })
+    } catch (error) {
+      console.error(error)
+    }
+
+  
     /**
       ios
       ru-RU 俄罗斯
@@ -29,22 +39,22 @@
     // const osLanguage = "zh-Hant-HK"
     // const osLanguage = "en-US"
     // const osLanguage = "en-IN"
-    let _language = osLanguage.substring(0, osLanguage.lastIndexOf('-')) // 小写
-    let _region = osLanguage.substring(osLanguage.lastIndexOf('-')+1) // 大写
-    document.getElementById('container').innerHTML = `<div>语言代码：${_language},</div> <div>地区代码： ${_region}</div>`
+    // let _language = osLanguage.substring(0, osLanguage.lastIndexOf('-')) // 小写
+    // let _region = osLanguage.substring(osLanguage.lastIndexOf('-')+1) // 大写
+    // document.getElementById('container').innerHTML = `<div>语言代码：${_language},</div> <div>地区代码： ${_region}</div>`
 
 
 
-    let address = "中国"
-    let pattern = /[\u4e00-\u9fa5]/
-    try {
-      const condition1 = address && pattern.test(address) && !address.includes('台湾') && !address.includes('台灣')
+    // let address = "中国"
+    // let pattern = /[\u4e00-\u9fa5]/
+    // try {
+    //   const condition1 = address && pattern.test(address) && !address.includes('台湾') && !address.includes('台灣')
 
-      console.log(condition1 ? "使用标准17位" : "使用非标准")
-      // console.log(address && pattern.test(address) && (!address.includes('台湾') || !address.includes('台灣')))
-    } catch (error) {
-      console.error(error)
-    }
+    //   console.log(condition1 ? "使用标准17位" : "使用非标准")
+    //   // console.log(address && pattern.test(address) && (!address.includes('台湾') || !address.includes('台灣')))
+    // } catch (error) {
+    //   console.error(error)
+    // }
   </script>
 </body>
 </html>

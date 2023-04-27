@@ -21,6 +21,13 @@
       document.write(String.fromCharCode(12))
       document.write('<br />')
 
+      function format_first(code){
+        const hexDigitReplace = {'0':'P0','1':'P1','2':'P2','3':'P3','4':'C0','5':'C1','6':'C2','7':'C3','8':'B0','9':'B1',"A":'B2',"B":'B3',"C":'U0',"D":'U1',"E":'U2',"F":'U3'}
+        if(Object.keys(hexDigitReplace).includes(code)){
+          return hexDigitReplace[code]
+        }
+        console.error('错误的代码')
+      }
       function get_trouble_code(cmd, msg) {
         try {
           let data = msg.replace(/[ ]|[\r]|[\n]|[\r\n]|[>]/g, '')
@@ -43,26 +50,8 @@
             }
           }
           // console.log('获取的指令', result)
-          const hexDigitReplace = {
-            '0': 'P0',
-            '1': 'P1',
-            '2': 'P2',
-            '3': 'P3',
-            '4': 'C0',
-            '5': 'C1',
-            '6': 'C2',
-            '7': 'C3',
-            '8': 'B0',
-            '9': 'B1',
-            A: 'B2',
-            B: 'B3',
-            C: 'U0',
-            D: 'U1',
-            E: 'U2',
-            F: 'U3',
-          }
           result.forEach((item, index) => {
-            const _item = hexDigitReplace[item[0]] + item.substring(1)
+            const _item = format_first(item[0]) + item.substring(1)
             result.splice(index, 1, _item)
           })
 
@@ -83,7 +72,7 @@
 
       // 其他协议
       // get_trouble_code('03', '87F112 43 0000 0000 0000 CD>')
-      // get_trouble_code('03', '87F112 43 2029 0000 0000 16>')
+      get_trouble_code('03', '87F112 43 2029 0000 0000 16>')
       // get_trouble_code('03', `87F112 43 0006 0007 1233 1F \r 87F112 43 0009 C022 C023 9B \r 87F112 43 C024 C025 8020 36 \r 87F112 43 8021 1381 4040 82>`)
 
       // 0个故障码
@@ -201,26 +190,8 @@
               }
             }
 
-            const hexDigitReplace = {
-              '0': 'P0',
-              '1': 'P1',
-              '2': 'P2',
-              '3': 'P3',
-              '4': 'C0',
-              '5': 'C1',
-              '6': 'C2',
-              '7': 'C3',
-              '8': 'B0',
-              '9': 'B1',
-              A: 'B2',
-              B: 'B3',
-              C: 'U0',
-              D: 'U1',
-              E: 'U2',
-              F: 'U3',
-            }
             result.forEach((item, index) => {
-              const _item = hexDigitReplace[item[0]] + item.substring(1)
+              const _item = format_first(item[0]) + item.substring(1)
               result.splice(index, 1, _item)
             })
           }

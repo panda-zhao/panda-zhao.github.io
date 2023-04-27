@@ -1,0 +1,117 @@
+710 77A CAN Gateway
+7E1 7E9 变速箱控制单元
+713 77D ABS控制单元
+7E0 7E8 引擎控制单元
+712 77C Power steering
+732 79C Authorization system for access and starting the engine
+74D 7B7 Front passenger seat
+200 23F Head unit controller (VW TP2.0)
+746 7B0 Heater and climate
+70E 778 Onboard supply control unit
+200 224 Slide Door Left (VW TP2.0)
+770 7DA Media player 1
+200 24F Digital radio tuner (VW TP2.0)
+70A 774 Parking Assistant 2
+7E2 7EA Engine Electronics No.2
+757 7C1 Active cruise control
+772 7DC Electronic system Damping controls
+715 77F SRS
+70C 776 Steering column
+714 77E Dashboard
+76A 7D4 Additional heater
+200 240 Car location(VW TP2.0)
+716 780 Active steering
+200 22B Driver identification (VW TP2.0)
+200 250 Mediaplayer 2(VW TP2.0)
+200 25F Satelight radio tuner (VW TP2.0)
+730 79A FLA
+728 792 Energy Management 2
+70F 779 Four-wheeldrive
+73B 7A5 Increased braking force
+711 77B Immobilizer
+72D 797 Electric folding roof
+200 23E Rear head unit controller (VW TP2.0)
+71A 784 Climate Control Panel
+200 238 Left side lights control (VW TP2.0)
+200 259 Voice amplifier (VW TP2.0)
+200 254 Mediaplayer 3(VW TP2.0)
+200 24C Digital TV-tuner (VW TP2.0)
+71E 788 Differentiallock electronics
+755 7BF Ride height control system
+74C 7B6 Driver seat adjustment
+76C 7D6 Navigation system
+76C 7D6 Roof electronics
+200 239 Right side lights control(VW TP2.0)
+74E 7B8 Lane change assistant
+72C 796 Special function
+200 262 Mediaplayer 4(VW TP2.0)
+74A 7B4 Driver door electronic equipment
+712 77C Power steering
+200 221 Central comfort systems module (VW TP2.0)
+76F 7D9 Acoustic system
+200 237 Rear seat behind driver (VW TP2.0)
+200 25D Rear right control and indication unit (VW TP2.0)
+200 208 TPMS #2(VW TP2.0)
+200 228 Body control unit #2 (VW TP2.0)
+74B 7B5 Front passenger door electronics
+752 7BC Parking brake
+754 7BE Headlights corrector
+200 252 Head unit(MMI)(VW TP2.0)
+76D 7D7 Tv tuner
+200 241 Tow protection (VW TP2.0)
+200 21A Lane assist(VW TP2.0)
+200 24B Control(VW TP2.0)
+200 25E Rear left control and indication unit (VW TP2.0)
+773 7DD Electronic Information System 1
+200 233 Battery Regulation using CAN (VW TP2.0)
+200 246 Easy entry driver side (VW TP2.0)
+200 224 Rear left door electoronics (VW TP2.0)
+70B 775 TPMS
+200 236 Rear seats adjustment (VW TP2.0)
+200 25C Voice control(VW TP2.0)
+200 232 Wipers electronics(VW TP2.0)
+747 7B1 Trailer functions
+769 7D3 Rear view camera system var.1
+200 23D Control Head Roof(VW TP2.0)
+723 78D Tailgate/Boot lid
+745 7AF Comfort system central module 2
+71D 787 Charger
+200 225 Rear right door electronics (VW TP2.0)
+200 247 Easy entry passenger side (VW TP2.0)
+200 21B Chassis Control(VW TP2.0)
+767 7D1 Emergency Call and Communication Module
+70A 774 Parking assistant
+200 225 Slide Door Right (VW TP2.0)
+200 22E Additional heater (VW TP2.0)
+200 248 Indication panelin the dashboard (VW TP2.0)
+75A 7C4 Electronic Information System 2
+7E5 7ED Hybrid battery management (UDS)
+6BC 726 SRS/Airbag(UDS)
+784 7EE ESP(UDS)
+74F 7B9 Front Assistant A5(UDS)
+762 7CC Sensors for brake control unit (UDS
+73E 7A8 Rear door behind driver (UDS)
+73F 7A9 Rear door behind passenger (UDS)
+765 7CF High-voltage battery charging management(UDS)
+744 7AE High-voltage battery charger (UDS)
+17FC0076 17FE0076 Engine(EVO/29bit)
+17FC0077 17FE0077 Gearbox(EVO/29bit)
+17FC008B 17FE008B Comfort unit
+17FC00A9 17FE00A9 Multi-functionalunit
+17FC007C 17FE007C Electro-engine
+17FC007B 17FE007B Battery management system
+17FC0096 17FE0096 Headlight control left 2
+17FC0097 17FE0097 Headlight control right 2
+17FC00A0 17FE00A0 Roof control #2
+17FC160A 17FE160A Left LED headlight control 1
+17FC160B 17FE160B Right LED headlight control 1
+17FC16D1 17FE16D1 Battery cell control module 1
+17FC16D2 17FE16D2 Battery cell control module 2
+17FC16D3 17FE16D3 Battery cell control module 3
+17FC16D4 17FE16D4 Battery cell control module 4
+17FC16D5 17FE16D5 Battery cell control module 5
+17FC16D6 17FE16D6 Battery cell control module 6
+17FC16D7 17FE16D7 Battery cell control module 7
+17FC16D8 17FE16D8 Battery cell control module 8
+17FC007B 17FE007B HV BMS
+17FC00B9 17FE00B9 DC Charde

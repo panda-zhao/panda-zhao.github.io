@@ -1,0 +1,106 @@
+俄文/卡努里文/印地文/意大利文/简体中文/英文/西班牙语
+缺少  韩语和日语
+
+英语en
+简体中文  zh-Hans
+西班牙语 es
+韩语 kr
+俄语 ru
+日语 ja
+意大利语 it
+印地语 hi
+
+繁體中文  zh-Hant
+葡萄牙语 pt
+德语 de
+法语 fr
+荷兰语 nl
+芬兰语 fi
+波兰语 pl
+孟加拉语 bn --- App Store无此语言
+
+匈牙利语 hu
+捷克语 cs
+泰语 th
+土耳其语 tr
+马来语 ms
+罗马尼亚语 ro
+瑞典语 sv
+丹麦语 da
+>>>>>>>>>> App Store发布说明 <<<<<<<<<<
+
+
+>>>>>>>>>> Google play发布说明 <<<<<<<<<<
+
+<en-US>
+Internationalization support available in English, Simplified Chinese, Traditional Chinese, Spanish, Korean, Russian, Japanese, Italian, Hindi, Portuguese, German, French, Dutch, Finnish, Polish, Bengali, Hungarian, Czech, Thai, Turkish, Malay, Romanian, Swedish, Danish and other 24 languages.
+</en-US>
+<bn-BD>
+ইংরেজি, সরলীকৃত চীনা, ঐতিহ্যবাহী চীনা, স্প্যানিশ, কোরিয়ান, রাশিয়ান, জাপানি, ইতালিয়ান, হিন্দি, পর্তুগিজ, জার্মান, ফ্রেঞ্চ, ডাচ, ফিনিশ, পোলিশ, বাংলা, হাঙ্গেরিয়ান, চেক, থাই, তুর্কি, মালয়, রোমানিয়ান সুইডিশ, ড্যানিশ এবং অন্যান্য 24টি ভাষা।
+</bn-BD>
+<cs-CZ>
+Podpora internacionalizace dostupná v angličtině, zjednodušené čínštině, tradiční čínštině, španělštině, korejštině, ruštině, japonštině, italštině, hindštině, portugalštině, němčině, francouzštině, holandštině, finštině, polštině, bengálštině, maďarštině, češtině, thajštině, turečtině, malajštině, rumunštině, švédština, dánština a dalších 24 jazyků.
+</cs-CZ>
+<da-DK>
+Internationaliseringssupport tilgængelig på engelsk, forenklet kinesisk, traditionel kinesisk, spansk, koreansk, russisk, japansk, italiensk, hindi, portugisisk, tysk, fransk, hollandsk, finsk, polsk, bengali, ungarsk, tjekkisk, thai, tyrkisk, malaysisk, rumænsk, svensk, dansk og andre 24 sprog.
+</da-DK>
+<de-DE>
+Internationalisierungsunterstützung verfügbar in Englisch, vereinfachtem Chinesisch, traditionellem Chinesisch, Spanisch, Koreanisch, Russisch, Japanisch, Italienisch, Hindi, Portugiesisch, Deutsch, Französisch, Niederländisch, Finnisch, Polnisch, Bengali, Ungarisch, Tschechisch, Thailändisch, Türkisch, Malaiisch, Rumänisch, Schwedisch, Dänisch und weitere 24 Sprachen.
+</de-DE>
+<es-ES>
+Soporte de internacionalización disponible en inglés, chino simplificado, chino tradicional, español, coreano, ruso, japonés, italiano, hindi, portugués, alemán, francés, holandés, finlandés, polaco, bengalí, húngaro, checo, tailandés, turco, malayo, rumano, Sueco, danés y otros 24 idiomas.
+</es-ES>
+<fi-FI>
+Kansainvälistymistuki saatavilla englanniksi, yksinkertaistetuksi kiinaksi, perinteiseksi kiinaksi, espanjaksi, koreaksi, venäjäksi, japaniksi, italiaksi, hindiksi, portugaliksi, saksaksi, ranskaksi, hollanniksi, suomeksi, puolaksi, bengaliksi, unkariksi, tšekkiksi, thai, turkkiksi, malaijiksi, romaniaksi, ruotsi, tanska ja muut 24 kieltä.
+</fi-FI>
+<fr-FR>
+Prise en charge de l'internationalisation disponible en anglais, chinois simplifié, chinois traditionnel, espagnol, coréen, russe, japonais, italien, hindi, portugais, allemand, français, néerlandais, finnois, polonais, bengali, hongrois, tchèque, thaï, turc, malais, roumain, Suédois, danois et 24 autres langues.
+</fr-FR>
+<hi-IN>
+अंतर्राष्ट्रीयकरण समर्थन अंग्रेजी, सरलीकृत चीनी, पारंपरिक चीनी, स्पेनिश, कोरियाई, रूसी, जापानी, इतालवी, हिंदी, पुर्तगाली, जर्मन, फ्रेंच, डच, फिनिश, पोलिश, बंगाली, हंगेरियन, चेक, थाई, तुर्की, मलय, रोमानियाई में उपलब्ध है। स्वीडिश, डेनिश और अन्य 24 भाषाएँ।
+</hi-IN>
+<hu-HU>
+A nemzetköziesítés támogatása elérhető angol, egyszerűsített kínai, hagyományos kínai, spanyol, koreai, orosz, japán, olasz, hindi, portugál, német, francia, holland, finn, lengyel, bengáli, magyar, cseh, thai, török, maláj, román, svéd, dán és további 24 nyelv.
+</hu-HU>
+<it-IT>
+Supporto per l'internazionalizzazione disponibile in inglese, cinese semplificato, cinese tradizionale, spagnolo, coreano, russo, giapponese, italiano, hindi, portoghese, tedesco, francese, olandese, finlandese, polacco, bengalese, ungherese, ceco, tailandese, turco, malese, rumeno, Svedese, danese e altre 24 lingue.
+</it-IT>
+<ja-JP>
+英語、簡体字中国語、繁体字中国語、スペイン語、韓国語、ロシア語、日本語、イタリア語、ヒンディー語、ポルトガル語、ドイツ語、フランス語、オランダ語、フィンランド語、ポーランド語、ベンガル語、ハンガリー語、チェコ語、タイ語、トルコ語、マレー語、ルーマニア語、スウェーデン語、デンマーク語、その他 24 の言語。
+</ja-JP>
+<ko-KR>
+영어, 중국어 간체, 중국어 번체, 스페인어, 한국어, 러시아어, 일본어, 이탈리아어, 힌디어, 포르투갈어, 독일어, 프랑스어, 네덜란드어, 핀란드어, 폴란드어, 벵골어, 헝가리어, 체코어, 태국어, 터키어, 말레이어, 루마니아어, 스웨덴어, 덴마크어 및 기타 24개 언어.
+</ko-KR>
+<ms>
+Sokongan pengantarabangsaan tersedia dalam bahasa Inggeris, Cina Ringkas, Cina Tradisional, Sepanyol, Korea, Rusia, Jepun, Itali, Hindi, Portugis, Jerman, Perancis, Belanda, Finland, Poland, Bengali, Hungary, Czech, Thai, Turki, Melayu, Romania, Sweden, Denmark dan 24 bahasa lain.
+</ms>
+<nl-NL>
+Internationaliseringsondersteuning beschikbaar in het Engels, Vereenvoudigd Chinees, Traditioneel Chinees, Spaans, Koreaans, Russisch, Japans, Italiaans, Hindi, Portugees, Duits, Frans, Nederlands, Fins, Pools, Bengaals, Hongaars, Tsjechisch, Thais, Turks, Maleis, Roemeens, Zweeds, Deens en andere 24 talen.
+</nl-NL>
+<pl-PL>
+Obsługa internacjonalizacji dostępna w języku angielskim, chińskim uproszczonym, chińskim tradycyjnym, hiszpańskim, koreańskim, rosyjskim, japońskim, włoskim, hindi, portugalskim, niemieckim, francuskim, holenderskim, fińskim, polskim, bengalskim, węgierskim, czeskim, tajskim, tureckim, malajskim, rumuńskim, Szwedzki, duński i inne 24 języki.
+</pl-PL>
+<pt-PT>
+Suporte de internacionalização disponível em inglês, chinês simplificado, chinês tradicional, espanhol, coreano, russo, japonês, italiano, hindi, português, alemão, francês, holandês, finlandês, polonês, bengali, húngaro, tcheco, tailandês, turco, malaio, romeno, Sueco, dinamarquês e outros 24 idiomas.
+</pt-PT>
+<ro>
+Asistență pentru internaționalizare disponibilă în engleză, chineză simplificată, chineză tradițională, spaniolă, coreeană, rusă, japoneză, italiană, hindi, portugheză, germană, franceză, olandeză, finlandeză, poloneză, bengaleză, maghiară, cehă, thailandeză, turcă, malay, română, suedeză, daneză și alte 24 de limbi.
+</ro>
+<ru-RU>
+Internationaliseringsstöd tillgängligt på engelska, förenklad kinesiska, traditionell kinesiska, spanska, koreanska, ryska, japanska, italienska, hindi, portugisiska, tyska, franska, holländska, finska, polska, bengaliska, ungerska, tjeckiska, thailändska, turkiska, malaysiska, rumänska, Svenska, danska och andra 24 språk.
+</ru-RU>
+<sv-SE>
+Internationaliseringsstöd tillgängligt på engelska, förenklad kinesiska, traditionell kinesiska, spanska, koreanska, ryska, japanska, italienska, hindi, portugisiska, tyska, franska, holländska, finska, polska, bengaliska, ungerska, tjeckiska, thailändska, turkiska, malaysiska, rumänska, Svenska, danska och andra 24 språk.
+</sv-SE>
+<th>
+รองรับความเป็นสากลในภาษาอังกฤษ, จีนตัวย่อ, จีนตัวเต็ม, สเปน, เกาหลี, รัสเซีย, ญี่ปุ่น, อิตาลี, ฮินดี, โปรตุเกส, เยอรมัน, ฝรั่งเศส, ดัตช์, ฟินแลนด์, โปแลนด์, เบงกาลี, ฮังการี, เช็ก, ไทย, ตุรกี, มาเลย์, โรมาเนีย, สวีเดน เดนมาร์ก และอีก 24 ภาษา
+</th>
+<tr-TR>
+Uluslararasılaştırma desteği İngilizce, Basitleştirilmiş Çince, Geleneksel Çince, İspanyolca, Korece, Rusça, Japonca, İtalyanca, Hintçe, Portekizce, Almanca, Fransızca, Felemenkçe, Fince, Lehçe, Bengalce, Macarca, Çekçe, Tayca, Türkçe, Malayca, Rumence, İsveççe, Danca ve diğer 24 dil.
+</tr-TR>
+<zh-CN>
+提供国际化支持英语，简体中文，繁体中文，西班牙语，韩语，俄语，日语，意大利语，印地语，葡萄牙语，德语，法语，荷兰语，芬兰语，波兰语，孟加拉语，匈牙利语，捷克语，泰语，土耳其语，马来语，罗马尼亚语，瑞典语 ，丹麦语等24种语言。
+</zh-CN>
+<zh-TW>
+提供国际化支持英语，简体中文，繁體中文，西班牙语，韩语，俄语，日语，意大利语，印地语，葡萄牙语，德语，法语，荷兰语，芬兰语，波兰语，孟加拉语，匈牙利语，捷克语，泰语，土耳其语，马来语，罗马尼亚语，瑞典语 ，丹麦语等24种语言。
+</zh-TW>
