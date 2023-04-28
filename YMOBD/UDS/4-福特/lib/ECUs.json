@@ -1,0 +1,232 @@
+[
+  {
+    "req_id": "7E0",
+    "res_id": "7E8",
+    "ecu_name": "引擎控制单元"
+  },
+  {
+    "req_id": "7E1",
+    "res_id": "7E9",
+    "ecu_name": "变速箱控制单元"
+  },
+  {
+    "req_id": "760",
+    "res_id": "768",
+    "ecu_name": "ABS/ESP"
+  },
+  {
+    "req_id": "720",
+    "res_id": "728",
+    "ecu_name": "Dashboard"
+  },
+  {
+    "req_id": "7C7",
+    "res_id": "7CF",
+    "ecu_name": "ACCM"
+  },
+  {
+    "req_id": "727",
+    "res_id": "72F",
+    "ecu_name": "ACM"
+  },
+  {
+    "req_id": "7D0",
+    "res_id": "7D8",
+    "ecu_name": "APIM"
+  },
+  {
+    "req_id": "726",
+    "res_id": "72E",
+    "ecu_name": "BCM"
+  },
+  {
+    "req_id": "6F0",
+    "res_id": "6F8",
+    "ecu_name": "BCMC/BJB"
+  },
+  {
+    "req_id": "7E4",
+    "res_id": "7EC",
+    "ecu_name": "BECM"
+  },
+  {
+    "req_id": "723",
+    "res_id": "72B",
+    "ecu_name": "BECMB"
+  },
+  {
+    "req_id": "764",
+    "res_id": "76C",
+    "ecu_name": "CCM"
+  },
+  {
+    "req_id": "7C1",
+    "res_id": "7C9",
+    "ecu_name": "CMR"
+  },
+  {
+    "req_id": "746",
+    "res_id": "74E",
+    "ecu_name": "DCDC"
+  },
+  {
+    "req_id": "7A2",
+    "res_id": "7AA",
+    "ecu_name": "DCME"
+  },
+  {
+    "req_id": "762",
+    "res_id": "76A",
+    "ecu_name": "SCMF"
+  },
+  {
+    "req_id": "7B3",
+    "res_id": "7BB",
+    "ecu_name": "DCMG"
+  },
+  {
+    "req_id": "7B4",
+    "res_id": "7BC",
+    "ecu_name": "DCMH"
+  },
+  {
+    "req_id": "740",
+    "res_id": "748",
+    "ecu_name": "DDM"
+  },
+  {
+    "req_id": "744",
+    "res_id": "74C",
+    "ecu_name": "DSM"
+  },
+  {
+    "req_id": "783",
+    "res_id": "78B",
+    "ecu_name": "DSP"
+  },
+  {
+    "req_id": "7A1",
+    "res_id": "7A9",
+    "ecu_name": "GFM (FTRM)"
+  },
+  {
+    "req_id": "732",
+    "res_id": "73A",
+    "ecu_name": "GSM"
+  },
+  {
+    "req_id": "716",
+    "res_id": "71E",
+    "ecu_name": "GWM"
+  },
+  {
+    "req_id": "734",
+    "res_id": "73C",
+    "ecu_name": "HCM"
+  },
+  {
+    "req_id": "733",
+    "res_id": "73B",
+    "ecu_name": "HVAC"
+  },
+  {
+    "req_id": "706",
+    "res_id": "70E",
+    "ecu_name": "IPMA"
+  },
+  {
+    "req_id": "7D1",
+    "res_id": "7D9",
+    "ecu_name": "OBCC"
+  },
+  {
+    "req_id": "765",
+    "res_id": "76D",
+    "ecu_name": "OCS"
+  },
+  {
+    "req_id": "750",
+    "res_id": "758",
+    "ecu_name": "PACM"
+  },
+  {
+    "req_id": "741",
+    "res_id": "749",
+    "ecu_name": "PDM"
+  },
+  {
+    "req_id": "730",
+    "res_id": "738",
+    "ecu_name": "PSCM"
+  },
+  {
+    "req_id": "737",
+    "res_id": "73F",
+    "ecu_name": "RCM"
+  },
+  {
+    "req_id": "731",
+    "res_id": "739",
+    "ecu_name": "RFA"
+  },
+  {
+    "req_id": "775",
+    "res_id": "77D",
+    "ecu_name": "RGTM"
+  },
+  {
+    "req_id": "724",
+    "res_id": "72C",
+    "ecu_name": "SCCM"
+  },
+  {
+    "req_id": "7E2",
+    "res_id": "7EA",
+    "ecu_name": "SOBDM(BCCM)"
+  },
+  {
+    "req_id": "795",
+    "res_id": "79D",
+    "ecu_name": "SOBDMB"
+  },
+  {
+    "req_id": "7E6",
+    "res_id": "7EE",
+    "ecu_name": "SOBDMC"
+  },
+  {
+    "req_id": "6F2",
+    "res_id": "6FA",
+    "ecu_name": "SODCMC"
+  },
+  {
+    "req_id": "6F3",
+    "res_id": "6FB",
+    "ecu_name": "SODCMD"
+  },
+  {
+    "req_id": "7C4",
+    "res_id": "7CC",
+    "ecu_name": "SODL"
+  },
+  {
+    "req_id": "7C6",
+    "res_id": "7CE",
+    "ecu_name": "SODR"
+  },
+  {
+    "req_id": "754",
+    "res_id": "75C",
+    "ecu_name": "TCU"
+  },
+  {
+    "req_id": "721",
+    "res_id": "729",
+    "ecu_name": "VDM"
+  },
+  {
+    "req_id": "725",
+    "res_id": "72D",
+    "ecu_name": "WACM"
+  }
+]
