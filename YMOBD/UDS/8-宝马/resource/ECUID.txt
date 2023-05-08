@@ -1,0 +1,104 @@
+req_id res_id ecu_name
+7E0	7E8	Engine control unit
+7E1	7E9	Transmission control unit
+6F1	612	Engine control unit #1
+6F1	60B	Engine control unit #2
+6F1	618	Transmission control unit
+6F1	601	SRS/Airbag
+6F1	600	IPDM/Junction box(JBBF)
+6F1	629	DSC/Traction control
+6F1	602	Steering column
+6F1	606	All-round vision camera
+6F1	607	Battery management system
+6F1	608	Lane-change system
+6F1	609	Left B-pillar safety module
+6F1	60A	Infotainment display
+6F1	60E	Center safety unit
+6F1	60F	Rear differential lock
+6F1	610	CAN gateway
+6F1	616	Active steering
+6F1	617	Fuel pump
+6F1	619	Transmission/4WD
+6F1	61C	Suspension/Dynamic management
+6F1	620	TPMS
+6F1	621	Adaptive cruise control
+6F1	622	Adaptive headlights
+6F1	623	Active roll stabilization
+6F1	624	Convertible top
+6F1	626	Infotainment system
+6F1	627	Keyless ignition
+6F1	629	ABS/DSC
+6F1	62A	Parking brake
+6F1	62B	Rear axle slip angle control
+6F1	62C	Parking/Steering assist
+6F1	630	Steering
+6F1	631	Multimedia/DVD Changer
+6F1	632	CAN gateway
+6F1	635	Treble bass extender
+6F1	636	Telephone
+6F1	637	Audio amplifier
+6F1	638	Air suspension
+6F1	639	Electronic damper control(EDC)
+6F1	63A	Headphone interface
+6F1	63B	Navigation
+6F1	63C	CD changer
+6F1	63D	Heads-up display
+6F1	63F	Sound system
+6F1	640	Car access system
+6F1	641	Alarm
+6F1	642	Right headlight
+6F1	643	Micro power supply
+6F1	644	Sliding roof
+6F1	645	Rain/light sensor
+6F1	647	Tuner
+6F1	648	Video switch
+6F1	649	Security module 1
+6F1	64A	Security module 2
+6F1	64B	Video
+6F1	64D	Electric motor-driver reel (left)
+6F1	64E	Electric motor-driver reel (right)
+6F1	650	Alarm sensors
+6F1	653	Radio
+6F1	654	Satelite radio
+6F1	655	Bluetooth
+6F1	656	Center roof module
+6F1	657	Night view
+6F1	659	Active backrest (driver)
+6F1	65A	Active backrest (passenger)
+6F1	65B	Digital radio
+6F1	65C	Emergency response unit
+6F1	65D	Camera-based driver assist system
+6F1	65E	Gear selector switch
+6F1	65F	High beam assist
+6F1	660	Dashpoard/lnstruments cluster
+6F1	661	Flexible bus interface
+6F1	662	Central gateway
+6F1	663	Infotainment system
+6F1	664	Parking sensors
+6F1	665	Center console switches
+6F1	667	Central electronics
+6F1	668	Rear compartment controller
+6F1	669	Rear seat (driver side)
+6F1	66A	Rear seat (passenger side)
+6F1	66B	Tailgate/Rear hatch
+6F1	66D	Driver's seat
+6F1	66E	Front passenger seat
+6F1	670	Light switch
+6F1	671	Trailer
+6F1	672	Central module (in driver's footwell) (FRM)
+6F1	673	Infotainment display
+6F1	674	Infotainment display (rear)
+6F1	675	Rear compartment display 2
+6F1	676	Vertical dynamics management
+6F1	678	Climate/heater/Air conditioning
+6F1	679	Rear heater and A/C
+6F1	67A	Auxiliary heater
+6F1	6A0	Right B-pillar safety module
+6F1	6A1	Left B-pillar safety module
+6F1	6A2	Right B-pillar safety module
+6F1	6A5	Damper control(rear left)
+6F1	6A6	Damper control (rear right)
+6F1	6A7	Damper control (front left)
+6F1	6A8	Damper control (front right)
+6F1	6AD	Front left door
+6F1	6AE	Front right door

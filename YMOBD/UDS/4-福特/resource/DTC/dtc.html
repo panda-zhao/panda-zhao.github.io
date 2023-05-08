@@ -13,7 +13,7 @@
   <!-- <script src="./en_dtc.js"></script> -->
   <script src="./CN_TEXT.js"></script>
   <script src="./EN_TEXT.js"></script>
-  <script src="./key.js"></script>
+  <script src="./keys.js"></script>
   <script>
     
     window.onload = function () {
@@ -50,7 +50,7 @@
       let errLength = 0
       let json = {}
       // console.log(result["0x46810001c939"])
-      key.forEach(element => {
+      keys.forEach(element => {
         element = '0x'+ element.toUpperCase().substring(2)
         if (!json[element]) {
           if (!_data[element]) {

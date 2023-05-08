@@ -1,0 +1,77 @@
+[
+    {
+        "req_id": "7E0",
+        "res_id": "7E8",
+        "ecu_name": "Engine control unit"
+    },
+    {
+        "req_id": "7E1",
+        "res_id": "7E9",
+        "ecu_name": "Transmission control unit"
+    },
+    {
+        "req_id": "760",
+        "res_id": "768",
+        "ecu_name": "ABS control unit"
+    },
+    {
+        "req_id": "720",
+        "res_id": "728",
+        "ecu_name": "Dashboard"
+    },
+    {
+        "req_id": "726",
+        "res_id": "72E",
+        "ecu_name": "BCM"
+    },
+    {
+        "req_id": "730",
+        "res_id": "738",
+        "ecu_name": "Steering"
+    },
+    {
+        "req_id": "731",
+        "res_id": "739",
+        "ecu_name": "Access system"
+    },
+    {
+        "req_id": "734",
+        "res_id": "73C",
+        "ecu_name": "Adaptive headlights"
+    },
+    {
+        "req_id": "737",
+        "res_id": "73F",
+        "ecu_name": "SRS/Airbag"
+    },
+    {
+        "req_id": "744",
+        "res_id": "74C",
+        "ecu_name": "Driver seat"
+    },
+    {
+        "req_id": "754",
+        "res_id": "75C",
+        "ecu_name": "DCM"
+    },
+    {
+        "req_id": "756",
+        "res_id": "75E",
+        "ecu_name": "Parking brake"
+    },
+    {
+        "req_id": "775",
+        "res_id": "77D",
+        "ecu_name": "Rear door"
+    },
+    {
+        "req_id": "784",
+        "res_id": "78C",
+        "ecu_name": "Multimedia"
+    },
+    {
+        "req_id": "7AC",
+        "res_id": "7B4",
+        "ecu_name": "Amplifier"
+    }
+]

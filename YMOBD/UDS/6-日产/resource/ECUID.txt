@@ -1,0 +1,68 @@
+7E0	7E8	Engine control unit
+7E1	7E9	Transmission control unit
+740	760	ABS control unit
+752	772	SRS/Airbags
+748	768	All wheel drive system (AWD/4WD)
+710	730	CAN network gateway
+745	765	BCM
+743	763	Dashboard/Instrument cluster
+718	738	Dashboard/Instrument cluster submodule
+75C	77C	Adaptive headlights
+701	721	Four wheel active steering
+71A	73A	Accelerator pedal position sensor
+75D	77D	Adaptive cruise control
+7C3	7C9	Adaptive cruise control submodule
+74F	76F	Automatic driver positioner
+749	74A	Active noise control
+759	779	Sliding door (left)
+709	729	Sliding door (right)
+7B7	7BA	All-round vision camera
+795	7B5	Blind spot monitor
+798	794	Active steering (DAST1)
+781	7C2	Active steering (DAST2)
+742	762	Active steering (DAST3)
+753	773	Active steering (HICAS)
+746	783	Telematics
+7A4	7AC	Differential lock
+755	775	Hill start assist
+790	791	Energy management
+6FA	49F	Fuel pump
+744	764	Heater & air conditioning
+75B	77B	Audio amplifier
+78E	78F	Multi-function display
+70C	700	Chassis
+747	767	Multi audio/video control unit
+7E5	7ED	Hybrid battery
+79B	7BB	Electric vehicle battery
+707	727	Lane-keeping assist
+7E3	7EB	Motor control
+784	78C	EV motor control
+792	793	Battery charging
+713	733	Rear hatch
+7A1	7A9	Mass airflow sensor
+70A	72A	Pop-up engine hood for pedestrian protection
+754	774	Precrash seatbelt protection
+7D9	7DB	Auxiliary heater
+723	735	Intelligent brake assist
+74B	76B	Convertible top
+704	724	Adaptive suspension
+79D	7BD	Shift control unit
+73D	73E	Blind spot warning (left)
+7D4	7D5	Blind spot warning (right)
+7DC	7DD	Side magic bumper
+74C	76C	Entry/smart key
+74E	76E	Sonar
+758	768	All wheel drive system (AWD/4WD)
+74D	76D	Intelligent power distribution module (IPDM)
+797	79A	Vehicle control module
+73F	761	Vehicle stability contro
+70E	70F	e-ACT brake controller
+7CA	7DA	Inter-vehicle communication module
+782	7A2	Audio amplifier
+799	7B9	Hands free
+7E7	7EF	Generator control module
+796	7B6	Lithium-ion battery controller
+7B0	7B8	Electronically controlled brake system
+7E4	7EC	HCM
+79C	7BC	HAS
+7E6	7EE	ADCM

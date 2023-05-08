@@ -1,0 +1,49 @@
+7E0	7E8	Engine control unit
+7E7	7EF	Engine control unit #2
+7E1	7E9	Transmission control unit
+7E2	7EA	Vehicle Motor control unit
+7E3	7EB	Motor control unit
+7E4	7EC	Battery management system
+7E5	7ED	4WD #1 / OnBoard Charger (Hybrid/EV)
+725	72D	Wireless power charger
+73E	746	Virtual Engine Sound system
+740	748	4WD #2
+751	759	Driver seat switch
+752	75A	Seat lumbar module
+755	75D	Blind spot detection right
+757	75F	Haptic steering Warning System
+760	768	AFS
+770	778	Integrated Gateway and power control module
+771	779	Smart junction
+776	77E	Head Up Display
+777	77F	Power trunk module
+780	788	Multimedia system
+783	78B	Amplifier
+791	799	Active Hood system
+793	79B	Surround monitor view
+794	79C	OBC
+796	79E	Parking guide system/Rear view monitor
+7A0	7A8	TPMS #2
+7A1	7A9	Driver door
+7A2	7AA	Passenger door
+7A3	7AB	Electro seats
+7A4	7AC	Steering wheel/column
+7A5	7AD	Smart key
+7A6	7AE	Multi function switch
+7A7	7AF	EPS(Electric power steering) #2
+7B1	7B9	Parking assistance
+7B3	7BB	HVAC
+7B6	7BE	E-Shifter
+7B7	7BF	Blind spot detection
+7D0	7D8	Adaptive cruise-control
+7D1	7D9	ABS control unit
+7D3	7DB	Suspension
+7D2	7DA	SRS/Airbag
+7D4	7DC	EPS (Electric power steering) #1
+7D5	7DD	Electric parking brake
+7D6	7DE	TPMS #1
+7C1	7C9	Pre-safe seat belt
+7C4	7CC	Lane assistancel/Front view camera
+7C5	7CD	LDC
+7C7	7CF	ECALL/CUBIS
+7C6	7CE	Dashboard

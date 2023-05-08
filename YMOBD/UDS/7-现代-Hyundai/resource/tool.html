@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>现代</title>
+</head>
+
+<body>
+  <div id="container"></div>
+  <script src="./cn_text.js"></script>
+  <script src="./en_text.js"></script>
+  <script>
+    format()
+    function format (){
+      let length = 0 // 去-前 14149 ；去-后 8866；去掉不是5或7位后 7875 
+      const result = {}
+      const _source = en
+      for (const key in _source) {
+        const element = _source[key]
+        if(Array.isArray(element)){
+          let _code = element[0]
+          if(_code.includes('-')){
+            _code = _code.substring(0, _code.indexOf('-'))
+          }
+
+          console.log(_code)
+          if((_code.length === 5 || _code.length === 7) &&  result[_code] === undefined){
+            length++
+            result[_code] = element[1]
+          }else{
+            console.log('已有，跳过', key, element)
+          }
+        }else{
+          console.log('不是数组跳过', key, element)
+        }
+      }
+      document.getElementById('container').innerHTML = `处理完成，总数${length}<br>`
+      document.getElementById('container').innerHTML += `${JSON.stringify(result)}`
+    }
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,517 @@
+[
+  {
+      "req_id": "7E0",
+      "res_id": "7E8",
+      "ecu_name": "Engine control unit"
+  },
+  {
+      "req_id": "7E1",
+      "res_id": "7E9",
+      "ecu_name": "Transmission control unit"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "612",
+      "ecu_name": "Engine control unit #1"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "60B",
+      "ecu_name": "Engine control unit #2"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "618",
+      "ecu_name": "Transmission control unit"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "601",
+      "ecu_name": "SRS/Airbag"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "600",
+      "ecu_name": "IPDM/Junction box(JBBF)"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "629",
+      "ecu_name": "DSC/Traction control"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "602",
+      "ecu_name": "Steering column"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "606",
+      "ecu_name": "All-round vision camera"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "607",
+      "ecu_name": "Battery management system"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "608",
+      "ecu_name": "Lane-change system"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "609",
+      "ecu_name": "Left B-pillar safety module"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "60A",
+      "ecu_name": "Infotainment display"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "60E",
+      "ecu_name": "Center safety unit"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "60F",
+      "ecu_name": "Rear differential lock"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "610",
+      "ecu_name": "CAN gateway"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "616",
+      "ecu_name": "Active steering"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "617",
+      "ecu_name": "Fuel pump"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "619",
+      "ecu_name": "Transmission/4WD"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "61C",
+      "ecu_name": "Suspension/Dynamic management"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "620",
+      "ecu_name": "TPMS"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "621",
+      "ecu_name": "Adaptive cruise control"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "622",
+      "ecu_name": "Adaptive headlights"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "623",
+      "ecu_name": "Active roll stabilization"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "624",
+      "ecu_name": "Convertible top"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "626",
+      "ecu_name": "Infotainment system"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "627",
+      "ecu_name": "Keyless ignition"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "629",
+      "ecu_name": "ABS/DSC"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "62A",
+      "ecu_name": "Parking brake"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "62B",
+      "ecu_name": "Rear axle slip angle control"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "62C",
+      "ecu_name": "Parking/Steering assist"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "630",
+      "ecu_name": "Steering"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "631",
+      "ecu_name": "Multimedia/DVD Changer"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "632",
+      "ecu_name": "CAN gateway"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "635",
+      "ecu_name": "Treble bass extender"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "636",
+      "ecu_name": "Telephone"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "637",
+      "ecu_name": "Audio amplifier"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "638",
+      "ecu_name": "Air suspension"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "639",
+      "ecu_name": "Electronic damper control(EDC)"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "63A",
+      "ecu_name": "Headphone interface"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "63B",
+      "ecu_name": "Navigation"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "63C",
+      "ecu_name": "CD changer"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "63D",
+      "ecu_name": "Heads-up display"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "63F",
+      "ecu_name": "Sound system"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "640",
+      "ecu_name": "Car access system"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "641",
+      "ecu_name": "Alarm"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "642",
+      "ecu_name": "Right headlight"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "643",
+      "ecu_name": "Micro power supply"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "644",
+      "ecu_name": "Sliding roof"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "645",
+      "ecu_name": "Rain/light sensor"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "647",
+      "ecu_name": "Tuner"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "648",
+      "ecu_name": "Video switch"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "649",
+      "ecu_name": "Security module 1"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "64A",
+      "ecu_name": "Security module 2"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "64B",
+      "ecu_name": "Video"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "64D",
+      "ecu_name": "Electric motor-driver reel (left)"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "64E",
+      "ecu_name": "Electric motor-driver reel (right)"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "650",
+      "ecu_name": "Alarm sensors"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "653",
+      "ecu_name": "Radio"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "654",
+      "ecu_name": "Satelite radio"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "655",
+      "ecu_name": "Bluetooth"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "656",
+      "ecu_name": "Center roof module"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "657",
+      "ecu_name": "Night view"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "659",
+      "ecu_name": "Active backrest (driver)"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "65A",
+      "ecu_name": "Active backrest (passenger)"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "65B",
+      "ecu_name": "Digital radio"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "65C",
+      "ecu_name": "Emergency response unit"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "65D",
+      "ecu_name": "Camera-based driver assist system"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "65E",
+      "ecu_name": "Gear selector switch"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "65F",
+      "ecu_name": "High beam assist"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "660",
+      "ecu_name": "Dashpoard/lnstruments cluster"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "661",
+      "ecu_name": "Flexible bus interface"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "662",
+      "ecu_name": "Central gateway"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "663",
+      "ecu_name": "Infotainment system"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "664",
+      "ecu_name": "Parking sensors"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "665",
+      "ecu_name": "Center console switches"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "667",
+      "ecu_name": "Central electronics"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "668",
+      "ecu_name": "Rear compartment controller"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "669",
+      "ecu_name": "Rear seat (driver side)"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "66A",
+      "ecu_name": "Rear seat (passenger side)"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "66B",
+      "ecu_name": "Tailgate/Rear hatch"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "66D",
+      "ecu_name": "Driver's seat"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "66E",
+      "ecu_name": "Front passenger seat"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "670",
+      "ecu_name": "Light switch"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "671",
+      "ecu_name": "Trailer"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "672",
+      "ecu_name": "Central module (in driver's footwell) (FRM)"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "673",
+      "ecu_name": "Infotainment display"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "674",
+      "ecu_name": "Infotainment display (rear)"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "675",
+      "ecu_name": "Rear compartment display 2"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "676",
+      "ecu_name": "Vertical dynamics management"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "678",
+      "ecu_name": "Climate/heater/Air conditioning"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "679",
+      "ecu_name": "Rear heater and A/C"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "67A",
+      "ecu_name": "Auxiliary heater"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "6A0",
+      "ecu_name": "Right B-pillar safety module"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "6A1",
+      "ecu_name": "Left B-pillar safety module"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "6A2",
+      "ecu_name": "Right B-pillar safety module"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "6A5",
+      "ecu_name": "Damper control(rear left)"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "6A6",
+      "ecu_name": "Damper control (rear right)"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "6A7",
+      "ecu_name": "Damper control (front left)"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "6A8",
+      "ecu_name": "Damper control (front right)"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "6AD",
+      "ecu_name": "Front left door"
+  },
+  {
+      "req_id": "6F1",
+      "res_id": "6AE",
+      "ecu_name": "Front right door"
+  }
+]

@@ -1,0 +1,16 @@
+req_id,res_id,ecu_name
+7E0,7E8,Engine control unit
+7E1,7E9,Transmission control unit
+760,768,ABS control unit
+720,728,Dashboard
+726,72E,BCM
+730,738,Steering
+731,739,Access system
+734,73C,Adaptive headlights
+737,73F,SRS/Airbag
+744,74C,Driver seat
+754,75C,DCM
+756,75E,Parking brake
+775,77D,Rear door
+784,78C,Multimedia
+7AC,7B4,Amplifier

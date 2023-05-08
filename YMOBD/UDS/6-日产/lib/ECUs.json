@@ -1,0 +1,342 @@
+[
+  {
+      "req_id": "7E0",
+      "res_id": "7E8",
+      "ecu_name": "Engine control unit"
+  },
+  {
+      "req_id": "7E1",
+      "res_id": "7E9",
+      "ecu_name": "Transmission control unit"
+  },
+  {
+      "req_id": "740",
+      "res_id": "760",
+      "ecu_name": "ABS control unit"
+  },
+  {
+      "req_id": "752",
+      "res_id": "772",
+      "ecu_name": "SRS/Airbags"
+  },
+  {
+      "req_id": "748",
+      "res_id": "768",
+      "ecu_name": "All wheel drive system (AWD/4WD)"
+  },
+  {
+      "req_id": "710",
+      "res_id": "730",
+      "ecu_name": "CAN network gateway"
+  },
+  {
+      "req_id": "745",
+      "res_id": "765",
+      "ecu_name": "BCM"
+  },
+  {
+      "req_id": "743",
+      "res_id": "763",
+      "ecu_name": "Dashboard/Instrument cluster"
+  },
+  {
+      "req_id": "718",
+      "res_id": "738",
+      "ecu_name": "Dashboard/Instrument cluster submodule"
+  },
+  {
+      "req_id": "75C",
+      "res_id": "77C",
+      "ecu_name": "Adaptive headlights"
+  },
+  {
+      "req_id": "701",
+      "res_id": "721",
+      "ecu_name": "Four wheel active steering"
+  },
+  {
+      "req_id": "71A",
+      "res_id": "73A",
+      "ecu_name": "Accelerator pedal position sensor"
+  },
+  {
+      "req_id": "75D",
+      "res_id": "77D",
+      "ecu_name": "Adaptive cruise control"
+  },
+  {
+      "req_id": "7C3",
+      "res_id": "7C9",
+      "ecu_name": "Adaptive cruise control submodule"
+  },
+  {
+      "req_id": "74F",
+      "res_id": "76F",
+      "ecu_name": "Automatic driver positioner"
+  },
+  {
+      "req_id": "749",
+      "res_id": "74A",
+      "ecu_name": "Active noise control"
+  },
+  {
+      "req_id": "759",
+      "res_id": "779",
+      "ecu_name": "Sliding door (left)"
+  },
+  {
+      "req_id": "709",
+      "res_id": "729",
+      "ecu_name": "Sliding door (right)"
+  },
+  {
+      "req_id": "7B7",
+      "res_id": "7BA",
+      "ecu_name": "All-round vision camera"
+  },
+  {
+      "req_id": "795",
+      "res_id": "7B5",
+      "ecu_name": "Blind spot monitor"
+  },
+  {
+      "req_id": "798",
+      "res_id": "794",
+      "ecu_name": "Active steering (DAST1)"
+  },
+  {
+      "req_id": "781",
+      "res_id": "7C2",
+      "ecu_name": "Active steering (DAST2)"
+  },
+  {
+      "req_id": "742",
+      "res_id": "762",
+      "ecu_name": "Active steering (DAST3)"
+  },
+  {
+      "req_id": "753",
+      "res_id": "773",
+      "ecu_name": "Active steering (HICAS)"
+  },
+  {
+      "req_id": "746",
+      "res_id": "783",
+      "ecu_name": "Telematics"
+  },
+  {
+      "req_id": "7A4",
+      "res_id": "7AC",
+      "ecu_name": "Differential lock"
+  },
+  {
+      "req_id": "755",
+      "res_id": "775",
+      "ecu_name": "Hill start assist"
+  },
+  {
+      "req_id": "790",
+      "res_id": "791",
+      "ecu_name": "Energy management"
+  },
+  {
+      "req_id": "6FA",
+      "res_id": "49F",
+      "ecu_name": "Fuel pump"
+  },
+  {
+      "req_id": "744",
+      "res_id": "764",
+      "ecu_name": "Heater & air conditioning"
+  },
+  {
+      "req_id": "75B",
+      "res_id": "77B",
+      "ecu_name": "Audio amplifier"
+  },
+  {
+      "req_id": "78E",
+      "res_id": "78F",
+      "ecu_name": "Multi-function display"
+  },
+  {
+      "req_id": "70C",
+      "res_id": "700",
+      "ecu_name": "Chassis"
+  },
+  {
+      "req_id": "747",
+      "res_id": "767",
+      "ecu_name": "Multi audio/video control unit"
+  },
+  {
+      "req_id": "7E5",
+      "res_id": "7ED",
+      "ecu_name": "Hybrid battery"
+  },
+  {
+      "req_id": "79B",
+      "res_id": "7BB",
+      "ecu_name": "Electric vehicle battery"
+  },
+  {
+      "req_id": "707",
+      "res_id": "727",
+      "ecu_name": "Lane-keeping assist"
+  },
+  {
+      "req_id": "7E3",
+      "res_id": "7EB",
+      "ecu_name": "Motor control"
+  },
+  {
+      "req_id": "784",
+      "res_id": "78C",
+      "ecu_name": "EV motor control"
+  },
+  {
+      "req_id": "792",
+      "res_id": "793",
+      "ecu_name": "Battery charging"
+  },
+  {
+      "req_id": "713",
+      "res_id": "733",
+      "ecu_name": "Rear hatch"
+  },
+  {
+      "req_id": "7A1",
+      "res_id": "7A9",
+      "ecu_name": "Mass airflow sensor"
+  },
+  {
+      "req_id": "70A",
+      "res_id": "72A",
+      "ecu_name": "Pop-up engine hood for pedestrian protection"
+  },
+  {
+      "req_id": "754",
+      "res_id": "774",
+      "ecu_name": "Precrash seatbelt protection"
+  },
+  {
+      "req_id": "7D9",
+      "res_id": "7DB",
+      "ecu_name": "Auxiliary heater"
+  },
+  {
+      "req_id": "723",
+      "res_id": "735",
+      "ecu_name": "Intelligent brake assist"
+  },
+  {
+      "req_id": "74B",
+      "res_id": "76B",
+      "ecu_name": "Convertible top"
+  },
+  {
+      "req_id": "704",
+      "res_id": "724",
+      "ecu_name": "Adaptive suspension"
+  },
+  {
+      "req_id": "79D",
+      "res_id": "7BD",
+      "ecu_name": "Shift control unit"
+  },
+  {
+      "req_id": "73D",
+      "res_id": "73E",
+      "ecu_name": "Blind spot warning (left)"
+  },
+  {
+      "req_id": "7D4",
+      "res_id": "7D5",
+      "ecu_name": "Blind spot warning (right)"
+  },
+  {
+      "req_id": "7DC",
+      "res_id": "7DD",
+      "ecu_name": "Side magic bumper"
+  },
+  {
+      "req_id": "74C",
+      "res_id": "76C",
+      "ecu_name": "Entry/smart key"
+  },
+  {
+      "req_id": "74E",
+      "res_id": "76E",
+      "ecu_name": "Sonar"
+  },
+  {
+      "req_id": "758",
+      "res_id": "768",
+      "ecu_name": "All wheel drive system (AWD/4WD)"
+  },
+  {
+      "req_id": "74D",
+      "res_id": "76D",
+      "ecu_name": "Intelligent power distribution module (IPDM)"
+  },
+  {
+      "req_id": "797",
+      "res_id": "79A",
+      "ecu_name": "Vehicle control module"
+  },
+  {
+      "req_id": "73F",
+      "res_id": "761",
+      "ecu_name": "Vehicle stability contro"
+  },
+  {
+      "req_id": "70E",
+      "res_id": "70F",
+      "ecu_name": "e-ACT brake controller"
+  },
+  {
+      "req_id": "7CA",
+      "res_id": "7DA",
+      "ecu_name": "Inter-vehicle communication module"
+  },
+  {
+      "req_id": "782",
+      "res_id": "7A2",
+      "ecu_name": "Audio amplifier"
+  },
+  {
+      "req_id": "799",
+      "res_id": "7B9",
+      "ecu_name": "Hands free"
+  },
+  {
+      "req_id": "7E7",
+      "res_id": "7EF",
+      "ecu_name": "Generator control module"
+  },
+  {
+      "req_id": "796",
+      "res_id": "7B6",
+      "ecu_name": "Lithium-ion battery controller"
+  },
+  {
+      "req_id": "7B0",
+      "res_id": "7B8",
+      "ecu_name": "Electronically controlled brake system"
+  },
+  {
+      "req_id": "7E4",
+      "res_id": "7EC",
+      "ecu_name": "HCM"
+  },
+  {
+      "req_id": "79C",
+      "res_id": "7BC",
+      "ecu_name": "HAS"
+  },
+  {
+      "req_id": "7E6",
+      "res_id": "7EE",
+      "ecu_name": "ADCM"
+  }
+]
