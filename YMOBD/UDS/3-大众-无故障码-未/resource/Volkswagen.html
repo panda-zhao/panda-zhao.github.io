@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>大众故障码解析</title>
+</head>
+<body>
+  <div id="container"></div>
+  <script src="../../../utli.js"></script>
+  <script src="./en_dtc.txt"></script>
+  <script src="./cn_dtc.txt"></script>
+  <script>
+    
+
+    
+    
+    
+    // format_3340C1DA('0x3340C1DA E354')
+    // format_3340C1DA('0x3340C1DAE355')
+    
+    // format_3340C1DA('0x3340C1DA A3BC')
+
+    /**
+     * 格式化首字母为PBCU, 标准码为5位
+     * 原始码为4位或者6位16进制字符
+     * */
+
+
+    // 格式化方式一
+    function format_3340C1DA (str) {
+      let code = str.substring(str.length-4)
+      let _code_16 = '0x' + code
+      let _result =  _code_16 ^ '0xE354'// 异或操作,结果是 十进制
+      // console.log('结果1', _result)
+      let result =_result.toString(16).toUpperCase()
+      while (result.length < 4){
+        result = '0' + result
+      }
+      // console.log(`${str} => ${code} => ${result}` )
+      // document.getElementById('container').innerHTML += `${str} => ${result} <br>`
+      return result
+    }
+    function format_0x3343_CCCDCECF (str) {
+      let code = str.substring(str.length-8)
+      let _code_16 = '0x' + code
+      let _result =  _code_16 ^ '0xC1D2E354'// 异或操作,结果是 十进制
+      // console.log('结果1', _result)
+      let result =_result.toString(16).toUpperCase()
+      // console.log('结果2', result)
+      while (result.length < 8){
+        result = '0' + result
+      }
+      // console.log(`${str} => ${code} => ${result}` )
+      return result
+    }
+
+    function format_0x3343C1 (str) {
+      let code = str.substring(str.length-6)
+      let _code_16 = '0x' + code
+      let _result =  _code_16 ^ '0xD2E354'// 异或操作,结果是 十进制
+      // console.log('结果1', _result)
+      let result =_result.toString(16).toUpperCase()
+      while (result.length < 6){
+        result = '0' + result
+      }
+      // console.log('结果2', result)
+      // document.getElementById('container').innerHTML += `${str} => ${result} <br>`
+      // console.log(`${str} => ${code} => ${result}` )
+      // document.getElementById('container').innerHTML += `${str} => ${result} <br>`
+      return result
+    }
+
+    
+    let _length = 0
+    let arr = []
+    let _source = cn // en cn
+    let result = {}
+    for (const key in _source) {
+      const element = _source[key];
+      // 3579条
+      if(key.substring(0, 10) === '0x3340C1DA'){
+        let chunk = format_3340C1DA(key)
+        // 首位的数据 ["0","1","3","4","7","8","F","A","B"] 只要4和7
+        if(['4', '7'].includes(chunk.charAt(0))){
+          let word_0 =  chunk.charAt(0) === '7' ? 'U' : 'P'
+          let word_1 = parseInt(('0x' + chunk.substring(1)) / '0x400')
+          let word_234 =  String(('0x' + chunk.substring(1)) % '0x400')
+          while (word_234.length < 3) {
+            word_234 = '0' + word_234
+          }
+          let code = word_0 + word_1 + word_234
+          if(code.length === 5){
+            code = format_DTC_hex(code)
+            if(!result[code]){
+              _length++
+              result[code] = element
+            }else{
+            console.log(`方式2 重复 ${key} => ${code}  => ${element}` )
+           }
+          }else{
+            console.log(`方式1 异常 ${key} => ${chunk} => ${code} ${word_0}/${word_1}/${word_234}` )
+          }
+        }
+      }
+      // 共 13311
+      if(['0x3343CC', '0x3343CD', '0x3343CE', '0x3343CF'].includes(key.substring(0, 8))){
+        let chunk = format_0x3343_CCCDCECF(key)
+        let map = {
+          '0C': 'P',
+          '0D': 'C',
+          '0E': 'B',
+          '0F': 'U'
+        }
+        let word_0 = map[chunk.substring(0, 2)]
+        let code = word_0 + chunk.substring(2)
+        if( code.length === 7){
+          code = format_DTC_hex(code)
+          if(!result[code]){
+            _length++
+            result[code] = element
+          }else{
+            console.log(`方式2 重复 ${key} => ${code}  => ${element}` )
+          }
+        }else{
+          console.log(`方式2  ${key} => ${chunk} => ${code}` )
+        }
+        // 结果前两位只有D0 D1
+        // if(!arr.includes(chunk.substring(0, 2))){
+        //   arr.push(chunk.substring(0, 2))
+        // }
+      }
+
+      if(key.substring(0, 8) === '0x3343C1'){
+        // 结果直接升序，不像故障码
+        let code = format_0x3343C1(key)
+        if(code.length === 6){
+          if(!result[code]){
+            _length++
+            result[code] = element
+          }else{
+            console.log(`方式3 重复 ${key} => ${code}  => ${element}` )
+          }
+        }else{
+          console.log(`方式3 异常 ${key} => ${code}` )
+        }
+        // document.getElementById('container').innerHTML += `${key}: ${element} <br>`
+      }
+
+      
+    }
+    console.log('完成', _length, arr)
+    document.getElementById('container').innerHTML +=  JSON.stringify(result)
+    // let length = 0
+    // data.forEach(item => {
+    //   if (!item.code || !item.describe || !item.lang) {
+    //     length++
+    //     console.log(JSON.stringify(item))
+    //   }
+    // })
+  </script>
+</body>
+</html>

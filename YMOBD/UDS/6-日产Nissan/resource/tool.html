@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>宝马</title>
+</head>
+
+<body>
+  <div id="container"></div>
+  <script src="./_data.js"></script>
+  <script src="./cn_text.js"></script>
+  <script src="./en_text.js"></script>
+  <script src="./en_dtc_BMW_C.js"></script>
+  <script>
+    
+
+      console.log('加载完成', cn)
+      // 格式化四位故障
+      format_DTC()
+      function format_DTC(){
+        let result = {}
+        let _source = cn // cn en
+        for (const key in _data) {
+          const element = _data[key];
+          if(_source[element]){
+            let code = key.length === 4 ? key + '00' : key
+            result[code] = _source[element]
+          }else{
+            console.log("注意： 故障码库无该项", key, element)
+          }
+        }
+        document.getElementById('container').innerHTML += `${JSON.stringify(result)}<br>`
+      }
+
+
+
+  </script>
+</body>
+
+</html>

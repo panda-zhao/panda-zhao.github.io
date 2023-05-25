@@ -1,0 +1,882 @@
+[
+  {
+    "req_id": "6EA",
+    "res_id": "49D",
+    "ecu_name": "ISM-智能伺服模块"
+  },
+  {
+    "req_id": "7BC",
+    "res_id": "7BD",
+    "ecu_name": "EHP-电子液压助力转向系统"
+  },
+  {
+    "req_id": "6A8",
+    "res_id": "4C6",
+    "ecu_name": "WSS-重量传感系统 "
+  },
+  {
+    "req_id": "6B6",
+    "res_id": "4CD",
+    "ecu_name": "CM-罗盘模块"
+  },
+  {
+    "req_id": "7E0",
+    "res_id": "7E8",
+    "ecu_name": "ME-SFI-汽油发动机控制单元"
+  },
+  {
+    "req_id": "7E1",
+    "res_id": "7E9",
+    "ecu_name": "FCVT-无级自动变速箱"
+  },
+  {
+    "req_id": "784",
+    "res_id": "785",
+    "ecu_name": "ESP-电控行车稳定系统 "
+  },
+  {
+    "req_id": "6BC",
+    "res_id": "4FC",
+    "ecu_name": "AB-安全气囊 "
+  },
+  {
+    "req_id": "4E4",
+    "res_id": "5FE",
+    "ecu_name": "N93/4（车辆网关控制单元）"
+  },
+  {
+    "req_id": "696",
+    "res_id": "697",
+    "ecu_name": "EKMK-电动制冷剂压缩机"
+  },
+  {
+    "req_id": "7E7",
+    "res_id": "7EF",
+    "ecu_name": "SG-BMS -蓄电池管理系统控制单元"
+  },
+  {
+    "req_id": "632",
+    "res_id": "486",
+    "ecu_name": "ESP-电控行车稳定系统(N30/4)"
+  },
+  {
+    "req_id": "64A",
+    "res_id": "489",
+    "ecu_name": "SRS-辅助防护装置(气囊)(N2/10)"
+  },
+  {
+    "req_id": "60A",
+    "res_id": "481",
+    "ecu_name": "IC-组合仪表 (A1)"
+  },
+  {
+    "req_id": "732",
+    "res_id": "4A6",
+    "ecu_name": "EFB-电动驻车制动器 (N128)"
+  },
+  {
+    "req_id": "642",
+    "res_id": "488",
+    "ecu_name": "TPM-轮胎充气压力监控"
+  },
+  {
+    "req_id": "60B",
+    "res_id": "58B",
+    "ecu_name": "KOMO / mbrace - N112/2 (远程信息处理服务通信模块) /Notrufsystem"
+  },
+  {
+    "req_id": "612",
+    "res_id": "482",
+    "ecu_name": "EZS（电子点火开关） "
+  },
+  {
+    "req_id": "622",
+    "res_id": "484",
+    "ecu_name": "MRM-转向柱模块"
+  },
+  {
+    "req_id": "633",
+    "res_id": "4C6",
+    "ecu_name": "NAV-导航模块 (A2/30)"
+  },
+  {
+    "req_id": "638",
+    "res_id": "5B8",
+    "ecu_name": "音频 - 音频或驾驶室管理及数据系统(COMAND)"
+  },
+  {
+    "req_id": "63B",
+    "res_id": "4C7",
+    "ecu_name": "ATA-车内监控 (N26/6)"
+  },
+  {
+    "req_id": "652",
+    "res_id": "48A",
+    "ecu_name": "Audio-音频系统或驾驶室管理及数据系统 (A2-A40/3)"
+  },
+  {
+    "req_id": "65A",
+    "res_id": "48B",
+    "ecu_name": "SG-AWF-“防碰撞辅助系统”控制单元 (A90)"
+  },
+  {
+    "req_id": "672",
+    "res_id": "48E",
+    "ecu_name": "IRS-HRA -右后外部智能雷达测距传感器"
+  },
+  {
+    "req_id": "67A",
+    "res_id": "48F",
+    "ecu_name": "IRS-HLA-左后外部智能雷达测距传感器 (B29/4)"
+  },
+  {
+    "req_id": "683",
+    "res_id": "4D0",
+    "ecu_name": "Multifunction control unit-多功能控制单元(N26/14)"
+  },
+  {
+    "req_id": "68B",
+    "res_id": "4D1",
+    "ecu_name": "KG-无钥匙起动 (N69/5)"
+  },
+  {
+    "req_id": "691",
+    "res_id": "452",
+    "ecu_name": "SOUND-音响系统 "
+  },
+  {
+    "req_id": "693",
+    "res_id": "4D2",
+    "ecu_name": "尾门控制系统(HKS)-尾门控制系统"
+  },
+  {
+    "req_id": "6A1",
+    "res_id": "454",
+    "ecu_name": "TV-TV tuner"
+  },
+  {
+    "req_id": "6A2",
+    "res_id": "494",
+    "ecu_name": "MFK-多功能摄像机"
+  },
+  {
+    "req_id": "6A3",
+    "res_id": "4D4",
+    "ecu_name": "KLA（自动恒温控制系统）-空调"
+  },
+  {
+    "req_id": "6A9",
+    "res_id": "455",
+    "ecu_name": "DAB-数字音频广播(N87/3)"
+  },
+  {
+    "req_id": "6AB",
+    "res_id": "4D5",
+    "ecu_name": "STH-驻车加热 (A6n1)"
+  },
+  {
+    "req_id": "6B1",
+    "res_id": "456",
+    "ecu_name": "Drive Kit Plus - iPhone驱动包"
+  },
+  {
+    "req_id": "6B2",
+    "res_id": "496",
+    "ecu_name": "ES-电动转向助力器 (N68)"
+  },
+  {
+    "req_id": "6B3",
+    "res_id": "4D6",
+    "ecu_name": "PSD-‘全景滑动天窗’控制模块 (A98)"
+  },
+  {
+    "req_id": "6BA",
+    "res_id": "497",
+    "ecu_name": "RevETR-LF-左前可逆安全带拉紧器(A76)"
+  },
+  {
+    "req_id": "6C1",
+    "res_id": "458",
+    "ecu_name": "平视显示器-平视显示器"
+  },
+  {
+    "req_id": "6C2",
+    "res_id": "498",
+    "ecu_name": "RevETR-RF-右前可逆安全带拉紧器(A76/1)"
+  },
+  {
+    "req_id": "6C3",
+    "res_id": "4D8",
+    "ecu_name": "驾驶员侧ESV-驾驶员侧电动座椅调节装置"
+  },
+  {
+    "req_id": "6C9",
+    "res_id": "459",
+    "ecu_name": "SDAR-卫星收音机(适用于美国)"
+  },
+  {
+    "req_id": "6CB",
+    "res_id": "4D9",
+    "ecu_name": "ESA'Front passenger'-乘客位电动座椅调节装置(N32/2)"
+  },
+  {
+    "req_id": "6D1",
+    "res_id": "45A",
+    "ecu_name": "MIF - 多媒体接口"
+  },
+  {
+    "req_id": "6EB",
+    "res_id": "4DD",
+    "ecu_name": "拖车识别模块-拖车识别 (N28/1)"
+  },
+  {
+    "req_id": "6F3",
+    "res_id": "4DE",
+    "ecu_name": "SAM-信号探测和控制模块 (N10)"
+  },
+  {
+    "req_id": "6FA",
+    "res_id": "49F",
+    "ecu_name": "燃油系统控制单元(FSCU)05 - '燃油泵'控制单元"
+  },
+  {
+    "req_id": "702",
+    "res_id": "4A0",
+    "ecu_name": "DTR-车距控制系统 (A89)"
+  },
+  {
+    "req_id": "703",
+    "res_id": "4E0",
+    "ecu_name": "DCU-LF-左前门 (N69/1)"
+  },
+  {
+    "req_id": "70B",
+    "res_id": "4E1",
+    "ecu_name": "DCU-RF-右前门 (N69/2)"
+  },
+  {
+    "req_id": "710",
+    "res_id": "700",
+    "ecu_name": "电视-电视协调器"
+  },
+  {
+    "req_id": "714",
+    "res_id": "704",
+    "ecu_name": "数字音频广播(DAB)-数字音频广播"
+  },
+  {
+    "req_id": "733",
+    "res_id": "4E6",
+    "ecu_name": "RFK - 倒车摄像机"
+  },
+  {
+    "req_id": "743",
+    "res_id": "4E8",
+    "ecu_name": "ZBE-Audio/COMAND音频控制(A40/9)"
+  },
+  {
+    "req_id": "753",
+    "res_id": "4EA",
+    "ecu_name": "ZAN - 音频/驾驶室管理及数据系统(COMAND)显示屏"
+  },
+  {
+    "req_id": "76A",
+    "res_id": "4AD",
+    "ecu_name": "SG-SW-“大灯”控制单元 (N71/1)"
+  },
+  {
+    "req_id": "78A",
+    "res_id": "4B1",
+    "ecu_name": "PARK -驻车系统(N62)"
+  },
+  {
+    "req_id": "792",
+    "res_id": "4B2",
+    "ecu_name": "DSI-直接选择接口 (N150)"
+  },
+  {
+    "req_id": "79A",
+    "res_id": "4B3",
+    "ecu_name": "AWD-全轮驱动"
+  },
+  {
+    "req_id": "7BB",
+    "res_id": "4F7",
+    "ecu_name": "KAB-“摄像机盖板”控制单元 (N42)"
+  },
+  {
+    "req_id": "7E3",
+    "res_id": "7EB",
+    "ecu_name": "燃油系统控制单元(FSCU)07 - '燃油泵'控制单元"
+  },
+  {
+    "req_id": "7E5",
+    "res_id": "7ED",
+    "ecu_name": "PTCU-标准动力系控制器 (N127)"
+  },
+  {
+    "req_id": "54A",
+    "res_id": "54F",
+    "ecu_name": "AVE-H-后部音频视频单位 "
+  },
+  {
+    "req_id": "63A",
+    "res_id": "487",
+    "ecu_name": "SGR-雷达测距传感器控制单元"
+  },
+  {
+    "req_id": "65B",
+    "res_id": "4CB",
+    "ecu_name": "PPAMKS - 动态多仿形座椅的气动泵"
+  },
+  {
+    "req_id": "663",
+    "res_id": "4CC",
+    "ecu_name": "MKS-FS-‘驾驶员’多仿形座椅 (N32/29)"
+  },
+  {
+    "req_id": "66A",
+    "res_id": "48D",
+    "ecu_name": "360°摄像机 - 360°摄像机"
+  },
+  {
+    "req_id": "66B",
+    "res_id": "4CD",
+    "ecu_name": "MKS-BFS-‘副驾驶员’多仿形座椅 (N32/30)"
+  },
+  {
+    "req_id": "692",
+    "res_id": "492",
+    "ecu_name": "ADS-自适应减震系统 "
+  },
+  {
+    "req_id": "69A",
+    "res_id": "493",
+    "ecu_name": "TELE AID（远程信息处理系统）-控制单元"
+  },
+  {
+    "req_id": "6AA",
+    "res_id": "495",
+    "ecu_name": "SG-SOGE-E - 电动车发声器"
+  },
+  {
+    "req_id": "6D9",
+    "res_id": "45B",
+    "ecu_name": "D-FOL - 后排乘客区内左侧显示屏"
+  },
+  {
+    "req_id": "6F9",
+    "res_id": "45F",
+    "ecu_name": "D-FOR - 后排乘客区内右侧显示屏"
+  },
+  {
+    "req_id": "6FB",
+    "res_id": "4DF",
+    "ecu_name": "Rear-后控制单元 (N10/8)"
+  },
+  {
+    "req_id": "701",
+    "res_id": "460",
+    "ecu_name": "TELE AID（远程信息处理系统）-电子通信服务 紧急呼叫 "
+  },
+  {
+    "req_id": "709",
+    "res_id": "461",
+    "ecu_name": "TELE AID（远程信息处理系统）-电子通信服务 梅赛德斯－奔驰信息,故障停车服务(美国、加拿大),远程诊断(ECE)"
+  },
+  {
+    "req_id": "70A",
+    "res_id": "4A1",
+    "ecu_name": "夜视系统(NSA)- 夜视辅助"
+  },
+  {
+    "req_id": "713",
+    "res_id": "4E2",
+    "ecu_name": "DCU-LR-左后门 (N69/3)"
+  },
+  {
+    "req_id": "71B",
+    "res_id": "4E3",
+    "ecu_name": "DCU-RR-右后门 (N69/4)"
+  },
+  {
+    "req_id": "729",
+    "res_id": "465",
+    "ecu_name": "TELE AID（远程信息处理系统）-电子通信服务 车门遥控解锁装置"
+  },
+  {
+    "req_id": "731",
+    "res_id": "466",
+    "ecu_name": "TELE AID（远程信息处理系统）-电子通信服务 防盗跟踪 "
+  },
+  {
+    "req_id": "73A",
+    "res_id": "4A7",
+    "ecu_name": "FWGW-底盘网关 (N97/7)"
+  },
+  {
+    "req_id": "742",
+    "res_id": "4A8",
+    "ecu_name": "Roll control-侧滚控制 (N51/6)"
+  },
+  {
+    "req_id": "74B",
+    "res_id": "4E9",
+    "ecu_name": "HBF-后部操作面板 (N72/2)"
+  },
+  {
+    "req_id": "763",
+    "res_id": "4EC",
+    "ecu_name": "AVE-H-后部音频视频单位 "
+  },
+  {
+    "req_id": "772",
+    "res_id": "4AE",
+    "ecu_name": "SG-SW-R - 右侧大灯"
+  },
+  {
+    "req_id": "7E4",
+    "res_id": "7EC",
+    "ecu_name": "选择性催化还原（SCR）-选择性催化还原"
+  },
+  {
+    "req_id": "7E6",
+    "res_id": "7EE",
+    "ecu_name": "SG-EM - 功率电子装置 (N129/1)"
+  },
+  {
+    "req_id": "602",
+    "res_id": "480",
+    "ecu_name": "CGW[ZGW]-中央网关"
+  },
+  {
+    "req_id": "623",
+    "res_id": "4C4",
+    "ecu_name": "MSC-魔法天窗 (N53)"
+  },
+  {
+    "req_id": "72B",
+    "res_id": "4E5",
+    "ecu_name": "VDS-可折叠车顶控制系统 (N52)"
+  },
+  {
+    "req_id": "73B",
+    "res_id": "4E7",
+    "ecu_name": "AIRSCARF-颈部暖风系统(N25/7)"
+  },
+  {
+    "req_id": "77A",
+    "res_id": "4AF",
+    "ecu_name": "EWM-电子选档杠模块 "
+  },
+  {
+    "req_id": "62A",
+    "res_id": "485",
+    "ecu_name": "AMG DRVU-AMG驱动单元 (N145)"
+  },
+  {
+    "req_id": "62B",
+    "res_id": "4C5",
+    "ecu_name": "AMG PM-AMG 高性能媒体 (N125/2)"
+  },
+  {
+    "req_id": "6BB",
+    "res_id": "4D7",
+    "ecu_name": "WSS-重量传感系统 "
+  },
+  {
+    "req_id": "773",
+    "res_id": "4EE",
+    "ecu_name": "ICI-车内互联网 (N125/3)"
+  },
+  {
+    "req_id": "643",
+    "res_id": "4C8",
+    "ecu_name": "轮胎压力检测系统(RDK)-轮胎压力检测系统"
+  },
+  {
+    "req_id": "5CA",
+    "res_id": "4CA",
+    "ecu_name": "SG-SOGE-AGA-排气系统的发声器"
+  },
+  {
+    "req_id": "69B",
+    "res_id": "4D3",
+    "ecu_name": "驻车定位系统(PTS)-驻车定位系统(PARKTRONIC)"
+  },
+  {
+    "req_id": "6E3",
+    "res_id": "4DC",
+    "ecu_name": "DBE-车顶操作单元 "
+  },
+  {
+    "req_id": "783",
+    "res_id": "4F0",
+    "ecu_name": "CTEL-移动电话"
+  },
+  {
+    "req_id": "7AA",
+    "res_id": "4B5",
+    "ecu_name": "FSCU04-右燃油泵"
+  },
+  {
+    "req_id": "7E2",
+    "res_id": "7EA",
+    "ecu_name": "ESP - 电控车辆稳定行驶系统 (N30/4)"
+  },
+  {
+    "req_id": "645",
+    "res_id": "5C5",
+    "ecu_name": "辅助防护系统(SRS)- 辅助防护装置"
+  },
+  {
+    "req_id": "641",
+    "res_id": "5C1",
+    "ecu_name": "仪表盘(KI)-仪表盘"
+  },
+  {
+    "req_id": "654",
+    "res_id": "5D4",
+    "ecu_name": "电子驻车制动器(EFB)- 电动驻车制动器"
+  },
+  {
+    "req_id": "652",
+    "res_id": "5D2",
+    "ecu_name": "轮胎压力检测系统(RDK)-轮胎压力检测系统"
+  },
+  {
+    "req_id": "600",
+    "res_id": "580",
+    "ecu_name": "左前车门控制单元-左侧前车门"
+  },
+  {
+    "req_id": "601",
+    "res_id": "581",
+    "ecu_name": "后排乘客区控制单元-后排控制单元"
+  },
+  {
+    "req_id": "602",
+    "res_id": "582",
+    "ecu_name": "右前车门控制单元-右侧前车门"
+  },
+  {
+    "req_id": "604",
+    "res_id": "584",
+    "ecu_name": "左后车门控制单元-左侧后车门"
+  },
+  {
+    "req_id": "606",
+    "res_id": "586",
+    "ecu_name": "右后车门控制单元-右侧后车门"
+  },
+  {
+    "req_id": "607",
+    "res_id": "587",
+    "ecu_name": "电子点火开关(EZS)-电子点火开关"
+  },
+  {
+    "req_id": "608",
+    "res_id": "588",
+    "ecu_name": "“驾驶员”电动座椅调节（ESE）- 不带记忆功能的“驾驶员”电动座椅调节"
+  },
+  {
+    "req_id": "609",
+    "res_id": "589",
+    "ecu_name": "前部信号采集及促动控制模组(SAM)- 前部信号采集及促动控制模组 (N10/6)"
+  },
+  {
+    "req_id": "60C",
+    "res_id": "58C",
+    "ecu_name": "“前排乘客”电动座椅调节（ESE）- 不带记忆功能的“驾驶员”电动座椅调节"
+  },
+  {
+    "req_id": "60D",
+    "res_id": "58D",
+    "ecu_name": "后部信号采集及促动控制模组(SAM)- 后部信号采集及促动控制模组(N10/8)"
+  },
+  {
+    "req_id": "611",
+    "res_id": "591",
+    "ecu_name": "自动恒温控制系统（KLA）- 空调"
+  },
+  {
+    "req_id": "615",
+    "res_id": "595",
+    "ecu_name": "尾门控制系统（HKS）- 行车箱盖控制"
+  },
+  {
+    "req_id": "618",
+    "res_id": "598",
+    "ecu_name": "防盗警报系统（EDW）- 防盗警报系统/防拖车保护/车内活动传感器"
+  },
+  {
+    "req_id": "619",
+    "res_id": "599",
+    "ecu_name": "拖车识别模块(AHE)-拖车识别装置"
+  },
+  {
+    "req_id": "61A",
+    "res_id": "59A",
+    "ecu_name": "特殊车辆多功能控制单元(MSS)-多功能控制单元"
+  },
+  {
+    "req_id": "61C",
+    "res_id": "59C",
+    "ecu_name": "SD-'滑动天窗'控制模块"
+  },
+  {
+    "req_id": "61D",
+    "res_id": "59D",
+    "ecu_name": "KAB-控制单元“摄像机护罩”"
+  },
+  {
+    "req_id": "620",
+    "res_id": "5A0",
+    "ecu_name": "KG（无钥匙起动） "
+  },
+  {
+    "req_id": "625",
+    "res_id": "5A5",
+    "ecu_name": "IRS-HRA - 右后外部智能雷达测距传感器"
+  },
+  {
+    "req_id": "626",
+    "res_id": "5A6",
+    "ecu_name": "IRS-HLA - 左后外部智能雷达测距传感器"
+  },
+  {
+    "req_id": "637",
+    "res_id": "5B7",
+    "ecu_name": "TPAD-触摸垫"
+  },
+  {
+    "req_id": "63A",
+    "res_id": "5BA",
+    "ecu_name": "ZBE - 音频/驾驶室管理及数据系统(COMAND)显示屏"
+  },
+  {
+    "req_id": "63B",
+    "res_id": "5BB",
+    "ecu_name": "ZAN - 音频/驾驶室管理及数据系统(COMAND)显示屏"
+  },
+  {
+    "req_id": "640",
+    "res_id": "5C0",
+    "ecu_name": "左前自适应安全带拉紧器(Revgus-vl)-左前自适应安全带拉紧器"
+  },
+  {
+    "req_id": "642",
+    "res_id": "5C2",
+    "ecu_name": "平视显示器-平视显示器"
+  },
+  {
+    "req_id": "644",
+    "res_id": "5C4",
+    "ecu_name": "RFK - 倒车摄像机"
+  },
+  {
+    "req_id": "647",
+    "res_id": "5C7",
+    "ecu_name": "右前自适应安全带拉紧器(RevGUS-VR)-右前自适应安全带拉紧器"
+  },
+  {
+    "req_id": "64E",
+    "res_id": "5CE",
+    "ecu_name": "SG-SOGE-电动车发声器"
+  },
+  {
+    "req_id": "650",
+    "res_id": "5D0",
+    "ecu_name": "SG-SW-L - 左侧大灯"
+  },
+  {
+    "req_id": "653",
+    "res_id": "5D3",
+    "ecu_name": "MFK - 多功能摄像机(mono) (A40/11)"
+  },
+  {
+    "req_id": "655",
+    "res_id": "5D5",
+    "ecu_name": "SG-AWF-控制单元防撞辅助系统"
+  },
+  {
+    "req_id": "656",
+    "res_id": "5D6",
+    "ecu_name": "SG-SW-R - 右侧大灯"
+  },
+  {
+    "req_id": "65F",
+    "res_id": "5DF",
+    "ecu_name": "智能伺服模块(ISM)-换挡模块"
+  },
+  {
+    "req_id": "663",
+    "res_id": "5E3",
+    "ecu_name": "SG-LG - 充电装置"
+  },
+  {
+    "req_id": "711",
+    "res_id": "701",
+    "ecu_name": "声音 - 音响系统"
+  },
+  {
+    "req_id": "740",
+    "res_id": "720",
+    "ecu_name": "MFK - 多功能摄像机(stereo) (A40/13)"
+  },
+  {
+    "req_id": "741",
+    "res_id": "721",
+    "ecu_name": "限距控制系统(DTR)-限距控制系统(DISTRONIC)"
+  },
+  {
+    "req_id": "742",
+    "res_id": "722",
+    "ecu_name": "限距控制系统(DTR)- 限距控制系统(DISTRONIC)(B29)"
+  },
+  {
+    "req_id": "743",
+    "res_id": "723",
+    "ecu_name": "PARK -驻车系统(N62)"
+  },
+  {
+    "req_id": "744",
+    "res_id": "724",
+    "ecu_name": "ADS-自适应减震系统 "
+  },
+  {
+    "req_id": "745",
+    "res_id": "725",
+    "ecu_name": "电动动力转向(ES)- 电动动力转向"
+  },
+  {
+    "req_id": "746",
+    "res_id": "726",
+    "ecu_name": "转向柱管模块(MSS)- 转向柱模块"
+  },
+  {
+    "req_id": "6CA",
+    "res_id": "499",
+    "ecu_name": "EKMK-电动制冷剂压缩机"
+  },
+  {
+    "req_id": "762",
+    "res_id": "4AC",
+    "ecu_name": "ME-发动机电控系统"
+  },
+  {
+    "req_id": "64B",
+    "res_id": "4C9",
+    "ecu_name": "LRH-方向盘加热装置"
+  },
+  {
+    "req_id": "610",
+    "res_id": "590",
+    "ecu_name": "左前多仿形座椅(MKS)- 左前多仿形座椅"
+  },
+  {
+    "req_id": "612",
+    "res_id": "592",
+    "ecu_name": "右前多仿形座椅(MKS)- 右前多仿形座椅"
+  },
+  {
+    "req_id": "617",
+    "res_id": "597",
+    "ecu_name": "PPMKS - 多仿形座椅气动泵"
+  },
+  {
+    "req_id": "61E",
+    "res_id": "59E",
+    "ecu_name": "MSC - MAGIC SKY CONTROL (N53)"
+  },
+  {
+    "req_id": "643",
+    "res_id": "5C3",
+    "ecu_name": "夜视系统(NSA)- 夜视辅助 (N101)"
+  },
+  {
+    "req_id": "666",
+    "res_id": "5E6",
+    "ecu_name": "DC/DC/ - 直流/直流变换器"
+  },
+  {
+    "req_id": "603",
+    "res_id": "4C0",
+    "ecu_name": "SG-LML-VL-左前照明单元LED矩阵"
+  },
+  {
+    "req_id": "60A",
+    "res_id": "58A",
+    "ecu_name": "左后电动座椅调节(ESE)- 左后电动座椅调节"
+  },
+  {
+    "req_id": "60E",
+    "res_id": "58E",
+    "ecu_name": "右后电动座椅调节(ESE)- 右后电动座椅调节"
+  },
+  {
+    "req_id": "613",
+    "res_id": "593",
+    "ecu_name": "辅助暖气系统(STH)-辅助暖气系统"
+  },
+  {
+    "req_id": "614",
+    "res_id": "594",
+    "ecu_name": "左后多仿形座椅"
+  },
+  {
+    "req_id": "616",
+    "res_id": "596",
+    "ecu_name": "右后多仿形座椅(MKS)- 右后多仿形座椅"
+  },
+  {
+    "req_id": "61B",
+    "res_id": "59B",
+    "ecu_name": "自动档位控制(AGS)- 已激活的安全带锁扣"
+  },
+  {
+    "req_id": "639",
+    "res_id": "5B9",
+    "ecu_name": "D-FOL - 后排乘客区内左侧显示屏"
+  },
+  {
+    "req_id": "63D",
+    "res_id": "5BD",
+    "ecu_name": "D-FOR - 后排乘客区内右侧显示屏"
+  },
+  {
+    "req_id": "712",
+    "res_id": "702",
+    "ecu_name": "后部音频视频单元(AVE-H) - '后排座椅娱乐系统'控制单元"
+  },
+  {
+    "req_id": "761",
+    "res_id": "760",
+    "ecu_name": "灭火系统和应急新鲜空气系统 - 灭火系统和紧急情况新鲜空气系统"
+  },
+  {
+    "req_id": "794",
+    "res_id": "795",
+    "ecu_name": "ALWR-大灯照明距离调节"
+  },
+  {
+    "req_id": "723",
+    "res_id": "4E4",
+    "ecu_name": "RCM-后排控制模块 "
+  },
+  {
+    "req_id": "699",
+    "res_id": "453",
+    "ecu_name": "调谐器-调谐器声音"
+  },
+  {
+    "req_id": "6D2",
+    "res_id": "49A",
+    "ecu_name": "SG-DDW -直流/直流转换器控制单元"
+  },
+  {
+    "req_id": "560",
+    "res_id": "7A8",
+    "ecu_name": "UVS-翻车保护杆可变车顶控制模块 "
+  }
+]

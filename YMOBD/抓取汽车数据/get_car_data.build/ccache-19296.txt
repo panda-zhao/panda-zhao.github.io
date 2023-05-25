@@ -1,0 +1,561 @@
+[2022-12-01T18:22:49.455175 8956 ] === CCACHE 4.6 STARTED =========================================
+[2022-12-01T18:22:49.455175 8956 ] Config: (default) absolute_paths_in_stderr = false
+[2022-12-01T18:22:49.455175 8956 ] Config: (default) base_dir = 
+[2022-12-01T18:22:49.455175 8956 ] Config: (environment) cache_dir = C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\ccache
+[2022-12-01T18:22:49.455175 8956 ] Config: (default) compiler = 
+[2022-12-01T18:22:49.455175 8956 ] Config: (default) compiler_check = mtime
+[2022-12-01T18:22:49.455175 8956 ] Config: (default) compiler_type = auto
+[2022-12-01T18:22:49.455175 8956 ] Config: (default) compression = true
+[2022-12-01T18:22:49.455175 8956 ] Config: (default) compression_level = 0
+[2022-12-01T18:22:49.455175 8956 ] Config: (default) cpp_extension = 
+[2022-12-01T18:22:49.455175 8956 ] Config: (default) debug = false
+[2022-12-01T18:22:49.455175 8956 ] Config: (default) debug_dir = 
+[2022-12-01T18:22:49.455175 8956 ] Config: (default) depend_mode = false
+[2022-12-01T18:22:49.455175 8956 ] Config: (default) direct_mode = true
+[2022-12-01T18:22:49.455175 8956 ] Config: (default) disable = false
+[2022-12-01T18:22:49.455175 8956 ] Config: (default) extra_files_to_hash = 
+[2022-12-01T18:22:49.455175 8956 ] Config: (default) file_clone = false
+[2022-12-01T18:22:49.455175 8956 ] Config: (default) hard_link = false
+[2022-12-01T18:22:49.455175 8956 ] Config: (default) hash_dir = true
+[2022-12-01T18:22:49.455175 8956 ] Config: (default) ignore_headers_in_manifest = 
+[2022-12-01T18:22:49.455175 8956 ] Config: (default) ignore_options = 
+[2022-12-01T18:22:49.455175 8956 ] Config: (default) inode_cache = false
+[2022-12-01T18:22:49.455175 8956 ] Config: (default) keep_comments_cpp = false
+[2022-12-01T18:22:49.455175 8956 ] Config: (default) limit_multiple = 0.8
+[2022-12-01T18:22:49.455175 8956 ] Config: (environment) log_file = C:\Users\zi'tian\Desktop\抓取汽~1\get_car_data.build\ccache-19296.txt
+[2022-12-01T18:22:49.455175 8956 ] Config: (default) max_files = 0
+[2022-12-01T18:22:49.455175 8956 ] Config: (default) max_size = 5.0G
+[2022-12-01T18:22:49.455175 8956 ] Config: (default) namespace = 
+[2022-12-01T18:22:49.455175 8956 ] Config: (default) path = 
+[2022-12-01T18:22:49.455175 8956 ] Config: (default) pch_external_checksum = false
+[2022-12-01T18:22:49.455175 8956 ] Config: (default) prefix_command = 
+[2022-12-01T18:22:49.455175 8956 ] Config: (default) prefix_command_cpp = 
+[2022-12-01T18:22:49.455175 8956 ] Config: (default) read_only = false
+[2022-12-01T18:22:49.455175 8956 ] Config: (default) read_only_direct = false
+[2022-12-01T18:22:49.455175 8956 ] Config: (default) recache = false
+[2022-12-01T18:22:49.455175 8956 ] Config: (default) reshare = false
+[2022-12-01T18:22:49.455175 8956 ] Config: (default) run_second_cpp = true
+[2022-12-01T18:22:49.455175 8956 ] Config: (default) secondary_storage = 
+[2022-12-01T18:22:49.455175 8956 ] Config: (environment) sloppiness = include_file_mtime, include_file_ctime
+[2022-12-01T18:22:49.455175 8956 ] Config: (default) stats = true
+[2022-12-01T18:22:49.455175 8956 ] Config: (default) stats_log = 
+[2022-12-01T18:22:49.455175 8956 ] Config: (default) temporary_dir = C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\ccache/tmp
+[2022-12-01T18:22:49.455175 8956 ] Config: (default) umask = 
+[2022-12-01T18:22:49.456174 8956 ] Command line: C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\downloads\ccache\v4.6\ccache.exe C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\downloads\gcc\x86_64\11.3.0-14.0.3-10.0.0-msvcrt-r3\mingw64\bin\gcc.exe -o __helpers.o -c -flto -fuse-linker-plugin -fno-fat-lto-objects -std=c11 -fvisibility=hidden -fwrapv -pipe -fpartial-inlining -ftrack-macro-expansion=0 -Wno-deprecated-declarations -fno-var-tracking -Wno-misleading-indentation -fcompare-debug-second -O3 -D_WIN32_WINNT=0x0501 -D__NUITKA_NO_ASSERT__ -DMS_WIN64 -D_NUITKA_CONSTANTS_FROM_RESOURCE -D_NUITKA_FROZEN=0 -D_NUITKA_EXE -ID:\python3\include -I. -ID:\python3\lib\site-packages\nuitka\build\include -ID:\python3\lib\site-packages\nuitka\build\static_src __helpers.c
+[2022-12-01T18:22:49.463170 8956 ] Hostname: DESKTOP-HGT0GAL
+[2022-12-01T18:22:49.463170 8956 ] Working directory: C:/Users/zi'tian/Desktop/抓取汽~1/get_car_data.build
+[2022-12-01T18:22:49.463170 8956 ] Compiler type: gcc
+[2022-12-01T18:22:49.465169 10960] === CCACHE 4.6 STARTED =========================================
+[2022-12-01T18:22:49.465169 8956 ] Source file: __helpers.c
+[2022-12-01T18:22:49.465169 8956 ] Object file: __helpers.o
+[2022-12-01T18:22:49.465169 10960] Config: (default) absolute_paths_in_stderr = false
+[2022-12-01T18:22:49.465169 10960] Config: (default) base_dir = 
+[2022-12-01T18:22:49.465169 10960] Config: (environment) cache_dir = C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\ccache
+[2022-12-01T18:22:49.465169 10960] Config: (default) compiler = 
+[2022-12-01T18:22:49.465169 10960] Config: (default) compiler_check = mtime
+[2022-12-01T18:22:49.465169 10960] Config: (default) compiler_type = auto
+[2022-12-01T18:22:49.465169 10960] Config: (default) compression = true
+[2022-12-01T18:22:49.465169 10960] Config: (default) compression_level = 0
+[2022-12-01T18:22:49.465169 10960] Config: (default) cpp_extension = 
+[2022-12-01T18:22:49.465169 10960] Config: (default) debug = false
+[2022-12-01T18:22:49.465169 10960] Config: (default) debug_dir = 
+[2022-12-01T18:22:49.465169 10960] Config: (default) depend_mode = false
+[2022-12-01T18:22:49.465169 10960] Config: (default) direct_mode = true
+[2022-12-01T18:22:49.465169 10960] Config: (default) disable = false
+[2022-12-01T18:22:49.465169 10960] Config: (default) extra_files_to_hash = 
+[2022-12-01T18:22:49.465169 10960] Config: (default) file_clone = false
+[2022-12-01T18:22:49.465169 10960] Config: (default) hard_link = false
+[2022-12-01T18:22:49.465169 10960] Config: (default) hash_dir = true
+[2022-12-01T18:22:49.465169 10960] Config: (default) ignore_headers_in_manifest = 
+[2022-12-01T18:22:49.465169 10960] Config: (default) ignore_options = 
+[2022-12-01T18:22:49.465169 10960] Config: (default) inode_cache = false
+[2022-12-01T18:22:49.465169 10960] Config: (default) keep_comments_cpp = false
+[2022-12-01T18:22:49.465169 10960] Config: (default) limit_multiple = 0.8
+[2022-12-01T18:22:49.465169 10960] Config: (environment) log_file = C:\Users\zi'tian\Desktop\抓取汽~1\get_car_data.build\ccache-19296.txt
+[2022-12-01T18:22:49.465169 10960] Config: (default) max_files = 0
+[2022-12-01T18:22:49.465169 10960] Config: (default) max_size = 5.0G
+[2022-12-01T18:22:49.465169 10960] Config: (default) namespace = 
+[2022-12-01T18:22:49.465169 10960] Config: (default) path = 
+[2022-12-01T18:22:49.465169 10960] Config: (default) pch_external_checksum = false
+[2022-12-01T18:22:49.465169 10960] Config: (default) prefix_command = 
+[2022-12-01T18:22:49.465169 10960] Config: (default) prefix_command_cpp = 
+[2022-12-01T18:22:49.465169 10960] Config: (default) read_only = false
+[2022-12-01T18:22:49.465169 10960] Config: (default) read_only_direct = false
+[2022-12-01T18:22:49.465169 10960] Config: (default) recache = false
+[2022-12-01T18:22:49.465169 10960] Config: (default) reshare = false
+[2022-12-01T18:22:49.465169 10960] Config: (default) run_second_cpp = true
+[2022-12-01T18:22:49.465169 10960] Config: (default) secondary_storage = 
+[2022-12-01T18:22:49.465169 10960] Config: (environment) sloppiness = include_file_mtime, include_file_ctime
+[2022-12-01T18:22:49.465169 10960] Config: (default) stats = true
+[2022-12-01T18:22:49.465169 10960] Config: (default) stats_log = 
+[2022-12-01T18:22:49.465169 10960] Config: (default) temporary_dir = C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\ccache/tmp
+[2022-12-01T18:22:49.465169 10960] Config: (default) umask = 
+[2022-12-01T18:22:49.465169 10960] Command line: C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\downloads\ccache\v4.6\ccache.exe C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\downloads\gcc\x86_64\11.3.0-14.0.3-10.0.0-msvcrt-r3\mingw64\bin\gcc.exe -o __constants.o -c -flto -fuse-linker-plugin -fno-fat-lto-objects -std=c11 -fvisibility=hidden -fwrapv -pipe -fpartial-inlining -ftrack-macro-expansion=0 -Wno-deprecated-declarations -fno-var-tracking -Wno-misleading-indentation -fcompare-debug-second -O3 -D_WIN32_WINNT=0x0501 -D__NUITKA_NO_ASSERT__ -DMS_WIN64 -D_NUITKA_CONSTANTS_FROM_RESOURCE -D_NUITKA_FROZEN=0 -D_NUITKA_EXE -ID:\python3\include -I. -ID:\python3\lib\site-packages\nuitka\build\include -ID:\python3\lib\site-packages\nuitka\build\static_src __constants.c
+[2022-12-01T18:22:49.465169 8956 ] Retrieved e1882tqpkjqp3kttiu2o720jsqcle9mua from primary storage (C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\ccache/e/1/882tqpkjqp3kttiu2o720jsqcle9muaM)
+[2022-12-01T18:22:49.466169 8956 ] Looking for result key in C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\ccache/e/1/882tqpkjqp3kttiu2o720jsqcle9muaM
+[2022-12-01T18:22:49.488156 10960] Hostname: DESKTOP-HGT0GAL
+[2022-12-01T18:22:49.488156 10960] Working directory: C:/Users/zi'tian/Desktop/抓取汽~1/get_car_data.build
+[2022-12-01T18:22:49.488156 10960] Compiler type: gcc
+[2022-12-01T18:22:49.489159 10960] Source file: __constants.c
+[2022-12-01T18:22:49.489159 10960] Object file: __constants.o
+[2022-12-01T18:22:49.490158 10960] Trying direct lookup
+[2022-12-01T18:22:49.490158 10960] Retrieved b2145pqq3f0s0m6qki2p44dj5nk52f6qi from primary storage (C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\ccache/b/2/145pqq3f0s0m6qki2p44dj5nk52f6qiM)
+[2022-12-01T18:22:49.495155 10308] === CCACHE 4.6 STARTED =========================================
+[2022-12-01T18:22:49.495155 10308] Config: (default) absolute_paths_in_stderr = false
+[2022-12-01T18:22:49.495155 10308] Config: (default) base_dir = 
+[2022-12-01T18:22:49.495155 10308] Config: (environment) cache_dir = C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\ccache
+[2022-12-01T18:22:49.495155 10308] Config: (default) compiler = 
+[2022-12-01T18:22:49.495155 10308] Config: (default) compiler_check = mtime
+[2022-12-01T18:22:49.495155 10308] Config: (default) compiler_type = auto
+[2022-12-01T18:22:49.495155 10308] Config: (default) compression = true
+[2022-12-01T18:22:49.495155 10308] Config: (default) compression_level = 0
+[2022-12-01T18:22:49.495155 10308] Config: (default) cpp_extension = 
+[2022-12-01T18:22:49.495155 10308] Config: (default) debug = false
+[2022-12-01T18:22:49.495155 10308] Config: (default) debug_dir = 
+[2022-12-01T18:22:49.495155 10308] Config: (default) depend_mode = false
+[2022-12-01T18:22:49.495155 10308] Config: (default) direct_mode = true
+[2022-12-01T18:22:49.495155 10308] Config: (default) disable = false
+[2022-12-01T18:22:49.495155 10308] Config: (default) extra_files_to_hash = 
+[2022-12-01T18:22:49.495155 10308] Config: (default) file_clone = false
+[2022-12-01T18:22:49.495155 10308] Config: (default) hard_link = false
+[2022-12-01T18:22:49.495155 10308] Config: (default) hash_dir = true
+[2022-12-01T18:22:49.495155 10308] Config: (default) ignore_headers_in_manifest = 
+[2022-12-01T18:22:49.495155 10308] Config: (default) ignore_options = 
+[2022-12-01T18:22:49.495155 10308] Config: (default) inode_cache = false
+[2022-12-01T18:22:49.495155 10308] Config: (default) keep_comments_cpp = false
+[2022-12-01T18:22:49.495155 10308] Config: (default) limit_multiple = 0.8
+[2022-12-01T18:22:49.495155 10308] Config: (environment) log_file = C:\Users\zi'tian\Desktop\抓取汽~1\get_car_data.build\ccache-19296.txt
+[2022-12-01T18:22:49.495155 10308] Config: (default) max_files = 0
+[2022-12-01T18:22:49.495155 10308] Config: (default) max_size = 5.0G
+[2022-12-01T18:22:49.495155 10308] Config: (default) namespace = 
+[2022-12-01T18:22:49.495155 10308] Config: (default) path = 
+[2022-12-01T18:22:49.495155 10308] Config: (default) pch_external_checksum = false
+[2022-12-01T18:22:49.495155 10308] Config: (default) prefix_command = 
+[2022-12-01T18:22:49.495155 10308] Config: (default) prefix_command_cpp = 
+[2022-12-01T18:22:49.495155 10308] Config: (default) read_only = false
+[2022-12-01T18:22:49.495155 10308] Config: (default) read_only_direct = false
+[2022-12-01T18:22:49.495155 10308] Config: (default) recache = false
+[2022-12-01T18:22:49.495155 10308] Config: (default) reshare = false
+[2022-12-01T18:22:49.495155 10308] Config: (default) run_second_cpp = true
+[2022-12-01T18:22:49.495155 10308] Config: (default) secondary_storage = 
+[2022-12-01T18:22:49.495155 10308] Config: (environment) sloppiness = include_file_mtime, include_file_ctime
+[2022-12-01T18:22:49.495155 10308] Config: (default) stats = true
+[2022-12-01T18:22:49.495155 10308] Config: (default) stats_log = 
+[2022-12-01T18:22:49.495155 10308] Config: (default) temporary_dir = C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\ccache/tmp
+[2022-12-01T18:22:49.495155 10308] Config: (default) umask = 
+[2022-12-01T18:22:49.496159 10308] Command line: C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\downloads\ccache\v4.6\ccache.exe C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\downloads\gcc\x86_64\11.3.0-14.0.3-10.0.0-msvcrt-r3\mingw64\bin\gcc.exe -o __loader.o -c -flto -fuse-linker-plugin -fno-fat-lto-objects -std=c11 -fvisibility=hidden -fwrapv -pipe -fpartial-inlining -ftrack-macro-expansion=0 -Wno-deprecated-declarations -fno-var-tracking -Wno-misleading-indentation -fcompare-debug-second -O3 -D_WIN32_WINNT=0x0501 -D__NUITKA_NO_ASSERT__ -DMS_WIN64 -D_NUITKA_CONSTANTS_FROM_RESOURCE -D_NUITKA_FROZEN=0 -D_NUITKA_EXE -ID:\python3\include -I. -ID:\python3\lib\site-packages\nuitka\build\include -ID:\python3\lib\site-packages\nuitka\build\static_src __loader.c
+[2022-12-01T18:22:49.505146 10960] Looking for result key in C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\ccache/b/2/145pqq3f0s0m6qki2p44dj5nk52f6qiM
+[2022-12-01T18:22:49.515141 10308] Hostname: DESKTOP-HGT0GAL
+[2022-12-01T18:22:49.515141 10308] Working directory: C:/Users/zi'tian/Desktop/抓取汽~1/get_car_data.build
+[2022-12-01T18:22:49.515141 10308] Compiler type: gcc
+[2022-12-01T18:22:49.516140 10308] Source file: __loader.c
+[2022-12-01T18:22:49.516140 10308] Object file: __loader.o
+[2022-12-01T18:22:49.516140 10308] Trying direct lookup
+[2022-12-01T18:22:49.529132 10308] Retrieved f0f6p0udh4hc57eum9a97rrn7bl6qg5vc from primary storage (C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\ccache/f/0/f6p0udh4hc57eum9a97rrn7bl6qg5vcM)
+[2022-12-01T18:22:49.530133 10308] Looking for result key in C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\ccache/f/0/f6p0udh4hc57eum9a97rrn7bl6qg5vcM
+[2022-12-01T18:22:49.542125 12672] === CCACHE 4.6 STARTED =========================================
+[2022-12-01T18:22:49.542125 12672] Config: (default) absolute_paths_in_stderr = false
+[2022-12-01T18:22:49.542125 12672] Config: (default) base_dir = 
+[2022-12-01T18:22:49.542125 12672] Config: (environment) cache_dir = C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\ccache
+[2022-12-01T18:22:49.542125 12672] Config: (default) compiler = 
+[2022-12-01T18:22:49.542125 12672] Config: (default) compiler_check = mtime
+[2022-12-01T18:22:49.542125 12672] Config: (default) compiler_type = auto
+[2022-12-01T18:22:49.542125 12672] Config: (default) compression = true
+[2022-12-01T18:22:49.542125 12672] Config: (default) compression_level = 0
+[2022-12-01T18:22:49.542125 12672] Config: (default) cpp_extension = 
+[2022-12-01T18:22:49.542125 12672] Config: (default) debug = false
+[2022-12-01T18:22:49.542125 12672] Config: (default) debug_dir = 
+[2022-12-01T18:22:49.542125 12672] Config: (default) depend_mode = false
+[2022-12-01T18:22:49.542125 12672] Config: (default) direct_mode = true
+[2022-12-01T18:22:49.542125 12672] Config: (default) disable = false
+[2022-12-01T18:22:49.542125 12672] Config: (default) extra_files_to_hash = 
+[2022-12-01T18:22:49.542125 12672] Config: (default) file_clone = false
+[2022-12-01T18:22:49.542125 12672] Config: (default) hard_link = false
+[2022-12-01T18:22:49.542125 12672] Config: (default) hash_dir = true
+[2022-12-01T18:22:49.542125 12672] Config: (default) ignore_headers_in_manifest = 
+[2022-12-01T18:22:49.542125 12672] Config: (default) ignore_options = 
+[2022-12-01T18:22:49.542125 12672] Config: (default) inode_cache = false
+[2022-12-01T18:22:49.542125 12672] Config: (default) keep_comments_cpp = false
+[2022-12-01T18:22:49.542125 12672] Config: (default) limit_multiple = 0.8
+[2022-12-01T18:22:49.542125 12672] Config: (environment) log_file = C:\Users\zi'tian\Desktop\抓取汽~1\get_car_data.build\ccache-19296.txt
+[2022-12-01T18:22:49.542125 12672] Config: (default) max_files = 0
+[2022-12-01T18:22:49.542125 12672] Config: (default) max_size = 5.0G
+[2022-12-01T18:22:49.542125 12672] Config: (default) namespace = 
+[2022-12-01T18:22:49.542125 12672] Config: (default) path = 
+[2022-12-01T18:22:49.542125 12672] Config: (default) pch_external_checksum = false
+[2022-12-01T18:22:49.542125 12672] Config: (default) prefix_command = 
+[2022-12-01T18:22:49.542125 12672] Config: (default) prefix_command_cpp = 
+[2022-12-01T18:22:49.542125 12672] Config: (default) read_only = false
+[2022-12-01T18:22:49.542125 12672] Config: (default) read_only_direct = false
+[2022-12-01T18:22:49.542125 12672] Config: (default) recache = false
+[2022-12-01T18:22:49.542125 12672] Config: (default) reshare = false
+[2022-12-01T18:22:49.542125 12672] Config: (default) run_second_cpp = true
+[2022-12-01T18:22:49.542125 12672] Config: (default) secondary_storage = 
+[2022-12-01T18:22:49.542125 12672] Config: (environment) sloppiness = include_file_mtime, include_file_ctime
+[2022-12-01T18:22:49.542125 12672] Config: (default) stats = true
+[2022-12-01T18:22:49.542125 12672] Config: (default) stats_log = 
+[2022-12-01T18:22:49.542125 12672] Config: (default) temporary_dir = C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\ccache/tmp
+[2022-12-01T18:22:49.542125 12672] Config: (default) umask = 
+[2022-12-01T18:22:49.542125 12672] Command line: C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\downloads\ccache\v4.6\ccache.exe C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\downloads\gcc\x86_64\11.3.0-14.0.3-10.0.0-msvcrt-r3\mingw64\bin\gcc.exe -o module.__main__.o -c -flto -fuse-linker-plugin -fno-fat-lto-objects -std=c11 -fvisibility=hidden -fwrapv -pipe -fpartial-inlining -ftrack-macro-expansion=0 -Wno-deprecated-declarations -fno-var-tracking -Wno-misleading-indentation -fcompare-debug-second -O3 -D_WIN32_WINNT=0x0501 -D__NUITKA_NO_ASSERT__ -DMS_WIN64 -D_NUITKA_CONSTANTS_FROM_RESOURCE -D_NUITKA_FROZEN=0 -D_NUITKA_EXE -ID:\python3\include -I. -ID:\python3\lib\site-packages\nuitka\build\include -ID:\python3\lib\site-packages\nuitka\build\static_src module.__main__.c
+[2022-12-01T18:22:49.550120 12672] Hostname: DESKTOP-HGT0GAL
+[2022-12-01T18:22:49.550120 12672] Working directory: C:/Users/zi'tian/Desktop/抓取汽~1/get_car_data.build
+[2022-12-01T18:22:49.550120 12672] Compiler type: gcc
+[2022-12-01T18:22:49.550120 12672] Source file: module.__main__.c
+[2022-12-01T18:22:49.550120 12672] Object file: module.__main__.o
+[2022-12-01T18:22:49.550120 12672] Trying direct lookup
+[2022-12-01T18:22:49.555117 12672] No 5631fhnu6lfvv80ssrsktrnr8sm8005jo in primary storage
+[2022-12-01T18:22:49.567111 12672] Running preprocessor
+[2022-12-01T18:22:49.589099 10308] Got result key from manifest
+[2022-12-01T18:22:49.589099 10308] Retrieved fde4g0nheruvinuj4gfue80irl767qs9k from primary storage (C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\ccache/f/d/e4g0nheruvinuj4gfue80irl767qs9kR)
+[2022-12-01T18:22:49.590098 10308] Reading embedded entry #0 .o (9483 bytes)
+[2022-12-01T18:22:49.590098 10308] Writing to __loader.o
+[2022-12-01T18:22:49.597093 10308] Succeeded getting cached result
+[2022-12-01T18:22:49.600092 10308] Result: direct_cache_hit
+[2022-12-01T18:22:49.600092 10308] Result: primary_storage_hit
+[2022-12-01T18:22:49.613085 10308] Acquired lock C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\ccache/4/4/stats.lock
+[2022-12-01T18:22:49.629076 10308] Releasing lock C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\ccache/4/4/stats.lock
+[2022-12-01T18:22:49.682045 8956 ] Got result key from manifest
+[2022-12-01T18:22:49.682045 8956 ] Retrieved a3bff6q6f37t51c0qljg4e4ug1pienon4 from primary storage (C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\ccache/a/3/bff6q6f37t51c0qljg4e4ug1pienon4R)
+[2022-12-01T18:22:49.683045 10960] Got result key from manifest
+[2022-12-01T18:22:49.683045 8956 ] Reading embedded entry #0 .o (2647 bytes)
+[2022-12-01T18:22:49.683045 8956 ] Writing to __helpers.o
+[2022-12-01T18:22:49.683045 10960] Retrieved 19191fu1f1m5si9q993gqqk0mqo2i7pvc from primary storage (C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\ccache/1/9/191fu1f1m5si9q993gqqk0mqo2i7pvcR)
+[2022-12-01T18:22:49.683045 8956 ] Succeeded getting cached result
+[2022-12-01T18:22:49.684044 8956 ] Result: direct_cache_hit
+[2022-12-01T18:22:49.684044 8956 ] Result: primary_storage_hit
+[2022-12-01T18:22:49.684044 10960] Reading embedded entry #0 .o (14359 bytes)
+[2022-12-01T18:22:49.684044 10960] Writing to __constants.o
+[2022-12-01T18:22:49.691041 8956 ] Acquired lock C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\ccache/f/c/stats.lock
+[2022-12-01T18:22:49.694039 8956 ] Releasing lock C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\ccache/f/c/stats.lock
+[2022-12-01T18:22:49.698036 10960] Succeeded getting cached result
+[2022-12-01T18:22:49.698036 10960] Result: direct_cache_hit
+[2022-12-01T18:22:49.698036 10960] Result: primary_storage_hit
+[2022-12-01T18:22:49.714026 10960] Acquired lock C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\ccache/d/0/stats.lock
+[2022-12-01T18:22:49.716025 10960] Releasing lock C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\ccache/d/0/stats.lock
+[2022-12-01T18:22:49.767995 18616] === CCACHE 4.6 STARTED =========================================
+[2022-12-01T18:22:49.767995 18616] Config: (default) absolute_paths_in_stderr = false
+[2022-12-01T18:22:49.767995 18616] Config: (default) base_dir = 
+[2022-12-01T18:22:49.767995 18616] Config: (environment) cache_dir = C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\ccache
+[2022-12-01T18:22:49.767995 18616] Config: (default) compiler = 
+[2022-12-01T18:22:49.767995 18616] Config: (default) compiler_check = mtime
+[2022-12-01T18:22:49.767995 18616] Config: (default) compiler_type = auto
+[2022-12-01T18:22:49.767995 18616] Config: (default) compression = true
+[2022-12-01T18:22:49.767995 18616] Config: (default) compression_level = 0
+[2022-12-01T18:22:49.767995 18616] Config: (default) cpp_extension = 
+[2022-12-01T18:22:49.767995 18616] Config: (default) debug = false
+[2022-12-01T18:22:49.767995 18616] Config: (default) debug_dir = 
+[2022-12-01T18:22:49.767995 18616] Config: (default) depend_mode = false
+[2022-12-01T18:22:49.767995 18616] Config: (default) direct_mode = true
+[2022-12-01T18:22:49.767995 18616] Config: (default) disable = false
+[2022-12-01T18:22:49.767995 18616] Config: (default) extra_files_to_hash = 
+[2022-12-01T18:22:49.767995 18616] Config: (default) file_clone = false
+[2022-12-01T18:22:49.767995 18616] Config: (default) hard_link = false
+[2022-12-01T18:22:49.767995 18616] Config: (default) hash_dir = true
+[2022-12-01T18:22:49.767995 18616] Config: (default) ignore_headers_in_manifest = 
+[2022-12-01T18:22:49.767995 18616] Config: (default) ignore_options = 
+[2022-12-01T18:22:49.767995 18616] Config: (default) inode_cache = false
+[2022-12-01T18:22:49.767995 18616] Config: (default) keep_comments_cpp = false
+[2022-12-01T18:22:49.767995 18616] Config: (default) limit_multiple = 0.8
+[2022-12-01T18:22:49.767995 18616] Config: (environment) log_file = C:\Users\zi'tian\Desktop\抓取汽~1\get_car_data.build\ccache-19296.txt
+[2022-12-01T18:22:49.767995 18616] Config: (default) max_files = 0
+[2022-12-01T18:22:49.767995 18616] Config: (default) max_size = 5.0G
+[2022-12-01T18:22:49.767995 18616] Config: (default) namespace = 
+[2022-12-01T18:22:49.767995 18616] Config: (default) path = 
+[2022-12-01T18:22:49.767995 18616] Config: (default) pch_external_checksum = false
+[2022-12-01T18:22:49.767995 18616] Config: (default) prefix_command = 
+[2022-12-01T18:22:49.767995 18616] Config: (default) prefix_command_cpp = 
+[2022-12-01T18:22:49.767995 18616] Config: (default) read_only = false
+[2022-12-01T18:22:49.767995 18616] Config: (default) read_only_direct = false
+[2022-12-01T18:22:49.767995 18616] Config: (default) recache = false
+[2022-12-01T18:22:49.767995 18616] Config: (default) reshare = false
+[2022-12-01T18:22:49.767995 18616] Config: (default) run_second_cpp = true
+[2022-12-01T18:22:49.767995 18616] Config: (default) secondary_storage = 
+[2022-12-01T18:22:49.767995 18616] Config: (environment) sloppiness = include_file_mtime, include_file_ctime
+[2022-12-01T18:22:49.767995 18616] Config: (default) stats = true
+[2022-12-01T18:22:49.767995 18616] Config: (default) stats_log = 
+[2022-12-01T18:22:49.767995 18616] Config: (default) temporary_dir = C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\ccache/tmp
+[2022-12-01T18:22:49.767995 18616] Config: (default) umask = 
+[2022-12-01T18:22:49.768995 18616] Command line: C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\downloads\ccache\v4.6\ccache.exe C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\downloads\gcc\x86_64\11.3.0-14.0.3-10.0.0-msvcrt-r3\mingw64\bin\gcc.exe -o static_src\MainProgram.o -c -flto -fuse-linker-plugin -fno-fat-lto-objects -std=c11 -fvisibility=hidden -fwrapv -pipe -fpartial-inlining -ftrack-macro-expansion=0 -Wno-deprecated-declarations -fno-var-tracking -Wno-misleading-indentation -fcompare-debug-second -O3 -D_WIN32_WINNT=0x0501 -D__NUITKA_NO_ASSERT__ -DMS_WIN64 -D_NUITKA_CONSTANTS_FROM_RESOURCE -D_NUITKA_FROZEN=0 -D_NUITKA_EXE -ID:\python3\include -I. -ID:\python3\lib\site-packages\nuitka\build\include -ID:\python3\lib\site-packages\nuitka\build\static_src static_src\MainProgram.c
+[2022-12-01T18:22:49.775991 18616] Hostname: DESKTOP-HGT0GAL
+[2022-12-01T18:22:49.775991 18616] Working directory: C:/Users/zi'tian/Desktop/抓取汽~1/get_car_data.build
+[2022-12-01T18:22:49.775991 18616] Compiler type: gcc
+[2022-12-01T18:22:49.775991 18616] Source file: static_src\MainProgram.c
+[2022-12-01T18:22:49.775991 18616] Object file: static_src\MainProgram.o
+[2022-12-01T18:22:49.775991 18616] Trying direct lookup
+[2022-12-01T18:22:49.776991 18616] Retrieved 40fahlbfgj0be1aor572bvgsk26mqm1q2 from primary storage (C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\ccache/4/0/fahlbfgj0be1aor572bvgsk26mqm1q2M)
+[2022-12-01T18:22:49.776991 18616] Looking for result key in C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\ccache/4/0/fahlbfgj0be1aor572bvgsk26mqm1q2M
+[2022-12-01T18:22:49.794980 19172] === CCACHE 4.6 STARTED =========================================
+[2022-12-01T18:22:49.794980 19172] Config: (default) absolute_paths_in_stderr = false
+[2022-12-01T18:22:49.794980 19172] Config: (default) base_dir = 
+[2022-12-01T18:22:49.794980 19172] Config: (environment) cache_dir = C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\ccache
+[2022-12-01T18:22:49.794980 19172] Config: (default) compiler = 
+[2022-12-01T18:22:49.794980 19172] Config: (default) compiler_check = mtime
+[2022-12-01T18:22:49.794980 19172] Config: (default) compiler_type = auto
+[2022-12-01T18:22:49.794980 19172] Config: (default) compression = true
+[2022-12-01T18:22:49.794980 19172] Config: (default) compression_level = 0
+[2022-12-01T18:22:49.794980 19172] Config: (default) cpp_extension = 
+[2022-12-01T18:22:49.794980 19172] Config: (default) debug = false
+[2022-12-01T18:22:49.794980 19172] Config: (default) debug_dir = 
+[2022-12-01T18:22:49.794980 19172] Config: (default) depend_mode = false
+[2022-12-01T18:22:49.794980 19172] Config: (default) direct_mode = true
+[2022-12-01T18:22:49.794980 19172] Config: (default) disable = false
+[2022-12-01T18:22:49.794980 19172] Config: (default) extra_files_to_hash = 
+[2022-12-01T18:22:49.794980 19172] Config: (default) file_clone = false
+[2022-12-01T18:22:49.794980 19172] Config: (default) hard_link = false
+[2022-12-01T18:22:49.794980 19172] Config: (default) hash_dir = true
+[2022-12-01T18:22:49.794980 19172] Config: (default) ignore_headers_in_manifest = 
+[2022-12-01T18:22:49.794980 19172] Config: (default) ignore_options = 
+[2022-12-01T18:22:49.794980 19172] Config: (default) inode_cache = false
+[2022-12-01T18:22:49.794980 19172] Config: (default) keep_comments_cpp = false
+[2022-12-01T18:22:49.794980 19172] Config: (default) limit_multiple = 0.8
+[2022-12-01T18:22:49.794980 19172] Config: (environment) log_file = C:\Users\zi'tian\Desktop\抓取汽~1\get_car_data.build\ccache-19296.txt
+[2022-12-01T18:22:49.794980 19172] Config: (default) max_files = 0
+[2022-12-01T18:22:49.794980 19172] Config: (default) max_size = 5.0G
+[2022-12-01T18:22:49.794980 19172] Config: (default) namespace = 
+[2022-12-01T18:22:49.794980 19172] Config: (default) path = 
+[2022-12-01T18:22:49.794980 19172] Config: (default) pch_external_checksum = false
+[2022-12-01T18:22:49.794980 19172] Config: (default) prefix_command = 
+[2022-12-01T18:22:49.794980 19172] Config: (default) prefix_command_cpp = 
+[2022-12-01T18:22:49.794980 19172] Config: (default) read_only = false
+[2022-12-01T18:22:49.794980 19172] Config: (default) read_only_direct = false
+[2022-12-01T18:22:49.794980 19172] Config: (default) recache = false
+[2022-12-01T18:22:49.794980 19172] Config: (default) reshare = false
+[2022-12-01T18:22:49.794980 19172] Config: (default) run_second_cpp = true
+[2022-12-01T18:22:49.794980 19172] Config: (default) secondary_storage = 
+[2022-12-01T18:22:49.794980 19172] Config: (environment) sloppiness = include_file_mtime, include_file_ctime
+[2022-12-01T18:22:49.794980 19172] Config: (default) stats = true
+[2022-12-01T18:22:49.794980 19172] Config: (default) stats_log = 
+[2022-12-01T18:22:49.794980 19172] Config: (default) temporary_dir = C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\ccache/tmp
+[2022-12-01T18:22:49.794980 19172] Config: (default) umask = 
+[2022-12-01T18:22:49.794980 19172] Command line: C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\downloads\ccache\v4.6\ccache.exe C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\downloads\gcc\x86_64\11.3.0-14.0.3-10.0.0-msvcrt-r3\mingw64\bin\gcc.exe -o static_src\CompiledCellType.o -c -flto -fuse-linker-plugin -fno-fat-lto-objects -std=c11 -fvisibility=hidden -fwrapv -pipe -fpartial-inlining -ftrack-macro-expansion=0 -Wno-deprecated-declarations -fno-var-tracking -Wno-misleading-indentation -fcompare-debug-second -O3 -D_WIN32_WINNT=0x0501 -D__NUITKA_NO_ASSERT__ -DMS_WIN64 -D_NUITKA_CONSTANTS_FROM_RESOURCE -D_NUITKA_FROZEN=0 -D_NUITKA_EXE -ID:\python3\include -I. -ID:\python3\lib\site-packages\nuitka\build\include -ID:\python3\lib\site-packages\nuitka\build\static_src static_src\CompiledCellType.c
+[2022-12-01T18:22:49.801976 19172] Hostname: DESKTOP-HGT0GAL
+[2022-12-01T18:22:49.801976 19172] Working directory: C:/Users/zi'tian/Desktop/抓取汽~1/get_car_data.build
+[2022-12-01T18:22:49.801976 19172] Compiler type: gcc
+[2022-12-01T18:22:49.802975 19172] Source file: static_src\CompiledCellType.c
+[2022-12-01T18:22:49.802975 19172] Object file: static_src\CompiledCellType.o
+[2022-12-01T18:22:49.802975 19172] Trying direct lookup
+[2022-12-01T18:22:49.804974 19172] Retrieved a229pjmu8np7vgeokkarf1b9bsjge0pig from primary storage (C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\ccache/a/2/29pjmu8np7vgeokkarf1b9bsjge0pigM)
+[2022-12-01T18:22:49.805974 19172] Looking for result key in C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\ccache/a/2/29pjmu8np7vgeokkarf1b9bsjge0pigM
+[2022-12-01T18:22:49.904917 18616] Got result key from manifest
+[2022-12-01T18:22:49.905917 18616] Retrieved 87f0vu30fn93271l3e066efmo1gafl74i from primary storage (C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\ccache/8/7/f0vu30fn93271l3e066efmo1gafl74iR)
+[2022-12-01T18:22:49.905917 18616] Reading embedded entry #0 .o (29459 bytes)
+[2022-12-01T18:22:49.905917 18616] Writing to static_src\MainProgram.o
+[2022-12-01T18:22:49.906916 18616] Succeeded getting cached result
+[2022-12-01T18:22:49.906916 18616] Result: direct_cache_hit
+[2022-12-01T18:22:49.906916 18616] Result: primary_storage_hit
+[2022-12-01T18:22:49.907917 18616] Acquired lock C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\ccache/b/8/stats.lock
+[2022-12-01T18:22:49.908915 18616] Releasing lock C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\ccache/b/8/stats.lock
+[2022-12-01T18:22:49.930902 19172] Got result key from manifest
+[2022-12-01T18:22:49.930902 19172] Retrieved 948b9uk4ntjcjp9pggjet425kuu0tce8s from primary storage (C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\ccache/9/4/8b9uk4ntjcjp9pggjet425kuu0tce8sR)
+[2022-12-01T18:22:49.930902 19172] Reading embedded entry #0 .o (37679 bytes)
+[2022-12-01T18:22:49.930902 19172] Writing to static_src\CompiledCellType.o
+[2022-12-01T18:22:49.931902 19172] Succeeded getting cached result
+[2022-12-01T18:22:49.931902 19172] Result: direct_cache_hit
+[2022-12-01T18:22:49.931902 19172] Result: primary_storage_hit
+[2022-12-01T18:22:49.932901 19172] Acquired lock C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\ccache/e/4/stats.lock
+[2022-12-01T18:22:49.945893 19172] Releasing lock C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\ccache/e/4/stats.lock
+[2022-12-01T18:22:50.341816 8416 ] === CCACHE 4.6 STARTED =========================================
+[2022-12-01T18:22:50.341816 8416 ] Config: (default) absolute_paths_in_stderr = false
+[2022-12-01T18:22:50.341816 8416 ] Config: (default) base_dir = 
+[2022-12-01T18:22:50.341816 8416 ] Config: (environment) cache_dir = C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\ccache
+[2022-12-01T18:22:50.341816 8416 ] Config: (default) compiler = 
+[2022-12-01T18:22:50.341816 8416 ] Config: (default) compiler_check = mtime
+[2022-12-01T18:22:50.341816 8416 ] Config: (default) compiler_type = auto
+[2022-12-01T18:22:50.341816 8416 ] Config: (default) compression = true
+[2022-12-01T18:22:50.341816 8416 ] Config: (default) compression_level = 0
+[2022-12-01T18:22:50.341816 8416 ] Config: (default) cpp_extension = 
+[2022-12-01T18:22:50.341816 8416 ] Config: (default) debug = false
+[2022-12-01T18:22:50.341816 8416 ] Config: (default) debug_dir = 
+[2022-12-01T18:22:50.341816 8416 ] Config: (default) depend_mode = false
+[2022-12-01T18:22:50.341816 8416 ] Config: (default) direct_mode = true
+[2022-12-01T18:22:50.341816 8416 ] Config: (default) disable = false
+[2022-12-01T18:22:50.341816 8416 ] Config: (default) extra_files_to_hash = 
+[2022-12-01T18:22:50.341816 8416 ] Config: (default) file_clone = false
+[2022-12-01T18:22:50.341816 8416 ] Config: (default) hard_link = false
+[2022-12-01T18:22:50.341816 8416 ] Config: (default) hash_dir = true
+[2022-12-01T18:22:50.341816 8416 ] Config: (default) ignore_headers_in_manifest = 
+[2022-12-01T18:22:50.341816 8416 ] Config: (default) ignore_options = 
+[2022-12-01T18:22:50.341816 8416 ] Config: (default) inode_cache = false
+[2022-12-01T18:22:50.341816 8416 ] Config: (default) keep_comments_cpp = false
+[2022-12-01T18:22:50.341816 8416 ] Config: (default) limit_multiple = 0.8
+[2022-12-01T18:22:50.341816 8416 ] Config: (environment) log_file = C:\Users\zi'tian\Desktop\抓取汽~1\get_car_data.build\ccache-19296.txt
+[2022-12-01T18:22:50.341816 8416 ] Config: (default) max_files = 0
+[2022-12-01T18:22:50.341816 8416 ] Config: (default) max_size = 5.0G
+[2022-12-01T18:22:50.341816 8416 ] Config: (default) namespace = 
+[2022-12-01T18:22:50.341816 8416 ] Config: (default) path = 
+[2022-12-01T18:22:50.341816 8416 ] Config: (default) pch_external_checksum = false
+[2022-12-01T18:22:50.341816 8416 ] Config: (default) prefix_command = 
+[2022-12-01T18:22:50.341816 8416 ] Config: (default) prefix_command_cpp = 
+[2022-12-01T18:22:50.341816 8416 ] Config: (default) read_only = false
+[2022-12-01T18:22:50.341816 8416 ] Config: (default) read_only_direct = false
+[2022-12-01T18:22:50.341816 8416 ] Config: (default) recache = false
+[2022-12-01T18:22:50.341816 8416 ] Config: (default) reshare = false
+[2022-12-01T18:22:50.341816 8416 ] Config: (default) run_second_cpp = true
+[2022-12-01T18:22:50.341816 8416 ] Config: (default) secondary_storage = 
+[2022-12-01T18:22:50.341816 8416 ] Config: (environment) sloppiness = include_file_mtime, include_file_ctime
+[2022-12-01T18:22:50.341816 8416 ] Config: (default) stats = true
+[2022-12-01T18:22:50.341816 8416 ] Config: (default) stats_log = 
+[2022-12-01T18:22:50.341816 8416 ] Config: (default) temporary_dir = C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\ccache/tmp
+[2022-12-01T18:22:50.341816 8416 ] Config: (default) umask = 
+[2022-12-01T18:22:50.341816 8416 ] Command line: C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\downloads\ccache\v4.6\ccache.exe C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\downloads\gcc\x86_64\11.3.0-14.0.3-10.0.0-msvcrt-r3\mingw64\bin\gcc.exe -o static_src\CompiledFunctionType.o -c -flto -fuse-linker-plugin -fno-fat-lto-objects -std=c11 -fvisibility=hidden -fwrapv -pipe -fpartial-inlining -ftrack-macro-expansion=0 -Wno-deprecated-declarations -fno-var-tracking -Wno-misleading-indentation -fcompare-debug-second -O3 -D_WIN32_WINNT=0x0501 -D__NUITKA_NO_ASSERT__ -DMS_WIN64 -D_NUITKA_CONSTANTS_FROM_RESOURCE -D_NUITKA_FROZEN=0 -D_NUITKA_EXE -ID:\python3\include -I. -ID:\python3\lib\site-packages\nuitka\build\include -ID:\python3\lib\site-packages\nuitka\build\static_src static_src\CompiledFunctionType.c
+[2022-12-01T18:22:50.349812 8416 ] Hostname: DESKTOP-HGT0GAL
+[2022-12-01T18:22:50.349812 8416 ] Working directory: C:/Users/zi'tian/Desktop/抓取汽~1/get_car_data.build
+[2022-12-01T18:22:50.349812 8416 ] Compiler type: gcc
+[2022-12-01T18:22:50.350812 8416 ] Source file: static_src\CompiledFunctionType.c
+[2022-12-01T18:22:50.354809 8416 ] Object file: static_src\CompiledFunctionType.o
+[2022-12-01T18:22:50.354809 8416 ] Trying direct lookup
+[2022-12-01T18:22:50.354809 8416 ] Retrieved f83546gc54ulqr7pl12hekj9m4fhu462m from primary storage (C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\ccache/f/8/3546gc54ulqr7pl12hekj9m4fhu462mM)
+[2022-12-01T18:22:50.355808 8416 ] Looking for result key in C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\ccache/f/8/3546gc54ulqr7pl12hekj9m4fhu462mM
+[2022-12-01T18:22:50.408779 5696 ] === CCACHE 4.6 STARTED =========================================
+[2022-12-01T18:22:50.408779 5696 ] Config: (default) absolute_paths_in_stderr = false
+[2022-12-01T18:22:50.408779 5696 ] Config: (default) base_dir = 
+[2022-12-01T18:22:50.408779 5696 ] Config: (environment) cache_dir = C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\ccache
+[2022-12-01T18:22:50.408779 5696 ] Config: (default) compiler = 
+[2022-12-01T18:22:50.408779 5696 ] Config: (default) compiler_check = mtime
+[2022-12-01T18:22:50.408779 5696 ] Config: (default) compiler_type = auto
+[2022-12-01T18:22:50.408779 5696 ] Config: (default) compression = true
+[2022-12-01T18:22:50.408779 5696 ] Config: (default) compression_level = 0
+[2022-12-01T18:22:50.408779 5696 ] Config: (default) cpp_extension = 
+[2022-12-01T18:22:50.408779 5696 ] Config: (default) debug = false
+[2022-12-01T18:22:50.408779 5696 ] Config: (default) debug_dir = 
+[2022-12-01T18:22:50.408779 5696 ] Config: (default) depend_mode = false
+[2022-12-01T18:22:50.408779 5696 ] Config: (default) direct_mode = true
+[2022-12-01T18:22:50.408779 5696 ] Config: (default) disable = false
+[2022-12-01T18:22:50.408779 5696 ] Config: (default) extra_files_to_hash = 
+[2022-12-01T18:22:50.408779 5696 ] Config: (default) file_clone = false
+[2022-12-01T18:22:50.408779 5696 ] Config: (default) hard_link = false
+[2022-12-01T18:22:50.408779 5696 ] Config: (default) hash_dir = true
+[2022-12-01T18:22:50.408779 5696 ] Config: (default) ignore_headers_in_manifest = 
+[2022-12-01T18:22:50.408779 5696 ] Config: (default) ignore_options = 
+[2022-12-01T18:22:50.408779 5696 ] Config: (default) inode_cache = false
+[2022-12-01T18:22:50.408779 5696 ] Config: (default) keep_comments_cpp = false
+[2022-12-01T18:22:50.408779 5696 ] Config: (default) limit_multiple = 0.8
+[2022-12-01T18:22:50.408779 5696 ] Config: (environment) log_file = C:\Users\zi'tian\Desktop\抓取汽~1\get_car_data.build\ccache-19296.txt
+[2022-12-01T18:22:50.408779 5696 ] Config: (default) max_files = 0
+[2022-12-01T18:22:50.408779 5696 ] Config: (default) max_size = 5.0G
+[2022-12-01T18:22:50.408779 5696 ] Config: (default) namespace = 
+[2022-12-01T18:22:50.408779 5696 ] Config: (default) path = 
+[2022-12-01T18:22:50.408779 5696 ] Config: (default) pch_external_checksum = false
+[2022-12-01T18:22:50.408779 5696 ] Config: (default) prefix_command = 
+[2022-12-01T18:22:50.408779 5696 ] Config: (default) prefix_command_cpp = 
+[2022-12-01T18:22:50.408779 5696 ] Config: (default) read_only = false
+[2022-12-01T18:22:50.408779 5696 ] Config: (default) read_only_direct = false
+[2022-12-01T18:22:50.408779 5696 ] Config: (default) recache = false
+[2022-12-01T18:22:50.408779 5696 ] Config: (default) reshare = false
+[2022-12-01T18:22:50.408779 5696 ] Config: (default) run_second_cpp = true
+[2022-12-01T18:22:50.408779 5696 ] Config: (default) secondary_storage = 
+[2022-12-01T18:22:50.408779 5696 ] Config: (environment) sloppiness = include_file_mtime, include_file_ctime
+[2022-12-01T18:22:50.408779 5696 ] Config: (default) stats = true
+[2022-12-01T18:22:50.408779 5696 ] Config: (default) stats_log = 
+[2022-12-01T18:22:50.408779 5696 ] Config: (default) temporary_dir = C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\ccache/tmp
+[2022-12-01T18:22:50.408779 5696 ] Config: (default) umask = 
+[2022-12-01T18:22:50.408779 5696 ] Command line: C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\downloads\ccache\v4.6\ccache.exe C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\downloads\gcc\x86_64\11.3.0-14.0.3-10.0.0-msvcrt-r3\mingw64\bin\gcc.exe -o static_src\CompiledGeneratorType.o -c -flto -fuse-linker-plugin -fno-fat-lto-objects -std=c11 -fvisibility=hidden -fwrapv -pipe -fpartial-inlining -ftrack-macro-expansion=0 -Wno-deprecated-declarations -fno-var-tracking -Wno-misleading-indentation -fcompare-debug-second -O3 -D_WIN32_WINNT=0x0501 -D__NUITKA_NO_ASSERT__ -DMS_WIN64 -D_NUITKA_CONSTANTS_FROM_RESOURCE -D_NUITKA_FROZEN=0 -D_NUITKA_EXE -ID:\python3\include -I. -ID:\python3\lib\site-packages\nuitka\build\include -ID:\python3\lib\site-packages\nuitka\build\static_src static_src\CompiledGeneratorType.c
+[2022-12-01T18:22:50.415774 5696 ] Hostname: DESKTOP-HGT0GAL
+[2022-12-01T18:22:50.415774 5696 ] Working directory: C:/Users/zi'tian/Desktop/抓取汽~1/get_car_data.build
+[2022-12-01T18:22:50.415774 5696 ] Compiler type: gcc
+[2022-12-01T18:22:50.416774 5696 ] Source file: static_src\CompiledGeneratorType.c
+[2022-12-01T18:22:50.416774 5696 ] Object file: static_src\CompiledGeneratorType.o
+[2022-12-01T18:22:50.416774 5696 ] Trying direct lookup
+[2022-12-01T18:22:50.416774 5696 ] Retrieved 9d62ed6uc84h25q1j8vgkba55tuvnc5jg from primary storage (C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\ccache/9/d/62ed6uc84h25q1j8vgkba55tuvnc5jgM)
+[2022-12-01T18:22:50.417772 5696 ] Looking for result key in C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\ccache/9/d/62ed6uc84h25q1j8vgkba55tuvnc5jgM
+[2022-12-01T18:22:50.495728 12588] === CCACHE 4.6 STARTED =========================================
+[2022-12-01T18:22:50.495728 12588] Config: (default) absolute_paths_in_stderr = false
+[2022-12-01T18:22:50.495728 12588] Config: (default) base_dir = 
+[2022-12-01T18:22:50.495728 12588] Config: (environment) cache_dir = C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\ccache
+[2022-12-01T18:22:50.495728 12588] Config: (default) compiler = 
+[2022-12-01T18:22:50.495728 12588] Config: (default) compiler_check = mtime
+[2022-12-01T18:22:50.495728 12588] Config: (default) compiler_type = auto
+[2022-12-01T18:22:50.495728 12588] Config: (default) compression = true
+[2022-12-01T18:22:50.495728 12588] Config: (default) compression_level = 0
+[2022-12-01T18:22:50.495728 12588] Config: (default) cpp_extension = 
+[2022-12-01T18:22:50.495728 12588] Config: (default) debug = false
+[2022-12-01T18:22:50.495728 12588] Config: (default) debug_dir = 
+[2022-12-01T18:22:50.495728 12588] Config: (default) depend_mode = false
+[2022-12-01T18:22:50.495728 12588] Config: (default) direct_mode = true
+[2022-12-01T18:22:50.495728 12588] Config: (default) disable = false
+[2022-12-01T18:22:50.495728 12588] Config: (default) extra_files_to_hash = 
+[2022-12-01T18:22:50.495728 12588] Config: (default) file_clone = false
+[2022-12-01T18:22:50.495728 12588] Config: (default) hard_link = false
+[2022-12-01T18:22:50.495728 12588] Config: (default) hash_dir = true
+[2022-12-01T18:22:50.495728 12588] Config: (default) ignore_headers_in_manifest = 
+[2022-12-01T18:22:50.495728 12588] Config: (default) ignore_options = 
+[2022-12-01T18:22:50.495728 12588] Config: (default) inode_cache = false
+[2022-12-01T18:22:50.495728 12588] Config: (default) keep_comments_cpp = false
+[2022-12-01T18:22:50.495728 12588] Config: (default) limit_multiple = 0.8
+[2022-12-01T18:22:50.495728 12588] Config: (environment) log_file = C:\Users\zi'tian\Desktop\抓取汽~1\get_car_data.build\ccache-19296.txt
+[2022-12-01T18:22:50.495728 12588] Config: (default) max_files = 0
+[2022-12-01T18:22:50.495728 12588] Config: (default) max_size = 5.0G
+[2022-12-01T18:22:50.495728 12588] Config: (default) namespace = 
+[2022-12-01T18:22:50.495728 12588] Config: (default) path = 
+[2022-12-01T18:22:50.495728 12588] Config: (default) pch_external_checksum = false
+[2022-12-01T18:22:50.495728 12588] Config: (default) prefix_command = 
+[2022-12-01T18:22:50.495728 12588] Config: (default) prefix_command_cpp = 
+[2022-12-01T18:22:50.495728 12588] Config: (default) read_only = false
+[2022-12-01T18:22:50.495728 12588] Config: (default) read_only_direct = false
+[2022-12-01T18:22:50.495728 12588] Config: (default) recache = false
+[2022-12-01T18:22:50.495728 12588] Config: (default) reshare = false
+[2022-12-01T18:22:50.495728 12588] Config: (default) run_second_cpp = true
+[2022-12-01T18:22:50.495728 12588] Config: (default) secondary_storage = 
+[2022-12-01T18:22:50.495728 12588] Config: (environment) sloppiness = include_file_mtime, include_file_ctime
+[2022-12-01T18:22:50.495728 12588] Config: (default) stats = true
+[2022-12-01T18:22:50.495728 12588] Config: (default) stats_log = 
+[2022-12-01T18:22:50.495728 12588] Config: (default) temporary_dir = C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\ccache/tmp
+[2022-12-01T18:22:50.495728 12588] Config: (default) umask = 
+[2022-12-01T18:22:50.496727 12588] Command line: C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\downloads\ccache\v4.6\ccache.exe C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\downloads\gcc\x86_64\11.3.0-14.0.3-10.0.0-msvcrt-r3\mingw64\bin\gcc.exe -o static_src\InspectPatcher.o -c -flto -fuse-linker-plugin -fno-fat-lto-objects -std=c11 -fvisibility=hidden -fwrapv -pipe -fpartial-inlining -ftrack-macro-expansion=0 -Wno-deprecated-declarations -fno-var-tracking -Wno-misleading-indentation -fcompare-debug-second -O3 -D_WIN32_WINNT=0x0501 -D__NUITKA_NO_ASSERT__ -DMS_WIN64 -D_NUITKA_CONSTANTS_FROM_RESOURCE -D_NUITKA_FROZEN=0 -D_NUITKA_EXE -ID:\python3\include -I. -ID:\python3\lib\site-packages\nuitka\build\include -ID:\python3\lib\site-packages\nuitka\build\static_src static_src\InspectPatcher.c
+[2022-12-01T18:22:50.504723 12588] Hostname: DESKTOP-HGT0GAL
+[2022-12-01T18:22:50.504723 12588] Working directory: C:/Users/zi'tian/Desktop/抓取汽~1/get_car_data.build
+[2022-12-01T18:22:50.504723 12588] Compiler type: gcc
+[2022-12-01T18:22:50.504723 12588] Source file: static_src\InspectPatcher.c
+[2022-12-01T18:22:50.504723 12588] Object file: static_src\InspectPatcher.o
+[2022-12-01T18:22:50.504723 12588] Trying direct lookup
+[2022-12-01T18:22:50.505723 12588] Retrieved e9edup0b483urg8sb0e9kh59n11qhsaa0 from primary storage (C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\ccache/e/9/edup0b483urg8sb0e9kh59n11qhsaa0M)
+[2022-12-01T18:22:50.505723 12588] Looking for result key in C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\ccache/e/9/edup0b483urg8sb0e9kh59n11qhsaa0M
+[2022-12-01T18:22:50.570685 8416 ] Got result key from manifest
+[2022-12-01T18:22:50.571685 8416 ] Retrieved ed7ctr3sh2lshphsddeqr784tc3umnrce from primary storage (C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\ccache/e/d/7ctr3sh2lshphsddeqr784tc3umnrceR)
+[2022-12-01T18:22:50.572685 8416 ] Reading embedded entry #0 .o (2890486 bytes)
+[2022-12-01T18:22:50.572685 8416 ] Writing to static_src\CompiledFunctionType.o
+[2022-12-01T18:22:50.594671 8416 ] Succeeded getting cached result
+[2022-12-01T18:22:50.595671 8416 ] Result: direct_cache_hit
+[2022-12-01T18:22:50.595671 8416 ] Result: primary_storage_hit
+[2022-12-01T18:22:50.596672 8416 ] Acquired lock C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\ccache/e/0/stats.lock
+[2022-12-01T18:22:50.632650 8416 ] Releasing lock C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\ccache/e/0/stats.lock
+[2022-12-01T18:22:50.667630 12588] Got result key from manifest
+[2022-12-01T18:22:50.667630 12588] Retrieved 9891led4jh4dvcit5jr0ereq94kh966s4 from primary storage (C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\ccache/9/8/91led4jh4dvcit5jr0ereq94kh966s4R)
+[2022-12-01T18:22:50.673626 5696 ] Got result key from manifest
+[2022-12-01T18:22:50.674626 5696 ] Retrieved 4189manl3cd0gal1uee3dqp3snrqhn730 from primary storage (C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\ccache/4/1/89manl3cd0gal1uee3dqp3snrqhn730R)
+[2022-12-01T18:22:50.674626 12588] Reading embedded entry #0 .o (45561 bytes)
+[2022-12-01T18:22:50.674626 12588] Writing to static_src\InspectPatcher.o
+[2022-12-01T18:22:50.674626 5696 ] Reading embedded entry #0 .o (348213 bytes)
+[2022-12-01T18:22:50.674626 5696 ] Writing to static_src\CompiledGeneratorType.o
+[2022-12-01T18:22:50.675625 12588] Succeeded getting cached result
+[2022-12-01T18:22:50.675625 12588] Result: direct_cache_hit
+[2022-12-01T18:22:50.675625 12588] Result: primary_storage_hit
+[2022-12-01T18:22:50.676626 5696 ] Succeeded getting cached result
+[2022-12-01T18:22:50.676626 12588] Acquired lock C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\ccache/2/c/stats.lock
+[2022-12-01T18:22:50.676626 5696 ] Result: direct_cache_hit
+[2022-12-01T18:22:50.676626 5696 ] Result: primary_storage_hit
+[2022-12-01T18:22:50.677625 5696 ] Acquired lock C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\ccache/4/0/stats.lock
+[2022-12-01T18:22:50.678624 12588] Releasing lock C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\ccache/2/c/stats.lock
+[2022-12-01T18:22:50.711604 5696 ] Releasing lock C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\ccache/4/0/stats.lock
+[2022-12-01T18:22:51.696570 12672] Got result key from preprocessor
+[2022-12-01T18:22:51.697569 12672] No 412d554esl4ni9hqvi4hk6ei3fkc8a8n4 in primary storage
+[2022-12-01T18:22:51.697569 12672] Running real compiler
+[2022-12-01T18:22:53.695464 12672] Using default compression level 1
+[2022-12-01T18:22:53.695464 12672] Storing embedded entry #0 .o (142625 bytes) from module.__main__.o
+[2022-12-01T18:22:53.697463 12672] Stored 412d554esl4ni9hqvi4hk6ei3fkc8a8n4 in primary storage (C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\ccache/4/1/2d554esl4ni9hqvi4hk6ei3fkc8a8n4R)
+[2022-12-01T18:22:53.697463 12672] Adding result key to C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\ccache/5/6/31fhnu6lfvv80ssrsktrnr8sm8005joM
+[2022-12-01T18:22:53.725446 12672] Using default compression level 1
+[2022-12-01T18:22:53.728445 12672] Stored 5631fhnu6lfvv80ssrsktrnr8sm8005jo in primary storage (C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\ccache/5/6/31fhnu6lfvv80ssrsktrnr8sm8005joM)
+[2022-12-01T18:22:53.728445 12672] Result: cache_miss
+[2022-12-01T18:22:53.728445 12672] Result: direct_cache_miss
+[2022-12-01T18:22:53.728445 12672] Result: preprocessed_cache_miss
+[2022-12-01T18:22:53.728445 12672] Result: primary_storage_miss
+[2022-12-01T18:22:53.736440 12672] Acquired lock C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\ccache/5/stats.lock
+[2022-12-01T18:22:53.737440 12672] Releasing lock C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\ccache/5/stats.lock
+[2022-12-01T18:22:53.738440 12672] Acquired lock C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\ccache/4/stats.lock
+[2022-12-01T18:22:53.740438 12672] Releasing lock C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\ccache/4/stats.lock
+[2022-12-01T18:22:53.740438 12672] Unlink C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\ccache/tmp/tmp.stderr.M7lRLf
+[2022-12-01T18:22:53.740438 12672] Unlink C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\ccache/tmp/tmp.stdout.rUglVD
+[2022-12-01T18:22:53.740438 12672] Unlink C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\ccache/tmp/tmp.cpp_stderr.oYYMUy
+[2022-12-01T18:22:53.741438 12672] Unlink C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\ccache/tmp/tmp.cpp_stdout.r9LGm6.i
+[2022-12-01T18:22:53.741438 12672] Unlink C:\Users\zi'tian\AppData\Local\Nuitka\Nuitka\Cache\ccache/tmp/tmp.cpp_stdout.r9LGm6

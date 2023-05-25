@@ -10,6 +10,7 @@
 
 <body>
   <div id="container"></div>
+  <script src="../../../utli.js"></script>
   <script src="./cn_text.js"></script>
   <script src="./en_text.js"></script>
   <script>
@@ -25,13 +26,19 @@
           if(_code.includes('-')){
             _code = _code.substring(0, _code.indexOf('-'))
           }
-
-          console.log(_code)
-          if((_code.length === 5 || _code.length === 7) &&  result[_code] === undefined){
-            length++
-            result[_code] = element[1]
+          if(_code.length === 5 || _code.length === 7){
+            _code = format_DTC_hex(_code)
+            if(_code.length === 4){
+              _code = _code + '00'
+            }
+            if(result[_code] === undefined){
+              length++
+              result[_code] = element[1]
+            }else{
+              // console.log('已有，跳过', key, element)
+            }
           }else{
-            console.log('已有，跳过', key, element)
+            console.log('异常故障码，跳过', key, element)
           }
         }else{
           console.log('不是数组跳过', key, element)

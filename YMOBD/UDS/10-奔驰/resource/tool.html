@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>奔驰</title>
+</head>
+
+<body>
+  <div id="container"></div>
+
+  <script src="./ecu/cn_text.js"></script>
+  <script src="./ecu/foxwell_SysEnterCmd.js"></script>
+  <script src="./ecu/foxwell_SysInfors.js"></script>
+  <script src="./ecu/foxwell_VehiSysInfors.js"></script>
+
+  <!-- 故障码 -->
+  <script src="./cn_dtc.js"></script>
+  <script src="./en_dtc.js"></script>
+  <script>
+formatECUs()
+function formatECUs(){
+  let result = []
+  let _source = cn_text
+  let _diagnosName = []
+  for (const key in VehiSysInfors) {
+    const element = VehiSysInfors[key];
+    let items = element.SystemsInfo// 对象
+    for (const subKey in items) {
+      if (Array.isArray(items[subKey])) {
+        let _sysInfo = items[subKey][0]
+        if(!_diagnosName.includes(_sysInfo)){
+          _diagnosName.push(_sysInfo)
+        }else{
+          // document.getElementById('container').innerHTML += `异常1:重复的名称, ${_sysInfo}<br>`
+          // console.log('异常1:重复的名称，跳过', _sysInfo)
+        }
+      }
+    }
+  }
+  console.log(_diagnosName)
+  for (const item of _diagnosName) {
+    if(!DiagElementToECUID[item]){
+      //  document.getElementById('container').innerHTML += `异常2:没有这个ECU, ${item}<br>`
+      // console.log('异常2:没有这个ECU', item)
+    }else{
+      let diagnosID = DiagElementToECUID[item]
+      let sysID = "115580" + diagnosID + "00"
+      // console.log('系统查询ID', sysID)
+      let info = SysEnterCmd[sysID]?.NetInfo
+      if(!info){
+        // console.log('异常3:没有这个ECU', sysID)
+      }else{
+        if(info.PtclType !== "CANBUS"){
+          // console.log('异常4:不是can类型，过滤掉', sysID)
+        }else{
+          let json = {
+            "req_id": info.CanDeviceID.substring(3).toUpperCase(),
+            "res_id": info.CanFilterID.substring(3).toUpperCase(),
+            "ecu_name": ""
+          }
+          if(result.some( j => (j.req_id === json.req_id && j.res_id === json.res_id))){
+            console.log('异常5:已有该ECU', info)
+          }else{
+            let dataDisplay = DASElementToSysNameID[item]
+            if(!dataDisplay){
+              console.log('异常6: 没有ECUECU名字信息索引', item)
+            }else{
+              let _id = '11DF2817' + dataDisplay
+              if(!_source[_id]){
+                console.log('异常7: 没有ECU名字信息', _id)
+              }else{
+                json.ecu_name = _source[_id]
+                result.push(json)
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  document.getElementById('container').innerHTML += `拼装ECU完成，<br> ${JSON.stringify(result)}`
+  // console.log('拼装ECU完成', result)
+}
+
+
+
+    // formatDTC()
+
+    function formatDTC() {
+      let _data = en  // 中文是cn 英文是en
+      let length = 0 // key未去重前40206个, 去重后 22086
+      let errLength = 0
+      let result = {}
+      for (const key in _data) {
+        const element = _data[key];
+        if (Array.isArray(element)) {
+          let _code = key.substring(key.length - 6)
+          if (!result[_code] && element[0].length > 4) {
+            length++
+            result[_code] = element[1]
+          } else {
+            errLength++
+            // result[_code] = '故障-厂商自定义'
+            console.log('已有，跳过', errLength, key, element[0])
+          }
+        } else {
+          errLength++
+          console.log('不是数组跳过', errLength, key, element[0])
+        }
+      }
+      document.getElementById('container').innerHTML = `处理完成，总数${length},无效数量${errLength}<br>`
+      document.getElementById('container').innerHTML += `${JSON.stringify(result)}`
+    }
+
+
+  </script>
+</body>
+
+</html>

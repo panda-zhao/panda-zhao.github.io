@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>马自达故障码解析</title>
+</head>
+
+<body>
+  <div id="container"></div>
+  <!-- <script src="./en_dtc.js"></script> -->
+  <script src="./CN_TEXT.js"></script>
+  <script src="./EN_TEXT.js"></script>
+  <script src="./keys.js"></script>
+  <script>
+
+    getDTCs()
+
+    function getDTCs() {
+      let _data = cn  // 中文是cn 英文是en
+      let length = 0 // key未去重前40206个, 去重后 22086
+      let errLength = 0
+      let json = {}
+      // console.log(result["0x46810001c939"])
+      keys.forEach(element => {
+        element = '0x' + element.toUpperCase().substring(2)
+        let code = element.substring(element.length-6)
+        code = code.substring(0, 2) === '00' ? code.substring(2)  + '00' : code
+        console.log(element, code)
+        if (!json[code]) {
+          if (!_data[element]) {
+            errLength++
+            console.log(errLength + ':无此项', code, _data[element])
+          } else {
+            length++
+            json[code] = _data[element]
+          }
+        }
+      });
+      // document.getElementById('container').innerHTML = `处理完成，总数${length}<br>`
+      document.getElementById('container').innerHTML += `${JSON.stringify(json)}`
+    }
+
+
+
+  </script>
+</body>
+
+</html>

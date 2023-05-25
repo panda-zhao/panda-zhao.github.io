@@ -11,44 +11,58 @@
 <body>
   <div>
     <ol>
-      <li>key的后6位为故障码</li>
+      <!-- <li>key的后6位为故障码</li> -->
     </ol>
   </div>
   <div id="container"></div>
-	<script src="./源数据.js"></script>
+  <script src="../../../utli.js"></script>
+  <script src="./cn_fault.js"></script>
+  <script src="./en_fault.js"></script>
   <script>
-    try {
-      console.time("处理故障码耗时")
-    // 对源数据转换为需要的格式
-    let json = {}
-    let result = []
-    const hexDigitReplace = { "0": "P0", "1": "P1", "2": "P2", "3": "P3", "4": "C0", "5": "C1", "6": "C2", "7": "C3", "8": "B0", "9": "B1", "A": "B2", "B": "B3", "C": "U0", "D": "U1", "E": "U2", "F": "U3" }
-    for (const key in data) {
-      const element = data[key];
-      /* if(!Array.isArray(element) || !element[0] || !element[1]){
-          console.log(`${key} : ${JSON.stringify(element)}`)
-       } */
-      
-      if (Array.isArray(element)) {
-        let code = key.substring(key.length - 6)
-        code = hexDigitReplace[code.charAt(0)] + code.substring(1)
-        if (code.substring(5) === '00') {
-          code = code.substring(0, 5)
+   format_DTC_hex('P000A')
+   format_DTC_Decimal('000A')
+    // function format_json(){
+    //   let data = 
+    // }
+
+
+    format_DTC()
+    function format_DTC() {
+      try {
+        console.time("处理故障码耗时")
+        // 对源数据转换为需要的格式
+        let data = en // cn en
+        let result = {}
+
+        for (const key in data) {
+          const element = data[key];
+          /* if(!Array.isArray(element) || !element[0] || !element[1]){
+              console.log(`${key} : ${JSON.stringify(element)}`)
+           } */
+
+          if (Array.isArray(element)) {
+            let code = key.substring(key.length - 6)
+            if (!result[code]) {
+              result[code] = element[1]
+            }else{
+              // 确认重复数据一样，即同样的故障码，同样的描述
+              // console.log('重复数据，跳过', code, element[1])
+            }
+          }else{
+            // console.log('异常数据', key, element)
+          }
         }
-        if (!json[code]) {
-          json[code] = element[1]
-          result.push({ "code": code, "describe": element[1], lang: 2 })
-        }
+
+        document.getElementById('container').innerHTML = JSON.stringify(result)
+        console.timeEnd("处理故障码耗时")
+        console.log('故障码总数量', result.length) // 18780
+      } catch (error) {
+        console.log('错误信息', error.message)
+        console.log('错误位置', error.stack)
       }
     }
-    
-    document.getElementById('container').innerHTML = JSON.stringify(result)
-    console.timeEnd("处理故障码耗时")
-    console.log('故障码总数量', result.length) // 18780
-    } catch (error) {
-      console.log('错误信息', error.message)
-      console.log('错误位置', error.stack)
-    }
+
+
   </script>
 </body>
 

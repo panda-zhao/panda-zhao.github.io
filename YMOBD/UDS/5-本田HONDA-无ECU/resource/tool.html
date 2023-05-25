@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本田</title>
+</head>
+
+<body>
+  <div id="container"></div>
+  <script src="./cn.js"></script>
+  <script src="./en.js"></script>
+  <script src="./_source.js"></script>
+  <script>
+    
+
+      console.log('加载完成', en)
+      getID()
+       function getID(code) {
+        let result = [] // 故障码的ID编号
+        // 带状态位故障码 13256个 处理完3641个
+        let json = {}
+        // _data为故障码code和对应故障码解释库的ID
+        let message = en // 故障码解释库 cn en
+        _data.forEach((item, index)=>{
+          if( item.F.length !== 1 || item.G.length !== 6 || item.L.length !== 6 ){
+            document.getElementById('container').innerHTML += `有异常数据: ${item.A}<br>`
+          }
+          // let code = item.F + item.G.substring(2) // 如 P && 0x0780  => P0780
+          let code = item.A.substring(4, 10)
+          let seek = item.L.substring(0, 4) // 如  0xBABE => 0xBA
+          let _chunk = (seek ^ '0x54').toString(16).toUpperCase() // EE
+          while(_chunk.length<2){
+            _chunk = '0' + _chunk
+          }
+          let _id = "0x1FC1D2E3" + _chunk + item.L.substring(4) // 0x1FC1D2E3EEBE
+          // console.log((index+1) + '解析结果', seek, _chunk,_id)
+          if(!json[code]){
+            if(!message[_id]){
+              console.log("注意： 无此id", _id)
+            }
+            json[code] = message[_id] 
+          }
+        })
+        
+        document.getElementById('container').innerHTML += `${JSON.stringify(json)}<br>`
+      }
+
+  </script>
+</body>
+
+</html>

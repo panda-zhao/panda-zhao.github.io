@@ -20,13 +20,12 @@
       // let japDTCs = formatDTC(_jap)
       // let eurDTCs = formatDTC(_eur)
       let _data = {..._usa, ..._jap, ..._eur}
-      // let _resource = _cn_text // 中文故障码
-      let _resource = _en_text // 中文故障码
+      let _resource = _en_text //  _cn_text _en_text
       try {
-          console.time("处理故障码耗时")
+          // console.time("处理故障码耗时")
           let json = {}
           let result = []
-          const hexDigitReplace = { "0": "P0", "1": "P1", "2": "P2", "3": "P3", "4": "C0", "5": "C1", "6": "C2", "7": "C3", "8": "B0", "9": "B1", "A": "B2", "B": "B3", "C": "U0", "D": "U1", "E": "U2", "F": "U3" }
+          // const hexDigitReplace = { "0": "P0", "1": "P1", "2": "P2", "3": "P3", "4": "C0", "5": "C1", "6": "C2", "7": "C3", "8": "B0", "9": "B1", "A": "B2", "B": "B3", "C": "U0", "D": "U1", "E": "U2", "F": "U3" }
           for (const key in _data) {
             const element = _data[key];
             if(!Array.isArray(element) || !element[0] || !element[1] ){
@@ -35,21 +34,22 @@
             
             if(Array.isArray(element)){
               // 320001 520C 00
-              let code = key.substring(6, 10) // 四位有效数据
-              code = hexDigitReplace[code.charAt(0)] + code.substring(1)
+              let code = key.substring(6) // 四位有效数据 修改为取6位
+              // code = hexDigitReplace[code.charAt(0)] + code.substring(1)
               // 仅使用第二个，第三个号码为检查流程/区域/详细信息不使用
               if(!json[code]){
                 if(!_resource[element[1]]){
                   console.log(`${code} : ${element[1]}: _resource[element[1]}`)
                 }
                 json[code] = _resource[element[1]]
-                result.push({ "code": code, "describe": _resource[element[1]], lang: 2 })
+              }else{
+                console.log('重复的故障码', key, element)
               }
             }else{
               console.log('数据非法', key)
             }
           }
-          document.getElementById('container').innerHTML = JSON.stringify(result)
+          document.getElementById('container').innerHTML = JSON.stringify(json)
           console.timeEnd("处理故障码耗时")
           console.log('故障码总数量', result.length) // 18780
         } catch (error) {
