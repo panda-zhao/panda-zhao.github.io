@@ -1,0 +1,692 @@
+[
+  {
+    "req_id": "710",
+    "res_id": "77A",
+    "ecu_name": "CAN 网关控制系统",
+    "ecu_name_en": "CAN Gateway"
+  },
+  {
+    "req_id": "7E1",
+    "res_id": "7E9",
+    "ecu_name": "变速箱控制系统",
+    "ecu_name_en": "Transmission control unit"
+  },
+  {
+    "req_id": "713",
+    "res_id": "77D",
+    "ecu_name": "防抱死制动系统",
+    "ecu_name_en": "ABS control unit"
+  },
+  {
+    "req_id": "7E0",
+    "res_id": "7E8",
+    "ecu_name": "引擎控制系统",
+    "ecu_name_en": "Engine control unit"
+  },
+  {
+    "req_id": "712",
+    "res_id": "77C",
+    "ecu_name": "动力转向",
+    "ecu_name_en": "Power steering"
+  },
+  {
+    "req_id": "732",
+    "res_id": "79C",
+    "ecu_name": "用于访问和启动发动机的授权系统",
+    "ecu_name_en": "Authorization system for access and starting the engine"
+  },
+  {
+    "req_id": "74D",
+    "res_id": "7B7",
+    "ecu_name": "前排乘客座椅",
+    "ecu_name_en": "Front passenger seat"
+  },
+  {
+    "req_id": "200",
+    "res_id": "23F",
+    "ecu_name": "主机控制器（大众TP2.0）",
+    "ecu_name_en": "Head unit controller (VW TP2.0)"
+  },
+  {
+    "req_id": "746",
+    "res_id": "7B0",
+    "ecu_name": "加热器",
+    "ecu_name_en": "Heater and climate"
+  },
+  {
+    "req_id": "70E",
+    "res_id": "778",
+    "ecu_name": "车载电源控制单元",
+    "ecu_name_en": "Onboard supply control unit"
+  },
+  {
+    "req_id": "200",
+    "res_id": "224",
+    "ecu_name": "左滑门（大众TP2.0）",
+    "ecu_name_en": "Slide Door Left (VW TP2.0)"
+  },
+  {
+    "req_id": "770",
+    "res_id": "7DA",
+    "ecu_name": "媒体播放器 1",
+    "ecu_name_en": "Media player 1"
+  },
+  {
+    "req_id": "200",
+    "res_id": "24F",
+    "ecu_name": "数字收音机调谐器（大众 TP2.0）",
+    "ecu_name_en": "Digital radio tuner (VW TP2.0)"
+  },
+  {
+    "req_id": "70A",
+    "res_id": "774",
+    "ecu_name": "停车助手2",
+    "ecu_name_en": "Parking Assistant 2"
+  },
+  {
+    "req_id": "7E2",
+    "res_id": "7EA",
+    "ecu_name": "发动机系统 No.2",
+    "ecu_name_en": "Engine Electronics No.2"
+  },
+  {
+    "req_id": "757",
+    "res_id": "7C1",
+    "ecu_name": "主动巡航控制",
+    "ecu_name_en": "Active cruise control"
+  },
+  {
+    "req_id": "772",
+    "res_id": "7DC",
+    "ecu_name": "系统阻尼控制",
+    "ecu_name_en": "Electronic system Damping controls"
+  },
+  {
+    "req_id": "715",
+    "res_id": "77F",
+    "ecu_name": "安全气囊系统",
+    "ecu_name_en": "Supplemental Restraint System(SRS)"
+  },
+  {
+    "req_id": "70C",
+    "res_id": "776",
+    "ecu_name": "驾驶杆",
+    "ecu_name_en": "Steering column"
+  },
+  {
+    "req_id": "714",
+    "res_id": "77E",
+    "ecu_name": "仪表盘",
+    "ecu_name_en": "Dashboard"
+  },
+  {
+    "req_id": "76A",
+    "res_id": "7D4",
+    "ecu_name": "附加加热器",
+    "ecu_name_en": "Additional heater"
+  },
+  {
+    "req_id": "200",
+    "res_id": "240",
+    "ecu_name": "汽车定位(大众 TP2.0)",
+    "ecu_name_en": "Car location(VW TP2.0)"
+  },
+  {
+    "req_id": "716",
+    "res_id": "780",
+    "ecu_name": "主动转向",
+    "ecu_name_en": "Active steering"
+  },
+  {
+    "req_id": "200",
+    "res_id": "22B",
+    "ecu_name": "驾驶员识别（大众 TP 2.0）",
+    "ecu_name_en": "Driver identification (VW TP2.0)"
+  },
+  {
+    "req_id": "200",
+    "res_id": "250",
+    "ecu_name": "媒体播放器2(大众 TP2.0)",
+    "ecu_name_en": "Mediaplayer 2(VW TP2.0)"
+  },
+  {
+    "req_id": "200",
+    "res_id": "25F",
+    "ecu_name": "卫星收音机调谐器（VW TP2.0）",
+    "ecu_name_en": "Satellite radio tuner (VW TP2.0)"
+  },
+  {
+    "req_id": "730",
+    "res_id": "79A",
+    "ecu_name": "FLA",
+    "ecu_name_en": "FLA"
+  },
+  {
+    "req_id": "728",
+    "res_id": "792",
+    "ecu_name": "能源管理 2",
+    "ecu_name_en": "Energy Management 2"
+  },
+  {
+    "req_id": "70F",
+    "res_id": "779",
+    "ecu_name": "四轮驱动",
+    "ecu_name_en": "Four-wheel drive"
+  },
+  {
+    "req_id": "73B",
+    "res_id": "7A5",
+    "ecu_name": "增加制动力",
+    "ecu_name_en": "Increased braking force"
+  },
+  {
+    "req_id": "711",
+    "res_id": "77B",
+    "ecu_name": "防盗器",
+    "ecu_name_en": "Immobilizer"
+  },
+  {
+    "req_id": "72D",
+    "res_id": "797",
+    "ecu_name": "电动折叠车顶",
+    "ecu_name_en": "Electric folding roof"
+  },
+  {
+    "req_id": "200",
+    "res_id": "23E",
+    "ecu_name": "后车头单元控制器（VW TP2.0）",
+    "ecu_name_en": "Rear head unit controller (VW TP2.0)"
+  },
+  {
+    "req_id": "71A",
+    "res_id": "784",
+    "ecu_name": "气候控制面板",
+    "ecu_name_en": "Climate Control Panel"
+  },
+  {
+    "req_id": "200",
+    "res_id": "238",
+    "ecu_name": "左侧灯控制（VW TP2.0）",
+    "ecu_name_en": "Left side lights control (VW TP2.0)"
+  },
+  {
+    "req_id": "200",
+    "res_id": "259",
+    "ecu_name": "语音放大器（大众TP2.0）",
+    "ecu_name_en": "Voice amplifier (VW TP2.0)"
+  },
+  {
+    "req_id": "200",
+    "res_id": "254",
+    "ecu_name": "媒体播放器3(大众 TP2.0)",
+    "ecu_name_en": "Mediaplayer 3(VW TP2.0)"
+  },
+  {
+    "req_id": "200",
+    "res_id": "24C",
+    "ecu_name": "数字电视调谐器 (VW TP2.0)",
+    "ecu_name_en": "Digital TV-tuner (VW TP2.0)"
+  },
+  {
+    "req_id": "71E",
+    "res_id": "788",
+    "ecu_name": "差速锁设备",
+    "ecu_name_en": "Differential Lock electronics"
+  },
+  {
+    "req_id": "755",
+    "res_id": "7BF",
+    "ecu_name": "行驶高度控制系统",
+    "ecu_name_en": "Ride height control system"
+  },
+  {
+    "req_id": "74C",
+    "res_id": "7B6",
+    "ecu_name": "驾驶员座椅调节",
+    "ecu_name_en": "Driver seat adjustment"
+  },
+  {
+    "req_id": "76C",
+    "res_id": "7D6",
+    "ecu_name": "导航系统",
+    "ecu_name_en": "Navigation system"
+  },
+  {
+    "req_id": "200",
+    "res_id": "239",
+    "ecu_name": "右侧灯控制(VW TP2.0)",
+    "ecu_name_en": "Right side lights control(VW TP2.0)"
+  },
+  {
+    "req_id": "74E",
+    "res_id": "7B8",
+    "ecu_name": "变道助手",
+    "ecu_name_en": "Lane change assistant"
+  },
+  {
+    "req_id": "72C",
+    "res_id": "796",
+    "ecu_name": "特殊功能",
+    "ecu_name_en": "Special function"
+  },
+  {
+    "req_id": "200",
+    "res_id": "262",
+    "ecu_name": "媒体播放器4(大众 TP2.0)",
+    "ecu_name_en": "Mediaplayer 4(VW TP2.0)"
+  },
+  {
+    "req_id": "74A",
+    "res_id": "7B4",
+    "ecu_name": "驾驶门设备",
+    "ecu_name_en": "Driver door electronic equipment"
+  },
+  {
+    "req_id": "200",
+    "res_id": "221",
+    "ecu_name": "中央舒适系统模块（大众 TP2.0）",
+    "ecu_name_en": "Central comfort systems module (VW TP2.0)"
+  },
+  {
+    "req_id": "76F",
+    "res_id": "7D9",
+    "ecu_name": "音响系统",
+    "ecu_name_en": "Acoustic system"
+  },
+  {
+    "req_id": "200",
+    "res_id": "237",
+    "ecu_name": "驾驶员后排座椅（大众TP2.0）",
+    "ecu_name_en": "Rear seat behind driver (VW TP2.0)"
+  },
+  {
+    "req_id": "200",
+    "res_id": "25D",
+    "ecu_name": "右后控制和指示单元（VW TP2.0）",
+    "ecu_name_en": "Rear right control and indication unit (VW TP2.0)"
+  },
+  {
+    "req_id": "200",
+    "res_id": "208",
+    "ecu_name": "胎压监测系统 #2(大众 TP2.0)",
+    "ecu_name_en": "TPMS #2(VW TP2.0)"
+  },
+  {
+    "req_id": "200",
+    "res_id": "228",
+    "ecu_name": "车身控制单元2 (VW TP2.0)",
+    "ecu_name_en": "Body control unit #2 (VW TP2.0)"
+  },
+  {
+    "req_id": "74B",
+    "res_id": "7B5",
+    "ecu_name": "前排乘客车门设备",
+    "ecu_name_en": "Front passenger door electronics"
+  },
+  {
+    "req_id": "752",
+    "res_id": "7BC",
+    "ecu_name": "驻车制动",
+    "ecu_name_en": "Parking brake"
+  },
+  {
+    "req_id": "754",
+    "res_id": "7BE",
+    "ecu_name": "大灯校正器",
+    "ecu_name_en": "Headlights corrector"
+  },
+  {
+    "req_id": "200",
+    "res_id": "252",
+    "ecu_name": "音响主机(MMI)(大众 TP2.0)",
+    "ecu_name_en": "Head unit(MMI)(VW TP2.0)"
+  },
+  {
+    "req_id": "76D",
+    "res_id": "7D7",
+    "ecu_name": "电视调谐器",
+    "ecu_name_en": "Tv tuner"
+  },
+  {
+    "req_id": "200",
+    "res_id": "241",
+    "ecu_name": "拖车保护（大众 TP2.0）",
+    "ecu_name_en": "Tow protection (VW TP2.0)"
+  },
+  {
+    "req_id": "200",
+    "res_id": "21A",
+    "ecu_name": "车道辅助系统(大众 TP2.0)",
+    "ecu_name_en": "Lane assist(VW TP2.0)"
+  },
+  {
+    "req_id": "200",
+    "res_id": "24B",
+    "ecu_name": "中控(大众TP2.0)",
+    "ecu_name_en": "Control(VW TP2.0)"
+  },
+  {
+    "req_id": "200",
+    "res_id": "25E",
+    "ecu_name": "左后控制和指示单元（VW TP2.0）",
+    "ecu_name_en": "Rear left control and indication unit (VW TP2.0)"
+  },
+  {
+    "req_id": "773",
+    "res_id": "7DD",
+    "ecu_name": "信息系统1",
+    "ecu_name_en": "Electronic Information System 1"
+  },
+  {
+    "req_id": "200",
+    "res_id": "233",
+    "ecu_name": "使用 CAN 的电池调节 (VW TP2.0)",
+    "ecu_name_en": "Battery Regulation using CAN (VW TP2.0)"
+  },
+  {
+    "req_id": "200",
+    "res_id": "246",
+    "ecu_name": "易于进入的驾驶员侧（VW TP2.0）",
+    "ecu_name_en": "Easy entry driver side (VW TP2.0)"
+  },
+  {
+    "req_id": "200",
+    "res_id": "224",
+    "ecu_name": "左后门装置（大众 TP2.0）",
+    "ecu_name_en": "Rear left door electronics (VW TP2.0)"
+  },
+  {
+    "req_id": "70B",
+    "res_id": "775",
+    "ecu_name": "胎压监测系统",
+    "ecu_name_en": "TPMS-tire pressure monitoring system"
+  },
+  {
+    "req_id": "200",
+    "res_id": "236",
+    "ecu_name": "后排座椅调节（大众TP2.0）",
+    "ecu_name_en": "Rear seats adjustment (VW TP2.0)"
+  },
+  {
+    "req_id": "200",
+    "res_id": "25C",
+    "ecu_name": "语音控制(大众TP2.0)",
+    "ecu_name_en": "Voice control(VW TP2.0)"
+  },
+  {
+    "req_id": "200",
+    "res_id": "232",
+    "ecu_name": "雨刷器电子系统（大众TP2.0）",
+    "ecu_name_en": "Wipers electronics(VW TP2.0)"
+  },
+  {
+    "req_id": "747",
+    "res_id": "7B1",
+    "ecu_name": "拖车功能",
+    "ecu_name_en": "Trailer functions"
+  },
+  {
+    "req_id": "769",
+    "res_id": "7D3",
+    "ecu_name": "后视摄像头系统 var.1",
+    "ecu_name_en": "Rear view camera system var.1"
+  },
+  {
+    "req_id": "200",
+    "res_id": "23D",
+    "ecu_name": "控制头车顶(VW TP2.0)",
+    "ecu_name_en": "Control Head Roof(VW TP2.0)"
+  },
+  {
+    "req_id": "723",
+    "res_id": "78D",
+    "ecu_name": "尾门/行李箱盖",
+    "ecu_name_en": "Tailgate/Boot lid"
+  },
+  {
+    "req_id": "745",
+    "res_id": "7AF",
+    "ecu_name": "舒适系统中央模块 2",
+    "ecu_name_en": "Comfort system central module 2"
+  },
+  {
+    "req_id": "71D",
+    "res_id": "787",
+    "ecu_name": "充电器",
+    "ecu_name_en": "Charger"
+  },
+  {
+    "req_id": "200",
+    "res_id": "225",
+    "ecu_name": "右后门电子装置（大众 TP2.0）",
+    "ecu_name_en": "Rear right door electronics (VW TP2.0)"
+  },
+  {
+    "req_id": "200",
+    "res_id": "247",
+    "ecu_name": "易于进入的乘客侧 (VW TP2.0)",
+    "ecu_name_en": "Easy entry passenger side (VW TP2.0)"
+  },
+  {
+    "req_id": "200",
+    "res_id": "21B",
+    "ecu_name": "底盘控制(大众TP2.0)",
+    "ecu_name_en": "Chassis Control(VW TP2.0)"
+  },
+  {
+    "req_id": "767",
+    "res_id": "7D1",
+    "ecu_name": "紧急呼叫与通讯模块",
+    "ecu_name_en": "Emergency Call and Communication Module"
+  },
+  {
+    "req_id": "70A",
+    "res_id": "774",
+    "ecu_name": "停车助手",
+    "ecu_name_en": "Parking assistant"
+  },
+  {
+    "req_id": "200",
+    "res_id": "225",
+    "ecu_name": "右滑门（大众TP2.0）",
+    "ecu_name_en": "Slide Door Right (VW TP2.0)"
+  },
+  {
+    "req_id": "200",
+    "res_id": "22E",
+    "ecu_name": "附加加热器（大众 TP2.0）",
+    "ecu_name_en": "Additional heater (VW TP2.0)"
+  },
+  {
+    "req_id": "200",
+    "res_id": "248",
+    "ecu_name": "仪表板中的指示面板 (VW TP2.0)",
+    "ecu_name_en": "Indication panel in the dashboard (VW TP2.0)"
+  },
+  {
+    "req_id": "75A",
+    "res_id": "7C4",
+    "ecu_name": "电子信息系统2",
+    "ecu_name_en": "Electronic Information System 2"
+  },
+  {
+    "req_id": "7E5",
+    "res_id": "7ED",
+    "ecu_name": "混合电池管理 (UDS)",
+    "ecu_name_en": "Hybrid battery management (UDS)"
+  },
+  {
+    "req_id": "6BC",
+    "res_id": "726",
+    "ecu_name": "SRS/安全气囊(UDS)",
+    "ecu_name_en": "SRS/Airbag(UDS)"
+  },
+  {
+    "req_id": "784",
+    "res_id": "7EE",
+    "ecu_name": "电子稳定控制系统ESP(UDS)",
+    "ecu_name_en": "Electronic Stability Program(UDS)"
+  },
+  {
+    "req_id": "74F",
+    "res_id": "7B9",
+    "ecu_name": "前助手A5(UDS)",
+    "ecu_name_en": "Front Assistant A5(UDS)"
+  },
+  {
+    "req_id": "762",
+    "res_id": "7CC",
+    "ecu_name": "制动控制单元传感器 (UDS) ",
+    "ecu_name_en": "Sensors for brake control unit (UDS)"
+  },
+  {
+    "req_id": "73E",
+    "res_id": "7A8",
+    "ecu_name": "驾驶员后面的后门 (UDS)",
+    "ecu_name_en": "Rear door behind driver (UDS)"
+  },
+  {
+    "req_id": "73F",
+    "res_id": "7A9",
+    "ecu_name": "乘客后方的后门 (UDS)",
+    "ecu_name_en": "Rear door behind passenger (UDS)"
+  },
+  {
+    "req_id": "765",
+    "res_id": "7CF",
+    "ecu_name": "高压电池充电管理(UDS)",
+    "ecu_name_en": "High-voltage battery charging management(UDS)"
+  },
+  {
+    "req_id": "744",
+    "res_id": "7AE",
+    "ecu_name": "高压电池充电器 (UDS)",
+    "ecu_name_en": "High-voltage battery charger (UDS)"
+  },
+  {
+    "req_id": "17FC0076",
+    "res_id": "17FE0076",
+    "ecu_name": "发动机(EVO/29位)",
+    "ecu_name_en": "Engine(EVO/29bit)"
+  },
+  {
+    "req_id": "17FC0077",
+    "res_id": "17FE0077",
+    "ecu_name": "变速箱(EVO/29bit)",
+    "ecu_name_en": "Gearbox(EVO/29bit)"
+  },
+  {
+    "req_id": "17FC008B",
+    "res_id": "17FE008B",
+    "ecu_name": "舒适装置",
+    "ecu_name_en": "Comfort unit"
+  },
+  {
+    "req_id": "17FC00A9",
+    "res_id": "17FE00A9",
+    "ecu_name": "多功能单元",
+    "ecu_name_en": "Multi-functionalunit"
+  },
+  {
+    "req_id": "17FC007C",
+    "res_id": "17FE007C",
+    "ecu_name": "电动发动机",
+    "ecu_name_en": "Electro-engine"
+  },
+  {
+    "req_id": "17FC007B",
+    "res_id": "17FE007B",
+    "ecu_name": "电池管理系统",
+    "ecu_name_en": "Battery management system"
+  },
+  {
+    "req_id": "17FC0096",
+    "res_id": "17FE0096",
+    "ecu_name": "大灯控制左 2",
+    "ecu_name_en": "Headlight control left 2"
+  },
+  {
+    "req_id": "17FC0097",
+    "res_id": "17FE0097",
+    "ecu_name": "大灯控制权2",
+    "ecu_name_en": "Headlight control right 2"
+  },
+  {
+    "req_id": "17FC00A0",
+    "res_id": "17FE00A0",
+    "ecu_name": "屋顶控制 #2",
+    "ecu_name_en": "Roof control #2"
+  },
+  {
+    "req_id": "17FC160A",
+    "res_id": "17FE160A",
+    "ecu_name": "左LED大灯控制 1",
+    "ecu_name_en": "Left LED headlight control 1"
+  },
+  {
+    "req_id": "17FC160B",
+    "res_id": "17FE160B",
+    "ecu_name": "右LED大灯控制 1",
+    "ecu_name_en": "Right LED headlight control 1"
+  },
+  {
+    "req_id": "17FC16D1",
+    "res_id": "17FE16D1",
+    "ecu_name": "电芯控制模块1",
+    "ecu_name_en": "Battery cell control module 1"
+  },
+  {
+    "req_id": "17FC16D2",
+    "res_id": "17FE16D2",
+    "ecu_name": "电芯控制模块2",
+    "ecu_name_en": "Battery cell control module 2"
+  },
+  {
+    "req_id": "17FC16D3",
+    "res_id": "17FE16D3",
+    "ecu_name": "电芯控制模块3",
+    "ecu_name_en": "Battery cell control module 3"
+  },
+  {
+    "req_id": "17FC16D4",
+    "res_id": "17FE16D4",
+    "ecu_name": "电芯控制模块4",
+    "ecu_name_en": "Battery cell control module 4"
+  },
+  {
+    "req_id": "17FC16D5",
+    "res_id": "17FE16D5",
+    "ecu_name": "电芯控制模块5",
+    "ecu_name_en": "Battery cell control module 5"
+  },
+  {
+    "req_id": "17FC16D6",
+    "res_id": "17FE16D6",
+    "ecu_name": "电芯控制模块6",
+    "ecu_name_en": "Battery cell control module 6"
+  },
+  {
+    "req_id": "17FC16D7",
+    "res_id": "17FE16D7",
+    "ecu_name": "电芯控制模块7",
+    "ecu_name_en": "Battery cell control module 7"
+  },
+  {
+    "req_id": "17FC16D8",
+    "res_id": "17FE16D8",
+    "ecu_name": "电芯控制模块8",
+    "ecu_name_en": "Battery cell control module 8"
+  },
+  {
+    "req_id": "17FC007B",
+    "res_id": "17FE007B",
+    "ecu_name": "高压电池管理系统",
+    "ecu_name_en": "HV BMS"
+  },
+  {
+    "req_id": "17FC00B9",
+    "res_id": "17FE00B9",
+    "ecu_name": "直流电源",
+    "ecu_name_en": "DC Charde"
+  }
+]

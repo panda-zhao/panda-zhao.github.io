@@ -90,7 +90,7 @@ req_id res_id ecu_name
 6BC 726 SRS/Airbag(UDS)
 784 7EE ESP(UDS)
 74F 7B9 Front Assistant A5(UDS)
-762 7CC Sensors for brake control unit (UDS
+762 7CC Sensors for brake control unit (UDS)
 73E 7A8 Rear door behind driver (UDS)
 73F 7A9 Rear door behind passenger (UDS)
 765 7CF High-voltage battery charging management(UDS)
@@ -116,3 +116,5 @@ req_id res_id ecu_name
 17FC16D8 17FE16D8 Battery cell control module 8
 17FC007B 17FE007B HV BMS
 17FC00B9 17FE00B9 DC Charde
+
+

@@ -75,10 +75,10 @@
     
     let _length = 0
     let arr = []
-    let _source = cn // en cn
+    let _source = en // en cn
     let result = {}
     for (const key in _source) {
-      const element = _source[key];
+      let element = _source[key];
       // 3579条
       if(key.substring(0, 10) === '0x3340C1DA'){
         let chunk = format_3340C1DA(key)
@@ -95,9 +95,12 @@
             code = format_DTC_hex(code)
             if(!result[code]){
               _length++
+              // if(typeof(element) !== 'string'){
+              //   console.log(`方式1 格式异常 ${key} => ${code}  => ${element} => ${element}`)
+              // }
               result[code] = element
             }else{
-            console.log(`方式2 重复 ${key} => ${code}  => ${element}` )
+            console.log(`方式1 重复 ${key} => ${code}  => ${element}` )
            }
           }else{
             console.log(`方式1 异常 ${key} => ${chunk} => ${code} ${word_0}/${word_1}/${word_234}` )
@@ -119,6 +122,9 @@
           code = format_DTC_hex(code)
           if(!result[code]){
             _length++
+            // if(typeof(element) !== 'string'){
+            //   console.log(`方式2 格式异常 ${key} => ${code}  => ${element}`)
+            // }
             result[code] = element
           }else{
             console.log(`方式2 重复 ${key} => ${code}  => ${element}` )
@@ -138,6 +144,10 @@
         if(code.length === 6){
           if(!result[code]){
             _length++
+            if(typeof(element) !== 'string'){
+              console.log(`方式3 格式异常 ${key} => ${code}  => ${element}`)
+              element = element.join()
+            }
             result[code] = element
           }else{
             console.log(`方式3 重复 ${key} => ${code}  => ${element}` )

@@ -4,21 +4,36 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>数组的使用测试</title>
 </head>
 <body>
   <script>
+    // 
     const arr = [
       {id: 1, name: "测试一"},
       {id: 2, name: "测试二"},
     ]
     const chunk = arr.find(item=> item.id === 2)
-    // console.log('chunk', chunk) 
+    console.log('chunk', chunk)  //  返回 {id: 2, name: "测试二"}
 
     let a = [1, 2]
     let b = [3]
-    a = a.concat(b)
-    console.log(a)
+    a = a.concat(b) 
+    console.log(a) // 返回 [1, 2, 3]
+
+    // 检测 ？的用法和 some() 用判断数组内是否有某元素
+    let res = {
+      user: {
+        obds: [
+          { id: 27269, "obdBLMac": "07:2B:60:B1:06:A7" },
+          { "id": 30246, "obdBLMac": "C2:B2:CE:2D:31:E0" },
+          { "id": 31243, "obdBLMac": "9D:4C:9F:1D:1D:72" }
+        ]
+      }
+    }
+    let obds = res?.user?.obds || []
+    // console.log(obds) 
+    console.log(obds.some(item=> item.obdBLMac === "07:2B:60:B1:06:A7")) // 返回 true
   </script>
 </body>
 </html>

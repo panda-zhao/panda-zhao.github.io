@@ -10,51 +10,77 @@
   <div id="container"></div>
   <script type="module">
 
-    try {
-      import('./demo').then((module)=>{
-        console.log(module)
-      })
-    } catch (error) {
-      console.error(error)
-    }
-
-  
+function isSupport(cmd){
+	try{
     /**
-      ios
-      ru-RU 俄罗斯
-      da-DK 丹麦
-      zh-Hans-CN 中国
-      zh-Hant-HK 香港
-      zh-Hant-TW 台湾
+     * 红石OBD的mac地址：5B:5C:9A:95:65:B0
+     * 奥迪
+     */ 
+    
+     // 奥迪A6L  LFV6A24F6B3043902
+    const s_0100 = '10111111100111001110100010010011'
+    const s_0120 = '10100000000001011011000100011001'
+    const s_0140 = '11111110110100000000010100000001'
 
-      安卓
-      en-US 美国
-      en-IN  印度
-      zh-CN 中国
-      nl-NL 荷兰
-      zh-HK 香港
-      zh-TW 台湾
-     * */
-    // const osLanguage = "zh-Hans-CN"
-    // const osLanguage = "zh-Hant-HK"
-    // const osLanguage = "en-US"
-    // const osLanguage = "en-IN"
-    // let _language = osLanguage.substring(0, osLanguage.lastIndexOf('-')) // 小写
-    // let _region = osLanguage.substring(osLanguage.lastIndexOf('-')+1) // 大写
-    // document.getElementById('container').innerHTML = `<div>语言代码：${_language},</div> <div>地区代码： ${_region}</div>`
+    // 奔驰-E300L-2010  LE4HG5EB7AL003008
+    // const s_0100 = '10111111101111111110100010010011'
+    // const s_0120 = '10000000000001011000000000000000'
+    // const s_0140 = '00000000000000000000000000000000'
+    const verification = s_0100 + s_0120 +s_0140
 
+    if(['10', '3E', "27", "22", "2E", "14", "19"].includes(cmd.substring(0, 2))){
+			return true
+		}
+		if(['0902', '0105'].includes(cmd)){
+			return true
+		}
+		if(cmd.substring(2, 4) === '00' || ['AT', '03', '04', '05', '07', '0A'].includes(cmd.substring(0, 2))){
+			return true
+		}
 
+		const arr = ['00', '20', '40', '60', '80', 'A0', 'C0', 'E0']
+		// const service = cmd.substring(0, 2)
+		const decimal = parseInt(cmd.substring(2, 4), 16) // 十进制数字
 
-    // let address = "中国"
-    // let pattern = /[\u4e00-\u9fa5]/
-    // try {
-    //   const condition1 = address && pattern.test(address) && !address.includes('台湾') && !address.includes('台灣')
+		const index = parseInt( (decimal-1) / 32 )
+    const supportId =  'pid_' + cmd.substring(0, 2) + arr[index]
+		const num = (decimal - 1) % 32 // 所在支持信息的下标
+		// if(verification[num] === '0'){
+		// 	console.error(`❌❌❌pid：${cmd}，是${supportId}=${verification}的${num}个，结果是：${verification[num]}`)
+		// }
+    console.error(`pid：${cmd}，支持情况在 ${supportId} 内的 的${num + 1}个， 结果是：${verification[decimal-1] === '1' ? '支持' : '不支持' }`)
+		return verification[num] === '1'
+	}catch(e){
+		//TODO handle the exception
+		alert('isSupport error：' + cmd  + '\r\n' + e)
+	}
+}
+// 测试支持情况
+// isSupport('0101')
+// isSupport('015F')
+// isSupport('0160')
 
-    //   console.log(condition1 ? "使用标准17位" : "使用非标准")
-    //   // console.log(address && pattern.test(address) && (!address.includes('台湾') || !address.includes('台灣')))
-    // } catch (error) {
-    //   console.error(error)
+  try {
+    // 测试使用的模式几 
+    
+    let result = 0
+    console.log('方式1是否支持', isSupport('015E') , isSupport('010D'))
+    console.log('方式2是否支持', isSupport('0110') , isSupport('010D'))
+    console.log('方式3是否支持', isSupport('010B') ,isSupport('010C') , isSupport('010D') , isSupport('010F'))
+
+    // if(isSupport('015E') && isSupport('010D')){
+    //   result = 1
+    // }else if(isSupport('0110') && isSupport('010D')){
+    //   result = 2 // pid_0110 && pid_010D
+    // }else if(isSupport('010B') && isSupport('010C') && isSupport('010D') && isSupport('010F')){
+    //   result = 3 // pid_010B && pid_010C && pid_010D && pid_010F
     // }
+    // console.log('最终支持的模式是', result)
+  } catch (error) {
+    console.error(error)
+  }
+
+
   </script>
 </body>
 </html>

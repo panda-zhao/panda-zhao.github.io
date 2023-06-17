@@ -1,0 +1,52 @@
+[
+  {
+    "brand_en": "Volkswagen",
+    "brand_cn": "大众",
+    "brand_id": "1"
+  },
+  {
+    "brand_en": "Benz",
+    "brand_cn": "奔驰",
+    "brand_id": "3"
+  },
+  {
+    "brand_en": "BMW",
+    "brand_cn": "宝马",
+    "brand_id": "4"
+  },
+  {
+    "brand_en": "HONDA",
+    "brand_cn": "本田",
+    "brand_id": "5"
+  },
+  {
+    "brand_en": "TOYOTA",
+    "brand_cn": "丰田",
+    "brand_id": "5"
+  },
+  {
+    "brand_en": "Ford",
+    "brand_cn": "福特",
+    "brand_id": "7"
+  },
+  {
+    "brand_en": "Nissan",
+    "brand_cn": "日产",
+    "brand_id": "10"
+  },
+  {
+    "brand_en": "Hyundai",
+    "brand_cn": "现代",
+    "brand_id": "11"
+  },
+  {
+    "brand_en": "Mazda",
+    "brand_cn": "马自达",
+    "brand_id": "15"
+  },
+  {
+    "brand_en": "Porsche",
+    "brand_cn": "保时捷",
+    "brand_id": "20"
+  }
+]
