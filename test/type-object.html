@@ -29,6 +29,17 @@
         // return this.$notify.warning({ title: '温馨提醒', message: '监事会录入的成员已存在，请勿重复录入!' })
       }
     }
+
+    // 按照日期排序
+    const data = {"2023-06-02":[5,307],"2023-06-03":[15,280],"2022-07-01":[0,53], "2022-08-07":[0,98],"2022-08-09":[0,138],"2022-08-16":[0,176]};
+
+    const sortedData = Object.entries(data).sort((a, b) => {
+      return new Date(a[0]) - new Date(b[0]);
+    });
+
+    const sortedObject = Object.fromEntries(sortedData);
+
+    console.log(sortedObject)
   </script>
 
 

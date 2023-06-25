@@ -2,231 +2,277 @@
   {
     "req_id": "7E0",
     "res_id": "7E8",
-    "ecu_name": "引擎控制单元"
+    "ecu_name": "引擎控制单元",
+    "ecu_name_en": "engine control unit"
   },
   {
     "req_id": "7E1",
     "res_id": "7E9",
-    "ecu_name": "变速箱控制单元"
+    "ecu_name": "变速箱控制模块",
+    "ecu_name_en": "transmission control unit"
   },
   {
     "req_id": "760",
     "res_id": "768",
-    "ecu_name": "ABS/ESP"
+    "ecu_name": "防抱死系统/车身稳定控制系统",
+    "ecu_name_en": "ABS/ESP"
   },
   {
     "req_id": "720",
     "res_id": "728",
-    "ecu_name": "Dashboard"
+    "ecu_name": "仪表板",
+    "ecu_name_en": "Dashboard"
   },
   {
     "req_id": "7C7",
     "res_id": "7CF",
-    "ecu_name": "ACCM"
+    "ecu_name": "自适应巡航控制模块",
+    "ecu_name_en": "ACCM"
   },
   {
     "req_id": "727",
     "res_id": "72F",
-    "ecu_name": "ACM"
+    "ecu_name": "音响前控制模块",
+    "ecu_name_en": "ACM"
   },
   {
     "req_id": "7D0",
     "res_id": "7D8",
-    "ecu_name": "APIM"
+    "ecu_name": "变速器控制模块",
+    "ecu_name_en": "APIM"
   },
   {
     "req_id": "726",
     "res_id": "72E",
-    "ecu_name": "BCM"
+    "ecu_name": "车身控制模块",
+    "ecu_name_en": "BCM"
   },
   {
     "req_id": "6F0",
     "res_id": "6F8",
-    "ecu_name": "BCMC/BJB"
+    "ecu_name": "BCMC/BJB",
+    "ecu_name_en": "BCMC/BJB"
   },
   {
     "req_id": "7E4",
     "res_id": "7EC",
-    "ecu_name": "BECM"
+    "ecu_name": "动力电池能量控制模块",
+    "ecu_name_en": "BECM"
   },
   {
     "req_id": "723",
     "res_id": "72B",
-    "ecu_name": "BECMB"
+    "ecu_name": "BECMB",
+    "ecu_name_en": "BECMB"
   },
   {
     "req_id": "764",
     "res_id": "76C",
-    "ecu_name": "CCM"
+    "ecu_name": "CCM",
+    "ecu_name_en": "CCM"
   },
   {
     "req_id": "7C1",
     "res_id": "7C9",
-    "ecu_name": "CMR"
+    "ecu_name": "CMR",
+    "ecu_name_en": "CMR"
   },
   {
     "req_id": "746",
     "res_id": "74E",
-    "ecu_name": "DCDC"
+    "ecu_name": "DCDC",
+    "ecu_name_en": "DCDC"
   },
   {
     "req_id": "7A2",
     "res_id": "7AA",
-    "ecu_name": "DCME"
+    "ecu_name": "DCME",
+    "ecu_name_en": "DCME"
   },
   {
     "req_id": "762",
     "res_id": "76A",
-    "ecu_name": "SCMF"
+    "ecu_name": "SCMF",
+    "ecu_name_en": "SCMF"
   },
   {
     "req_id": "7B3",
     "res_id": "7BB",
-    "ecu_name": "DCMG"
+    "ecu_name": "DCMG",
+    "ecu_name_en": "DCMG"
   },
   {
     "req_id": "7B4",
     "res_id": "7BC",
-    "ecu_name": "DCMH"
+    "ecu_name": "DCMH",
+    "ecu_name_en": "DCMH"
   },
   {
     "req_id": "740",
     "res_id": "748",
-    "ecu_name": "DDM"
+    "ecu_name": "DDM",
+    "ecu_name_en": "DDM"
   },
   {
     "req_id": "744",
     "res_id": "74C",
-    "ecu_name": "DSM"
+    "ecu_name": "DSM",
+    "ecu_name_en": "DSM"
   },
   {
     "req_id": "783",
     "res_id": "78B",
-    "ecu_name": "DSP"
+    "ecu_name": "DSP",
+    "ecu_name_en": "DSP"
   },
   {
     "req_id": "7A1",
     "res_id": "7A9",
-    "ecu_name": "GFM (FTRM)"
+    "ecu_name": "GFM (FTRM)",
+    "ecu_name_en": "GFM (FTRM)"
   },
   {
     "req_id": "732",
     "res_id": "73A",
-    "ecu_name": "GSM"
+    "ecu_name": "GSM",
+    "ecu_name_en": "GSM"
   },
   {
     "req_id": "716",
     "res_id": "71E",
-    "ecu_name": "GWM"
+    "ecu_name": "GWM",
+    "ecu_name_en": "GWM"
   },
   {
     "req_id": "734",
     "res_id": "73C",
-    "ecu_name": "HCM"
+    "ecu_name": "HCM",
+    "ecu_name_en": "HCM"
   },
   {
     "req_id": "733",
     "res_id": "73B",
-    "ecu_name": "HVAC"
+    "ecu_name": "HVAC",
+    "ecu_name_en": "HVAC"
   },
   {
     "req_id": "706",
     "res_id": "70E",
-    "ecu_name": "IPMA"
+    "ecu_name": "IPMA",
+    "ecu_name_en": "IPMA"
   },
   {
     "req_id": "7D1",
     "res_id": "7D9",
-    "ecu_name": "OBCC"
+    "ecu_name": "OBCC",
+    "ecu_name_en": "OBCC"
   },
   {
     "req_id": "765",
     "res_id": "76D",
-    "ecu_name": "OCS"
+    "ecu_name": "",
+    "ecu_name_en": "OCS"
   },
   {
     "req_id": "750",
     "res_id": "758",
-    "ecu_name": "PACM"
+    "ecu_name": "PACM",
+    "ecu_name_en": "PACM"
   },
   {
     "req_id": "741",
     "res_id": "749",
-    "ecu_name": "PDM"
+    "ecu_name": "PDM",
+    "ecu_name_en": "PDM"
   },
   {
     "req_id": "730",
     "res_id": "738",
-    "ecu_name": "PSCM"
+    "ecu_name": "PSCM",
+    "ecu_name_en": "PSCM"
   },
   {
     "req_id": "737",
     "res_id": "73F",
-    "ecu_name": "RCM"
+    "ecu_name": "RCM",
+    "ecu_name_en": "RCM"
   },
   {
     "req_id": "731",
     "res_id": "739",
-    "ecu_name": "RFA"
+    "ecu_name": "RFA",
+    "ecu_name_en": "RFA"
   },
   {
     "req_id": "775",
     "res_id": "77D",
-    "ecu_name": "RGTM"
+    "ecu_name": "RGTM",
+    "ecu_name_en": "RGTM"
   },
   {
     "req_id": "724",
     "res_id": "72C",
-    "ecu_name": "SCCM"
+    "ecu_name": "SCCM",
+    "ecu_name_en": "SCCM"
   },
   {
     "req_id": "7E2",
     "res_id": "7EA",
-    "ecu_name": "SOBDM(BCCM)"
+    "ecu_name": "SOBDM(BCCM)",
+    "ecu_name_en": "SOBDM(BCCM)"
   },
   {
     "req_id": "795",
     "res_id": "79D",
-    "ecu_name": "SOBDMB"
+    "ecu_name": "SOBDMB",
+    "ecu_name_en": "SOBDMB"
   },
   {
     "req_id": "7E6",
     "res_id": "7EE",
-    "ecu_name": "SOBDMC"
+    "ecu_name": "SOBDMC",
+    "ecu_name_en": "SOBDMC"
   },
   {
     "req_id": "6F2",
     "res_id": "6FA",
-    "ecu_name": "SODCMC"
+    "ecu_name": "SODCMC",
+    "ecu_name_en": "SODCMC"
   },
   {
     "req_id": "6F3",
     "res_id": "6FB",
-    "ecu_name": "SODCMD"
+    "ecu_name": "SODCMD",
+    "ecu_name_en": "SODCMD"
   },
   {
     "req_id": "7C4",
     "res_id": "7CC",
-    "ecu_name": "SODL"
+    "ecu_name": "SODL",
+    "ecu_name_en": "SODL"
   },
   {
     "req_id": "7C6",
     "res_id": "7CE",
-    "ecu_name": "SODR"
+    "ecu_name": "SODR",
+    "ecu_name_en": "SODR"
   },
   {
     "req_id": "754",
     "res_id": "75C",
-    "ecu_name": "TCU"
+    "ecu_name": "TCU",
+    "ecu_name_en": "TCU"
   },
   {
     "req_id": "721",
     "res_id": "729",
-    "ecu_name": "VDM"
+    "ecu_name": "VDM",
+    "ecu_name_en": "VDM"
   },
   {
     "req_id": "725",
     "res_id": "72D",
-    "ecu_name": "WACM"
+    "ecu_name": "WACM",
+    "ecu_name_en": "WACM"
   }
 ]

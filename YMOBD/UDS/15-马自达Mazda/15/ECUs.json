@@ -2,76 +2,91 @@
     {
         "req_id": "7E0",
         "res_id": "7E8",
-        "ecu_name": "Engine control unit"
+        "ecu_name": "发动机控制单元",
+        "ecu_name_en": "Engine control unit"
     },
     {
         "req_id": "7E1",
         "res_id": "7E9",
-        "ecu_name": "Transmission control unit"
+        "ecu_name": "变速器控制单元",
+        "ecu_name_en": "Transmission control unit"
     },
     {
         "req_id": "760",
         "res_id": "768",
-        "ecu_name": "ABS control unit"
+        "ecu_name": "刹车防抱死单元",
+        "ecu_name_en": "ABS control unit"
     },
     {
         "req_id": "720",
         "res_id": "728",
-        "ecu_name": "Dashboard"
+        "ecu_name": "仪表板",
+        "ecu_name_en": "Dashboard"
     },
     {
         "req_id": "726",
         "res_id": "72E",
-        "ecu_name": "BCM"
+        "ecu_name": "车身控制模块",
+        "ecu_name_en": "Body Control Module"
     },
     {
         "req_id": "730",
         "res_id": "738",
-        "ecu_name": "Steering"
+        "ecu_name": "驾驶杆",
+        "ecu_name_en": "Steering"
     },
     {
         "req_id": "731",
         "res_id": "739",
-        "ecu_name": "Access system"
+        "ecu_name": "访问系统",
+        "ecu_name_en": "Access system"
     },
     {
         "req_id": "734",
         "res_id": "73C",
-        "ecu_name": "Adaptive headlights"
+        "ecu_name": "自适应大灯",
+        "ecu_name_en": "Adaptive headlights"
     },
     {
         "req_id": "737",
         "res_id": "73F",
-        "ecu_name": "SRS/Airbag"
+        "ecu_name": "SRS/安全气囊",
+        "ecu_name_en": "SRS/Airbag"
     },
     {
         "req_id": "744",
         "res_id": "74C",
-        "ecu_name": "Driver seat"
+        "ecu_name": "驾驶员座椅",
+        "ecu_name_en": "Driver seat"
     },
     {
         "req_id": "754",
         "res_id": "75C",
-        "ecu_name": "DCM"
+        "ecu_name": "直流电动机",
+        "ecu_name_en": "DCM"
     },
     {
         "req_id": "756",
         "res_id": "75E",
-        "ecu_name": "Parking brake"
+        "ecu_name": "驻车制动器",
+        "ecu_name_en": "Parking brake"
     },
     {
         "req_id": "775",
         "res_id": "77D",
-        "ecu_name": "Rear door"
+        "ecu_name": "后门",
+        "ecu_name_en": "Rear door"
     },
     {
         "req_id": "784",
         "res_id": "78C",
-        "ecu_name": "Multimedia"
+        "ecu_name": "多媒体",
+        "ecu_name_en": "Multimedia"
     },
     {
         "req_id": "7AC",
         "res_id": "7B4",
-        "ecu_name": "Amplifier"
+        "ecu_name": "放大器",
+        "ecu_name_en": "Amplifier"
     }
 ]

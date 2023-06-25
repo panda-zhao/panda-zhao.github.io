@@ -2,516 +2,619 @@
   {
       "req_id": "7E0",
       "res_id": "7E8",
-      "ecu_name": "Engine control unit"
+      "ecu_name": "发动机控制单元",
+      "ecu_name_en": "Engine control unit"
   },
   {
       "req_id": "7E1",
       "res_id": "7E9",
-      "ecu_name": "Transmission control unit"
+      "ecu_name": "传输控制单元",
+      "ecu_name_en": "Transmission control unit"
   },
   {
       "req_id": "6F1",
       "res_id": "612",
-      "ecu_name": "Engine control unit #1"
+      "ecu_name": "发动机控制单元#1",
+      "ecu_name_en": "Engine control unit #1"
   },
   {
       "req_id": "6F1",
       "res_id": "60B",
-      "ecu_name": "Engine control unit #2"
+      "ecu_name": "发动机控制单元#2",
+      "ecu_name_en": "Engine control unit #2"
   },
   {
       "req_id": "6F1",
       "res_id": "618",
-      "ecu_name": "Transmission control unit"
+      "ecu_name": "传输控制单元",
+      "ecu_name_en": "Transmission control unit"
   },
   {
       "req_id": "6F1",
       "res_id": "601",
-      "ecu_name": "SRS/Airbag"
+      "ecu_name": "SRS/安全气囊",
+      "ecu_name_en": "SRS/Airbag"
   },
   {
       "req_id": "6F1",
       "res_id": "600",
-      "ecu_name": "IPDM/Junction box(JBBF)"
+      "ecu_name": "IPDM/接线盒（JBBF）",
+      "ecu_name_en": "IPDM/Junction box(JBBF)"
   },
   {
       "req_id": "6F1",
       "res_id": "629",
-      "ecu_name": "DSC/Traction control"
+      "ecu_name": "DSC/牵引力控制",
+      "ecu_name_en": "DSC/Traction control"
   },
   {
       "req_id": "6F1",
       "res_id": "602",
-      "ecu_name": "Steering column"
+      "ecu_name": "转向柱",
+      "ecu_name_en": "Steering column"
   },
   {
       "req_id": "6F1",
       "res_id": "606",
-      "ecu_name": "All-round vision camera"
+      "ecu_name": "环视摄像头",
+      "ecu_name_en": "All-round vision camera"
   },
   {
       "req_id": "6F1",
       "res_id": "607",
-      "ecu_name": "Battery management system"
+      "ecu_name": "电池管理系统",
+      "ecu_name_en": "Battery management system"
   },
   {
       "req_id": "6F1",
       "res_id": "608",
-      "ecu_name": "Lane-change system"
+      "ecu_name": "变道系统",
+      "ecu_name_en": "Lane-change system"
   },
   {
       "req_id": "6F1",
       "res_id": "609",
-      "ecu_name": "Left B-pillar safety module"
+      "ecu_name": "左 B 柱安全模块",
+      "ecu_name_en": "Left B-pillar safety module"
   },
   {
       "req_id": "6F1",
       "res_id": "60A",
-      "ecu_name": "Infotainment display"
+      "ecu_name": "信息娱乐显示器",
+      "ecu_name_en": "Infotainment display"
   },
   {
       "req_id": "6F1",
       "res_id": "60E",
-      "ecu_name": "Center safety unit"
+      "ecu_name": "中央安全单元",
+      "ecu_name_en": "Center safety unit"
   },
   {
       "req_id": "6F1",
       "res_id": "60F",
-      "ecu_name": "Rear differential lock"
+      "ecu_name": "后差速锁",
+      "ecu_name_en": "Rear differential lock"
   },
   {
       "req_id": "6F1",
       "res_id": "610",
-      "ecu_name": "CAN gateway"
+      "ecu_name": "CAN 网关",
+      "ecu_name_en": "CAN gateway"
   },
   {
       "req_id": "6F1",
       "res_id": "616",
-      "ecu_name": "Active steering"
+      "ecu_name": "主动转向",
+      "ecu_name_en": "Active steering"
   },
   {
       "req_id": "6F1",
       "res_id": "617",
-      "ecu_name": "Fuel pump"
+      "ecu_name": "燃油泵",
+      "ecu_name_en": "Fuel pump"
   },
   {
       "req_id": "6F1",
       "res_id": "619",
-      "ecu_name": "Transmission/4WD"
+      "ecu_name": "传输/ 4WD",
+      "ecu_name_en": "Transmission/4WD"
   },
   {
       "req_id": "6F1",
       "res_id": "61C",
-      "ecu_name": "Suspension/Dynamic management"
+      "ecu_name": "暂停/动态管理",
+      "ecu_name_en": "Suspension/Dynamic management"
   },
   {
       "req_id": "6F1",
       "res_id": "620",
-      "ecu_name": "TPMS"
+      "ecu_name": "胎压监测系统",
+      "ecu_name_en": "TPMS"
   },
   {
       "req_id": "6F1",
       "res_id": "621",
-      "ecu_name": "Adaptive cruise control"
+      "ecu_name": "自适应巡航控制",
+      "ecu_name_en": "Adaptive cruise control"
   },
   {
       "req_id": "6F1",
       "res_id": "622",
-      "ecu_name": "Adaptive headlights"
+      "ecu_name": "自适应大灯",
+      "ecu_name_en": "Adaptive headlights"
   },
   {
       "req_id": "6F1",
       "res_id": "623",
-      "ecu_name": "Active roll stabilization"
+      "ecu_name": "主动侧倾稳定",
+      "ecu_name_en": "Active roll stabilization"
   },
   {
       "req_id": "6F1",
       "res_id": "624",
-      "ecu_name": "Convertible top"
+      "ecu_name": "敞篷车顶",
+      "ecu_name_en": "Convertible top"
   },
   {
       "req_id": "6F1",
       "res_id": "626",
-      "ecu_name": "Infotainment system"
+      "ecu_name": "信息娱乐系统",
+      "ecu_name_en": "Infotainment system"
   },
   {
       "req_id": "6F1",
       "res_id": "627",
-      "ecu_name": "Keyless ignition"
+      "ecu_name": "无钥匙点火",
+      "ecu_name_en": "Keyless ignition"
   },
   {
       "req_id": "6F1",
       "res_id": "629",
-      "ecu_name": "ABS/DSC"
+      "ecu_name": "防抱死制动系统/动态稳定控制系统",
+      "ecu_name_en": "ABS/DSC"
   },
   {
       "req_id": "6F1",
       "res_id": "62A",
-      "ecu_name": "Parking brake"
+      "ecu_name": "驻车制动器",
+      "ecu_name_en": "Parking brake"
   },
   {
       "req_id": "6F1",
       "res_id": "62B",
-      "ecu_name": "Rear axle slip angle control"
+      "ecu_name": "后轴侧偏角控制",
+      "ecu_name_en": "Rear axle slip angle control"
   },
   {
       "req_id": "6F1",
       "res_id": "62C",
-      "ecu_name": "Parking/Steering assist"
+      "ecu_name": "停车/转向辅助",
+      "ecu_name_en": "Parking/Steering assist"
   },
   {
       "req_id": "6F1",
       "res_id": "630",
-      "ecu_name": "Steering"
+      "ecu_name": "转向",
+      "ecu_name_en": "Steering"
   },
   {
       "req_id": "6F1",
       "res_id": "631",
-      "ecu_name": "Multimedia/DVD Changer"
+      "ecu_name": "多媒体/DVD 换碟机",
+      "ecu_name_en": "Multimedia/DVD Changer"
   },
   {
       "req_id": "6F1",
       "res_id": "632",
-      "ecu_name": "CAN gateway"
+      "ecu_name": "CAN 网关",
+      "ecu_name_en": "CAN gateway"
   },
   {
       "req_id": "6F1",
       "res_id": "635",
-      "ecu_name": "Treble bass extender"
+      "ecu_name": "高音低音扩展器",
+      "ecu_name_en": "Treble bass extender"
   },
   {
       "req_id": "6F1",
       "res_id": "636",
-      "ecu_name": "Telephone"
+      "ecu_name": "电话",
+      "ecu_name_en": "Telephone"
   },
   {
       "req_id": "6F1",
       "res_id": "637",
-      "ecu_name": "Audio amplifier"
+      "ecu_name": "音频放大器",
+      "ecu_name_en": "Audio amplifier"
   },
   {
       "req_id": "6F1",
       "res_id": "638",
-      "ecu_name": "Air suspension"
+      "ecu_name": "空气悬架",
+      "ecu_name_en": "Air suspension"
   },
   {
       "req_id": "6F1",
       "res_id": "639",
-      "ecu_name": "Electronic damper control(EDC)"
+      "ecu_name": "电子阻尼器控制 (EDC)",
+      "ecu_name_en": "Electronic damper control(EDC)"
   },
   {
       "req_id": "6F1",
       "res_id": "63A",
-      "ecu_name": "Headphone interface"
+      "ecu_name": "耳机接口",
+      "ecu_name_en": "Headphone interface"
   },
   {
       "req_id": "6F1",
       "res_id": "63B",
-      "ecu_name": "Navigation"
+      "ecu_name": "导航",
+      "ecu_name_en": "Navigation"
   },
   {
       "req_id": "6F1",
       "res_id": "63C",
-      "ecu_name": "CD changer"
+      "ecu_name": "CD 换碟机",
+      "ecu_name_en": "CD changer"
   },
   {
       "req_id": "6F1",
       "res_id": "63D",
-      "ecu_name": "Heads-up display"
+      "ecu_name": "平视显示器",
+      "ecu_name_en": "Heads-up display"
   },
   {
       "req_id": "6F1",
       "res_id": "63F",
-      "ecu_name": "Sound system"
+      "ecu_name": "音响系统",
+      "ecu_name_en": "Sound system"
   },
   {
       "req_id": "6F1",
       "res_id": "640",
-      "ecu_name": "Car access system"
+      "ecu_name": "汽车门禁系统",
+      "ecu_name_en": "Car access system"
   },
   {
       "req_id": "6F1",
       "res_id": "641",
-      "ecu_name": "Alarm"
+      "ecu_name": "警报",
+      "ecu_name_en": "Alarm"
   },
   {
       "req_id": "6F1",
       "res_id": "642",
-      "ecu_name": "Right headlight"
+      "ecu_name": "右大灯",
+      "ecu_name_en": "Right headlight"
   },
   {
       "req_id": "6F1",
       "res_id": "643",
-      "ecu_name": "Micro power supply"
+      "ecu_name": "微型电源",
+      "ecu_name_en": "Micro power supply"
   },
   {
       "req_id": "6F1",
       "res_id": "644",
-      "ecu_name": "Sliding roof"
+      "ecu_name": "滑动天窗",
+      "ecu_name_en": "Sliding roof"
   },
   {
       "req_id": "6F1",
       "res_id": "645",
-      "ecu_name": "Rain/light sensor"
+      "ecu_name": "雨/光传感器",
+      "ecu_name_en": "Rain/light sensor"
   },
   {
       "req_id": "6F1",
       "res_id": "647",
-      "ecu_name": "Tuner"
+      "ecu_name": "调谐器",
+      "ecu_name_en": "Tuner"
   },
   {
       "req_id": "6F1",
       "res_id": "648",
-      "ecu_name": "Video switch"
+      "ecu_name": "视频开关",
+      "ecu_name_en": "Video switch"
   },
   {
       "req_id": "6F1",
       "res_id": "649",
-      "ecu_name": "Security module 1"
+      "ecu_name": "安全模块 1",
+      "ecu_name_en": "Security module 1"
   },
   {
       "req_id": "6F1",
       "res_id": "64A",
-      "ecu_name": "Security module 2"
+      "ecu_name": "安全模块 2",
+      "ecu_name_en": "Security module 2"
   },
   {
       "req_id": "6F1",
       "res_id": "64B",
-      "ecu_name": "Video"
+      "ecu_name": "视频",
+      "ecu_name_en": "Video"
   },
   {
       "req_id": "6F1",
       "res_id": "64D",
-      "ecu_name": "Electric motor-driver reel (left)"
+      "ecu_name": "电动马达驱动卷线器（左）",
+      "ecu_name_en": "Electric motor-driver reel (left)"
   },
   {
       "req_id": "6F1",
       "res_id": "64E",
-      "ecu_name": "Electric motor-driver reel (right)"
+      "ecu_name": "电动马达驱动卷线器（右）",
+      "ecu_name_en": "Electric motor-driver reel (right)"
   },
   {
       "req_id": "6F1",
       "res_id": "650",
-      "ecu_name": "Alarm sensors"
+      "ecu_name": "报警传感器",
+      "ecu_name_en": "Alarm sensors"
   },
   {
       "req_id": "6F1",
       "res_id": "653",
-      "ecu_name": "Radio"
+      "ecu_name": "收音机",
+      "ecu_name_en": "Radio"
   },
   {
       "req_id": "6F1",
       "res_id": "654",
-      "ecu_name": "Satelite radio"
+      "ecu_name": "卫星收音机",
+      "ecu_name_en": "Satelite radio"
   },
   {
       "req_id": "6F1",
       "res_id": "655",
-      "ecu_name": "Bluetooth"
+      "ecu_name": "蓝牙",
+      "ecu_name_en": "Bluetooth"
   },
   {
       "req_id": "6F1",
       "res_id": "656",
-      "ecu_name": "Center roof module"
+      "ecu_name": "中央车顶模块",
+      "ecu_name_en": "Center roof module"
   },
   {
       "req_id": "6F1",
       "res_id": "657",
-      "ecu_name": "Night view"
+      "ecu_name": "夜景",
+      "ecu_name_en": "Night view"
   },
   {
       "req_id": "6F1",
       "res_id": "659",
-      "ecu_name": "Active backrest (driver)"
+      "ecu_name": "主动靠背（驾驶员",
+      "ecu_name_en": "Active backrest (driver)"
   },
   {
       "req_id": "6F1",
       "res_id": "65A",
-      "ecu_name": "Active backrest (passenger)"
+      "ecu_name": "主动靠背（乘客）",
+      "ecu_name_en": "Active backrest (passenger)"
   },
   {
       "req_id": "6F1",
       "res_id": "65B",
-      "ecu_name": "Digital radio"
+      "ecu_name": "数字收音机",
+      "ecu_name_en": "Digital radio"
   },
   {
       "req_id": "6F1",
       "res_id": "65C",
-      "ecu_name": "Emergency response unit"
+      "ecu_name": "应急响应单元",
+      "ecu_name_en": "Emergency response unit"
   },
   {
       "req_id": "6F1",
       "res_id": "65D",
-      "ecu_name": "Camera-based driver assist system"
+      "ecu_name": "基于摄像头的驾驶员辅助系统",
+      "ecu_name_en": "Camera-based driver assist system"
   },
   {
       "req_id": "6F1",
       "res_id": "65E",
-      "ecu_name": "Gear selector switch"
+      "ecu_name": "档位选择器开关",
+      "ecu_name_en": "Gear selector switch"
   },
   {
       "req_id": "6F1",
       "res_id": "65F",
-      "ecu_name": "High beam assist"
+      "ecu_name": "远光灯辅助",
+      "ecu_name_en": "High beam assist"
   },
   {
       "req_id": "6F1",
       "res_id": "660",
-      "ecu_name": "Dashpoard/lnstruments cluster"
+      "ecu_name": "仪表板/仪表盘",
+      "ecu_name_en": "Dashpoard/lnstruments cluster"
   },
   {
       "req_id": "6F1",
       "res_id": "661",
-      "ecu_name": "Flexible bus interface"
+      "ecu_name": "灵活总线接口",
+      "ecu_name_en": "Flexible bus interface"
   },
   {
       "req_id": "6F1",
       "res_id": "662",
-      "ecu_name": "Central gateway"
+      "ecu_name": "中央网关",
+      "ecu_name_en": "Central gateway"
   },
   {
       "req_id": "6F1",
       "res_id": "663",
-      "ecu_name": "Infotainment system"
+      "ecu_name": "信息娱乐系统",
+      "ecu_name_en": "Infotainment system"
   },
   {
       "req_id": "6F1",
       "res_id": "664",
-      "ecu_name": "Parking sensors"
+      "ecu_name": "停车传感器",
+      "ecu_name_en": "Parking sensors"
   },
   {
       "req_id": "6F1",
       "res_id": "665",
-      "ecu_name": "Center console switches"
+      "ecu_name": "中控台开关",
+      "ecu_name_en": "Center console switches"
   },
   {
       "req_id": "6F1",
       "res_id": "667",
-      "ecu_name": "Central electronics"
+      "ecu_name": "中央电子",
+      "ecu_name_en": "Central electronics"
   },
   {
       "req_id": "6F1",
       "res_id": "668",
-      "ecu_name": "Rear compartment controller"
+      "ecu_name": "后车厢控制器",
+      "ecu_name_en": "Rear compartment controller"
   },
   {
       "req_id": "6F1",
       "res_id": "669",
-      "ecu_name": "Rear seat (driver side)"
+      "ecu_name": "后座（驾驶员侧）",
+      "ecu_name_en": "Rear seat (driver side)"
   },
   {
       "req_id": "6F1",
       "res_id": "66A",
-      "ecu_name": "Rear seat (passenger side)"
+      "ecu_name": "后座（乘客侧）",
+      "ecu_name_en": "Rear seat (passenger side)"
   },
   {
       "req_id": "6F1",
       "res_id": "66B",
-      "ecu_name": "Tailgate/Rear hatch"
+      "ecu_name": "尾门/后舱门",
+      "ecu_name_en": "Tailgate/Rear hatch"
   },
   {
       "req_id": "6F1",
       "res_id": "66D",
-      "ecu_name": "Driver's seat"
+      "ecu_name": "驾驶座",
+      "ecu_name_en": "Driver's seat"
   },
   {
       "req_id": "6F1",
       "res_id": "66E",
-      "ecu_name": "Front passenger seat"
+      "ecu_name": "前排乘客座椅",
+      "ecu_name_en": "Front passenger seat"
   },
   {
       "req_id": "6F1",
       "res_id": "670",
-      "ecu_name": "Light switch"
+      "ecu_name": "电灯开关",
+      "ecu_name_en": "Light switch"
   },
   {
       "req_id": "6F1",
       "res_id": "671",
-      "ecu_name": "Trailer"
+      "ecu_name": "拖车",
+      "ecu_name_en": "Trailer"
   },
   {
       "req_id": "6F1",
       "res_id": "672",
-      "ecu_name": "Central module (in driver's footwell) (FRM)"
+      "ecu_name": "中央模块（在驾驶员脚部空间）(FRM)",
+      "ecu_name_en": "Central module (in driver's footwell) (FRM)"
   },
   {
       "req_id": "6F1",
       "res_id": "673",
-      "ecu_name": "Infotainment display"
+      "ecu_name": "信息娱乐显示器",
+      "ecu_name_en": "Infotainment display"
   },
   {
       "req_id": "6F1",
       "res_id": "674",
-      "ecu_name": "Infotainment display (rear)"
+      "ecu_name": "信息娱乐显示器（后）",
+      "ecu_name_en": "Infotainment display (rear)"
   },
   {
       "req_id": "6F1",
       "res_id": "675",
-      "ecu_name": "Rear compartment display 2"
+      "ecu_name": "后车厢显示器 2",
+      "ecu_name_en": "Rear compartment display 2"
   },
   {
       "req_id": "6F1",
       "res_id": "676",
-      "ecu_name": "Vertical dynamics management"
+      "ecu_name": "垂直动力学管理",
+      "ecu_name_en": "Vertical dynamics management"
   },
   {
       "req_id": "6F1",
       "res_id": "678",
-      "ecu_name": "Climate/heater/Air conditioning"
+      "ecu_name": "气候/加热器/空调",
+      "ecu_name_en": "Climate/heater/Air conditioning"
   },
   {
       "req_id": "6F1",
       "res_id": "679",
-      "ecu_name": "Rear heater and A/C"
+      "ecu_name": "后加热器和空调",
+      "ecu_name_en": "Rear heater and A/C"
   },
   {
       "req_id": "6F1",
       "res_id": "67A",
-      "ecu_name": "Auxiliary heater"
+      "ecu_name": "辅助加热器",
+      "ecu_name_en": "Auxiliary heater"
   },
   {
       "req_id": "6F1",
       "res_id": "6A0",
-      "ecu_name": "Right B-pillar safety module"
+      "ecu_name": "右 B 柱安全模块",
+      "ecu_name_en": "Right B-pillar safety module"
   },
   {
       "req_id": "6F1",
       "res_id": "6A1",
-      "ecu_name": "Left B-pillar safety module"
+      "ecu_name": "左 B 柱安全模块",
+      "ecu_name_en": "Left B-pillar safety module"
   },
   {
       "req_id": "6F1",
       "res_id": "6A2",
-      "ecu_name": "Right B-pillar safety module"
+      "ecu_name": "右 B 柱安全模块",
+      "ecu_name_en": "Right B-pillar safety module"
   },
   {
       "req_id": "6F1",
       "res_id": "6A5",
-      "ecu_name": "Damper control(rear left)"
+      "ecu_name": "阻尼器控制（左后）",
+      "ecu_name_en": "Damper control(rear left)"
   },
   {
       "req_id": "6F1",
       "res_id": "6A6",
-      "ecu_name": "Damper control (rear right)"
+      "ecu_name": "阻尼器控制（右后）",
+      "ecu_name_en": "Damper control (rear right)"
   },
   {
       "req_id": "6F1",
       "res_id": "6A7",
-      "ecu_name": "Damper control (front left)"
+      "ecu_name": "阻尼器控制（左前）",
+      "ecu_name_en": "Damper control (front left)"
   },
   {
       "req_id": "6F1",
       "res_id": "6A8",
-      "ecu_name": "Damper control (front right)"
+      "ecu_name": "阻尼器控制（右前）",
+      "ecu_name_en": "Damper control (front right)"
   },
   {
       "req_id": "6F1",
       "res_id": "6AD",
-      "ecu_name": "Front left door"
+      "ecu_name": "左前门",
+      "ecu_name_en": "Front left door"
   },
   {
       "req_id": "6F1",
       "res_id": "6AE",
-      "ecu_name": "Front right door"
+      "ecu_name": "右前门",
+      "ecu_name_en": "Front right door"
   }
 ]
