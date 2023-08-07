@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>动画效果</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+  <style>
+    .container {
+      background-color: salmon;
+      box-sizing: border-box;
+      width: 300px;
+      height: 600px;
+      margin: 50px auto;
+      padding: 16px;
+      overflow: scroll;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      border-radius: 4px;
+    }
+
+    .item {
+      color: #000;
+      width: 200px;
+      height: 0;
+      background-color: aqua;
+      text-align: center;
+      border-radius: 4px;
+      font-size: 24px;
+      opacity: 0;
+      overflow: hidden;
+    }
+
+    .item.active {
+      opacity: 1;
+      height: 40px;
+      margin-bottom: 16px;
+      transition: all .4s ease-out;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div class="container">
+      <div v-for="(item, index) in 20" :key="index" class="item" :class="{'active': currentItem + index >= 20 }">
+        {{index}} -  {{ item }}
+      </div>
+    </div>
+  </div>
+  <script>
+
+    var app = new Vue({
+      el: '#app',
+      data: {
+        currentItem: 0
+      },
+      mounted() {
+        this.showNextItem();
+      },
+      methods: {
+        showNextItem() {
+          let timer = setInterval(() => {
+            this.currentItem++
+            console.log(this.currentItem)
+            if(this.currentItem === 20){
+              clearInterval(timer)
+            }
+          }, 1000);
+        }
+      }
+    })
+
+  </script>
+</body>
+
+</html>

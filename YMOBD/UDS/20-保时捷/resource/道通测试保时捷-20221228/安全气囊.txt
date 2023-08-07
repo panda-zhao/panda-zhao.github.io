@@ -175,7 +175,7 @@
 715 8 06 27 04 30 29 45 63 FF        48ms
 77F 8 02 67 04 AA AA AA AA AA        12ms
   
-715 8 02 10 4F FF FF FF FF FF        48ms
+715 8 02 104F FF FF FF FF FF        48ms
 77F 8 06 50 4F 00 4B 00 FA AA        12ms
   
 715 8 02 27 03 FF FF FF FF FF        36ms

@@ -3,48 +3,48 @@
 710 8 02 3E 00 FF FF FF FF FF         6ms # 3E待机握手
 77A 8 02 7E 00 86 00 01 08 00      1113ms
 
-710 8 03 22 F1 9E FF FF FF FF         7ms # 22 F1 9E 通过DID读数据
+710 8 03 22F19E FF FF FF FF         7ms # 22 F1 9E 通过DID读数据
 77A 8 10 13 62 F1 9E 43 41 4E         1ms # 62 F1 9E 43 41 4E 
 710 8 30 10 05 FF FF FF FF FF         9ms 
 77A 8 21 2F 43 41 4E 20 47 61        10ms 
 77A 8 22 74 65 77 61 79 00 61        10ms
 
-710 8 03 22 F1 A2 FF FF FF FF        10ms
+710 8 03 22F1A2 FF FF FF FF        10ms
 77A 8 10 09 62 F1 A2 41 37 2E         1ms
 710 8 30 10 05 FF FF FF FF FF         9ms
 77A 8 21 31 20 20 A2 41 37 2E        12ms
     
-710 8 03 22 F1 DF FF FF FF FF         8ms
+710 8 03 22F1DF FF FF FF FF         8ms
 77A 8 04 62 F1 DF 40 41 37 2E       108ms
     
-710 8 03 22 06 06 FF FF FF FF         2ms
+710 8 03 220606 FF FF FF FF         2ms
 77A 8 07 62 06 06 80 00 25 36         6ms
     
-710 8 03 22 06 06 FF FF FF FF         4ms
+710 8 03 220606 FF FF FF FF         4ms
 77A 8 07 62 06 06 80 00 25 36         4ms
     
 710 8 03 22 06 06 FF FF FF FF         6ms
 77A 8 07 62 06 06 80 00 25 36        55ms
     
-710 8 02 10 03 FF FF FF FF FF         5ms
+710 8 02 1003 FF FF FF FF FF         5ms
 77A 8 06 50 03 00 32 01 F4 36        19ms
     
-710 8 02 27 03 FF FF FF FF FF         1ms
+710 8 02 2703 FF FF FF FF FF         1ms
 77A 8 06 67 03 59 09 1C CA 36         8ms
     
-710 8 06 27 04 5D 05 8A 8F FF         2ms 
+710 8 06 2704 5D 05 8A 8F FF         2ms 
 77A 8 02 67 04 59 09 1C CA 36        10ms
     
-710 8 02 10 4F FF FF FF FF FF        10ms
+710 8 02 104F FF FF FF FF FF        10ms
 77A 8 06 50 4F 00 32 01 F4 36         5ms
     
-710 8 02 27 03 FF FF FF FF FF         5ms
+710 8 02 2703 FF FF FF FF FF         5ms
 77A 8 06 67 03 B1 6B A2 43 36         3ms
     
-710 8 06 27 04 86 57 BC B1 FF         7ms
+710 8 06 2704 86 57 BC B1 FF         7ms
 77A 8 02 67 04 B1 6B A2 43 36         6ms
     
-710 8 03 22 00 07 FF FF FF FF        34ms
+710 8 03 2200 07 FF FF FF FF        34ms
 77A 8 03 7F 22 78 6B A2 43 36       181ms
 77A 8 11 F7 62 00 07 01 20 20         1ms
     
@@ -827,21 +827,21 @@
 70D 8 30 10 05 FF FF FF FF FF         9ms
 777 8 21 30 33 31 A2 30 32 30       268ms
     
-70D 8 03 22 06 00 FF FF FF FF         3ms
+70D 8 03 220600 FF FF FF FF         3ms
 777 8 10 10 62 06 00 02 02 00         1ms
     
 70D 8 30 10 05 FF FF FF FF FF         9ms
 777 8 21 60 C0 48 6D FC 02 87        10ms
 777 8 22 01 77 05 6D FC 02 87       203ms
     
-70D 8 03 22 06 06 FF FF FF FF        37ms
+70D 8 03 220606 FF FF FF FF        37ms
 777 8 03 7F 22 78 6D FC 02 87       471ms
 777 8 10 0D 62 06 06 03 32 00         1ms
     
 70D 8 30 10 05 FF FF FF FF FF         9ms
 777 8 21 00 14 00 26 00 00 00        42ms
     
-70D 8 03 22 06 06 FF FF FF FF        38ms
+70D 8 03 220606 FF FF FF FF        38ms
 777 8 03 7F 22 78 26 00 00 00       470ms
 777 8 10 0D 62 06 06 03 32 00         1ms
     

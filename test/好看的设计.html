@@ -1,0 +1,118 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <title>好看的设计</title>
+    <style>
+      body{
+        font-family: cursive;
+      }
+      .nav-bar{
+        padding: 32px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+      }
+      .main{
+        margin: 50px auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .rectangle {
+        width: 200px;
+        height: 300px;
+        background: linear-gradient(to bottom, red, cyan, blue);
+        border-radius: 0 0 50% 50%;
+      }
+      .wrapper{
+        font-size: 40px;
+      }
+      .line{
+        width: 300px;
+        height: 300px;
+        background: repeating-linear-gradient(45deg, black, transparent 30px);
+        color: fuchsia;
+      }
+      .radial{
+        width: 300px;
+        height: 300px;
+        color: fuchsia;
+        background: repeating-radial-gradient(black, transparent 30px);
+      }
+      .flex{
+        display: flex;
+        gap: 30px;
+        align-items: center;
+        justify-content: space-between;
+      }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+      <nav class="nav-bar">
+        <button type="button" @click="show = 0">好看的按钮</button>
+        <button type="button" @click="show = 1">好看的图形</button>
+        <button type="button" @click="show = 2">好看的颜色</button>
+      </nav>
+      
+      <div class="main"> 
+        <div v-if="show === 0">
+          <div class="rectangle"></div>
+        </div>
+
+        <div class="wrapper" v-if="show === 1">
+          <div>CSS 函数</div>
+          <div class="flex">
+            <div class="line">线性渐变</div>
+            <div class="radial">径向渐变</div>
+          </div>
+        </div>
+        
+        <div class="wrapper" v-if="show === 2">
+          暂无内容
+        </div>
+      </div>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+               show: 0
+            },
+            created() {
+                setInterval(() => {
+                    const date = new Date()
+                    this.second = date.getSeconds()
+                    this.milliseconds = date.getMilliseconds()
+                    // this.time = this.formatTime(new Date())
+                    // console.log(this.time)
+                }, 1000);
+            },
+            computed: {
+                list() {
+                    return [
+                        { id: 1, name: '变量1=', value: this.second },
+                        { id: 1, name: '变量2=', value: this.milliseconds }
+                    ]
+                }
+
+            },
+            methods: {
+              handlerChange(){
+                
+              }
+            }
+        })
+    </script>
+</body>
+
+</html>

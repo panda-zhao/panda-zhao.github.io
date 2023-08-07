@@ -36,6 +36,7 @@ var data = [
 
   // 框架
   [
+    { name: "网站模板", url: "http://www.bootstrapmb.com/" },
     { name: "jquery", url: "http://jquery.cuishifeng.cn/", title: "jQuery API 3.3.1 速查表" },
     { name: "Vue.js", url: "https://cn.vuejs.org/v2/guide/installation.html", title: "" },
     { name: "webpack中文教程", url: "https://doc.webpack-china.org/", title: "" },
