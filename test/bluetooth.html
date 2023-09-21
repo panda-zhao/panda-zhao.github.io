@@ -13,6 +13,12 @@
     .z-button{
       margin: 30px auto;
     }
+    .error{
+      color: #f00;
+      font-size: 20px;
+      padding: 15px 0;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
@@ -26,8 +32,9 @@
     <div>
       <button id="z-button" class="z-button" @click="connectOBD">连接蓝牙</button>
     </div>
+    <div class="error">{{exception}}</div>
     <div>
-      <textarea name="" id="" cols="50" rows="10" v-model="dataFlow"></textarea>
+      <textarea name="" id="" cols="40" rows="10" v-model="dataFlow" readonly></textarea>
     </div>
   </div>
 
@@ -35,6 +42,7 @@
   const app = new Vue({
     el: '#app',
     data: {
+      exception: '未连接', // 异常信息
       dataFlow: '',
       message: 'vue使用数组渲染列表中的变量',
       characteristic_write: null,
@@ -67,6 +75,7 @@
           });
           console.log('1-设备信息', device)
           let deviceName = device.gatt.device.name;
+          this.exception = `${device.name}已连接`
           const server = await device.gatt.connect(); // 连接到 GATT 服务器
           // const OBDII_services = await server.getPrimaryServices(); // 获取所有服务
           // console.log('所有服务', OBDII_services)
@@ -102,7 +111,7 @@
           characteristic_notify.addEventListener( 'characteristicvaluechanged', e => {
               let dataView = e.target.value
               this.recBuffer.push(dataView)
-              this.dataFlow += `res: ${this.formatTime()}, ${new TextDecoder().decode(dataView)}\r`
+              this.dataFlow += `res: ${this.formatTime()}, ${new TextDecoder().decode(dataView)}\r\n`
               console.log(this.formatTime(), '回复消息', new TextDecoder().decode(dataView));
               // if(new TextDecoder().decode(dataView).includes('>')){
               //   this.recData = new TextDecoder().decode(this.recBuffer)
@@ -115,11 +124,12 @@
           this.writeCmd('0100')
         } catch (exception) {
           console.error(exception);
+          this.exception = exception
           alert("获取设备详细信息时发生错误");
         }
       },
       async writeCmd(cmd){
-        this.dataFlow += `req: ${this.formatTime()}, ${cmd}\r`
+        this.dataFlow += `req: ${this.formatTime()}, ${cmd}\r\n`
         this.recBuffer = []
         // ArrayBuffer
         let _cmd = this.formatCmd(cmd)
