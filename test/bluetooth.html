@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Bluetooth</title>
+  <link rel="stylesheet" href="../css/z-style.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+  <style>
+    #app{
+      text-align: center;
+    }
+    .z-button{
+      margin: 30px auto;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <div>
+      <a href="https://webbluetoothcg.github.io/web-bluetooth/#bluetooth" target="_blank">Web Bluetooth提案</a>
+    </div>
+    <div>
+      <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Bluetooth" target="_blank">MDN社区 Bluetooth</a>
+    </div>
+    <div>
+      <button id="z-button" class="z-button" @click="connectOBD">连接蓝牙</button>
+    </div>
+    <div>
+      <textarea name="" id="" cols="50" rows="10" v-model="dataFlow"></textarea>
+    </div>
+  </div>
+
+  <script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      dataFlow: '',
+      message: 'vue使用数组渲染列表中的变量',
+      characteristic_write: null,
+      recBuffer: [],
+      recData: '',
+      second: 0,
+      milliseconds: 0
+    },
+    created() {
+
+    },
+    computed: {
+      list() {
+        return [
+          { id: 1, name: '变量1=', value: this.second },
+          { id: 1, name: '变量2=', value: this.milliseconds }
+        ]
+      }
+    },
+    methods: {
+      async connectOBD(){
+        try {
+          const UUID = "0000FFF0-0000-1000-8000-00805F9B34FB".toLowerCase()
+          // let buffer = []
+          let start_timestamp = 0
+          const device = await navigator.bluetooth.requestDevice({
+            filters: [{ name: "OBDII" }],
+            optionalServices: [UUID],
+            acceptAllDevices: false,
+          });
+          console.log('1-设备信息', device)
+          let deviceName = device.gatt.device.name;
+          const server = await device.gatt.connect(); // 连接到 GATT 服务器
+          // const OBDII_services = await server.getPrimaryServices(); // 获取所有服务
+          // console.log('所有服务', OBDII_services)
+          const OBDII_service = await server.getPrimaryService(UUID); // 获取指定服务
+          console.log('2-服务信息', OBDII_service)
+          // 获取服务的特征值缓冲区
+          const characteristics = await OBDII_service.getCharacteristics() // 获取所有特征值
+          console.log('3-所有特征值', characteristics)
+          let notifyUUID = null
+          let writeUUID = null
+          for (let i = 0; i < characteristics.length; i++) {
+            const item = characteristics[i];
+            // 可通知属性
+            if(item.properties.notify || item.properties.indicate){
+              notifyUUID = item.uuid
+            }
+            // 可写,只有一个特征值
+            if(item.properties.write){
+              writeUUID = item.uuid
+            }
+          }
+          // 获取服务的特征值缓冲区
+          const characteristic_notify = await OBDII_service.getCharacteristic(notifyUUID)// 获取指定特征值
+          console.log('4-通知特征值', characteristic_notify)
+          this.characteristic_write = await OBDII_service.getCharacteristic(writeUUID)// 获取指定特征值
+          console.log('5-写入特征值', this.characteristic_write)
+
+          // 读取的数据不对
+          // const info = await characteristic_notify.readValue();
+          // console.log('6-通知信息', info)
+
+          // 监听回复消息
+          characteristic_notify.addEventListener( 'characteristicvaluechanged', e => {
+              let dataView = e.target.value
+              this.recBuffer.push(dataView)
+              this.dataFlow += `res: ${this.formatTime()}, ${new TextDecoder().decode(dataView)}\r`
+              console.log(this.formatTime(), '回复消息', new TextDecoder().decode(dataView));
+              // if(new TextDecoder().decode(dataView).includes('>')){
+              //   this.recData = new TextDecoder().decode(this.recBuffer)
+              //   console.log(this.formatTime(), '回复消息', this.recData);
+              // }
+            }
+          );
+
+          characteristic_notify.startNotifications();
+          this.writeCmd('0100')
+        } catch (exception) {
+          console.error(exception);
+          alert("获取设备详细信息时发生错误");
+        }
+      },
+      async writeCmd(cmd){
+        this.dataFlow += `req: ${this.formatTime()}, ${cmd}\r`
+        this.recBuffer = []
+        // ArrayBuffer
+        let _cmd = this.formatCmd(cmd)
+        console.log(this.formatTime(), '发送指令', _cmd)
+        await this.characteristic_write.writeValue(_cmd)
+      },
+      formatCmd(cmd){
+        try {
+          let str = cmd + '\r'
+          return new TextEncoder().encode(str).buffer
+        } catch (error) {
+          console.log('格式化指令发生错误',  error)
+        }
+      },
+      formatResult(result){
+        try {
+          // console.log(new TextDecoder().decode(result));
+          let bufView = new Uint8Array(result)
+          console.log('1', bufView)
+          let recBuffer = []
+          for (let i = 0; i < bufView.length; i++) {
+            recBuffer.push(bufView[i])
+            console.log('2', recBuffer)
+            if(+bufView[i] === 62){
+              console.log('3', bufView)
+              let abView = new Uint8Array(recBuffer)
+              let dataString = "";
+              for (let subIndex = 0; subIndex < abView.length; subIndex++) {
+                dataString += String.fromCharCode(abView[subIndex]);
+              }
+              console.log('最终结果', dataString)
+              return dataString
+            }
+          }
+        } catch (error) {
+          console.log('格式化结果发生错误',  error)
+        }
+      },
+      formatTime() {
+        let date = new Date()
+        const year = date.getFullYear()
+        const month = date.getMonth() + 1
+        const day = date.getDate()
+        const hour = date.getHours()
+        const minute = date.getMinutes()
+        const second = date.getSeconds()
+        const milliseconds = date.getMilliseconds()
+        const formatNumber = n => {
+            n = n.toString()
+            return n[1] ? n : '0' + n
+        }
+        return [year, month, day].map(formatNumber).join('-') + ' ' + [hour, minute, second].map(formatNumber).join(':') + ':' + milliseconds 
+      }
+    }
+  })
+
+    // const button = document.querySelector('z-button');
+    // button.addEventListener('click', async () => {
+      
+    // })
+
+    // new Uint8Array([50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60])
+
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>车况检测大师故障码处理工具</title>
+</head>
+<body>
+  <div>
+
+  </div>
+  <script src="./P0.js"></script>
+  <script src="./P1.js"></script>
+  <script src="./P2.js"></script>
+  <script src="./P3.js"></script>
+  <script src="./B.js"></script>
+  <script src="./C.js"></script>
+  <script src="./U.js"></script>
+  <script>
+    
+    let result = Object.assign(P0, P1, P2, P3, B, C, U)
+    console.log() 
+    let total = Object.keys(result).length // 5809条 - 1248 = 4561
+    let print = `<div>故障码总数为${total}</div>`
+    
+    // 计算P1
+    let p1_length = Object.keys(P1).length // 1248条
+
+    let child_length = 0
+    for (const key in P1) {
+      const element = P1[key];
+      child_length+= element.length // 5450条
+    }
+    print += `<div>P1故障码数量为${p1_length}, 不去重故障码总数为${child_length}</div>`
+    print += `<div>不按code统计总数为${total - p1_length + child_length}</div>`
+    document.write(print)
+    // 写入文件
+    writeFile(JSON.stringify(result))
+    function writeFile(content){
+      // 创建一个Blob对象，用于将content内容写入文件中
+      var blob = new Blob([content], { type: "text/plain;charset=utf-8" });
+      // 创建一个a标签，用于生成下载链接
+      var a = document.createElement("a");
+      // 设置下载链接的属性
+      a.download = "test.txt"; // 文件名
+      a.href = URL.createObjectURL(blob); // 文件内容
+      a.textContent = "点击下载"; // 链接文本
+      // 将a标签添加到页面中
+      document.body.appendChild(a);
+    }
+  </script>
+</body>
+</html>

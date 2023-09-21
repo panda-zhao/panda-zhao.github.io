@@ -38,18 +38,41 @@
 
       // let result = "DD:7D:F2:6E:E6:0C"
       // console.log(result.length === 17 && result.includes(':'))
-      let _carPID = {}
-      let supportPid =
-        '123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456'
-      for (var i = 0; i < 96; i++) {
-        let id = i + 1
-        let pid = id.toString(16).toUpperCase()
-        if (pid.length < 2) {
-          pid = '0' + pid
-        }
-        _carPID['01' + pid] = +supportPid[i]
-      }
-      console.log(JSON.stringify(_carPID))
+      // let _carPID = {}
+      // let supportPid =
+      //   '123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456'
+      // for (var i = 0; i < 96; i++) {
+      //   let id = i + 1
+      //   let pid = id.toString(16).toUpperCase()
+      //   if (pid.length < 2) {
+      //     pid = '0' + pid
+      //   }
+      //   _carPID['01' + pid] = +supportPid[i]
+      // }
+      // console.log(JSON.stringify(_carPID))
+
+
+      // 方案一
+      // const str = "Hello, world!";
+      // const uint8Array = new TextEncoder().encode(str); // 字符串转ArrayBuffer
+      // const arrayBuffer = uint8Array.buffer; // 
+      // console.log(uint8Array, arrayBuffer)
+
+      // 方案二
+      // let str = "Hello, world!";
+      // let uint8Array = new Uint8Array(str.length);
+      // for (var i = 0; i < str.length; i++) {
+      //   uint8Array[i] = str.charCodeAt(i);
+      // }
+      // const arrayBuffer = uint8Array.buffer;
+      // console.log(typeof arrayBuffer, arrayBuffer)
+      
+      // 方案一
+      // const uint8Array = new Uint8Array([72, 101, 108, 108, 111, 44, 32, 119, 111, 114, 108, 100, 33])
+      // const str = new TextDecoder().decode(uint8Array)
+      // console.log(typeof str, str)
+      
+      
     </script>
   </body>
 </html>

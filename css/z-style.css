@@ -72,6 +72,7 @@ legend, button {
   border: 0;
   font-size: 14px;
   border-radius: 4px;
+  cursor: pointer;
 }
 
 button, html [type="button"], [type="reset"], [type="submit"] {
@@ -147,8 +148,7 @@ button, html [type="button"], [type="reset"], [type="submit"] {
   border: none;
   font-weight: normal;
   -webkit-font-smoothing: subpixel-antialiased;
-  transition: border 0.25s linear, color 0.25s linear,
-    background-color 0.25s linear;
+  transition: border 0.25s linear, color 0.25s linear, background-color 0.25s linear;
   text-align: center;
   vertical-align: middle;
   white-space: normal;
@@ -473,8 +473,7 @@ button, html [type="button"], [type="reset"], [type="submit"] {
   border: none;
   font-weight: normal;
   -webkit-font-smoothing: subpixel-antialiased;
-  transition: border 0.25s linear, color 0.25s linear,
-    background-color 0.25s linear;
+  transition: border 0.25s linear, color 0.25s linear, background-color 0.25s linear;
   text-align: center;
   vertical-align: middle;
   white-space: normal;

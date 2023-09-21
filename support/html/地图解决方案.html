@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>地图解决方案</title>
+  <style>
+    #container{
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <div id="container" style="width:500px; height:300px"></div>
+
+  <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=9d5e9dae9385edfb79634ac62ae73dd5"></script> 
+  <script>
+    window.onload = function(){
+      let map = new AMap.Map('container',{
+        zoom: 15,  //设置地图显示的缩放级别
+        center: [113.987942,22.68908],//设置地图中心点坐标
+        viewMode: '3D',  //设置地图模式
+        lang:'zh_cn',  //设置地图语言类型
+      });
+
+      let marker = new AMap.Marker({
+        position: new AMap.LngLat(113.987942,22.68908), // 经纬度对象
+        title: "深圳市宇明电子有限公司"
+      })
+      map.add(marker)
+    }
+    
+  </script>
+
+</body>
+</html>
