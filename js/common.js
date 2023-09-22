@@ -1,7 +1,7 @@
 var data = [
   // 重要
   [
-    { name: 'Google web开发学习', url:"https://web.dev/learn/", title: ""}
+    { name: 'Google web开发学习', url:"https://web.dev/learn/", title: ""},
     { name: "nodejs", url: "https://nodejs.org/zh-cn", title: "" },
     { name: "npm", url: "https://docs.npmjs.com/", title: "" },
     { name: "CommonJS", url: "https://nodejs.org/docs/latest/api/modules.html#modules_modules_commonjs_modules", title: "" },
