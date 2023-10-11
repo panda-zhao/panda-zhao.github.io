@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let value= "0285B1119C03E40384"
+    let min = value.substring(10, 14)
+    let max = value.substring(14, 18)
+    function format (data) {
+      // console.log('初始值', data)
+			let result = parseInt(data, 16)
+      console.log('初始值', result)
+			if (result > 32767) {
+				result = result - 65536
+			}
+			result = result * 2
+      let chunk = Number(result.toFixed(0))
+      console.log('结果', chunk)
+			return chunk
+		}
+    format("8000")
+    format("FFFF")
+    format("0000")
+    format("0001")
+    format("7FFF")
+
+   </script>
+</body>
+</html>
