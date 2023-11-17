@@ -158,7 +158,7 @@
       </div>
     </div>
     
-    <!-- <footer>
+    <footer>
       <div>参考文档</div>
       <ul>
         <li>
@@ -168,7 +168,7 @@
           <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Bluetooth" target="_blank">MDN社区 Bluetooth</a>
         </li>
       </ul>
-    </footer> -->
+    </footer>
     
   </div>
 
@@ -190,7 +190,10 @@
       inputValue: "", // 手动输入的值
     },
     created() {
-      // console.log(this.tem, this.dataFlow, this.$data)
+      console.log(navigator.bluetooth)
+      if(!navigator.bluetooth){
+        alert('当前浏览器不支持该特性')
+      }
     },
     computed: {
       list() {
