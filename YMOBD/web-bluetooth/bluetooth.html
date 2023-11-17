@@ -4,11 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Web Bluetooth</title>
+  <script src="./util.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
   <style>
     #app{
       /* text-align: center; */
-      padding-top: 50px;
+      padding: 3rem 1rem 0;
     }
     .floatingView{
       position: fixed;
@@ -17,11 +18,11 @@
       right: 0;
       background: rgba(0, 0, 0, .15);
       color: #f00;
-      font-size: 16px;
+      font-size: 1rem;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 10px 0;
+      padding: 0.5rem 0;
       /* font-weight: bold; */
     }
     .container{
@@ -33,7 +34,7 @@
       border-left: 3px solid blue;
       /* border-bottom: 1px solid #ccc; */
       font-size: 1.5rem;
-      padding: 2px 8px 0;
+      padding: 0 0.5rem;
       margin: 1rem 0;
       color: #333;
     }
@@ -74,6 +75,7 @@
       border-radius: 0.5rem;
       box-shadow: none;
       transition: border-color 0.3s ease;
+      margin-bottom: 1rem;
     }
 
     input[type="text"]:focus,
@@ -96,6 +98,8 @@
     }
 
     textarea {
+      box-sizing: border-box;
+      width: 100%;
       padding: 0.5rem;
       font-size: 1rem;
       border: 1px solid #ddd;
@@ -134,31 +138,28 @@
 
     <div v-if="!isConnected">
       <button id="z-button" class="z-button" @click="connectOBD">连接蓝牙</button>
+      
     </div>
 
     <div class="container">
       <div>
-        <h2>数据发送和回复信息</h2>
-        <div>
-          <textarea name="" id="" cols="30" rows="10" v-model="dataFlow" readonly></textarea>
-        </div>
-        <!-- <div v-html="dataFlow" class="container"></div> -->
-        <button @click="dataFlow=''">重置</button>
-      </div>
-  
-      <div>
         <h2>请输入要发送的指令</h2>
         <input type="text" v-model="inputValue" placeholder="请输入指令">
-        <button @click="custom_pid">发送</button>
-      </div>
-  
-      <div>
-        <h2>自动测试所有指令</h2>
+        <button @click="custom_pid">发送单个指令</button>
         <button @click="test_pid">测试所有指令</button>
+      </div>
+
+      <div>
+        <h2>数据发送和回复记录 <button @click="dataFlow=''">重置</button></h2>
+        <div>
+          <textarea name="" id="" cols="30" rows="20" v-model="dataFlow" readonly></textarea>
+        </div>
+        <!-- <div v-html="dataFlow" class="container"></div> -->
+       
       </div>
     </div>
     
-    <footer>
+    <!-- <footer>
       <div>参考文档</div>
       <ul>
         <li>
@@ -168,7 +169,7 @@
           <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Bluetooth" target="_blank">MDN社区 Bluetooth</a>
         </li>
       </ul>
-    </footer>
+    </footer> -->
     
   </div>
 
@@ -190,10 +191,9 @@
       inputValue: "", // 手动输入的值
     },
     created() {
-      console.log(navigator.bluetooth)
-      if(!navigator.bluetooth){
-        alert('当前浏览器不支持该特性')
-      }
+      // console.log(this.tem, this.dataFlow, this.$data)
+      // console.log(PIDs)
+      // console.log(CryptoJS)
     },
     computed: {
       list() {
@@ -251,12 +251,7 @@
             this.characteristic_notify.startNotifications(); // 启用监听特征值改变
             this.isConnected = true
             // 执行默认队列
-            let queue = ['ATZ', 'ATE0', 'ATL0', 'ATH1', 'ATSP0', 'AT+VERSION', 'ATI', '0100', 'ATDP', "ATRV",  "020200", "020000", "022000", "024000", "020C00", "020D00", "03", "07", "0A", "04", "05", "06", "0900", "0902", "0904", "0906", "0908", "090A", "090B", "010C", "010D"]
-            for (let i = 0; i < 96; i++) {
-              let hex = i.toString(16).toUpperCase()
-              let cmd_01 =  (hex.length < 2 ? "010" : '01') + hex
-              queue.push(cmd_01)
-            }
+            let queue = ['ATZ', 'ATE0', 'ATL0', 'ATH1', 'ATSP0', 'AT+VERSION', 'ATI', '0100', 'ATDP', "ATRV"]
             this.queue = queue
             this.writeCmd()
           })
@@ -277,13 +272,13 @@
           return
         }
         let cmd = this.queue[this.currentIndex]
-        this.errMsg = `"正在发送指令 ${cmd}`
+        this.errMsg = `正在发送指令 ${cmd}`
 
         let _cmd = new TextEncoder().encode(cmd + '\r').buffer // 格式化cmd
         this.characteristic_write.writeValue(_cmd).then( async(res)=>{
           console.log(this.formatTime(), '发送指令成功', cmd)
           this.isReady = false
-          this.dataFlow = `回复: ${cmd}\r\n` + this.dataFlow // 发送记录
+          // this.dataFlow = `发送: ${cmd}\r\n` + this.dataFlow // 发送记录
           this.currentCMD = cmd
         }).catch((error)=>{
           console.log('发送失败',error)
@@ -298,10 +293,12 @@
           // console.log('特征值变化', this.tem, chunk)
           this.tem += chunk // 当前命令返回的总数据
           if(this.tem.includes('>')){
-            console.log('接收完成', this.tem)
+            // console.log('接收完成', this.tem)
             this.isReady = true
-            this.dataFlow = `发送: ${this.tem.replace(/[ ]|[\r]|[\n]|[\r\n]/g, "")} \r\n` + this.dataFlow
-            console.log( `===== ${this.currentCMD}===== Reply\r\n ${this.tem}`);
+            this.dataFlow = `\r\n发送：${this.currentCMD}\r\n回复: ${this.tem.replace(/[ ]|[\r]|[\n]|[\r\n]/g, "")}\r\n格式化后: ${this.formatData(this.currentCMD, this.tem)}\r\n` + this.dataFlow
+
+            let print = `发送：${this.currentCMD}\r\n回复: ${this.tem}\r\n格式化后: ${this.formatData(this.currentCMD, this.tem)}`
+            console.log(print);
             this.tem = '' // 接收完成。重制数据
             if((this.currentIndex + 1) < this.queue.length ){
               this.currentIndex++
@@ -315,13 +312,56 @@
           }
         });
       },
-
+      formatData(cmd, data){
+        let result = null
+        if(data.includes('NO DATA')){
+          console.warn('无数据', cmd, data)
+        }
+        if (cmd.substring(0, 2) === '01'){
+          let condition = ['0100', '0120', '0140', '0101', '0141'].includes(cmd)
+          result = condition ? getSupport(cmd, data) : get$01(cmd, data)
+        }else if(cmd.substring(0, 2) === '02'){
+          let condition = ['0200', '0220', '0240'].includes(cmd.substring(0, 4))
+          result =  condition ? getSupport$02(cmd, data) : get$02(cmd, data)
+        }else if(['03', '07', '0A'].includes(cmd)){
+          result = getDTC(cmd, data)
+        }else if(cmd.substring(0, 2) === '05'){
+          let condition = ["0500", "0520", "0540", "0560", "0580", "05A0", "05C0", "05E0"].includes(cmd.substring(0, 4))
+          result = condition ? getSupport(cmd, data): get$05(cmd, data)
+        }else if(cmd.substring(0, 2) === '06'){
+          let condition = ["0600", "0620", "0640", "0660", "0680", "06A0", "06C0", "06E0"].includes(cmd.substring(0, 4))
+          result = condition ? getSupport(cmd, data): get$06(cmd, data)
+        }else if(cmd.substring(0, 2) === '09'){
+          let condition = '0900' === cmd
+          result = condition ? getSupport(cmd, data): get$09(cmd, data)
+        }else if(['10', '3E', "27", "22", "2E", "14", "19"].includes(cmd.substring(0, 2))){
+          let condition = cmd.substring(0, 4) === '1902'
+          result = condition ? getUDSDTC(cmd, data): data
+        }else{
+          result = data
+          if(cmd === 'ATDP'){
+            // 【重要】把需要使用的协议存储在缓存内,解析数据需要用到 wx.getStorageSync('____ATDP')
+            // wx.setStorageSync('____ATDP', result)
+            // 【重要】把需要使用的协议存储在缓存内,解析数据需要用到 localStorage.getItem('____ATDP')
+            localStorage.setItem('____ATDP', result);
+          }
+        }
+        return result
+      },
       custom_pid(){
+        if(!this.isConnected){
+          alert('错误！请先连接蓝牙再测试！')
+          return
+        }
         this.queue.push(this.inputValue)
         this.writeCmd()
       },
 
       test_pid(){
+        if(!this.isConnected){
+          alert('错误！请先连接蓝牙再测试！')
+          return
+        }
         // 执行默认队列
         let queue = ["ATRV",  "020200", "020000", "022000", "024000", "020C00", "020D00", "03", "07", "0A", "04", "05", "06", "0900", "0902", "0904", "0906", "0908", "090A", "090B", "010C", "010D"]
         for (let i = 0; i < 96; i++) {
