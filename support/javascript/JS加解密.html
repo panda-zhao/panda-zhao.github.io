@@ -292,7 +292,9 @@
         if (text) {
           let key = CryptoJS.enc.Utf8.parse(secretKey)
           try {
-            let encrypted = CryptoJS.AES.encrypt(text, key, buildConfig())
+            let srcs = CryptoJS.enc.Utf8.parse(text);
+            console.log('srcs', srcs)
+            let encrypted = CryptoJS.AES.encrypt(srcs, key, buildConfig())
             let cipherText = encrypted.toString()
             if (encode === 'HEX') {
               cipherText = CryptoJS.enc.Hex.stringify(

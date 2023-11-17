@@ -62,6 +62,13 @@
 
     let index = parseInt('0160'.substring(2), 16)
     console.log('index', index)
+
+    function test01(data) {
+      let result = parseInt(data, 16) * 0.005
+      return Number(result.toFixed(3))
+    }
+    
+    console.log(test01(64))
   </script>
 </body>
 

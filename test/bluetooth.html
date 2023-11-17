@@ -4,169 +4,330 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Web Bluetooth</title>
-  <link rel="stylesheet" href="../css/z-style.css">
   <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
   <style>
     #app{
-      text-align: center;
+      /* text-align: center; */
+      padding-top: 50px;
     }
-    .z-button{
-      margin: 30px auto;
-    }
-    .error{
+    .floatingView{
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, .15);
       color: #f00;
-      font-size: 20px;
-      padding: 15px 0;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 0;
+      /* font-weight: bold; */
+    }
+    .container{
+      display: flex;
+      flex-direction: column;
+    }
+
+    h2{
+      border-left: 3px solid blue;
+      /* border-bottom: 1px solid #ccc; */
+      font-size: 1.5rem;
+      padding: 2px 8px 0;
+      margin: 1rem 0;
+      color: #333;
+    }
+
+    button {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
       font-weight: bold;
+      text-align: center;
+      text-transform: uppercase;
+      color: #fff;
+      background-color: #007bff;
+      border: none;
+      border-radius: 0.5rem;
+      box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.15);
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      cursor: pointer;
+      transform: translateY(-2px);
+      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    }
+
+    button:active {
+      transform: translateY(0);
+      box-shadow: none;
+    }
+
+   
+    input[type="text"],
+    input[type="password"],
+    input[type="email"] {
+      padding: 0.5rem;
+      font-size: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 0.5rem;
+      box-shadow: none;
+      transition: border-color 0.3s ease;
+    }
+
+    input[type="text"]:focus,
+    input[type="password"]:focus,
+    input[type="email"]:focus {
+      outline: none;
+      border-color: #007bff;
+    }
+
+    input[type="text"]::placeholder,
+    input[type="password"]::placeholder,
+    input[type="email"]::placeholder {
+      color: #999;
+    }
+
+    input[type="text"]:hover,
+    input[type="password"]:hover,
+    input[type="email"]:hover {
+      border-color: #ccc;
+    }
+
+    textarea {
+      padding: 0.5rem;
+      font-size: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 0.5rem;
+      box-shadow: none;
+      transition: border-color 0.3s ease;
+    }
+
+    textarea:focus {
+      outline: none;
+      border-color: #007bff;
+    }
+
+    textarea::placeholder {
+      color: #999;
+    }
+
+    textarea:hover {
+      border-color: #ccc;
+    }
+
+    footer{
+      margin-top: 15px;
+    }
+    
+    li{
+      font-size: 1rem;
+      color: #333;
+      margin-bottom: 0.5rem;
     }
   </style>
 </head>
 <body>
   <div id="app">
-    <div>
-      <a href="https://webbluetoothcg.github.io/web-bluetooth/#bluetooth" target="_blank">Web Bluetooth提案</a>
-    </div>
-    <div>
-      <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Bluetooth" target="_blank">MDN社区 Bluetooth</a>
-    </div>
-    <div>
+    <div class="floatingView">{{errMsg}}</div>
+
+    <div v-if="!isConnected">
       <button id="z-button" class="z-button" @click="connectOBD">连接蓝牙</button>
     </div>
-    <div class="error">{{exception}}</div>
-    <div>
-      <textarea name="" id="" cols="40" rows="10" v-model="dataFlow" readonly></textarea>
+
+    <div class="container">
+      <div>
+        <h2>数据发送和回复信息</h2>
+        <div>
+          <textarea name="" id="" cols="30" rows="10" v-model="dataFlow" readonly></textarea>
+        </div>
+        <!-- <div v-html="dataFlow" class="container"></div> -->
+        <button @click="dataFlow=''">重置</button>
+      </div>
+  
+      <div>
+        <h2>请输入要发送的指令</h2>
+        <input type="text" v-model="inputValue" placeholder="请输入指令">
+        <button @click="custom_pid">发送</button>
+      </div>
+  
+      <div>
+        <h2>自动测试所有指令</h2>
+        <button @click="test_pid">测试所有指令</button>
+      </div>
     </div>
+    
+    <!-- <footer>
+      <div>参考文档</div>
+      <ul>
+        <li>
+          <a href="https://webbluetoothcg.github.io/web-bluetooth/#bluetooth" target="_blank">Web Bluetooth提案</a>
+        </li>
+        <li>
+          <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Bluetooth" target="_blank">MDN社区 Bluetooth</a>
+        </li>
+      </ul>
+    </footer> -->
+    
   </div>
 
+  
   <script>
   const app = new Vue({
     el: '#app',
     data: {
-      exception: '未连接', // 异常信息
+      isConnected: false,
+      queue: [], // 当前任务队列
+      currentIndex: 0, // 当前任务下标
+      currentCMD: null, // 当前正在执行的指令
+      errMsg: '请先点击连接蓝牙', // 异常信息
       dataFlow: '',
-      message: 'vue使用数组渲染列表中的变量',
-      characteristic_write: null,
-      recBuffer: [],
-      recData: '',
-      second: 0,
-      milliseconds: 0
+      isReady: true, // 当时是否准备好
+      characteristic_write: null, // 写入的特征值
+      characteristic_notify: null, // 订阅的特征值
+      tem: '',// 数据存储
+      inputValue: "", // 手动输入的值
     },
     created() {
-
+      // console.log(this.tem, this.dataFlow, this.$data)
     },
     computed: {
       list() {
         return [
-          { id: 1, name: '变量1=', value: this.second },
-          { id: 1, name: '变量2=', value: this.milliseconds }
+          
         ]
       }
     },
     methods: {
-      async connectOBD(){
+      connectOBD(){
         try {
           const UUID = "0000FFF0-0000-1000-8000-00805F9B34FB".toLowerCase()
-          // let buffer = []
-          let start_timestamp = 0
-          const device = await navigator.bluetooth.requestDevice({
-            filters: [{ name: "OBDII" }],
-            optionalServices: [UUID],
-            acceptAllDevices: false,
-          });
-          console.log('1-设备信息', device)
-          let deviceName = device.gatt.device.name;
-          this.exception = `${device.name}已连接`
-          const server = await device.gatt.connect(); // 连接到 GATT 服务器
-          // const OBDII_services = await server.getPrimaryServices(); // 获取所有服务
-          // console.log('所有服务', OBDII_services)
-          const OBDII_service = await server.getPrimaryService(UUID); // 获取指定服务
-          console.log('2-服务信息', OBDII_service)
-          // 获取服务的特征值缓冲区
-          const characteristics = await OBDII_service.getCharacteristics() // 获取所有特征值
-          console.log('3-所有特征值', characteristics)
-          let notifyUUID = null
-          let writeUUID = null
-          for (let i = 0; i < characteristics.length; i++) {
-            const item = characteristics[i];
-            // 可通知属性
-            if(item.properties.notify || item.properties.indicate){
-              notifyUUID = item.uuid
-            }
-            // 可写,只有一个特征值
-            if(item.properties.write){
-              writeUUID = item.uuid
-            }
+          let option = {
+            filters: [
+              {services: [UUID]},
+              // {name: 'B25'},
+              // {namePrefix: '前缀'}
+            ],
+            // optionalServices: [UUID], // 必须小写
+            acceptAllDevices: false, // filters存在时位false, 否则为true
           }
-          // 获取服务的特征值缓冲区
-          const characteristic_notify = await OBDII_service.getCharacteristic(notifyUUID)// 获取指定特征值
-          console.log('4-通知特征值', characteristic_notify)
-          this.characteristic_write = await OBDII_service.getCharacteristic(writeUUID)// 获取指定特征值
-          console.log('5-写入特征值', this.characteristic_write)
-
-          // 读取的数据不对
-          // const info = await characteristic_notify.readValue();
-          // console.log('6-通知信息', info)
-
-          // 监听回复消息
-          characteristic_notify.addEventListener( 'characteristicvaluechanged', e => {
-              let dataView = e.target.value
-              this.recBuffer.push(dataView)
-              this.dataFlow += `res: ${this.formatTime()}, ${new TextDecoder().decode(dataView)}\r\n`
-              console.log(this.formatTime(), '回复消息', new TextDecoder().decode(dataView));
-              // if(new TextDecoder().decode(dataView).includes('>')){
-              //   this.recData = new TextDecoder().decode(this.recBuffer)
-              //   console.log(this.formatTime(), '回复消息', this.recData);
-              // }
+          navigator.bluetooth.requestDevice(option).then(async (device)=>{
+            console.log('1-设备信息', device)
+            let deviceName = device.gatt.device.name;
+            this.errMsg = `${device.name} 已连接`
+            const server = await device.gatt.connect(); // 连接到 GATT 服务器
+            // const OBDII_services = await server.getPrimaryServices(); // 获取所有服务
+            // console.log('所有服务', OBDII_services)
+            const OBDII_service = await server.getPrimaryService(UUID); // 获取指定服务
+            console.log('2-服务信息', OBDII_service)
+            // 获取服务的特征值缓冲区
+            const characteristics = await OBDII_service.getCharacteristics() // 获取所有特征值
+            console.log('3-所有特征值', characteristics)
+            let notifyUUID = null
+            let writeUUID = null
+            for (let i = 0; i < characteristics.length; i++) {
+              const item = characteristics[i];
+              // 可通知属性
+              if(item.properties.notify || item.properties.indicate){
+                notifyUUID = item.uuid
+              }
+              // 可写,只有一个特征值
+              if(item.properties.write){
+                writeUUID = item.uuid
+              }
             }
-          );
+            // 获取服务的特征值缓冲区
+            this.characteristic_notify = await OBDII_service.getCharacteristic(notifyUUID)// 获取指定特征值
+            console.log('4-通知特征值', this.characteristic_notify)
+            this.characteristic_write = await OBDII_service.getCharacteristic(writeUUID)// 获取指定特征值
+            console.log('5-写入特征值', this.characteristic_write)
 
-          characteristic_notify.startNotifications();
-          this.writeCmd('0100')
+            console.log('6-启动订阅，开始监听特征值变化', )
+            this.onBLECharacteristicValueChange() // 监听低功耗蓝牙设备特征值变化
+            this.characteristic_notify.startNotifications(); // 启用监听特征值改变
+            this.isConnected = true
+            // 执行默认队列
+            let queue = ['ATZ', 'ATE0', 'ATL0', 'ATH1', 'ATSP0', 'AT+VERSION', 'ATI', '0100', 'ATDP', "ATRV",  "020200", "020000", "022000", "024000", "020C00", "020D00", "03", "07", "0A", "04", "05", "06", "0900", "0902", "0904", "0906", "0908", "090A", "090B", "010C", "010D"]
+            for (let i = 0; i < 96; i++) {
+              let hex = i.toString(16).toUpperCase()
+              let cmd_01 =  (hex.length < 2 ? "010" : '01') + hex
+              queue.push(cmd_01)
+            }
+            this.queue = queue
+            this.writeCmd()
+          })
+          .catch(function(error) {
+            console.log("出现错误： " , error);
+            alert(error.message)
+          });
         } catch (exception) {
           console.error(exception);
-          this.exception = exception
+          this.errMsg = exception
           alert("获取设备详细信息时发生错误");
         }
       },
-      async writeCmd(cmd){
-        this.dataFlow += `req: ${this.formatTime()}, ${cmd}\r\n`
-        this.recBuffer = []
-        // ArrayBuffer
-        let _cmd = this.formatCmd(cmd)
-        console.log(this.formatTime(), '发送指令', _cmd)
-        await this.characteristic_write.writeValue(_cmd)
-      },
-      formatCmd(cmd){
-        try {
-          let str = cmd + '\r'
-          return new TextEncoder().encode(str).buffer
-        } catch (error) {
-          console.log('格式化指令发生错误',  error)
+      // 写数据
+      writeCmd(){
+        if(!this.isReady){
+          console.log('当前有未完成的指令', this.currentCMD)
+          return
         }
+        let cmd = this.queue[this.currentIndex]
+        this.errMsg = `"正在发送指令 ${cmd}`
+
+        let _cmd = new TextEncoder().encode(cmd + '\r').buffer // 格式化cmd
+        this.characteristic_write.writeValue(_cmd).then( async(res)=>{
+          console.log(this.formatTime(), '发送指令成功', cmd)
+          this.isReady = false
+          this.dataFlow = `回复: ${cmd}\r\n` + this.dataFlow // 发送记录
+          this.currentCMD = cmd
+        }).catch((error)=>{
+          console.log('发送失败',error)
+        })
       },
-      formatResult(result){
-        try {
-          // console.log(new TextDecoder().decode(result));
-          let bufView = new Uint8Array(result)
-          console.log('1', bufView)
-          let recBuffer = []
-          for (let i = 0; i < bufView.length; i++) {
-            recBuffer.push(bufView[i])
-            console.log('2', recBuffer)
-            if(+bufView[i] === 62){
-              console.log('3', bufView)
-              let abView = new Uint8Array(recBuffer)
-              let dataString = "";
-              for (let subIndex = 0; subIndex < abView.length; subIndex++) {
-                dataString += String.fromCharCode(abView[subIndex]);
-              }
-              console.log('最终结果', dataString)
-              return dataString
+      // 接收回复消息
+      onBLECharacteristicValueChange(){
+        // 监听低功耗蓝牙设备特征值变化,必须先启用startNotifications，才能监听到
+        this.characteristic_notify.addEventListener('characteristicvaluechanged', e => {
+          let value = e.target.value // 当前帧返回的数据
+          let chunk = new TextDecoder().decode(value)
+          // console.log('特征值变化', this.tem, chunk)
+          this.tem += chunk // 当前命令返回的总数据
+          if(this.tem.includes('>')){
+            console.log('接收完成', this.tem)
+            this.isReady = true
+            this.dataFlow = `发送: ${this.tem.replace(/[ ]|[\r]|[\n]|[\r\n]/g, "")} \r\n` + this.dataFlow
+            console.log( `===== ${this.currentCMD}===== Reply\r\n ${this.tem}`);
+            this.tem = '' // 接收完成。重制数据
+            if((this.currentIndex + 1) < this.queue.length ){
+              this.currentIndex++
+              this.writeCmd()
+            }else{
+              this.queue = []
+              this.currentIndex = 0
+              this.errMsg = `发送 ${this.currentCMD} 完成`
+              console.log('===== 队列已执行完成 =====')
             }
           }
-        } catch (error) {
-          console.log('格式化结果发生错误',  error)
+        });
+      },
+
+      custom_pid(){
+        this.queue.push(this.inputValue)
+        this.writeCmd()
+      },
+
+      test_pid(){
+        // 执行默认队列
+        let queue = ["ATRV",  "020200", "020000", "022000", "024000", "020C00", "020D00", "03", "07", "0A", "04", "05", "06", "0900", "0902", "0904", "0906", "0908", "090A", "090B", "010C", "010D"]
+        for (let i = 0; i < 96; i++) {
+          let hex = i.toString(16).toUpperCase()
+          let cmd_01 =  (hex.length < 2 ? "010" : '01') + hex
+          queue.push(cmd_01)
         }
+        this.queue = queue
+        this.writeCmd()
       },
       formatTime() {
         let date = new Date()
@@ -185,14 +346,6 @@
       }
     }
   })
-
-    // const button = document.querySelector('z-button');
-    // button.addEventListener('click', async () => {
-      
-    // })
-
-    // new Uint8Array([50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60])
-
 
   </script>
 </body>
