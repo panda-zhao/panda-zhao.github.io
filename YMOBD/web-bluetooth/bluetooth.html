@@ -313,7 +313,7 @@
         });
       },
       formatData(cmd, data){
-        let result = null
+        let result = 'NO DATA'
         if(data.includes('NO DATA')){
           console.warn('无数据', cmd, data)
         }
@@ -337,14 +337,16 @@
         }else if(['10', '3E', "27", "22", "2E", "14", "19"].includes(cmd.substring(0, 2))){
           let condition = cmd.substring(0, 4) === '1902'
           result = condition ? getUDSDTC(cmd, data): data
-        }else{
-          result = data
+        }else if(cmd.substring(0, 2) === 'AT'){
+          result = data.replace(/[ ]|[\r]|[\n]|[\r\n]|[>]/g, "")
           if(cmd === 'ATDP'){
             // 【重要】把需要使用的协议存储在缓存内,解析数据需要用到 wx.getStorageSync('____ATDP')
             // wx.setStorageSync('____ATDP', result)
             // 【重要】把需要使用的协议存储在缓存内,解析数据需要用到 localStorage.getItem('____ATDP')
             localStorage.setItem('____ATDP', result);
           }
+        }else{
+          result = data
         }
         return result
       },
