@@ -121,8 +121,10 @@
       border-color: #ccc;
     }
 
-    footer{
+    .footer{
       margin-top: 15px;
+      color: blue;
+      text-align: center;
     }
     
     li{
@@ -138,8 +140,8 @@
 
     <div v-if="!isConnected">
       <button id="z-button" class="z-button" @click="connectOBD">连接蓝牙</button>
-      
     </div>
+    <div class="footer" v-else>当前协议：{{ATDP}}</div>
 
     <div class="container">
       <div>
@@ -158,6 +160,7 @@
        
       </div>
     </div>
+    
     
     <!-- <footer>
       <div>参考文档</div>
@@ -194,12 +197,24 @@
       // console.log(this.tem, this.dataFlow, this.$data)
       // console.log(PIDs)
       // console.log(CryptoJS)
+      console.log('当前的协议', localStorage.getItem('____ATDP'))
+      // this.formatData('050101', '486B00 4501 01 6862\r\r>')
+      // this.formatData('050201', '486B00 4502 01 6863\r\r>')
+      // this.formatData('050401', '486B00 4504 01 6865\r\r>')
+      // this.formatData('050601', '486B00 4506 01 23002A4C\r\r>')
+      // this.formatData('050102', '486B00 4501 02 6863\r\r>')
+      // this.formatData('050202', '486B00 4502 02 6864\r\r>')
+
+      // this.formatData('0A', '83F110 7F 0A111E>') // [)
+      // this.formatData('03', '486B11 43 CFCD EDD3 2786 10\r486B11 43 B874 6D99 0000 39 >') // ["U0FCD","U2DD3","P2786","B3874","C2D99")
+      // this.formatData('03', '87F112 43 2029 0082 C021 79 \r87F112 43 8090 00000000DD\r 87F118 43 2029 0082 C021 79  \r87F118 43 8090 0000 0000 DD >') // "P2029","P0082","U0021","B0090"
+      // this.formatData('07', '87F111 47 0420 00000000F4>') // ["P0420")
+      // this.formatData('03', '86F111 41 00BE 3E28 11 FE>'),  // [)
+      // this.formatData('03', '486B10 43 0300 0480 0000 F4\r\r>') // ["P0300","P0480"]
     },
     computed: {
-      list() {
-        return [
-          
-        ]
+      ATDP() {
+        return localStorage.getItem('____ATDP')
       }
     },
     methods: {
@@ -348,6 +363,7 @@
         }else{
           result = data
         }
+        console.log('格式化后的结果', cmd, result)
         return result
       },
       custom_pid(){
