@@ -328,7 +328,8 @@ function getDTC(cmd, msg){
 // 只有非CAN模式才有
 function get$05(cmd, msg){
 	try{
-		msg = msg.replace(/[ ]|[\r]|[\n]|[\r\n]|[>]/g, "")
+		// msg = msg.replace(/[ ]|[\r]|[\n]|[\r\n]|[>]/g, "")
+		msg = msg.replace(/[ ]|[>]/g, '')
 		let separator = cmd.replace('0', '4')
 		let result = ''
 		// 非CAN模式解析
@@ -354,7 +355,9 @@ function get$05(cmd, msg){
 	}
 }
 
+
 function get$06(cmd, msg){
+	console.log('参数', cmd, msg)
 	const separator = cmd.replace('0', '4') // 分隔符
 	let result = []
 	try{
@@ -390,6 +393,7 @@ function get$06(cmd, msg){
 				}
 				json[can].push(item)
 			}
+			console.log('按照CAN分组', json)
 			let effectiveData = {}
 			for (const key in json) {
 				let subData = json[key]
@@ -403,6 +407,7 @@ function get$06(cmd, msg){
 					effectiveData[key] = effectiveData[key] ? effectiveData[key] + item : item
 				})
 			}
+			console.log('有效数据', effectiveData)
 			for (const key in effectiveData) {
 				let data = effectiveData[key]
 				while(data.length > 18){
@@ -635,8 +640,6 @@ function getUDSDTC(cmd, msg){
 		let msgArray = msg.split("\r");
 		const ecu_id_length = localStorage.getItem('____ATDP').includes('CAN') ? (localStorage.getItem('____ATDP').includes('29/') ? 8 : 3) : 6
 		const ecu_id = msg.substring(0, ecu_id_length)
-
-		
     // 过滤空和7F的数据
 		msgArray = msgArray.filter((item, index)=>{
 			if(index === 0){
@@ -691,21 +694,21 @@ function getUDSDTC(cmd, msg){
 function encrypt(word){
 	const key = CryptoJS.enc.Utf8.parse('UBDUXS5VPHKDKB284D7NKJFONCKWBUKA')
  const iv = CryptoJS.enc.Utf8.parse('UBDUXS5VPHKDKB28')
-	// console.log('加密文本', word);
+	console.log('加密文本', word);
 	let srcs = CryptoJS.enc.Utf8.parse(word);
 	let encrypted = CryptoJS.AES.encrypt(srcs, key, {
 			iv: iv,
 			mode: CryptoJS.mode.CBC,
 			padding: CryptoJS.pad.ZeroPadding
 	});
-	// console.log('加密后', encrypted.ciphertext.toString().toUpperCase());
+	console.log('加密后', encrypted.ciphertext.toString().toUpperCase());
 	return CryptoJS.enc.Hex.stringify(CryptoJS.enc.Base64.parse(encrypted.toString()))
 }
 
 function decrypt(word){
 	const key = CryptoJS.enc.Utf8.parse('UBDUXS5VPHKDKB284D7NKJFONCKWBUKA')
   const iv = CryptoJS.enc.Utf8.parse('UBDUXS5VPHKDKB28')
-	// console.log('解密前', word)
+	console.log('解密前', word)
 	let ciphertext = CryptoJS.enc.Hex.parse(word)
 	let decrypt = CryptoJS.AES.decrypt({ciphertext: ciphertext}, key, { 
 		iv: iv, 
@@ -713,22 +716,10 @@ function decrypt(word){
 		padding: CryptoJS.pad.ZeroPadding
 	});
 	let decryptedStr = decrypt.toString(CryptoJS.enc.Utf8);
-	// console.log('解密后', decryptedStr)
+	console.log('解密后', decryptedStr)
 	return decryptedStr;
 }
 // console.log(encrypt('0100\r')) // 8A917618B85B54B4979B485D2BD2CC85
 // console.log(encrypt('ATZ\r'))
 // console.log(decrypt('284d5b707354a41bd6a4b15a570231ff')) // 012345678901
-// module.exports = {
-//   getSupport,
-//   getSupport$02,
-//   get$01,
-//   get$02,
-//   getDTC,
-//   get$05,
-//   get$06,
-//   get$09,
-//   getUDSDTC,
-// 	encrypt,
-// 	decrypt
-// }
+

@@ -11,6 +11,11 @@
       /* text-align: center; */
       padding: 3rem 1rem 0;
     }
+    .header{
+      display: flex;
+      align-items: center;
+      
+    }
     .floatingView{
       position: fixed;
       top: 0;
@@ -132,16 +137,51 @@
       color: #333;
       margin-bottom: 0.5rem;
     }
+    .switch {
+      width: 50px;
+      height: 25px;
+      background-color: #ccc;
+      border-radius: 25px;
+      position: relative;
+      transition: background-color 0.3s;
+      cursor: pointer;
+      margin: 0 20px 0 10px;
+    }
+
+    .switch.is-on {
+      background-color: #4cd964;
+    }
+
+    .switch-handle {
+      width: 23px;
+      height: 23px;
+      background-color: #fff;
+      border-radius: 50%;
+      position: absolute;
+      top: 1px;
+      left: 1px;
+      transition: left 0.3s;
+    }
+
+    .switch.is-on .switch-handle {
+      left: 24px;
+    }
   </style>
 </head>
 <body>
   <div id="app">
     <div class="floatingView">{{errMsg}}</div>
 
-    <div v-if="!isConnected">
+    <div v-if="!isConnected" class="header">
+      是否加密
+      <div class="switch" :class="{ 'is-on': isEncrypted }" @click="isEncrypted = !isEncrypted">
+        <div class="switch-handle"></div>
+      </div>
+      <!-- <button id="z-button" class="z-button" @click="connectOBD">是否加密</button> -->
       <button id="z-button" class="z-button" @click="connectOBD">连接蓝牙</button>
     </div>
-    <div class="footer" v-else>当前协议：{{ATDP}}</div>
+
+    <div class="footer" v-else>当前协议：{{ATDP}}[{{isConnected ? '加密模式': '未加密'}}]</div>
 
     <div class="container">
       <div>
@@ -181,6 +221,7 @@
   const app = new Vue({
     el: '#app',
     data: {
+      isEncrypted: false,
       isConnected: false,
       queue: [], // 当前任务队列
       currentIndex: 0, // 当前任务下标
@@ -211,6 +252,9 @@
       // this.formatData('07', '87F111 47 0420 00000000F4>') // ["P0420")
       // this.formatData('03', '86F111 41 00BE 3E28 11 FE>'),  // [)
       // this.formatData('03', '486B10 43 0300 0480 0000 F4\r\r>') // ["P0300","P0480"]
+
+      // this.formatData('0606', "416B10 4606 813811004AA7\r416B10460601B712DFFF64\r416B104606A137DE000B26\r416B104606213AF4BAC27F\r416B104606B137CC000BD3\r416B1046063139AFBA6155\r416B104606C237BC000A88\r416B104606423903BA2D2E\r\r>")
+      // this.formatData('0601', '18DAF110 10 1C 46 01 01 0A FE DF\r18DAF110 21 90 00 B0 00 01 03 0A\r18DAF110 22 9E 41 78 00 92 AA 01\r18DAF110 23 05 10 02 DD 00 00 03\r18DAF110 24 20 00 00 00 00 00 00\r\r>')
     },
     computed: {
       ATDP() {
@@ -220,16 +264,23 @@
     methods: {
       connectOBD(){
         try {
-          const UUID = "0000FFF0-0000-1000-8000-00805F9B34FB".toLowerCase()
-          let option = {
-            filters: [
-              {services: [UUID]},
-              // {name: 'B25'},
-              // {namePrefix: '前缀'}
-            ],
-            // optionalServices: [UUID], // 必须小写
-            acceptAllDevices: false, // filters存在时位false, 否则为true
+          let UUID = "0000FFF0-0000-1000-8000-00805F9B34FB".toLowerCase() // 不加密
+          // // console.log('是否加密🔐', this.isEncrypted)
+          if(this.isEncrypted){
+            UUID = "0000FFE0-0000-1000-8000-00805F9B34FB".toLowerCase()
           }
+          // UUID = "0000AE00-0000-1000-8000-00805F9B34FB".toLowerCase()
+          // UUID = "0000FFF0-0000-1000-8000-00805F9B34FB".toLowerCase()
+          let option = {
+            // filters: [
+            //   {services: [UUID]},
+            //   // {name: 'B25'},
+            //   // {namePrefix: '前缀'}
+            // ],
+            optionalServices: [UUID], // 必须小写
+            acceptAllDevices: true, // filters存在时位false, 否则为true
+          }
+          console.log('是否加密🔐', this.isEncrypted, UUID)
           navigator.bluetooth.requestDevice(option).then(async (device)=>{
             console.log('1-设备信息', device)
             let deviceName = device.gatt.device.name;
@@ -289,7 +340,15 @@
         let cmd = this.queue[this.currentIndex]
         this.errMsg = `正在发送指令 ${cmd}`
 
-        let _cmd = new TextEncoder().encode(cmd + '\r').buffer // 格式化cmd
+        let _cmd = null
+        _cmd = this.textEncoder(cmd)
+        // let str = cmd + '\r'
+        // var bufView = new Uint8Array(str.length);
+        // for (var i = 0; i < str.length; i++) {
+        //   bufView[i] = str.charCodeAt(i);
+        // }
+        // _cmd = bufView.buffer;
+
         this.characteristic_write.writeValue(_cmd).then( async(res)=>{
           console.log(this.formatTime(), '发送指令成功', cmd)
           this.isReady = false
@@ -304,8 +363,18 @@
         // 监听低功耗蓝牙设备特征值变化,必须先启用startNotifications，才能监听到
         this.characteristic_notify.addEventListener('characteristicvaluechanged', e => {
           let value = e.target.value // 当前帧返回的数据
-          let chunk = new TextDecoder().decode(value)
-          // console.log('特征值变化', this.tem, chunk)
+          console.log('特征值变化',  value)
+          let chunk = this.textDecoder(value)
+
+          // let uint8Array = new Uint8Array(value)
+          // let str = ''
+          // for (let i = 0; i < uint8Array.length; i++) {
+          //   str += String.fromCharCode(uint8Array[i]);
+          // }
+          // console.log('1', str)
+          // chunk = decrypt(str)
+          // console.log('2', chunk)
+          
           this.tem += chunk // 当前命令返回的总数据
           if(this.tem.includes('>')){
             // console.log('接收完成', this.tem)
@@ -374,7 +443,7 @@
         this.queue.push(this.inputValue)
         this.writeCmd()
       },
-
+      
       test_pid(){
         if(!this.isConnected){
           alert('错误！请先连接蓝牙再测试！')
@@ -404,7 +473,24 @@
             return n[1] ? n : '0' + n
         }
         return [year, month, day].map(formatNumber).join('-') + ' ' + [hour, minute, second].map(formatNumber).join(':') + ':' + milliseconds 
-      }
+      },
+      // 字符串转ArrayBuffer
+      textEncoder: function(cmd){
+        let str = cmd + '\r'
+        if(this.isEncrypted){
+          str = encrypt(str)
+        }
+        let result = new TextEncoder().encode(str).buffer
+        return result
+      },
+      // ArrayBuffer转字符串
+      textDecoder: function(value){
+        let result = new TextDecoder().decode(value)
+        if(this.isEncrypted){
+          result = decrypt(result)
+        }
+        return result
+      },
     }
   })
 
