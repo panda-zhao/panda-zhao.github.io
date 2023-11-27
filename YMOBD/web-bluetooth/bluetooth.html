@@ -265,12 +265,9 @@
       connectOBD(){
         try {
           let UUID = "0000FFF0-0000-1000-8000-00805F9B34FB".toLowerCase() // 不加密
-          // // console.log('是否加密🔐', this.isEncrypted)
           if(this.isEncrypted){
             UUID = "0000FFE0-0000-1000-8000-00805F9B34FB".toLowerCase()
           }
-          // UUID = "0000AE00-0000-1000-8000-00805F9B34FB".toLowerCase()
-          // UUID = "0000FFF0-0000-1000-8000-00805F9B34FB".toLowerCase()
           let option = {
             // filters: [
             //   {services: [UUID]},
@@ -363,9 +360,8 @@
         // 监听低功耗蓝牙设备特征值变化,必须先启用startNotifications，才能监听到
         this.characteristic_notify.addEventListener('characteristicvaluechanged', e => {
           let value = e.target.value // 当前帧返回的数据
-          console.log('特征值变化',  value)
           let chunk = this.textDecoder(value)
-
+          console.log('特征值变化',  value, chunk)
           // let uint8Array = new Uint8Array(value)
           // let str = ''
           // for (let i = 0; i < uint8Array.length; i++) {
@@ -379,9 +375,10 @@
           if(this.tem.includes('>')){
             // console.log('接收完成', this.tem)
             this.isReady = true
-            this.dataFlow = `\r\n发送：${this.currentCMD}\r\n回复: ${this.tem.replace(/[ ]|[\r]|[\n]|[\r\n]/g, "")}\r\n格式化后: ${this.formatData(this.currentCMD, this.tem)}\r\n` + this.dataFlow
+            let result = this.formatData(this.currentCMD, this.tem)
+            this.dataFlow = `\r\n发送：${this.currentCMD}\r\n回复: ${this.tem.replace(/[ ]|[\r]|[\n]|[\r\n]/g, "")}\r\n格式化后: ${result}\r\n` + this.dataFlow
 
-            let print = `发送：${this.currentCMD}\r\n回复: ${this.tem}\r\n格式化后: ${this.formatData(this.currentCMD, this.tem)}`
+            let print = `发送：${this.currentCMD}\r\n回复: ${this.tem}\r\n格式化后: ${result}`
             console.log(print);
             this.tem = '' // 接收完成。重制数据
             if((this.currentIndex + 1) < this.queue.length ){
