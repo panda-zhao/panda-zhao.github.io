@@ -221,6 +221,7 @@
   const app = new Vue({
     el: '#app',
     data: {
+      ATDP: 'ISO14230-4(KWP FAST)',
       isEncrypted: false,
       isConnected: false,
       queue: [], // 当前任务队列
@@ -255,11 +256,29 @@
 
       // this.formatData('0606', "416B10 4606 813811004AA7\r416B10460601B712DFFF64\r416B104606A137DE000B26\r416B104606213AF4BAC27F\r416B104606B137CC000BD3\r416B1046063139AFBA6155\r416B104606C237BC000A88\r416B104606423903BA2D2E\r\r>")
       // this.formatData('0601', '18DAF110 10 1C 46 01 01 0A FE DF\r18DAF110 21 90 00 B0 00 01 03 0A\r18DAF110 22 9E 41 78 00 92 AA 01\r18DAF110 23 05 10 02 DD 00 00 03\r18DAF110 24 20 00 00 00 00 00 00\r\r>')
+      
+      // 多帧不规范数据
+      let mock = [
+        // ["0100", "SEARCHING...\r86F1104100983B80112C\r86F11A41009818800103\r\r>"], // 10011000001110111000000000010001
+        // ['0100', 'SEARCHING...\r86F110 4100 BE 3E B8 11 8D 86\rF11A 4100 98 18 80 01 03\r\r>'], // 10111110001111101011100000010001
+        // ["020000", "7E8 07 420000 7E 1F 88 03\r7E9 07 420000 58 1A 80 03\r\r>"], // 01111110000111111000100000000011
+        // ["020500", "486B0E 420500 FF 07\r\r>"], // 215
+        // ["020200", "85F110 420200 01 98 63\r\r>"], // P0198
+        // [],
+        // [],
+        // [],
+        // [],
+      ]
+
+      for (let item of mock) {
+        const [cmd, msg] = item
+        this.formatData(cmd, msg)
+      }
     },
     computed: {
-      ATDP() {
-        return localStorage.getItem('____ATDP')
-      }
+      // ATDP() {
+      //   return localStorage.getItem('____ATDP')
+      // }
     },
     methods: {
       connectOBD(){
@@ -425,6 +444,7 @@
             // wx.setStorageSync('____ATDP', result)
             // 【重要】把需要使用的协议存储在缓存内,解析数据需要用到 localStorage.getItem('____ATDP')
             localStorage.setItem('____ATDP', result);
+            this.ATDP = result
           }
         }else{
           result = data
