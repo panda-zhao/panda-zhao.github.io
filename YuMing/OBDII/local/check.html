@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>local国际化校验</title>
+  <style>
+    #container{
+      width: 800px;
+      text-align: center;
+      line-height: 30px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="container"></div>
+  <script src="./zh-Hans.js"></script>
+
+  <script src="./bn.js"></script>
+  <script src="./cs.js"></script>
+  <script src="./da.js"></script>
+  <script src="./de.js"></script>
+   <script src="./en.js"></script>
+  <script src="./es.js"></script>
+  <script src="./fi.js"></script>
+  <script src="./fr.js"></script>
+
+  <script src="./hi.js"></script>
+  <script src="./hu.js"></script>
+  <script src="./it.js"></script>
+  <script src="./ja.js"></script>
+  <script src="./ko.js"></script>
+  <script src="./ms.js"></script>
+  <script src="./nl.js"></script>
+  <script src="./pl.js"></script>
+
+
+  <script src="./pt.js"></script>
+  <script src="./ro.js"></script>
+  <script src="./ru.js"></script>
+  <script src="./sv.js"></script>
+  <script src="./th.js"></script>
+  <script src="./tr.js"></script>
+  <script src="./zh-Hant.js"></script>
+  <script src="./ar.js"></script>
+  <script>
+    /**
+     * 原始文件命名为 cn
+     * 所有估计话翻译文件命名为i8n
+     **/
+    
+    try {
+      /**
+       * 
+       * ja 458
+       * */
+
+      // console.log(cn)
+      // console.log(i18n)
+      
+      // 1 梳理cn所有的key
+      let cn_keys = Object.keys(cn)
+      for (const key in cn) {
+        const element = cn[key];
+        if(typeof(element)  == 'object' && element.constructor == Object){
+          cn_keys = cn_keys.concat(Object.keys(element))
+        }
+      }
+      // 合并重复值
+      cn_keys = Array.from(new Set(cn_keys))
+      document.getElementById('container').innerHTML += `<h2>检查一：是否有乱码, </h2>`
+      let codeLength = 0
+      let errLength = 0
+      for (const key in i18n) {
+        codeLength++
+        if(!cn_keys.includes(key)){
+          errLength++
+          document.getElementById('container').innerHTML += `<div>错误【${errLength}】新文件出现乱码键: <span style="color: red">${key}</span> </div>`
+        }
+        const element = i18n[key];
+        if(typeof(element)  == 'object' && element.constructor == Object){
+          let subKeys = Object.keys(element)
+          subKeys.forEach(item=>{
+            codeLength++
+            if(!cn_keys.includes(item)){
+              errLength++
+              document.getElementById('container').innerHTML += `<div>错误【${errLength}】 新文件出现乱码键: ${key} .<span style="color: red"> ${item} </span> </div>`
+            }
+          })
+        }
+      }
+      document.getElementById('container').innerHTML += `<div style="color: blue">检查一：结束</div> 检测数量：${codeLength}，发现错误 ${errLength}<hr>`
+      // if(errLength === 0){
+      //   check_i18n()
+      // }
+      check_i18n()
+    } catch (error) {
+      console.error('检查程序有误')
+    }
+
+    // 2次检查每个中文有的是否都有
+    function check_i18n (){
+      console.log('开始执行二次检查每个中文有的是否都有')
+      document.getElementById('container').innerHTML += ` <h2> 检查二：每个中文的键是否都有 </h2> `
+      let codeLength = 0
+      let errLength = 0
+      for (const key in cn) {
+        const element = cn[key];
+        codeLength++
+        if(i18n[key] === undefined){
+          errLength++
+          document.getElementById('container').innerHTML += `<div>错误【${errLength}】: <span style="color: red">${key}</span> - ${element} LV1缺失 </div>`
+        }
+        if(typeof(element) == 'object' && element.constructor == Object){
+          for (const subKey in element) {
+            codeLength++
+            const subElement = element[subKey]
+            if(i18n[key][subKey] === undefined ){
+              errLength++
+              document.getElementById('container').innerHTML += `<div>错误【${errLength}】: <span style="color: red">${key}.${subKey}</span> - ${subElement} -LV2缺失 </div>`
+            }
+          }
+        }
+      }
+      document.getElementById('container').innerHTML += `<div style="color: blue">检查二：结束</div> 检测数量：${codeLength}，发现错误 ${errLength}`
+    }
+    // const i18n_keys = Object.keys(i18n)
+    // i18n_keys.forEach(item=>{
+    //   codeLength++
+    //   if(!cn_keys.includes(item)){
+    //     // console.log('发现错误1，不在标准库', item)
+    //     errLength++
+    //     document.getElementById('container').innerHTML += `发现错误1，不在标准库: ${item} <br>`
+    //   }
+    // })
+
+    // // 2 检查所有对象的key是否正确
+    // for (const key in i18n) {
+    //   const element = i18n[key];
+    //   let value_keys = Object.keys(element)
+    //   if(!value_keys.includes('zzs') || !value_keys.includes('dm') || !value_keys.includes('des') || !value_keys.includes('sys') || !value_keys.includes('zs')){
+    //     errLength++
+    //     document.getElementById('container').innerHTML += `发现错误2，缺少键：${key}, ${JSON.stringify(element)} <br>`
+    //     // console.log('发现错误2，缺少键', key, element)
+    //   }
+    // }
+    // if(errLength === 0){
+    //   document.getElementById('container').innerHTML = `检查 ${codeLength} 条数据无问题`
+    // }
+  </script>
+</body>
+
+</html>
