@@ -58,7 +58,7 @@ function getSupport(cmd, msg) {
 				c = "0" + c
 			}
 			var d = parseInt(data.substring(6, 8), 16).toString(2)
-			while (d.length < 8) {
+			while (d.length < 8) {›
 				d =  "0" + d
 			}
 			let str = a + b + c + d
@@ -352,7 +352,7 @@ function get$05(cmd, msg){
 		}
 		return result
 	}catch(e){
-		console.error('解析06返回数据错误', e)
+		console.error('解析05返回数据错误', e)
 		// wx.showModal({
 		// 	title: '$05 error',
 		// 	content: 'error：05' + cmd + '\r\n' + e

@@ -15,6 +15,7 @@
 
 <script>
   // try  catch
+
 try {
     a.Number = 1
     console.log(a)
@@ -22,9 +23,11 @@ try {
   let json = {
     errMsg: error.message + error.stack
   }
-  console.log(error, typeof error, JSON.stringify(error))
-
   console.log(JSON.stringify(json))
+  console.log('errMsg=', error.message)
+  console.log('errMsg=', error.errMsg) // 没有errMsg
+  // console.log(error, typeof error, JSON.stringify(error))
+  // console.log(JSON.stringify(json))
  }
 
 function myFunction() {

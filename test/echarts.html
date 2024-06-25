@@ -17,96 +17,254 @@
 <body>
   <div id="main"></div>
   <script>
+    
+    
+    
+  //  function getTrend(numbers) {
+	// 		  var trend = null; // 初始化趋势为空
+	// 		  var count = 0; // 初始化计数器为0
+	// 		  for (var i = 1; i < numbers.length; i++) {
+	// 		    if (numbers[i] > numbers[i - 1]) {
+	// 		      if (trend === null || trend === "up") {
+	// 		        count++; // 计数器加1
+  //             trend = "up"
+	// 		        // if (count >2) {
+	// 		        //   trend = "up"; // 连续上升次数达到3次及以上，趋势为上升
+	// 		        // }
+	// 		      } else {
+	// 		        count = 0; // 趋势发生了变化，重置计数器
+	// 		      }
+	// 		    } else if (numbers[i] < numbers[i - 1]) {
+	// 		      if (trend === null || trend === "down") {
+	// 		        count++; // 计数器加1
+	// 		        if (count > 2) {
+	// 		          trend = "down"; // 连续下降次数达到3次及以上，趋势为下降
+	// 		        }
+	// 		      } else {
+	// 		        count = 0; // 趋势发生了变化，重置计数器
+	// 		      }
+	// 		    } else {
+	// 		      count = 0; // 数字相等，重置计数器
+	// 		    }
+  //         console.log(numbers[i],numbers[i - 1], trend, count)
+	// 		  }
+  //       console.log('结果', trend)
+	// 		  return trend;
+	// 		}
     var chartDom = document.getElementById('main');
     var myChart = echarts.init(chartDom);
     var option;
-
+    // 转速仪表盘
+    // option = {
+    //   series: [
+    //     {
+    //       type: 'gauge',
+    //       radius: '78%',
+    //       startAngle: 225,
+    //       endAngle: -45,
+    //       min: 0,
+    //       max: 36000,
+    //       splitNumber: 10,
+    //       silent: true,
+    //       animation: true,
+    //       animationThreshold: 2000,
+    //       itemStyle: { color: '#ff9900' },
+    //       progress: { show: true, width: 8 },
+    //       axisLine: { lineStyle: { width: 8 } },
+    //       splitLine: { show: false },
+    //       axisTick: {
+    //         distance: -18,
+    //         splitNumber: 3,
+    //         lineStyle: {
+    //           width: 1,
+    //           color: '#8E93FF'
+    //         }
+    //       },
+    //       axisLabel: { show: false },
+    //       anchor: { show: false },
+    //       title: {
+    //         show: true,
+    //         offsetCenter: [0, '50%'],
+    //         color: 'rgba(0, 0, 0, 1)',
+    //         fontWeight: 600,
+    //         fontSize: 14,
+    //         lineHeight: 14
+    //       },
+    //       detail: {
+    //         valueAnimation: true,
+    //         formatter: 'r/min',
+    //         rich: {
+    //           value: {
+    //             fontSize: 18,
+    //             color: '#000',
+    //             fontWeight: 600,
+    //             lineHeight: 24
+    //           }
+    //         },
+    //         show: true,
+    //         color: '#999',
+    //         fontWeight: 'normal',
+    //         fontSize: 10,
+    //         height: 12,
+    //         lineHeight: 12,
+    //         offsetCenter: ['0', '90%']
+    //       },
+    //       data: [
+    //         {
+    //           name: '12000',
+    //           value: 13000
+    //         }
+    //       ]
+    //     }
+    //   ]
+    // };
+    
+    // 折线图
+    let data_X = ["17:26:43","17:26:44","17:26:45","17:26:46","17:26:47","17:26:48","17:26:49","17:26:50","17:26:51","17:26:52","17:26:53","17:26:54","17:26:55","17:26:56","17:26:57"]
+    let data_Y = [9.9,10.1,14.2,9.2,13.2,14.4,11.2,12,9.7,10.3,12.1,12.6,14.5,11.4,14.4]
+    let dataList = []
+    // let dataList = [[1714983034875, 9.4],[1714983035175,13],[1714983035475,14.7],[1714983035775,11.1],[1714983036074,14.6],[1714983036378,15],[1714983036674,10.1],[1714983036975,13.1],[1714983037274,14.6],[1714983037575,10.2],[1714983037874,10.6],[1714983038174,11.9],[1714983038474,11.7],[1714983038774,12.2],[1714983039074,14],[1714983039374,13.5],[1714983039674,14.6],[1714983039974,11.8],[1714983040273,11.4],[1714983040573,9.4],[1714983040874,10.5],[1714983041173,14.9],[1714983041474,9.7],[1714983041773,14.3],[1714983042073,9.2],[1714983042373,14.4],[1714983042674,9.2],[1714983042974,12.8],[1714983043273,9.2],[1714983043575,11.5],[1714983043873,13.2],[1714983044173,14.9],[1714983044474,13.1],[1714983044774,13.2],[1714983045074,11.2],[1714983045374,13.7],[1714983045675,10],[1714983045974,11.1],[1714983046275,11.3],[1714983046574,11.7],[1714983046874,9.5],[1714983047173,13.5],[1714983047474,11.6],[1714983047775,14.4],[1714983048074,14.7],[1714983048375,14],[1714983048674,11],[1714983048974,12.2]]
     option = {
+      xAxis: {
+        type: 'category', // time value category log
+        minorTick: { show: true },
+        splitLine: {
+          lineStyle: { color: "#999" }
+        },
+        minorSplitLine: {
+          show: true,
+          lineStyle: { color: "#ddd" }
+        },
+        data: data_X,
+        axisLabel: {
+          // formatter: '{HH}:{mm}:{ss}', // 格式化显示格式
+          showMinLabel: true, // 是否显示最小tick
+          hideOverlap: false, // 是否隐藏重叠的标签。
+        }
+      },
+      tooltip: {
+        show: true,
+        trigger: "axis"
+        // triggerOn: "none",
+        // alwaysShowContent: true,
+        // position: function(pt) {
+        //   return [pt[0], 130];
+        // }
+      },
+      yAxis: {
+        type: 'value',
+        min: 0,
+        max: 18,
+        minorTick: { show: true },
+        splitLine: { lineStyle: { color: "#999" } },
+        minorSplitLine: {
+          show: true,
+          lineStyle: { color: "#ddd" }
+        },
+        axisLabel: {
+          formatter: '{value}V'
+        },
+      },
       series: [
         {
-          type: 'gauge',
-          radius: '78%',
-          startAngle: 225,
-          endAngle: -45,
-          min: 0,
-          max: 36000,
-          splitNumber: 10,
-          silent: true,
-          animation: true,
-          animationThreshold: 2000,
-          itemStyle: { color: '#ff9900' },
-          progress: { show: true, width: 8 },
-          axisLine: { lineStyle: { width: 8 } },
-          splitLine: { show: false },
-          axisTick: {
-            distance: -18,
-            splitNumber: 3,
-            lineStyle: {
-              width: 1,
-              color: '#8E93FF'
+          type: 'line',
+          // label: {
+          //   show: true,
+          // // },
+          smooth: true, // 是否平滑曲线显示 boolea number
+          symbol: 'none', // 是否标记值 circle none
+          data: data_Y,
+          markPoint: {
+            data: [
+              { type: 'min', name: 'Min', symbolRotate: 180}
+            ],
+            label: {
+              offset: [0, 10]
             }
           },
-          axisLabel: { show: false },
-          anchor: { show: false },
-          title: {
-            show: true,
-            offsetCenter: [0, '50%'],
-            color: 'rgba(0, 0, 0, 1)',
-            fontWeight: 600,
-            fontSize: 14,
-            lineHeight: 14
-          },
-          detail: {
-            valueAnimation: true,
-            formatter: 'r/min',
-            rich: {
-              value: {
-                fontSize: 18,
-                color: '#000',
-                fontWeight: 600,
-                lineHeight: 24
-              }
-            },
-            show: true,
-            color: '#999',
-            fontWeight: 'normal',
-            fontSize: 10,
-            height: 12,
-            lineHeight: 12,
-            offsetCenter: ['0', '90%']
-          },
-          data: [
-            {
-              name: '12000',
-              value: 13000
-            }
-          ]
         }
       ]
-    };
+    }
+
+    // option ={
+    //   xAxis: {
+    //     name: "日期",
+    //     minorTick: { show: true },
+    //     splitLine: {
+    //       lineStyle: { color: "#999" }
+    //     },
+    //     minorSplitLine: {
+    //       show: true,
+    //       lineStyle: { color: "#ddd" }
+    //     }
+    //   },
+    //   yAxis: {
+    //     name: "电压",
+    //     min: 0,
+    //     max: 18,
+    //     minorTick: { show: true },
+    //     splitLine: { lineStyle: { color: "#999" } },
+    //     minorSplitLine: {
+    //       show: true,
+    //       lineStyle: { color: "#ddd" }
+    //     }
+    //   },
+    //   dataZoom: [{
+    //     show: true,
+    //     type: "inside",
+    //     filterMode: "none",
+    //     xAxisIndex: [0],
+    //     startValue: -20,
+    //     endValue: 20
+    //   }, {
+    //     show: true,
+    //     type: "inside",
+    //     filterMode: "none",
+    //     yAxisIndex: [0],
+    //     startValue: -20,
+    //     endValue: 20
+    //   }],
+    //   series: [{
+    //     type: "line",
+    //     showSymbol: false,
+    //     clip: true,
+    //     smooth: true,
+    //     data: dataList
+    //   }]
+    // }
 
     option && myChart.setOption(option);
-    setInterval(()=>{
-      var num =  (Math.random() * 36000).toFixed(0)
-      // console.log('num=', num);
-      // const data = [{
-      //   name: num,
-      //   value: num
-      // }]
-      // const _option = {
-      //   series: [{
-      //     data: data
-      //   }]
-      // }
-      option.series[0].data[0].value = num
-      console.log('option', option)
-      myChart.setOption(option)
-      // myChart.setOption(_option, {
-      //   noMerge: true,
-      //   lazyDate: false
-      // })
-    }, 3000)
+    // setInterval(()=>{
+    // //   // var num =  (Math.random() * 36000).toFixed(0)
+    // //   // option.series[0].data[0].value = num
+    // //   // console.log('num=', num);
 
+    //   var date = new Date();
+    //   var hours = date.getHours().toString().padStart(2, '0');
+    //   var minutes = date.getMinutes().toString().padStart(2, '0');
+    //   var seconds = date.getSeconds().toString().padStart(2, '0');
+    //   let  _date = hours + ':' + minutes + ':' + seconds;
+    //   newValue = Number((Math.random() * (15 - 9 ) + 9).toFixed(1))
+    //   // dataList.push([_date, newValue])
+    //   data_X.push(_date)
+    //   data_Y.push(newValue)
+    //   console.log('dataList=', JSON.stringify(data_X), JSON.stringify(data_Y));
+      
+    // //   // const _option = {
+    // //   //   series: [{
+    // //   //     data: [{ name: num, value: num }]
+    // //   //   }]
+    // //   // }
+    // //   // myChart.setOption(_option, {
+    // //   //   noMerge: true,
+    // //   //   lazyDate: false
+    // //   // })
+
+    //   // option.series[0].data = dataList
+    //   // console.log('option', option)
+    //   // myChart.setOption(option)
+    // }, 1000)
+    
   </script>
 </body>
 </html>

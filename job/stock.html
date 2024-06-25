@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="../js/vue.js"></script>
+  <title>股价计算器</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+    }
+    h1{
+      text-align: center;
+      font-family: cursive;
+      font-size: 2rem;
+    }
+    .container {
+      max-width: 400px;
+      margin: 20px auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .label{
+      display: flex;
+      margin-bottom: 5px;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .des{
+      flex: 1;
+      font-size: 12px;
+      text-align: right;
+      color: #777;
+    }
+    input[type="number"] {
+      box-sizing: border-box;
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    h2{
+      font-family:Arial, Helvetica, sans-serif;
+      font-size: 1.2rem;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app" class="container">
+    <h1 class="h1">股价计算器(市盈率法P/E)</h1>
+    <div class="label">
+      <div>总股本(亿)</div>
+    </div>
+    <input type="number" v-model="totalShares" required>
+
+    <div class="label">
+      <div>全年净利润(亿):</div> 
+      <div class="des"></div>
+    </div>
+    <input type="number" v-model="netProfit" required>
+
+    <div class="label">
+      <div>市盈率(P/E)</div>
+      <div class="des">市盈率 = 总市值/全年净利润</div>
+    </div>
+    <input type="number" v-model="peRatio" required>
+
+    <!-- <button @click="calculatePrice">计算股价</button> -->
+
+    <h2>计算结果:</h2>
+    <div class="label">
+      <div>总市值(亿元)</div>
+      <div class="des">总市值 = 股票价格 × 总股本</div>
+    </div>
+    <input type="number" v-model="marketCap" disabled>
+
+    <div class="label">
+      <div>每股收益(元) </div>
+      <div class="des">每股收益 = 全年净利润 /总股本数</div>
+    </div>
+    <input type="number" v-model="earningsPerShare" disabled>
+
+    <div class="label">
+      <div>股价 </div>
+      <div class="des">股价 = 全年净利润 × 市盈率 / 总股本数</div>
+    </div>
+    <input type="number" v-model="stockPrice" disabled>
+
+    <hr>
+    <h2>计算公式为: </h2>
+    <ul>
+      <li>总市值 = 股票价格 × 总股本</li>
+      <li>市盈率 = 总市值/全年净利润 </li>
+      <li>市盈率 = 每股市价/全年每股盈利 (市盈率表示投资者为了获得该公司1元收益而愿意付出的价格。)</li>
+    </ul>
+  </div>
+
+
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        totalShares: 6.211, // 总股本 13.17
+        netProfit: 1, // 净利润
+        peRatio: 30, // 市盈率
+      },
+      computed: {
+        stockPrice() {
+          if(!this.netProfit || !this.peRatio || !this.totalShares){
+            return 0
+          }
+          const price = (this.netProfit * this.peRatio) / this.totalShares;
+          return Number(price.toFixed(2))
+        },
+        marketCap(){
+          if(!this.stockPrice || !this.totalShares){
+            return 0
+          }
+          return (this.stockPrice * this.totalShares).toFixed(2)
+        },
+        earningsPerShare(){
+          if(!this.netProfit || !this.totalShares){
+            return 0
+          }
+          return (this.netProfit / this.totalShares).toFixed(2)
+        },
+      },
+      methods: {
+        // calculatePrice() {
+        //   try {
+        //     const price = (this.netProfit * this.peRatio) / this.totalShares;
+        //     this.stockPrice = `计算出的股价为: ${price.toFixed(2)}`;
+        //     this.marketCap = stockPrice * totalShares
+        //   } catch (error) {
+        //     console.log(error.message)
+        //     alert(error)
+        //   }
+        // }
+      }
+    });
+  </script>
+</body>
+
+</html>
