@@ -30,7 +30,7 @@
 
     .label{
       display: flex;
-      margin-bottom: 5px;
+      margin:10px 0 5px;
       justify-content: space-between;
       align-items: center;
     }
@@ -40,11 +40,10 @@
       text-align: right;
       color: #777;
     }
-    input[type="number"] {
+    input, select{
       box-sizing: border-box;
       width: 100%;
       padding: 10px;
-      margin-bottom: 15px;
       border: 1px solid #ccc;
       border-radius: 4px;
     }
@@ -52,6 +51,11 @@
     h2{
       font-family:Arial, Helvetica, sans-serif;
       font-size: 1.2rem;
+    }
+    .warn{
+      color: #f00;
+      font-size: 12px;
+      margin-top: 5px;
     }
   </style>
 </head>
@@ -62,19 +66,29 @@
     <div class="label">
       <div>总股本(亿)</div>
     </div>
+    <input v-model="name">
+
+    <div class="label">
+      <div>总股本(亿)</div>
+    </div>
     <input type="number" v-model="totalShares" required>
+    <div v-if="totalShares > 3" class="warn">总股本较大</div>
 
     <div class="label">
       <div>全年净利润(亿):</div> 
       <div class="des"></div>
     </div>
     <input type="number" v-model="netProfit" required>
+    <div v-if="netProfit < 2" class="warn">净利润偏低</div>
 
     <div class="label">
       <div>市盈率(P/E)</div>
       <div class="des">市盈率 = 总市值/全年净利润</div>
     </div>
-    <input type="number" v-model="peRatio" required>
+    <select v-model="peRatio">
+      <option v-for="value in valuationOptions" :value="value">{{ value }}</option>
+    </select>
+    <div v-if="peRatio > 30" class="warn">市盈率较高</div>
 
     <!-- <button @click="calculatePrice">计算股价</button> -->
 
@@ -111,9 +125,11 @@
     new Vue({
       el: '#app',
       data: {
-        totalShares: 13.17, // 总股本
-        netProfit: 1, // 净利润
+        name: "协创数据300857",
+        totalShares: 2.45, // 总股本
+        netProfit: 7, // 净利润
         peRatio: 30, // 市盈率
+        valuationOptions: Array.from({ length: 26 }, (_, i) => 20 + i) // 生成20到45的数组
       },
       computed: {
         stockPrice() {
