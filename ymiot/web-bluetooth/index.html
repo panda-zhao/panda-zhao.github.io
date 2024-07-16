@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Web Bluetooth</title>
   <script src="./util.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+  <script src="../../js/vue.js"></script>
   <style>
     #app{
       /* text-align: center; */
-      padding: 3rem 1rem 0;
+      padding: 48px 16px 0;
     }
     .header{
       display: flex;
@@ -23,11 +23,11 @@
       right: 0;
       background: rgba(0, 0, 0, .15);
       color: #f00;
-      font-size: 1rem;
+      font-size: 16px;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 0.5rem 0;
+      padding: 8px 0;
       /* font-weight: bold; */
     }
     .container{
@@ -38,31 +38,31 @@
     h2{
       border-left: 3px solid blue;
       /* border-bottom: 1px solid #ccc; */
-      font-size: 1.5rem;
-      padding: 0 0.5rem;
-      margin: 1rem 0;
+      font-size: 24px;
+      padding: 0 8px;
+      margin: 16px 0;
       color: #333;
     }
 
     button {
       display: inline-block;
-      padding: 0.5rem 1rem;
-      font-size: 1rem;
+      padding: 8px 16px;
+      font-size: 16px;
       font-weight: bold;
       text-align: center;
       text-transform: uppercase;
       color: #fff;
       background-color: #007bff;
       border: none;
-      border-radius: 0.5rem;
-      box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.15);
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
       transition: all 0.3s ease;
     }
 
     button:hover {
       cursor: pointer;
       transform: translateY(-2px);
-      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
     }
 
     button:active {
@@ -74,13 +74,13 @@
     input[type="text"],
     input[type="password"],
     input[type="email"] {
-      padding: 0.5rem;
-      font-size: 1rem;
+      padding: 8px;
+      font-size: 16px;
       border: 1px solid #ddd;
-      border-radius: 0.5rem;
+      border-radius: 8px;
       box-shadow: none;
       transition: border-color 0.3s ease;
-      margin-bottom: 1rem;
+      margin-bottom: 16px;
     }
 
     input[type="text"]:focus,
@@ -105,10 +105,10 @@
     textarea {
       box-sizing: border-box;
       width: 100%;
-      padding: 0.5rem;
-      font-size: 1rem;
+      padding: 8px;
+      font-size: 16px;
       border: 1px solid #ddd;
-      border-radius: 0.5rem;
+      border-radius: 8px;
       box-shadow: none;
       transition: border-color 0.3s ease;
     }
@@ -133,9 +133,9 @@
     }
     
     li{
-      font-size: 1rem;
+      font-size: 16px;
       color: #333;
-      margin-bottom: 0.5rem;
+      margin-bottom: 8px;
     }
     .switch {
       width: 50px;
@@ -166,6 +166,10 @@
     .switch.is-on .switch-handle {
       left: 24px;
     }
+    .box{
+      width: 100%;
+      height: calc(100vh - 330px);
+    }
   </style>
 </head>
 <body>
@@ -181,7 +185,7 @@
       <button id="z-button" class="z-button" @click="connectOBD">连接蓝牙</button>
     </div>
 
-    <div class="footer" v-else>当前协议：{{ATDP}}[{{isConnected ? '加密模式': '未加密'}}]</div>
+    <div class="footer" v-else>当前协议：{{ATDP}}[{{isEncrypted ? '加密模式': '未加密'}}]</div>
 
     <div class="container">
       <div>
@@ -194,7 +198,7 @@
       <div>
         <h2>数据发送和回复记录 <button @click="dataFlow=''">重置</button></h2>
         <div>
-          <textarea name="" id="" cols="30" rows="20" v-model="dataFlow" readonly></textarea>
+          <textarea name="" id="" cols="30" rows="20" v-model="dataFlow" readonly class="box"></textarea>
         </div>
         <!-- <div v-html="dataFlow" class="container"></div> -->
        
@@ -222,7 +226,7 @@
     el: '#app',
     data: {
       ATDP: 'AUTO, ISO 15765-4 (CAN 29/500)', // ISO14230-4(KWP FAST) AUTO, ISO 15765-4 (CAN 29/500)
-      isEncrypted: false,
+      isEncrypted: true,
       isConnected: false,
       queue: [], // 当前任务队列
       currentIndex: 0, // 当前任务下标
@@ -268,7 +272,7 @@
         // [],
         // [],
         // [],
-        ["0100", "SEARCHING...\r18 DA F1 EF 06 41 00 90 18 80 11 \r18 DA F1 1E 06 41 00 90 18 80 03 \r18 DA F1 10 06 41 00 B6 3C A8 13 \r\r>"]
+        // ["0100", "SEARCHING...\r18 DA F1 EF 06 41 00 90 18 80 11 \r18 DA F1 1E 06 41 00 90 18 80 03 \r18 DA F1 10 06 41 00 B6 3C A8 13 \r\r>"]
       ]
 
       for (let item of mock) {
@@ -284,32 +288,39 @@
     methods: {
       connectOBD(){
         try {
-          let UUID = "0000FFF0-0000-1000-8000-00805F9B34FB".toLowerCase() // 不加密
+          let UUID = "0000fff0-0000-1000-8000-00805f9b34fb" // 不加密
           if(this.isEncrypted){
-            UUID = "0000FFE0-0000-1000-8000-00805F9B34FB".toLowerCase()
+            UUID = "0000ffe0-0000-1000-8000-00805f9b34fb"
           }
           let option = {
-            // filters: [
-            //   {services: [UUID]},
-            //   // {name: 'B25'},
-            //   // {namePrefix: '前缀'}
-            // ],
-            optionalServices: [UUID], // 必须小写
-            acceptAllDevices: true, // filters存在时位false, 否则为true
+            filters: [
+              {services: [UUID]}, // 必须小写
+              // {name: 'OBDII'},
+              // {namePrefix: '前缀'}
+            ],
+            acceptAllDevices: false, // 默认false, 是否可以接受所有蓝牙设备, 为false时必须设置filters 
+            optionalServices: [UUID], // 可选服务标识符数组, 必须小写
           }
           console.log('是否加密🔐', this.isEncrypted, UUID)
+          
+
           navigator.bluetooth.requestDevice(option).then(async (device)=>{
             console.log('1-设备信息', device)
+            
             let deviceName = device.gatt.device.name;
             this.errMsg = `${device.name} 已连接`
+
             const server = await device.gatt.connect(); // 连接到 GATT 服务器
-            // const OBDII_services = await server.getPrimaryServices(); // 获取所有服务
-            // console.log('所有服务', OBDII_services)
+ 
+            const OBDII_services = await server.getPrimaryServices(); // 获取所有服务
+            console.log('所有服务', OBDII_services)
+            
             const OBDII_service = await server.getPrimaryService(UUID); // 获取指定服务
             console.log('2-服务信息', OBDII_service)
             // 获取服务的特征值缓冲区
             const characteristics = await OBDII_service.getCharacteristics() // 获取所有特征值
             console.log('3-所有特征值', characteristics)
+
             let notifyUUID = null
             let writeUUID = null
             for (let i = 0; i < characteristics.length; i++) {
@@ -365,9 +376,9 @@
         //   bufView[i] = str.charCodeAt(i);
         // }
         // _cmd = bufView.buffer;
-
         this.characteristic_write.writeValue(_cmd).then( async(res)=>{
           console.log(this.formatTime(), '发送指令成功', cmd)
+          this.sendTimestamp = this.formatTime()
           this.isReady = false
           // this.dataFlow = `发送: ${cmd}\r\n` + this.dataFlow // 发送记录
           this.currentCMD = cmd
@@ -394,9 +405,11 @@
           this.tem += chunk // 当前命令返回的总数据
           if(this.tem.includes('>')){
             // console.log('接收完成', this.tem)
+            this.endTimestamp = this.formatTime()
             this.isReady = true
             let result = this.formatData(this.currentCMD, this.tem)
-            this.dataFlow = `\r\n发送：${this.currentCMD}\r\n回复: ${this.tem.replace(/[ ]|[\r]|[\n]|[\r\n]/g, "")}\r\n格式化后: ${result}\r\n` + this.dataFlow
+            this.formatTimestamp = this.formatTime()
+            this.dataFlow = `\r\n${this.sendTimestamp} 发送：${this.currentCMD}\r\n${this.endTimestamp} 回复: ${this.tem.replace(/[ ]|[\r]|[\n]|[\r\n]/g, "")}\r\n${this.formatTimestamp} 格式化后: ${result}\r\n` + this.dataFlow
 
             let print = `发送：${this.currentCMD}\r\n回复: ${this.tem}\r\n格式化后: ${result}`
             console.log(print);

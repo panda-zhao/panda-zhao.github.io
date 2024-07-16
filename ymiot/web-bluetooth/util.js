@@ -58,7 +58,7 @@ function getSupport(cmd, msg) {
 				c = "0" + c
 			}
 			var d = parseInt(data.substring(6, 8), 16).toString(2)
-			while (d.length < 8) {›
+			while (d.length < 8) {
 				d =  "0" + d
 			}
 			let str = a + b + c + d
