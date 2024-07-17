@@ -64,7 +64,7 @@
   <div id="app" class="container">
     <h1 class="h1">股价计算器(市盈率法P/E)</h1>
     <div class="label">
-      <div>总股本(亿)</div>
+      <div>名称(代码)</div>
     </div>
     <input v-model="name">
 
@@ -125,10 +125,10 @@
     new Vue({
       el: '#app',
       data: {
-        name: "协创数据300857",
-        totalShares: 2.45, // 总股本
-        netProfit: 7, // 净利润
-        peRatio: 30, // 市盈率
+        name: "博硕科技300951",
+        totalShares: 1.695, // 总股本
+        netProfit: 4, // 净利润
+        peRatio: 20, // 市盈率
         valuationOptions: Array.from({ length: 26 }, (_, i) => 20 + i) // 生成20到45的数组
       },
       computed: {
