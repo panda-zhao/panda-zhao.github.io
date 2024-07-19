@@ -25,34 +25,34 @@
 		
 		<dl>
 		  <dt>全世界都说中国话</dt>
-		  <dd v-for="item in list1" :key="'A' + item.id">
+		  <dd v-for="(item, index) in list1" :key="'A' + index">
 		    <a :href="item.url" :title="item.des" class="item">{{item.name}}</a>
 		  </dd>
 		</dl>
 		
     <dl>
       <dt>国外大站</dt>
-      <dd v-for="item in list2" :key="'B' + item.id">
+      <dd v-for="(item, index) in list2" :key="'B' + index">
         <a :href="item.url" :title="item.des" class="item">{{item.name}}</a>
       </dd>
     </dl>
 		
 		<dl>
 		  <dt>厂商</dt>
-		  <dd v-for="item in list3" :key="'C' + item.id">
+		  <dd v-for="(item, index) in list3" :key="'C' + index">
 		    <a :href="item.url" :title="item.des" class="item">{{item.name}}</a>
 		  </dd>
 		</dl>
     <dl>
       <dt>其他网站</dt>
-      <dd v-for="item in list4" :key="'C' + item.id">
+      <dd v-for="(item, index) in list4" :key="'C' + index">
         <a :href="item.url" :title="item.des" class="item">{{item.name}}</a>
       </dd>
     </dl>
   </div>
   <footer class="footer">
-    <span>Copyright ©前端之路</span>
-    <span class="z-line-left">2017-2020</span>
+    <span>Copyright ©zhaowy.cn</span>
+    <span class="z-line-left">2017-2024</span>
     <a class="z-line-left" href="http://www.miitbeian.gov.cn/" target="_blank">
       粤ICP备18000927号
     </a>
@@ -69,46 +69,46 @@
     data: {
 			list1: [
 				{id: 1, name: "51吃瓜", url: "https://51cg.fun/", des: ""},
-				{id: 1, name: "吃瓜网站", url: "https://www.ymlqxv.com/", des: ""},
-				{id: 1, name: "海角社区", url: "https://hjgec.com/home", des: "zwy82626363"},
-				{id: 11, name: "91porn", url: "https://e1015.91p01.com", des: "货真价实的91网站,我们目前国产视频最大的网站了。"},
+				{id: 2, name: "吃瓜网站", url: "https://www.ymlqxv.com/", des: ""},
+				{id: 3, name: "海角社区", url: "https://hjgec.com/home", des: "zwy82626363"},
+				{id: 4, name: "91porn", url: "https://e1015.91p01.com", des: "货真价实的91网站,我们目前国产视频最大的网站了。"},
 				{id: 5, name: "theavPorn-国产", url: "https://theav104.com/", des: "发布地址：https://theavporn.github.io/theavporn/"},
 				{id: 6, name: "AVJB-付费", url: "https://bbav117.com", des: "发布地址：https://avjb.github.io/"},
 				{id: 7, name: "小仓鼠-台湾", url: "https://zh.xhamster.com/", des: "台湾費色情影片分享網站"},
 				{id: 10, name: "免费高清日本 AV 在线看", url: "https://missav888.com/cn", des: ""},
 				
-				{id: 1, name: "芒果哥-导航", url: "https://mangotporn.com/", des: "芒果哥将全世界的色情网站进行整理，归纳到这小小的黄网成人导航之中，这里有几千个色情网站供你选择，几近精竭的芒果哥，倾尽全力试图打造。"},
-				{id: 2, name: "爱撸啪-导航", url: "https://ailupa.cc/", des: "导航"},
-				{id: 3, name: "随机撸-国产", url: "http://suijilu.com/", des: "随机内容网站，无需翻墙"},
-				{id: 4, name: "猫咪-国内", url: "https://www.b3c6r.com/", des: "发布地址：https://www.maomiav.com/"},
+				{id: 11, name: "芒果哥-导航", url: "https://mangotporn.com/", des: "芒果哥将全世界的色情网站进行整理，归纳到这小小的黄网成人导航之中，这里有几千个色情网站供你选择，几近精竭的芒果哥，倾尽全力试图打造。"},
+				{id: 12, name: "爱撸啪-导航", url: "https://ailupa.cc/", des: "导航"},
+				{id: 13, name: "随机撸-国产", url: "http://suijilu.com/", des: "随机内容网站，无需翻墙"},
+				{id: 14, name: "猫咪-国内", url: "https://www.b3c6r.com/", des: "发布地址：https://www.maomiav.com/"},
 				
 				
 				
-				{id: 8, name: "绅士风度-国产", url: "https://qvb333.xyz/", des: "绅士风度"},
-				{id: 9, name: "女人创作的影片", url: "https://www.bellesa.com/", des: ""},
+				{id: 15, name: "绅士风度-国产", url: "https://qvb333.xyz/", des: "绅士风度"},
+				{id: 16, name: "女人创作的影片", url: "https://www.bellesa.com/", des: ""},
 				
-				{id: 11, name: "福利猫-导航", url: "https://flmdh.com/", des: ""},
+				{id: 17, name: "福利猫-导航", url: "https://flmdh.com/", des: ""},
 				
-			  {id: 0, name: "桃花堂", url: "https://www.thtmod7.pw/", des: "为您提供免的成人内容，包括免费国产自拍视频，免费日本高清av"},
-				{id: 0, name: "草榴社区", url: "http://t66y.com", des: "传说中的1024网站，福利网名常用暗语"},
-				{id: 56, name: "第一会所-广告", url: "http://sis001.com", des: "第一会所"},
-				{id: 0, name: "含羞草", url: "http://www.67bs.com", des: "老福利视频站了，相信不少猫友也听过这网站的传说吧"},
-				{id: 0, name: "久久热", url: "http://99b74.com", des: "品牌成人福利网站，可收藏"},
-				{id: 0, name: "8X8X-广告", url: "http://8xsje.buzz", des: "广告有点点多，算是个老牌成人福利视频站了"},
-				{id: 0, name: "爱啪网", url: "http://avxxc.com", des: "品牌站，自建视频资源哦，猫友可以长期收藏着看"},
+			  {id: 18, name: "桃花堂", url: "https://www.thtmod7.pw/", des: "为您提供免的成人内容，包括免费国产自拍视频，免费日本高清av"},
+				{id: 19, name: "草榴社区", url: "http://t66y.com", des: "传说中的1024网站，福利网名常用暗语"},
+				{id: 20, name: "第一会所-广告", url: "http://sis001.com", des: "第一会所"},
+				{id: 21, name: "含羞草", url: "http://www.67bs.com", des: "老福利视频站了，相信不少猫友也听过这网站的传说吧"},
+				{id: 22, name: "久久热", url: "http://99b74.com", des: "品牌成人福利网站，可收藏"},
+				{id: 23, name: "8X8X-广告", url: "http://8xsje.buzz", des: "广告有点点多，算是个老牌成人福利视频站了"},
+				{id: 24, name: "爱啪网", url: "http://avxxc.com", des: "品牌站，自建视频资源哦，猫友可以长期收藏着看"},
 				// {id: 0, name: "", url: "", des: ""},
 			],
 			
       list2: [
-			  {id: 11, name: "排行榜", url: "https://theporndude.com/", des: "porn dude整理的排行榜"},
-        {id: 11, name: "XVideos(可下载)", url: "https://www.xvideos.com/", des: "国际知名成人福利网站，网站速度很快，多国语言版本。比较大的缺点是亚洲地区资源比较少，欧美资源比较多，并且中文搜素很垃圾"},
-				{id: 111, name: "xnxx", url: "https://www.xnxx.com/", des: ""},
-				{id: 12, name: "PornHub-翻墙", url: "https://cn.pornhub.com/categories/teen", des: "当下宇宙第一成人福利视频网站"},
-				{id: 12, name: "YouPorn-翻墙", url: "https://www.youporn.com", des: "成人视频网站"},
-				{id: 20, name: "SpankBang-下载推荐", url: "https://spankbang.com", des: "免费高清色情网站"},
-				{id: 21, name: "redtube-推荐", url: "https://redtube.com", des: "redtube是一个能够为你提供免费色情内容的，历史悠久的色情网站，影片制作非常精良，而且有一定的更新。"},
-				{id: 22, name: "汤不热-高清", url: "https://www.thumbzilla.com/tags/chinese", des: "全网最佳高清色情片"},
-				{id: 23, name: "tube8", url: "https://www.tube8.com/", des: "tube8"},
+			  {id: 1, name: "排行榜", url: "https://theporndude.com/", des: "porn dude整理的排行榜"},
+        {id: 2, name: "XVideos(可下载)", url: "https://www.xvideos.com/", des: "国际知名成人福利网站，网站速度很快，多国语言版本。比较大的缺点是亚洲地区资源比较少，欧美资源比较多，并且中文搜素很垃圾"},
+				{id: 3, name: "xnxx", url: "https://www.xnxx.com/", des: ""},
+				{id: 4, name: "PornHub-翻墙", url: "https://cn.pornhub.com/categories/teen", des: "当下宇宙第一成人福利视频网站"},
+				{id: 5, name: "YouPorn-翻墙", url: "https://www.youporn.com", des: "成人视频网站"},
+				{id: 6, name: "SpankBang-下载推荐", url: "https://spankbang.com", des: "免费高清色情网站"},
+				{id: 7, name: "redtube-推荐", url: "https://redtube.com", des: "redtube是一个能够为你提供免费色情内容的，历史悠久的色情网站，影片制作非常精良，而且有一定的更新。"},
+				{id: 8, name: "汤不热-高清", url: "https://www.thumbzilla.com/tags/chinese", des: "全网最佳高清色情片"},
+				{id: 9, name: "tube8", url: "https://www.tube8.com/", des: "tube8"},
 				{id: 13, name: "Beeg-高清以明星检索", url: "https://beeg.com", des: "新兴欧美成人视频站"},
 				{id: 14, name: "sex-短视频", url: "http://sex.com", des: "国际成人短视频网站"},
 				{id: 15, name: "pornhd-广告高清", url: "https://www.pornhd.com/category/chinese-teen-18-19", des: "国际知名成人福利网站，需要翻墙，主打高清视频"},
