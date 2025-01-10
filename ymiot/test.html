@@ -4,22 +4,35 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="./car-en.js"></script>
+  <!-- <script src="./car-en.js"></script> -->
   <title>Document</title>
 </head>
 <body>
   <div id="container"></div>
   <script type="module">
     // 测试是否包含中文
-    for (const item of data) {
-      for (const brand of item.data) {
-        if (/[\u4e00-\u9fff]/.test(JSON.stringify(brand))) {
-          console.log(brand.brand_name)
-        }
-      }
-      
-    }
+    // for (const item of data) {
+    //   for (const brand of item.data) {
+    //     if (/[\u4e00-\u9fff]/.test(JSON.stringify(brand))) {
+    //       console.log(brand.brand_name)
+    //     }
+    //   }
+    let data = 'ATRV'
+   let result =  Number(data.replace(/[v]|[V]/g, "")).toFixed(1)
+   console.log(result,  typeof result, result !== result, isNaN(result) , result === 'NaN')
 
+   let arr = ["OBDII", "MS310", "B25", "V500", "YM529", "YM329", "YM129", "YM819"]
+   console.log(Object.values(arr).includes("YM819"))
+// let content = ''
+// data.forEach((item, index)=>{
+//   let store = JSON.parse(item.store)
+//   let log_info = JSON.parse(store.log_info).rawdata
+//   let orderId = JSON.parse(log_info).orderId
+
+//   content += `${index+1}、${ item.account }  ${orderId} \r\n`
+// })
+// console.log(content)
+// container.innerHTML = content
   </script>
 </body>
 </html>

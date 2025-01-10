@@ -294,18 +294,18 @@
           }
           let option = {
             filters: [
-              {services: [UUID]}, // 必须小写
-              // {name: 'OBDII'},
-              // {namePrefix: '前缀'}
+              // {services: [UUID]}, // 一个数组，包含要查找的蓝牙设备提供的服务 UUID，必须小写
+              {name: 'OBDII'}, // 字符串，精确指定设备名称
+              // {namePrefix: '前缀'} // 字符串，设备名称的前缀
             ],
             acceptAllDevices: false, // 默认false, 是否可以接受所有蓝牙设备, 为false时必须设置filters 
-            optionalServices: [UUID], // 可选服务标识符数组, 必须小写
+            optionalServices: [UUID], // 一个数组，包含要在连接设备后可能需要使用的服务的 UUID，但这些服务不在 filters 中的 services 数组里。, 必须小写
           }
           console.log('是否加密🔐', this.isEncrypted, UUID)
           
 
           navigator.bluetooth.requestDevice(option).then(async (device)=>{
-            console.log('1-设备信息', device)
+            console.log('1-找到设备', device)
             
             let deviceName = device.gatt.device.name;
             this.errMsg = `${device.name} 已连接`

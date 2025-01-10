@@ -1,0 +1,11 @@
+{
+  "channel": {
+    "id": "paypal",
+    "description": "paypal",
+    "serviceReady": true
+  },
+  "rawdata": {
+    "orderId": "1DJ04307G44811014"
+  },
+  "errMsg": "requestPayment:ok"
+}
