@@ -57,11 +57,11 @@
         <span class="z-form-item__label">填充</span>
         <div class="z-form-item__content">
           <select id="select_pad" class="z-selcet" onchange="enc_AES()">
+            <option value="ZeroPadding">ZeroPadding</option>
             <option value="Pkcs7">Pkcs7</option>
             <option value="Iso97971">Iso97971</option>
             <option value="AnsiX923">AnsiX923</option>
             <option value="Iso10126">Iso10126</option>
-            <option value="ZeroPadding">ZeroPadding</option>
             <option value="NoPadding">NoPadding</option>
           </select>
         </div>
@@ -72,8 +72,8 @@
             class="z-selcet"
             onchange="enc_AES()"
           >
-            <option value="Base64">Base64</option>
-            <option value="HEX">HEX</option>
+          <option value="HEX">HEX</option>
+          <option value="Base64">Base64</option>
           </select>
         </div>
       </div>
