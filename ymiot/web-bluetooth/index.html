@@ -370,6 +370,7 @@
 
         let _cmd = null
         _cmd = this.textEncoder(cmd)
+        console.log('实际写入', _cmd)
         // let str = cmd + '\r'
         // var bufView = new Uint8Array(str.length);
         // for (var i = 0; i < str.length; i++) {
@@ -391,8 +392,9 @@
         // 监听低功耗蓝牙设备特征值变化,必须先启用startNotifications，才能监听到
         this.characteristic_notify.addEventListener('characteristicvaluechanged', e => {
           let value = e.target.value // 当前帧返回的数据
+          console.log('收到回复特征值变化',  value)
           let chunk = this.textDecoder(value)
-          console.log('特征值变化',  value, chunk)
+          console.log('解密后',  chunk)
           // let uint8Array = new Uint8Array(value)
           // let str = ''
           // for (let i = 0; i < uint8Array.length; i++) {

@@ -721,7 +721,7 @@ function decrypt(word){
 		padding: CryptoJS.pad.ZeroPadding
 	});
 	let decryptedStr = decrypt.toString(CryptoJS.enc.Utf8);
-	console.log('解密后', decryptedStr)
+	// console.log('解密后', decryptedStr)
 	return decryptedStr;
 }
 // console.log(encrypt('0100\r')) // 8A917618B85B54B4979B485D2BD2CC85
