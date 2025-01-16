@@ -699,21 +699,21 @@ function getUDSDTC(cmd, msg){
 function encrypt(word){
 	const key = CryptoJS.enc.Utf8.parse('UBDUXS5VPHKDKB284D7NKJFONCKWBUKA')
  const iv = CryptoJS.enc.Utf8.parse('UBDUXS5VPHKDKB28')
-	console.log('加密文本', word);
+	console.warn('CryptoJS加密前', word);
 	let srcs = CryptoJS.enc.Utf8.parse(word);
 	let encrypted = CryptoJS.AES.encrypt(srcs, key, {
 			iv: iv,
 			mode: CryptoJS.mode.CBC,
 			padding: CryptoJS.pad.ZeroPadding
 	});
-	console.log('加密后', encrypted.ciphertext.toString().toUpperCase());
+	console.warn('CryptoJS加密后', encrypted.ciphertext.toString().toUpperCase());
 	return CryptoJS.enc.Hex.stringify(CryptoJS.enc.Base64.parse(encrypted.toString()))
 }
 
 function decrypt(word){
 	const key = CryptoJS.enc.Utf8.parse('UBDUXS5VPHKDKB284D7NKJFONCKWBUKA')
   const iv = CryptoJS.enc.Utf8.parse('UBDUXS5VPHKDKB28')
-	console.log('解密前', word)
+	console.warn('CryptoJS解密前', word)
 	let ciphertext = CryptoJS.enc.Hex.parse(word)
 	let decrypt = CryptoJS.AES.decrypt({ciphertext: ciphertext}, key, { 
 		iv: iv, 
@@ -721,7 +721,7 @@ function decrypt(word){
 		padding: CryptoJS.pad.ZeroPadding
 	});
 	let decryptedStr = decrypt.toString(CryptoJS.enc.Utf8);
-	// console.log('解密后', decryptedStr)
+	console.warn('CryptoJS解密后', decryptedStr)
 	return decryptedStr;
 }
 // console.log(encrypt('0100\r')) // 8A917618B85B54B4979B485D2BD2CC85

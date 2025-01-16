@@ -384,7 +384,9 @@
           // this.dataFlow = `发送: ${cmd}\r\n` + this.dataFlow // 发送记录
           this.currentCMD = cmd
         }).catch((error)=>{
+          this.errMsg = error
           console.log('发送失败',error)
+          alert("获取设备详细信息时发生错误");
         })
       },
       // 接收回复消息
@@ -394,7 +396,7 @@
           let value = e.target.value // 当前帧返回的数据
           console.log('收到回复特征值变化',  value)
           let chunk = this.textDecoder(value)
-          console.log('解密后',  chunk)
+          // console.log('解密后',  chunk)
           // let uint8Array = new Uint8Array(value)
           // let str = ''
           // for (let i = 0; i < uint8Array.length; i++) {
@@ -471,6 +473,10 @@
       custom_pid(){
         if(!this.isConnected){
           alert('错误！请先连接蓝牙再测试！')
+          return
+        }
+        if(!this.inputValue){
+          alert('错误！请先输入指令！')
           return
         }
         this.queue.push(this.inputValue)
