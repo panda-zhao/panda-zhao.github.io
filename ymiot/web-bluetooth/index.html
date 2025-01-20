@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Web Bluetooth V1.0</title>
+  <title>Web Bluetooth V1.1</title>
   <script src="./util.js"></script>
   <script src="../../js/vue.js"></script>
   <style>
@@ -14,7 +14,20 @@
     .header{
       display: flex;
       align-items: center;
-      
+      align-items: center;
+    }
+    .loading{
+      position: fixed;
+      top: 40%;
+      left: 40%;
+      right: 40%;
+      bottom: 40%;
+      background: rgba(0, 0, 0, .8);
+      color: #f00;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     .floatingView{
       position: fixed;
@@ -125,6 +138,11 @@
     textarea:hover {
       border-color: #ccc;
     }
+    .info{
+      color: blue;
+      font-weight: bold;
+      padding: 0 15px;
+    }
 
     .footer{
       margin-top: 15px;
@@ -170,29 +188,38 @@
       width: 100%;
       height: calc(100vh - 330px);
     }
+    .z-button2{
+      color: #fff;
+      background-color: #f00;
+    }
   </style>
 </head>
 <body>
   <div id="app">
+    <div v-if="loading" class="loading">
+      <div></div>
+      {{errMsg}}
+    </div>
     <div class="floatingView">{{errMsg}}</div>
-
-    <div v-if="!isConnected" class="header">
+    <div class="header" v-if="!isConnected">
       是否加密
       <div class="switch" :class="{ 'is-on': isEncrypted }" @click="isEncrypted = !isEncrypted">
         <div class="switch-handle"></div>
       </div>
-      <!-- <button id="z-button" class="z-button" @click="connectOBD">是否加密</button> -->
       <button id="z-button" class="z-button" @click="connectOBD">连接蓝牙</button>
     </div>
-
-    <div class="footer" v-else>当前协议：{{ATDP}}[{{isEncrypted ? '加密模式': '未加密'}}]</div>
+    
+    <div class="header" v-if="isConnected">
+      <div class="info" >当前协议：{{ATDP}}[{{isEncrypted ? '加密模式': '未加密'}}]</div>
+      <button id="z-button" class="z-button2" v-if="isConnected" @click="closeBLEConnection">断开连接</button>
+    </div>
 
     <div class="container">
       <div>
         <h2>请输入要发送的指令</h2>
         <input type="text" v-model="inputValue" placeholder="请输入指令">
-        <button @click="custom_pid">发送单个指令</button>
-        <button @click="test_pid">测试所有指令</button>
+        <button @click="startJob">发送单个指令</button>
+        <button @click="startAll">测试所有指令</button>
       </div>
 
       <div>
@@ -206,7 +233,7 @@
     </div>
     
     
-    <!-- <footer>
+    <footer>
       <div>参考文档</div>
       <ul>
         <li>
@@ -216,7 +243,7 @@
           <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Bluetooth" target="_blank">MDN社区 Bluetooth</a>
         </li>
       </ul>
-    </footer> -->
+    </footer>
     
   </div>
 
@@ -225,7 +252,9 @@
   const app = new Vue({
     el: '#app',
     data: {
-      ATDP: 'AUTO, ISO 15765-4 (CAN 29/500)', // ISO14230-4(KWP FAST) AUTO, ISO 15765-4 (CAN 29/500)
+      ATDP: '暂无', // ISO14230-4(KWP FAST) AUTO, ISO 15765-4 (CAN 29/500)
+      loading: false,
+      gatt_service: null,
       isEncrypted: true,
       isConnected: false,
       queue: [], // 当前任务队列
@@ -311,7 +340,7 @@
             this.errMsg = `${device.name} 已连接`
 
             const server = await device.gatt.connect(); // 连接到 GATT 服务器
- 
+            this.gatt_service = server
             const OBDII_services = await server.getPrimaryServices(); // 获取所有服务
             console.log('所有服务', OBDII_services)
             
@@ -341,12 +370,12 @@
             console.log('5-写入特征值', this.characteristic_write)
 
             console.log('6-启动订阅，开始监听特征值变化', )
-            this.onBLECharacteristicValueChange() // 监听低功耗蓝牙设备特征值变化
             this.characteristic_notify.startNotifications(); // 启用监听特征值改变
+            this.onBLECharacteristicValueChange() // 监听低功耗蓝牙设备特征值变化
             this.isConnected = true
             // 执行默认队列
-            let queue = ['ATZ', 'ATE0', 'ATL0', 'ATH1', 'ATSP0', 'AT+VERSION', 'ATI', '0100', 'ATDP', "ATRV"]
-            this.queue = queue
+            this.queue = ['ATZ', 'ATE0', 'ATL0', 'ATH1', 'ATSP0', 'AT+VERSION', 'ATI', '0100', 'ATDP', "ATRV"]
+            this.currentIndex = 0
             this.writeCmd()
           })
           .catch(function(error) {
@@ -359,30 +388,42 @@
           alert("获取设备详细信息时发生错误");
         }
       },
+      closeBLEConnection(){
+        this.gatt_service.device.gatt.disconnect()
+        console.log('已成功断开连接');
+        this.isConnected = false
+      },
       // 写数据
       writeCmd(){
-        if(!this.isReady){
+        // return new Promise( async (resolve, reject) => {
+          
+        // });
+      if(!this.isReady){
+          alert('当前有未完成的指令')
           console.log('当前有未完成的指令', this.currentCMD)
+          reject('当前有未完成的指令')
           return
         }
-        let cmd = this.queue[this.currentIndex]
+        let cmd = this.queue[this.currentIndex]      
+        console.log('1、开始发送指令', cmd , this.formatTime(), )
         this.errMsg = `正在发送指令 ${cmd}`
-
-        let _cmd = null
-        _cmd = this.textEncoder(cmd)
-        console.log('实际写入', _cmd)
+        this.loading = true
+        this.isReady = false
+        let _cmd = this.textEncoder(cmd)
         // let str = cmd + '\r'
         // var bufView = new Uint8Array(str.length);
         // for (var i = 0; i < str.length; i++) {
         //   bufView[i] = str.charCodeAt(i);
         // }
-        // _cmd = bufView.buffer;
+        // let _cmd = bufView.buffer;
+        console.log('2、实际写入', _cmd)
+
         this.characteristic_write.writeValue(_cmd).then( async(res)=>{
-          console.log(this.formatTime(), '发送指令成功', cmd)
+          console.log('3、发送指令成功', cmd, this.formatTime())
           this.sendTimestamp = this.formatTime()
-          this.isReady = false
           // this.dataFlow = `发送: ${cmd}\r\n` + this.dataFlow // 发送记录
           this.currentCMD = cmd
+          writeDone = true;
         }).catch((error)=>{
           this.errMsg = error
           console.log('发送失败',error)
@@ -394,7 +435,7 @@
         // 监听低功耗蓝牙设备特征值变化,必须先启用startNotifications，才能监听到
         this.characteristic_notify.addEventListener('characteristicvaluechanged', e => {
           let value = e.target.value // 当前帧返回的数据
-          console.log('收到回复特征值变化',  value)
+          console.log('5、收到回复特征值变化',  value)
           let chunk = this.textDecoder(value)
           // console.log('解密后',  chunk)
           // let uint8Array = new Uint8Array(value)
@@ -414,10 +455,10 @@
             let result = this.formatData(this.currentCMD, this.tem)
             this.formatTimestamp = this.formatTime()
             this.dataFlow = `\r\n${this.sendTimestamp} 发送：${this.currentCMD}\r\n${this.endTimestamp} 回复: ${this.tem.replace(/[ ]|[\r]|[\n]|[\r\n]/g, "")}\r\n${this.formatTimestamp} 格式化后: ${result}\r\n` + this.dataFlow
-
-            let print = `发送：${this.currentCMD}\r\n回复: ${this.tem}\r\n格式化后: ${result}`
+            let print = `7、发送：${this.currentCMD}\r\n回复: ${this.tem}\r\n格式化后: ${result}`
+            this.loading = false
             console.log(print);
-            this.tem = '' // 接收完成。重制数据
+            this.tem = '' // 接收完成。重置数据
             if((this.currentIndex + 1) < this.queue.length ){
               this.currentIndex++
               this.writeCmd()
@@ -427,6 +468,8 @@
               this.errMsg = `发送 ${this.currentCMD} 完成`
               console.log('===== 队列已执行完成 =====')
             }
+          }else{
+            console.log('4、接收到数据，但未接收完成')
           }
         });
       },
@@ -467,23 +510,32 @@
         }else{
           result = data
         }
-        console.log('格式化后的结果', cmd, result)
+        console.log('6、格式化后的结果', cmd, result)
         return result
       },
-      custom_pid(){
+      startJob(){
         if(!this.isConnected){
           alert('错误！请先连接蓝牙再测试！')
           return
         }
-        if(!this.inputValue){
+        let cmd = this.inputValue
+        if(!cmd){
           alert('错误！请先输入指令！')
           return
         }
-        this.queue.push(this.inputValue)
-        this.writeCmd()
+        if(cmd === '05'){
+          this.get05Group()
+          return
+        }
+        if(cmd === '06'){
+          this.get06Group()
+          return
+        }
+        this.queue.push(cmd)
+        this.writeCmd(cmd)
       },
       
-      test_pid(){
+      startAll(){
         if(!this.isConnected){
           alert('错误！请先连接蓝牙再测试！')
           return
@@ -530,6 +582,12 @@
         }
         return result
       },
+      get05Group(){
+
+      },
+      get06Group(){
+
+      }
     }
   })
 

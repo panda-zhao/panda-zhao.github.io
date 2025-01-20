@@ -38,10 +38,10 @@ function getSupport(cmd, msg) {
 			msgArray = msgArray.map(item => item.substring(2) )
 		}
 		msgArray = msgArray.filter(item=> item.length >= 8) // 过滤掉小于8的数据
-		console.log(2, '数据情况', msgArray)
+		// console.log(2, '数据情况', msgArray)
 		for (let i = 0; i < msgArray.length; i++) {
 			let data = msgArray[i]
-			console.log(3, '有效数据', data.substring(0, 8))
+			// console.log(3, '有效数据', data.substring(0, 8))
 			if(cmd === '0900' && data.substring(0, 2) === '01' && data.length === 12){
 				data = data.substring(2, 10)
 			}
@@ -62,7 +62,7 @@ function getSupport(cmd, msg) {
 				d =  "0" + d
 			}
 			let str = a + b + c + d
-			console.log(4, '支持情况', str)
+			// console.log(4, '支持情况', str)
 			for (let index = 0; index < result.length; index++) {
 				if (result[index] === '0' && str[index] === '1') {
 					result[index] = '1'
