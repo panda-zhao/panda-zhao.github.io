@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Web Bluetooth V1.2</title>
+  <title>Web Bluetooth V1.1</title>
   <script src="./util.js"></script>
   <script src="../../js/vue.js"></script>
   <style>
@@ -223,11 +223,11 @@
       </div>
 
       <div>
-        <h2>数据发送和回复记录 <button @click="dataHTML=''">重置</button></h2>
+        <h2>数据发送和回复记录 <button @click="dataFlow=''">重置</button></h2>
         <div>
-          <textarea name="" id="" cols="30" rows="20" v-model="dataHTML" readonly class="box"></textarea>
+          <textarea name="" id="" cols="30" rows="20" v-model="dataFlow" readonly class="box"></textarea>
         </div>
-        <!-- <div v-html="dataHTML" class="container"></div> -->
+        <!-- <div v-html="dataFlow" class="container"></div> -->
        
       </div>
     </div>
@@ -249,7 +249,6 @@
 
   
   <script>
-  const eventTarget = new EventTarget(); // 创建 EventTarget 实例
   const app = new Vue({
     el: '#app',
     data: {
@@ -259,16 +258,18 @@
       isEncrypted: true,
       isConnected: false,
       queue: [], // 当前任务队列
+      currentIndex: 0, // 当前任务下标
       currentCMD: null, // 当前正在执行的指令
       errMsg: '请先点击连接蓝牙', // 异常信息
-      dataHTML: '',
+      dataFlow: '',
+      isReady: true, // 当时是否准备好
       characteristic_write: null, // 写入的特征值
       characteristic_notify: null, // 订阅的特征值
       tem: '',// 数据存储
       inputValue: "", // 手动输入的值
     },
     created() {
-      // console.log(this.tem, this.dataHTML, this.$data)
+      // console.log(this.tem, this.dataFlow, this.$data)
       // console.log(PIDs)
       // console.log(CryptoJS)
       console.log('当前的协议', localStorage.getItem('____ATDP'))
@@ -370,11 +371,12 @@
 
             console.log('6-启动订阅，开始监听特征值变化', )
             this.characteristic_notify.startNotifications(); // 启用监听特征值改变
-            this.onBLECharacteristicValueChange() // 监听低功耗蓝牙设备特征值变化 ？重复启用是否会有问题
+            this.onBLECharacteristicValueChange() // 监听低功耗蓝牙设备特征值变化
             this.isConnected = true
             // 执行默认队列
             this.queue = ['ATZ', 'ATE0', 'ATL0', 'ATH1', 'ATSP0', 'AT+VERSION', 'ATI', '0100', 'ATDP', "ATRV"]
-            this.write_multiple_cmd(this.queue)
+            this.currentIndex = 0
+            this.writeCmd()
           })
           .catch(function(error) {
             console.log("出现错误： " , error);
@@ -391,80 +393,88 @@
         console.log('已成功断开连接');
         this.isConnected = false
       },
-      async write_multiple_cmd (arr){
-        for (let index = 0; index < arr.length; index++) {
-          const element = arr[index];
-          let chunk = await this.writeCmd(element)
-          console.log('响应完毕', element, chunk) 
-        }
-      },
       // 写数据
-      writeCmd(cmd){
-        return new Promise( async (resolve, reject) => {
-          if(this.loading){
-            console.log('当前有未完成的指令', cmd)
-            reject(new Error('当前有未完成的指令'));
-            return
-          }
-          console.log('1、开始发送指令', cmd , this.formatTime(), )
-          this.errMsg = `正在发送指令 ${cmd}`
-          // this.onValueChangeCallback = (data)=>{
-          //   return data
-          // }
-          this.loading = true
-          let _cmd = this.textEncoder(cmd)
-          console.log('2、实际写入', _cmd)
-          this.characteristic_write.writeValue(_cmd).then( async(res)=>{
-            console.log('3、发送指令成功', cmd, this.formatTime())
-            this.sendTimestamp = this.formatTime()
-            // this.dataHTML = `发送: ${cmd}\r\n` + this.dataHTML // 发送记录
-            this.currentCMD = cmd
-            /// 监听 data 事件，等待 receive 函数的结果
-            const handleData = (event) => {
-              let result = event.detail
-              console.log("接收eventTarget响应消息:", result);
-              resolve(result);
-              // 移除监听器，避免重复监听
-              eventTarget.removeEventListener('data', handleData);
-            };
-            eventTarget.addEventListener('data', handleData);
-          }).catch((error)=>{
-            alert("获取设备详细信息时发生错误");
-            this.errMsg = error
-            console.log('发送失败',error)
-            reject(err)
-          })
-        });
+      writeCmd(){
+        // return new Promise( async (resolve, reject) => {
+          
+        // });
+      if(!this.isReady){
+          alert('当前有未完成的指令')
+          console.log('当前有未完成的指令', this.currentCMD)
+          reject('当前有未完成的指令')
+          return
+        }
+        let cmd = this.queue[this.currentIndex]      
+        console.log('1、开始发送指令', cmd , this.formatTime(), )
+        this.errMsg = `正在发送指令 ${cmd}`
+        this.loading = true
+        this.isReady = false
+        let _cmd = this.textEncoder(cmd)
+        // let str = cmd + '\r'
+        // var bufView = new Uint8Array(str.length);
+        // for (var i = 0; i < str.length; i++) {
+        //   bufView[i] = str.charCodeAt(i);
+        // }
+        // let _cmd = bufView.buffer;
+        console.log('2、实际写入', _cmd)
+
+        this.characteristic_write.writeValue(_cmd).then( async(res)=>{
+          console.log('3、发送指令成功', cmd, this.formatTime())
+          this.sendTimestamp = this.formatTime()
+          // this.dataFlow = `发送: ${cmd}\r\n` + this.dataFlow // 发送记录
+          this.currentCMD = cmd
+          writeDone = true;
+        }).catch((error)=>{
+          this.errMsg = error
+          console.log('发送失败',error)
+          alert("获取设备详细信息时发生错误");
+        })
       },
       // 接收回复消息
       onBLECharacteristicValueChange(){
-        return new Promise((resolve, reject) => {
-          this.characteristic_notify.addEventListener('characteristicvaluechanged', e => {
-            let value = e.target.value // 当前帧返回的数据
-            this.endTimestamp = this.formatTime()
-            console.log('5、收到回复特征值变化',  value, this.endTimestamp)
-            let chunk = this.textDecoder(value)
-            this.tem += chunk // 当前命令返回的总数据
-            if(this.tem.includes('>')){
-              // console.log('接收完成', this.tem)
-              let result = this.formatData(this.currentCMD, this.tem)
-              // 发送事件，携带结果数据
-              const event = new CustomEvent('data', { detail: result });
-              eventTarget.dispatchEvent(event);
-              this.dataHTML = `\r\n${this.sendTimestamp} 发送：${this.currentCMD}\r\n${this.endTimestamp} 回复: ${this.tem.replace(/[ ]|[\r]|[\n]|[\r\n]/g, "")}\r\n${this.formatTime()} 格式化后: ${result}\r\n` + this.dataHTML
-              this.loading = false
-              // let print = `7、发送：${this.currentCMD}\r\n回复: ${this.tem}\r\n格式化后: ${result}`
-              // console.log(print);
-              this.tem = '' // 接收完成。重置数据
-              console.log('===== 已执行完成 =====')
-              resolve(result); // 解析特征值变化
-            }else{
-              console.log('4、接收到数据，但未接收完成')
-            }
-          });
-        })
         // 监听低功耗蓝牙设备特征值变化,必须先启用startNotifications，才能监听到
-        
+        this.characteristic_notify.addEventListener('characteristicvaluechanged', e => {
+          let value = e.target.value // 当前帧返回的数据
+          console.log('5、收到回复特征值变化',  value)
+          let chunk = this.textDecoder(value)
+          // console.log('解密后',  chunk)
+          // let uint8Array = new Uint8Array(value)
+          // let str = ''
+          // for (let i = 0; i < uint8Array.length; i++) {
+          //   str += String.fromCharCode(uint8Array[i]);
+          // }
+          // console.log('1', str)
+          // chunk = decrypt(str)
+          // console.log('2', chunk)
+          
+          this.tem += chunk // 当前命令返回的总数据
+          if(this.tem.includes('>')){
+            // console.log('接收完成', this.tem)
+            this.endTimestamp = this.formatTime()
+            this.isReady = true
+            let result = this.formatData(this.currentCMD, this.tem)
+            this.formatTimestamp = this.formatTime()
+            this.dataFlow = `\r\n${this.sendTimestamp} 发送：${this.currentCMD}\r\n${this.endTimestamp} 回复: ${this.tem.replace(/[ ]|[\r]|[\n]|[\r\n]/g, "")}\r\n${this.formatTimestamp} 格式化后: ${result}\r\n` + this.dataFlow
+            let print = `7、发送：${this.currentCMD}\r\n回复: ${this.tem}\r\n格式化后: ${result}`
+            this.loading = false
+            console.log(print);
+            this.tem = '' // 接收完成。重置数据
+            if(this.onValueChangeCallback){
+              this.onValueChangeCallback(result)
+            }
+            if((this.currentIndex + 1) < this.queue.length ){
+              this.currentIndex++
+              this.writeCmd()
+            }else{
+              this.queue = []
+              this.currentIndex = 0
+              this.errMsg = `发送 ${this.currentCMD} 完成`
+              console.log('===== 队列已执行完成 =====')
+            }
+          }else{
+            console.log('4、接收到数据，但未接收完成')
+          }
+        });
       },
       formatData(cmd, data){
         let result = 'NO DATA'
@@ -506,7 +516,7 @@
         console.log('6、格式化后的结果', cmd, result)
         return result
       },
-      async startJob(){
+      startJob(){
         if(!this.isConnected){
           alert('错误！请先连接蓝牙再测试！')
           return
@@ -517,17 +527,11 @@
           return
         }
         if(cmd === '05'){
-
-          let start = this.formatTime()
-          let chunk =  await this.get05Group()
-         
-          this.dataHTML = `\r\n${start} 发送：05 \r\n${this.formatTime()} 格式化后: ${JSON.stringify(chunk)}\r\n` + this.dataHTML
+          this.get05Group()
           return
         }
         if(cmd === '06'){
-          let start = this.formatTime()
-          let chunk =  await this.get06Group()
-          this.dataHTML = `\r\n${start} 发送：06 \r\n${this.formatTime()} 格式化后: ${JSON.stringify(chunk)}\r\n` + this.dataHTML
+          this.get06Group()
           return
         }
         this.queue.push(cmd)
@@ -567,159 +571,26 @@
       // 字符串转ArrayBuffer
       textEncoder: function(cmd){
         let str = cmd + '\r'
-        // 下边这个方法也可以
         if(this.isEncrypted){
           str = encrypt(str)
         }
         let result = new TextEncoder().encode(str).buffer
-        // 下边这个方法兼容性更好
-        // var bufView = new Uint8Array(str.length);
-        // for (var i = 0; i < str.length; i++) {
-        //   bufView[i] = str.charCodeAt(i);
-        // }
-        // let result = bufView.buffer;
         return result
       },
       // ArrayBuffer转字符串
       textDecoder: function(value){
         let result = new TextDecoder().decode(value)
-        // 下边这个方法兼容性更好
-        // let uint8Array = new Uint8Array(value)
-        // let result = ''
-        // for (let i = 0; i < uint8Array.length; i++) {
-        //   result += String.fromCharCode(uint8Array[i]);
-        // }
-
         if(this.isEncrypted){
           result = decrypt(result)
         }
         return result
       },
       get05Group(){
-        return new Promise( async (resolve, reject) => {
-          let result = []
-          let pid_0113 = await this.writeCmd('0113')
-          let pid_011D = await this.writeCmd('011D')
-          // 获取支持的氧传感器
-          let _o2Location = []
-          if(pid_0113){
-            if(pid_0113.includes('11')){
-              _o2Location.push('01')
-            }
-            if(pid_0113.includes('12')){
-              _o2Location.push('02')
-            }
-            if(pid_0113.includes('13')){
-              _o2Location.push('03')
-            }
-            if(pid_0113.includes('14')){
-              _o2Location.push('04')
-            }
-            if(pid_0113.includes('21')){
-              _o2Location.push('05')
-            }
-            if(pid_0113.includes('22')){
-              _o2Location.push('06')
-            }
-            if(pid_0113.includes('23')){
-              _o2Location.push('07')
-            }
-            if(pid_0113.includes('24')){
-              _o2Location.push('08')
-            }
-          } else if(pid_011D){
-            if(pid_011D.includes('11')){
-              _o2Location.push('01')
-            }
-            if(pid_011D.includes('12')){
-              _o2Location.push('02')
-            }
-            if(pid_011D.includes('21')){
-              _o2Location.push('03')
-            }
-            if(pid_011D.includes('22')){
-              _o2Location.push('04')
-            }
-            if(pid_011D.includes('31')){
-              _o2Location.push('05')
-            }
-            if(pid_011D.includes('32')){
-              _o2Location.push('06')
-            }
-            if(pid_011D.includes('41')){
-              _o2Location.push('07')
-            }
-            if(pid_011D.includes('42')){
-              _o2Location.push('08')
-            }
-          }
-
-          if(_o2Location.length > 0){
-            // 获取每个氧传感器的TID
-            let _json = {}
-            let _list = ["0500", "0520", "0540", "0560", "0580", "05A0", "05C0", "05E0"]
-            for (let subItem of _o2Location) {
-              for (let item of _list) {
-                let cmd = item + subItem
-                let _support = await this.writeCmd(cmd) || "00000000000000000000000000000000"
-                if(!_json[subItem]){
-                  _json[subItem] = _support
-                }else{
-                  _json[subItem] += _support
-                }
-              }
-            }
-            // 根据支持情况计算支持的测试ID
-            let queue = [] // 任务队列
-            for (let key in _json) {
-              let supportStr = _json[key]
-              for (var i = 0; i < supportStr.length; i++) {
-                if(supportStr[i] === '1'){
-                  let hex = (i+1).toString(16).toUpperCase()
-                  while (hex.length < 2) {
-                    hex = '0' + hex
-                  }
-                  queue.push('05' + hex + key)
-                }
-              }
-            }
-            console.log('任务队列', queue)
-            for (const cmd of queue) {
-              let val =  await this.writeCmd(cmd)
-              result.push(val)
-            }
-          }
-          console.log('05结果', result)
-          resolve(result)
-        })
+      
       },
       get06Group(){
-        return new Promise( async (resolve, reject) => {
-          let result = []
-          let list = ["0600", "0620", "0640", "0660", "0680", "06A0", "06C0", "06E0"]
-          let __support = ''
-          for (const item of list) {
-            __support += await this.writeCmd(item) || "00000000000000000000000000000000"
-          }
-          // console.log('06支持情况', __support)
-          let queue = [] // 任务队列
-          for (var i = 0; i < 256; i++) {
-            let hex = i.toString(16).toUpperCase()
-            while (hex.length < 2) {
-              hex = '0' + hex
-            }
-            const cmd = '06' + hex
-            if(__support[i-1] === '1'){
-              if(!['00', '20', '40', '60', '80', 'A0', 'C0', 'E0'].includes(hex)){
-                let arr = await this.writeCmd(cmd)
-                result = result.concat(arr)
-              }
-            }
-          }
-          // console.log('06结果', result)
-          resolve(result)
-        })
-      },
+
+      }
     }
   })
 
