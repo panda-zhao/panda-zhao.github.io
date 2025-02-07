@@ -147,10 +147,14 @@ function get$01(cmd, msg) {
 		if(localStorage.getItem('____ATDP').includes("CAN")){
 			let msgArray = msg.split(separator)
 			msgArray.shift() // 删除头部无效数据
+			console.log('有效数据1', msgArray)
 			for (let item of msgArray) {
 				let index = msg.indexOf(separator) // 分隔符开始的位置
-				let length = Number(parseInt(msg.substring(index-2, index), 16)) 
-				if(length === effectiveLength + (separatorLength / 2) || length === 7){
+				let length = Number(parseInt(msg.substring(index-2, index), 16)) // 分隔符前面是有效位数
+				console.log(length, effectiveLength, separatorLength)
+				// 有效位必须是 标准数据 + 命令长度，如果符合规范获取有效数据, 长度7是针对测试板不标准数据
+				// if(length === effectiveLength + (separatorLength / 2) || length === 7){
+				if(length >= effectiveLength + (separatorLength / 2) || length === 7){
 					effectiveData = msg.substring(index + separatorLength, index + separatorLength + effectiveLength * 2)
 				}else{
 					msg = msg.substring(index + separatorLength)// 截取无效数据，继续处理
@@ -161,6 +165,7 @@ function get$01(cmd, msg) {
 			let index = msg.indexOf(separator)
 			effectiveData = msg.substring(index + separatorLength) // 有效数据
 		}
+		console.log('有效数据2', effectiveData)
 		// 3 根据有效长度获取最终结果 16进制转10进制
 		if(effectiveData && effectiveData.length >= effectiveLength*2){
 			let A = parseInt(effectiveData.substring(0, 2), 16)
@@ -179,9 +184,9 @@ function get$01(cmd, msg) {
 			result = formula(A, B, C, D) // 计算公式
 			result = +result === 0 ? 0 : result // 如果0.00这种变成0
 		}else{
-			// console.error(`getPidResult3=有效数据不符合规范数据长度,数据=${effectiveData},规范长度=${effectiveLength*2}`)
+			console.error(`getPidResult3=有效数据不符合规范数据长度,数据=${effectiveData},规范长度=${effectiveLength*2}`)
 		}
-		// console.log(`getPidResult 2⬇= ${cmd} 的响应：${_data}，计算结果：${result}`)
+		console.log(`getPidResult 2⬇= ${cmd} 的响应：${_data}，计算结果：${result}`)
 		return result
 	} catch (e) {
 		console.error('获取pid结果错误：' + cmd + '\r\n' + e)
@@ -215,7 +220,8 @@ function get$02(cmd, msg) {
 			for (let item of msgArray) {
 				let index = msg.indexOf(separator) // 分隔符开始的位置
 				let length = Number(parseInt(msg.substring(index-2, index), 16))
-				if(length === effectiveLength + (separatorLength / 2) || length === 7){
+				// if(length === effectiveLength + (separatorLength / 2) || length === 7){
+				if(length >= effectiveLength + (separatorLength / 2) || length === 7){
 					effectiveData = msg.substring(index + separatorLength, index + separatorLength + effectiveLength * 2)
 				}else{
 					msg = msg.substring(index + separatorLength)// 截取无效数据，继续处理

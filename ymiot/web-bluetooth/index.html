@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Web Bluetooth V1.2</title>
+  <title>Web Bluetooth V1.3</title>
   <script src="./util.js"></script>
   <script src="../../js/vue.js"></script>
   <style>
@@ -272,6 +272,7 @@
       // console.log(PIDs)
       // console.log(CryptoJS)
       console.log('当前的协议', localStorage.getItem('____ATDP'))
+      this.formatData('050001', '486BAA 450001 5A F8\r\r>')
       // this.formatData('050101', '486B00 4501 01 6862\r\r>')
       // this.formatData('050201', '486B00 4502 01 6863\r\r>')
       // this.formatData('050401', '486B00 4504 01 6865\r\r>')
@@ -517,10 +518,8 @@
           return
         }
         if(cmd === '05'){
-
           let start = this.formatTime()
           let chunk =  await this.get05Group()
-         
           this.dataHTML = `\r\n${start} 发送：05 \r\n${this.formatTime()} 格式化后: ${JSON.stringify(chunk)}\r\n` + this.dataHTML
           return
         }
@@ -540,14 +539,15 @@
           return
         }
         // 执行默认队列
-        let queue = ["ATRV",  "020200", "020000", "022000", "024000", "020C00", "020D00", "03", "07", "0A", "04", "05", "06", "0900", "0902", "0904", "0906", "0908", "090A", "090B", "010C", "010D"]
+        let queue = ["ATRV",  "020200", "020000", "022000", "024000", "020C00", "020D00", "03", "07", "0A", "05", "06", "0900", "0902", "0904", "0906", "0908", "090A", "090B", "010C", "010D"]
         for (let i = 0; i < 96; i++) {
           let hex = i.toString(16).toUpperCase()
           let cmd_01 =  (hex.length < 2 ? "010" : '01') + hex
           queue.push(cmd_01)
         }
         this.queue = queue
-        this.writeCmd()
+        // this.writeCmd()
+        this.write_multiple_cmd(this.queue)
       },
       formatTime() {
         let date = new Date()
