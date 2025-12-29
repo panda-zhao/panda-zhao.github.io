@@ -348,7 +348,7 @@
               this.isConnected = true
               // 执行默认队列
               // this.queue = ['ATZ', 'ATE0', 'ATL0', 'ATH1', 'ATSP0', 'AT+VERSION', 'ATI', '0100', 'ATDP', "ATRV"]
-              this.queue = ["0F", "04",  '10']
+              this.queue = ["0F", "04", '10']
               this.write_multiple_cmd(this.queue)
             })
               .catch(function (error) {
@@ -387,7 +387,14 @@
             }
             console.log('1、开始发送指令', cmd, this.formatTime())
             if(cmd === '10'){
-              cmd = '10' + getRndHexStr()
+              let encryStr = getRndHexStr()
+              console.log('待加密字符串', encryStr)
+              // 把字符串转换成asc十六进制
+              let hex = encryStr.split('').map(c => c.charCodeAt(0).toString(16).padStart(2, '0')).join('')
+              // 加密
+              // const cal_result = int2hexStr(EDesEn_Crypt(parseInt(encryStr, 16), 0xBAC9AA76))
+              // console.log('加密结果', cal_result)
+              cmd = '10' + hex
             }
             this.errMsg = `正在发送指令 ${cmd}`
             // this.onValueChangeCallback = (data)=>{
@@ -395,21 +402,22 @@
             // }
             this.loading = true
             const arrayBuffer = this.buildProtocolFrame(cmd)
-            console.log('2、实际写入', arrayBuffer)
-            this.characteristic_write.writeValue(arrayBuffer).then(async (res) => {
-              console.log('3、发送指令成功', cmd, this.formatTime())
-              this.sendTimestamp = this.formatTime()
+            this.currentCMD = cmd
+            this.sendTimestamp = this.formatTime()
               // this.dataHTML = `发送: ${cmd}\r\n` + this.dataHTML // 发送记录
-              this.currentCMD = cmd
-              /// 监听 data 事件，等待 receive 函数的结果
-              const handleData = (event) => {
-                let result = event.detail
-                console.log("接收eventTarget响应消息:", result);
-                resolve(result);
-                // 移除监听器，避免重复监听
-                eventTarget.removeEventListener('data', handleData);
-              };
-              eventTarget.addEventListener('data', handleData);
+            console.log('2、实际写入', arrayBuffer)
+             
+            /// 监听 data 事件，等待 receive 函数的结果
+            const handleData = (event) => {
+              let result = event.detail
+              console.log("接收eventTarget响应消息:", result);
+              resolve(result);
+              // 移除监听器，避免重复监听
+              eventTarget.removeEventListener('data', handleData);
+            };
+            eventTarget.addEventListener('data', handleData);
+            this.characteristic_write.writeValue(arrayBuffer).then(async (res) => {
+             console.log('3、发送指令成功', cmd, this.formatTime())
             }).catch((error) => {
               alert("获取设备详细信息时发生错误");
               this.errMsg = error
@@ -466,11 +474,6 @@
           this.isLoop = false
           // 执行默认队列
           let queue = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '0A', '0B', '0C', '0D', '0E', '0F']
-          for (let i = 0; i < 96; i++) {
-            let hex = i.toString(16).toUpperCase()
-            let cmd_01 = (hex.length < 2 ? "010" : '01') + hex
-            queue.push(cmd_01)
-          }
           this.queue = queue
           // this.writeCmd()
           this.write_multiple_cmd(this.queue)
