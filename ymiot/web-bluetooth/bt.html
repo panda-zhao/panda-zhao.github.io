@@ -212,10 +212,10 @@
     </div>
     <div class="floatingView">{{errMsg}}</div>
     <div class="header" v-if="!isConnected">
-      是否加密
+      <!-- 是否加密
       <div class="switch" :class="{ 'is-on': isEncrypted }" @click="isEncrypted = !isEncrypted">
         <div class="switch-handle"></div>
-      </div>
+      </div> -->
       <button id="z-button" class="z-button" @click="connectOBD">连接蓝牙</button>
     </div>
 
@@ -280,68 +280,7 @@
         inputValue: "", // 手动输入的值
       },
       created() {
-        // console.log(this.tem, this.dataHTML, this.$data)
-        // console.log(PIDs)
-        // console.log(CryptoJS)
-        // localStorage.setItem('____ATDP', 'ISO 15765-4 (CAN 11/500)');
-        console.log('当前的协议', localStorage.getItem('____ATDP'))
-
-        // let value = [45,41,32,46,34,38,34,31,30,44,37,32,44,34,38,33,44,45,39,35,41,46,43,43,45,42,35,36,45,43,45,44]
-        // let value = [30,63,64,39,62,66,35,34,65,64,62,61,65,38,66,39,38,34,34,63,32,63,33,65,34,39,62,61,30,38,39,31]
-        // const uint8Array = new Uint8Array(value);
-        // console.log('解密前', uint8Array)
-        // this.textDecoder(uint8Array)
-        // this.hexToString('4538393532383431303436373434383344413330314643434534423645434544') // >  E895284104674483DA301FCCE4B6ECED
-
-        // this.hexToString('3063643962663534656462616538663938343463326333653439626130383931') // 010C
-        // this.hexToString('3337343545463946343545434245343536414142343032333337344543334346') // 7E803410DBE    
-
-        // this.hexToString('3843353641414244394643464246463936323836464546394341444243414537') // 7E803410A64
-        // this.hexToString('4542423646383431304536303934383344373744444643434531304245434544') // 无法解析 EBB6F8410E609483D77DDFCCE10BECED 7-30
-
-
-        // this.hexToString('3934323046303645343835433432443534463236373545423436413541413133') // 无法解析 9420F6E485C54F2675EB46A5A113 
-        this.hexToString('4534323046383431303835433434383344463236374643434536413541434544') // 无法解析 E420F841085C4483DF267FCCE6A5ACED 7-31
-        
-
-        
-        // this.hexToString('6336376534653038303132343762663034643630663966373266623065306237') // 0104
-        // this.formatData('07', '7E80147>')
-        // this.formatData('050001', '486BAA 450001 5A F8\r\r>')
-        // this.formatData('050101', '486B00 4501 01 6862\r\r>')
-        // this.formatData('050201', '486B00 4502 01 6863\r\r>')
-        // this.formatData('050401', '486B00 4504 01 6865\r\r>')
-        // this.formatData('050601', '486B00 4506 01 23002A4C\r\r>')
-        // this.formatData('050102', '486B00 4501 02 6863\r\r>')
-        // this.formatData('050202', '486B00 4502 02 6864\r\r>')
-
-        // this.formatData('0A', '83F110 7F 0A111E>') // [)
-        // this.formatData('03', '486B11 43 CFCD EDD3 2786 10\r486B11 43 B874 6D99 0000 39 >') // ["U0FCD","U2DD3","P2786","B3874","C2D99")
-        // this.formatData('03', '87F112 43 2029 0082 C021 79 \r87F112 43 8090 00000000DD\r 87F118 43 2029 0082 C021 79  \r87F118 43 8090 0000 0000 DD >') // "P2029","P0082","U0021","B0090"
-        // this.formatData('07', '87F111 47 0420 00000000F4>') // ["P0420")
-        // this.formatData('03', '86F111 41 00BE 3E28 11 FE>'),  // [)
-        // this.formatData('03', '486B10 43 0300 0480 0000 F4\r\r>') // ["P0300","P0480"]
-        // this.formatData('0606', "416B10 4606 813811004AA7\r416B10460601B712DFFF64\r416B104606A137DE000B26\r416B104606213AF4BAC27F\r416B104606B137CC000BD3\r416B1046063139AFBA6155\r416B104606C237BC000A88\r416B104606423903BA2D2E\r\r>")
-        // this.formatData('0601', '18DAF110 10 1C 46 01 01 0A FE DF\r18DAF110 21 90 00 B0 00 01 03 0A\r18DAF110 22 9E 41 78 00 92 AA 01\r18DAF110 23 05 10 02 DD 00 00 03\r18DAF110 24 20 00 00 00 00 00 00\r\r>')
-
-        // 多帧不规范数据
-        let mock = [
-          // ["0100", "SEARCHING...\r86F1104100983B80112C\r86F11A41009818800103\r\r>"], // 10011000001110111000000000010001
-          // ['0100', 'SEARCHING...\r86F110 4100 BE 3E B8 11 8D 86\rF11A 4100 98 18 80 01 03\r\r>'], // 10111110001111101011100000010001
-          // ["020000", "7E8 07 420000 7E 1F 88 03\r7E9 07 420000 58 1A 80 03\r\r>"], // 01111110000111111000100000000011
-          // ["020500", "486B0E 420500 FF 07\r\r>"], // 215
-          // ["020200", "85F110 420200 01 98 63\r\r>"], // P0198
-          // [],
-          // [],
-          // [],
-          // [],
-          // ["0100", "SEARCHING...\r18 DA F1 EF 06 41 00 90 18 80 11 \r18 DA F1 1E 06 41 00 90 18 80 03 \r18 DA F1 10 06 41 00 B6 3C A8 13 \r\r>"]
-        ]
-
-        for (let item of mock) {
-          const [cmd, msg] = item
-          this.formatData(cmd, msg)
-        }
+        console.log('Web Bluetooth API 支持情况：', navigator.bluetooth ? '支持' : '不支持', "版本v1.0.0");
       },
       computed: {
         // ATDP() {
@@ -349,29 +288,6 @@
         // }
       },
       methods: {
-        hexToString(hexStr) {
-          // 检查输入长度是否为64位（每两个字符为一个十六进制数，共32个字符）
-          if (hexStr.length !== 64) {
-            throw new Error("输入的字符串长度必须为64位");
-          }
-          let result = "";
-          // 按每两个字符分组并转换为字符
-          for (let i = 0; i < hexStr.length; i += 2) {
-            // 获取每两个字符组成的十六进制字符串
-            const hexPair = hexStr.substring(i, i + 2);
-            // 将十六进制字符串转换为十进制
-            const decimal = parseInt(hexPair, 16);
-            console.log('decimal', decimal)
-            // 将十六进制字符串转换为ASCII字符
-            const char = String.fromCharCode(parseInt(hexPair, 16));
-            // 将字符追加到结果字符串中
-            result += char;
-          }
-          console.log('hexToString', result)
-          result = decrypt(result)
-          return result;
-        },
-
         connectOBD() {
           try {
             let UUID = "0000fff0-0000-1000-8000-00805f9b34fb" // 不加密
@@ -380,8 +296,8 @@
             }
             let option = {
               filters: [
-                // {services: [UUID]}, // 一个数组，包含要查找的蓝牙设备提供的服务 UUID，必须小写
-                { name: 'OBDII' }, // 字符串，精确指定设备名称 OBDII
+                {services: [UUID]}, // 一个数组，包含要查找的蓝牙设备提供的服务 UUID，必须小写
+                // { name: 'BT15' }, // 字符串，精确指定设备名称 OBDII
                 // {namePrefix: '前缀'} // 字符串，设备名称的前缀
               ],
               acceptAllDevices: false, // 默认false, 是否可以接受所有蓝牙设备, 为false时必须设置filters 
@@ -431,7 +347,8 @@
               this.onBLECharacteristicValueChange() // 监听低功耗蓝牙设备特征值变化 ？重复启用是否会有问题
               this.isConnected = true
               // 执行默认队列
-              this.queue = ['ATZ', 'ATE0', 'ATL0', 'ATH1', 'ATSP0', 'AT+VERSION', 'ATI', '0100', 'ATDP', "ATRV"]
+              // this.queue = ['ATZ', 'ATE0', 'ATL0', 'ATH1', 'ATSP0', 'AT+VERSION', 'ATI', '0100', 'ATDP', "ATRV"]
+              this.queue = ["0F", "04",  '10']
               this.write_multiple_cmd(this.queue)
             })
               .catch(function (error) {
@@ -468,15 +385,18 @@
               reject(new Error('当前有未完成的指令'));
               return
             }
-            console.log('1、开始发送指令', cmd, this.formatTime(),)
+            console.log('1、开始发送指令', cmd, this.formatTime())
+            if(cmd === '10'){
+              cmd = '10' + getRndHexStr()
+            }
             this.errMsg = `正在发送指令 ${cmd}`
             // this.onValueChangeCallback = (data)=>{
             //   return data
             // }
             this.loading = true
-            let _cmd = this.textEncoder(cmd)
-            console.log('2、实际写入', _cmd)
-            this.characteristic_write.writeValue(_cmd).then(async (res) => {
+            const arrayBuffer = this.buildProtocolFrame(cmd)
+            console.log('2、实际写入', arrayBuffer)
+            this.characteristic_write.writeValue(arrayBuffer).then(async (res) => {
               console.log('3、发送指令成功', cmd, this.formatTime())
               this.sendTimestamp = this.formatTime()
               // this.dataHTML = `发送: ${cmd}\r\n` + this.dataHTML // 发送记录
@@ -505,70 +425,24 @@
               let value = e.target.value // 当前帧返回的数据
               this.endTimestamp = this.formatTime()
               console.log('5、收到回复特征值变化', value, this.endTimestamp)
+              this.errMsg = `发送指令 ${this.currentCMD} 成功`
               // console.log('5、收到回复特征值变化',  JSON.stringify(value), this.endTimestamp)
-              let chunk = this.textDecoder(value)
-              this.tem += chunk // 当前命令返回的总数据
-              if (this.tem.includes('>')) {
-                // console.log('接收完成', this.tem)
-                let result = this.formatData(this.currentCMD, this.tem)
-                // 发送事件，携带结果数据
-                const event = new CustomEvent('data', { detail: result });
-                eventTarget.dispatchEvent(event);
-                this.dataHTML = `\r\n${this.sendTimestamp} 发送：${this.currentCMD}\r\n${this.endTimestamp} 回复: ${this.tem.replace(/[ ]|[\r]|[\n]|[\r\n]/g, "")}\r\n${this.formatTime()} 格式化后: ${result}\r\n` + this.dataHTML
-                this.loading = false
-                // let print = `7、发送：${this.currentCMD}\r\n回复: ${this.tem}\r\n格式化后: ${result}`
-                // console.log(print);
-                this.tem = '' // 接收完成。重置数据
-                console.log('===== 已执行完成 =====')
-                resolve(result); // 解析特征值变化
-              } else {
-                console.log('4、接收到数据，但未接收完成')
-              }
+              // let chunk = this.textDecoder(value)
+              // let result = this.bytesToHex(new Uint8Array(value.buffer)) // 把ArrayBuffer转HEX字符串
+              let result = this.bytesToHex(value.buffer) // 把ArrayBuffer转HEX字符串
+              // 发送事件，携带结果数据
+              const event = new CustomEvent('data', { detail: result });
+              eventTarget.dispatchEvent(event);
+              this.dataHTML = `\r\n${this.sendTimestamp} 发送：${this.currentCMD}(${this.arrayBuffer})\r\n${this.endTimestamp} 回复：${result}\r\n` + this.dataHTML
+              this.loading = false
+              console.log('===== 已执行完成 =====')
+              resolve(result); // 解析特征值变化
             });
           })
           // 监听低功耗蓝牙设备特征值变化,必须先启用startNotifications，才能监听到
 
         },
-        formatData(cmd, data) {
-          let result = 'NO DATA'
-          if (data.includes('NO DATA')) {
-            console.warn('无数据', cmd, data)
-          }
-          if (cmd.substring(0, 2) === '01') {
-            let condition = ['0100', '0120', '0140', '0101', '0141'].includes(cmd)
-            result = condition ? getSupport(cmd, data) : get$01(cmd, data)
-          } else if (cmd.substring(0, 2) === '02') {
-            let condition = ['0200', '0220', '0240'].includes(cmd.substring(0, 4))
-            result = condition ? getSupport$02(cmd, data) : get$02(cmd, data)
-          } else if (['03', '07', '0A'].includes(cmd)) {
-            result = getDTC(cmd, data)
-          } else if (cmd.substring(0, 2) === '05') {
-            let condition = ["0500", "0520", "0540", "0560", "0580", "05A0", "05C0", "05E0"].includes(cmd.substring(0, 4))
-            result = condition ? getSupport(cmd, data) : get$05(cmd, data)
-          } else if (cmd.substring(0, 2) === '06') {
-            let condition = ["0600", "0620", "0640", "0660", "0680", "06A0", "06C0", "06E0"].includes(cmd.substring(0, 4))
-            result = condition ? getSupport(cmd, data) : get$06(cmd, data)
-          } else if (cmd.substring(0, 2) === '09') {
-            let condition = '0900' === cmd
-            result = condition ? getSupport(cmd, data) : get$09(cmd, data)
-          } else if (['10', '3E', "27", "22", "2E", "14", "19"].includes(cmd.substring(0, 2))) {
-            let condition = cmd.substring(0, 4) === '1902'
-            result = condition ? getUDSDTC(cmd, data) : data
-          } else if (cmd.substring(0, 2) === 'AT') {
-            result = data.replace(/[ ]|[\r]|[\n]|[\r\n]|[>]/g, "")
-            if (cmd === 'ATDP') {
-              // 【重要】把需要使用的协议存储在缓存内,解析数据需要用到 wx.getStorageSync('____ATDP')
-              // wx.setStorageSync('____ATDP', result)
-              // 【重要】把需要使用的协议存储在缓存内,解析数据需要用到 localStorage.getItem('____ATDP')
-              localStorage.setItem('____ATDP', result);
-              this.ATDP = result
-            }
-          } else {
-            result = data
-          }
-          console.log('6、格式化后的结果', cmd, result)
-          return result
-        },
+   
         async startJob() {
           if (!this.isConnected) {
             alert('错误！请先连接蓝牙再测试！')
@@ -579,23 +453,11 @@
             alert('错误！请先输入指令！')
             return
           }
-          if (cmd === '05') {
-            let start = this.formatTime()
-            let chunk = await this.get05Group()
-            this.dataHTML = `\r\n${start} 发送：05 \r\n${this.formatTime()} 格式化后: ${JSON.stringify(chunk)}\r\n` + this.dataHTML
-            return
-          }
-          if (cmd === '06') {
-            let start = this.formatTime()
-            let chunk = await this.get06Group()
-            this.dataHTML = `\r\n${start} 发送：06 \r\n${this.formatTime()} 格式化后: ${JSON.stringify(chunk)}\r\n` + this.dataHTML
-            return
-          }
           this.isLoop = false
           this.queue.push(cmd)
           this.writeCmd(cmd)
         },
-
+        
         startAll() {
           if (!this.isConnected) {
             alert('错误！请先连接蓝牙再测试！')
@@ -603,7 +465,7 @@
           }
           this.isLoop = false
           // 执行默认队列
-          let queue = ["ATRV", "020200", "020000", "022000", "024000", "020C00", "020D00", "03", "07", "0A", "05", "06", "0900", "0902", "0904", "0906", "0908", "090A", "090B", "010C", "010D"]
+          let queue = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '0A', '0B', '0C', '0D', '0E', '0F']
           for (let i = 0; i < 96; i++) {
             let hex = i.toString(16).toUpperCase()
             let cmd_01 = (hex.length < 2 ? "010" : '01') + hex
@@ -619,7 +481,7 @@
             return
           }
           this.isLoop = true
-          let queue = ['010C', '010D', '010E', '0132', '0146', '0104', '0105', '010B']
+          let queue = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '0A', '0B', '0C', '0D', '0E', '0F']
           this.queue = queue
           this.write_multiple_cmd(this.queue, true)
         },
@@ -638,10 +500,16 @@
           }
           return [year, month, day].map(formatNumber).join('-') + ' ' + [hour, minute, second].map(formatNumber).join(':') + ':' + milliseconds
         },
+
+        bytesToHex(bytes) {
+          return Array.from(new Uint8Array(bytes), byte => {
+            return ('0' + (byte & 0xFF).toString(16)).slice(-2);
+          }).join(' ').toUpperCase();
+        },
         // 字符串转ArrayBuffer
         textEncoder: function (cmd) {
           let str = cmd + '\r'
-          // 下边这个方法也可以
+          // // 下边这个方法也可以
           if (this.isEncrypted) {
             str = encrypt(str)
           }
@@ -655,7 +523,6 @@
           return result
         },
         // ArrayBuffer转字符串
-
         textDecoder: function (value) {
           console.log('解密前', value)
           let result = new TextDecoder().decode(value)
@@ -671,131 +538,55 @@
           }
           return result
         },
-        get05Group() {
-          return new Promise(async (resolve, reject) => {
-            let result = []
-            let pid_0113 = await this.writeCmd('0113')
-            let pid_011D = await this.writeCmd('011D')
-            // 获取支持的氧传感器
-            let _o2Location = []
-            if (pid_0113) {
-              if (pid_0113.includes('11')) {
-                _o2Location.push('01')
+        buildProtocolFrame(info) {
+          // 取前两位为cmd
+          const cmd = parseInt(info.substring(0, 2), 16);
+          console.log('cmd', cmd)
+          let data = []
+          const dataHex = info.substring(2).trim();
+          if(dataHex){
+            for (let i = 0; i < dataHex.length; i += 2) {
+              const byteStr = dataHex.substr(i, 2);
+              const byte = parseInt(byteStr, 16);
+              if (isNaN(byte)) {
+                throw new Error(`无效的数据字节: ${byteStr}`);
               }
-              if (pid_0113.includes('12')) {
-                _o2Location.push('02')
-              }
-              if (pid_0113.includes('13')) {
-                _o2Location.push('03')
-              }
-              if (pid_0113.includes('14')) {
-                _o2Location.push('04')
-              }
-              if (pid_0113.includes('21')) {
-                _o2Location.push('05')
-              }
-              if (pid_0113.includes('22')) {
-                _o2Location.push('06')
-              }
-              if (pid_0113.includes('23')) {
-                _o2Location.push('07')
-              }
-              if (pid_0113.includes('24')) {
-                _o2Location.push('08')
-              }
-            } else if (pid_011D) {
-              if (pid_011D.includes('11')) {
-                _o2Location.push('01')
-              }
-              if (pid_011D.includes('12')) {
-                _o2Location.push('02')
-              }
-              if (pid_011D.includes('21')) {
-                _o2Location.push('03')
-              }
-              if (pid_011D.includes('22')) {
-                _o2Location.push('04')
-              }
-              if (pid_011D.includes('31')) {
-                _o2Location.push('05')
-              }
-              if (pid_011D.includes('32')) {
-                _o2Location.push('06')
-              }
-              if (pid_011D.includes('41')) {
-                _o2Location.push('07')
-              }
-              if (pid_011D.includes('42')) {
-                _o2Location.push('08')
-              }
+              data.push(byte);
             }
-
-            if (_o2Location.length > 0) {
-              // 获取每个氧传感器的TID
-              let _json = {}
-              let _list = ["0500", "0520", "0540", "0560", "0580", "05A0", "05C0", "05E0"]
-              for (let subItem of _o2Location) {
-                for (let item of _list) {
-                  let cmd = item + subItem
-                  let _support = await this.writeCmd(cmd) || "00000000000000000000000000000000"
-                  if (!_json[subItem]) {
-                    _json[subItem] = _support
-                  } else {
-                    _json[subItem] += _support
-                  }
-                }
-              }
-              // 根据支持情况计算支持的测试ID
-              let queue = [] // 任务队列
-              for (let key in _json) {
-                let supportStr = _json[key]
-                for (var i = 0; i < supportStr.length; i++) {
-                  if (supportStr[i] === '1') {
-                    let hex = (i + 1).toString(16).toUpperCase()
-                    while (hex.length < 2) {
-                      hex = '0' + hex
-                    }
-                    queue.push('05' + hex + key)
-                  }
-                }
-              }
-              console.log('任务队列', queue)
-              for (const cmd of queue) {
-                let val = await this.writeCmd(cmd)
-                result.push(val)
-              }
-            }
-            console.log('05结果', result)
-            resolve(result)
-          })
-        },
-        get06Group() {
-          return new Promise(async (resolve, reject) => {
-            let result = []
-            let list = ["0600", "0620", "0640", "0660", "0680", "06A0", "06C0", "06E0"]
-            let __support = ''
-            for (const item of list) {
-              __support += await this.writeCmd(item) || "00000000000000000000000000000000"
-            }
-            // console.log('06支持情况', __support)
-            let queue = [] // 任务队列
-            for (var i = 0; i < 256; i++) {
-              let hex = i.toString(16).toUpperCase()
-              while (hex.length < 2) {
-                hex = '0' + hex
-              }
-              const cmd = '06' + hex
-              if (__support[i - 1] === '1') {
-                if (!['00', '20', '40', '60', '80', 'A0', 'C0', 'E0'].includes(hex)) {
-                  let arr = await this.writeCmd(cmd)
-                  result = result.concat(arr)
-                }
-              }
-            }
-            // console.log('06结果', result)
-            resolve(result)
-          })
-        },
+          }
+          console.log('data', data)
+          // 计算帧长度：帧长度(4) + 命令(1) + 数据(N) + 校验(1) = 6 + N
+          const frameLength = 4 + 1 + data.length + 1;
+          console.log('frameLength', frameLength)
+          // 计算长度字节（LH, LL）
+          const LH = (frameLength >> 8) & 0xFF; // 长度高字节
+          const LL = frameLength & 0xFF;        // 长度低字节
+          const notLH = (~LH) & 0xFF;           // LH取反
+          const notLL = (~LL) & 0xFF;           // LL取反
+          
+          // 构建帧数据（不包括校验位）
+          const frameData = [
+            0x55, 0xAA,           // 帧头
+            LH, LL, notLH, notLL, // 帧长度字段
+            cmd,                  // 命令字
+            ...data          // 数据字段
+          ];
+          
+          // 计算校验位：从帧长度开始到数据结束的异或校验
+          let checksum = 0;
+          for (let i = 2; i < frameData.length; i++) {
+            checksum ^= frameData[i];
+          }
+          
+          // 添加校验位
+          frameData.push(checksum);
+          const result = Array.from(frameData).map(b => b.toString(16).padStart(2, '0').toUpperCase())
+          console.log('最终数据', result)
+          this.arrayBuffer = result.join(' ') 
+          const buffer = new Uint8Array(frameData).buffer;
+          return buffer
+        }
+        
       }
     })
 

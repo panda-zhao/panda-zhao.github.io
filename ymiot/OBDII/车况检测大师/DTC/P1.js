@@ -45558,111 +45558,111 @@ let P1 = {
       "zh-cn": "进气歧管空气控制执行器位置传感器 - 电路故障",
       "en-us": "Intake Manifold Air Control Actuator Position Sensor - Circuit Malfunction",
       "sys": "动力总成系统（制造商自定义）",
-      "knowledge": "  "
+      "knowledge": "进气歧管空气控制（IMAC）总成位于进气歧管和气缸盖之间。为提高发动机性能，每个气缸对应两个进气通路，其中之一一直开通，另一个仅当转速高于一定值（比如说3000RPM）的时候才打开。故障原因包括进气歧管空气控制执行器位置传感器本身或其电路或接头故障，电子控制模块（PCM或ECM）故障等。"
     },
     {
       "scope": "丰田，凌志",
-      "code": "进气歧管空气控制（IMAC）总成位于进气歧管和气缸盖之间。为提高发动机性能，每个气缸对应两个进气通路，其中之一一直开通，另一个仅当转速高于一定值（比如说3000RPM）的时候才打开。故障原因包括进气歧管空气控制执行器位置传感器本身或其电路或接头故障，电子控制模块（PCM或ECM）故障等。",
-      "zh-cn": "P1100",
-      "en-us": "大气压力（BARO）传感器 - 电路故障",
-      "sys": "Barometric Pressure Sensor - Circuit Malfunction",
-      "knowledge": "  "
+      "code": "P1100",
+      "zh-cn": "大气压力（BARO）传感器 - 电路故障",
+      "en-us": "Barometric Pressure Sensor - Circuit Malfunction",
+      "sys": "动力总成系统（制造商自定义）",
+      "knowledge": "大气压力传感器（有时候也叫高海拔补偿器，HAC）的作用是将大气压力以电信号的形式输送给电子控制模块。大气压力会随天气和海拔高度的变化而变化。压力越小，空气越稀薄。动力总成控制模块（PCM）会根据大气压力的数值来修正燃油供给，以帮助发动机达到最佳空燃比。故障原因包括大气压力传感器本身或其电路或接头故障，电子控制模块（PCM或ECM）故障等。故障原因包括燃油压力控制阀控制电路故障，燃油压力控制阀本身故障，电子控制模块（ECM或PCM）故障等。"
     },
     {
       "scope": "奥迪，大众",
-      "code": "动力总成系统（制造商自定义）",
-      "zh-cn": "P1100",
-      "en-us": "加热氧传感器 - 加热器输出太低 （第1排，传感器2）",
-      "sys": "Heated Oxygen Sensor 2 - Heater Output Too Low (Bank 1)",
-      "knowledge": "  "
+      "code": "P1100",
+      "zh-cn": "加热氧传感器 - 加热器输出太低 （第1排，传感器2）",
+      "en-us": "Heated Oxygen Sensor 2 - Heater Output Too Low (Bank 1)",
+      "sys": "动力总成系统（制造商自定义）",
+      "knowledge": "氧传感器的作用是测定发动机排气中的氧气含量，以修正喷油量，从而使发动机获得最佳空燃比。在OBD故障码中，你经常会看到第几排第几个氧传感器的说法。第1排是指气缸1所在的那个排，剩下的另外一排为第2排。不管哪一排，第1个传感器总是指上游氧传感器（催化箱之前），第2个传感器总是指下游氧传感器（催化箱之后）。"
     },
     {
       "scope": "宝马",
-      "code": "动力总成系统（制造商自定义）",
-      "zh-cn": "氧传感器的作用是测定发动机排气中的氧气含量，以修正喷油量，从而使发动机获得最佳空燃比。在OBD故障码中，你经常会看到第几排第几个氧传感器的说法。第1排是指气缸1所在的那个排，剩下的另外一排为第2排。不管哪一排，第1个传感器总是指上游氧传感器（催化箱之前），第2个传感器总是指下游氧传感器（催化箱之后）。",
-      "en-us": "P1100",
-      "sys": "空气流量（MAF）传感器 - 高输入",
-      "knowledge": "  "
+      "code": "P1100",
+      "zh-cn": "空气流量（MAF）传感器 - 高输入",
+      "en-us": "Mass Air Flow Sensor - High Input",
+      "sys": "动力总成系统（制造商自定义）",
+      "knowledge": "空气流量（MAF）传感器的作用是将空气流量转换成电信号送至电子控制单元（ECU），作为决定喷油量的基本信号之一。"
     },
     {
       "scope": "捷豹",
-      "code": "Mass Air Flow Sensor - High Input",
-      "zh-cn": "动力总成系统（制造商自定义）",
-      "en-us": "空气流量（MAF）传感器的作用是将空气流量转换成电信号送至电子控制单元（ECU），作为决定喷油量的基本信号之一。",
-      "sys": "P1100",
-      "knowledge": "  "
+      "code": "P1100",
+      "zh-cn": "空气流量（MAF）传感器 - 间歇信号",
+      "en-us": "Mass Air Flow Sensor - Intermittent Signal",
+      "sys": "动力总成系统（制造商自定义）",
+      "knowledge": "空气流量（MAF）传感器的作用是将空气流量转换成电信号送至电子控制单元（ECU），作为决定喷油量的基本信号之一。"
     },
     {
       "scope": "斯巴鲁",
-      "code": "空气流量（MAF）传感器 - 间歇信号",
-      "zh-cn": "Mass Air Flow Sensor - Intermittent Signal",
-      "en-us": "动力总成系统（制造商自定义）",
-      "sys": "空气流量（MAF）传感器的作用是将空气流量转换成电信号送至电子控制单元（ECU），作为决定喷油量的基本信号之一。",
-      "knowledge": "  "
+      "code": "P1100",
+      "zh-cn": "起动机信号 - 电路故障",
+      "en-us": "Starter Signal - Circuit Malfunction",
+      "sys": "动力总成系统（制造商自定义）",
+      "knowledge": "动力总成控制模块（PCM）在CCM自检时检测到起动机开关信号难以预料的低电压。建议检查启动机。"
     },
     {
       "scope": "沃尔沃",
       "code": "P1100",
-      "zh-cn": "起动机信号 - 电路故障",
-      "en-us": "Starter Signal - Circuit Malfunction",
+      "zh-cn": "外部空气温度传感器 - 范围/性能",
+      "en-us": "Outside Air Temperature Sensor - Range/Performance",
       "sys": "动力总成系统（制造商自定义）",
-      "knowledge": "  "
+      "knowledge": "外部空气温度传感器的作用是将外部空气温度以电信号的形式传输给电子控制单元（ECU），以帮助发动机实现最佳空燃比。"
     },
     {
       "scope": "现代",
-      "code": "动力总成控制模块（PCM）在CCM自检时检测到起动机开关信号难以预料的低电压。建议检查启动机。",
-      "zh-cn": "P1100",
-      "en-us": "外部空气温度传感器 - 范围/性能",
-      "sys": "Outside Air Temperature Sensor - Range/Performance",
-      "knowledge": "  "
+      "code": "P1100",
+      "zh-cn": "歧管绝对压力（MAP）传感器 - 对于EGR系统 - 电路故障",
+      "en-us": "Manifold Absolute Pressure (MAP) Sensor - For EGR System - Circuit Malfunction",
+      "sys": "动力总成系统（制造商自定义）",
+      "knowledge": "歧管绝对压力（MAP）传感器的作用是测量进气歧管内的压力（真空度）。动力总成控制模块（PCM）然后会将进气歧管压力与大气压力之间的差值（跟发动机负荷成线性关系）作为确定喷油器基本喷油量的一个依据，以帮助发动机在不同负荷下达到最佳空燃比。故障原因包括MAP传感器信号电路故障，MAP传感器真空管路阻塞，MAP传感器故障，电子控制模块（PCM或ECM）故障等。"
     },
     {
       "scope": "福特，水星，林肯",
-      "code": "动力总成系统（制造商自定义）",
-      "zh-cn": "外部空气温度传感器的作用是将外部空气温度以电信号的形式传输给电子控制单元（ECU），以帮助发动机实现最佳空燃比。",
-      "en-us": "P1100",
-      "sys": "歧管绝对压力（MAP）传感器 - 对于EGR系统 - 电路故障",
-      "knowledge": "  "
+      "code": "P1100",
+      "zh-cn": "空气流量（MAF）传感器 - 电路间歇",
+      "en-us": "Mass Air Flow (MAF) Sensor - Circuit Intermittent",
+      "sys": "动力总成系统（制造商自定义）",
+      "knowledge": "空气流量（MAF）传感器的作用是将空气流量转换成电信号送至电子控制单元（ECU），作为决定喷油量的基本信号之一。"
     },
     {
       "scope": "萨博(9-2X)",
-      "code": "Manifold Absolute Pressure (MAP) Sensor - For EGR System - Circuit Malfunction",
-      "zh-cn": "动力总成系统（制造商自定义）",
-      "en-us": "歧管绝对压力（MAP）传感器的作用是测量进气歧管内的压力（真空度）。动力总成控制模块（PCM）然后会将进气歧管压力与大气压力之间的差值（跟发动机负荷成线性关系）作为确定喷油器基本喷油量的一个依据，以帮助发动机在不同负荷下达到最佳空燃比。故障原因包括MAP传感器信号电路故障，MAP传感器真空管路阻塞，MAP传感器故障，电子控制模块（PCM或ECM）故障等。",
-      "sys": "P1100",
-      "knowledge": "  "
-    },
-    {
-      "scope": "起亚",
-      "code": "空气流量（MAF）传感器 - 电路间歇",
-      "zh-cn": "Mass Air Flow (MAF) Sensor - Circuit Intermittent",
-      "en-us": "动力总成系统（制造商自定义）",
-      "sys": "空气流量（MAF）传感器的作用是将空气流量转换成电信号送至电子控制单元（ECU），作为决定喷油量的基本信号之一。",
-      "knowledge": "  "
-    },
-    {
-      "scope": "路虎",
       "code": "P1100",
       "zh-cn": "起动机信号 - 电路故障",
       "en-us": "Starter Signal - Circuit Malfunction",
       "sys": "动力总成系统（制造商自定义）",
-      "knowledge": "  "
+      "knowledge": "动力总成控制模块（PCM）在CCM自检时检测到起动机开关信号难以预料的低电压。建议检查启动机。"
+    },
+    {
+      "scope": "起亚",
+      "code": "P1100",
+      "zh-cn": "歧管绝对压力（MAP）的传感器 - 对于EGR系统 - 电路故障",
+      "en-us": "Manifold Absolute Pressure (MAP) Sensor - For EGR System - Circuit Malfunction",
+      "sys": "动力总成系统（制造商自定义）",
+      "knowledge": "歧管绝对压力（MAP）传感器的作用是测量进气歧管内的压力（真空度）。动力总成控制模块（PCM）然后会将进气歧管压力与大气压力之间的差值（跟发动机负荷成线性关系）作为确定喷油器基本喷油量的一个依据，以帮助发动机在不同负荷下达到最佳空燃比。"
+    },
+    {
+      "scope": "路虎",
+      "code": "P1100",
+      "zh-cn": "空气流量（MAF）传感器 - 电路故障",
+      "en-us": "Mass Air Flow (MAF) Sensor - Circuit Malfunction",
+      "sys": "动力总成系统（制造商自定义）",
+      "knowledge": "空气流量（MAF）传感器的作用是将空气流量转换成电信号送至电子控制单元（ECU），作为决定喷油量的基本信号之一。"
     },
     {
       "scope": "迷你",
-      "code": "",
-      "zh-cn": "P1100",
-      "en-us": "歧管绝对压力（MAP）的传感器 - 对于EGR系统 - 电路故障",
-      "sys": "Manifold Absolute Pressure (MAP) Sensor - For EGR System - Circuit Malfunction",
-      "knowledge": "  "
+      "code": "P1100",
+      "zh-cn": "加热氧传感器1 - 燃油切断后慢响应",
+      "en-us": "Heated Oxygen Sensor 1 - Slow Response After Fuel Cut-off",
+      "sys": "动力总成系统（制造商自定义）",
+      "knowledge": "氧传感器的作用是测定发动机排气中的氧气含量，以修正喷油量，从而使发动机获得最佳空燃比。在OBD故障码中，你经常会看到第几排第几个氧传感器的说法。第1排是指气缸1所在的那个排，剩下的另外一排为第2排。不管哪一排，第1个传感器总是指上游氧传感器（催化箱之前），第2个传感器总是指下游氧传感器（催化箱之后）。"
     },
     {
       "scope": "马自达",
-      "code": "动力总成系统（制造商自定义）",
-      "zh-cn": "歧管绝对压力（MAP）传感器的作用是测量进气歧管内的压力（真空度）。动力总成控制模块（PCM）然后会将进气歧管压力与大气压力之间的差值（跟发动机负荷成线性关系）作为确定喷油器基本喷油量的一个依据，以帮助发动机在不同负荷下达到最佳空燃比。",
-      "en-us": "P1100",
-      "sys": "空气流量（MAF）传感器 - 电路故障",
-      "knowledge": "  "
+      "code": "P1100",
+      "zh-cn": "空气流量（MAF）传感器 - 电路间歇",
+      "en-us": "Mass Air Flow (MAF) Sensor - Circuit Intermittent",
+      "sys": "动力总成系统（制造商自定义）",
+      "knowledge": "空气流量（MAF）传感器的作用是将空气流量转换成电信号送至电子控制单元（ECU），作为决定喷油量的基本信号之一。故障原因包括MAF传感器本身或其电路或接头故障，电子控制模块（PCM或ECM）故障等"
     }
   ],
   "P104E": [

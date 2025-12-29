@@ -5,46 +5,125 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>车况检测大师故障码处理工具</title>
 </head>
+<style>
+  .info1{
+    font-size: 30px;
+    padding: 15px;
+  }
+  .info2{
+    color: #f00;
+    font-size: 30px;
+    padding: 15px;
+  }
+</style>
 <body>
   <div>
 
   </div>
-  <script src="./P0.js"></script>
-  <script src="./P1.js"></script>
-  <script src="./P2.js"></script>
-  <script src="./P3.js"></script>
-  <script src="./B.js"></script>
-  <script src="./C.js"></script>
-  <script src="./U.js"></script>
-  <script>
-    
-    let result = Object.assign(P0, P1, P2, P3, B, C, U)
-    console.log() 
-    let total = Object.keys(result).length // 5809条 - 1248 = 4561
-    let print = `<div>故障码总数为${total}</div>`
-    
-    // 计算P1
-    let p1_length = Object.keys(P1).length // 1248条
+  <script src="./DTC/P0.js"></script>
+  <script src="./DTC/P1.js"></script>
+  <script src="./DTC/P2.js"></script>
+  <script src="./DTC/P3.js"></script>
+  <script src="./DTC/B.js"></script>
+  <script src="./DTC/C.js"></script>
+  <script src="./DTC/U.js"></script>
 
-    let child_length = 0
-    for (const key in P1) {
-      const element = P1[key];
-      child_length+= element.length // 5450条
-    }
-    print += `<div>P1故障码数量为${p1_length}, 不去重故障码总数为${child_length}</div>`
-    print += `<div>不按code统计总数为${total - p1_length + child_length}</div>`
+  <script src="./data.js"></script>
+  <script>
+    // 合并所有车况检测大师故障码文件
+    let result = Object.assign(P0, P1, P2, P3, B, C, U)
+    let total = Object.keys(result).length
+    let print = `<div class="info1">故障码总数（不区分车型）：${total}</div>`
     document.write(print)
-    // 写入文件
-    writeFile(JSON.stringify(result))
+
+    // 检测是否每个子项都正确
+    function check_I18n_data(){
+      console.log('数据库所有数据', data)
+      let print2 = `<div class="info1">故障码总数（区分车型）：${data.length}条</div>`
+      document.write(print2)
+      let err = 0
+      const pattern = /^[A-Z0-9]+$/
+      data.forEach(element => {
+        if(!element.code || element.knowledge === undefined || !element.des || !element.sys || !element.scope){
+          console.log("缺少必须子项", element)
+          err++
+        }else if(!pattern.test(element.code)){
+          console.log("code校验不通过", element)
+          err++
+        }
+      });
+      if(err === 0 && data.length === 10105){
+        alert('验证通过，10105条数据均正常')
+      }else{
+        document.write('<div class="info2">检测结束，共有' + err +'条数据错误</div>')
+      }
+    }
+    check_I18n_data()
+
+    // 检测每个code是否都只包含数字和字母
+    function check_code(){
+      // 校验源数据是否正确
+      const pattern = /^[A-Z0-9]+$/
+      for (const key in result) {
+        const item = result[key];
+        for (let index = 0; index < item.length; index++) {
+          const _child = item[index];
+          if(!pattern.test(_child.code)){
+            console.log('该数据有误', key, _child, _child.code)
+          }
+        }
+      }
+    }
+    
+    // 组装数据库需要的json格式，数据基于爬虫爬取的车况检测大师数据
+    function creat_database(){
+      let newData = []
+      for (const key in result) {
+        const item = result[key];
+        let _data = {}
+
+        if(item.length > 1){
+          for (let index = 0; index < item.length; index++) {
+            const _child = item[index];
+            _data = {
+              "scope" :  _child.scope,
+              "code": _child.code,
+              "des":  _child['en-us'],
+              "sys":  _child.sys,
+              "knowledge": _child.knowledge
+            }
+            newData.push(_data)
+          }
+        }else{
+          const _child = item[0];
+          _data = {
+              "scope" :  _child.scope,
+              "code": _child.code,
+              "des":  _child['en-us'],
+              "sys":  _child.sys,
+              "knowledge": _child.knowledge
+            }
+          newData.push(_data)
+        }
+      }
+      console.log('最终所有数据', newData) 
+      let print3 = `<div class="info1">故障码总数（区分车型）：${newData.length}条</div>`
+      document.write(print3)
+      // 写入文件
+      writeFile(JSON.stringify(newData))
+    }
+    // creat_database()
+    
+    // 写入文件,点击可以下载
     function writeFile(content){
       // 创建一个Blob对象，用于将content内容写入文件中
       var blob = new Blob([content], { type: "text/plain;charset=utf-8" });
       // 创建一个a标签，用于生成下载链接
       var a = document.createElement("a");
       // 设置下载链接的属性
-      a.download = "test.txt"; // 文件名
+      a.download = "database.txt"; // 文件名
       a.href = URL.createObjectURL(blob); // 文件内容
-      a.textContent = "点击下载"; // 链接文本
+      a.textContent = "点击下载数据"; // 链接文本
       // 将a标签添加到页面中
       document.body.appendChild(a);
     }

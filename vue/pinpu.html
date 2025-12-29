@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="../js/vue.js"></script>
+  <title>模拟频谱</title>
+  <style>
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+    }
+    .spectrum-canvas {
+      width: 100%;
+      height: 300px;
+    }
+    .speed-input {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app" class="container">
+    <div class="container">
+      <canvas canvas-id="spectrumCanvas" class="spectrum-canvas"></canvas>
+      <div class="speed-input">
+        <text>转速（RPM）：</text>
+        <input v-model="speed" type="number" placeholder="请输入转速" />
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        speed: 1000, // 默认转速
+        canvas: null,
+        ctx: null,
+        dataArray: [],
+        bufferLength: 256,
+      },
+      computed: {
+     
+      },
+      mounted(){
+        this.initCanvas();
+        this.drawSpectrum();
+      },
+      methods: {
+        initCanvas() {
+          this.canvas = uni.createCanvasContext('spectrumCanvas', this);
+          this.ctx = this.canvas.getContext('2d');
+          this.dataArray = new Array(this.bufferLength).fill(0);
+        },
+        drawSpectrum() {
+          setInterval(() => {
+            this.updateFrequencyData();
+            this.renderSpectrum();
+          }, 50);
+        },
+        updateFrequencyData() {
+          // 根据转速动态生成频谱数据
+          const frequency = this.speed / 60; // 转速转频率
+          this.dataArray = this.dataArray.map((value, index) => {
+            return Math.sin((index + Date.now() / 1000) * frequency) * 50 + 100;
+          });
+        },
+        renderSpectrum() {
+          this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+          const barWidth = (this.canvas.width / this.bufferLength) * 2.5;
+          let x = 0;
+
+          for (let i = 0; i < this.bufferLength; i++) {
+            const barHeight = this.dataArray[i];
+            this.ctx.fillStyle = 'rgb(' + (barHeight + 100) + ',50,50)';
+            this.ctx.fillRect(x, this.canvas.height - barHeight / 2, barWidth, barHeight / 2);
+            x += barWidth + 1;
+          }
+
+          this.canvas.draw();
+        },
+      }
+    });
+  </script>
+</body>
+
+</html>

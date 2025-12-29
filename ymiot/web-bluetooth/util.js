@@ -147,11 +147,11 @@ function get$01(cmd, msg) {
 		if(localStorage.getItem('____ATDP').includes("CAN")){
 			let msgArray = msg.split(separator)
 			msgArray.shift() // 删除头部无效数据
-			console.log('有效数据1', msgArray)
+			// console.log('有效数据1', msgArray)
 			for (let item of msgArray) {
 				let index = msg.indexOf(separator) // 分隔符开始的位置
 				let length = Number(parseInt(msg.substring(index-2, index), 16)) // 分隔符前面是有效位数
-				console.log(length, effectiveLength, separatorLength)
+				// console.log(length, effectiveLength, separatorLength)
 				// 有效位必须是 标准数据 + 命令长度，如果符合规范获取有效数据, 长度7是针对测试板不标准数据
 				// if(length === effectiveLength + (separatorLength / 2) || length === 7){
 				if(length >= effectiveLength + (separatorLength / 2) || length === 7){
@@ -291,7 +291,7 @@ function getDTC(cmd, msg){
 				}
 			})
 		}
-		let effectiveData = {}
+		let effectiveData = {} 
 		for (const key in json) {
 			json[key].forEach((item, index) => {
 				if(canId_length === 6){
@@ -299,6 +299,7 @@ function getDTC(cmd, msg){
 				}else{
 					if(index === 0){
 						item =  item.substring(item.indexOf(separator) +  cmd.length + 2)
+						console.log('截取结果', item)
 					}else{
 						if( item.includes(separator) && item.substring(item.indexOf(separator) - 2, item.indexOf(separator)) === '07' ){
 							// 模拟器
@@ -311,6 +312,7 @@ function getDTC(cmd, msg){
 				effectiveData[key] = effectiveData[key] ? effectiveData[key] + item : item
 			})
 		}
+		console.log('有效数据', effectiveData)
 		for (let key in effectiveData) {
 			let length = parseInt(effectiveData[key].length / 4)
 			for (let i = 0; i < length; i++) {
@@ -325,6 +327,7 @@ function getDTC(cmd, msg){
 			const _item = hexDigitReplace[item[0]] + item.substring(1)
 			result.splice(index, 1, _item)
 		})
+		console.log(('getDTC', result))
 		return result
 	}catch (e) {
 		console.error("获取故障码错误：" + cmd + '\r\n' + e)
@@ -716,6 +719,8 @@ function encrypt(word){
 	return CryptoJS.enc.Hex.stringify(CryptoJS.enc.Base64.parse(encrypted.toString()))
 }
 
+
+// EA2F48410D72D483DE95AFCCCEB56ECED
 function decrypt(word){
 	const key = CryptoJS.enc.Utf8.parse('UBDUXS5VPHKDKB284D7NKJFONCKWBUKA')
   const iv = CryptoJS.enc.Utf8.parse('UBDUXS5VPHKDKB28')
@@ -730,6 +735,56 @@ function decrypt(word){
 	console.warn('CryptoJS解密后', decryptedStr)
 	return decryptedStr;
 }
+
+function EDesEn_Crypt(src, SECRET_KEY = 0x263D9A7E) {
+	console.log('SECRET_KEY', SECRET_KEY === 0x263D9A7E ? '0x263D9A7E' : "0xBAC9AA76")
+	// 步骤1：拆分原32位整数为4个独立的8位无符号字节（低→高）
+	const byte0 = src & 0xff;        // 原最低8位 (0~7位)
+	const byte1 = (src >> 8) & 0xff;  // 原次低8位 (8~15位)
+	const byte2 = (src >> 16) & 0xff; // 原次高8位 (16~23位)
+	const byte3 = (src >> 24) & 0xff; // 原最高8位 (24~31位)
+
+	// 步骤2：核心混淆计算 - 生成新的4个8位字节
+	const newByte0 = (byte2 >> (byte0 / 50)) | ((byte1 << 2) ^ (SECRET_KEY << (byte3 / 12)));
+	const newByte1 = (byte0 >> (byte1 / 63)) | ((SECRET_KEY << (byte3 / 11)) ^ (byte2 >> 1));
+	const newByte2 = (byte0 >> (byte1 / 46)) | ((SECRET_KEY << (byte0 / 34)) ^ byte3);
+	const newByte3 = (byte1 << (byte3 / 35)) | ((SECRET_KEY << (byte0 / 49)) & (SECRET_KEY >> 18));
+
+	// 步骤3：重组新的32位整数并返回（高→低），掩码防溢出
+	const encryptData = ((newByte3 << 24) & 0xff000000) | ((newByte2 << 16) & 0xff0000) | ((newByte1 << 8) & 0xff00) | (newByte0 & 0xff);
+
+	return encryptData;
+}
+
+
+
+// ArrayBuffer转16进度字符串示例
+function ab2hex(buffer) {
+	var hexArr = Array.prototype.map.call(
+		new Uint8Array(buffer),
+		function(bit) {
+			return ('00' + bit.toString(16)).slice(-2)
+		}
+	)
+	return hexArr.join('').toUpperCase();
+}
+
+// 32位整数  → 4字节Uint8Array（大端序）
+function int2hexStr(value) {
+	var bufView = new Uint8Array(4);
+	bufView[0] = (value >> 24) & 0xff; //先做右移再做与运算，否则会有符号
+	bufView[1] = (value >> 16) & 0xff;
+	bufView[2] = (value >> 8) & 0xff;
+	bufView[3] = (value & 0xff);
+	return ab2hex(bufView.buffer);
+}
+
+
+function getRndHexStr() {
+	var rand = Math.floor(Math.random() * (0x7fffffff - 0x12345678)) + 0x12345678;
+	return int2hexStr(rand);
+}
+
 // console.log(encrypt('0100\r')) // 8A917618B85B54B4979B485D2BD2CC85
 // console.log(encrypt('ATZ\r'))
 // console.log(decrypt('284d5b707354a41bd6a4b15a570231ff')) // 012345678901
