@@ -387,7 +387,8 @@
             }
             console.log('1、开始发送指令', cmd, this.formatTime())
             if(cmd === '10'){
-              let encryStr = getRndHexStr()
+              // let encryStr = getRndHexStr()
+              let encryStr = '40C6B952'
               console.log('待加密字符串', encryStr)
               // 把字符串转换成asc十六进制
               let hex = encryStr.split('').map(c => c.charCodeAt(0).toString(16).padStart(2, '0')).join('')
