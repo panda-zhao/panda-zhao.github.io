@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>BMP 转 RGB565 (生成C文件+索引)</title>
+  <style>
+  :root {
+      /* 浅色科技蓝：白底 + 蓝色光晕 */
+      --bg: #f5f9ff;
+      --card: rgba(255, 255, 255, .92);
+      --text: #0f172a;
+      --muted: #475569;
+      --border: rgba(37, 99, 235, .18);
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --success: #16a34a;
+      --radius: 14px;
+      --shadow: 0 10px 30px rgba(2, 6, 23, .12);
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--sans);
+      background:
+        radial-gradient(1200px 700px at 15% 5%, rgba(59, 130, 246, .22), transparent 60%),
+        radial-gradient(900px 600px at 90% 10%, rgba(14, 165, 233, .18), transparent 60%),
+        radial-gradient(900px 700px at 50% 110%, rgba(37, 99, 235, .12), transparent 65%),
+        linear-gradient(180deg, #ffffff 0%, var(--bg) 100%);
+      color: var(--text);
+      padding: 24px 14px 40px;
+    }
+
+    .container {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 18px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+
+    h3 {
+      margin: 0 0 14px 0;
+      font-size: 18px;
+      line-height: 1.35;
+      letter-spacing: .2px;
+    }
+
+    /* file input */
+    #fileInput {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px dashed rgba(2, 6, 23, .25);
+      background: rgba(255, 255, 255, .65);
+      border-radius: 12px;
+    }
+
+    #fileInput:hover {
+      border-color: rgba(37, 99, 235, .55);
+    }
+
+    #fileInput::file-selector-button {
+      margin-right: 12px;
+      border: 0;
+      border-radius: 10px;
+      padding: 10px 12px;
+      background: rgba(37, 99, 235, .12);
+      color: #0b1b47;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    #fileInput::file-selector-button:hover {
+      background: rgba(37, 99, 235, .18);
+    }
+
+    #result {
+      margin-top: 16px;
+      padding: 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(2, 6, 23, .10);
+      background: rgba(255, 255, 255, .75);
+    }
+
+    #result:empty {
+      display: none;
+    }
+
+    #result p {
+      margin: 8px 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.55;
+      word-break: break-word;
+    }
+
+    #result p:first-child {
+      margin-top: 0;
+      color: #0b1b47;
+      font-weight: 700;
+    }
+
+    #result .mono {
+      font-family: var(--mono);
+      font-size: 12.5px;
+      color: #0b1b47;
+    }
+
+    #result .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    button {
+      appearance: none;
+      border: 1px solid rgba(2, 6, 23, .12);
+      background: #fff;
+      color: var(--text);
+      border-radius: 12px;
+      padding: 10px 12px;
+      cursor: pointer;
+      font-weight: 650;
+      letter-spacing: .2px;
+      transition: transform .08s ease, background-color .15s ease, border-color .15s ease;
+    }
+
+    button:hover {
+      border-color: rgba(37, 99, 235, .35);
+      background: rgba(37, 99, 235, .06);
+    }
+
+    button:active {
+      transform: translateY(1px);
+    }
+
+    .btn-primary {
+      border-color: rgba(37, 99, 235, .45);
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-hover);
+      border-color: rgba(37, 99, 235, .65);
+    }
+
+    .btn-ghost {
+      background: rgba(255, 255, 255, .75);
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 14px 10px 26px;
+      }
+
+      .container {
+        padding: 14px;
+      }
+
+      h3 {
+        font-size: 16px;
+      }
+
+      button {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+    /* 保持浅色统一，不跟随系统暗色模式变暗（按你的需求） */
+    @media (prefers-color-scheme: dark) {
+      body {
+        background:
+          radial-gradient(1200px 700px at 15% 5%, rgba(59, 130, 246, .22), transparent 60%),
+          radial-gradient(900px 600px at 90% 10%, rgba(14, 165, 233, .18), transparent 60%),
+          radial-gradient(900px 700px at 50% 110%, rgba(37, 99, 235, .12), transparent 65%),
+          linear-gradient(180deg, #ffffff 0%, var(--bg) 100%);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h3>上传 BMP 文件转换为 RGB565（生成C文件+索引）</h3>
+    <input type="file" id="fileInput" accept=".bmp">
+    <div id="result"></div>
+  </div>
+
+  <script>
+    // 最大像素限制
+    const MAX_PIXEL_COUNT = 4096 * 4096;
+    // 保存转换结果（闭包存储，避免全局变量污染）
+    let convertResult = null;
+
+    document.getElementById('fileInput').addEventListener('change', async (e) => {
+      const file = e.target.files[0];
+      if (!file || !file.name.endsWith('.bmp')) {
+        alert('请上传 BMP 格式的图片！');
+        return;
+      }
+
+      try {
+        const { width, height, data, bmpType } = await parseBmpFile(file);
+        const rgb565Array = convertToRgb565(data, bmpType);
+        // 生成颜色表和索引
+        const { colorTable, indexArray } = generateColorTableAndIndex(rgb565Array);
+
+        // 保存转换结果到闭包变量
+        convertResult = {
+          fileName: file.name.replace('.bmp', ''),
+          width,
+          height,
+          rgb565Array,
+          colorTable,
+          indexArray,
+          bmpType
+        };
+
+        // 展示结果（按钮绑定内部函数，不再依赖全局变量）
+        const resultEl = document.getElementById('result');
+        resultEl.innerHTML = `
+                    <p>✅ 转换完成：</p>
+                    <p>图像尺寸：${width} x ${height}</p>
+                    <p>BMP 类型：${bmpType} 位无压缩</p>
+                    <p>唯一颜色数：${colorTable.length} 种</p>
+                    <p>颜色表（前10个，16进制）：<br>
+                       <span class="mono">${colorTable.slice(0, 10).map(v => '0x' + v.toString(16).padStart(4, '0')).join(', ')}...</span>
+                    </p>
+                    <p>索引数组（前10个）：<br>
+                       <span class="mono">${indexArray.slice(0, 10).map(v => v.toString().padStart(2, '0')).join(', ')}...</span>
+                    </p>
+                    <div class="actions" aria-label="下载选项">
+                        <button class="btn-primary" id="downloadBinBtn">下载 RGB565 二进制</button>
+                        <button class="btn-ghost" id="downloadCBtn">下载 C 文件</button>
+                    </div>
+                `;
+
+        // 绑定按钮点击事件（内部函数，直接访问闭包变量）
+        document.getElementById('downloadBinBtn').addEventListener('click', () => {
+          downloadRgb565File(`${convertResult.fileName}_rgb565.bin`, convertResult.rgb565Array);
+        });
+        document.getElementById('downloadCBtn').addEventListener('click', () => {
+          downloadCFile(
+            `${convertResult.fileName}_rgb565.c`,
+            convertResult.colorTable,
+            convertResult.indexArray,
+            convertResult.width,
+            convertResult.height
+          );
+        });
+
+      } catch (err) {
+        alert('转换失败：' + err.message);
+        console.error('错误详情：', err);
+        convertResult = null; // 清空错误结果
+      }
+    });
+
+    /**
+     * 解析 BMP 文件（支持16/24/32位无压缩）
+     */
+    function parseBmpFile(file) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsArrayBuffer(file);
+
+        reader.onload = (e) => {
+          try {
+            const buffer = e.target.result;
+            const view = new DataView(buffer);
+
+            // 验证 BMP 魔数
+            if (view.getUint16(0, true) !== 0x4D42) {
+              reject(new Error('不是标准的 BMP 文件（魔数验证失败）'));
+              return;
+            }
+
+            // 读取 BMP 头信息
+            const pixelOffset = view.getUint32(10, true);
+            const headerSize = view.getUint32(14, true);
+            if (headerSize !== 40) {
+              reject(new Error(`不支持的 BMP 头格式（头大小：${headerSize} 字节）`));
+              return;
+            }
+
+            const width = view.getUint32(18, true);
+            const height = view.getUint32(22, true);
+            const bitsPerPixel = view.getUint16(28, true);
+            const compression = view.getUint32(30, true);
+
+            // 校验基础参数
+            const absHeight = Math.abs(height);
+            const pixelCount = width * absHeight;
+            if (width <= 0 || absHeight <= 0) reject(new Error(`BMP 尺寸异常：宽=${width} 高=${height}`));
+            if (pixelCount > MAX_PIXEL_COUNT) reject(new Error(`图像尺寸过大，最大支持 4096x4096`));
+            if (compression !== 0) reject(new Error(`不支持压缩的 BMP（压缩类型：${compression}）`));
+
+            // 校验支持的位深
+            if (![16, 24, 32].includes(bitsPerPixel)) {
+              reject(new Error(`暂不支持 ${bitsPerPixel} 位的 BMP，仅支持 16/24/32 位无压缩 BMP`));
+              return;
+            }
+
+            // 计算行字节数（4字节对齐）
+            const rowSize = Math.floor((bitsPerPixel * width + 31) / 32) * 4;
+            let pixelData = null;
+
+            // 按位深解析像素数据
+            const startY = height < 0 ? 0 : absHeight - 1;
+            const endY = height < 0 ? absHeight - 1 : 0;
+            const stepY = height < 0 ? 1 : -1;
+
+            if (bitsPerPixel === 16) {
+              // 解析 16 位 BMP 像素（每个像素2字节）
+              pixelData = new Uint16Array(pixelCount);
+              let pixelIndex = 0;
+              for (let y = startY; y !== endY + stepY; y += stepY) {
+                for (let x = 0; x < width; x++) {
+                  const offset = pixelOffset + y * rowSize + x * 2;
+                  if (offset + 1 >= buffer.byteLength) {
+                    reject(new Error('BMP 文件损坏：像素数据超出文件范围'));
+                    return;
+                  }
+                  // 读取 16 位像素值（小端序）
+                  pixelData[pixelIndex++] = view.getUint16(offset, true);
+                }
+              }
+            } else if (bitsPerPixel === 24 || bitsPerPixel === 32) {
+              // 解析 24/32 位 BMP 为 RGB888 数组
+              pixelData = new Uint8ClampedArray(pixelCount * 3);
+              let pixelIndex = 0;
+              const pixelBytes = bitsPerPixel / 8; // 3或4字节/像素
+              for (let y = startY; y !== endY + stepY; y += stepY) {
+                for (let x = 0; x < width; x++) {
+                  const offset = pixelOffset + y * rowSize + x * pixelBytes;
+                  if (offset + 2 >= buffer.byteLength) {
+                    reject(new Error('BMP 文件损坏：像素数据超出文件范围'));
+                    return;
+                  }
+                  // BMP 存储顺序是 BGR，转换为 RGB
+                  const b = view.getUint8(offset);
+                  const g = view.getUint8(offset + 1);
+                  const r = view.getUint8(offset + 2);
+                  pixelData[pixelIndex++] = r;
+                  pixelData[pixelIndex++] = g;
+                  pixelData[pixelIndex++] = b;
+                }
+              }
+            }
+
+            resolve({
+              width,
+              height: absHeight,
+              data: pixelData,
+              bmpType: bitsPerPixel
+            });
+          } catch (innerErr) {
+            reject(new Error(`解析 BMP 时出错：${innerErr.message}`));
+          }
+        };
+
+        reader.onerror = () => reject(new Error('文件读取失败：' + reader.error.message));
+      });
+    }
+
+    /**
+     * 统一转换为标准 RGB565
+     */
+    function convertToRgb565(data, bmpType) {
+      const pixelCount = bmpType === 16 ? data.length : data.length / 3;
+      const rgb565Array = new Uint16Array(pixelCount);
+
+      if (bmpType === 16) {
+        // 16位 BMP 转换：兼容 RGB555/RGB565 原始数据
+        for (let i = 0; i < pixelCount; i++) {
+          const pixel16 = data[i];
+          // 先判断是 RGB555 还是 RGB565（通过最高位/空位区分）
+          const isRgb555 = (pixel16 & 0x0001) === 0x0001; // RGB555 最后1位是空位
+
+          if (isRgb555) {
+            // RGB555 (5R+5G+5B+1) → RGB565 (5R+6G+5B)：G 位补1位
+            const r5 = (pixel16 >> 10) & 0x1F;
+            const g5 = (pixel16 >> 5) & 0x1F;
+            const b5 = (pixel16 >> 0) & 0x1F;
+            const g6 = (g5 << 1) | (g5 >> 4); // 5G 扩展为 6G
+            rgb565Array[i] = (r5 << 11) | (g6 << 5) | b5;
+          } else {
+            // 已是 RGB565，直接使用
+            rgb565Array[i] = pixel16;
+          }
+        }
+      } else if (bmpType === 24 || bmpType === 32) {
+        // 24/32位 BMP (RGB888) → RGB565
+        for (let i = 0; i < pixelCount; i++) {
+          const r = data[i * 3];
+          const g = data[i * 3 + 1];
+          const b = data[i * 3 + 2];
+          const r5 = (r >> 3) & 0x1F;
+          const g6 = (g >> 2) & 0x3F;
+          const b5 = (b >> 3) & 0x1F;
+          rgb565Array[i] = (r5 << 11) | (g6 << 5) | b5;
+        }
+      }
+
+      return rgb565Array;
+    }
+
+    /**
+     * 生成唯一颜色表和索引数组
+     */
+    function generateColorTableAndIndex(rgb565Array) {
+      const colorMap = new Map();
+      const colorTable = [];
+      const indexArray = [];
+
+      for (let i = 0; i < rgb565Array.length; i++) {
+        const color = rgb565Array[i];
+        if (!colorMap.has(color)) {
+          colorMap.set(color, colorTable.length);
+          colorTable.push(color);
+        }
+        indexArray.push(colorMap.get(color));
+      }
+
+      return {
+        colorTable: Uint16Array.from(colorTable),
+        indexArray: Uint8Array.from(indexArray) // 颜色数>256时改Uint16Array
+      };
+    }
+
+    /**
+     * 下载 RGB565 二进制文件
+     */
+    function downloadRgb565File(fileName, rgb565Array) {
+      try {
+        const buffer = rgb565Array.buffer;
+        const blob = new Blob([buffer], { type: 'application/octet-stream' });
+        const url = URL.createObjectURL(blob);
+
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = fileName;
+        a.click();
+        URL.revokeObjectURL(url);
+      } catch (err) {
+        alert('二进制文件下载失败：' + err.message);
+        console.error(err);
+      }
+    }
+
+    /**
+     * 下载 C 文件（包含颜色表和索引数组）
+     */
+    function downloadCFile(fileName, colorTable, indexArray, width, height) {
+      try {
+        // 格式化颜色表（16进制，每行10个）
+        const colorTableStr = colorTable
+          .map(v => `0x${v.toString(16).padStart(4, '0')}`)
+          .reduce((acc, val, idx) => {
+            acc += val;
+            // 每个元素之间都加逗号（除了最后一个）
+            if (idx !== colorTable.length - 1) {
+              acc += ', ';
+            }
+            // 每行 10 个，末尾换行缩进一下，方便阅读
+            if (idx % 10 === 9 && idx !== colorTable.length - 1) {
+              acc += '\n    ';
+            }
+            return acc;
+          }, '');
+
+        // 格式化索引数组（十进制，每行20个）
+        const indexArrayStr = indexArray
+          .map(v => v.toString().padStart(2, '0'))
+          .reduce((acc, val, idx) => {
+            acc += val;
+            // 每个元素之间都加逗号（除了最后一个）
+            if (idx !== indexArray.length - 1) {
+              acc += ', ';
+            }
+            // 每行 20 个，末尾换行缩进一下
+            if (idx % 20 === 19 && idx !== indexArray.length - 1) {
+              acc += '\n    ';
+            }
+            return acc;
+          }, '');
+
+        // 构造C文件内容
+        const cContent = `/*
+ * BMP转换为RGB565的颜色表和索引数组
+ * 图像尺寸：${width} x ${height}
+ * 唯一颜色数：${colorTable.length}
+ * 生成时间：${new Date().toLocaleString()}
+ */
+
+#include <stdint.h>
+
+// RGB565颜色表（存储所有唯一颜色值）
+const uint16_t color_table[] = {
+    ${colorTableStr}
+};
+
+// 颜色表长度
+#define COLOR_TABLE_LEN ${colorTable.length}
+
+// 像素索引数组（每个值对应color_table的下标）
+const uint8_t pixel_index[] = {
+    ${indexArrayStr}
+};
+
+// 图像尺寸定义
+#define IMAGE_WIDTH  ${width}
+#define IMAGE_HEIGHT ${height}
+#define PIXEL_COUNT  ${width * height}
+`;
+
+        // 下载文件
+        const blob = new Blob([cContent], { type: 'text/plain' });
+        const url = URL.createObjectURL(blob);
+
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = fileName;
+        a.click();
+        URL.revokeObjectURL(url);
+      } catch (err) {
+        alert('C文件下载失败：' + err.message);
+        console.error(err);
+      }
+    }
+  </script>
+</body>
+
+</html>
