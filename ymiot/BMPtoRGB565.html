@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>BMP 转 RGB565 (v1.1 by Zhaowy)</title>
+  <title>BMP 转 RGB565</title>
   <style>
   :root {
       /* 浅色科技蓝：白底 + 蓝色光晕 */
@@ -300,7 +300,7 @@
 
 <body>
   <div class="container">
-    <h3>上传 BMP 文件转换为 RGB565（生成C文件+索引）</h3>
+    <h3>上传 BMP 文件转换为 RGB565 (by Zhaowy v1.2 )</h3>
     <div class="uploader">
       <div class="dropzone" id="dropzone">
         <div class="file-actions">
@@ -766,9 +766,9 @@
         }, '');
     }
 
-    function formatUint8DecArray(arr, perLine = 20, indent = '    ') {
+    function formatUint8HexArray(arr, perLine = 16, indent = '    ') {
       return Array.from(arr)
-        .map(v => v.toString().padStart(3, '0'))
+        .map(v => `0x${v.toString(16).padStart(2, '0')}`)
         .reduce((acc, val, idx) => {
           acc += val;
           if (idx !== arr.length - 1) acc += ', ';
@@ -803,8 +803,8 @@ ${externIndexDecls}
       const colorTableStr = formatUint16HexArray(colorTable, 10, '    ');
 
       const imageBlocks = images.map(img => {
-        const arrStr = formatUint8DecArray(img.pixelIndexPacked, 20, '    ');
-        return `/* ${img.fileBaseName}.bmp pixel index (前4字节=宽高，小端)：宽=${img.width} 高=${img.height} */
+        const arrStr = formatUint8HexArray(img.pixelIndexPacked, 16, '    ');
+        return `/* ${img.fileBaseName}.bmp pixel index (前4字节=宽高，小端，16进制)：宽=${img.width} 高=${img.height} */
 const uint8_t ${img.symbolName}_pixel_index[] = {
     ${arrStr}
 };
