@@ -300,7 +300,7 @@
 
 <body>
   <div class="container">
-    <h3>上传 BMP 文件转换为 RGB565 (by Zhaowy v1.2 )</h3>
+    <h3>上传 BMP 文件转换为 RGB565 (by Zhaowy v1.3 )</h3>
     <div class="uploader">
       <div class="dropzone" id="dropzone">
         <div class="file-actions">
@@ -309,7 +309,7 @@
           <button class="btn-primary" id="convertBtn" type="button">开始转换</button>
         </div>
         <div class="hint">
-          你可以多次选择文件来追加；也可以把 BMP 直接拖到这里。转换前可在下方列表中删除单个文件。
+          你可以多次选择文件来追加；也可以把 BMP 直接拖到这里。转换前可在下方列表中删除单个文件。16 位图默认按 RGB555 解释以匹配常见工具输出。
         </div>
         <ul class="file-list" id="fileList"></ul>
       </div>
@@ -402,10 +402,15 @@
                     <p>颜色表（前10个，16进制）：<br>
                        <span class="mono">${colorTable.slice(0, 10).map(v => '0x' + v.toString(16).padStart(4, '0')).join(', ')}...</span>
                     </p>
-                    <div class="actions" aria-label="下载选项">
-                        <button class="btn-primary" id="downloadHBtn">下载 Ym_Ui.h</button>
-                        <button class="btn-ghost" id="downloadCBtn">下载 Ym_ui.c</button>
-                    </div>
+              <div class="actions" aria-label="下载选项">
+                <button class="btn-primary" id="downloadHBtn">下载 Ym_Ui.h</button>
+                <button class="btn-ghost" id="downloadCBtn">下载 Ym_ui.c</button>
+              </div>
+              <div style="margin-top:12px">
+                <p class="mono">预览渲染：</p>
+                <div id="renderControls" class="actions"></div>
+                <div id="renderCanvasContainer" style="margin-top:10px;"></div>
+              </div>
                 `;
 
         // 绑定按钮点击事件（内部函数，直接访问闭包变量）
@@ -417,6 +422,26 @@
         });
         document.getElementById('downloadCBtn').addEventListener('click', () => {
           downloadTextFile(`Ym_ui.c`, buildSourceFileContent(convertResult.images, convertResult.colorTable));
+        });
+
+        // 绑定渲染按钮（为每张图创建一个预览按钮）
+        const renderControls = document.getElementById('renderControls');
+        const renderContainer = document.getElementById('renderCanvasContainer');
+        renderControls.innerHTML = '';
+        convertResult.images.forEach((img, idx) => {
+          const btn = document.createElement('button');
+          btn.textContent = `预览: ${img.fileBaseName}`;
+          btn.className = 'btn-ghost';
+          btn.addEventListener('click', () => {
+            // 清空并渲染
+            renderContainer.innerHTML = '';
+            const canvas = document.createElement('canvas');
+            canvas.width = img.width;
+            canvas.height = img.height;
+            renderContainer.appendChild(canvas);
+            renderImageFromData(canvas, img.pixelIndexPacked, convertResult.colorTable);
+          });
+          renderControls.appendChild(btn);
         });
 
       } catch (err) {
@@ -646,23 +671,14 @@
       const rgb565Array = new Uint16Array(pixelCount);
 
       if (bmpType === 16) {
-        // 16位 BMP 转换：兼容 RGB555/RGB565 原始数据
+        // 默认将所有 16 位像素按 RGB555 解释（5R/5G/5B），并扩展为 RGB565
         for (let i = 0; i < pixelCount; i++) {
-          const pixel16 = data[i];
-          // 先判断是 RGB555 还是 RGB565（通过最高位/空位区分）
-          const isRgb555 = (pixel16 & 0x0001) === 0x0001; // RGB555 最后1位是空位
-
-          if (isRgb555) {
-            // RGB555 (5R+5G+5B+1) → RGB565 (5R+6G+5B)：G 位补1位
-            const r5 = (pixel16 >> 10) & 0x1F;
-            const g5 = (pixel16 >> 5) & 0x1F;
-            const b5 = (pixel16 >> 0) & 0x1F;
-            const g6 = (g5 << 1) | (g5 >> 4); // 5G 扩展为 6G
-            rgb565Array[i] = (r5 << 11) | (g6 << 5) | b5;
-          } else {
-            // 已是 RGB565，直接使用
-            rgb565Array[i] = pixel16;
-          }
+          const p = data[i] & 0xFFFF;
+          const r5 = (p >> 10) & 0x1F;
+          const g5 = (p >> 5) & 0x1F;
+          const b5 = (p >> 0) & 0x1F;
+          const g6 = (g5 << 1) | (g5 >> 4);
+          rgb565Array[i] = (r5 << 11) | (g6 << 5) | b5;
         }
       } else if (bmpType === 24 || bmpType === 32) {
         // 24/32位 BMP (RGB888) → RGB565
@@ -838,6 +854,56 @@ ${imageBlocks}`;
       } catch (err) {
         alert('文件下载失败：' + err.message);
         console.error(err);
+      }
+    }
+
+    /**
+     * 从生成的 color_table (Uint16Array) 与像素索引打包数组渲染到 canvas
+     * @param {HTMLCanvasElement} canvas
+     * @param {Uint8Array} pixelIndexPacked - 前4字节为宽高（小端），后面为每像素索引
+     * @param {Uint16Array} colorTable - RGB565 值数组
+     */
+    function renderImageFromData(canvas, pixelIndexPacked, colorTable) {
+      try {
+        if (!(pixelIndexPacked && pixelIndexPacked.length >= 4)) throw new Error('像素索引数据格式错误');
+        const w = pixelIndexPacked[0] | (pixelIndexPacked[1] << 8);
+        const h = pixelIndexPacked[2] | (pixelIndexPacked[3] << 8);
+        const indices = pixelIndexPacked.slice(4);
+        if (canvas.width !== w || canvas.height !== h) {
+          canvas.width = w; canvas.height = h;
+        }
+        const ctx = canvas.getContext('2d');
+        const imgData = ctx.createImageData(w, h);
+        // 预解码 color table 到 RGBA 查表
+        const colorRGBA = new Uint8ClampedArray(colorTable.length * 4);
+        for (let i = 0; i < colorTable.length; i++) {
+          const c = colorTable[i] & 0xFFFF;
+          const r5 = (c >> 11) & 0x1F;
+          const g6 = (c >> 5) & 0x3F;
+          const b5 = c & 0x1F;
+          const r = (r5 * 255 / 31) | 0;
+          const g = (g6 * 255 / 63) | 0;
+          const b = (b5 * 255 / 31) | 0;
+          const off = i * 4;
+          colorRGBA[off] = r;
+          colorRGBA[off + 1] = g;
+          colorRGBA[off + 2] = b;
+          colorRGBA[off + 3] = 255;
+        }
+
+        for (let i = 0; i < indices.length && i < w * h; i++) {
+          const idx = indices[i];
+          const offDst = i * 4;
+          const offSrc = idx * 4;
+          imgData.data[offDst] = colorRGBA[offSrc] || 0;
+          imgData.data[offDst + 1] = colorRGBA[offSrc + 1] || 0;
+          imgData.data[offDst + 2] = colorRGBA[offSrc + 2] || 0;
+          imgData.data[offDst + 3] = 255;
+        }
+        ctx.putImageData(imgData, 0, 0);
+      } catch (err) {
+        console.error('渲染失败：', err);
+        alert('渲染失败：' + err.message);
       }
     }
 
