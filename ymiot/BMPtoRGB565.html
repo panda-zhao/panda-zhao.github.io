@@ -300,7 +300,7 @@
 
 <body>
   <div class="container">
-    <h3>上传 BMP 文件解析 (by Zhaowy v1.4 )</h3>
+    <h3>上传 BMP 文件解析 (by Zhaowy v1.5 )</h3>
     <div class="uploader">
       <div class="dropzone" id="dropzone">
         <div class="file-actions">
@@ -364,7 +364,7 @@
         const images = [];
         for (const file of bmpFiles) {
           const key = getFileKey(file);
-          const { width, height, data, bmpType, compression, masks } = await parseBmpFile(file);
+          const { width, height, data, bmpType, compression, masks, pixelOffset, headerSize } = await parseBmpFile(file);
           const override16 = fileOverrides.get(key) || undefined;
           images.push({
             file,
@@ -376,6 +376,8 @@
             bmpType,
             compression,
             masks,
+            pixelOffset,
+            headerSize,
             override16
           });
         }
@@ -448,7 +450,8 @@
       fileListEl.innerHTML = files.map(f => {
         const key = getFileKey(f);
         const url = previewUrls.get(key);
-        const selVal = fileOverrides.get(key) || '565';
+        // 若在 fileOverrides 中有值则使用该覆盖，否则使用自动检测（auto）
+        const selVal = fileOverrides.has(key) ? fileOverrides.get(key) : 'auto';
         return `
           <li class="file-item" data-key="${escapeHtml(key)}">
             <div class="thumb">
@@ -461,6 +464,7 @@
             <div style="display:flex;gap:8px;align-items:center">
               <label style="font-size:12px;color:#475569">格式</label>
               <select data-override-select="${escapeHtml(key)}" style="border-radius:8px;padding:6px;font-size:12px">
+                <option value="auto" ${selVal==='auto'?'selected':''}>自动检测</option>
                 <option value="565" ${selVal==='565'?'selected':''}>RGB565</option>
                 <option value="555" ${selVal==='555'?'selected':''}>RGB555</option>
               </select>
@@ -500,8 +504,13 @@
         sel.addEventListener('change', () => {
           const key = sel.getAttribute('data-override-select');
           if (!key) return;
-          const val = sel.value === '555' ? '555' : '565';
-          fileOverrides.set(key, val);
+          const val = sel.value; // 'auto' | '565' | '555'
+          if (val === 'auto') {
+            // 删除覆盖使其回到自动检测行为
+            fileOverrides.delete(key);
+          } else if (val === '565' || val === '555') {
+            fileOverrides.set(key, val);
+          }
         });
       });
     }
@@ -665,7 +674,9 @@
               data: pixelData,
               bmpType: bitsPerPixel,
               compression,
-              masks
+              masks,
+              pixelOffset,
+              headerSize
             });
           } catch (innerErr) {
             reject(new Error(`解析 BMP 时出错：${innerErr.message}`));
@@ -674,6 +685,114 @@
 
         reader.onerror = () => reject(new Error('文件读取失败：' + reader.error.message));
       });
+    }
+
+/**
+     * 自动判定16位BMP的像素格式（RGB555/RGB565）
+     * @param {DataView} view - BMP文件的DataView对象（解析BMP时已创建，直接复用）
+     * @returns {Object} 判定结果：格式标识、是否需要转换、关键参数
+     * @throws {Error} 非16位BMP时抛出错误
+     */
+    function judge16bBmpFormat(view) {
+        // 1. 读取核心判定字段（均遵循小端序）
+        const bitCount = view.getUint16(28, true); // 像素位深（偏移28-29）
+        const compression = view.getUint32(30, true); // 压缩方式（偏移30-33）
+        const pixelOffset = view.getUint32(10, true); // 像素数据起始偏移（偏移10-13）
+        const headerSize = view.getUint32(14, true); // 信息头长度（偏移14-17，验证标准头）
+
+        // 前置验证：仅处理40字节标准头的16位BMP（你的工具已适配此规范）
+        if (bitCount !== 16) {
+            throw new Error(`非16位BMP，位深为${bitCount}bit，无需判定RGB555/RGB565`);
+        }
+        if (headerSize !== 40) {
+            throw new Error(`不支持非标准BMP头，头长度${headerSize}字节`);
+        }
+
+        // 2. 核心判定：根据压缩方式+像素偏移组合判断（BMP规范硬性规则）
+        let format = '';
+        let needConvertTo565 = false; // 是否需要转RGB565（RGB555→true，RGB565→false）
+        let desc = '';
+
+        if (compression === 0) { // 压缩方式=BI_RGB
+            format = 'RGB555';
+            needConvertTo565 = true;
+            desc = '16位BI_RGB，官方默认RGB555（R5G5B5+1位空位），无颜色掩码';
+            // 验证像素偏移：标准54字节（14文件头+40信息头），无掩码段
+            if (pixelOffset !== 54) {
+                console.warn(`[警告] RGB555 BMP像素偏移非标准54字节，实际为${pixelOffset}字节，建议检查文件完整性`);
+            }
+        } else if (compression === 3) { // 压缩方式=BI_BITFIELDS
+            format = 'RGB565';
+            needConvertTo565 = false;
+            desc = '16位BI_BITFIELDS，掩码定义RGB565（R5G6B5），16位全有效无空位';
+            // 验证像素偏移：至少70字节（54头+12字节颜色掩码），符合RGB565特征
+            if (pixelOffset < 70) {
+                console.warn(`[警告] RGB565 BMP像素偏移过小，实际为${pixelOffset}字节，可能缺失颜色掩码`);
+            }
+        } else {
+            throw new Error(`不支持的16位BMP压缩方式：${compression}，仅支持BI_RGB(0)/BI_BITFIELDS(3)`);
+        }
+
+        // 3. 返回判定结果（含后续转换所需的关键标识）
+        return {
+            bmpFormat: format, // 最终格式：RGB555/RGB565
+            needConvertTo565,  // 你的工具核心标识：是否需要转RGB565
+            compression,       // 压缩方式（0=BI_RGB，3=BI_BITFIELDS）
+            pixelOffset,       // 像素数据起始偏移（复用至后续像素读取）
+            bitCount,          // 位深（16）
+            description: desc  // 格式描述（便于日志/提示）
+        };
+    }
+
+    // Wrapper: 用解析得到的 meta 对象快速判定（无需 DataView）
+    function judge16bBmpFormatFromMeta(meta) {
+      const { bitCount, compression, pixelOffset, headerSize } = meta;
+      if (bitCount !== 16) throw new Error('非16位BMP');
+      if (headerSize !== 40) throw new Error('不支持非标准BMP头');
+      let bmpFormat = 'RGB565';
+      let needConvertTo565 = false;
+      let desc = '';
+      if (compression === 0) {
+        bmpFormat = 'RGB555'; needConvertTo565 = true; desc = 'BI_RGB 无掩码，依据规范为 RGB555';
+      } else if (compression === 3) {
+        bmpFormat = 'RGB565'; needConvertTo565 = false; desc = 'BI_BITFIELDS 有掩码，通常为 RGB565';
+      } else {
+        throw new Error('不支持的 16 位压缩方式');
+      }
+      return { bmpFormat, needConvertTo565, compression, pixelOffset, bitCount, description: desc };
+    }
+
+    /**
+     * 自动检测 16 位 BMP 是 RGB555 还是 RGB565（仅在没有 BITFIELDS 掩码时使用）
+     */
+    function detect16BitRgbFormat(pixelData) {
+      const len = pixelData.length;
+      if (len === 0) return '565';
+      const sample = Math.min(len, 2000);
+      const step = Math.max(1, Math.floor(len / sample));
+      const gSet565 = new Set();
+      const gSetFrom555 = new Set();
+      for (let i = 0; i < len; i += step) {
+        const p = pixelData[i] & 0xFFFF;
+        const g565 = (p >> 5) & 0x3F;
+        gSet565.add(g565);
+        const g5 = (p >> 5) & 0x1F;
+        const gFrom555 = (g5 << 1) | (g5 >> 4);
+        gSetFrom555.add(gFrom555);
+      }
+      const u565 = gSet565.size;
+      const u555 = gSetFrom555.size;
+      // 若第15位（MSB）极少出现，优先判为 RGB555（常见于 15-bit 图像，bit15 未使用）
+      let msbCount = 0;
+      for (let i = 0; i < len; i += step) {
+        if ((pixelData[i] & 0x8000) !== 0) msbCount++;
+      }
+      const samples = Math.ceil(len / step);
+      if (msbCount / samples < 0.01) return '555';
+      // 优先选择能产生更多绿通道级别（更少条带感）的解释
+      if (u565 >= u555 + 6) return '565';
+      if (u555 >= u565 + 6) return '555';
+      return '565';
     }
 
     /**
@@ -750,6 +869,18 @@
             const [rMask, gMask, bMask] = img.masks;
             if (rMask === 0x7C00 && gMask === 0x03E0 && bMask === 0x001F) img.override16 = '555';
             else img.override16 = '565';
+          } else if (img.bmpType === 16 && !img.masks) {
+            // 若无掩码，则优先按照官方规则（BI_RGB -> RGB555，BI_BITFIELDS -> RGB565）判定
+            try {
+              const meta = { bitCount: img.bmpType, compression: img.compression, pixelOffset: img.pixelOffset, headerSize: img.headerSize };
+              const judged = judge16bBmpFormatFromMeta(meta);
+              img.override16 = judged.bmpFormat === 'RGB555' ? '555' : '565';
+              console.log(`Judge detected ${img.file.name} as ${judged.bmpFormat} (meta)`);
+            } catch (e) {
+              // 回退到内容检测（启发式）
+              img.override16 = detect16BitRgbFormat(img.rawData);
+              console.warn(`Judge failed for ${img.file.name}: ${e.message}, fallback to heuristic ${img.override16}`);
+            }
           } else {
             img.override16 = '565';
           }
@@ -813,8 +944,8 @@
             defaultFormat = maskName;
             usedFormat = it.override16 ? (it.override16 === '565' ? 'RGB565' : 'RGB555') : maskName;
           } else {
-            defaultFormat = 'RGB565';
-            usedFormat = it.override16 ? (it.override16 === '565' ? 'RGB565' : 'RGB555') : defaultFormat;
+            defaultFormat = '自动检测';
+            usedFormat = it.override16 ? (it.override16 === '565' ? 'RGB565' : 'RGB555') : '自动检测';
           }
         } else if (it.bmpType === 24) {
           defaultFormat = 'RGB888';
