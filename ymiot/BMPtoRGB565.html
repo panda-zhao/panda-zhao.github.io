@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>BMP 转 RGB565</title>
+  <title>BMP 文件解析（MCU565）</title>
   <style>
   :root {
       /* 浅色科技蓝：白底 + 蓝色光晕 */
@@ -300,7 +300,7 @@
 
 <body>
   <div class="container">
-    <h3>上传 BMP 文件转换为 RGB565 (by Zhaowy v1.3 )</h3>
+    <h3>上传 BMP 文件解析 (by Zhaowy v1.4 )</h3>
     <div class="uploader">
       <div class="dropzone" id="dropzone">
         <div class="file-actions">
@@ -309,7 +309,7 @@
           <button class="btn-primary" id="convertBtn" type="button">开始转换</button>
         </div>
         <div class="hint">
-          你可以多次选择文件来追加；也可以把 BMP 直接拖到这里。转换前可在下方列表中删除单个文件。16 位图默认按 RGB555 解释以匹配常见工具输出。
+          你可以多次选择文件来追加；也可以把 BMP 直接拖到这里。转换前可在下方列表中删除单个文件。默认 = 读取到的像素格式；实际使用的像素格式为读取到的格式或在列表中设置的覆盖格式。
         </div>
         <ul class="file-list" id="fileList"></ul>
       </div>
@@ -323,6 +323,8 @@
     // 文件队列（支持追加/删除）
     const pendingFiles = new Map(); // key -> File
     const previewUrls = new Map(); // key -> objectURL
+    // 用户在文件列表中预先选择的 16 位格式覆盖（key -> '565'|'555')
+    const fileOverrides = new Map();
     // 保存转换结果（多文件）
     let convertResult = null; // { images: [...], colorTable }
 
@@ -361,88 +363,25 @@
 
         const images = [];
         for (const file of bmpFiles) {
-          const { width, height, data, bmpType } = await parseBmpFile(file);
-          const rgb565Array = convertToRgb565(data, bmpType);
+          const key = getFileKey(file);
+          const { width, height, data, bmpType, compression, masks } = await parseBmpFile(file);
+          const override16 = fileOverrides.get(key) || undefined;
           images.push({
             file,
             fileBaseName: file.name.replace(/\.bmp$/i, ''),
             symbolName: sanitizeCIdentifier(file.name.replace(/\.bmp$/i, '')),
+            rawData: data,
             width,
             height,
             bmpType,
-            rgb565Array
+            compression,
+            masks,
+            override16
           });
         }
 
-        // 生成“全局”颜色表（多文件合并到同一个 color_table）
-        const { colorTable, colorMap } = generateGlobalColorTable(images);
-        if (colorTable.length > 256) {
-          throw new Error(`异常：合并后的颜色表数量=${colorTable.length}，超过255（索引必须为0~255）`);
-        }
-
-        // 为每张图生成索引数组（引用全局 color_table）
-        for (const img of images) {
-          img.indexArray = generateIndexArrayFromGlobalMap(img.rgb565Array, colorMap);
-          img.pixelIndexPacked = packPixelIndexWithWH(img.width, img.height, img.indexArray);
-        }
-
-        convertResult = { images, colorTable };
-
-        // 展示结果（按钮绑定内部函数，不再依赖全局变量）
-        const totalPixels = images.reduce((sum, it) => sum + (it.width * it.height), 0);
-        const fileListHtml = images.map(it => {
-          return `<p class="mono">- ${escapeHtml(it.file.name)}：${it.width} x ${it.height}，${it.bmpType}位无压缩</p>`;
-        }).join('');
-        resultEl.innerHTML = `
-                    <p>✅ 转换完成：</p>
-                    <p>文件数量：${images.length}</p>
-                    <p>总像素数：${totalPixels}</p>
-                    <p>唯一颜色数（合并后 color_table）：${colorTable.length} 种</p>
-                    ${fileListHtml}
-                    <p>颜色表（前10个，16进制）：<br>
-                       <span class="mono">${colorTable.slice(0, 10).map(v => '0x' + v.toString(16).padStart(4, '0')).join(', ')}...</span>
-                    </p>
-              <div class="actions" aria-label="下载选项">
-                <button class="btn-primary" id="downloadHBtn">下载 Ym_Ui.h</button>
-                <button class="btn-ghost" id="downloadCBtn">下载 Ym_ui.c</button>
-              </div>
-              <div style="margin-top:12px">
-                <p class="mono">预览渲染：</p>
-                <div id="renderControls" class="actions"></div>
-                <div id="renderCanvasContainer" style="margin-top:10px;"></div>
-              </div>
-                `;
-
-        // 绑定按钮点击事件（内部函数，直接访问闭包变量）
-        document.getElementById('downloadHBtn').addEventListener('click', () => {
-          downloadTextFile(
-            `Ym_Ui.h`,
-            buildHeaderFileContent(convertResult.images, convertResult.colorTable.length)
-          );
-        });
-        document.getElementById('downloadCBtn').addEventListener('click', () => {
-          downloadTextFile(`Ym_ui.c`, buildSourceFileContent(convertResult.images, convertResult.colorTable));
-        });
-
-        // 绑定渲染按钮（为每张图创建一个预览按钮）
-        const renderControls = document.getElementById('renderControls');
-        const renderContainer = document.getElementById('renderCanvasContainer');
-        renderControls.innerHTML = '';
-        convertResult.images.forEach((img, idx) => {
-          const btn = document.createElement('button');
-          btn.textContent = `预览: ${img.fileBaseName}`;
-          btn.className = 'btn-ghost';
-          btn.addEventListener('click', () => {
-            // 清空并渲染
-            renderContainer.innerHTML = '';
-            const canvas = document.createElement('canvas');
-            canvas.width = img.width;
-            canvas.height = img.height;
-            renderContainer.appendChild(canvas);
-            renderImageFromData(canvas, img.pixelIndexPacked, convertResult.colorTable);
-          });
-          renderControls.appendChild(btn);
-        });
+        // 交给统一渲染函数处理（包括根据 override 计算 rgb565、生成颜色表等）
+        renderConvertResult(images);
 
       } catch (err) {
         alert('转换失败：' + err.message);
@@ -509,6 +448,7 @@
       fileListEl.innerHTML = files.map(f => {
         const key = getFileKey(f);
         const url = previewUrls.get(key);
+        const selVal = fileOverrides.get(key) || '565';
         return `
           <li class="file-item" data-key="${escapeHtml(key)}">
             <div class="thumb">
@@ -518,7 +458,15 @@
               <div class="name">${escapeHtml(f.name)}</div>
               <div class="sub">${formatBytes(f.size)} · ${new Date(f.lastModified).toLocaleString()}</div>
             </div>
-            <button class="btn-danger" type="button" data-remove="${escapeHtml(key)}">删除</button>
+            <div style="display:flex;gap:8px;align-items:center">
+              <label style="font-size:12px;color:#475569">格式</label>
+              <select data-override-select="${escapeHtml(key)}" style="border-radius:8px;padding:6px;font-size:12px">
+                <option value="565" ${selVal==='565'?'selected':''}>RGB565</option>
+                <option value="555" ${selVal==='555'?'selected':''}>RGB555</option>
+              </select>
+              <button class="btn-ghost" type="button" data-hex="${escapeHtml(key)}">十六进制</button>
+              <button class="btn-danger" type="button" data-remove="${escapeHtml(key)}">删除</button>
+            </div>
           </li>
         `;
       }).join('');
@@ -535,6 +483,25 @@
           convertResult = null;
           renderFileList();
           resultEl.innerHTML = '';
+        });
+      });
+      // 绑定查看十六进制按钮
+      fileListEl.querySelectorAll('button[data-hex]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const key = btn.getAttribute('data-hex');
+          if (!key) return;
+          const file = pendingFiles.get(key);
+          if (!file) return alert('找不到对应文件');
+          showHexForFile(file);
+        });
+      });
+      // 绑定文件列表中的 override 下拉（保存到 fileOverrides）
+      fileListEl.querySelectorAll('select[data-override-select]').forEach(sel => {
+        sel.addEventListener('change', () => {
+          const key = sel.getAttribute('data-override-select');
+          if (!key) return;
+          const val = sel.value === '555' ? '555' : '565';
+          fileOverrides.set(key, val);
         });
       });
     }
@@ -557,7 +524,7 @@
     });
 
     /**
-     * 解析 BMP 文件（支持16/24/32位无压缩）
+     * 解析 BMP 文件（支持16/24/32位无压缩，并支持 BITFIELDS 掩码）
      */
     function parseBmpFile(file) {
       return new Promise((resolve, reject) => {
@@ -578,13 +545,15 @@
             // 读取 BMP 头信息
             const pixelOffset = view.getUint32(10, true);
             const headerSize = view.getUint32(14, true);
-            if (headerSize !== 40) {
+            // 支持常见的 DIB 头版本：40/52/56/108/124
+            if (![40, 52, 56, 108, 124].includes(headerSize)) {
               reject(new Error(`不支持的 BMP 头格式（头大小：${headerSize} 字节）`));
               return;
             }
 
             const width = view.getUint32(18, true);
-            const height = view.getUint32(22, true);
+            // 高度字段可能为有符号（负值表示 top-down）
+            const height = view.getInt32(22, true);
             const bitsPerPixel = view.getUint16(28, true);
             const compression = view.getUint32(30, true);
 
@@ -593,7 +562,8 @@
             const pixelCount = width * absHeight;
             if (width <= 0 || absHeight <= 0) reject(new Error(`BMP 尺寸异常：宽=${width} 高=${height}`));
             if (pixelCount > MAX_PIXEL_COUNT) reject(new Error(`图像尺寸过大，最大支持 4096x4096`));
-            if (compression !== 0) reject(new Error(`不支持压缩的 BMP（压缩类型：${compression}）`));
+            // 允许无压缩(0)或 BITFIELDS(3)。其他压缩类型不支持。
+            if (compression !== 0 && compression !== 3) reject(new Error(`不支持的 BMP 压缩类型：${compression}`));
 
             // 校验支持的位深
             if (![16, 24, 32].includes(bitsPerPixel)) {
@@ -605,45 +575,86 @@
             const rowSize = Math.floor((bitsPerPixel * width + 31) / 32) * 4;
             let pixelData = null;
 
+            // 若为 BITFIELDS（compression === 3），尝试读取颜色掩码
+            // 掩码通常位于 DIB 头之后或 BITMAPINFOHEADER 的后面（偏移 14+40）。
+            let masks = null;
+            if (compression === 3) {
+              const candidates = [14 + headerSize, 14 + 40];
+              for (const maskOffset of candidates) {
+                if (maskOffset + 12 <= buffer.byteLength && maskOffset + 12 <= pixelOffset) {
+                  const rMask = view.getUint32(maskOffset, true);
+                  const gMask = view.getUint32(maskOffset + 4, true);
+                  const bMask = view.getUint32(maskOffset + 8, true);
+                  // 简单验证：掩码不应全为0或全相同无意义值
+                  if ((rMask | gMask | bMask) !== 0 && !(rMask === gMask && gMask === bMask)) {
+                    masks = [rMask >>> 0, gMask >>> 0, bMask >>> 0];
+                    break;
+                  }
+                }
+              }
+              // 如果未找到合适掩码，则当作无掩码处理（仍继续解析像素）
+            }
+
             // 按位深解析像素数据
             const startY = height < 0 ? 0 : absHeight - 1;
             const endY = height < 0 ? absHeight - 1 : 0;
             const stepY = height < 0 ? 1 : -1;
 
-            if (bitsPerPixel === 16) {
-              // 解析 16 位 BMP 像素（每个像素2字节）
-              pixelData = new Uint16Array(pixelCount);
+            if (compression === 3) {
+              // 使用掩码时按像素原始字节读取为 Uint32Array 便于按掩码解码
+              const pixelBytes = bitsPerPixel / 8;
+              pixelData = new Uint32Array(pixelCount);
               let pixelIndex = 0;
-              for (let y = startY; y !== endY + stepY; y += stepY) {
-                for (let x = 0; x < width; x++) {
-                  const offset = pixelOffset + y * rowSize + x * 2;
-                  if (offset + 1 >= buffer.byteLength) {
-                    reject(new Error('BMP 文件损坏：像素数据超出文件范围'));
-                    return;
-                  }
-                  // 读取 16 位像素值（小端序）
-                  pixelData[pixelIndex++] = view.getUint16(offset, true);
-                }
-              }
-            } else if (bitsPerPixel === 24 || bitsPerPixel === 32) {
-              // 解析 24/32 位 BMP 为 RGB888 数组
-              pixelData = new Uint8ClampedArray(pixelCount * 3);
-              let pixelIndex = 0;
-              const pixelBytes = bitsPerPixel / 8; // 3或4字节/像素
               for (let y = startY; y !== endY + stepY; y += stepY) {
                 for (let x = 0; x < width; x++) {
                   const offset = pixelOffset + y * rowSize + x * pixelBytes;
-                  if (offset + 2 >= buffer.byteLength) {
+                  if (offset + pixelBytes - 1 >= buffer.byteLength) {
                     reject(new Error('BMP 文件损坏：像素数据超出文件范围'));
                     return;
                   }
-                  // BMP 存储顺序是 BGR，转换为 RGB
-                  const b = view.getUint8(offset);
-                  const g = view.getUint8(offset + 1);
-                  const r = view.getUint8(offset + 2);
-                  pixelData[pixelIndex++] = r;
-                  pixelData[pixelIndex++] = g;
-                  pixelData[pixelIndex++] = b;
+                  let val = 0;
+                  for (let b = 0; b < pixelBytes; b++) {
+                    val |= view.getUint8(offset + b) << (8 * b);
+                  }
+                  pixelData[pixelIndex++] = val >>> 0;
+                }
+              }
+            } else {
+              if (bitsPerPixel === 16) {
+                // 解析 16 位 BMP 像素（每个像素2字节）
+                pixelData = new Uint16Array(pixelCount);
+                let pixelIndex = 0;
+                for (let y = startY; y !== endY + stepY; y += stepY) {
+                  for (let x = 0; x < width; x++) {
+                    const offset = pixelOffset + y * rowSize + x * 2;
+                    if (offset + 1 >= buffer.byteLength) {
+                      reject(new Error('BMP 文件损坏：像素数据超出文件范围'));
+                      return;
+                    }
+                    // 读取 16 位像素值（小端序）
+                    pixelData[pixelIndex++] = view.getUint16(offset, true);
+                  }
+                }
+              } else if (bitsPerPixel === 24 || bitsPerPixel === 32) {
+                // 解析 24/32 位 BMP 为 RGB888 数组
+                pixelData = new Uint8ClampedArray(pixelCount * 3);
+                let pixelIndex = 0;
+                const pixelBytes = bitsPerPixel / 8; // 3或4字节/像素
+                for (let y = startY; y !== endY + stepY; y += stepY) {
+                  for (let x = 0; x < width; x++) {
+                    const offset = pixelOffset + y * rowSize + x * pixelBytes;
+                    if (offset + 2 >= buffer.byteLength) {
+                      reject(new Error('BMP 文件损坏：像素数据超出文件范围'));
+                      return;
+                    }
+                    // BMP 存储顺序是 BGR，转换为 RGB
+                    const b = view.getUint8(offset);
+                    const g = view.getUint8(offset + 1);
+                    const r = view.getUint8(offset + 2);
+                    pixelData[pixelIndex++] = r;
+                    pixelData[pixelIndex++] = g;
+                    pixelData[pixelIndex++] = b;
+                  }
                 }
               }
             }
@@ -652,7 +663,9 @@
               width,
               height: absHeight,
               data: pixelData,
-              bmpType: bitsPerPixel
+              bmpType: bitsPerPixel,
+              compression,
+              masks
             });
           } catch (innerErr) {
             reject(new Error(`解析 BMP 时出错：${innerErr.message}`));
@@ -666,22 +679,54 @@
     /**
      * 统一转换为标准 RGB565
      */
-    function convertToRgb565(data, bmpType) {
-      const pixelCount = bmpType === 16 ? data.length : data.length / 3;
-      const rgb565Array = new Uint16Array(pixelCount);
+    function convertToRgb565(data, bmpType, masks) {
+      // 如果传入 masks（BITFIELDS），data 是 Uint32Array 的原始像素值
+      const rgb565Array = new Uint16Array(data.length);
+
+      function maskInfo(mask) {
+        let shift = 0;
+        while (shift < 32 && ((mask >>> shift) & 1) === 0) shift++;
+        let bits = 0;
+        let tmp = mask >>> shift;
+        while (bits < 32 && (tmp & 1) === 1) { bits++; tmp >>>= 1; }
+        if (bits === 0) bits = 1;
+        return { shift, bits };
+      }
+
+      if (masks && (bmpType === 16 || bmpType === 32)) {
+        const [rMask, gMask, bMask] = masks;
+        const rInfo = maskInfo(rMask);
+        const gInfo = maskInfo(gMask);
+        const bInfo = maskInfo(bMask);
+        const rMax = (1 << rInfo.bits) - 1;
+        const gMax = (1 << gInfo.bits) - 1;
+        const bMax = (1 << bInfo.bits) - 1;
+
+        for (let i = 0; i < data.length; i++) {
+          const p = data[i] >>> 0;
+          const rRaw = (p & rMask) >>> rInfo.shift;
+          const gRaw = (p & gMask) >>> gInfo.shift;
+          const bRaw = (p & bMask) >>> bInfo.shift;
+          const r5 = Math.round(rRaw * 31 / rMax) & 0x1F;
+          const g6 = Math.round(gRaw * 63 / gMax) & 0x3F;
+          const b5 = Math.round(bRaw * 31 / bMax) & 0x1F;
+          rgb565Array[i] = (r5 << 11) | (g6 << 5) | b5;
+        }
+        return rgb565Array;
+      }
 
       if (bmpType === 16) {
-        // 默认将所有 16 位像素按 RGB555 解释（5R/5G/5B），并扩展为 RGB565
-        for (let i = 0; i < pixelCount; i++) {
+        // 默认将所有 16 位像素按 RGB565 解释（5R/6G/5B）
+        for (let i = 0; i < data.length; i++) {
           const p = data[i] & 0xFFFF;
-          const r5 = (p >> 10) & 0x1F;
-          const g5 = (p >> 5) & 0x1F;
+          const r5 = (p >> 11) & 0x1F;
+          const g6 = (p >> 5) & 0x3F;
           const b5 = (p >> 0) & 0x1F;
-          const g6 = (g5 << 1) | (g5 >> 4);
           rgb565Array[i] = (r5 << 11) | (g6 << 5) | b5;
         }
       } else if (bmpType === 24 || bmpType === 32) {
         // 24/32位 BMP (RGB888) → RGB565
+        const pixelCount = data.length / 3 | 0;
         for (let i = 0; i < pixelCount; i++) {
           const r = data[i * 3];
           const g = data[i * 3 + 1];
@@ -696,28 +741,176 @@
       return rgb565Array;
     }
 
-    /**
-     * 生成唯一颜色表和索引数组
-     */
-    function generateColorTableAndIndex(rgb565Array) {
-      const colorMap = new Map();
-      const colorTable = [];
-      const indexArray = [];
-
-      for (let i = 0; i < rgb565Array.length; i++) {
-        const color = rgb565Array[i];
-        if (!colorMap.has(color)) {
-          colorMap.set(color, colorTable.length);
-          colorTable.push(color);
+    // 根据 images 数据渲染转换结果，并绑定覆盖选择事件
+    function renderConvertResult(images) {
+      // 确保每张图有 override16 字段（默认 RGB565，除非掩码明确为 RGB555）
+      images.forEach(img => {
+        if (img.override16 === undefined) {
+          if (img.bmpType === 16 && img.compression === 3 && img.masks) {
+            const [rMask, gMask, bMask] = img.masks;
+            if (rMask === 0x7C00 && gMask === 0x03E0 && bMask === 0x001F) img.override16 = '555';
+            else img.override16 = '565';
+          } else {
+            img.override16 = '565';
+          }
         }
-        indexArray.push(colorMap.get(color));
+        // 重新计算当前图的 rgb565Array（若需要）
+        if (img.bmpType === 16) {
+          // 未使用掩码时按 override16 解释
+          if (!img.masks) {
+            const pixelCount = img.rawData.length;
+            const arr = new Uint16Array(pixelCount);
+            for (let i = 0; i < pixelCount; i++) {
+              const p = img.rawData[i] & 0xFFFF;
+              if (img.override16 === '565') {
+                const r5 = (p >> 11) & 0x1F;
+                const g6 = (p >> 5) & 0x3F;
+                const b5 = (p >> 0) & 0x1F;
+                arr[i] = (r5 << 11) | (g6 << 5) | b5;
+              } else {
+                const r5 = (p >> 10) & 0x1F;
+                const g5 = (p >> 5) & 0x1F;
+                const b5 = (p >> 0) & 0x1F;
+                const g6 = (g5 << 1) | (g5 >> 4);
+                arr[i] = (r5 << 11) | (g6 << 5) | b5;
+              }
+            }
+            img.rgb565Array = arr;
+          } else {
+            img.rgb565Array = convertToRgb565(img.rawData, img.bmpType, img.masks);
+          }
+        } else {
+          img.rgb565Array = convertToRgb565(img.rawData, img.bmpType, img.masks);
+        }
+      });
+
+      // 生成“全局”颜色表并索引
+      const { colorTable, colorMap } = generateGlobalColorTable(images);
+      if (colorTable.length > 256) {
+        alert(`异常：合并后的颜色表数量=${colorTable.length}，超过255（索引必须为0~255）`);
+        return;
+      }
+      for (const img of images) {
+        img.indexArray = generateIndexArrayFromGlobalMap(img.rgb565Array, colorMap);
+        img.pixelIndexPacked = packPixelIndexWithWH(img.width, img.height, img.indexArray);
       }
 
-      return {
-        colorTable: Uint16Array.from(colorTable),
-        indexArray: Uint8Array.from(indexArray) // 颜色数>256时改Uint16Array
-      };
+      convertResult = { images, colorTable };
+
+      // 生成显示 HTML
+      const totalPixels = images.reduce((sum, it) => sum + (it.width * it.height), 0);
+      const fileListHtml = images.map(it => {
+        let defaultFormat = '';
+        let usedFormat = '';
+        
+        if (it.bmpType === 16) {
+          if (it.compression === 3 && it.masks) {
+            const [rMask, gMask, bMask] = it.masks;
+            let maskName = '';
+            if (rMask === 0xF800 && gMask === 0x07E0 && bMask === 0x001F) maskName = 'RGB565';
+            else if (rMask === 0x7C00 && gMask === 0x03E0 && bMask === 0x001F) maskName = 'RGB555';
+            else maskName = `掩码 0x${rMask.toString(16)},0x${gMask.toString(16)},0x${bMask.toString(16)}`;
+            defaultFormat = maskName;
+            usedFormat = it.override16 ? (it.override16 === '565' ? 'RGB565' : 'RGB555') : maskName;
+          } else {
+            defaultFormat = 'RGB565';
+            usedFormat = it.override16 ? (it.override16 === '565' ? 'RGB565' : 'RGB555') : defaultFormat;
+          }
+        } else if (it.bmpType === 24) {
+          defaultFormat = 'RGB888';
+          usedFormat = 'RGB888';
+        } else if (it.bmpType === 32) {
+          defaultFormat = 'RGB888/含Alpha或BITFIELDS';
+          usedFormat = 'RGB888/含Alpha或BITFIELDS';
+        } else {
+          defaultFormat = `${it.bmpType} 位`;
+          usedFormat = defaultFormat;
+        }
+
+        const fmt = `${it.bmpType} 位`;
+        return `<p class="mono">- ${escapeHtml(it.file.name)}：${it.width} x ${it.height}，${fmt}，已转换为 ${usedFormat}（默认：${defaultFormat}）</p>`;
+      }).join('');
+
+      resultEl.innerHTML = `
+                    <p>✅ 转换完成：</p>
+                    <p>文件数量：${images.length}</p>
+                    <p>总像素数：${totalPixels}</p>
+                    <p>唯一颜色数（合并后 color_table）：${colorTable.length} 种</p>
+                    ${fileListHtml}
+                    <p>颜色表（前10个，16进制）：<br>
+                       <span class="mono">${colorTable.slice(0, 10).map(v => '0x' + v.toString(16).padStart(4, '0')).join(', ')}...</span>
+                    </p>
+                    ${images.length === 1 ? (() => {
+                      const img = images[0];
+                      const firstTen = Array.from(img.rgb565Array).slice(0, 10);
+                      function rgb565ToHex(v) {
+                        const r5 = (v >> 11) & 0x1F;
+                        const g6 = (v >> 5) & 0x3F;
+                        const b5 = v & 0x1F;
+                        const r = Math.round(r5 * 255 / 31);
+                        const g = Math.round(g6 * 255 / 63);
+                        const b = Math.round(b5 * 255 / 31);
+                        return '#' + [r, g, b].map(x => x.toString(16).padStart(2, '0')).join('');
+                      }
+                      const items = firstTen.map((v, idx) => `<span style="display:inline-flex;align-items:center;margin-right:8px"><span style="width:14px;height:14px;border:1px solid #ddd;display:inline-block;background:${rgb565ToHex(v)};margin-right:6px"></span><span class=\"mono\">${'0x'+v.toString(16).padStart(4,'0')}</span></span>`).join('');
+                      // raw bytes (前 64 字节) 便于核对
+                      let rawHex = '';
+                      try {
+                        const ta = img.rawData;
+                        const byteOffset = ta.byteOffset || 0;
+                        const byteLen = Math.min(64, ta.byteLength || (ta.length * (ta.BYTES_PER_ELEMENT || 1)));
+                        const raw = new Uint8Array(ta.buffer, byteOffset, byteLen);
+                        rawHex = Array.from(raw).map(b => b.toString(16).padStart(2, '0')).join(' ');
+                      } catch (e) {
+                        rawHex = '读取 rawData 失败';
+                      }
+                      return `<p class="mono">原始像素前 64 字节（hex）：<br>${rawHex}</p><p class="mono">前 10 个像素颜色：<br>${items}</p>`;
+                    })() : ''}
+              <div class="actions" aria-label="下载选项">
+                <button class="btn-primary" id="downloadHBtn">下载 Ym_Ui.h</button>
+                <button class="btn-ghost" id="downloadCBtn">下载 Ym_ui.c</button>
+              </div>
+              <div style="margin-top:12px">
+                <p class="mono">预览渲染：</p>
+                <div id="renderControls" class="actions"></div>
+                <div id="renderCanvasContainer" style="margin-top:10px;"></div>
+              </div>
+                `;
+
+      // 绑定下载按钮
+      document.getElementById('downloadHBtn').addEventListener('click', () => {
+        downloadTextFile(
+          `Ym_Ui.h`,
+          buildHeaderFileContent(convertResult.images, convertResult.colorTable.length)
+        );
+      });
+      document.getElementById('downloadCBtn').addEventListener('click', () => {
+        downloadTextFile(`Ym_ui.c`, buildSourceFileContent(convertResult.images, convertResult.colorTable));
+      });
+
+      // 注意：已移除结果区的后置覆盖控制（仅保留文件列表中的预设覆盖）
+
+      // 绑定渲染按钮
+      const renderControls = document.getElementById('renderControls');
+      const renderContainer = document.getElementById('renderCanvasContainer');
+      renderControls.innerHTML = '';
+      convertResult.images.forEach((img, idx) => {
+        const btn = document.createElement('button');
+        btn.textContent = `预览: ${img.fileBaseName}`;
+        btn.className = 'btn-ghost';
+        btn.addEventListener('click', () => {
+          renderContainer.innerHTML = '';
+          const canvas = document.createElement('canvas');
+          canvas.width = img.width;
+          canvas.height = img.height;
+          renderContainer.appendChild(canvas);
+          renderImageFromData(canvas, img.pixelIndexPacked, convertResult.colorTable);
+        });
+        renderControls.appendChild(btn);
+      });
     }
+
+    /* 已移除未使用的辅助函数 generateColorTableAndIndex，使用更通用的全局颜色表函数 */
 
     /**
      * 生成“多文件合并”的全局颜色表
@@ -791,6 +984,102 @@
           if (idx % perLine === perLine - 1 && idx !== arr.length - 1) acc += `\n${indent}`;
           return acc;
         }, '');
+    }
+
+    // 显示十六进制查看器（首次调用时创建 modal）
+    function createHexModal() {
+      if (document.getElementById('hexModal')) return;
+      const modal = document.createElement('div');
+      modal.id = 'hexModal';
+      modal.style.position = 'fixed';
+      modal.style.left = '0';
+      modal.style.top = '0';
+      modal.style.right = '0';
+      modal.style.bottom = '0';
+      modal.style.background = 'rgba(0,0,0,0.5)';
+      modal.style.display = 'flex';
+      modal.style.alignItems = 'center';
+      modal.style.justifyContent = 'center';
+      modal.style.zIndex = '9999';
+
+      const box = document.createElement('div');
+      box.style.width = 'min(900px, 95%)';
+      box.style.maxHeight = '80%';
+      box.style.overflow = 'auto';
+      box.style.background = '#fff';
+      box.style.borderRadius = '12px';
+      box.style.padding = '14px';
+      box.style.boxShadow = '0 10px 30px rgba(2,6,23,0.2)';
+
+      const title = document.createElement('div');
+      title.style.display = 'flex';
+      title.style.justifyContent = 'space-between';
+      title.style.alignItems = 'center';
+      title.style.marginBottom = '8px';
+
+      const h = document.createElement('div');
+      h.textContent = '十六进制查看器';
+      h.style.fontWeight = '700';
+
+      const controls = document.createElement('div');
+      controls.style.display = 'flex';
+      controls.style.gap = '8px';
+
+      const copyBtn = document.createElement('button');
+      copyBtn.textContent = '复制';
+      copyBtn.className = 'btn-ghost';
+      copyBtn.addEventListener('click', () => {
+        const pre = box.querySelector('pre');
+        if (!pre) return;
+        navigator.clipboard.writeText(pre.textContent).then(() => alert('已复制到剪贴板')); 
+      });
+
+      const closeBtn = document.createElement('button');
+      closeBtn.textContent = '关闭';
+      closeBtn.className = 'btn-danger';
+      closeBtn.addEventListener('click', () => modal.remove());
+
+      controls.appendChild(copyBtn);
+      controls.appendChild(closeBtn);
+
+      title.appendChild(h);
+      title.appendChild(controls);
+
+      const pre = document.createElement('pre');
+      pre.style.whiteSpace = 'pre-wrap';
+      pre.style.fontFamily = 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas';
+      pre.style.fontSize = '12px';
+      pre.style.lineHeight = '1.4';
+      pre.style.margin = '0';
+
+      box.appendChild(title);
+      box.appendChild(pre);
+      modal.appendChild(box);
+      document.body.appendChild(modal);
+    }
+
+    function showHexForFile(file, maxBytes = 512) {
+      createHexModal();
+      const modal = document.getElementById('hexModal');
+      const pre = modal.querySelector('pre');
+      pre.textContent = '读取中...';
+      const slice = file.slice(0, maxBytes);
+      const fr = new FileReader();
+      fr.onload = (e) => {
+        const buf = e.target.result;
+        const bytes = new Uint8Array(buf);
+        // 格式化为 hexdump -C 风格
+        let lines = [];
+        for (let i = 0; i < bytes.length; i += 16) {
+          const chunk = bytes.slice(i, i + 16);
+          const hex = Array.from(chunk).map(b => b.toString(16).padStart(2, '0')).join(' ');
+          const ascii = Array.from(chunk).map(b => (b >= 0x20 && b <= 0x7e) ? String.fromCharCode(b) : '.').join('');
+          lines.push(i.toString(16).padStart(8, '0') + '  ' + hex.padEnd(47, ' ') + '  |' + ascii + '|');
+        }
+        pre.textContent = lines.join('\n');
+      };
+      fr.onerror = () => { pre.textContent = '读取失败：' + fr.error?.message; };
+      fr.readAsArrayBuffer(slice);
     }
 
     function buildHeaderFileContent(images, colorTableLen) {
