@@ -300,7 +300,7 @@
 
 <body>
   <div class="container">
-    <h3>上传 BMP 文件解析 (by Zhaowy v2.0 修复版)</h3>
+    <h3>上传 BMP 文件解析 (by Zhaowy v2.1 修复版)</h3>
     <div class="uploader">
       <div class="dropzone" id="dropzone">
         <div class="file-actions">
@@ -942,10 +942,14 @@ function judge16bBmpFormat(view) {
         alert(`异常：合并后的颜色表数量=${colorTable.length}，超过255（索引必须为0~255）`);
         return;
       }
+      // 生成带时间戳的颜色表符号名并保存到 convertResult，方便下载时使用
+      const colorTableTs = Date.now();
+      const colorTableName = `Color_Tab_${colorTableTs}`;
       for (const img of images) {
         img.indexArray = generateIndexArrayFromGlobalMap(img.rgb565Array, colorMap);
-        img.pixelIndexPacked = packPixelIndexWithWH(img.width, img.height, img.indexArray);
+        img.pixelIndexPacked = packPixelIndexWithWH(img.width, img.height, img.indexArray, colorTableName);
       }
+      convertResult.colorTableName = colorTableName;
 
       // 更新转换结果
       convertResult.images = images;
@@ -1035,11 +1039,11 @@ function judge16bBmpFormat(view) {
       document.getElementById('downloadHBtn').addEventListener('click', () => {
         downloadTextFile(
           `Ym_ui.h`,
-          buildHeaderFileContent(convertResult.images, convertResult.colorTable.length)
+          buildHeaderFileContent(convertResult.images, convertResult.colorTable.length, convertResult.colorTableName)
         );
       });
       document.getElementById('downloadCBtn').addEventListener('click', () => {
-        downloadTextFile(`Ym_ui.c`, buildSourceFileContent(convertResult.images, convertResult.colorTable));
+        downloadTextFile(`Ym_ui.c`, buildSourceFileContent(convertResult.images, convertResult.colorTable, convertResult.colorTableName));
       });
 
       // 绑定渲染按钮
@@ -1101,16 +1105,23 @@ function judge16bBmpFormat(view) {
      * 像素索引表最前面加 4 个字节：
      * - 前两个字节：宽度（uint16，小端）
      * - 后两个字节：高度（uint16，小端）
+     * 紧接着第5字节开始放置颜色表名字（null 结尾），然后是像素索引数据
      */
-    function packPixelIndexWithWH(width, height, indexArray) {
+    function packPixelIndexWithWH(width, height, indexArray, colorTableName) {
       if (width < 0 || width > 0xFFFF) throw new Error(`宽度超出uint16范围：${width}`);
       if (height < 0 || height > 0xFFFF) throw new Error(`高度超出uint16范围：${height}`);
-      const packed = new Uint8Array(4 + indexArray.length);
+      const encoder = new TextEncoder();
+      const nameBytes = encoder.encode(String(colorTableName || ''));
+      const packed = new Uint8Array(4 + nameBytes.length + 1 + indexArray.length);
       packed[0] = width & 0xFF;
       packed[1] = (width >> 8) & 0xFF;
       packed[2] = height & 0xFF;
       packed[3] = (height >> 8) & 0xFF;
-      packed.set(indexArray, 4);
+      // 放置名字并以 0 结尾
+      packed.set(nameBytes, 4);
+      packed[4 + nameBytes.length] = 0;
+      // 放置像素索引
+      packed.set(indexArray, 4 + nameBytes.length + 1);
       return packed;
     }
 
@@ -1247,9 +1258,10 @@ function judge16bBmpFormat(view) {
       fr.readAsArrayBuffer(slice);
     }
 
-    function buildHeaderFileContent(images, colorTableLen) {
+    function buildHeaderFileContent(images, colorTableLen, colorTableName) {
+      // extern 声明使用非数组形式，严格对应 const YM_UI_STRUCT 的定义
       const externIndexDecls = images.map(img => {
-        return `extern const uint8_t ${img.symbolName}_pixel_index[];`;
+        return `extern const YM_UI_STRUCT ${img.symbolName}_pixel_index;`;
       }).join('\n');
 
       return `#ifndef __YM_UI_H
@@ -1259,37 +1271,53 @@ function judge16bBmpFormat(view) {
 
 #define COLOR_TABLE_LEN   (${colorTableLen}U)
 
-extern const uint16_t color_table[];
+/* YM_UI 图片像素索引结构 */
+typedef struct
+{
+    uint16_t width;  
+    uint16_t height; 
+   uint16_t *Color_Tab; // 颜色表指针
+    uint8_t ColorIndex[];  
+} YM_UI_STRUCT;
+
+/* 颜色表（带时间戳） */
+extern const uint16_t ${colorTableName}[];
 
 ${externIndexDecls}
-/* 有多个索引文件在后面添加 */
 
 #endif
 `;
     }
 
-    function buildSourceFileContent(images, colorTable) {
+    function buildSourceFileContent(images, colorTable, colorTableName) {
       const colorTableStr = formatUint16HexArray(colorTable, 10, '    ');
 
       const imageBlocks = images.map(img => {
-        const arrStr = formatUint8HexArray(img.pixelIndexPacked, 16, '    ');
-        return `/* ${img.fileBaseName}.bmp pixel index (前4字节=宽高，小端，16进制)：宽=${img.width} 高=${img.height} */
-const uint8_t ${img.symbolName}_pixel_index[] = {
-    ${arrStr}
+        // 使用 img.indexArray（已是每像素 uint8 索引）生成 ColorIndex 的字面量
+        const count = img.indexArray ? img.indexArray.length : 0;
+        const idxStr = formatUint8HexArray(img.indexArray || [], 16, '    ');
+        // 使用指定初始化器直接生成 const YM_UI_STRUCT 实例（单个变量）
+        return `/* ${img.fileBaseName}.bmp → YM_UI 结构（宽=${img.width} 高=${img.height}，索引数=${count}） */
+const YM_UI_STRUCT ${img.symbolName}_pixel_index = {
+    .width = ${img.width},
+    .height = ${img.height},
+    .Color_Tab = (uint16_t*)${colorTableName},
+    .ColorIndex = { ${idxStr} }
 };
 `;
-      }).join('\n');
+      }).join('\n\n');
 
       return `/*
  * BMP 多文件合并转换为 RGB565 的颜色表和像素索引表
  * 生成时间：${new Date().toLocaleString()}
  * 工具版本：BMP转RGB565 v2.0 修复版
+ * 颜色表符号：${colorTableName}
  */
 
 #include "Ym_ui.h"
 
 /* RGB565 颜色表（存储所有唯一颜色值） */
-const uint16_t color_table[] = {
+const uint16_t ${colorTableName}[] = {
     ${colorTableStr}
 };
 
@@ -1322,7 +1350,36 @@ ${imageBlocks}`;
         if (!(pixelIndexPacked && pixelIndexPacked.length >= 4)) throw new Error('像素索引数据格式错误');
         const w = pixelIndexPacked[0] | (pixelIndexPacked[1] << 8);
         const h = pixelIndexPacked[2] | (pixelIndexPacked[3] << 8);
-        const indices = pixelIndexPacked.slice(4);
+        // 解析可选的颜色表名字（以 NUL 终止），名字从第5个字节开始
+        let indices;
+        let name = '';
+        if (pixelIndexPacked.length > 4) {
+          // 查找 NUL 结束符（限制最大名字长度为64防止误判）
+          const maxNameLen = 64;
+          const endLimit = Math.min(pixelIndexPacked.length, 4 + maxNameLen + 1);
+          let zeroPos = -1;
+          for (let i = 4; i < endLimit; i++) {
+            if (pixelIndexPacked[i] === 0) { zeroPos = i; break; }
+          }
+          if (zeroPos !== -1) {
+            // 校验是否是可打印 ASCII（避免把索引误当名字）
+            let printable = true;
+            for (let i = 4; i < zeroPos; i++) {
+              const b = pixelIndexPacked[i];
+              if (b < 32 || b > 126) { printable = false; break; }
+            }
+            if (printable) {
+              name = new TextDecoder().decode(pixelIndexPacked.slice(4, zeroPos));
+              indices = pixelIndexPacked.slice(zeroPos + 1);
+            } else {
+              indices = pixelIndexPacked.slice(4);
+            }
+          } else {
+            indices = pixelIndexPacked.slice(4);
+          }
+        } else {
+          indices = new Uint8Array(0);
+        }
         if (canvas.width !== w || canvas.height !== h) {
           canvas.width = w; canvas.height = h;
         }
