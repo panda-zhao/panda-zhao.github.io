@@ -301,7 +301,7 @@
 
 
         // this.hexToString('3934323046303645343835433432443534463236373545423436413541413133') // 无法解析 9420F6E485C54F2675EB46A5A113 
-        this.hexToString('4534323046383431303835433434383344463236374643434536413541434544') // 无法解析 E420F841085C4483DF267FCCE6A5ACED 7-31
+        // this.hexToString('4534323046383431303835433434383344463236374643434536413541434544') // 无法解析 E420F841085C4483DF267FCCE6A5ACED 7-31
         
 
         
@@ -380,8 +380,8 @@
             }
             let option = {
               filters: [
-                // {services: [UUID]}, // 一个数组，包含要查找的蓝牙设备提供的服务 UUID，必须小写
-                { name: 'OBDII' }, // 字符串，精确指定设备名称 OBDII
+                {services: [UUID]}, // 一个数组，包含要查找的蓝牙设备提供的服务 UUID，必须小写
+                // { name: 'OBDII' }, // 字符串，精确指定设备名称 OBDII
                 // {namePrefix: '前缀'} // 字符串，设备名称的前缀
               ],
               acceptAllDevices: false, // 默认false, 是否可以接受所有蓝牙设备, 为false时必须设置filters 
@@ -494,7 +494,7 @@
               alert("获取设备详细信息时发生错误");
               this.errMsg = error
               console.log('发送失败', error)
-              reject(err)
+              reject(error)
             })
           });
         },
