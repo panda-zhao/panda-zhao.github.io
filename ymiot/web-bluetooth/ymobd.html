@@ -403,6 +403,11 @@
       margin: 0;
     }
 
+    .log-actions {
+      display: flex;
+      gap: 8px;
+    }
+
     .log-dots {
       display: flex;
       gap: 6px;
@@ -543,7 +548,7 @@
           <img src="./assets/icon.png" alt="YMOBD">
         </div>
         <div>
-          <h1>YMOBD(v0.0.1)</h1>
+          <h1>YMOBD(V0.0.2)</h1>
           <p>Web Bluetooth 诊断工具</p>
         </div>
       </div>
@@ -624,7 +629,10 @@
       <div class="log-header">
         <div class="log-dots"><span></span><span></span><span></span></div>
         <h2 class="card-title">通信日志</h2>
-        <button class="btn btn-ghost btn-sm" @click="dataHTML = ''">清空</button>
+        <div class="log-actions">
+          <button class="btn btn-ghost btn-sm" @click="exportLog" :disabled="!dataHTML.trim()">导出 TXT</button>
+          <button class="btn btn-ghost btn-sm" @click="dataHTML = ''">清空</button>
+        </div>
       </div>
       <textarea v-model="dataHTML" readonly class="log-textarea"
         :placeholder="isConnected ? '等待指令发送…' : '连接设备后，日志将显示在此处'"></textarea>
@@ -927,6 +935,37 @@
           if (lines.length > LOG_MAX_LINES) {
             this.dataHTML = lines.slice(0, LOG_MAX_LINES).join('\r\n')
           }
+        },
+
+        exportLog() {
+          const log = this.dataHTML.trim()
+          if (!log) {
+            alert('暂无日志可导出')
+            return
+          }
+
+          const body = log.split('\r\n').reverse().join('\n')
+          const content = [
+            'YMOBD 通信日志',
+            `导出时间: ${this.formatTime()}`,
+            `设备: ${this.deviceName || '未连接'}`,
+            `协议: ${this.ATDP}`,
+            '='.repeat(40),
+            '',
+            body,
+          ].join('\n')
+
+          const blob = new Blob([content], { type: 'text/plain;charset=utf-8' })
+          const url = URL.createObjectURL(blob)
+          const link = document.createElement('a')
+          const now = new Date()
+          const pad = (n) => String(n).padStart(2, '0')
+          const filename = `ymobd-log-${now.getFullYear()}${pad(now.getMonth() + 1)}${pad(now.getDate())}-${pad(now.getHours())}${pad(now.getMinutes())}${pad(now.getSeconds())}.txt`
+
+          link.href = url
+          link.download = filename
+          link.click()
+          URL.revokeObjectURL(url)
         },
 
         async startJob() {
