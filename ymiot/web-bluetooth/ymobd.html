@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-
+  <!-- https://panda-zhao.github.io/ymiot/web-bluetooth/ymobd -->
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>YM OBD · Web Bluetooth</title>
+  <title>YMOBD · Web Bluetooth</title>
+  <link rel="icon" type="image/png" href="./assets/icon.png">
   <script src="../../js/vue.js"></script>
   <style>
     :root {
@@ -80,13 +81,17 @@
     .brand-icon {
       width: 44px;
       height: 44px;
-      background: linear-gradient(135deg, var(--accent), #4f46e5);
       border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 22px;
-      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+      overflow: hidden;
+      flex-shrink: 0;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.1);
+    }
+
+    .brand-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
     .brand h1 {
@@ -534,7 +539,9 @@
     <!-- Top bar -->
     <header class="topbar">
       <div class="brand">
-        <div class="brand-icon">🚗</div>
+        <div class="brand-icon">
+          <img src="./assets/icon.png" alt="YMOBD">
+        </div>
         <div>
           <h1>YMOBD(v0.0.1)</h1>
           <p>Web Bluetooth 诊断工具</p>
@@ -587,7 +594,7 @@
       <h2 class="card-title">指令发送</h2>
 
       <div class="cmd-input-row">
-        <input type="text" v-model="inputValue" placeholder="010C / ATDP / 03 …"
+        <input type="text" v-model="inputValue" placeholder="请输入指令"
           @keyup.enter="startJob" :disabled="!isConnected || isRunning">
         <button class="btn btn-primary" @click="startJob" :disabled="!isConnected || isRunning">
           发送
