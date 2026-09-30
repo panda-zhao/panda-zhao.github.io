@@ -1,0 +1,1424 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <!-- https://panda-zhao.github.io/ymiot/web-bluetooth/batteryTest -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Battery Test · Web Bluetooth</title>
+  <link rel="icon" type="image/png" href="./assets/icon.png">
+  <script src="../../js/vue.js"></script>
+  <style>
+    :root {
+      --bg: #f0f4f8;
+      --surface: #ffffff;
+      --surface-2: #f8fafc;
+      --border: #e2e8f0;
+      --text: #1e293b;
+      --text-muted: #64748b;
+      --accent: #2563eb;
+      --accent-hover: #1d4ed8;
+      --success: #16a34a;
+      --warning: #d97706;
+      --danger: #dc2626;
+      --terminal-bg: #f8fafc;
+      --terminal-text: #0f766e;
+      --radius: 12px;
+      --shadow: 0 4px 24px rgba(15, 23, 42, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { color-scheme: light; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.5;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(37, 99, 235, 0.08), transparent),
+        radial-gradient(ellipse 60% 40% at 100% 100%, rgba(22, 163, 74, 0.06), transparent);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    #app {
+      position: relative;
+      z-index: 1;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 24px 20px 40px;
+    }
+
+    /* ── Top bar ── */
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-icon {
+      width: 44px; height: 44px;
+      border-radius: 10px;
+      overflow: hidden;
+      flex-shrink: 0;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.1);
+    }
+
+    .brand-icon img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    .brand h1 { margin: 0; font-size: 1.25rem; font-weight: 700; letter-spacing: -0.02em; }
+    .brand p { margin: 2px 0 0; font-size: 0.8rem; color: var(--text-muted); }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      background: var(--surface);
+      border: 1px solid var(--border);
+    }
+
+    .status-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--text-muted);
+      flex-shrink: 0;
+    }
+
+    .status-pill.connected .status-dot {
+      background: var(--success);
+      box-shadow: 0 0 6px rgba(22, 163, 74, 0.5);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    .status-pill.busy .status-dot {
+      background: var(--warning);
+      animation: pulse 1s ease-in-out infinite;
+    }
+
+    .status-pill.disconnected .status-dot { background: var(--text-muted); }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    /* ── Banner ── */
+    .banner {
+      padding: 12px 16px;
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .banner.error { background: #fef2f2; border: 1px solid #fecaca; color: #b91c1c; }
+    .banner.info { background: #eff6ff; border: 1px solid #bfdbfe; color: #1d4ed8; }
+
+    /* ── Cards ── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .card-title {
+      margin: 0 0 16px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+    }
+
+    /* ── Connect panel ── */
+    .connect-panel { text-align: center; padding: 32px 20px; }
+    .connect-panel p { color: var(--text-muted); margin: 0 0 20px; font-size: 0.95rem; }
+
+    .device-info {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    @media (max-width: 520px) {
+      .device-info { grid-template-columns: 1fr; }
+    }
+
+    .info-item {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 14px;
+    }
+
+    .info-item label {
+      display: block;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .info-item span { font-size: 0.9rem; font-weight: 500; word-break: break-all; }
+
+    /* ── Battery dashboard ── */
+    .battery-dashboard {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .dash-item {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px;
+      text-align: center;
+    }
+
+    .dash-item .dash-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .dash-item .dash-value {
+      font-size: 1.3rem;
+      font-weight: 700;
+      font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+      color: var(--text);
+    }
+
+    .dash-item .dash-value.voltage { color: var(--accent); }
+    .dash-item .dash-value.warning { color: var(--warning); }
+    .dash-item .dash-value.success { color: var(--success); }
+
+    /* ── Buttons ── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 10px 18px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      font-family: inherit;
+    }
+
+    .btn:disabled { opacity: 0.45; cursor: not-allowed; transform: none !important; }
+    .btn:not(:disabled):hover { transform: translateY(-1px); }
+    .btn:not(:disabled):active { transform: translateY(0); }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25);
+    }
+    .btn-primary:not(:disabled):hover { background: var(--accent-hover); }
+
+    .btn-connect { padding: 14px 32px; font-size: 1rem; }
+
+    .btn-danger { background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; }
+    .btn-danger:not(:disabled):hover { background: #fee2e2; }
+
+    .btn-warning { background: #fffbeb; color: #b45309; border: 1px solid #fde68a; }
+    .btn-warning:not(:disabled):hover { background: #fef3c7; }
+
+    .btn-ghost { background: var(--surface); color: var(--text); border: 1px solid var(--border); }
+    .btn-ghost:not(:disabled):hover { background: var(--surface-2); border-color: #cbd5e1; }
+
+    .btn-sm { padding: 6px 12px; font-size: 0.8rem; }
+
+    .btn-row { display: flex; flex-wrap: wrap; gap: 8px; }
+    .btn-row .btn { flex: 0 0 auto; }
+
+    /* ── Command input ── */
+    .cmd-input-row { display: flex; gap: 10px; margin-bottom: 16px; }
+
+    .cmd-input-row input {
+      flex: 1; min-width: 0;
+      padding: 12px 16px;
+      font-size: 1rem;
+      font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .cmd-input-row input::placeholder { color: var(--text-muted); }
+    .cmd-input-row input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15); }
+    .cmd-input-row input:disabled { opacity: 0.5; }
+
+    .quick-cmds { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+
+    .chip {
+      padding: 4px 10px;
+      font-size: 0.78rem;
+      font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .chip:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); background: #eff6ff; }
+    .chip:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    /* ── Log terminal ── */
+    .log-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
+    .log-header .card-title { margin: 0; }
+
+    .log-actions { display: flex; gap: 8px; }
+
+    .log-dots { display: flex; gap: 6px; margin-right: auto; margin-left: 12px; }
+    .log-dots span { width: 10px; height: 10px; border-radius: 50%; }
+    .log-dots span:nth-child(1) { background: #ff5f57; }
+    .log-dots span:nth-child(2) { background: #febc2e; }
+    .log-dots span:nth-child(3) { background: #28c840; }
+
+    .log-textarea {
+      width: 100%;
+      height: calc(100vh - 600px);
+      min-height: 240px;
+      max-height: 480px;
+      padding: 16px;
+      font-size: 0.82rem;
+      font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+      line-height: 1.6;
+      background: var(--terminal-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--terminal-text);
+      resize: vertical;
+    }
+
+    .log-textarea:focus { outline: none; border-color: var(--border); }
+
+    /* ── Loading overlay ── */
+    .overlay {
+      position: fixed; inset: 0;
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(4px);
+      display: flex; align-items: center; justify-content: center;
+      z-index: 100;
+    }
+
+    .overlay-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 36px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      max-width: 320px;
+    }
+
+    .spinner {
+      width: 36px; height: 36px;
+      border: 3px solid var(--border);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin: 0 auto 16px;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .overlay-box p { margin: 0; font-size: 0.95rem; color: var(--text-muted); }
+
+    .overlay-box .cmd-label {
+      margin-top: 8px;
+      font-family: monospace;
+      color: var(--accent);
+      font-size: 1.1rem;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      margin-top: 8px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+      display: flex; flex-wrap: wrap; gap: 16px;
+      font-size: 0.85rem;
+    }
+
+    .footer a { color: var(--text-muted); text-decoration: none; transition: color 0.15s; }
+    .footer a:hover { color: var(--accent); }
+
+    .action-bar { display: flex; justify-content: flex-end; gap: 8px; }
+
+    /* ── Reference tables ── */
+    .ref-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.8rem;
+    }
+    .ref-table th, .ref-table td {
+      padding: 6px 10px;
+      border: 1px solid var(--border);
+      text-align: left;
+      vertical-align: top;
+    }
+    .ref-table th {
+      background: var(--surface-2);
+      font-weight: 600;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--text-muted);
+    }
+    .ref-table code { font-size: 0.78rem; }
+    .ref-table tr:hover td { background: #f8fafc; }
+
+    .ref-steps {
+      margin: 0;
+      padding-left: 20px;
+      font-size: 0.85rem;
+      line-height: 1.8;
+    }
+    .ref-steps li { margin-bottom: 2px; }
+    .ref-steps code { font-size: 0.8rem; background: var(--surface-2); padding: 1px 4px; border-radius: 3px; }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <!-- Loading -->
+    <div v-if="loading" class="overlay">
+      <div class="overlay-box">
+        <div class="spinner"></div>
+        <p>等待设备响应</p>
+        <div class="cmd-label">{{ currentCMD }}</div>
+      </div>
+    </div>
+
+    <!-- Top bar -->
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-icon">
+          <img src="./assets/icon.png" alt="Battery Test">
+        </div>
+        <div>
+          <h1>Battery Test (V0.0.1)</h1>
+          <p>Web Bluetooth 电瓶检测工具 · HEX 模式</p>
+        </div>
+      </div>
+      <div class="status-pill" :class="statusClass">
+        <span class="status-dot"></span>
+        <span>{{ statusText }}</span>
+      </div>
+    </header>
+
+    <!-- Browser unsupported -->
+    <div v-if="!bluetoothSupported" class="banner error">
+      ⚠️ 当前浏览器不支持 Web Bluetooth，请使用 Chrome / Edge 并通过 HTTPS 或 localhost 访问。
+    </div>
+
+    <!-- Status message -->
+    <div v-else-if="errMsg && !loading && errMsg !== statusText" class="banner info">
+      {{ errMsg }}
+    </div>
+
+    <!-- Not connected -->
+    <div v-if="!isConnected" class="card connect-panel">
+      <p>连接电瓶检测模块蓝牙适配器，开始检测与数据收发</p>
+      <button class="btn btn-primary btn-connect" @click="connectDevice"
+        :disabled="!bluetoothSupported || connecting">
+        {{ connecting ? '正在连接…' : '🔗 连接蓝牙设备' }}
+      </button>
+    </div>
+
+    <!-- Connected -->
+    <div v-else class="card">
+      <div class="device-info">
+        <div class="info-item">
+          <label>设备名称</label>
+          <span>{{ deviceName }}</span>
+        </div>
+        <div class="info-item">
+          <label>设备版本</label>
+          <span>{{ deviceInfo.version || '暂无' }}</span>
+        </div>
+        <div class="info-item">
+          <label>MAC 地址</label>
+          <span>{{ deviceInfo.mac || '暂无' }}</span>
+        </div>
+        <div class="info-item">
+          <label>产品型号</label>
+          <span>{{ deviceInfo.model || '暂无' }}</span>
+        </div>
+        <div class="info-item">
+          <label>产品名称</label>
+          <span>{{ deviceInfo.name || '暂无' }}</span>
+        </div>
+        <div class="info-item">
+          <label>电池规格</label>
+          <span>{{ batterySpec ? batterySpec + 'V' : '暂无' }}</span>
+        </div>
+      </div>
+      <div class="action-bar">
+        <button class="btn btn-danger btn-sm" @click="closeBLEConnection">断开连接</button>
+      </div>
+    </div>
+
+    <!-- Battery dashboard -->
+    <div v-if="isConnected" class="card">
+      <h2 class="card-title">实时数据</h2>
+      <div class="battery-dashboard">
+        <div class="dash-item">
+          <div class="dash-label">当前电压</div>
+          <div class="dash-value voltage">{{ voltageDisplay }}</div>
+        </div>
+        <div class="dash-item">
+          <div class="dash-label">电池规格</div>
+          <div class="dash-value" :class="batterySpec >= 24 ? 'warning' : 'success'">
+            {{ batterySpec ? batterySpec + 'V' : '--' }}
+          </div>
+        </div>
+        <div class="dash-item">
+          <div class="dash-label">认证状态</div>
+          <div class="dash-value" :class="isOfficial ? 'success' : 'warning'">
+            {{ isOfficial ? '✓ 官方正品' : '? 未验证' }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Command panel -->
+    <div class="card">
+      <h2 class="card-title">指令发送 (HEX)</h2>
+
+      <div class="cmd-input-row">
+        <input type="text" v-model="inputValue" placeholder="请输入HEX指令，如 04 / 0F / 0E00"
+          @keyup.enter="startJob" :disabled="!isConnected || isRunning">
+        <button class="btn btn-primary" @click="startJob" :disabled="!isConnected || isRunning">
+          发送
+        </button>
+      </div>
+
+      <div class="quick-cmds">
+        <button class="chip" v-for="cmd in quickCmds" :key="cmd"
+          @click="inputValue = cmd" :disabled="!isConnected || isRunning">{{ cmd }}</button>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-ghost" @click="runInit" :disabled="!isConnected || isRunning">
+          初始化检测
+        </button>
+        <button class="btn btn-ghost" @click="readVoltage" :disabled="!isConnected || isRunning">
+          读取电压
+        </button>
+        <button class="btn btn-ghost" @click="getProductInfo" :disabled="!isConnected || isRunning">
+          获取产品信息
+        </button>
+        <button class="btn btn-warning" @click="stopRunning" :disabled="!isRunning">
+          停止
+        </button>
+      </div>
+    </div>
+
+    <!-- Log panel -->
+    <div class="card">
+      <div class="log-header">
+        <div class="log-dots"><span></span><span></span><span></span></div>
+        <h2 class="card-title">通信日志 (HEX)</h2>
+        <div class="log-actions">
+          <button class="btn btn-ghost btn-sm" @click="exportLog" :disabled="!dataHTML.trim()">导出 TXT</button>
+          <button class="btn btn-ghost btn-sm" @click="dataHTML = ''">清空</button>
+        </div>
+      </div>
+      <textarea v-model="dataHTML" readonly class="log-textarea"
+        :placeholder="isConnected ? '等待指令发送…' : '连接设备后，日志将显示在此处'"></textarea>
+    </div>
+
+    <!-- Command reference -->
+    <div class="card">
+      <h2 class="card-title">协议说明</h2>
+
+      <div style="margin-bottom:16px">
+        <p style="margin:0 0 8px;font-weight:600;font-size:.85rem">帧格式</p>
+        <table class="ref-table">
+          <tr><th>帧头</th><th>长度(高)</th><th>长度(低)</th><th>长度反码(高)</th><th>长度反码(低)</th><th>命令字</th><th>数据(N)</th><th>校验</th></tr>
+          <tr><td><code>0x55</code></td><td><code>LH</code></td><td><code>LL</code></td><td><code>~LH</code></td><td><code>~LL</code></td><td><code>CMD</code></td><td><code>Data...</code></td><td><code>XOR</code></td></tr>
+        </table>
+        <p style="margin:6px 0 0;font-size:.78rem;color:var(--text-muted)">
+          长度 = 长度字段(4) + 命令(1) + 数据(N) + 校验(1)；校验 = 从长度字段到数据末尾逐字节异或
+        </p>
+      </div>
+
+      <p style="margin:0 0 8px;font-weight:600;font-size:.85rem">指令列表</p>
+      <table class="ref-table" style="margin-bottom:12px">
+        <thead>
+          <tr><th>命令字</th><th>名称</th><th>发送数据</th><th>返回数据</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>0x01</code></td><td>检测夹子连接状态</td>
+            <td>无</td>
+            <td>D1: 00=成功; D2: 00=连接良好, 01=黑夹不良, 02=红夹不良</td>
+          </tr>
+          <tr>
+            <td><code>0x02</code></td><td>模块连接状态查询</td>
+            <td>无</td>
+            <td>D1: 00=成功</td>
+          </tr>
+          <tr>
+            <td><code>0x03</code></td><td>复位</td>
+            <td>无</td>
+            <td>D1: 00=成功</td>
+          </tr>
+          <tr>
+            <td><code>0x04</code></td><td>读取当前电压</td>
+            <td>无</td>
+            <td>D1~D4: 电压 = D1×10+D2+D3×0.1+D4×0.01 (V)</td>
+          </tr>
+          <tr>
+            <td><code>0x05</code></td><td>额定标准及容量设置</td>
+            <td>D1: 标准(0~9); D2~D5: 容量值(大端)</td>
+            <td>D1: 00=成功</td>
+          </tr>
+          <tr>
+            <td><code>0x06</code></td><td>电池测试结果查询</td>
+            <td>无</td>
+            <td>D1: 状态; D2: 电池状况; D3~D6: 电压; D7~D10: 冷启动电流; D11~D14: 内阻; D15~D17: SOC%; D18~D20: SOH%</td>
+          </tr>
+          <tr>
+            <td><code>0x07</code></td><td>设置电池类型</td>
+            <td>D1: 0=普通, 1=AGM, 2=GEL, 3=EFB</td>
+            <td>D1: 00=成功</td>
+          </tr>
+          <tr>
+            <td><code>0x08</code></td><td>内阻校准</td>
+            <td>D1+D2×0x100 = 校准值(如 0x3E8=10.00mΩ)</td>
+            <td>D1: 00=成功</td>
+          </tr>
+          <tr>
+            <td><code>0x09</code></td><td>获取软件版本</td>
+            <td>无</td>
+            <td>D1: 00=成功; D2,D3: 版本号(如 0x64=100→V1.0.0)</td>
+          </tr>
+          <tr>
+            <td><code>0x0A</code></td><td>启动系统负荷测试</td>
+            <td>D1: 00=停止, 01=开启</td>
+            <td>D1: 状态; D2: 测试状态; D3~D4: 静态电压; D5~D6: 启动电压</td>
+          </tr>
+          <tr>
+            <td><code>0x0B</code></td><td>最大负荷系统测试</td>
+            <td>D1: 00=停止, 01=开启</td>
+            <td>D1: 状态; D2: 测试状态; D3~D4: 静态电压; D5~D6: 启动电压</td>
+          </tr>
+          <tr>
+            <td><code>0x0C</code></td><td>充电系统测试</td>
+            <td>D1: 00=停止, 01=开启</td>
+            <td>D1: 状态; D2: 测试状态; D3~D4: 当前电压; D5~D6: 最低; D7~D8: 最高</td>
+          </tr>
+          <tr>
+            <td><code>0x0D</code></td><td>模块状态查询</td>
+            <td>D1: 00=蓝牙芯片, 01=APP</td>
+            <td>D1: 响应目标; D2: 00=成功; D3: 0=空闲, 1=测试中</td>
+          </tr>
+          <tr>
+            <td><code>0x0E</code></td><td>设置电池电压类型</td>
+            <td>D1: 00=12V, 01=24V</td>
+            <td>D1: 00=成功</td>
+          </tr>
+          <tr>
+            <td><code>0x0F</code></td><td>获取产品信息</td>
+            <td>无</td>
+            <td>D1: 00=成功; D2~D7: 版本(6B ASCII); D8~D24: MAC(17B ASCII); 后续: 产品类型+名称+客户ID</td>
+          </tr>
+          <tr>
+            <td><code>0x10</code></td><td>验证是否官方</td>
+            <td>8位随机数字的HEX编码(如 10 + 37313037...)</td>
+            <td>D1: 00=成功; D2~D9: 8字节加密结果用于校验</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p style="margin:0 0 8px;font-weight:600;font-size:.85rem">额定标准对照 (0x05)</p>
+      <table class="ref-table" style="margin-bottom:12px">
+        <thead><tr><th>序号</th><th>标准</th><th>范围</th><th>单位</th></tr></thead>
+        <tbody>
+          <tr><td>0</td><td>CCA</td><td>100~2000</td><td>CCA</td></tr>
+          <tr><td>1</td><td>DIN</td><td>100~1400</td><td>A</td></tr>
+          <tr><td>2</td><td>JIS</td><td>26A17~245H52</td><td>序号</td></tr>
+          <tr><td>3</td><td>EN</td><td>100~2000</td><td>A</td></tr>
+          <tr><td>4</td><td>IEC</td><td>100~1400</td><td>A</td></tr>
+          <tr><td>5</td><td>GB</td><td>20~100</td><td>Ah</td></tr>
+          <tr><td>6</td><td>SAE</td><td>100~2000</td><td>CCA</td></tr>
+          <tr><td>7</td><td>BCI</td><td>100~2000</td><td>CCA</td></tr>
+          <tr><td>8</td><td>MCA</td><td>100~2000</td><td>CCA</td></tr>
+          <tr><td>9</td><td>CA</td><td>100~2000</td><td>CCA</td></tr>
+        </tbody>
+      </table>
+
+      <p style="margin:0 0 8px;font-weight:600;font-size:.85rem">电池状况对照 (0x06)</p>
+      <table class="ref-table" style="margin-bottom:12px">
+        <thead><tr><th>值</th><th>状态</th></tr></thead>
+        <tbody>
+          <tr><td><code>0x00</code></td><td>电池良好 (Good)</td></tr>
+          <tr><td><code>0x01</code></td><td>请更换电池 (Replace)</td></tr>
+          <tr><td><code>0x02</code></td><td>电池良好，请充电 (Good-recharge)</td></tr>
+          <tr><td><code>0x03</code></td><td>请充电后再测试 (Charge & retest)</td></tr>
+          <tr><td><code>0x04</code></td><td>坏格电池 (Bad cell)</td></tr>
+          <tr><td><code>0x05</code></td><td>仪表损坏 (Tester broken)</td></tr>
+        </tbody>
+      </table>
+
+      <p style="margin:12px 0 0;font-weight:600;font-size:.85rem">初始化流程</p>
+      <ol class="ref-steps">
+        <li>发送 <code>0F</code> — 获取产品信息（版本/MAC/型号）</li>
+        <li>发送 <code>04</code> — 读取当前电压，用于判断电池规格</li>
+        <li>发送 <code>0E00</code> 或 <code>0E01</code> — 根据电压设置电池规格（≤16V → 12V，&gt;16V → 24V）</li>
+      </ol>
+    </div>
+
+    <footer class="footer">
+      <a href="https://webbluetoothcg.github.io/web-bluetooth/#bluetooth" target="_blank">Web Bluetooth 提案</a>
+      <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Bluetooth" target="_blank">MDN 文档</a>
+    </footer>
+  </div>
+
+  <script>
+    const SERVICE_UUID = '0000fff0-0000-1000-8000-00805f9b34fb'
+    const CMD_TIMEOUT_MS = 10000
+    const LOG_MAX_LINES = 500
+
+    const eventTarget = new EventTarget()
+
+    new Vue({
+      el: '#app',
+      data: {
+        bluetoothSupported: !!navigator.bluetooth,
+        connecting: false,
+        loading: false,
+        isRunning: false,
+        aborted: false,
+        gattServer: null,
+        bleDevice: null,
+        isConnected: false,
+        deviceName: '',
+        currentCMD: null,
+        errMsg: '',
+        dataHTML: '',
+        characteristicWrite: null,
+        writeWithoutResponse: false,
+        characteristicNotify: null,
+        notifyBuffer: new Uint8Array(0),
+        inputValue: '',
+        pendingCleanup: null,
+        isComplete: true,
+        quickCmds: ['01', '02', '03', '04', '06', '0700', '09', '0D', '0E00', '0E01', '0F'],
+        // Battery data
+        voltage: 0,
+        batterySpec: 0,
+        isOfficial: false,
+        deviceInfo: {
+          version: '',
+          mac: '',
+          model: '',
+          name: '',
+          cusId: '',
+        },
+      },
+      computed: {
+        statusClass() {
+          if (this.isConnected && (this.loading || this.isRunning)) return 'busy'
+          if (this.isConnected) return 'connected'
+          return 'disconnected'
+        },
+        statusText() {
+          if (this.connecting) return '连接中…'
+          if (!this.isConnected) return '未连接'
+          if (this.loading) return `执行中 · ${this.currentCMD}`
+          return '已连接'
+        },
+        voltageDisplay() {
+          return this.voltage > 0 ? this.voltage.toFixed(2) + 'V' : '--'
+        },
+      },
+      beforeDestroy() {
+        this.cleanupPending()
+        if (this.bleDevice) {
+          this.bleDevice.removeEventListener('gattserverdisconnected', this.onDisconnected)
+        }
+      },
+      methods: {
+        // ══════════════════════════════════════
+        //  蓝牙连接
+        // ══════════════════════════════════════
+        connectDevice() {
+          if (!navigator.bluetooth) {
+            alert('当前浏览器不支持 Web Bluetooth')
+            return
+          }
+
+          this.connecting = true
+          this.errMsg = '正在扫描设备…'
+
+          navigator.bluetooth.requestDevice({
+            filters: [{ services: [SERVICE_UUID] }],
+            acceptAllDevices: false,
+            optionalServices: [SERVICE_UUID],
+          }).then(async (device) => {
+            this.bleDevice = device
+            this.deviceName = device.name || 'BatteryTester'
+            device.addEventListener('gattserverdisconnected', this.onDisconnected)
+
+            const server = await device.gatt.connect()
+            this.gattServer = server
+
+            const service = await server.getPrimaryService(SERVICE_UUID)
+            const characteristics = await service.getCharacteristics()
+
+            let notifyUUID = null
+            let writeUUID = null
+            let writeWithoutResponse = false
+
+            for (const item of characteristics) {
+              if (item.properties.notify || item.properties.indicate) {
+                notifyUUID = item.uuid
+              }
+              if (item.properties.write) {
+                writeUUID = item.uuid
+                writeWithoutResponse = false
+              } else if (item.properties.writeWithoutResponse && !writeUUID) {
+                writeUUID = item.uuid
+                writeWithoutResponse = true
+              }
+            }
+
+            if (!notifyUUID || !writeUUID) {
+              throw new Error('未找到可用的 notify / write 特征值')
+            }
+
+            this.characteristicNotify = await service.getCharacteristic(notifyUUID)
+            this.characteristicWrite = await service.getCharacteristic(writeUUID)
+            this.writeWithoutResponse = writeWithoutResponse
+
+            await this.characteristicNotify.startNotifications()
+            this.characteristicNotify.addEventListener('characteristicvaluechanged', this.onNotify)
+
+            this.isConnected = true
+            this.connecting = false
+            this.errMsg = `${this.deviceName} 已连接，正在初始化…`
+
+            // 初始化：发送 0F 获取产品信息, 04 读取电压
+            await this.runInit()
+            this.errMsg = ''
+          }).catch((error) => {
+            this.connecting = false
+            if (error.name !== 'NotFoundError') {
+              console.error(error)
+              alert(error.message || String(error))
+            }
+            this.errMsg = ''
+          })
+        },
+
+        onDisconnected() {
+          this.cleanupPending()
+          this.isConnected = false
+          this.isRunning = false
+          this.aborted = false
+          this.loading = false
+          this.isComplete = true
+          this.gattServer = null
+          this.characteristicWrite = null
+          this.characteristicNotify = null
+          this.notifyBuffer = new Uint8Array(0)
+          this.errMsg = '连接已断开'
+        },
+
+        closeBLEConnection() {
+          this.stopRunning()
+          if (this.gattServer?.connected) {
+            this.gattServer.disconnect()
+          }
+          this.onDisconnected()
+        },
+
+        stopRunning() {
+          this.aborted = true
+          this.isRunning = false
+          this.cleanupPending()
+          this.loading = false
+          this.isComplete = true
+          if (this.isConnected) {
+            this.errMsg = '已停止'
+          }
+        },
+
+        cleanupPending() {
+          if (this.pendingCleanup) {
+            this.pendingCleanup()
+            this.pendingCleanup = null
+          }
+        },
+
+        // ══════════════════════════════════════
+        //  快捷操作
+        // ══════════════════════════════════════
+        async runInit() {
+          if (!this.isConnected) return
+          this.isRunning = true
+          this.aborted = false
+          const rndHex = this.getRndHexStr()
+          console.log('加密前_1', rndHex)
+          const encHex = this.strToHex(rndHex)
+          const queue = ['0F', '04', '10' + encHex]
+          this.appendLog('\r\n══ 初始化检测 ══\r\n')
+          try {
+            for (const cmd of queue) {
+              if (this.aborted) break
+              await this.writeCmd(cmd)
+            }
+            // 初始化完成后设置电池规格
+            if (!this.aborted) {
+              const specCmd = this.voltage > 16 ? '0E01' : '0E00'
+              this.batterySpec = this.voltage > 16 ? 24 : 12
+              await this.writeCmd(specCmd)
+            }
+          } catch (error) {
+            console.error('初始化失败', error)
+            this.appendLog(`\r\n[错误] ${error.message}\r\n`)
+          } finally {
+            this.isRunning = false
+          }
+        },
+
+        async readVoltage() {
+          if (!this.isConnected) return
+          this.isRunning = true
+          this.aborted = false
+          try {
+            await this.writeCmd('04')
+          } catch (error) {
+            this.appendLog(`\r\n[错误] ${error.message}\r\n`)
+          } finally {
+            this.isRunning = false
+          }
+        },
+
+        async getProductInfo() {
+          if (!this.isConnected) return
+          this.isRunning = true
+          this.aborted = false
+          try {
+            await this.writeCmd('0F')
+          } catch (error) {
+            this.appendLog(`\r\n[错误] ${error.message}\r\n`)
+          } finally {
+            this.isRunning = false
+          }
+        },
+
+        async startJob() {
+          if (!this.isConnected) {
+            alert('请先连接蓝牙')
+            return
+          }
+          const cmd = this.inputValue.trim()
+          if (!cmd) {
+            alert('请先输入HEX指令')
+            return
+          }
+          this.isRunning = true
+          this.aborted = false
+          try {
+            await this.writeCmd(cmd)
+          } catch (error) {
+            console.error(error)
+            this.appendLog(`\r\n[错误] ${error.message}\r\n`)
+            alert(error.message)
+          } finally {
+            this.isRunning = false
+          }
+        },
+
+        // ══════════════════════════════════════
+        //  核心通信 (发送HEX帧，接收二进制帧)
+        // ══════════════════════════════════════
+        writeCmd(cmd) {
+          return new Promise((resolve, reject) => {
+            if (this.loading) {
+              reject(new Error(`上一条指令尚未完成: ${this.currentCMD}`))
+              return
+            }
+
+            this.loading = true
+            this.currentCMD = cmd
+            this.notifyBuffer = new Uint8Array(0)
+            this.isComplete = false
+            const sendTimestamp = this.formatTime()
+
+            let payload
+            try {
+              payload = this.buildProtocolFrame(cmd)
+            } catch (e) {
+              this.loading = false
+              this.isComplete = true
+              reject(e)
+              return
+            }
+
+            let settled = false
+
+            const finish = (fn, value) => {
+              if (settled) return
+              settled = true
+              clearTimeout(timer)
+              eventTarget.removeEventListener('data', onData)
+              this.pendingCleanup = null
+              this.loading = false
+              this.isComplete = true
+              fn(value)
+            }
+
+            const onData = (event) => {
+              const result = event.detail
+              const hexStr = Array.from(result.rawFrame, b => b.toString(16).padStart(2, '0').toUpperCase()).join(' ')
+              // 将数据部分解码为 ASCII 便于阅读
+              const asciiData = result.data.length > 0
+                ? String.fromCharCode(...result.data).replace(/[\x00-\x1F]/g, '·').trim()
+                : ''
+              this.appendLog(
+                `\r\n── ${sendTimestamp} ──\r\n` +
+                `▶ 发送  ${cmd}\r\n` +
+                `◀ 回复  [${hexStr}]\r\n` +
+                `   命令字: 0x${result.server.toString(16).toUpperCase()}  数据长度: ${result.dataLength}` +
+                (asciiData ? `  ASCII: "${asciiData}"` : '') + '\r\n'
+              )
+              finish(resolve, result)
+            }
+
+            const timer = setTimeout(() => {
+              this.notifyBuffer = new Uint8Array(0)
+              finish(reject, new Error(`指令 ${cmd} 响应超时 (${CMD_TIMEOUT_MS / 1000}s)`))
+            }, CMD_TIMEOUT_MS)
+
+            eventTarget.addEventListener('data', onData)
+            this.pendingCleanup = () => finish(reject, new Error('指令已取消'))
+
+            const writePromise = this.writeWithoutResponse
+              ? this.characteristicWrite.writeValueWithoutResponse(payload)
+              : this.characteristicWrite.writeValue(payload)
+
+            writePromise.catch((error) => {
+              finish(reject, error)
+            })
+          })
+        },
+
+        onNotify(event) {
+          const dv = event.target.value
+          const incoming = new Uint8Array(dv.buffer, dv.byteOffset, dv.byteLength)
+          console.log('[BT RX]', Array.from(incoming, b => b.toString(16).padStart(2, '0')).join(' '), `(${incoming.length}B)`)
+
+          // 拼接到二进制缓冲区
+          const merged = new Uint8Array(this.notifyBuffer.length + incoming.length)
+          merged.set(this.notifyBuffer)
+          merged.set(incoming, this.notifyBuffer.length)
+          this.notifyBuffer = merged
+
+          // 至少需要 8 字节才能读取帧头+长度
+          if (this.notifyBuffer.length < 8) return
+
+          // 查找帧头 0x55 0xAA
+          if (this.notifyBuffer[0] !== 0x55 || this.notifyBuffer[1] !== 0xAA) {
+            let found = -1
+            for (let i = 1; i < this.notifyBuffer.length - 1; i++) {
+              if (this.notifyBuffer[i] === 0x55 && this.notifyBuffer[i + 1] === 0xAA) {
+                found = i
+                break
+              }
+            }
+            if (found > 0) {
+              this.notifyBuffer = this.notifyBuffer.slice(found)
+            } else {
+              this.notifyBuffer = new Uint8Array(0)
+              return
+            }
+            if (this.notifyBuffer.length < 8) return
+          }
+
+          // 从长度字段计算期望帧总长度
+          const LH = this.notifyBuffer[2]
+          const LL = this.notifyBuffer[3]
+          const expectedLen = ((LH << 8) | LL) + 2 // 帧长度字段值 + 帧头2字节
+
+          if (this.notifyBuffer.length < expectedLen) return
+
+          // 截取完整帧
+          const frame = this.notifyBuffer.slice(0, expectedLen)
+          this.notifyBuffer = this.notifyBuffer.slice(expectedLen)
+
+          try {
+            const result = this.parseProtocolFrame(frame)
+            this.formatBTData(result)
+            eventTarget.dispatchEvent(new CustomEvent('data', { detail: result }))
+          } catch (e) {
+            console.error('[BT RX] 帧解析失败', e)
+            this.appendLog(`\r\n[解析错误] ${e.message}\r\n`)
+          }
+        },
+
+        // ══════════════════════════════════════
+        //  协议帧构建
+        // ══════════════════════════════════════
+        buildProtocolFrame(info) {
+          const cmd = parseInt(info.substring(0, 2), 16)
+          let data = []
+          const dataHex = info.substring(2).trim()
+          if (dataHex) {
+            for (let i = 0; i < dataHex.length; i += 2) {
+              const byteStr = dataHex.substr(i, 2)
+              const byte = parseInt(byteStr, 16)
+              if (isNaN(byte)) {
+                throw new Error(`无效的数据字节: ${byteStr}`)
+              }
+              data.push(byte)
+            }
+          }
+
+          // 帧长度 = 长度字段(4) + 命令(1) + 数据(N) + 校验(1)
+          const frameLength = 4 + 1 + data.length + 1
+          const LH = (frameLength >> 8) & 0xFF
+          const LL = frameLength & 0xFF
+          const notLH = (~LH) & 0xFF
+          const notLL = (~LL) & 0xFF
+
+          const frameData = [
+            0x55, 0xAA,           // 帧头
+            LH, LL, notLH, notLL, // 帧长度字段
+            cmd,                  // 命令字
+            ...data               // 数据字段
+          ]
+
+          // XOR 校验：从帧长度开始到数据结束
+          let checksum = 0
+          for (let i = 2; i < frameData.length; i++) {
+            checksum ^= frameData[i]
+          }
+          frameData.push(checksum)
+
+          return new Uint8Array(frameData).buffer
+        },
+
+        // ══════════════════════════════════════
+        //  协议帧解析
+        // ══════════════════════════════════════
+        parseProtocolFrame(frame) {
+          if (frame.length < 8) {
+            throw new Error('帧长度不足')
+          }
+
+          if (frame[0] !== 0x55 || frame[1] !== 0xAA) {
+            throw new Error('无效的帧头')
+          }
+
+          const LH = frame[2]
+          const LL = frame[3]
+          const notLH = frame[4]
+          const notLL = frame[5]
+
+          if (((~LH) & 0xFF) !== notLH || ((~LL) & 0xFF) !== notLL) {
+            throw new Error('长度字段校验失败')
+          }
+
+          const frameLength = (LH << 8) | LL
+
+          if (frame.length - 2 !== frameLength) {
+            throw new Error(`帧长度不匹配: 期望${frameLength + 2}, 实际${frame.length}`)
+          }
+
+          const server = frame[6]
+          // 数据长度 = frameLength - 长度字段(4) - 命令(1) - 校验(1)
+          const dataLength = frameLength - 6
+          const data = dataLength > 0 ? frame.slice(7, 7 + dataLength) : new Uint8Array(0)
+
+          // XOR 校验验证：从帧长度到数据结束
+          let checksum = 0
+          for (let i = 2; i < frame.length - 1; i++) {
+            checksum ^= frame[i]
+          }
+          const receivedChecksum = frame[frame.length - 1]
+          if (checksum !== receivedChecksum) {
+            console.warn(`[BT RX] 校验和不等: 计算=0x${checksum.toString(16)}, 接收=0x${receivedChecksum.toString(16)}`)
+          }
+
+          return {
+            server: server,
+            cmd: this.currentCMD,
+            data: Array.from(data),
+            dataLength: dataLength,
+            rawFrame: frame,
+          }
+        },
+
+        // ══════════════════════════════════════
+        //  数据解析与格式化
+        // ══════════════════════════════════════
+        formatBTData(result) {
+          const { server, data, cmd } = result
+
+          // 0x01: 夹子连接状态
+          if (server === 1 && data.length >= 2) {
+            const clipStatus = ['连接良好', '黑色夹子不良', '红色夹子不良']
+            this.appendLog(`   🔌 夹子状态: ${clipStatus[data[1]] || '未知'}\r\n`)
+          }
+
+          // 0x04: 读取当前电压
+          if (server === 4 && data.length >= 4) {
+            this.voltage = +(data[0] * 10 + data[1] + data[2] * 0.1 + data[3] * 0.01).toFixed(2)
+            this.appendLog(`   📊 当前电压: ${this.voltage}V\r\n`)
+          }
+
+          // 0x06: 电池测试结果
+          if (server === 6 && data.length >= 20) {
+            const batteryStatus = ['电池良好', '请更换电池', '良好请充电', '请充电再测试', '坏格电池', '仪表损坏']
+            const volt = data[2] * 10 + data[3] + data[4] * 0.1 + data[5] * 0.01
+            const cca = data[6] * 1000 + data[7] * 100 + data[8] * 10 + data[9]
+            const resistance = data[10] * 10 + data[11] + data[12] * 0.1 + data[13] * 0.01
+            const soc = data[14] * 100 + data[15] * 10 + data[16]
+            const soh = data[17] * 100 + data[18] * 10 + data[19]
+            this.appendLog(
+              `   🔋 测试结果:\r\n` +
+              `      状况: ${batteryStatus[data[1]] || '未知'}\r\n` +
+              `      电压: ${volt.toFixed(2)}V\r\n` +
+              `      冷启动电流: ${cca}A\r\n` +
+              `      内阻: ${resistance.toFixed(2)}mΩ\r\n` +
+              `      SOC: ${soc}%  SOH: ${soh}%\r\n`
+            )
+          }
+
+          // 0x09: 软件版本
+          if (server === 9 && data.length >= 3) {
+            const ver = data[1] * 0x100 + data[2]
+            const v1 = Math.floor(ver / 100)
+            const v2 = Math.floor((ver % 100) / 10)
+            const v3 = ver % 10
+            this.appendLog(`   📌 软件版本: V${v1}.${v2}.${v3}\r\n`)
+          }
+
+          // 0x0F: 获取产品信息 (协议文档: D1=状态, D2~D7=版本6B, D8~D24=MAC17B, 后续=类型+名称+客户ID)
+          if (server === 15 && data.length >= 2) {
+            if (data[0] !== 0x00) {
+              this.appendLog(`   ❌ 获取产品信息失败, 状态码: 0x${data[0].toString(16).toUpperCase()}\r\n`)
+              return
+            }
+            // 版本信息: data[1]~data[6], 固定6字节 ASCII
+            if (data.length >= 7) {
+              this.deviceInfo.version = String.fromCharCode(...data.slice(1, 7)).replace(/\0/g, '').trim()
+            }
+            // MAC 地址: data[7]~data[23], 固定17字节 ASCII
+            if (data.length >= 24) {
+              this.deviceInfo.mac = String.fromCharCode(...data.slice(7, 24)).replace(/\0/g, '').trim()
+            }
+            // 产品类型: data[24] = 长度N, data[25]~data[25+N-1] = ASCII
+            let offset = 24
+            if (data.length > offset) {
+              const typeLen = data[offset]
+              offset++
+              if (typeLen > 0 && data.length >= offset + typeLen) {
+                this.deviceInfo.model = String.fromCharCode(...data.slice(offset, offset + typeLen)).trim()
+                offset += typeLen
+              }
+            }
+            // 产品名称: 长度L + ASCII
+            if (data.length > offset) {
+              const nameLen = data[offset]
+              offset++
+              if (nameLen > 0 && data.length >= offset + nameLen) {
+                this.deviceInfo.name = String.fromCharCode(...data.slice(offset, offset + nameLen)).trim()
+                offset += nameLen
+              }
+            }
+            // 客户ID: 长度X + ASCII
+            if (data.length > offset) {
+              const cusLen = data[offset]
+              offset++
+              if (cusLen > 0 && data.length >= offset + cusLen) {
+                this.deviceInfo.cusId = String.fromCharCode(...data.slice(offset, offset + cusLen)).trim()
+              }
+            }
+            this.appendLog(
+              `   📋 产品信息:\r\n` +
+              `      版本: ${this.deviceInfo.version}\r\n` +
+              `      MAC: ${this.deviceInfo.mac || '暂无'}\r\n` +
+              `      型号: ${this.deviceInfo.model || '暂无'}\r\n` +
+              `      名称: ${this.deviceInfo.name || '暂无'}\r\n` +
+              `      客户ID: ${this.deviceInfo.cusId || '暂无'}\r\n`
+            )
+          }
+
+          // 0x10: 验证是否官方
+          if (server === 16 && data.length >= 9) {
+            const recResult = String.fromCharCode(...data.slice(1, 9))
+            if (recResult.length === 8) {
+              const encryStr = this.hexToString(cmd.substring(2, 18))
+              console.log('加密前_2', encryStr)
+              const calResult = this.int2hexStr(this.EDesEn_Crypt(parseInt(encryStr, 16), 0xBAC9AA76))
+              console.log('原始值加密结果:', calResult, '返回值', recResult)
+              this.isOfficial = (recResult === calResult)
+              this.appendLog(`   🔐 官方验证: ${this.isOfficial ? '✓ 通过' : '✗ 未通过'}\r\n`)
+            }
+          }
+
+          // 0x10: 验证是否官方
+          if (server === 16 && data.length >= 9) {
+            const recResult = String.fromCharCode(...data.slice(1, 9))
+            if (recResult.length === 8) {
+              const encryStr = this.hexToString(cmd.substring(2, 18))
+              console.log('加密前_2', encryStr)
+              const calResult = this.int2hexStr(this.EDesEn_Crypt(parseInt(encryStr, 16), 0xBAC9AA76))
+              console.log('原始值加密结果:', calResult, '返回值', recResult)
+              this.isOfficial = (recResult === calResult)
+              this.appendLog(`   🔐 官方验证: ${this.isOfficial ? '✓ 通过' : '✗ 未通过'}\r\n`)
+            }
+          }
+
+          // 0x0E: 设置电池电压类型
+          if (server === 14 && data.length >= 1) {
+            this.appendLog(`   🔋 电池电压类型设置: ${data[0] === 0 ? '成功' : '失败'}\r\n`)
+          }
+        },
+
+        // ══════════════════════════════════════
+        //  工具方法
+        // ══════════════════════════════════════
+        getRndHexStr() {
+          const rand = Math.floor(Math.random() * (0x7fffffff - 0x12345678)) + 0x12345678
+          return this.int2hexStr(rand)
+        },
+
+        int2hexStr(value) {
+          const bufView = new Uint8Array(4)
+          bufView[0] = (value >> 24) & 0xff
+          bufView[1] = (value >> 16) & 0xff
+          bufView[2] = (value >> 8) & 0xff
+          bufView[3] = value & 0xff
+          return Array.from(bufView, b => b.toString(16).padStart(2, '0').toUpperCase()).join('')
+        },
+
+        hexToString(hex) {
+          let str = ''
+          for (let i = 0; i < hex.length; i += 2) {
+            str += String.fromCharCode(parseInt(hex.substr(i, 2), 16))
+          }
+          return str
+        },
+
+        strToHex(str) {
+          return str.split('').map(c => c.charCodeAt(0).toString(16).padStart(2, '0')).join('')
+        },
+
+        EDesEn_Crypt(src, secretKey = 0x263D9A7E) {
+          const byte0 = src & 0xff
+          const byte1 = (src >> 8) & 0xff
+          const byte2 = (src >> 16) & 0xff
+          const byte3 = (src >> 24) & 0xff
+          const newByte0 = (byte2 >> (byte0 / 50)) | ((byte1 << 2) ^ (secretKey << (byte3 / 12)))
+          const newByte1 = (byte0 >> (byte1 / 63)) | ((secretKey << (byte3 / 11)) ^ (byte2 >> 1))
+          const newByte2 = (byte0 >> (byte1 / 46)) | ((secretKey << (byte0 / 34)) ^ byte3)
+          const newByte3 = (byte1 << (byte3 / 35)) | ((secretKey << (byte0 / 49)) & (secretKey >> 18))
+          return ((newByte3 << 24) & 0xff000000) | ((newByte2 << 16) & 0xff0000) | ((newByte1 << 8) & 0xff00) | (newByte0 & 0xff)
+        },
+
+        appendLog(text) {
+          this.dataHTML = text + this.dataHTML
+          const lines = this.dataHTML.split('\r\n')
+          if (lines.length > LOG_MAX_LINES) {
+            this.dataHTML = lines.slice(0, LOG_MAX_LINES).join('\r\n')
+          }
+        },
+
+        exportLog() {
+          const log = this.dataHTML.trim()
+          if (!log) {
+            alert('暂无日志可导出')
+            return
+          }
+
+          const body = log.split('\r\n').reverse().join('\n')
+          const content = [
+            'Battery Test 通信日志 (HEX 模式)',
+            `导出时间: ${this.formatTime()}`,
+            `设备: ${this.deviceName || '未连接'}`,
+            `版本: ${this.deviceInfo.version || '暂无'}`,
+            '='.repeat(40),
+            '',
+            body,
+          ].join('\n')
+
+          const blob = new Blob([content], { type: 'text/plain;charset=utf-8' })
+          const url = URL.createObjectURL(blob)
+          const link = document.createElement('a')
+          const now = new Date()
+          const pad = (n) => String(n).padStart(2, '0')
+          const filename = `battery-test-log-${now.getFullYear()}${pad(now.getMonth() + 1)}${pad(now.getDate())}-${pad(now.getHours())}${pad(now.getMinutes())}${pad(now.getSeconds())}.txt`
+
+          link.href = url
+          link.download = filename
+          link.click()
+          URL.revokeObjectURL(url)
+        },
+
+        formatTime() {
+          const date = new Date()
+          const pad = (n) => String(n).padStart(2, '0')
+          return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())} ` +
+            `${pad(date.getHours())}:${pad(date.getMinutes())}:${pad(date.getSeconds())}:${date.getMilliseconds()}`
+        },
+      },
+    })
+  </script>
+</body>
+
+</html>
